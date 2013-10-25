@@ -1,6 +1,4 @@
 chuiyi.github.com
 =================
 
-my web page...
-
-test for any JavaScript/css codes here.
+Chuiyi's github page, try to put all my projects and codes in...
