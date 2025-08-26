@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap');
 
 :root {
-    /* 文青風格色彩調色盤 */
+    /* 文青風格色彩調色盤 - 淺色主題 */
     --primary-beige: #f5f3f0;
     --warm-white: #fefcf9;
     --soft-gray: #e8e6e1;
@@ -23,6 +23,20 @@
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
     --spacing-xxl: 4rem;
+}
+
+/* 深色主題變數 */
+[data-theme="dark"] {
+    --primary-beige: #2c2520;
+    --warm-white: #1a1611;
+    --soft-gray: #3a342c;
+    --muted-brown: #b8a990;
+    --deep-brown: #d4c4a8;
+    --accent-gold: #f4d03f;
+    --text-dark: #e8e6e1;
+    --text-light: #b8b4ac;
+    --border-light: #4a4136;
+    --shadow-subtle: rgba(0, 0, 0, 0.3);
 }
 
 /* 基礎樣式重設 */
@@ -380,6 +394,20 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--deep-brown);
 }
 
+.modal-body {
+    color: var(--text-dark);
+    background-color: var(--warm-white);
+}
+
+.modal-body h1, .modal-body h2, .modal-body h3, 
+.modal-body h4, .modal-body h5, .modal-body h6 {
+    color: var(--deep-brown);
+}
+
+.modal-body p, .modal-body li, .modal-body span {
+    color: var(--text-dark);
+}
+
 .modal-footer {
     border-top: 1px solid var(--border-light);
     background-color: var(--primary-beige);
@@ -461,8 +489,57 @@ h1, h2, h3, h4, h5, h6 {
 
 .photography-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
     border-color: var(--muted-brown);
+}
+
+/* 深色主題下的攝影卡片 hover 效果 */
+[data-theme="dark"] .photography-card:hover {
+    box-shadow: 0 8px 25px rgba(212, 196, 168, 0.2);
+}
+
+/* 淺色主題下的攝影卡片 hover 效果 */
+[data-theme="light"] .photography-card:hover,
+.photography-card:hover {
+    box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
+}
+
+/* 攝影卡片內文字樣式 */
+.photography-card .card-body {
+    background-color: var(--warm-white) !important;
+    border-color: var(--border-light) !important;
+}
+
+.photography-card .card-title {
+    color: var(--deep-brown) !important;
+}
+
+.photography-card .card-excerpt {
+    color: var(--text-light) !important;
+}
+
+.photography-card .card-meta {
+    color: var(--text-light) !important;
+}
+
+.photography-card .card-meta small {
+    color: var(--text-light) !important;
+}
+
+.photography-card .tag {
+    background-color: var(--soft-gray) !important;
+    color: var(--text-dark) !important;
+}
+
+/* 攝影卡片按鈕樣式 */
+.photography-card .btn-outline-primary {
+    border-color: var(--muted-brown) !important;
+    color: var(--muted-brown) !important;
+}
+
+.photography-card .btn-outline-primary:hover {
+    background-color: var(--muted-brown) !important;
+    border-color: var(--muted-brown) !important;
+    color: var(--warm-white) !important;
 }
 
 .flickr-embed-container {
@@ -500,4 +577,70 @@ h1, h2, h3, h4, h5, h6 {
 .flickr-embed-container [data-flickr-embed] img {
     border-radius: 0;
     margin: 0;
+}
+
+/* 主題切換按鈕樣式 */
+.theme-toggle {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1000;
+    background: var(--warm-white);
+    border: 1px solid var(--border-light);
+    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-subtle);
+}
+
+.theme-toggle:hover {
+    background: var(--primary-beige);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(139, 125, 107, 0.2);
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
+    color: var(--muted-brown);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle .sun-icon {
+    display: none;
+}
+
+.theme-toggle .moon-icon {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle .sun-icon {
+    display: block;
+}
+
+[data-theme="dark"] .theme-toggle .moon-icon {
+    display: none;
+}
+
+/* 主題過渡動畫 */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 響應式主題切換按鈕 */
+@media (max-width: 768px) {
+    .theme-toggle {
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .theme-toggle i {
+        font-size: 1.1rem;
+    }
 }

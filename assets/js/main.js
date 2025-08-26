@@ -8,8 +8,52 @@ let photographyData = [];
 // Markdown 緩存
 let markdownCache = new Map();
 
+// 主題管理
+const ThemeManager = {
+    init() {
+        // 從 localStorage 載入保存的主題，預設為淺色主題
+        const savedTheme = localStorage.getItem('chuiy-theme') || 'light';
+        this.setTheme(savedTheme);
+        
+        // 綁定主題切換按鈕事件
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => this.toggleTheme());
+        }
+    },
+    
+    setTheme(theme) {
+        const html = document.documentElement;
+        if (theme === 'dark') {
+            html.setAttribute('data-theme', 'dark');
+        } else {
+            html.removeAttribute('data-theme');
+        }
+        
+        // 保存主題設置到 localStorage
+        localStorage.setItem('chuiy-theme', theme);
+    },
+    
+    toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        this.setTheme(newTheme);
+        
+        // 顯示切換提示
+        const message = newTheme === 'dark' ? '已切換到深色主題' : '已切換到淺色主題';
+        showNotification(message, 'success');
+    },
+    
+    getCurrentTheme() {
+        return document.documentElement.getAttribute('data-theme') || 'light';
+    }
+};
+
 // 等待 DOM 載入完成
 document.addEventListener('DOMContentLoaded', function() {
+    // 初始化主題管理
+    ThemeManager.init();
+    
     // 初始化應用
     initializeApp();
     
