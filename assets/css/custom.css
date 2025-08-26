@@ -1,0 +1,350 @@
+/* Custom CSS for Chuiy's Website - Dark Theme */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Dark theme body */
+body.bg-dark {
+    background-color: #121212 !important;
+    color: #ffffff;
+}
+
+/* Custom button styles for dark theme */
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+}
+
+.btn-outline-info {
+    color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #fff;
+}
+
+/* Card hover effects */
+.travel-card, .movie-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.travel-card:hover, .movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Dark theme cards */
+.card.bg-dark {
+    background-color: #1e1e1e !important;
+    border: 1px solid #333;
+}
+
+.card.bg-secondary {
+    background-color: #2d2d2d !important;
+    border: 1px solid #444;
+}
+
+/* Dashed border for add new cards */
+.border-dashed {
+    border-style: dashed !important;
+    transition: all 0.3s ease;
+}
+
+.border-dashed:hover {
+    border-color: #17a2b8 !important;
+    background-color: rgba(23, 162, 184, 0.1);
+}
+
+/* Dark sections */
+.bg-secondary {
+    background-color: #1a1a1a !important;
+}
+
+/* Hero section styling */
+.min-vh-50 {
+    min-height: 50vh;
+}
+
+/* Custom badge colors */
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+/* Star rating */
+.text-warning .bi {
+    color: #ffc107 !important;
+}
+
+/* Modal styling for dark theme */
+.modal-content.bg-dark {
+    background-color: #1e1e1e !important;
+    border: 1px solid #333;
+}
+
+.modal-header.border-secondary {
+    border-bottom-color: #333 !important;
+}
+
+.modal-footer.border-secondary {
+    border-top-color: #333 !important;
+}
+
+/* Form controls for dark theme */
+.form-control.bg-secondary {
+    background-color: #2d2d2d !important;
+    border-color: #444 !important;
+    color: #fff !important;
+}
+
+.form-control.bg-secondary:focus {
+    background-color: #2d2d2d !important;
+    border-color: #17a2b8 !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
+}
+
+.form-select.bg-secondary {
+    background-color: #2d2d2d !important;
+    border-color: #444 !important;
+    color: #fff !important;
+}
+
+.form-select.bg-secondary:focus {
+    background-color: #2d2d2d !important;
+    border-color: #17a2b8 !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 0.2rem rgba(23, 162, 184, 0.25);
+}
+
+/* Footer styling */
+footer a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #17a2b8 !important;
+}
+
+/* Navigation styling */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #17a2b8;
+}
+
+.navbar-dark .navbar-brand:hover {
+    color: #17a2b8 !important;
+}
+
+/* Icon placeholders */
+.bg-success.rounded {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%) !important;
+}
+
+.bg-danger.rounded, .bg-danger.rounded-top {
+    background: linear-gradient(135deg, #dc3545 0%, #e91e63 100%) !important;
+}
+
+.bg-secondary.rounded-circle {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .display-5 {
+        font-size: 2rem;
+    }
+    
+    .hero-section {
+        text-align: center;
+    }
+    
+    .hero-section .bg-secondary.rounded-circle {
+        margin-top: 2rem;
+        max-width: 250px;
+        max-height: 250px;
+    }
+}
+
+/* Animation for loading */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Loading spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Social embed containers */
+.social-embed {
+    max-width: 100%;
+    margin: 1rem 0;
+}
+
+/* Photo gallery grid */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.photo-grid img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+/* Tags styling for dark theme */
+.tag {
+    display: inline-block;
+    background-color: #2d2d2d;
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    margin: 0.125rem;
+    border-radius: 1rem;
+    font-size: 0.875rem;
+    text-decoration: none;
+}
+
+.tag:hover {
+    background-color: #17a2b8;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #138496;
+    transform: translateY(-2px);
+}
+
+/* Dark theme specific text colors */
+.text-light {
+    color: #f8f9fa !important;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+/* Alert styling for dark theme */
+.alert-info {
+    background-color: rgba(23, 162, 184, 0.1);
+    border-color: rgba(23, 162, 184, 0.2);
+    color: #17a2b8;
+}
+
+/* Icon color adjustments for dark theme */
+.text-info {
+    color: #17a2b8 !important;
+}
+
+/* Placeholder icons styling */
+.placeholder-icon {
+    transition: all 0.3s ease;
+}
+
+.placeholder-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Dark theme form labels */
+.form-label {
+    color: #f8f9fa;
+    font-weight: 500;
+}
+
+/* Dark theme button close */
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
