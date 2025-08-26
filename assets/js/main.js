@@ -1368,18 +1368,66 @@ function showNotification(message, type = 'info') {
     }, 5000);
 }
 
-// Show travel detail (placeholder function)
-function showTravelDetail(title) {
-    console.log('Showing travel detail for:', title);
-    // This would open a modal with full travel details
-    showNotification('旅行詳情功能開發中...', 'info');
+// Show travel detail - 顯示旅行詳情 Modal
+async function showTravelDetail(travelId) {
+    const travel = travelData.find(t => t.id === travelId);
+    if (!travel) {
+        console.error('找不到旅行資料:', travelId);
+        showNotification('找不到旅行資料', 'error');
+        return;
+    }
+    
+    try {
+        // 如果還沒有載入完整內容，現在載入
+        if (!travel.fullContent) {
+            const content = await getMarkdownContent(travel.file);
+            if (content) {
+                travel.fullContent = content;
+                travel.parsedData = parseTravelMarkdown(content);
+            }
+        }
+        
+        // 動態更新 Modal 內容
+        updateTravelModal(travel);
+        
+        // 顯示 Modal
+        const modal = new bootstrap.Modal(document.getElementById('travelModal1'));
+        modal.show();
+    } catch (error) {
+        console.error('載入旅行詳情時發生錯誤:', error);
+        showNotification('載入旅行詳情時發生錯誤', 'error');
+    }
 }
 
-// Show movie detail (placeholder function)
-function showMovieDetail(title) {
-    console.log('Showing movie detail for:', title);
-    // This would open a modal with full movie review
-    showNotification('電影詳情功能開發中...', 'info');
+// Show movie detail - 顯示電影詳情 Modal  
+async function showMovieDetail(movieId) {
+    const movie = movieData.find(m => m.id === movieId);
+    if (!movie) {
+        console.error('找不到電影資料:', movieId);
+        showNotification('找不到電影資料', 'error');
+        return;
+    }
+    
+    try {
+        // 如果還沒有載入完整內容，現在載入
+        if (!movie.fullContent) {
+            const content = await getMarkdownContent(movie.file);
+            if (content) {
+                movie.fullContent = content;
+                movie.parsedData = parseMovieMarkdown(content);
+            }
+        }
+        
+        // 動態更新 Modal 內容
+        updateMovieModal(movie);
+        
+        // 顯示 Modal
+        const modal = new bootstrap.Modal(document.getElementById('movieModal1'));
+        modal.show();
+    } catch (error) {
+        console.error('載入電影詳情時發生錯誤:', error);
+        showNotification('載入電影詳情時發生錯誤', 'error');
+    }
 }
 
 // Utility functions

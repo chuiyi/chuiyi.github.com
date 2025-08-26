@@ -51,6 +51,16 @@ const TRAVEL_FILES = [
 // 攝影札記檔案列表
 const PHOTOGRAPHY_FILES = [
     {
+        id: 'nagoya-2023',
+        title: '2023.10 日本 | 名古屋',
+        location: '日本名古屋',
+        date: '2023年10月',
+        description: '名古屋的城市風光與文化探索，記錄中部地區的獨特魅力。',
+        featured: true,
+        flickrEmbed: '<a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/chuiyi/albums/72177720319994162" title="2023.10 日本 | 名古屋"><img src="https://live.staticflickr.com/65535/53965050771_f3be107b14.jpg" width="500" height="375" alt="2023.10 日本 | 名古屋"/></a>',
+        albumUrl: 'https://www.flickr.com/photos/chuiyi/albums/72177720319994162'
+    },
+    {
         id: 'kamakura-enoshima-2023',
         title: '神奈川，鐮倉x江之島',
         location: '日本神奈川',
@@ -59,16 +69,6 @@ const PHOTOGRAPHY_FILES = [
         featured: true,
         flickrEmbed: '<a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/chuiyi/albums/72177720320156114" title="2023.08 日本 | 神奈川,鐮倉x江之島"><img src="https://live.staticflickr.com/65535/53977575351_aef9a7096a.jpg" width="500" height="375" alt="2023.08 日本 | 神奈川,鐮倉x江之島"/></a>',
         albumUrl: 'https://www.flickr.com/photos/chuiyi/albums/72177720320156114'
-    },
-    {
-        id: 'nagoya-2023',
-        title: '名古屋',
-        location: '日本名古屋',
-        date: '2023年10月',
-        description: '名古屋的城市風光與文化探索，記錄中部地區的獨特魅力。',
-        featured: true,
-        flickrEmbed: '<a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/chuiyi/albums/72177720319994162" title="2023.10 日本 | 名古屋"><img src="https://live.staticflickr.com/65535/53965050771_f3be107b14.jpg" width="500" height="375" alt="2023.10 日本 | 名古屋"/></a>',
-        albumUrl: 'https://www.flickr.com/photos/chuiyi/albums/72177720319994162'
     },
     {
         id: 'ricoh-gr-iiix',
