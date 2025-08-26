@@ -1,8 +1,11 @@
-// Main JavaScript for Chuiy's Website
+// Main JavaScript for Chuiy's Website - Complete Content Management System
 
 // 電影和旅行數據
 let movieData = [];
 let travelData = [];
+
+// Markdown 緩存
+let markdownCache = new Map();
 
 // 等待 DOM 載入完成
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,8 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
     
     // 載入動態內容
-    loadMovieReviews();
-    loadTravelPosts();
+    loadContent();
     
     // 設置事件監聽器
     setupEventListeners();
@@ -28,28 +30,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // 初始化應用
 function initializeApp() {
-    console.log('Chuiy\'s Website Initialized - Dynamic MD Loading Enabled');
+    console.log('Chuiy\'s Website Initialized - Complete Content Management System');
+}
+
+// 載入所有內容
+async function loadContent() {
+    try {
+        // 並行載入電影和旅行內容
+        await Promise.all([
+            loadMovieReviews(),
+            loadTravelPosts()
+        ]);
+    } catch (error) {
+        console.error('載入內容時發生錯誤:', error);
+    }
 }
 
 // 動態載入電影評論
 async function loadMovieReviews() {
     try {
-        // 從配置檔案中獲取電影檔案列表
-        const movieFiles = window.CONTENT_CONFIG ? window.CONTENT_CONFIG.MOVIE_FILES : [
-            {
-                file: 'posts/movies/your-name-2024.md',
-                id: 'your-name-2024'
-            }
-        ];
+        const movieContainer = document.getElementById('movie-reviews');
+        if (!movieContainer) return;
         
-        for (const movie of movieFiles) {
+        movieContainer.innerHTML = '<div class="loading text-center py-5"><i class="bi bi-hourglass-split"></i> 載入電影評論中...</div>';
+        
+        // 從配置檔案中獲取電影檔案列表
+        const movieFiles = window.CONTENT_CONFIG ? window.CONTENT_CONFIG.CONTENT_MANAGER.getAllMovies() : [];
+        
+        movieData = [];
+        
+        for (const movieConfig of movieFiles) {
             try {
-                const content = await fetchMarkdownFile(movie.file);
-                const parsedMovie = parseMovieMarkdown(content, movie.id);
-                parsedMovie.featured = movie.featured || false;
-                movieData.push(parsedMovie);
+                // 使用配置檔案中的基本資訊
+                const movieInfo = {
+                    id: movieConfig.id,
+                    title: movieConfig.title,
+                    genre: movieConfig.genre,
+                    rating: movieConfig.rating,
+                    watchDate: movieConfig.watchDate,
+                    description: movieConfig.description,
+                    featured: movieConfig.featured,
+                    file: movieConfig.file,
+                    fullContent: null // 延遲載入完整內容
+                };
+                
+                movieData.push(movieInfo);
             } catch (error) {
-                console.warn(`無法載入電影檔案: ${movie.file}`, error);
+                console.warn(`無法載入電影配置: ${movieConfig.id}`, error);
             }
         }
         
@@ -64,22 +91,33 @@ async function loadMovieReviews() {
 // 動態載入旅行筆記
 async function loadTravelPosts() {
     try {
-        // 從配置檔案中獲取旅行檔案列表
-        const travelFiles = window.CONTENT_CONFIG ? window.CONTENT_CONFIG.TRAVEL_FILES : [
-            {
-                file: 'posts/travel/taiwan-around-island-2024.md',
-                id: 'taiwan-2024'
-            }
-        ];
+        const travelContainer = document.getElementById('travel-posts');
+        if (!travelContainer) return;
         
-        for (const travel of travelFiles) {
+        travelContainer.innerHTML = '<div class="loading text-center py-5"><i class="bi bi-hourglass-split"></i> 載入旅行筆記中...</div>';
+        
+        // 從配置檔案中獲取旅行檔案列表
+        const travelFiles = window.CONTENT_CONFIG ? window.CONTENT_CONFIG.CONTENT_MANAGER.getAllTravels() : [];
+        
+        travelData = [];
+        
+        for (const travelConfig of travelFiles) {
             try {
-                const content = await fetchMarkdownFile(travel.file);
-                const parsedTravel = parseTravelMarkdown(content, travel.id);
-                parsedTravel.featured = travel.featured || false;
-                travelData.push(parsedTravel);
+                // 使用配置檔案中的基本資訊
+                const travelInfo = {
+                    id: travelConfig.id,
+                    title: travelConfig.title,
+                    location: travelConfig.location,
+                    date: travelConfig.date,
+                    description: travelConfig.description,
+                    featured: travelConfig.featured,
+                    file: travelConfig.file,
+                    fullContent: null // 延遲載入完整內容
+                };
+                
+                travelData.push(travelInfo);
             } catch (error) {
-                console.warn(`無法載入旅行檔案: ${travel.file}`, error);
+                console.warn(`無法載入旅行配置: ${travelConfig.id}`, error);
             }
         }
         
@@ -91,13 +129,75 @@ async function loadTravelPosts() {
     }
 }
 
-// 獲取 Markdown 檔案內容
-async function fetchMarkdownFile(filePath) {
-    const response = await fetch(filePath);
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+// 獲取並解析 Markdown 檔案內容
+async function getMarkdownContent(filePath) {
+    try {
+        // 檢查緩存
+        if (markdownCache.has(filePath)) {
+            return markdownCache.get(filePath);
+        }
+        
+        const response = await fetch(filePath);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const content = await response.text();
+        
+        // 緩存內容
+        markdownCache.set(filePath, content);
+        
+        return content;
+    } catch (error) {
+        console.error(`無法獲取 Markdown 內容: ${filePath}`, error);
+        return null;
     }
-    return await response.text();
+}
+
+// 將 Markdown 轉換為 HTML
+function convertMarkdownToHtml(markdownContent) {
+    if (!markdownContent) return '';
+    
+    let html = markdownContent;
+    
+    // 處理標題
+    html = html.replace(/^# (.+)$/gm, '<h1 class="markdown-h1 text-info mb-4">$1</h1>');
+    html = html.replace(/^## (.+)$/gm, '<h2 class="markdown-h2 text-warning border-bottom border-secondary pb-2 mb-3">$1</h2>');
+    html = html.replace(/^### (.+)$/gm, '<h3 class="markdown-h3 text-info mb-3">$1</h3>');
+    
+    // 處理粗體
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong class="text-warning">$1</strong>');
+    
+    // 處理斜體
+    html = html.replace(/\*(.+?)\*/g, '<em class="text-light">$1</em>');
+    
+    // 處理列表項
+    html = html.replace(/^- (.+)$/gm, '<li class="markdown-li text-light mb-2">$1</li>');
+    html = html.replace(/^(\d+)\. (.+)$/gm, '<li class="markdown-li-numbered text-light mb-2">$2</li>');
+    
+    // 包裝連續的列表項
+    html = html.replace(/(<li class="markdown-li"[^>]*>.*?<\/li>)/gs, '<ul class="markdown-ul mb-3">$1</ul>');
+    html = html.replace(/(<li class="markdown-li-numbered"[^>]*>.*?<\/li>)/gs, '<ol class="markdown-ol mb-3">$1</ol>');
+    
+    // 處理段落
+    html = html.replace(/^([^<\n#*-].+)$/gm, '<p class="markdown-p text-light mb-3">$1</p>');
+    
+    // 處理連結
+    html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="markdown-link text-info" target="_blank">$1</a>');
+    
+    // 處理星星評分
+    html = html.replace(/⭐/g, '<i class="bi bi-star-fill text-warning"></i>');
+    
+    // 處理標籤
+    html = html.replace(/#(\w+)/g, '<span class="badge bg-primary me-1">#$1</span>');
+    
+    // 處理分隔線
+    html = html.replace(/^---$/gm, '<hr class="markdown-hr border-secondary my-4">');
+    
+    // 清理多餘的空行
+    html = html.replace(/\n\s*\n/g, '\n');
+    
+    return html;
 }
 
 // 解析電影 Markdown 內容
@@ -247,353 +347,505 @@ function parseTravelMarkdown(content, id) {
 // 渲染電影卡片
 function renderMovieCards() {
     const movieContainer = document.getElementById('movie-reviews');
-    const addButton = movieContainer.querySelector('.border-dashed')?.parentElement;
     
-    // 清空現有的電影卡片（保留新增按鈕）
-    const existingCards = movieContainer.querySelectorAll('.movie-card');
-    existingCards.forEach(card => card.parentElement.remove());
+    // 清空現有內容
+    movieContainer.innerHTML = '';
     
-    movieData.forEach(movie => {
-        const movieElement = createMovieCardElement(movie);
-        if (addButton) {
-            movieContainer.insertBefore(movieElement, addButton);
-        } else {
-            movieContainer.appendChild(movieElement);
-        }
+    const movieCount = movieData.length;
+    
+    movieData.forEach((movie, index) => {
+        const movieElement = createMovieCardElement(movie, movieCount, index);
+        movieContainer.appendChild(movieElement);
     });
 }
 
 // 渲染旅行卡片
 function renderTravelCards() {
     const travelContainer = document.getElementById('travel-posts');
-    const addButton = travelContainer.querySelector('.border-dashed')?.parentElement;
     
-    // 清空現有的旅行卡片（保留新增按鈕）
-    const existingCards = travelContainer.querySelectorAll('.travel-card');
-    existingCards.forEach(card => card.parentElement.remove());
+    // 清空現有內容
+    travelContainer.innerHTML = '';
     
-    travelData.forEach(travel => {
-        const travelElement = createTravelCardElement(travel);
-        if (addButton) {
-            travelContainer.insertBefore(travelElement, addButton);
-        } else {
-            travelContainer.appendChild(travelElement);
-        }
+    const travelCount = travelData.length;
+    
+    travelData.forEach((travel, index) => {
+        const travelElement = createTravelCardElement(travel, travelCount, index);
+        travelContainer.appendChild(travelElement);
     });
 }
 
-// 創建電影卡片元素
-function createMovieCardElement(movie) {
+// 創建電影卡片元素（支援智能佈局）
+function createMovieCardElement(movie, totalCount, index) {
     const col = document.createElement('div');
-    col.className = 'col-lg-4 col-md-6';
+    
+    // 決定佈局類型
+    const layoutType = getLayoutType(totalCount, index);
+    
+    // 設定 column 類別
+    col.className = layoutType.colClass;
     
     const stars = generateStarRating(movie.rating);
-    const genreClasses = getGenreClass(movie.genre);
     
-    col.innerHTML = `
-        <div class="card shadow-sm h-100 movie-card bg-secondary text-white">
-            <div class="bg-danger rounded-top d-flex align-items-center justify-content-center" 
-                 style="height: 300px;">
-                <div class="text-center">
-                    <i class="bi bi-film text-white" style="font-size: 4rem;"></i>
-                    <p class="mt-2 mb-0 text-white">${movie.title}</p>
+    // 根據佈局類型創建不同的 HTML 結構
+    if (layoutType.isHorizontal) {
+        // 水平佈局（圖片在左，內容在右）
+        col.innerHTML = `
+            <article class="article-card horizontal">
+                <div class="card-image">
+                    <i class="bi bi-camera-reels"></i>
                 </div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title text-white">${movie.title}</h5>
-                <div class="mb-2">
-                    <span class="badge ${genreClasses} me-2">${movie.genre}</span>
-                    <span class="text-warning">
+                <div class="card-body">
+                    <h3 class="card-title">${movie.title}</h3>
+                    <div class="rating mb-3">
                         ${stars}
-                        ${movie.rating}/5
-                    </span>
+                        <span style="color: var(--text-light); margin-left: 0.5rem;">${movie.rating}/5</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="tag">${movie.genre}</span>
+                    </div>
+                    <p class="card-excerpt">
+                        ${movie.description}
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${movie.watchDate}
+                        </div>
+                        <button class="read-more-btn" onclick="showMovieDetail('${movie.id}')">
+                            閱讀完整評論
+                        </button>
+                    </div>
                 </div>
-                <p class="card-text text-light">
-                    ${movie.plot.substring(0, 80)}${movie.plot.length > 80 ? '...' : ''}
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-light">${movie.watchDate}</small>
-                    <button class="btn btn-outline-info btn-sm" onclick="showMovieDetail('${movie.id}')">
-                        <i class="bi bi-eye me-1"></i>完整評論
-                    </button>
+            </article>
+        `;
+    } else {
+        // 標準卡片佈局
+        col.innerHTML = `
+            <article class="article-card">
+                <div class="card-image">
+                    <i class="bi bi-camera-reels"></i>
                 </div>
-            </div>
-        </div>
-    `;
+                <div class="card-body">
+                    <h3 class="card-title">${movie.title}</h3>
+                    <div class="rating">
+                        ${stars}
+                        <span style="color: var(--text-light); margin-left: 0.5rem;">${movie.rating}/5</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="tag">${movie.genre}</span>
+                    </div>
+                    <p class="card-excerpt">
+                        ${movie.description.substring(0, 120)}${movie.description.length > 120 ? '...' : ''}
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${movie.watchDate}
+                        </div>
+                        <button class="read-more-btn" onclick="showMovieDetail('${movie.id}')">
+                            閱讀評論
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
     
     return col;
 }
 
-// 創建旅行卡片元素
-function createTravelCardElement(travel) {
+// 創建旅行卡片元素（支援智能佈局）
+function createTravelCardElement(travel, totalCount, index) {
     const col = document.createElement('div');
-    col.className = 'col-lg-6';
+    
+    // 決定佈局類型
+    const layoutType = getLayoutType(totalCount, index);
+    
+    // 設定 column 類別
+    col.className = layoutType.colClass;
     
     // 從日期中提取年月
     const dateMatch = travel.date.match(/(\d{4})年(\d{1,2})月/);
     const dateBadge = dateMatch ? `${dateMatch[1]}.${dateMatch[2].padStart(2, '0')}` : '2024.08';
     
-    col.innerHTML = `
-        <div class="card shadow-sm h-100 travel-card bg-dark text-white">
-            <div class="bg-success rounded d-flex align-items-center justify-content-center" 
-                 style="height: 250px;">
-                <div class="text-center">
-                    <i class="bi bi-image text-white" style="font-size: 4rem;"></i>
-                    <p class="mt-2 mb-0 text-white">旅行照片</p>
+    // 根據佈局類型創建不同的 HTML 結構
+    if (layoutType.isHorizontal) {
+        // 水平佈局（圖片在左，內容在右）
+        col.innerHTML = `
+            <article class="article-card horizontal">
+                <div class="card-image">
+                    <i class="bi bi-geo-alt-fill"></i>
                 </div>
-            </div>
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h5 class="card-title text-white">${travel.title}</h5>
-                    <span class="badge bg-success">${dateBadge}</span>
-                </div>
-                <p class="card-text text-light">
-                    ${travel.content.substring(0, 100)}${travel.content.length > 100 ? '...' : ''}
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-light">
-                        <i class="bi bi-geo-alt me-1"></i>${travel.location}
-                    </small>
-                    <div>
-                        <button class="btn btn-outline-info btn-sm" onclick="showTravelDetail('${travel.id}')">
-                            <i class="bi bi-eye me-1"></i>查看詳情
+                <div class="card-body">
+                    <h3 class="card-title">${travel.title}</h3>
+                    <div class="mb-3">
+                        <span class="tag">${travel.location}</span>
+                        <span class="tag">${dateBadge}</span>
+                    </div>
+                    <p class="card-excerpt">
+                        ${travel.description}
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${travel.date}
+                        </div>
+                        <button class="read-more-btn" onclick="showTravelDetail('${travel.id}')">
+                            閱讀完整紀錄
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
-    `;
+            </article>
+        `;
+    } else {
+        // 標準卡片佈局
+        col.innerHTML = `
+            <article class="article-card">
+                <div class="card-image">
+                    <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">${travel.title}</h3>
+                    <div class="mb-2">
+                        <span class="tag">${travel.location}</span>
+                        <span class="tag">${dateBadge}</span>
+                    </div>
+                    <p class="card-excerpt">
+                        ${travel.description.substring(0, 120)}${travel.description.length > 120 ? '...' : ''}
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${travel.date}
+                        </div>
+                        <button class="read-more-btn" onclick="showTravelDetail('${travel.id}')">
+                            閱讀紀錄
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
     
     return col;
 }
 
+// 智能佈局決策函數
+function getLayoutType(totalCount, currentIndex) {
+    if (totalCount === 1) {
+        // 只有一篇：全寬度水平佈局
+        return {
+            colClass: 'col-12',
+            isHorizontal: true
+        };
+    } else if (totalCount === 2) {
+        // 兩篇：各佔 50% 水平佈局
+        return {
+            colClass: 'col-lg-6 col-12',
+            isHorizontal: true
+        };
+    } else {
+        // 三篇以上：每行最多三個，標準卡片佈局
+        return {
+            colClass: 'col-lg-4 col-md-6 col-12',
+            isHorizontal: false
+        };
+    }
+}
+
 // 顯示電影詳情 Modal
-function showMovieDetail(movieId) {
+async function showMovieDetail(movieId) {
     const movie = movieData.find(m => m.id === movieId);
     if (!movie) {
         console.error('找不到電影資料:', movieId);
         return;
     }
     
-    // 動態更新 Modal 內容
-    updateMovieModal(movie);
-    
-    // 顯示 Modal
-    const modal = new bootstrap.Modal(document.getElementById('movieModal1'));
-    modal.show();
+    try {
+        // 如果還沒有載入完整內容，現在載入
+        if (!movie.fullContent) {
+            const content = await getMarkdownContent(movie.file);
+            if (content) {
+                movie.fullContent = content;
+                movie.parsedData = parseMovieMarkdown(content);
+            }
+        }
+        
+        // 動態更新 Modal 內容
+        updateMovieModal(movie);
+        
+        // 顯示 Modal
+        const modal = new bootstrap.Modal(document.getElementById('movieModal1'));
+        modal.show();
+    } catch (error) {
+        console.error('載入電影詳情時發生錯誤:', error);
+        showNotification('載入電影詳情時發生錯誤', 'error');
+    }
 }
 
-// 顯示旅行詳情 Modal  
-function showTravelDetail(travelId) {
+// 顯示旅行詳情 Modal
+async function showTravelDetail(travelId) {
     const travel = travelData.find(t => t.id === travelId);
     if (!travel) {
         console.error('找不到旅行資料:', travelId);
         return;
     }
     
-    // 動態更新 Modal 內容
-    updateTravelModal(travel);
-    
-    // 顯示 Modal
-    const modal = new bootstrap.Modal(document.getElementById('travelModal1'));
-    modal.show();
+    try {
+        // 如果還沒有載入完整內容，現在載入
+        if (!travel.fullContent) {
+            const content = await getMarkdownContent(travel.file);
+            if (content) {
+                travel.fullContent = content;
+                travel.parsedData = parseTravelMarkdown(content);
+            }
+        }
+        
+        // 動態更新 Modal 內容
+        updateTravelModal(travel);
+        
+        // 顯示 Modal
+        const modal = new bootstrap.Modal(document.getElementById('travelModal1'));
+        modal.show();
+    } catch (error) {
+        console.error('載入旅行詳情時發生錯誤:', error);
+        showNotification('載入旅行詳情時發生錯誤', 'error');
+    }
 }
 
 // 更新電影 Modal 內容
 function updateMovieModal(movie) {
     const modal = document.getElementById('movieModal1');
+    if (!modal) return;
     
     // 更新標題
-    modal.querySelector('.modal-title').textContent = `${movie.title} - 完整評論`;
+    const modalTitle = modal.querySelector('.modal-title');
+    if (modalTitle) {
+        modalTitle.textContent = `${movie.title} - 完整評論`;
+    }
     
-    // 更新海報區域的電影名稱
-    modal.querySelector('.bg-danger p').textContent = movie.title;
-    
-    // 更新電影資訊
-    const infoCard = modal.querySelector('.card-body');
-    infoCard.innerHTML = `
-        <h6 class="card-title text-warning mb-3">
-            <i class="bi bi-info-circle me-2"></i>電影資訊
-        </h6>
-        <div class="small text-light">
-            <div class="mb-2"><strong>原名:</strong> ${movie.originalTitle}</div>
-            <div class="mb-2"><strong>導演:</strong> ${movie.director}</div>
-            <div class="mb-2"><strong>年份:</strong> ${movie.year}</div>
-            <div class="mb-2"><strong>類型:</strong> ${movie.genre}</div>
-            <div class="mb-2"><strong>觀看日期:</strong> ${movie.watchDate}</div>
-            <div class="d-flex align-items-center">
-                <strong class="me-2">我的評分:</strong>
-                <div class="text-warning">
-                    ${generateStarRating(movie.rating)}
-                    <span class="ms-2">${movie.rating}/5</span>
+    // 更新內容
+    const modalBody = modal.querySelector('.modal-body');
+    if (modalBody) {
+        if (movie.fullContent) {
+            // 如果有完整的 Markdown 內容，轉換為 HTML
+            const htmlContent = convertMarkdownToHtml(movie.fullContent);
+            modalBody.innerHTML = `
+                <div class="markdown-content">
+                    ${htmlContent}
                 </div>
-            </div>
-        </div>
-    `;
-    
-    // 更新主要內容
-    const contentArea = modal.querySelector('.movie-review-content');
-    contentArea.innerHTML = `
-        <h5 class="text-info mb-3">
-            <i class="bi bi-chat-quote me-2"></i>一部關於命運與愛情的動畫傑作
-        </h5>
-        
-        <!-- 劇情簡介 -->
-        <div class="mb-4">
-            <h6 class="text-warning border-bottom border-secondary pb-2">
-                <i class="bi bi-play-circle me-2"></i>劇情簡介
-            </h6>
-            <p class="text-light">${movie.plot}</p>
-        </div>
-
-        <!-- 觀影心得 -->
-        <div class="mb-4">
-            <h6 class="text-warning border-bottom border-secondary pb-2">
-                <i class="bi bi-heart me-2"></i>觀影心得
-            </h6>
-            
-            ${movie.reviews.visual ? `
-            <div class="mb-3">
-                <h6 class="text-info h6">視覺呈現</h6>
-                <p class="text-light">${movie.reviews.visual}</p>
-            </div>
-            ` : ''}
-
-            ${movie.reviews.story ? `
-            <div class="mb-3">
-                <h6 class="text-info h6">故事情節</h6>
-                <p class="text-light">${movie.reviews.story}</p>
-            </div>
-            ` : ''}
-
-            ${movie.reviews.music ? `
-            <div class="mb-3">
-                <h6 class="text-info h6">音樂配樂</h6>
-                <p class="text-light">${movie.reviews.music}</p>
-            </div>
-            ` : ''}
-
-            ${movie.reviews.meaning ? `
-            <div class="mb-3">
-                <h6 class="text-info h6">深層含義</h6>
-                <p class="text-light">${movie.reviews.meaning}</p>
-            </div>
-            ` : ''}
-        </div>
-
-        <!-- 標籤 -->
-        <div class="mb-3">
-            <h6 class="text-warning">
-                <i class="bi bi-tags me-2"></i>標籤
-            </h6>
-            <div class="d-flex flex-wrap gap-1">
-                ${movie.tags.map(tag => `<span class="badge bg-primary">#${tag}</span>`).join('')}
-            </div>
-        </div>
-
-        <!-- 相關討論 -->
-        <div class="alert alert-info">
-            <i class="bi bi-info-circle me-2"></i>
-            <strong>相關討論:</strong> 這裡可以嵌入相關的社群討論或影評貼文
-        </div>
-    `;
+            `;
+        } else {
+            // 使用基本配置資訊
+            modalBody.innerHTML = `
+                <div class="bg-danger rounded d-flex align-items-center justify-content-center mb-3" 
+                     style="height: 300px;">
+                    <div class="text-center">
+                        <i class="bi bi-film text-white" style="font-size: 4rem;"></i>
+                        <p class="mt-2 mb-0 text-white">${movie.title}</p>
+                    </div>
+                </div>
+                
+                <!-- 電影資訊 -->
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="card bg-secondary border-0">
+                            <div class="card-body">
+                                <h6 class="card-title text-warning mb-3">
+                                    <i class="bi bi-info-circle me-2"></i>電影資訊
+                                </h6>
+                                <div class="small text-light">
+                                    <div class="mb-2"><strong>類型:</strong> ${movie.genre}</div>
+                                    <div class="mb-2"><strong>觀看日期:</strong> ${movie.watchDate}</div>
+                                    <div class="d-flex align-items-center">
+                                        <strong class="me-2">我的評分:</strong>
+                                        <div class="text-warning">
+                                            ${generateStarRating(movie.rating)}
+                                            <span class="ms-2">${movie.rating}/5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 簡介 -->
+                <div class="mb-4">
+                    <h6 class="text-warning border-bottom border-secondary pb-2">
+                        <i class="bi bi-chat-quote me-2"></i>電影簡介
+                    </h6>
+                    <p class="text-light">${movie.description}</p>
+                </div>
+                
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>提示:</strong> 完整的評論內容正在載入中...
+                </div>
+            `;
+        }
+    }
 }
 
 // 更新旅行 Modal 內容
 function updateTravelModal(travel) {
     const modal = document.getElementById('travelModal1');
+    if (!modal) return;
     
     // 更新標題
-    modal.querySelector('.modal-title').textContent = travel.title;
+    const modalTitle = modal.querySelector('.modal-title');
+    if (modalTitle) {
+        modalTitle.textContent = travel.title;
+    }
     
     // 更新內容
     const modalBody = modal.querySelector('.modal-body');
-    modalBody.innerHTML = `
-        <div class="bg-success rounded d-flex align-items-center justify-content-center mb-3" 
-             style="height: 300px;">
-            <div class="text-center">
-                <i class="bi bi-images text-white" style="font-size: 4rem;"></i>
-                <p class="mt-2 mb-0 text-white">旅行相冊</p>
-            </div>
-        </div>
-        
-        <!-- 旅行資訊 -->
-        <div class="row mb-4">
-            <div class="col-md-6">
-                <div class="card bg-secondary border-0">
-                    <div class="card-body p-3">
-                        <h6 class="card-title text-warning mb-3">
-                            <i class="bi bi-info-circle me-2"></i>旅行資訊
-                        </h6>
-                        <div class="small text-light">
-                            <div class="mb-2"><strong>日期:</strong> ${travel.date}</div>
-                            <div class="mb-2"><strong>地點:</strong> ${travel.location}</div>
-                        </div>
+    if (modalBody) {
+        if (travel.fullContent) {
+            // 如果有完整的 Markdown 內容，轉換為 HTML
+            const htmlContent = convertMarkdownToHtml(travel.fullContent);
+            modalBody.innerHTML = `
+                <div class="markdown-content">
+                    ${htmlContent}
+                </div>
+            `;
+        } else {
+            // 使用基本配置資訊
+            modalBody.innerHTML = `
+                <div class="bg-success rounded d-flex align-items-center justify-content-center mb-3" 
+                     style="height: 300px;">
+                    <div class="text-center">
+                        <i class="bi bi-images text-white" style="font-size: 4rem;"></i>
+                        <p class="mt-2 mb-0 text-white">旅行相冊</p>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- 旅行心得 -->
-        <div class="travel-content mb-4">
-            <h6 class="text-warning border-bottom border-secondary pb-2">
-                <i class="bi bi-heart me-2"></i>旅行心得
-            </h6>
-            <p class="text-light">${travel.content}</p>
-        </div>
-        
-        ${travel.highlights && travel.highlights.length > 0 ? `
-        <!-- 印象深刻的景點 -->
-        <div class="mb-4">
-            <h6 class="text-warning border-bottom border-secondary pb-2">
-                <i class="bi bi-geo-alt me-2"></i>印象深刻的景點
-            </h6>
-            <div class="row g-3">
-                ${travel.highlights.map((highlight, index) => `
+                
+                <!-- 旅行資訊 -->
+                <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="card bg-secondary border-0">
-                            <div class="card-body p-3">
-                                <h6 class="text-info">${highlight.name}</h6>
-                                <p class="text-light small mb-0">${highlight.description}</p>
+                            <div class="card-body">
+                                <h6 class="card-title text-warning mb-3">
+                                    <i class="bi bi-info-circle me-2"></i>旅行資訊
+                                </h6>
+                                <div class="small text-light">
+                                    <div class="mb-2"><strong>日期:</strong> ${travel.date}</div>
+                                    <div class="mb-2"><strong>地點:</strong> ${travel.location}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                `).join('')}
-            </div>
-        </div>
-        ` : ''}
-        
-        ${travel.foods && travel.foods.length > 0 ? `
-        <!-- 美食體驗 -->
-        <div class="mb-4">
-            <h6 class="text-warning border-bottom border-secondary pb-2">
-                <i class="bi bi-cup-hot me-2"></i>美食體驗
-            </h6>
-            <div class="d-flex flex-wrap gap-2">
-                ${travel.foods.map(food => `
-                    <span class="badge bg-success">${food}</span>
-                `).join('')}
-            </div>
-        </div>
-        ` : ''}
-        
-        ${travel.tips && travel.tips.length > 0 ? `
-        <!-- 旅行建議 -->
-        <div class="mb-4">
-            <h6 class="text-warning border-bottom border-secondary pb-2">
-                <i class="bi bi-lightbulb me-2"></i>旅行建議
-            </h6>
-            <ul class="text-light">
-                ${travel.tips.map(tip => `<li>${tip}</li>`).join('')}
-            </ul>
-        </div>
-        ` : ''}
-        
-        <div class="alert alert-info">
-            <i class="bi bi-info-circle me-2"></i>
-            這裡可以嵌入 Flickr 相冊或 Instagram 貼文
-        </div>
-    `;
+                </div>
+                
+                <!-- 旅行心得 -->
+                <div class="mb-4">
+                    <h6 class="text-warning border-bottom border-secondary pb-2">
+                        <i class="bi bi-heart me-2"></i>旅行心得
+                    </h6>
+                    <p class="text-light">${travel.description}</p>
+                </div>
+                
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>提示:</strong> 完整的旅行紀錄正在載入中...
+                </div>
+            `;
+        }
+    }
+}
+
+// 解析電影 Markdown 內容
+function parseMovieMarkdown(content) {
+    const movie = {
+        title: '',
+        originalTitle: '',
+        director: '',
+        year: '',
+        genre: '',
+        watchDate: '',
+        rating: 0,
+        plot: '',
+        reviews: {
+            visual: '',
+            story: '',
+            music: '',
+            meaning: ''
+        },
+        recommendation: '',
+        tags: [],
+        fullHtml: convertMarkdownToHtml(content)
+    };
+    
+    // 解析標題
+    const titleMatch = content.match(/^# (.+)/m);
+    if (titleMatch) {
+        movie.title = titleMatch[1].replace(/ - .+/, '');
+    }
+    
+    // 解析電影資訊
+    const originalTitleMatch = content.match(/\*\*原名\*\*:\s*(.+)/);
+    if (originalTitleMatch) movie.originalTitle = originalTitleMatch[1];
+    
+    const directorMatch = content.match(/\*\*導演\*\*:\s*(.+)/);
+    if (directorMatch) movie.director = directorMatch[1];
+    
+    const yearMatch = content.match(/\*\*年份\*\*:\s*(.+)/);
+    if (yearMatch) movie.year = yearMatch[1];
+    
+    const genreMatch = content.match(/\*\*類型\*\*:\s*(.+)/);
+    if (genreMatch) movie.genre = genreMatch[1].split('、')[0];
+    
+    const watchDateMatch = content.match(/\*\*觀看日期\*\*:\s*(.+)/);
+    if (watchDateMatch) movie.watchDate = watchDateMatch[1];
+    
+    const ratingMatch = content.match(/\*\*我的評分\*\*:\s*([0-9.]+)/);
+    if (ratingMatch) movie.rating = parseFloat(ratingMatch[1]);
+    
+    // 解析劇情簡介
+    const plotMatch = content.match(/## 劇情簡介\s*\n\n(.+?)(?=\n\n##|\n\n$)/s);
+    if (plotMatch) movie.plot = plotMatch[1].trim();
+    
+    // 解析標籤
+    const tagsMatch = content.match(/#(\w+)/g);
+    if (tagsMatch) {
+        movie.tags = tagsMatch.map(tag => tag.substring(1));
+    }
+    
+    return movie;
+}
+
+// 解析旅行 Markdown 內容
+function parseTravelMarkdown(content) {
+    const travel = {
+        title: '',
+        location: '',
+        date: '',
+        content: '',
+        highlights: [],
+        foods: [],
+        tips: [],
+        fullHtml: convertMarkdownToHtml(content)
+    };
+    
+    // 解析標題
+    const titleMatch = content.match(/^# (.+)/m);
+    if (titleMatch) {
+        travel.title = titleMatch[1];
+    }
+    
+    // 解析日期
+    const dateMatch = content.match(/\*\*日期\*\*:\s*(.+)/);
+    if (dateMatch) travel.date = dateMatch[1];
+    
+    // 解析地點
+    const locationMatch = content.match(/\*\*地點\*\*:\s*(.+)/);
+    if (locationMatch) travel.location = locationMatch[1];
+    
+    // 解析旅行心得
+    const contentMatch = content.match(/## 旅行心得\s*\n\n(.+?)(?=\n\n###|\n\n##|\n\n---|\n\n$)/s);
+    if (contentMatch) travel.content = contentMatch[1].trim();
+    
+    return travel;
 }
 
 // 產生星級評分 HTML
@@ -604,16 +856,37 @@ function generateStarRating(rating) {
     
     let stars = '';
     for (let i = 0; i < fullStars; i++) {
-        stars += '<i class="bi bi-star-fill"></i>';
+        stars += '<i class="bi bi-star-fill text-warning"></i>';
     }
     if (hasHalfStar) {
-        stars += '<i class="bi bi-star-half"></i>';
+        stars += '<i class="bi bi-star-half text-warning"></i>';
     }
     for (let i = 0; i < emptyStars; i++) {
-        stars += '<i class="bi bi-star"></i>';
+        stars += '<i class="bi bi-star text-warning"></i>';
     }
     
     return stars;
+}
+
+// 顯示通知
+function showNotification(message, type = 'info') {
+    // 創建通知元素
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show position-fixed`;
+    notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+    notification.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // 5秒後自動移除
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.remove();
+        }
+    }, 5000);
 }
 
 // 根據類型獲取樣式類別
