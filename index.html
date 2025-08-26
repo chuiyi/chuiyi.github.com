@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-
-<head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -66,6 +64,9 @@
                         </a>
                         <a href="#movies" class="btn-literary">
                             <i class="bi bi-camera-reels me-2"></i>光影札記
+                        </a>
+                        <a href="#photography" class="btn-literary">
+                            <i class="bi bi-camera me-2"></i>攝影札記
                         </a>
                     </div>
                 </div>
@@ -158,6 +159,28 @@
                 <!-- 電影卡片將由 JavaScript 動態載入 -->
                 <div class="loading">
                     載入電影評論中...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photography Section -->
+    <section id="photography" class="section" style="background-color: var(--warm-white);">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">
+                        <i class="bi bi-camera me-3" style="color: var(--muted-brown);"></i>攝影札記
+                    </h2>
+                    <p class="section-subtitle">透過鏡頭捕捉生活中的美好瞬間</p>
+                </div>
+            </div>
+            
+            <!-- Photography Gallery Container -->
+            <div id="photography-gallery" class="row g-4">
+                <!-- 攝影作品將由 JavaScript 動態載入 -->
+                <div class="loading text-center py-5">
+                    <i class="bi bi-hourglass-split"></i> 載入攝影作品中...
                 </div>
             </div>
         </div>

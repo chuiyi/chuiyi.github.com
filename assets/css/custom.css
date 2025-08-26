@@ -446,3 +446,58 @@ h1, h2, h3, h4, h5, h6 {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* 攝影卡片樣式 */
+.photography-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.photography-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
+    border-color: var(--muted-brown);
+}
+
+.flickr-embed-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--soft-gray);
+    position: relative;
+    overflow: hidden;
+}
+
+.flickr-embed-container a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.flickr-embed-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.photography-card:hover .flickr-embed-container img {
+    transform: scale(1.05);
+}
+
+/* 確保 Flickr 嵌入元素正確顯示 */
+.flickr-embed-container [data-flickr-embed] {
+    width: 100%;
+}
+
+.flickr-embed-container [data-flickr-embed] img {
+    border-radius: 0;
+    margin: 0;
+}

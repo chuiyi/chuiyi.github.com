@@ -48,6 +48,40 @@ const TRAVEL_FILES = [
     // }
 ];
 
+// 攝影札記檔案列表
+const PHOTOGRAPHY_FILES = [
+    {
+        id: 'kamakura-enoshima-2023',
+        title: '神奈川，鐮倉x江之島',
+        location: '日本神奈川',
+        date: '2023年8月',
+        description: '在鐮倉和江之島的攝影旅程，捕捉古都與海島的美麗瞬間。',
+        featured: true,
+        flickrEmbed: '<a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/chuiyi/albums/72177720320156114" title="2023.08 日本 | 神奈川,鐮倉x江之島"><img src="https://live.staticflickr.com/65535/53977575351_aef9a7096a.jpg" width="500" height="375" alt="2023.08 日本 | 神奈川,鐮倉x江之島"/></a>',
+        albumUrl: 'https://www.flickr.com/photos/chuiyi/albums/72177720320156114'
+    },
+    {
+        id: 'nagoya-2023',
+        title: '名古屋',
+        location: '日本名古屋',
+        date: '2023年10月',
+        description: '名古屋的城市風光與文化探索，記錄中部地區的獨特魅力。',
+        featured: true,
+        flickrEmbed: '<a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/chuiyi/albums/72177720319994162" title="2023.10 日本 | 名古屋"><img src="https://live.staticflickr.com/65535/53965050771_f3be107b14.jpg" width="500" height="375" alt="2023.10 日本 | 名古屋"/></a>',
+        albumUrl: 'https://www.flickr.com/photos/chuiyi/albums/72177720319994162'
+    },
+    {
+        id: 'ricoh-gr-iiix',
+        title: 'Ricoh GR IIIx',
+        location: '街頭攝影',
+        date: '2023年',
+        description: '使用 Ricoh GR IIIx 相機進行的街頭攝影作品集，記錄日常生活的美好瞬間。',
+        featured: true,
+        flickrEmbed: '<a data-flickr-embed="true" data-header="true" data-footer="true" href="https://www.flickr.com/photos/chuiyi/albums/72177720306570600" title="Ricoh GR IIIx"><img src="https://live.staticflickr.com/65535/52684597080_4e6a52600b.jpg" width="500" height="375" alt="Ricoh GR IIIx"/></a>',
+        albumUrl: 'https://www.flickr.com/photos/chuiyi/albums/72177720306570600'
+    }
+];
+
 // 內容管理功能
 const CONTENT_MANAGER = {
     // 獲取所有電影
@@ -60,6 +94,11 @@ const CONTENT_MANAGER = {
         return TRAVEL_FILES;
     },
     
+    // 獲取所有攝影札記
+    getAllPhotographies: function() {
+        return PHOTOGRAPHY_FILES;
+    },
+    
     // 根據ID獲取電影
     getMovieById: function(id) {
         return MOVIE_FILES.find(movie => movie.id === id);
@@ -68,6 +107,11 @@ const CONTENT_MANAGER = {
     // 根據ID獲取旅行
     getTravelById: function(id) {
         return TRAVEL_FILES.find(travel => travel.id === id);
+    },
+    
+    // 根據ID獲取攝影札記
+    getPhotographyById: function(id) {
+        return PHOTOGRAPHY_FILES.find(photo => photo.id === id);
     },
     
     // 獲取精選電影
@@ -80,6 +124,11 @@ const CONTENT_MANAGER = {
         return TRAVEL_FILES.filter(travel => travel.featured);
     },
     
+    // 獲取精選攝影札記
+    getFeaturedPhotographies: function() {
+        return PHOTOGRAPHY_FILES.filter(photo => photo.featured);
+    },
+    
     // 添加新電影（運行時動態添加）
     addMovie: function(movieConfig) {
         MOVIE_FILES.push(movieConfig);
@@ -88,17 +137,23 @@ const CONTENT_MANAGER = {
     // 添加新旅行（運行時動態添加）
     addTravel: function(travelConfig) {
         TRAVEL_FILES.push(travelConfig);
+    },
+    
+    // 添加新攝影札記（運行時動態添加）
+    addPhotography: function(photoConfig) {
+        PHOTOGRAPHY_FILES.push(photoConfig);
     }
 };
 
 // 導出配置供 main.js 使用
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { MOVIE_FILES, TRAVEL_FILES, CONTENT_MANAGER };
+    module.exports = { MOVIE_FILES, TRAVEL_FILES, PHOTOGRAPHY_FILES, CONTENT_MANAGER };
 } else {
     // 瀏覽器環境
     window.CONTENT_CONFIG = { 
         MOVIE_FILES, 
         TRAVEL_FILES, 
+        PHOTOGRAPHY_FILES,
         CONTENT_MANAGER 
     };
 }

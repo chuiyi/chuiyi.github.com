@@ -3,6 +3,7 @@
 // 電影和旅行數據
 let movieData = [];
 let travelData = [];
+let photographyData = [];
 
 // Markdown 緩存
 let markdownCache = new Map();
@@ -36,10 +37,11 @@ function initializeApp() {
 // 載入所有內容
 async function loadContent() {
     try {
-        // 並行載入電影和旅行內容
+        // 並行載入電影、旅行和攝影內容
         await Promise.all([
             loadMovieReviews(),
-            loadTravelPosts()
+            loadTravelPosts(),
+            loadPhotographyGallery()
         ]);
     } catch (error) {
         console.error('載入內容時發生錯誤:', error);
@@ -126,6 +128,47 @@ async function loadTravelPosts() {
         
     } catch (error) {
         console.error('載入旅行筆記時發生錯誤:', error);
+    }
+}
+
+// 動態載入攝影札記
+async function loadPhotographyGallery() {
+    try {
+        const photographyContainer = document.getElementById('photography-gallery');
+        if (!photographyContainer) return;
+        
+        photographyContainer.innerHTML = '<div class="loading text-center py-5"><i class="bi bi-hourglass-split"></i> 載入攝影作品中...</div>';
+        
+        // 從配置檔案中獲取攝影檔案列表
+        const photographyFiles = window.CONTENT_CONFIG ? window.CONTENT_CONFIG.CONTENT_MANAGER.getAllPhotographies() : [];
+        
+        photographyData = [];
+        
+        for (const photoConfig of photographyFiles) {
+            try {
+                // 使用配置檔案中的資訊
+                const photoInfo = {
+                    id: photoConfig.id,
+                    title: photoConfig.title,
+                    location: photoConfig.location,
+                    date: photoConfig.date,
+                    description: photoConfig.description,
+                    featured: photoConfig.featured,
+                    flickrEmbed: photoConfig.flickrEmbed,
+                    albumUrl: photoConfig.albumUrl
+                };
+                
+                photographyData.push(photoInfo);
+            } catch (error) {
+                console.warn(`無法載入攝影配置: ${photoConfig.id}`, error);
+            }
+        }
+        
+        // 渲染攝影卡片
+        renderPhotographyCards();
+        
+    } catch (error) {
+        console.error('載入攝影札記時發生錯誤:', error);
     }
 }
 
@@ -374,6 +417,24 @@ function renderTravelCards() {
     });
 }
 
+// 渲染攝影卡片
+function renderPhotographyCards() {
+    const photographyContainer = document.getElementById('photography-gallery');
+    if (!photographyContainer) return;
+    
+    // 清空現有內容
+    photographyContainer.innerHTML = '';
+    
+    // 攝影作品固定使用三欄式佈局
+    photographyData.forEach((photo, index) => {
+        const photoElement = createPhotographyCardElement(photo);
+        photographyContainer.appendChild(photoElement);
+    });
+    
+    // 載入 Flickr 嵌入腳本
+    loadFlickrScript();
+}
+
 // 創建電影卡片元素（支援智能佈局）
 function createMovieCardElement(movie, totalCount, index) {
     const col = document.createElement('div');
@@ -528,6 +589,59 @@ function createTravelCardElement(travel, totalCount, index) {
     }
     
     return col;
+}
+
+// 創建攝影卡片元素（固定三欄式佈局）
+function createPhotographyCardElement(photo) {
+    const col = document.createElement('div');
+    col.className = 'col-lg-4 col-md-6 col-12 mb-4';
+    
+    // 從日期中提取年份
+    const yearMatch = photo.date.match(/(\d{4})/);
+    const yearBadge = yearMatch ? yearMatch[1] : '2023';
+    
+    col.innerHTML = `
+        <article class="photography-card">
+            <div class="flickr-embed-container">
+                ${photo.flickrEmbed}
+            </div>
+            <div class="card-body p-4" style="background-color: var(--warm-white); border: 1px solid var(--border-light); border-top: none;">
+                <h3 class="card-title h5 mb-3" style="color: var(--deep-brown); font-family: 'Noto Serif TC', serif;">${photo.title}</h3>
+                <div class="mb-3">
+                    <span class="tag">${photo.location}</span>
+                    <span class="tag">${yearBadge}</span>
+                </div>
+                <p class="card-excerpt text-muted mb-3">
+                    ${photo.description}
+                </p>
+                <div class="card-meta d-flex justify-content-between align-items-center">
+                    <small class="text-muted">
+                        <i class="bi bi-calendar3 me-1"></i>
+                        ${photo.date}
+                    </small>
+                    <a href="${photo.albumUrl}" target="_blank" class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-images me-1"></i>查看相簿
+                    </a>
+                </div>
+            </div>
+        </article>
+    `;
+    
+    return col;
+}
+
+// 載入 Flickr 嵌入腳本
+function loadFlickrScript() {
+    // 檢查是否已經載入過
+    if (document.querySelector('script[src*="embedr.flickr.com"]')) {
+        return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = '//embedr.flickr.com/assets/client-code.js';
+    script.async = true;
+    script.charset = 'utf-8';
+    document.head.appendChild(script);
 }
 
 // 智能佈局決策函數
