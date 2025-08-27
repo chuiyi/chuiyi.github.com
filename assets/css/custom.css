@@ -395,17 +395,47 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-body {
-    color: var(--text-dark);
+    color: var(--text-dark) !important;
     background-color: var(--warm-white);
 }
 
 .modal-body h1, .modal-body h2, .modal-body h3, 
 .modal-body h4, .modal-body h5, .modal-body h6 {
-    color: var(--deep-brown);
+    color: var(--deep-brown) !important;
 }
 
-.modal-body p, .modal-body li, .modal-body span {
-    color: var(--text-dark);
+.modal-body p, .modal-body li, .modal-body span,
+.modal-body div {
+    color: var(--text-dark) !important;
+}
+
+/* 確保在淺色主題下文字顯示為深色 */
+[data-theme="light"] .modal-body,
+.modal-body {
+    color: #3a3a3a !important;
+}
+
+[data-theme="light"] .modal-body p,
+[data-theme="light"] .modal-body li,
+[data-theme="light"] .modal-body span,
+[data-theme="light"] .modal-body div,
+.modal-body p,
+.modal-body li,
+.modal-body span,
+.modal-body div {
+    color: #3a3a3a !important;
+}
+
+/* 深色主題下的 Modal 文字顏色 */
+[data-theme="dark"] .modal-body {
+    color: #e8e6e1 !important;
+}
+
+[data-theme="dark"] .modal-body p,
+[data-theme="dark"] .modal-body li,
+[data-theme="dark"] .modal-body span,
+[data-theme="dark"] .modal-body div {
+    color: #e8e6e1 !important;
 }
 
 .modal-footer {

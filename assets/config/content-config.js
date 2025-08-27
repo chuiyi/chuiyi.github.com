@@ -8,22 +8,22 @@ const MOVIE_FILES = [
         featured: true,  // 是否為精選內容
         title: '和平使者 Season 2',
         genre: '影集',
-        rating: 4,
+        rating: 4.5,
         watchDate: '2025年8月24日',
         description: '接軌DCU的作品，超人之後的故事線發展',
         images: 'assets/images/peace_maker_s2.png'
     },
-    // 新增電影時，在這裡添加新條目
-    // {
-    //     file: 'posts/movies/spirited-away-2024.md',
-    //     id: 'spirited-away-2024',
-    //     featured: false,
-    //     title: '神隱少女',
-    //     genre: '動畫',
-    //     rating: 5.0,
-    //     watchDate: '2024年8月20日',
-    //     description: '宮崎駿的經典之作，一個關於成長與勇氣的奇幻故事...'
-    // }
+    {
+        file: 'posts/movies/fantastic-4-first-step.md',
+        id: 'fantastic-4-first-step',
+        featured: true,  // 是否為精選內容
+        title: '驚奇四超人：第一步',
+        genre: '電影',
+        rating: 3,
+        watchDate: '2025年7月24日',
+        description: 'MCU第5階段的開幕曲，但...很難讓人有更多期待...',
+        images: 'assets/images/fantastic_4_first_step.jpg'
+    },
 ];
 
 // 旅行筆記檔案列表
@@ -32,7 +32,7 @@ const TRAVEL_FILES = [
         file: 'posts/travel/taiwan-around-island-2024.md',
         id: 'taiwan-2024',
         featured: true,
-        title: '台灣環島之旅',
+        title: '台灣環島之旅(假的)',
         location: '台灣',
         date: '2024年8月10日 - 8月20日',
         description: '從台北出發，一路向南，體驗台灣的多元文化與美麗風景...'
