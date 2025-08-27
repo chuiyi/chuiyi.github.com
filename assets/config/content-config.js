@@ -11,7 +11,7 @@ const MOVIE_FILES = [
         rating: 4,
         watchDate: '2025年8月24日',
         description: '接軌DCU的作品，超人之後的故事線發展',
-        images: 'assets/images/peace-maker-s2.png'
+        images: 'assets/images/peace_maker_s2.png'
     },
     // 新增電影時，在這裡添加新條目
     // {
