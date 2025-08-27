@@ -117,6 +117,7 @@ async function loadMovieReviews() {
                     description: movieConfig.description,
                     featured: movieConfig.featured,
                     file: movieConfig.file,
+                    images: movieConfig.images, // 新增圖片參數
                     fullContent: null // 延遲載入完整內容
                 };
                 
@@ -491,13 +492,18 @@ function createMovieCardElement(movie, totalCount, index) {
     
     const stars = generateStarRating(movie.rating);
     
+    // 準備圖片內容
+    const imageContent = movie.images 
+        ? `<img src="${movie.images}" alt="${movie.title}" style="width: 100%; height: 100%; object-fit: cover;">`
+        : `<i class="bi bi-camera-reels"></i>`;
+    
     // 根據佈局類型創建不同的 HTML 結構
     if (layoutType.isHorizontal) {
         // 水平佈局（圖片在左，內容在右）
         col.innerHTML = `
             <article class="article-card horizontal">
                 <div class="card-image">
-                    <i class="bi bi-camera-reels"></i>
+                    ${imageContent}
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">${movie.title}</h3>
@@ -528,7 +534,7 @@ function createMovieCardElement(movie, totalCount, index) {
         col.innerHTML = `
             <article class="article-card">
                 <div class="card-image">
-                    <i class="bi bi-camera-reels"></i>
+                    ${imageContent}
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">${movie.title}</h3>

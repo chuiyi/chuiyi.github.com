@@ -3,15 +3,16 @@
 // 電影評論檔案列表
 const MOVIE_FILES = [
     {
-        file: 'posts/movies/your-name-2024.md',
-        id: 'your-name-2024',
+        file: 'posts/movies/peace-maker-s2.md',
+        id: 'peace-maker-s2',
         featured: true,  // 是否為精選內容
-        title: '你的名字',
-        genre: '動畫',
-        rating: 4.5,
-        watchDate: '2024年8月15日',
-        description: '一部關於命運與愛情的美麗動畫，畫面精美，情感動人...'
-    }
+        title: '和平使者 Season 2',
+        genre: '影集',
+        rating: 4,
+        watchDate: '2025年8月24日',
+        description: '接軌DCU的作品，超人之後的故事線發展',
+        images: '/assets/images/peace-maker-s2.png'
+    },
     // 新增電影時，在這裡添加新條目
     // {
     //     file: 'posts/movies/spirited-away-2024.md',
