@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <title>Chuiy's Github Page - 旅行、電影、拍照</title>
+    <title>Chuiyi's Github Page - 旅行、電影、拍照</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <i class="bi bi-feather me-2"></i>Chuiy 的生活札記
+                <i class="bi bi-feather me-2"></i>Chuiyi 的生活札記
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -37,10 +37,13 @@
                         <a class="nav-link" href="#home">首頁</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#travel">旅行筆記</a>
+                        <a class="nav-link" href="#travel">旅行札記</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#movies">電影鑑賞</a>
+                        <a class="nav-link" href="#movies">影劇回憶</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#photography">攝影日記</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://github.com/chuiyi" target="_blank">
@@ -67,10 +70,10 @@
                             <i class="bi bi-compass me-2"></i>旅行札記
                         </a>
                         <a href="#movies" class="btn-literary">
-                            <i class="bi bi-camera-reels me-2"></i>光影札記
+                            <i class="bi bi-camera-reels me-2"></i>影劇回憶
                         </a>
                         <a href="#photography" class="btn-literary">
-                            <i class="bi bi-camera me-2"></i>攝影札記
+                            <i class="bi bi-camera me-2"></i>攝影日記
                         </a>
                     </div>
                 </div>
@@ -140,7 +143,7 @@
             <div id="travel-posts" class="row g-4">
                 <!-- 旅行卡片將由 JavaScript 動態載入 -->
                 <div class="loading">
-                    載入旅行筆記中...
+                    載入旅行札記中...
                 </div>
             </div>
         </div>
@@ -152,7 +155,7 @@
             <div class="row mb-5">
                 <div class="col-12 text-center">
                     <h2 class="section-title">
-                        <i class="bi bi-camera-reels me-3" style="color: var(--muted-brown);"></i>光影札記
+                        <i class="bi bi-camera-reels me-3" style="color: var(--muted-brown);"></i>影劇回憶
                     </h2>
                     <p class="section-subtitle">分享每一部觸動心靈的電影</p>
                 </div>
@@ -174,7 +177,7 @@
             <div class="row mb-5">
                 <div class="col-12 text-center">
                     <h2 class="section-title">
-                        <i class="bi bi-camera me-3" style="color: var(--muted-brown);"></i>攝影札記
+                        <i class="bi bi-camera me-3" style="color: var(--muted-brown);"></i>攝影日記
                     </h2>
                     <p class="section-subtitle">透過鏡頭捕捉生活中的美好瞬間</p>
                 </div>
@@ -195,7 +198,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="mb-2" style="font-family: 'Noto Serif TC', Georgia, serif;">&copy; 2025 Chuiy 的生活札記. All rights reserved.</p>
+                    <p class="mb-2" style="font-family: 'Noto Serif TC', Georgia, serif;">&copy; 2025 Chuiyi 的生活札記. All rights reserved.</p>
                     <div>
                         <a href="https://github.com/chuiyi" style="color: var(--warm-white); margin: 0 var(--spacing-sm); text-decoration: none;" target="_blank">
                             <i class="bi bi-github"></i>
@@ -218,25 +221,15 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">台灣環島之旅</h5>
+                    <h5 class="modal-title"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div style="height: 300px; background: linear-gradient(135deg, var(--soft-gray), var(--primary-beige)); display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-lg); border-radius: 4px;">
-                        <div class="text-center">
-                            <i class="bi bi-images" style="font-size: 4rem; color: var(--muted-brown);"></i>
-                            <p style="margin-top: var(--spacing-sm); margin-bottom: 0; color: var(--text-light);">旅行相冊</p>
-                        </div>
-                    </div>
-                    <p>詳細的旅行記錄內容...</p>
-                    <div style="background-color: var(--soft-gray); padding: var(--spacing-md); border-left: 4px solid var(--accent-gold); border-radius: 4px;">
-                        <i class="bi bi-info-circle me-2" style="color: var(--muted-brown);"></i>
-                        這裡可以嵌入 Flickr 相冊或 Instagram 貼文
-                    </div>
+                    <!-- 內容將由 JavaScript 動態載入 -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                    <a href="posts/travel/taiwan-around-island-2024.md" class="btn btn-outline-info" target="_blank">
+                    <a href="#" class="btn btn-outline-info" target="_blank">
                         <i class="bi bi-file-text me-1"></i>查看 Markdown 原文
                     </a>
                 </div>
@@ -249,150 +242,15 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">你的名字 - 完整評論</h5>
+                    <h5 class="modal-title"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div style="height: 300px; background: linear-gradient(135deg, var(--soft-gray), var(--primary-beige)); display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-lg); border-radius: 4px;">
-                                <div class="text-center">
-                                    <i class="bi bi-film" style="font-size: 4rem; color: var(--muted-brown);"></i>
-                                    <p style="margin-top: var(--spacing-sm); margin-bottom: 0; color: var(--text-light);">你的名字</p>
-                                </div>
-                            </div>
-                            
-                            <!-- 電影資訊卡片 -->
-                            <div style="background-color: var(--primary-beige); border: 1px solid var(--border-light); padding: var(--spacing-md); border-radius: 4px; margin-bottom: var(--spacing-md);">
-                                <h6 style="color: var(--deep-brown); margin-bottom: var(--spacing-md);">
-                                    <i class="bi bi-info-circle me-2"></i>電影資訊
-                                </h6>
-                                <div style="font-size: 0.9rem; color: var(--text-dark);">
-                                    <div style="margin-bottom: var(--spacing-xs);"><strong>原名:</strong> 君の名は。(Your Name)</div>
-                                    <div style="margin-bottom: var(--spacing-xs);"><strong>導演:</strong> 新海誠</div>
-                                    <div style="margin-bottom: var(--spacing-xs);"><strong>年份:</strong> 2016年</div>
-                                    <div style="margin-bottom: var(--spacing-xs);"><strong>類型:</strong> 動畫、奇幻、愛情</div>
-                                    <div style="margin-bottom: var(--spacing-xs);"><strong>觀看日期:</strong> 2024年8月15日</div>
-                                    <div class="d-flex align-items-center">
-                                        <strong class="me-2">我的評分:</strong>
-                                        <div style="color: var(--accent-gold);">
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-fill"></i>
-                                            <i class="bi bi-star-half"></i>
-                                            <span class="ms-2">4.5/5</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- 推薦指數 -->
-                            <div style="background-color: var(--primary-beige); border: 1px solid var(--border-light); padding: var(--spacing-md); border-radius: 4px;">
-                                <h6 style="color: var(--deep-brown); margin-bottom: var(--spacing-md);">
-                                    <i class="bi bi-hand-thumbs-up me-2"></i>推薦指數
-                                </h6>
-                                <div class="d-flex align-items-center mb-2">
-                                    <div style="color: var(--accent-gold); margin-right: var(--spacing-md);">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                    <span class="tag" style="background-color: var(--accent-gold); color: white;">強烈推薦</span>
-                                </div>
-                                <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0;">
-                                    這是一部兼具視覺美感和情感深度的優秀作品，不論是動畫愛好者還是一般觀眾都能從中獲得感動。
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-8">
-                            <div class="movie-review-content">
-                                <h5 style="color: var(--deep-brown); margin-bottom: var(--spacing-md);">
-                                    <i class="bi bi-chat-quote me-2"></i>一部關於命運與愛情的動畫傑作
-                                </h5>
-                                
-                                <!-- 劇情簡介 -->
-                                <div style="margin-bottom: var(--spacing-lg);">
-                                    <h6 style="color: var(--muted-brown); border-bottom: 1px solid var(--border-light); padding-bottom: var(--spacing-xs);">
-                                        <i class="bi bi-play-circle me-2"></i>劇情簡介
-                                    </h6>
-                                    <p style="color: var(--text-dark);">
-                                        一個關於兩個素未謀面的高中生，透過神秘的身體交換現象而產生聯繫的故事。立花瀧是住在東京的男高中生，宮水三葉是住在深山小鎮的女高中生，兩人在夢中交換身體，開始了一段跨越時空的奇妙緣分。
-                                    </p>
-                                </div>
-
-                                <!-- 觀影心得 -->
-                                <div style="margin-bottom: var(--spacing-lg);">
-                                    <h6 style="color: var(--muted-brown); border-bottom: 1px solid var(--border-light); padding-bottom: var(--spacing-xs);">
-                                        <i class="bi bi-heart me-2"></i>觀影心得
-                                    </h6>
-                                    
-                                    <div style="margin-bottom: var(--spacing-md);">
-                                        <h6 style="color: var(--deep-brown); font-size: 1rem;">視覺呈現</h6>
-                                        <p style="color: var(--text-dark);">
-                                            新海誠的畫面一如既往地美到令人屏息，每一幕都可以當作桌布使用。特別是黃昏時分的光影效果，以及彗星劃過天空的壯麗場面，展現了動畫技術的極致水準。
-                                        </p>
-                                    </div>
-
-                                    <div style="margin-bottom: var(--spacing-md);">
-                                        <h6 style="color: var(--deep-brown); font-size: 1rem;">故事情節</h6>
-                                        <p style="color: var(--text-dark);">
-                                            雖然身體交換的設定並不新鮮，但導演巧妙地加入了時間旅行的元素，讓整個故事更加複雜而引人入勝。當真相揭曉的那一刻，真的讓人感動到落淚。
-                                        </p>
-                                    </div>
-
-                                    <div style="margin-bottom: var(--spacing-md);">
-                                        <h6 style="color: var(--deep-brown); font-size: 1rem;">音樂配樂</h6>
-                                        <p style="color: var(--text-dark);">
-                                            RADWIMPS的配樂為這部電影增色不少，特別是主題曲《前前前世》，完美地配合了劇情的情感起伏。
-                                        </p>
-                                    </div>
-
-                                    <div style="margin-bottom: var(--spacing-md);">
-                                        <h6 style="color: var(--deep-brown); font-size: 1rem;">深層含義</h6>
-                                        <p style="color: var(--text-dark);">
-                                            這不只是一個愛情故事，更是關於命運、記憶和連結的深度思考。電影探討了人與人之間的緣分，以及時間對於記憶的影響。
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <!-- 標籤 -->
-                                <div style="margin-bottom: var(--spacing-md);">
-                                    <h6 style="color: var(--muted-brown);">
-                                        <i class="bi bi-tags me-2"></i>標籤
-                                    </h6>
-                                    <div class="d-flex flex-wrap gap-1">
-                                        <span class="tag">#動畫</span>
-                                        <span class="tag">#新海誠</span>
-                                        <span class="tag">#愛情片</span>
-                                        <span class="tag">#奇幻</span>
-                                        <span class="tag">#日本電影</span>
-                                        <span class="tag" style="background-color: var(--accent-gold); color: white;">#必看推薦</span>
-                                    </div>
-                                </div>
-
-                                <!-- 相關討論 -->
-                                <div style="background-color: var(--soft-gray); padding: var(--spacing-md); border-left: 4px solid var(--accent-gold); border-radius: 4px;">
-                                    <i class="bi bi-info-circle me-2" style="color: var(--muted-brown);"></i>
-                                    <strong>相關討論:</strong> 這裡可以嵌入相關的社群討論或影評貼文
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- 更新時間 -->
-                    <div style="margin-top: var(--spacing-lg); padding-top: var(--spacing-md); border-top: 1px solid var(--border-light);">
-                        <small style="color: var(--text-light);">
-                            <i class="bi bi-clock me-1"></i>觀影筆記更新時間: 2024年8月26日
-                        </small>
-                    </div>
+                    <!-- 內容將由 JavaScript 動態載入 -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                    <a href="posts/movies/your-name-2024.md" class="btn btn-outline-info" target="_blank">
+                    <a href="#" class="btn btn-outline-info" target="_blank">
                         <i class="bi bi-file-text me-1"></i>查看 Markdown 原文
                     </a>
                 </div>

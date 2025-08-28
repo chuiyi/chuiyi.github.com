@@ -29,13 +29,13 @@ const MOVIE_FILES = [
 // 旅行筆記檔案列表
 const TRAVEL_FILES = [
     {
-        file: 'posts/travel/taiwan-around-island-2024.md',
-        id: 'taiwan-2024',
+        file: 'posts/travel/spain-honeymoon-2024.md',
+        id: 'spain-honeymoon-2024',
         featured: true,
-        title: '台灣環島之旅(假的)',
-        location: '台灣',
-        date: '2024年8月10日 - 8月20日',
-        description: '從台北出發，一路向南，體驗台灣的多元文化與美麗風景...'
+        title: '西班牙蜜月旅行',
+        location: '西班牙',
+        date: '2024年11月15日 - 11月30日',
+        description: '從台北出發，體驗西班牙的多元文化，美食與美麗風景...'
     }
     // 新增旅行時，在這裡添加新條目
     // {

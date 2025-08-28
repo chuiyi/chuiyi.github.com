@@ -1,4 +1,4 @@
-/* 文青風格主題 - Chuiy's Website */
+/* 文青風格主題 - Chuiyi's Website */
 
 /* 自定義字體和基本樣式 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;300;400;500;600;700&family=Noto+Sans+TC:wght@100;300;400;500;700&display=swap');
@@ -46,6 +46,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 85px; /* 進一步微調滾動偏移 */
 }
 
 body {
@@ -54,6 +55,7 @@ body {
     color: var(--text-dark);
     line-height: 1.7;
     font-weight: 300;
+    padding-top: 80px; /* 為固定 navbar 留出空間 */
 }
 
 /* 標題字體使用襯線字體 */
@@ -358,6 +360,35 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 響應式設計 */
 @media (max-width: 768px) {
+    html {
+        scroll-padding-top: 70px; /* 手機版進一步微調滾動偏移 */
+    }
+    
+    body {
+        padding-top: 70px; /* 手機版調整 navbar 空間 */
+    }
+    
+    .navbar {
+        padding: 0.5rem 0; /* 減少手機版 navbar 的 padding */
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem; /* 縮小品牌字體 */
+    }
+    
+    .navbar-toggler {
+        border: none;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem !important;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
     }
@@ -506,15 +537,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 攝影卡片樣式 */
+/* 攝影畫廊容器樣式 */
+#photography-gallery {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+}
+
+#photography-gallery > div {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* 攝影畫廊佈局 - 最簡化版本 */
 .photography-card {
     background: var(--warm-white);
     border: 1px solid var(--border-light);
     border-radius: 4px;
     transition: all 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    margin-bottom: 1.5rem;
+    width: 100%; /* 確保卡片不會超出容器 */
+    max-width: 100%; /* 防止溢出 */
+    overflow: hidden; /* 防止內容溢出 */
+    /* 移除所有 flex 和高度限制，讓內容自然流動 */
 }
 
 .photography-card:hover {
@@ -536,7 +580,15 @@ h1, h2, h3, h4, h5, h6 {
 /* 攝影卡片內文字樣式 */
 .photography-card .card-body {
     background-color: var(--warm-white) !important;
-    border-color: var(--border-light) !important;
+    border: 1px solid var(--border-light) !important;
+    border-top: none !important;
+    padding: 1.5rem;
+    border-radius: 0 0 4px 4px;
+}
+
+/* 簡化描述文字樣式 */
+.photography-card .card-excerpt {
+    margin-bottom: 1rem;
 }
 
 .photography-card .card-title {
@@ -574,23 +626,26 @@ h1, h2, h3, h4, h5, h6 {
 
 .flickr-embed-container {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    max-width: 100%; /* 防止溢出 */
     background-color: var(--soft-gray);
-    position: relative;
-    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; /* 防止內容溢出 */
+    /* 完全移除高度限制，讓 Flickr 內容自然顯示 */
 }
 
 .flickr-embed-container a {
     display: block;
     width: 100%;
+    max-width: 100%;
     text-decoration: none;
 }
 
 .flickr-embed-container img {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
+    max-width: 100%;
+    height: auto;
     display: block;
     transition: transform 0.3s ease;
 }
@@ -599,14 +654,105 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.05);
 }
 
-/* 確保 Flickr 嵌入元素正確顯示 */
+/* Flickr 嵌入樣式 - 最簡化版本 */
 .flickr-embed-container [data-flickr-embed] {
     width: 100%;
+    max-width: 100%;
+    display: block;
 }
 
 .flickr-embed-container [data-flickr-embed] img {
-    border-radius: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
     margin: 0;
+}
+
+/* 移除 iframe 的額外限制 */
+.flickr-embed-container iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none;
+}
+
+/* 手機版專用樣式 */
+@media (max-width: 768px) {
+    .photography-card {
+        margin-bottom: 1rem;
+        border-radius: 8px; /* 手機版稍微增加圓角 */
+    }
+    
+    .flickr-embed-container {
+        border-radius: 8px 8px 0 0;
+    }
+    
+    .photography-card .card-body {
+        padding: 0.75rem !important; /* 手機版減少內邊距 */
+        border-radius: 0 0 8px 8px !important;
+    }
+    
+    .photography-card .card-title {
+        font-size: 1.1rem !important; /* 手機版稍微縮小標題 */
+    }
+    
+    /* 手機版按鈕和標籤調整 */
+    .photography-card .card-meta {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.5rem;
+    }
+    
+    .photography-card .btn-sm {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .photography-card .tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    /* 確保 Flickr 內容不會在手機版溢出 */
+    .flickr-embed-container,
+    .flickr-embed-container *,
+    .flickr-embed-container iframe {
+        max-width: 100% !important;
+        overflow: hidden !important;
+    }
+}
+
+/* 極小螢幕專用樣式（iPhone SE 等） */
+@media (max-width: 480px) {
+    .photography-card {
+        margin-bottom: 0.75rem;
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+    
+    .photography-card .card-body {
+        padding: 0.5rem !important;
+    }
+    
+    .photography-card .card-title {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .photography-card .card-excerpt {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem !important;
+    }
+    
+    .photography-card .tag {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.3rem;
+        margin-right: 0.25rem;
+    }
+    
+    .photography-card .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+    }
 }
 
 /* 主題切換按鈕樣式 */

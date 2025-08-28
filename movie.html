@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <title id="page-title">電影評論 - Chuiy's Github Page</title>
+    <title id="page-title">電影評論 - Chuiyi's Github Page</title>
     
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,6 +13,178 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
+    
+    <!-- Movie page specific styles -->
+    <style>
+        /* 圖片響應式設計 */
+        #markdown-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+            display: block;
+        }
+        
+        /* 電影海報區域 */
+        #movie-poster {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        #movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        /* 手機版響應式設計 */
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 80px !important;
+                padding: 0 15px;
+            }
+            
+            .col-md-4 {
+                margin-bottom: 2rem;
+            }
+            
+            #movie-poster {
+                height: 250px !important;
+                max-height: 300px;
+            }
+            
+            .movie-review-content {
+                padding: 0;
+            }
+            
+            #markdown-content {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            #markdown-content img {
+                max-width: 100% !important;
+                width: 100% !important;
+                height: auto !important;
+                margin: 0.8rem 0 !important;
+                border-radius: 6px !important;
+            }
+            
+            #markdown-content h1,
+            #markdown-content h2,
+            #markdown-content h3 {
+                font-size: 1.25rem;
+                margin: 1.5rem 0 1rem 0;
+            }
+            
+            #markdown-content table {
+                font-size: 0.85rem !important;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .card-info, .card-recommendation {
+                padding: 1rem !important;
+            }
+        }
+        
+        /* 極小螢幕優化 */
+        @media (max-width: 480px) {
+            .container {
+                margin-top: 70px !important;
+                padding: 0 10px;
+            }
+            
+            #movie-poster {
+                height: 200px !important;
+                max-height: 220px;
+            }
+            
+            .card-info, .card-recommendation {
+                padding: 0.75rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            #markdown-content {
+                font-size: 0.9rem;
+            }
+            
+            #markdown-content img {
+                margin: 0.5rem 0 !important;
+                border-radius: 4px !important;
+            }
+            
+            #markdown-content h1,
+            #markdown-content h2,
+            #markdown-content h3 {
+                font-size: 1.1rem;
+                margin: 1rem 0 0.8rem 0;
+            }
+            
+            #markdown-content p {
+                margin-bottom: 0.8rem;
+            }
+        }
+        
+        /* 內容區域優化 */
+        .movie-review-content {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* 表格響應式 */
+        #markdown-content table {
+            width: 100%;
+            max-width: 100%;
+            margin: 1rem 0;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        #markdown-content table th,
+        #markdown-content table td {
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            #markdown-content table {
+                font-size: 0.8rem;
+            }
+            
+            #markdown-content table th,
+            #markdown-content table td {
+                padding: 0.25rem;
+            }
+        }
+        
+        /* 程式碼區塊 */
+        #markdown-content pre {
+            background-color: var(--soft-gray);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+        }
+        
+        #markdown-content code {
+            background-color: var(--soft-gray);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
     
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -26,7 +198,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="bi bi-feather me-2"></i>Chuiy 的生活札記
+                <i class="bi bi-feather me-2"></i>Chuiyi 的生活札記
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -259,6 +431,19 @@
                     metadata.title = titleMatch[1].replace(/^\([^)]*\)\s*/, '').trim();
                 }
                 
+                // 解析電影海報圖片
+                const posterMatch = content.match(/!\[[^\]]*海報[^\]]*\]\(([^)]+)\)/i) || 
+                                  content.match(/!\[[^\]]*poster[^\]]*\]\(([^)]+)\)/i) ||
+                                  content.match(/!\[[^\]]*\]\(([^)]+)\)/);
+                if (posterMatch) {
+                    let posterPath = posterMatch[1];
+                    // 自動轉換路徑
+                    if (posterPath.startsWith('../../assets/')) {
+                        posterPath = posterPath.replace('../../assets/', 'assets/');
+                    }
+                    metadata.poster = posterPath;
+                }
+                
                 // 解析電影資訊部分
                 const infoSection = content.match(/##\s*電影資訊\s*\n((?:\s*-\s*\*\*[^*]+\*\*[^\n]*\n?)*)/);
                 if (infoSection) {
@@ -277,7 +462,11 @@
                                     metadata.director = value;
                                     break;
                                 case '年份':
-                                    metadata.year = value;
+                                    // 支援 "2025年" 或 "2025" 格式
+                                    const yearMatch = value.match(/(\d{4})/);
+                                    if (yearMatch) {
+                                        metadata.year = yearMatch[1];
+                                    }
                                     break;
                                 case '類型':
                                     metadata.genre = value;
@@ -286,14 +475,37 @@
                                     metadata.watchDate = value;
                                     break;
                                 case '我的評分':
+                                    // 支援 "3/5" 或 "3.5/5" 或 "3/5 ⭐⭐⭐" 格式
                                     const ratingMatch = value.match(/([0-9.]+)\/5/);
                                     if (ratingMatch) {
                                         metadata.rating = parseFloat(ratingMatch[1]);
                                     }
                                     break;
+                                case '推薦指數':
+                                    const recommendationMatch = value.match(/([0-5])/);
+                                    if (recommendationMatch) {
+                                        metadata.recommendation = parseInt(recommendationMatch[1]);
+                                    }
+                                    break;
                             }
                         }
                     });
+                }
+                
+                // 如果還是沒有找到海報，嘗試從 HTML 註解中解析
+                const commentMatch = content.match(/<!--\s*MOVIE_INFO\s*([\s\S]*?)\s*-->/);
+                if (commentMatch) {
+                    if (!metadata.poster) {
+                        const commentContent = commentMatch[1];
+                        const posterCommentMatch = commentContent.match(/海報[：:]\s*(.+?)(?:\n|$)/);
+                        if (posterCommentMatch) {
+                            let posterPath = posterCommentMatch[1].trim();
+                            if (posterPath.startsWith('../../assets/')) {
+                                posterPath = posterPath.replace('../../assets/', 'assets/');
+                            }
+                            metadata.poster = posterPath;
+                        }
+                    }
                 }
             }
             
@@ -317,22 +529,54 @@
 
         // 更新頁面內容
         function updatePageContent(movieData, filename) {
+            // 除錯：檢查解析到的資料
+            console.log('Movie data:', movieData);
+            
             // 更新頁面標題
-            document.title = `${movieData.title} - 電影評論 | Chuiy's Github Page`;
+            document.title = `${movieData.title} - 電影評論 | Chuiyi's Github Page`;
             document.getElementById('page-title').textContent = `${movieData.title} - 電影評論`;
             
             // 更新電影標題顯示
             document.getElementById('movie-title-display').textContent = movieData.title;
             
+            // 更新電影海報
+            const posterContainer = document.getElementById('movie-poster');
+            if (movieData.poster && posterContainer) {
+                posterContainer.innerHTML = `
+                    <img src="${movieData.poster}" 
+                         alt="${movieData.title} 海報" 
+                         style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+                         onerror="this.style.display='none'; console.warn('海報載入失敗:', this.src);">
+                `;
+            } else if (posterContainer) {
+                posterContainer.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; background-color: var(--soft-gray); border-radius: 8px; color: var(--text-light);">
+                        <i class="bi bi-film" style="font-size: 3rem;"></i>
+                    </div>
+                `;
+            }
+            
             // 更新電影詳細資訊
             const details = document.getElementById('movie-details');
-            details.innerHTML = `
-                ${movieData.originalTitle ? `<div style="margin-bottom: var(--spacing-xs);"><strong>原名:</strong> ${movieData.originalTitle}</div>` : ''}
-                ${movieData.director ? `<div style="margin-bottom: var(--spacing-xs);"><strong>導演:</strong> ${movieData.director}</div>` : ''}
-                ${movieData.year ? `<div style="margin-bottom: var(--spacing-xs);"><strong>年份:</strong> ${movieData.year}</div>` : ''}
-                ${movieData.genre ? `<div style="margin-bottom: var(--spacing-xs);"><strong>類型:</strong> ${movieData.genre}</div>` : ''}
-                ${movieData.watchDate ? `<div style="margin-bottom: var(--spacing-xs);"><strong>觀看日期:</strong> ${movieData.watchDate}</div>` : ''}
-                ${movieData.rating ? `
+            let detailsHTML = '';
+            
+            if (movieData.originalTitle) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>原名:</strong> ${movieData.originalTitle}</div>`;
+            }
+            if (movieData.director) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>導演:</strong> ${movieData.director}</div>`;
+            }
+            if (movieData.year) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>年份:</strong> ${movieData.year}</div>`;
+            }
+            if (movieData.genre) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>類型:</strong> ${movieData.genre}</div>`;
+            }
+            if (movieData.watchDate) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>觀看日期:</strong> ${movieData.watchDate}</div>`;
+            }
+            if (movieData.rating) {
+                detailsHTML += `
                     <div class="d-flex align-items-center">
                         <strong class="me-2">我的評分:</strong>
                         <div style="color: var(--accent-gold);">
@@ -340,32 +584,73 @@
                             <span class="ms-2">${movieData.rating}/5</span>
                         </div>
                     </div>
-                ` : ''}
-            `;
+                `;
+            }
+            
+            // 如果沒有任何資訊，顯示預設訊息
+            if (!detailsHTML) {
+                detailsHTML = '<div style="color: var(--text-light); font-style: italic;">暫無電影資訊</div>';
+            }
+            
+            details.innerHTML = detailsHTML;
             
             // 更新推薦指數
-            if (movieData.recommendation || movieData.rating >= 4) {
-                const recommendationContent = document.getElementById('recommendation-content');
-                const recText = movieData.recommendation || '這是一部值得觀看的優秀作品';
-                const recLevel = movieData.rating >= 4.5 ? '強烈推薦' : movieData.rating >= 4 ? '推薦' : '普通';
-                const recColor = movieData.rating >= 4.5 ? 'var(--accent-gold)' : movieData.rating >= 4 ? 'var(--muted-brown)' : 'var(--text-light)';
+            const recommendationContent = document.getElementById('recommendation-content');
+            
+            if (movieData.recommendation || movieData.rating > 0) {
+                // 使用推薦指數或評分來決定星數顯示
+                const recommendationRating = movieData.recommendation || movieData.rating;
+                const recLevel = recommendationRating >= 4.5 ? '強烈推薦' : recommendationRating >= 4 ? '推薦' : recommendationRating >= 3 ? '普通' : '不推薦';
+                const recColor = recommendationRating >= 4.5 ? 'var(--accent-gold)' : recommendationRating >= 4 ? 'var(--muted-brown)' : recommendationRating >= 3 ? 'var(--text-light)' : '#dc3545';
+                
+                // 生成推薦指數的文字說明
+                let recText = '';
+                if (movieData.recommendation) {
+                    recText = `推薦指數：${movieData.recommendation}/5`;
+                } else {
+                    recText = '基於評分的推薦';
+                }
                 
                 recommendationContent.innerHTML = `
                     <div class="d-flex align-items-center mb-2">
                         <div style="color: var(--accent-gold); margin-right: var(--spacing-md);">
-                            ${generateStarRating(Math.min(5, Math.max(1, movieData.rating)))}
+                            ${generateStarRating(Math.min(5, Math.max(1, recommendationRating)))}
                         </div>
-                        <span class="tag" style="background-color: ${recColor}; color: white;">${recLevel}</span>
+                        <span class="tag" style="background-color: ${recColor}; color: white; padding: 0.25rem 0.5rem; border-radius: 3px; font-size: 0.8rem;">${recLevel}</span>
                     </div>
                     <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0;">
                         ${recText}
                     </p>
                 `;
+            } else {
+                recommendationContent.innerHTML = '<div style="color: var(--text-light); font-style: italic;">暫無推薦指數</div>';
             }
             
-            // 轉換 Markdown 為 HTML
-            const htmlContent = marked.parse(movieData.content);
+            // 轉換 Markdown 為 HTML 並處理圖片路徑
+            let processedContent = movieData.content;
+            
+            // 自動轉換圖片路徑從 ../../assets/ 到 assets/
+            processedContent = processedContent.replace(/!\[([^\]]*)\]\(\.\.\/\.\.\/assets\//g, '![$1](assets/');
+            
+            const htmlContent = marked.parse(processedContent);
             document.getElementById('markdown-content').innerHTML = htmlContent;
+            
+            // 處理所有圖片，確保響應式設計
+            const images = document.querySelectorAll('#markdown-content img');
+            images.forEach(img => {
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                img.style.borderRadius = '8px';
+                img.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+                img.style.margin = '1rem 0';
+                img.style.display = 'block';
+                
+                // 加入錯誤處理
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    console.warn('圖片載入失敗:', this.src);
+                };
+            });
             
             // 更新最後更新時間
             document.getElementById('last-updated').textContent = new Date().toLocaleDateString('zh-TW');

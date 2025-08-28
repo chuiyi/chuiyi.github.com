@@ -1,5 +1,5 @@
 # 驚奇4超人：第一步
-![image](assets/images/fantastic_4_first_step.jpg)
+![image](../../assets/images/fantastic_4_first_step.jpg)
 
 ## 電影資訊
 - **原名**: 驚奇4超人：第一步

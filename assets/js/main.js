@@ -1,4 +1,4 @@
-// Main JavaScript for Chuiy's Website - Complete Content Management System
+// Main JavaScript for Chuiyi's Website - Complete Content Management System
 
 // 電影和旅行數據
 let movieData = [];
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothScrolling();
     
     // 初始化回到頂部按鈕
-    initializeBackToTop();
+    // initializeBackToTop();
     
     // 初始化動畫
     initializeAnimations();
@@ -243,10 +243,24 @@ async function getMarkdownContent(filePath) {
 }
 
 // 將 Markdown 轉換為 HTML
-function convertMarkdownToHtml(markdownContent) {
+function convertMarkdownToHtml(markdownContent, filePath = '') {
     if (!markdownContent) return '';
     
     let html = markdownContent;
+    
+    // 處理圖片並修正路徑
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
+        // 如果是相對路徑且以 ../../ 開頭，則轉換為正確的路徑
+        if (src.startsWith('../../')) {
+            src = src.replace('../../', '');
+        }
+        // 如果路徑不是以 http 開頭且不是以 / 開頭，則添加根路徑
+        if (!src.startsWith('http') && !src.startsWith('/')) {
+            src = src;
+        }
+        
+        return `<img src="${src}" alt="${alt}" class="img-fluid rounded mb-3" style="max-width: 100%; height: auto;">`;
+    });
     
     // 處理標題
     html = html.replace(/^# (.+)$/gm, '<h1 class="markdown-h1 text-info mb-4">$1</h1>');
@@ -476,8 +490,10 @@ function renderPhotographyCards() {
         photographyContainer.appendChild(photoElement);
     });
     
-    // 載入 Flickr 嵌入腳本
-    loadFlickrScript();
+    // 載入 Flickr 嵌入腳本，並在 DOM 更新後處理
+    setTimeout(() => {
+        loadFlickrScript();
+    }, 100);
 }
 
 // 創建電影卡片元素（支援智能佈局）
@@ -655,7 +671,7 @@ function createPhotographyCardElement(photo) {
             <div class="flickr-embed-container">
                 ${photo.flickrEmbed}
             </div>
-            <div class="card-body p-4" style="background-color: var(--warm-white); border: 1px solid var(--border-light); border-top: none;">
+            <div class="card-body">
                 <h3 class="card-title h5 mb-3" style="color: var(--deep-brown); font-family: 'Noto Serif TC', serif;">${photo.title}</h3>
                 <div class="mb-3">
                     <span class="tag">${photo.location}</span>
@@ -664,7 +680,7 @@ function createPhotographyCardElement(photo) {
                 <p class="card-excerpt text-muted mb-3">
                     ${photo.description}
                 </p>
-                <div class="card-meta d-flex justify-content-between align-items-center">
+                <div class="card-meta d-flex justify-content-between align-items-center flex-wrap">
                     <small class="text-muted">
                         <i class="bi bi-calendar3 me-1"></i>
                         ${photo.date}
@@ -684,14 +700,51 @@ function createPhotographyCardElement(photo) {
 function loadFlickrScript() {
     // 檢查是否已經載入過
     if (document.querySelector('script[src*="embedr.flickr.com"]')) {
+        // 如果已經載入，直接處理嵌入
+        setTimeout(processFlickrEmbeds, 500);
         return;
     }
     
     const script = document.createElement('script');
-    script.src = '//embedr.flickr.com/assets/client-code.js';
+    script.src = 'https://embedr.flickr.com/assets/client-code.js';
     script.async = true;
     script.charset = 'utf-8';
+    
+    // 腳本載入完成後的回調
+    script.onload = function() {
+        window.flickrEmbedReady = true;
+        // 延遲處理，確保 Flickr 腳本完全初始化
+        setTimeout(processFlickrEmbeds, 1000);
+    };
+    
     document.head.appendChild(script);
+}
+
+// 處理 Flickr 嵌入元素
+function processFlickrEmbeds() {
+    const flickrEmbeds = document.querySelectorAll('[data-flickr-embed="true"]');
+    
+    if (flickrEmbeds.length > 0) {
+        // 如果存在全域的 flickr 處理函數，使用它
+        if (typeof window.flickrEmbed !== 'undefined' && window.flickrEmbed.process) {
+            window.flickrEmbed.process();
+        } else if (typeof window.processEmbeds !== 'undefined') {
+            window.processEmbeds();
+        } else {
+            // 手動觸發 Flickr 嵌入處理
+            flickrEmbeds.forEach(embed => {
+                if (!embed.dataset.processed) {
+                    embed.dataset.processed = 'true';
+                    // 移除寬高限制，讓 Flickr 自行決定
+                    const img = embed.querySelector('img');
+                    if (img) {
+                        img.removeAttribute('width');
+                        img.removeAttribute('height');
+                    }
+                }
+            });
+        }
+    }
 }
 
 // 智能佈局決策函數
@@ -731,7 +784,7 @@ async function showMovieDetail(movieId) {
             const content = await getMarkdownContent(movie.file);
             if (content) {
                 movie.fullContent = content;
-                movie.parsedData = parseMovieMarkdown(content);
+                movie.parsedData = parseMovieMarkdown(content, movie.file);
             }
         }
         
@@ -761,7 +814,7 @@ async function showTravelDetail(travelId) {
             const content = await getMarkdownContent(travel.file);
             if (content) {
                 travel.fullContent = content;
-                travel.parsedData = parseTravelMarkdown(content);
+                travel.parsedData = parseTravelMarkdown(content, travel.file);
             }
         }
         
@@ -793,7 +846,7 @@ function updateMovieModal(movie) {
     if (modalBody) {
         if (movie.fullContent) {
             // 如果有完整的 Markdown 內容，轉換為 HTML
-            const htmlContent = convertMarkdownToHtml(movie.fullContent);
+            const htmlContent = convertMarkdownToHtml(movie.fullContent, movie.file);
             modalBody.innerHTML = `
                 <div class="markdown-content">
                     ${htmlContent}
@@ -867,7 +920,7 @@ function updateTravelModal(travel) {
     if (modalBody) {
         if (travel.fullContent) {
             // 如果有完整的 Markdown 內容，轉換為 HTML
-            const htmlContent = convertMarkdownToHtml(travel.fullContent);
+            const htmlContent = convertMarkdownToHtml(travel.fullContent, travel.file);
             modalBody.innerHTML = `
                 <div class="markdown-content">
                     ${htmlContent}
@@ -919,7 +972,7 @@ function updateTravelModal(travel) {
 }
 
 // 解析電影 Markdown 內容
-function parseMovieMarkdown(content) {
+function parseMovieMarkdown(content, filePath = '') {
     const movie = {
         title: '',
         originalTitle: '',
@@ -937,7 +990,7 @@ function parseMovieMarkdown(content) {
         },
         recommendation: '',
         tags: [],
-        fullHtml: convertMarkdownToHtml(content)
+        fullHtml: convertMarkdownToHtml(content, filePath)
     };
     
     // 解析標題
@@ -979,7 +1032,7 @@ function parseMovieMarkdown(content) {
 }
 
 // 解析旅行 Markdown 內容
-function parseTravelMarkdown(content) {
+function parseTravelMarkdown(content, filePath = '') {
     const travel = {
         title: '',
         location: '',
@@ -988,7 +1041,7 @@ function parseTravelMarkdown(content) {
         highlights: [],
         foods: [],
         tips: [],
-        fullHtml: convertMarkdownToHtml(content)
+        fullHtml: convertMarkdownToHtml(content, filePath)
     };
     
     // 解析標題
@@ -1075,9 +1128,20 @@ function setupEventListeners() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                // 計算 navbar 的高度
+                const navbar = document.querySelector('.navbar');
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                
+                // 根據螢幕尺寸調整額外間距（進一步減少）
+                const isMobile = window.innerWidth <= 768;
+                const extraOffset = isMobile ? 0 : 5; // 幾乎不要額外間距
+                
+                // 計算目標位置，減去 navbar 高度和極少的額外間距
+                const targetPosition = target.offsetTop - navbarHeight - extraOffset;
+                
+                window.scrollTo({
+                    top: Math.max(0, targetPosition), // 確保不會滾動到負數位置
+                    behavior: 'smooth'
                 });
             }
         });
@@ -1433,7 +1497,7 @@ async function showTravelDetail(travelId) {
             const content = await getMarkdownContent(travel.file);
             if (content) {
                 travel.fullContent = content;
-                travel.parsedData = parseTravelMarkdown(content);
+                travel.parsedData = parseTravelMarkdown(content, travel.file);
             }
         }
         
@@ -1464,7 +1528,7 @@ async function showMovieDetail(movieId) {
             const content = await getMarkdownContent(movie.file);
             if (content) {
                 movie.fullContent = content;
-                movie.parsedData = parseMovieMarkdown(content);
+                movie.parsedData = parseMovieMarkdown(content, movie.file);
             }
         }
         
