@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <title id="page-title">旅行筆記 - Chuiyi's Github Page</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/images/favicon.ico">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
+    
+    <!-- Travel page specific styles -->
+    <style>
+        /* 圖片響應式設計 */
+        #markdown-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+            display: block;
+        }
+        
+        /* 旅行照片區域 */
+        #travel-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: height 0.3s ease; /* 平滑的高度過渡效果 */
+        }
+        
+        #travel-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            transition: object-fit 0.3s ease; /* 平滑的 object-fit 過渡效果 */
+        }
+        
+        /* 手機版響應式設計 */
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 80px !important;
+                padding: 0 15px;
+            }
+            
+            .col-md-3 {
+                margin-bottom: 2rem;
+            }
+            
+            #travel-image {
+                height: 250px !important;
+                max-height: 300px;
+            }
+            
+            /* 手機版圖片適應性調整 */
+            #travel-image.portrait {
+                height: 300px !important;
+            }
+            
+            #travel-image.landscape {
+                height: 180px !important;
+            }
+            
+            .travel-content {
+                padding: 0;
+            }
+            
+            #markdown-content {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            #markdown-content img {
+                max-width: 100% !important;
+                width: 100% !important;
+                height: auto !important;
+                margin: 0.8rem 0 !important;
+                border-radius: 6px !important;
+            }
+            
+            #markdown-content h1,
+            #markdown-content h2,
+            #markdown-content h3 {
+                font-size: 1.25rem;
+                margin: 1.5rem 0 1rem 0;
+            }
+            
+            #markdown-content table {
+                font-size: 0.85rem !important;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .btn {
+                font-size: 0.9rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .card-info, .card-tips {
+                padding: 1rem !important;
+            }
+        }
+        
+        /* 極小螢幕優化 */
+        @media (max-width: 480px) {
+            .container {
+                margin-top: 70px !important;
+                padding: 0 10px;
+            }
+            
+            #travel-image {
+                height: 200px !important;
+                max-height: 220px;
+            }
+            
+            .card-info, .card-tips {
+                padding: 0.75rem !important;
+                margin-bottom: 1rem !important;
+            }
+            
+            #markdown-content {
+                font-size: 0.9rem;
+            }
+            
+            #markdown-content img {
+                margin: 0.5rem 0 !important;
+                border-radius: 4px !important;
+            }
+            
+            #markdown-content h1,
+            #markdown-content h2,
+            #markdown-content h3 {
+                font-size: 1.1rem;
+                margin: 1rem 0 0.8rem 0;
+            }
+            
+            #markdown-content p {
+                margin-bottom: 0.8rem;
+            }
+        }
+        
+        /* 內容區域優化 */
+        .travel-content {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* 表格響應式 */
+        #markdown-content table {
+            width: 100%;
+            max-width: 100%;
+            margin: 1rem 0;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        #markdown-content table th,
+        #markdown-content table td {
+            padding: 0.5rem;
+            border: 1px solid var(--border-light);
+            text-align: left;
+        }
+        
+        @media (max-width: 768px) {
+            #markdown-content table {
+                font-size: 0.8rem;
+            }
+            
+            #markdown-content table th,
+            #markdown-content table td {
+                padding: 0.25rem;
+            }
+        }
+        
+        /* 程式碼區塊 */
+        #markdown-content pre {
+            background-color: var(--soft-gray);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+        }
+        
+        #markdown-content code {
+            background-color: var(--soft-gray);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+    
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@9.1.2/marked.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-feather me-2"></i>Chuiyi 的生活札記
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#home">首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#travel">旅行筆記</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#movies">電影鑑賞</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/chuiyi" target="_blank">
+                            <i class="bi bi-github me-1"></i>GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主題切換按鈕 -->
+    <div class="theme-toggle" id="themeToggle" title="切換主題">
+        <i class="bi bi-sun-fill sun-icon"></i>
+        <i class="bi bi-moon-fill moon-icon"></i>
+    </div>
+
+    <!-- 主內容區域 -->
+    <div class="container" style="margin-top: 100px; margin-bottom: 50px;">
+        <!-- 載入指示器 -->
+        <div id="loading" class="loading text-center">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="spinner-border text-muted me-3" role="status">
+                    <span class="visually-hidden">載入中...</span>
+                </div>
+                <span style="color: var(--text-light);">載入旅行筆記中...</span>
+            </div>
+        </div>
+
+        <!-- 錯誤訊息 -->
+        <div id="error" class="alert alert-danger" style="display: none;">
+            <h4><i class="bi bi-exclamation-triangle me-2"></i>載入失敗</h4>
+            <p class="mb-0">找不到指定的旅行筆記檔案，請檢查 URL 參數是否正確。</p>
+            <hr>
+            <a href="index.html" class="btn btn-outline-danger">返回首頁</a>
+        </div>
+
+        <!-- 旅行筆記內容 -->
+        <div id="travel-content" style="display: none;">
+            <div class="row">
+                <!-- 左側資訊欄 -->
+                <div class="col-md-3">
+                    <!-- 旅行照片 -->
+                    <div id="travel-image" style="height: 300px; background: linear-gradient(135deg, var(--soft-gray), var(--primary-beige)); display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-lg); border-radius: 4px;">
+                        <div class="text-center">
+                            <i class="bi bi-geo-alt" style="font-size: 4rem; color: var(--muted-brown);"></i>
+                            <p id="travel-title-display" style="margin-top: var(--spacing-sm); margin-bottom: 0; color: var(--text-light);"></p>
+                        </div>
+                    </div>
+                    
+                    <!-- 旅行資訊卡片 -->
+                    <div id="travel-info" style="background-color: var(--primary-beige); border: 1px solid var(--border-light); padding: var(--spacing-md); border-radius: 4px; margin-bottom: var(--spacing-md);">
+                        <h6 style="color: var(--deep-brown); margin-bottom: var(--spacing-md);">
+                            <i class="bi bi-info-circle me-2"></i>旅行資訊
+                        </h6>
+                        <div id="travel-details" style="font-size: 0.9rem; color: var(--text-dark);">
+                            <!-- 旅行詳細資訊將在這裡動態插入 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 旅行建議 -->
+                    <div id="travel-tips" style="background-color: var(--primary-beige); border: 1px solid var(--border-light); padding: var(--spacing-md); border-radius: 4px;">
+                        <h6 style="color: var(--deep-brown); margin-bottom: var(--spacing-md);">
+                            <i class="bi bi-lightbulb me-2"></i>旅行建議
+                        </h6>
+                        <div id="tips-content">
+                            <!-- 建議內容將在這裡動態插入 -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 右側筆記內容 -->
+                <div class="col-md-9">
+                    <div class="travel-content">
+                        <!-- 返回按鈕 -->
+                        <div class="mb-4">
+                            <a href="index.html#travel" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>返回旅行筆記
+                            </a>
+                        </div>
+                        
+                        <!-- Markdown 內容將在這裡動態插入 -->
+                        <div id="markdown-content">
+                            <!-- 動態載入的 Markdown 內容 -->
+                        </div>
+                        
+                        <!-- 更新時間 -->
+                        <div id="update-time" style="margin-top: var(--spacing-lg); padding-top: var(--spacing-md); border-top: 1px solid var(--border-light);">
+                            <small style="color: var(--text-light);">
+                                <i class="bi bi-clock me-1"></i>筆記更新時間: <span id="last-updated"></span>
+                            </small>
+                        </div>
+                        
+                        <!-- 原始檔案連結 -->
+                        <div style="margin-top: var(--spacing-md);">
+                            <a id="markdown-link" href="#" class="btn btn-outline-info" target="_blank">
+                                <i class="bi bi-file-text me-1"></i>查看 Markdown 原文
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Configuration -->
+    <script src="assets/config/content-config.js"></script>
+    
+    <!-- 頁面腳本 -->
+    <script>
+        // 立即執行的測試
+        console.log('JavaScript 開始載入');
+        console.log('當前時間:', new Date());
+        
+        // 主題管理 (複製自 main.js)
+        const ThemeManager = {
+            init() {
+                const savedTheme = localStorage.getItem('chuiy-theme') || 'light';
+                this.setTheme(savedTheme);
+                
+                const themeToggle = document.getElementById('themeToggle');
+                if (themeToggle) {
+                    themeToggle.addEventListener('click', () => this.toggleTheme());
+                }
+            },
+            
+            setTheme(theme) {
+                const html = document.documentElement;
+                if (theme === 'dark') {
+                    html.setAttribute('data-theme', 'dark');
+                } else {
+                    html.removeAttribute('data-theme');
+                }
+                localStorage.setItem('chuiy-theme', theme);
+            },
+            
+            toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                this.setTheme(newTheme);
+            }
+        };
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOMContentLoaded 事件觸發');
+            
+            try {
+                // 先測試基本功能
+                console.log('開始初始化...');
+                
+                // 初始化主題管理
+                if (typeof ThemeManager !== 'undefined') {
+                    ThemeManager.init();
+                    console.log('主題管理初始化完成');
+                } else {
+                    console.error('ThemeManager 未定義');
+                }
+                
+                // 載入旅行筆記
+                loadTravelPost();
+                console.log('開始載入旅行筆記');
+                
+            } catch (error) {
+                console.error('初始化過程中發生錯誤:', error);
+            }
+        });
+
+        // 載入旅行筆記
+        async function loadTravelPost() {
+            console.log('loadTravelPost 函數被調用');
+            try {
+                // 從 URL 參數取得檔案名稱
+                const urlParams = new URLSearchParams(window.location.search);
+                const filename = urlParams.get('file');
+                console.log('獲取到的檔案名稱:', filename);
+                
+                if (!filename) {
+                    showError('未指定旅行筆記檔案');
+                    return;
+                }
+
+                // 載入 Markdown 檔案
+                const markdownPath = `posts/travel/${filename}.md`;
+                console.log('嘗試載入檔案:', markdownPath);
+                const response = await fetch(markdownPath);
+                
+                if (!response.ok) {
+                    throw new Error(`無法載入檔案: ${markdownPath}`);
+                }
+
+                const markdownContent = await response.text();
+                console.log('Markdown 內容載入成功，長度:', markdownContent.length);
+                
+                // 解析旅行數據
+                const travelData = parseTravelMarkdown(markdownContent);
+                console.log('解析後的旅行數據:', travelData);
+                
+                // 更新頁面內容
+                updatePageContent(travelData, filename);
+                console.log('頁面內容更新完成');
+                
+                // 顯示內容
+                console.log('準備顯示內容...');
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('travel-content').style.display = 'block';
+                console.log('內容顯示完成');
+                
+            } catch (error) {
+                console.error('載入旅行筆記時發生錯誤:', error);
+                showError(error.message);
+            }
+        }
+
+        // 顯示錯誤訊息
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.querySelector('#error p').textContent = message;
+        }
+
+        // 解析旅行 Markdown
+        function parseTravelMarkdown(content) {
+            console.log('開始解析 Markdown，內容長度:', content.length);
+            console.log('Markdown 內容預覽:', content.substring(0, 200) + '...');
+            
+            const lines = content.split('\n');
+            const metadata = {};
+            let contentStart = 0;
+            
+            // 從 URL 參數取得檔案名稱，查找對應的配置
+            const urlParams = new URLSearchParams(window.location.search);
+            const filename = urlParams.get('file');
+            
+            // 從 content-config.js 中獲取圖片資訊
+            if (typeof window.CONTENT_CONFIG !== 'undefined' && window.CONTENT_CONFIG.TRAVEL_FILES) {
+                const travelConfig = window.CONTENT_CONFIG.TRAVEL_FILES.find(travel => travel.id === filename);
+                if (travelConfig && travelConfig.images) {
+                    metadata.image = travelConfig.images;
+                    console.log('從配置檔案中找到圖片:', metadata.image);
+                }
+            }
+            
+            // 嘗試解析前置資料 (front matter)
+            if (lines[0] === '---') {
+                for (let i = 1; i < lines.length; i++) {
+                    if (lines[i] === '---') {
+                        contentStart = i + 1;
+                        break;
+                    }
+                    const match = lines[i].match(/^([^:]+):\s*(.+)$/);
+                    if (match) {
+                        metadata[match[1].trim()] = match[2].trim();
+                    }
+                }
+            }
+            
+            // 如果沒有前置資料，從內容中解析
+            if (Object.keys(metadata).length === 0) {
+                // 解析標題
+                const titleMatch = content.match(/^#\s*(.+)$/m);
+                if (titleMatch) {
+                    metadata.title = titleMatch[1].trim();
+                }
+                
+                // 解析旅行照片
+                const imageMatch = content.match(/!\[[^\]]*\]\(([^)]+)\)/);
+                if (imageMatch) {
+                    let imagePath = imageMatch[1];
+                    // 自動轉換路徑
+                    if (imagePath.startsWith('../../assets/')) {
+                        imagePath = imagePath.replace('../../assets/', 'assets/');
+                    } else if (imagePath.startsWith('imgs/')) {
+                        imagePath = 'posts/travel/' + imagePath;
+                    }
+                    metadata.image = imagePath;
+                }
+                
+                // 解析旅行資訊部分 - 簡化版本
+                console.log('開始解析旅行資訊...');
+                const travelInfoMatch = content.match(/##\s*旅行資訊[\s\S]*?(?=\n##|\n####|$)/);
+                if (travelInfoMatch) {
+                    console.log('找到旅行資訊區塊:', travelInfoMatch[0]);
+                    
+                    // 找所有以 - ** 開頭的行
+                    const infoLines = travelInfoMatch[0].match(/^\s*-\s*\*\*[^*]+\*\*[:\s：][^\n\r]+/gm);
+                    console.log('找到的資訊行:', infoLines);
+                    
+                    if (infoLines) {
+                        infoLines.forEach(line => {
+                            // 提取 key-value
+                            const match = line.match(/^\s*-\s*\*\*([^*]+)\*\*\s*[:\s：]\s*(.+)$/);
+                            console.log('分析行:', line.trim(), '匹配結果:', match);
+                            if (match) {
+                                const key = match[1].trim();
+                                const value = match[2].trim();
+                            
+                                switch(key) {
+                                    case '地點':
+                                    case '目的地':
+                                        metadata.location = value;
+                                        break;
+                                    case '日期':
+                                    case '旅行日期':
+                                        metadata.date = value;
+                                        break;
+                                    case '天數':
+                                        metadata.duration = value;
+                                        break;
+                                    case '交通方式':
+                                        metadata.transportation = value;
+                                        break;
+                                    case '住宿':
+                                        metadata.accommodation = value;
+                                        break;
+                                    case '花費':
+                                    case '預算':
+                                        metadata.budget = value;
+                                        break;
+                                    case '天氣':
+                                        metadata.weather = value;
+                                        break;
+                                    case '主要移動範圍路線':
+                                        metadata.route = value;
+                                        break;
+                                }
+                            }
+                        });
+                    }
+                }
+                
+                // 解析旅行建議部分
+                const tipsSection = content.match(/##\s*旅行建議\s*\n((?:\s*-\s*[^\n]*\n?)*)/);
+                if (tipsSection) {
+                    const tipsLines = tipsSection[1].split('\n')
+                        .filter(line => line.trim() && line.trim().startsWith('-'))
+                        .map(line => line.replace(/^\s*-\s*/, '').trim());
+                    metadata.tips = tipsLines;
+                }
+            }
+            
+            // 取得內容部分
+            const mainContent = lines.slice(contentStart).join('\n');
+            
+            const result = {
+                title: metadata.title || '未知旅行',
+                location: metadata.location || '',
+                date: metadata.date || '',
+                duration: metadata.duration || '',
+                transportation: metadata.transportation || '',
+                accommodation: metadata.accommodation || '',
+                budget: metadata.budget || '',
+                weather: metadata.weather || '',
+                route: metadata.route || '',
+                image: metadata.image || '',
+                tips: metadata.tips || [],
+                content: mainContent,
+                metadata: metadata
+            };
+            
+            console.log('解析完成，結果:', result);
+            return result;
+        }
+
+        // 更新頁面內容
+        function updatePageContent(travelData, filename) {
+            // 除錯：檢查解析到的資料
+            console.log('Travel data:', travelData);
+            
+            // 更新頁面標題
+            document.title = `${travelData.title} - 旅行筆記 | Chuiyi's Github Page`;
+            document.getElementById('page-title').textContent = `${travelData.title} - 旅行筆記`;
+            
+            // 更新旅行標題顯示
+            document.getElementById('travel-title-display').textContent = travelData.title;
+            
+            // 更新旅行照片
+            const imageContainer = document.getElementById('travel-image');
+            if (travelData.image && imageContainer) {
+                console.log('準備顯示圖片:', travelData.image);
+                
+                // 創建臨時圖片元素來檢測圖片比例
+                const tempImg = new Image();
+                tempImg.onload = function() {
+                    const aspectRatio = this.naturalWidth / this.naturalHeight;
+                    console.log(`圖片尺寸: ${this.naturalWidth}x${this.naturalHeight}, 比例: ${aspectRatio.toFixed(2)}`);
+                    
+                    let objectFit = 'cover';
+                    let containerHeight = '300px';
+                    let cssClass = '';
+                    
+                    // 根據比例調整顯示方式
+                    if (aspectRatio > 1.5) {
+                        // 橫式圖片 (寬高比 > 1.5)
+                        objectFit = 'cover';
+                        containerHeight = '200px'; // 降低高度以適應橫式圖片
+                        cssClass = 'landscape';
+                        console.log('檢測到橫式圖片，調整容器高度');
+                    } else if (aspectRatio < 0.8) {
+                        // 直式圖片 (寬高比 < 0.8)
+                        objectFit = 'contain';
+                        containerHeight = '400px'; // 增加高度以適應直式圖片
+                        cssClass = 'portrait';
+                        console.log('檢測到直式圖片，使用 contain 模式');
+                    } else {
+                        // 接近方形的圖片
+                        objectFit = 'cover';
+                        containerHeight = '300px';
+                        cssClass = '';
+                        console.log('檢測到方形圖片，使用標準設定');
+                    }
+                    
+                    // 更新容器高度和 CSS 類別
+                    imageContainer.style.height = containerHeight;
+                    imageContainer.className = cssClass;
+                    
+                    // 插入圖片
+                    imageContainer.innerHTML = `
+                        <img src="${travelData.image}" 
+                             alt="${travelData.title} 照片" 
+                             style="width: 100%; height: 100%; object-fit: ${objectFit}; border-radius: 8px; background-color: var(--soft-gray);"
+                             onload="console.log('圖片載入成功:', this.src)"
+                             onerror="console.warn('圖片載入失敗:', this.src); this.parentElement.innerHTML = '<div style=\\'display: flex; align-items: center; justify-content: center; height: 100%; background-color: var(--soft-gray); border-radius: 8px; color: var(--text-light);\\''><i class=\\'bi bi-geo-alt\\' style=\\'font-size: 3rem;\\'></i></div>';">
+                    `;
+                };
+                
+                tempImg.onerror = function() {
+                    console.warn('無法載入圖片以檢測比例，使用預設設定');
+                    imageContainer.innerHTML = `
+                        <img src="${travelData.image}" 
+                             alt="${travelData.title} 照片" 
+                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+                             onload="console.log('圖片載入成功:', this.src)"
+                             onerror="console.warn('圖片載入失敗:', this.src); this.parentElement.innerHTML = '<div style=\\'display: flex; align-items: center; justify-content: center; height: 100%; background-color: var(--soft-gray); border-radius: 8px; color: var(--text-light);\\''><i class=\\'bi bi-geo-alt\\' style=\\'font-size: 3rem;\\'></i></div>';">
+                    `;
+                };
+                
+                tempImg.src = travelData.image;
+                
+            } else {
+                console.log('沒有找到圖片，使用預設圖示');
+                if (imageContainer) {
+                    imageContainer.innerHTML = `
+                        <div style="display: flex; align-items: center; justify-content: center; height: 100%; background-color: var(--soft-gray); border-radius: 8px; color: var(--text-light);">
+                            <i class="bi bi-geo-alt" style="font-size: 3rem;"></i>
+                        </div>
+                    `;
+                }
+            }
+            
+            // 更新旅行詳細資訊
+            const details = document.getElementById('travel-details');
+            let detailsHTML = '';
+            
+            if (travelData.location) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>地點:</strong> ${travelData.location}</div>`;
+            }
+            if (travelData.date) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>日期:</strong> ${travelData.date}</div>`;
+            }
+            if (travelData.duration) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>天數:</strong> ${travelData.duration}</div>`;
+            }
+            if (travelData.transportation) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>交通:</strong> ${travelData.transportation}</div>`;
+            }
+            if (travelData.accommodation) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>住宿:</strong> ${travelData.accommodation}</div>`;
+            }
+            if (travelData.budget) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>預算:</strong> ${travelData.budget}</div>`;
+            }
+            if (travelData.weather) {
+                detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>天氣:</strong> ${travelData.weather}</div>`;
+            }
+            
+            // 如果沒有任何資訊，顯示預設訊息
+            if (!detailsHTML) {
+                detailsHTML = '<div style="color: var(--text-light); font-style: italic;">暫無旅行資訊</div>';
+            }
+            
+            details.innerHTML = detailsHTML;
+            
+            // 更新旅行建議
+            const tipsContent = document.getElementById('tips-content');
+            
+            if (travelData.tips && travelData.tips.length > 0) {
+                let tipsHTML = '<ul style="margin: 0; padding-left: 1.2rem;">';
+                travelData.tips.forEach(tip => {
+                    tipsHTML += `<li style="margin-bottom: 0.5rem; color: var(--text-dark);">${tip}</li>`;
+                });
+                tipsHTML += '</ul>';
+                tipsContent.innerHTML = tipsHTML;
+            } else {
+                tipsContent.innerHTML = '<div style="color: var(--text-light); font-style: italic;">暫無旅行建議</div>';
+            }
+            
+            // 轉換 Markdown 為 HTML 並處理圖片路徑
+            let processedContent = travelData.content;
+            
+            // 處理各種圖片路徑格式
+            // 處理新的相對路徑 imgs/filename.jpg -> posts/travel/imgs/filename.jpg
+            processedContent = processedContent.replace(/!\[([^\]]*)\]\(imgs\//g, '![$1](posts/travel/imgs/');
+            
+            // 處理舊的相對路徑 ../../assets/ -> assets/
+            processedContent = processedContent.replace(/!\[([^\]]*)\]\(\.\.\/\.\.\/assets\//g, '![$1](assets/');
+            
+            // 處理其他舊的相對路徑格式 ../../ -> posts/travel/
+            processedContent = processedContent.replace(/!\[([^\]]*)\]\(\.\.\/\.\.\//g, '![$1](posts/travel/');
+            
+            const htmlContent = marked.parse(processedContent);
+            document.getElementById('markdown-content').innerHTML = htmlContent;
+            
+            // 處理所有圖片，確保響應式設計
+            const images = document.querySelectorAll('#markdown-content img');
+            images.forEach(img => {
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                img.style.borderRadius = '8px';
+                img.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+                img.style.margin = '1rem 0';
+                img.style.display = 'block';
+                
+                // 加入錯誤處理
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    console.warn('圖片載入失敗:', this.src);
+                };
+            });
+            
+            // 更新最後更新時間
+            document.getElementById('last-updated').textContent = new Date().toLocaleDateString('zh-TW');
+            
+            // 更新原始檔案連結
+            document.getElementById('markdown-link').href = `posts/travel/${filename}.md`;
+        }
+    </script>
+</body>
+</html>

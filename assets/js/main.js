@@ -269,6 +269,7 @@ async function loadTravelPosts() {
                     description: travelConfig.description,
                     featured: travelConfig.featured,
                     file: travelConfig.file,
+                    images: travelConfig.images, // 新增圖片參數
                     fullContent: null // 延遲載入完整內容
                 };
                 
@@ -576,32 +577,44 @@ function parseTravelMarkdown(content, id) {
     return travel;
 }
 
-// 渲染電影卡片
-function renderMovieCards() {
+// 渲染電影卡片（使用統一 Flow Layout）
+async function renderMovieCards() {
     const movieContainer = document.getElementById('movie-reviews');
     
-    // 清空現有內容
+    // 清空現有內容並設置 grid 佈局
     movieContainer.innerHTML = '';
+    movieContainer.className = 'content-grid';
     
-    const movieCount = movieData.length;
+    // 使用 Promise.all 來並行處理所有卡片
+    const movieElements = await Promise.all(
+        movieData.map(async (movie, index) => {
+            return await createUnifiedMovieCard(movie);
+        })
+    );
     
-    movieData.forEach((movie, index) => {
-        const movieElement = createMovieCardElement(movie, movieCount, index);
+    // 將所有卡片添加到容器中
+    movieElements.forEach(movieElement => {
         movieContainer.appendChild(movieElement);
     });
 }
 
-// 渲染旅行卡片
-function renderTravelCards() {
+// 渲染旅行卡片（使用統一 Flow Layout）
+async function renderTravelCards() {
     const travelContainer = document.getElementById('travel-posts');
     
-    // 清空現有內容
+    // 清空現有內容並設置 grid 佈局
     travelContainer.innerHTML = '';
+    travelContainer.className = 'content-grid';
     
-    const travelCount = travelData.length;
+    // 使用 Promise.all 來並行處理所有卡片
+    const travelElements = await Promise.all(
+        travelData.map(async (travel, index) => {
+            return await createUnifiedTravelCard(travel);
+        })
+    );
     
-    travelData.forEach((travel, index) => {
-        const travelElement = createTravelCardElement(travel, travelCount, index);
+    // 將所有卡片添加到容器中
+    travelElements.forEach(travelElement => {
         travelContainer.appendChild(travelElement);
     });
 }
@@ -626,7 +639,292 @@ function renderPhotographyCards() {
     }, 100);
 }
 
-// 創建電影卡片元素（支援智能佈局）
+// 創建統一的電影卡片（Flow Layout）
+async function createUnifiedMovieCard(movie) {
+    const col = document.createElement('div');
+    
+    const stars = generateStarRating(movie.rating);
+    
+    // 準備圖片內容
+    const hasImage = movie.images && movie.images.trim() !== '';
+    const imageContent = hasImage
+        ? `<img src="${movie.images}" alt="${movie.title}" loading="lazy">`
+        : `<i class="bi bi-camera-reels"></i>`;
+    
+    col.innerHTML = `
+        <article class="article-card unified-card">
+            <div class="card-image">
+                ${imageContent}
+            </div>
+            <div class="card-body">
+                <div class="card-content">
+                    <h3 class="card-title">${movie.title}</h3>
+                    
+                    <div class="card-info">
+                        <div class="rating">
+                            ${stars}
+                            <span>${movie.rating}/5</span>
+                        </div>
+                        <div class="card-tags">
+                            <span class="tag">${movie.genre}</span>
+                        </div>
+                    </div>
+                    
+                    <p class="card-excerpt">${movie.description}</p>
+                </div>
+                
+                <div class="card-meta">
+                    <div class="card-date">
+                        <i class="bi bi-calendar3"></i>
+                        ${movie.watchDate}
+                    </div>
+                    <div class="card-actions">
+                        <button class="read-more-btn" onclick="showMovieDetail('${movie.id}')">
+                            閱讀評論
+                        </button>
+                        <a href="movie.html?file=${movie.id}" target="_blank" class="read-more-btn" style="margin-left: 0.5rem; text-decoration: none;">
+                            <i class="bi bi-box-arrow-up-right me-1"></i>新頁面
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    `;
+    
+    return col;
+}
+
+// 創建統一的旅行卡片（Flow Layout）
+async function createUnifiedTravelCard(travel) {
+    const col = document.createElement('div');
+    
+    // 從日期中提取年月
+    const dateMatch = travel.date.match(/(\d{4})年(\d{1,2})月/);
+    const dateBadge = dateMatch ? `${dateMatch[1]}.${dateMatch[2].padStart(2, '0')}` : '2024.08';
+    
+    // 準備圖片內容
+    const hasImage = travel.images && travel.images.trim() !== '';
+    const imageContent = hasImage
+        ? `<img src="${travel.images}" alt="${travel.title}" loading="lazy">`
+        : `<i class="bi bi-geo-alt-fill"></i>`;
+    
+    col.innerHTML = `
+        <article class="article-card unified-card">
+            <div class="card-image">
+                ${imageContent}
+            </div>
+            <div class="card-body">
+                <div class="card-content">
+                    <h3 class="card-title">${travel.title}</h3>
+                    
+                    <div class="card-info">
+                        <div class="card-tags">
+                            <span class="tag">${travel.location}</span>
+                            <span class="tag">${dateBadge}</span>
+                        </div>
+                    </div>
+                    
+                    <p class="card-excerpt">${travel.description}</p>
+                </div>
+                
+                <div class="card-meta">
+                    <div class="card-date">
+                        <i class="bi bi-calendar3"></i>
+                        ${travel.date}
+                    </div>
+                    <div class="card-actions">
+                        <button class="read-more-btn" onclick="showTravelDetail('${travel.id}')">
+                            閱讀紀錄
+                        </button>
+                        <a href="travel.html?file=${travel.id}" target="_blank" class="read-more-btn" style="margin-left: 0.5rem; text-decoration: none;">
+                            <i class="bi bi-box-arrow-up-right me-1"></i>新頁面
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    `;
+    
+    return col;
+}
+async function createSmartMovieCardElement(movie, totalCount, index) {
+    const col = document.createElement('div');
+    
+    // 使用智能佈局決策
+    const layoutType = await getSmartLayoutType(totalCount, index, movie.images);
+    
+    // 設定 column 類別
+    col.className = layoutType.colClass;
+    
+    const stars = generateStarRating(movie.rating);
+    
+    // 根據圖片方向調整圖片樣式
+    const imageStyle = layoutType.orientation === 'portrait' && !layoutType.isHorizontal
+        ? 'width: 100%; height: 100%; object-fit: cover;'
+        : 'width: 100%; height: 100%; object-fit: cover;';
+    
+    // 準備圖片內容
+    const hasImage = movie.images && movie.images.trim() !== '';
+    const imageContent = hasImage
+        ? `<img src="${movie.images}" alt="${movie.title}" style="${imageStyle}" data-orientation="${layoutType.orientation}">`
+        : `<i class="bi bi-camera-reels"></i>`;
+    
+    // 根據佈局類型創建不同的 HTML 結構
+    if (layoutType.isHorizontal) {
+        // 水平佈局（圖片在左，內容在右）
+        col.innerHTML = `
+            <article class="article-card horizontal smart-layout" data-orientation="${layoutType.orientation}">
+                <div class="card-image">
+                    ${imageContent}
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">${movie.title}</h3>
+                    <div class="rating mb-3">
+                        ${stars}
+                        <span style="color: var(--text-light); margin-left: 0.5rem;">${movie.rating}/5</span>
+                    </div>
+                    <div class="mb-3">
+                        <span class="tag">${movie.genre}</span>
+                    </div>
+                    <p class="card-excerpt">
+                        ${movie.description}
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${movie.watchDate}
+                        </div>
+                        <button class="read-more-btn" onclick="showMovieDetail('${movie.id}')">
+                            閱讀完整評論
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+    } else {
+        // 標準卡片佈局（根據圖片方向調整高度）
+        const cardImageHeight = layoutType.orientation === 'portrait' ? '300px' : '250px';
+        col.innerHTML = `
+            <article class="article-card smart-layout" data-orientation="${layoutType.orientation}">
+                <div class="card-image" style="height: ${cardImageHeight}">
+                    ${imageContent}
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">${movie.title}</h3>
+                    <div class="rating">
+                        ${stars}
+                        <span style="color: var(--text-light); margin-left: 0.5rem;">${movie.rating}/5</span>
+                    </div>
+                    <div class="mb-2">
+                        <span class="tag">${movie.genre}</span>
+                    </div>
+                    <p class="card-excerpt">
+                        ${movie.description.substring(0, 120)}${movie.description.length > 120 ? '...' : ''}
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${movie.watchDate}
+                        </div>
+                        <button class="read-more-btn" onclick="showMovieDetail('${movie.id}')">
+                            閱讀評論
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+    
+    return col;
+}
+
+// 創建智能旅行卡片元素（根據圖片方向自動調整佈局）
+async function createSmartTravelCardElement(travel, totalCount, index) {
+    const col = document.createElement('div');
+    
+    // 使用智能佈局決策
+    const layoutType = await getSmartLayoutType(totalCount, index, travel.images);
+    
+    // 設定 column 類別
+    col.className = layoutType.colClass;
+    
+    // 從日期中提取年月
+    const dateMatch = travel.date.match(/(\d{4})年(\d{1,2})月/);
+    const dateBadge = dateMatch ? `${dateMatch[1]}.${dateMatch[2].padStart(2, '0')}` : '2024.08';
+    
+    // 根據圖片方向調整圖片樣式
+    const imageStyle = layoutType.orientation === 'portrait' && !layoutType.isHorizontal
+        ? 'width: 100%; height: 100%; object-fit: cover;'
+        : 'width: 100%; height: 100%; object-fit: cover;';
+    
+    // 準備圖片內容
+    const hasImage = travel.images && travel.images.trim() !== '';
+    const imageContent = hasImage
+        ? `<img src="${travel.images}" alt="${travel.title}" style="${imageStyle}" data-orientation="${layoutType.orientation}">`
+        : `<i class="bi bi-geo-alt-fill"></i>`;
+    
+    // 根據佈局類型創建不同的 HTML 結構
+    if (layoutType.isHorizontal) {
+        // 水平佈局（圖片在左，內容在右）
+        col.innerHTML = `
+            <article class="article-card horizontal smart-layout" data-orientation="${layoutType.orientation}">
+                <div class="card-image">
+                    ${imageContent}
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">${travel.title}</h3>
+                    <div class="mb-3">
+                        <span class="tag">${travel.location}</span>
+                        <span class="tag">${dateBadge}</span>
+                    </div>
+                    <p class="card-excerpt">
+                        ${travel.description}
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${travel.date}
+                        </div>
+                        <button class="read-more-btn" onclick="showTravelDetail('${travel.id}')">
+                            閱讀完整紀錄
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+    } else {
+        // 標準卡片佈局（根據圖片方向調整高度）
+        const cardImageHeight = layoutType.orientation === 'portrait' ? '300px' : '250px';
+        col.innerHTML = `
+            <article class="article-card smart-layout" data-orientation="${layoutType.orientation}">
+                <div class="card-image" style="height: ${cardImageHeight}">
+                    ${imageContent}
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">${travel.title}</h3>
+                    <div class="mb-2">
+                        <span class="tag">${travel.location}</span>
+                        <span class="tag">${dateBadge}</span>
+                    </div>
+                    <p class="card-excerpt">
+                        ${travel.description.substring(0, 120)}${travel.description.length > 120 ? '...' : ''}
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="bi bi-calendar3"></i>
+                            ${travel.date}
+                        </div>
+                        <button class="read-more-btn" onclick="showTravelDetail('${travel.id}')">
+                            閱讀紀錄
+                        </button>
+                    </div>
+                </div>
+            </article>
+        `;
+    }
+    
+    return col;
+}
 function createMovieCardElement(movie, totalCount, index) {
     const col = document.createElement('div');
     
@@ -728,10 +1026,14 @@ function createTravelCardElement(travel, totalCount, index) {
     // 根據佈局類型創建不同的 HTML 結構
     if (layoutType.isHorizontal) {
         // 水平佈局（圖片在左，內容在右）
+        const imageHtml = travel.images 
+            ? `<img src="${travel.images}" alt="${travel.title}" class="img-fluid w-100 h-100" style="object-fit: cover;">`
+            : `<i class="bi bi-geo-alt-fill"></i>`;
+        
         col.innerHTML = `
             <article class="article-card horizontal">
                 <div class="card-image">
-                    <i class="bi bi-geo-alt-fill"></i>
+                    ${imageHtml}
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">${travel.title}</h3>
@@ -756,10 +1058,14 @@ function createTravelCardElement(travel, totalCount, index) {
         `;
     } else {
         // 標準卡片佈局
+        const imageHtml = travel.images 
+            ? `<img src="${travel.images}" alt="${travel.title}" class="img-fluid w-100 h-100" style="object-fit: cover;">`
+            : `<i class="bi bi-geo-alt-fill"></i>`;
+        
         col.innerHTML = `
             <article class="article-card">
                 <div class="card-image">
-                    <i class="bi bi-geo-alt-fill"></i>
+                    ${imageHtml}
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">${travel.title}</h3>
@@ -877,7 +1183,73 @@ function processFlickrEmbeds() {
     }
 }
 
-// 智能佈局決策函數
+// 圖片方向檢測函數
+async function detectImageOrientation(imageSrc) {
+    return new Promise((resolve) => {
+        if (!imageSrc || imageSrc.trim() === '') {
+            resolve('portrait'); // 預設為直式
+            return;
+        }
+        
+        const img = new Image();
+        img.onload = function() {
+            const orientation = this.width > this.height ? 'landscape' : 'portrait';
+            resolve(orientation);
+        };
+        img.onerror = function() {
+            resolve('portrait'); // 載入失敗時預設為直式
+        };
+        img.src = imageSrc;
+    });
+}
+
+// 智能佈局決策函數（考慮圖片方向）
+async function getSmartLayoutType(totalCount, currentIndex, imageSrc) {
+    const imageOrientation = await detectImageOrientation(imageSrc);
+    
+    if (totalCount === 1) {
+        // 只有一篇：根據圖片方向決定佈局
+        return {
+            colClass: 'col-12',
+            isHorizontal: imageOrientation === 'landscape',
+            orientation: imageOrientation
+        };
+    } else if (totalCount === 2) {
+        // 兩篇：根據圖片方向決定佈局
+        if (imageOrientation === 'landscape') {
+            return {
+                colClass: 'col-12 mb-4', // 橫式圖片用全寬度水平佈局
+                isHorizontal: true,
+                orientation: imageOrientation
+            };
+        } else {
+            return {
+                colClass: 'col-lg-6 col-12', // 直式圖片用標準卡片佈局
+                isHorizontal: false,
+                orientation: imageOrientation
+            };
+        }
+    } else {
+        // 三篇以上：根據圖片方向智能調整
+        if (imageOrientation === 'landscape') {
+            // 橫式圖片：使用較大的卡片
+            return {
+                colClass: 'col-lg-6 col-md-6 col-12 mb-4',
+                isHorizontal: true,
+                orientation: imageOrientation
+            };
+        } else {
+            // 直式圖片：使用標準卡片佈局
+            return {
+                colClass: 'col-lg-4 col-md-6 col-12',
+                isHorizontal: false,
+                orientation: imageOrientation
+            };
+        }
+    }
+}
+
+// 原有的佈局決策函數（保留作為備用）
 function getLayoutType(totalCount, currentIndex) {
     if (totalCount === 1) {
         // 只有一篇：全寬度水平佈局

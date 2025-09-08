@@ -55,7 +55,7 @@
                 padding: 0 15px;
             }
             
-            .col-md-4 {
+            .col-md-3 {
                 margin-bottom: 2rem;
             }
             
@@ -261,7 +261,7 @@
         <div id="movie-content" style="display: none;">
             <div class="row">
                 <!-- 左側資訊欄 -->
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <!-- 電影海報/圖示 -->
                     <div id="movie-poster" style="height: 300px; background: linear-gradient(135deg, var(--soft-gray), var(--primary-beige)); display: flex; align-items: center; justify-content: center; margin-bottom: var(--spacing-lg); border-radius: 4px;">
                         <div class="text-center">
@@ -292,7 +292,7 @@
                 </div>
                 
                 <!-- 右側評論內容 -->
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="movie-review-content">
                         <!-- 返回按鈕 -->
                         <div class="mb-4">
@@ -451,52 +451,62 @@
                     metadata.poster = posterPath;
                 }
                 
-                // 解析電影資訊部分
-                const infoSection = content.match(/##\s*電影資訊\s*\n((?:\s*-\s*\*\*[^*]+\*\*[^\n]*\n?)*)/);
-                if (infoSection) {
-                    const infoLines = infoSection[1].split('\n').filter(line => line.trim());
-                    infoLines.forEach(line => {
-                        const match = line.match(/^\s*-\s*\*\*([^*]+)\*\*:\s*(.+)$/);
-                        if (match) {
-                            const key = match[1].trim();
-                            const value = match[2].trim();
-                            
-                            switch(key) {
-                                case '原名':
-                                    metadata.originalTitle = value;
-                                    break;
-                                case '導演':
-                                    metadata.director = value;
-                                    break;
-                                case '年份':
-                                    // 支援 "2025年" 或 "2025" 格式
-                                    const yearMatch = value.match(/(\d{4})/);
-                                    if (yearMatch) {
-                                        metadata.year = yearMatch[1];
-                                    }
-                                    break;
-                                case '類型':
-                                    metadata.genre = value;
-                                    break;
-                                case '觀看日期':
-                                    metadata.watchDate = value;
-                                    break;
-                                case '我的評分':
-                                    // 支援 "3/5" 或 "3.5/5" 或 "3/5 ⭐⭐⭐" 格式
-                                    const ratingMatch = value.match(/([0-9.]+)\/5/);
-                                    if (ratingMatch) {
-                                        metadata.rating = parseFloat(ratingMatch[1]);
-                                    }
-                                    break;
-                                case '推薦指數':
-                                    const recommendationMatch = value.match(/([0-5])/);
-                                    if (recommendationMatch) {
-                                        metadata.recommendation = parseInt(recommendationMatch[1]);
-                                    }
-                                    break;
+                // 解析電影資訊部分 - 簡化版本
+                console.log('開始解析電影資訊...');
+                const movieInfoMatch = content.match(/##\s*電影資訊[\s\S]*?(?=\n##|\n####|$)/);
+                if (movieInfoMatch) {
+                    console.log('找到電影資訊區塊:', movieInfoMatch[0]);
+                    
+                    // 找所有以 - ** 開頭的行
+                    const infoLines = movieInfoMatch[0].match(/^\s*-\s*\*\*[^*]+\*\*[:\s：][^\n\r]+/gm);
+                    console.log('找到的資訊行:', infoLines);
+                    
+                    if (infoLines) {
+                        infoLines.forEach(line => {
+                            // 提取 key-value
+                            const match = line.match(/^\s*-\s*\*\*([^*]+)\*\*\s*[:\s：]\s*(.+)$/);
+                            console.log('分析行:', line.trim(), '匹配結果:', match);
+                            if (match) {
+                                const key = match[1].trim();
+                                const value = match[2].trim();
+                                
+                                switch(key) {
+                                    case '原名':
+                                        metadata.originalTitle = value;
+                                        break;
+                                    case '導演':
+                                        metadata.director = value;
+                                        break;
+                                    case '年份':
+                                        // 支援 "2025年" 或 "2025" 格式
+                                        const yearMatch = value.match(/(\d{4})/);
+                                        if (yearMatch) {
+                                            metadata.year = yearMatch[1];
+                                        }
+                                        break;
+                                    case '類型':
+                                        metadata.genre = value;
+                                        break;
+                                    case '觀看日期':
+                                        metadata.watchDate = value;
+                                        break;
+                                    case '我的評分':
+                                        // 支援 "3/5" 或 "3.5/5" 或 "3/5 ⭐⭐⭐" 格式
+                                        const ratingMatch = value.match(/([0-9.]+)\/5/);
+                                        if (ratingMatch) {
+                                            metadata.rating = parseFloat(ratingMatch[1]);
+                                        }
+                                        break;
+                                    case '推薦指數':
+                                        const recommendationMatch = value.match(/([0-5])/);
+                                        if (recommendationMatch) {
+                                            metadata.recommendation = parseInt(recommendationMatch[1]);
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
                 
                 // 如果還是沒有找到海報，嘗試從 HTML 註解中解析

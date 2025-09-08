@@ -29,8 +29,19 @@ const MOVIE_FILES = [
 // 旅行筆記檔案列表
 const TRAVEL_FILES = [
     {
+        file: 'posts/travel/osaka-expo-2025.md',
+        id: 'osaka-expo-2025',
+        images: 'posts/travel/imgs/GR011874.JPG',
+        featured: true,
+        title: '2025大阪萬博之旅',
+        location: '日本 | 大阪',
+        date: '2025年6月17日 - 6月22日',
+        description: '從小就心心嚮往的日本萬博，終於在2025年再度舉辦！'
+    },
+    {
         file: 'posts/travel/spain-honeymoon-2024.md',
         id: 'spain-honeymoon-2024',
+        images: '', // 使用現有圖片
         featured: true,
         title: '西班牙蜜月旅行',
         location: '西班牙',
