@@ -11,7 +11,7 @@ const MOVIE_FILES = [
         rating: 4.5,
         watchDate: '2025年8月24日',
         description: '接軌DCU的作品，超人之後的故事線發展',
-        images: 'assets/images/peace_maker_s2.png'
+        images: 'posts/movies/imgs/peace_maker_s2.png'
     },
     {
         file: 'posts/movies/fantastic-4-first-step.md',
@@ -22,7 +22,7 @@ const MOVIE_FILES = [
         rating: 3,
         watchDate: '2025年7月24日',
         description: 'MCU第5階段的開幕曲，但...很難讓人有更多期待...',
-        images: 'assets/images/fantastic_4_first_step.jpg'
+        images: 'posts/movies/imgs/fantastic_4_first_step.jpg'
     },
 ];
 

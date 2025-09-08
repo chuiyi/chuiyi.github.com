@@ -4,26 +4,27 @@ const SITE_CONFIG = {
     // 首頁 Hero Section
     hero: {
         title: "生活，如此平凡",
-        subtitle: "在這裡記錄著每一次旅行的足跡，每一部電影的感動。<br>用文字織就時光的詩篇，用影像留住歲月的溫柔。"
+        subtitle: "旅行了這麼多趟，該是時候好好整理這些回憶了。<br>而好看的電影跟好看的照片則是不斷的增加，也一起整理在這裡吧。"
     },
     
     // 各區塊標題和副標題
     sections: {
         about: {
             title: "關於這個小角落",
-            subtitle: "我是一個熱愛生活的人，喜歡透過旅行發現世界的美好，也喜歡在電影中尋找人生的感悟。在這個數位時代，我希望能用文字和影像記錄下這些珍貴的時刻。此網頁以 vibe coding 撰寫中。"
+            subtitle: `多年後重拾這個空間，正好vibe coding流行起來，就讓AI協助發展吧。
+            <br>此網頁以 vibe coding 撰寫中。`
         },
         travel: {
             title: "旅行札記",
-            subtitle: "記錄每一段美好的旅程"
+            subtitle: "記錄每一段美好與不美好的旅程"
         },
         movies: {
             title: "影劇回憶", 
-            subtitle: "分享每一部觸動心靈的電影"
+            subtitle: "電影跟戲劇雜食者，從溫馨到獵奇通吃"
         },
         photography: {
-            title: "攝影日記",
-            subtitle: "透過鏡頭捕捉生活中的美好瞬間"
+            title: "攝影紀實",
+            subtitle: "喜歡拍照，希望照片也能被喜歡"
         }
     },
     

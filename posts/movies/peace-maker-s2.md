@@ -1,5 +1,5 @@
 # 和平使者 Season 2
-![和平使者 Season 2](../../assets/images/peace_maker_s2.png)
+![和平使者 Season 2](imgs/peace_maker_s2.png)
 
 ## 電影資訊
 - **原名**: 和平使者

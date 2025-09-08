@@ -68,7 +68,7 @@ const SiteConfigManager = {
 
             // 更新各 Section 標題和副標題
             this.updateElement('about-title', SITE_CONFIG.sections.about.title);
-            this.updateElement('about-subtitle', SITE_CONFIG.sections.about.subtitle);
+            this.updateElement('about-subtitle', SITE_CONFIG.sections.about.subtitle, true); // 允許 HTML
             
             // 更新 Travel Section（保留圖標）
             const travelTitle = `<i class="bi bi-compass me-3" style="color: var(--muted-brown);"></i>${SITE_CONFIG.sections.travel.title}`;
@@ -87,6 +87,16 @@ const SiteConfigManager = {
 
             // 更新版權聲明
             this.updateElement('copyright', SITE_CONFIG.footer.copyright, true);
+            
+            // 更新導航欄連結
+            this.updateElement('nav-travel', SITE_CONFIG.sections.travel.title);
+            this.updateElement('nav-movies', SITE_CONFIG.sections.movies.title);
+            this.updateElement('nav-photography', SITE_CONFIG.sections.photography.title);
+            
+            // 更新 Hero 區域的按鈕文字
+            this.updateElement('hero-travel-text', SITE_CONFIG.sections.travel.title);
+            this.updateElement('hero-movies-text', SITE_CONFIG.sections.movies.title);
+            this.updateElement('hero-photography-text', SITE_CONFIG.sections.photography.title);
             
             // 更新導航欄
             this.updateNavigation();
@@ -350,16 +360,36 @@ function convertMarkdownToHtml(markdownContent, filePath = '') {
     
     // 處理圖片並修正路徑
     html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (match, alt, src) => {
-        // 如果是相對路徑且以 ../../ 開頭，則轉換為正確的路徑
-        if (src.startsWith('../../')) {
-            src = src.replace('../../', '');
-        }
-        // 如果路徑不是以 http 開頭且不是以 / 開頭，則添加根路徑
+        let correctedSrc = src;
+        
+        // 如果是相對路徑（不以 http 或 / 開頭）
         if (!src.startsWith('http') && !src.startsWith('/')) {
-            src = src;
+            // 如果 filePath 包含 movies，且 src 以 imgs/ 開頭
+            if (filePath.includes('movies') && src.startsWith('imgs/')) {
+                correctedSrc = 'posts/movies/' + src;
+            }
+            // 如果 filePath 包含 travel，且 src 以 imgs/ 開頭
+            else if (filePath.includes('travel') && src.startsWith('imgs/')) {
+                correctedSrc = 'posts/travel/' + src;
+            }
+            // 處理舊的相對路徑格式 ../../assets/images/
+            else if (src.startsWith('../../assets/')) {
+                correctedSrc = src.replace('../../', '');
+            }
+            // 處理舊的相對路徑格式 ../../
+            else if (src.startsWith('../../')) {
+                // 根據 filePath 判斷正確的基礎路徑
+                if (filePath.includes('movies')) {
+                    correctedSrc = 'posts/movies/' + src.replace('../../', '');
+                } else if (filePath.includes('travel')) {
+                    correctedSrc = 'posts/travel/' + src.replace('../../', '');
+                } else {
+                    correctedSrc = src.replace('../../', '');
+                }
+            }
         }
         
-        return `<img src="${src}" alt="${alt}" class="img-fluid rounded mb-3" style="max-width: 100%; height: auto;">`;
+        return `<img src="${correctedSrc}" alt="${alt}" class="img-fluid rounded mb-3" style="max-width: 100%; height: auto;">`;
     });
     
     // 處理標題
@@ -1201,11 +1231,6 @@ function initializeAnimations() {
     animateElements.forEach(el => observer.observe(el));
 }
 
-// 將函數暴露到全域範圍
-window.showMovieDetail = showMovieDetail;
-window.showTravelDetail = showTravelDetail;
-
-// Create travel post element
 // Utility functions
 function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString('zh-TW', {

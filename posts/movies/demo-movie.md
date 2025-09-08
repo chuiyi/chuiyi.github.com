@@ -1,6 +1,6 @@
 # 示範電影
 
-![電影海報](../../assets/images/fantastic_4_first_step.jpg)
+![電影海報](imgs/fantastic_4_first_step.jpg)
 
 ## 電影資訊
 
@@ -16,7 +16,7 @@
 
 這是一部令人驚艷的科幻電影，展現了導演卓越的視覺敘事能力。電影從開場就緊緊抓住觀眾的注意力，透過精巧的剪輯和出色的配樂，營造出緊張刺激的氛圍。
 
-![劇照1](../../assets/images/fantastic_4_first_step.jpg)
+![劇照1](imgs/fantastic_4_first_step.jpg)
 
 ## 影片亮點
 

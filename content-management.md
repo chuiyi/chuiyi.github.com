@@ -9,7 +9,7 @@
 ```markdown
 # 電影標題
 
-![電影海報](../../assets/images/movie-poster.jpg)
+![電影海報](imgs/movie-poster.jpg)
 
 ## 電影資訊
 
@@ -41,9 +41,14 @@
 ### 重要格式說明
 
 #### 1. 電影海報
-- 必須使用 `![電影海報](../../assets/images/filename.jpg)` 格式
-- 圖片檔案必須放在 `assets/images/` 目錄下
+- 電影相關圖片必須放在 `posts/movies/imgs/` 目錄下
+- 在 Markdown 中使用相對路徸：`![電影海報](imgs/filename.jpg)`
 - 系統會自動將路徑轉換為正確的相對路徑
+
+#### 2. 圖片路徑規則
+- 電影海報/劇照：`posts/movies/imgs/` → 在 MD 中使用：`imgs/filename.jpg`
+- 網站圖示：`assets/images/` → 在 HTML 中使用：`assets/images/filename`
+- 個人檔案圖片：`assets/images/` → 在 HTML 中使用：`assets/images/filename`
 
 #### 2. 電影資訊區塊
 電影資訊必須使用以下格式：
@@ -65,7 +70,7 @@
 | 欄位 | 格式要求 | 範例 | 說明 |
 |------|----------|------|------|
 | 標題 | `# 標題內容` | `# 復仇者聯盟` | 第一個 # 標題會被解析為電影標題 |
-| 海報 | `![描述](路徑)` | `![海報](../../assets/images/poster.jpg)` | 包含"海報"、"poster"關鍵字的圖片 |
+| 海報 | `![描述](路徑)` | `![海報](imgs/poster.jpg)` | 包含"海報"、"poster"關鍵字的圖片 |
 | 原名 | `**原名**: 內容` | `**原名**: Avengers` | 電影的原文片名 |
 | 導演 | `**導演**: 內容` | `**導演**: 安東尼·羅素` | 導演姓名 |
 | 年份 | `**年份**: YYYY` | `**年份**: 2019` | 4位數字年份 |
@@ -86,11 +91,11 @@
 ### 圖片路徑轉換
 系統會自動將以下路徑格式：
 ```
-../../assets/images/filename.jpg
+imgs/filename.jpg
 ```
 轉換為：
 ```
-assets/images/filename.jpg
+posts/movies/imgs/filename.jpg
 ```
 
 ### 支援的圖片格式
@@ -110,7 +115,7 @@ MOVIE_INFO
 年份：2024
 導演：導演姓名
 類型：劇情片
-海報：../../assets/images/poster.jpg
+海報：imgs/poster.jpg
 推薦指數：4
 -->
 ```
@@ -125,7 +130,7 @@ director: "導演姓名"
 year: 2024
 genre: "劇情片"
 rating: 4.5
-poster: "../../assets/images/poster.jpg"
+poster: "imgs/poster.jpg"
 ---
 ```
 
@@ -161,7 +166,7 @@ poster: "../../assets/images/poster.jpg"
 ```markdown
 # (2019) 復仇者聯盟：終局之戰
 
-![復仇者聯盟終局之戰海報](../../assets/images/avengers-endgame-poster.jpg)
+![復仇者聯盟終局之戰海報](imgs/avengers-endgame-poster.jpg)
 
 ## 電影資訊
 
@@ -177,7 +182,7 @@ poster: "../../assets/images/poster.jpg"
 
 這是 Marvel 電影宇宙 (MCU) 的一個重要里程碑...
 
-![戰鬥場面](../../assets/images/avengers-battle.jpg)
+![戰鬥場面](imgs/avengers-battle.jpg)
 
 ## 影片亮點
 

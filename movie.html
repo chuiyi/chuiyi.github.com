@@ -636,8 +636,15 @@
             // 轉換 Markdown 為 HTML 並處理圖片路徑
             let processedContent = movieData.content;
             
-            // 自動轉換圖片路徑從 ../../assets/ 到 assets/
+            // 處理各種圖片路徑格式
+            // 處理新的相對路徑 imgs/filename.jpg -> posts/movies/imgs/filename.jpg
+            processedContent = processedContent.replace(/!\[([^\]]*)\]\(imgs\//g, '![$1](posts/movies/imgs/');
+            
+            // 處理舊的相對路徑 ../../assets/ -> assets/
             processedContent = processedContent.replace(/!\[([^\]]*)\]\(\.\.\/\.\.\/assets\//g, '![$1](assets/');
+            
+            // 處理其他舊的相對路徑格式 ../../ -> posts/movies/
+            processedContent = processedContent.replace(/!\[([^\]]*)\]\(\.\.\/\.\.\//g, '![$1](posts/movies/');
             
             const htmlContent = marked.parse(processedContent);
             document.getElementById('markdown-content').innerHTML = htmlContent;
