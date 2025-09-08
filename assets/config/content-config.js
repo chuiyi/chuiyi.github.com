@@ -41,7 +41,7 @@ const TRAVEL_FILES = [
     {
         file: 'posts/travel/spain-honeymoon-2024.md',
         id: 'spain-honeymoon-2024',
-        images: '', // 使用現有圖片
+        images: 'posts/travel/imgs/DSC09113.JPG',
         featured: true,
         title: '西班牙蜜月旅行',
         location: '西班牙',
