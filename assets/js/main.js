@@ -49,10 +49,113 @@ const ThemeManager = {
     }
 };
 
+// 網站配置管理器
+const SiteConfigManager = {
+    init() {
+        // 檢查 SITE_CONFIG 是否已載入
+        if (typeof SITE_CONFIG !== 'undefined') {
+            this.applySiteConfig();
+        } else {
+            console.warn('SITE_CONFIG 未載入，使用預設配置');
+        }
+    },
+    
+    applySiteConfig() {
+        try {
+            // 更新 Hero Section
+            this.updateElement('hero-title', SITE_CONFIG.hero.title);
+            this.updateElement('hero-subtitle', SITE_CONFIG.hero.subtitle, true); // 允許 HTML
+
+            // 更新各 Section 標題和副標題
+            this.updateElement('about-title', SITE_CONFIG.sections.about.title);
+            this.updateElement('about-subtitle', SITE_CONFIG.sections.about.subtitle);
+            
+            // 更新 Travel Section（保留圖標）
+            const travelTitle = `<i class="bi bi-compass me-3" style="color: var(--muted-brown);"></i>${SITE_CONFIG.sections.travel.title}`;
+            this.updateElement('travel-title', travelTitle, true);
+            this.updateElement('travel-subtitle', SITE_CONFIG.sections.travel.subtitle);
+            
+            // 更新 Movies Section（保留圖標）
+            const moviesTitle = `<i class="bi bi-camera-reels me-3" style="color: var(--muted-brown);"></i>${SITE_CONFIG.sections.movies.title}`;
+            this.updateElement('movies-title', moviesTitle, true);
+            this.updateElement('movies-subtitle', SITE_CONFIG.sections.movies.subtitle);
+            
+            // 更新 Photography Section（保留圖標）
+            const photographyTitle = `<i class="bi bi-camera me-3" style="color: var(--muted-brown);"></i>${SITE_CONFIG.sections.photography.title}`;
+            this.updateElement('photography-title', photographyTitle, true);
+            this.updateElement('photography-subtitle', SITE_CONFIG.sections.photography.subtitle);
+
+            // 更新版權聲明
+            this.updateElement('copyright', SITE_CONFIG.footer.copyright, true);
+            
+            // 更新導航欄
+            this.updateNavigation();
+            
+            // 更新社交媒體連結
+            this.updateSocialLinks();
+            
+        } catch (error) {
+            console.error('應用網站配置時發生錯誤:', error);
+        }
+    },
+    
+    updateElement(elementId, content, allowHTML = false) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            if (allowHTML) {
+                element.innerHTML = content;
+            } else {
+                element.textContent = content;
+            }
+        }
+    },
+    
+    updateNavigation() {
+        // 更新導航品牌名稱
+        const navBrand = document.getElementById('navbar-brand');
+        if (navBrand && SITE_CONFIG.navigation) {
+            const brandHTML = `<i class="bi bi-feather me-2"></i>${SITE_CONFIG.navigation.brand}`;
+            navBrand.innerHTML = brandHTML;
+        }
+        
+        // 更新導航中的 GitHub 連結
+        const navGithub = document.getElementById('nav-github');
+        if (navGithub && SITE_CONFIG.navigation.github) {
+            navGithub.href = SITE_CONFIG.navigation.github.url;
+            navGithub.innerHTML = `<i class="bi bi-github me-1"></i>${SITE_CONFIG.navigation.github.title}`;
+        }
+    },
+    
+    updateSocialLinks() {
+        const socialLinksContainer = document.getElementById('social-links');
+        if (socialLinksContainer && SITE_CONFIG.socialLinks) {
+            let linksHTML = '';
+            
+            // 依序生成各個社交媒體連結
+            Object.keys(SITE_CONFIG.socialLinks).forEach(platform => {
+                const link = SITE_CONFIG.socialLinks[platform];
+                linksHTML += `
+                    <a href="${link.url}" 
+                       style="color: var(--warm-white); margin: 0 var(--spacing-sm); text-decoration: none;" 
+                       target="_blank" 
+                       title="${link.title}">
+                        <i class="bi ${link.icon}"></i>
+                    </a>
+                `;
+            });
+            
+            socialLinksContainer.innerHTML = linksHTML;
+        }
+    }
+};
+
 // 等待 DOM 載入完成
 document.addEventListener('DOMContentLoaded', function() {
     // 初始化主題管理
     ThemeManager.init();
+    
+    // 初始化網站配置
+    SiteConfigManager.init();
     
     // 初始化應用
     initializeApp();
@@ -65,9 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 初始化平滑滾動
     initializeSmoothScrolling();
-    
-    // 初始化回到頂部按鈕
-    // initializeBackToTop();
     
     // 初始化動畫
     initializeAnimations();
@@ -971,100 +1071,6 @@ function updateTravelModal(travel) {
     }
 }
 
-// 解析電影 Markdown 內容
-function parseMovieMarkdown(content, filePath = '') {
-    const movie = {
-        title: '',
-        originalTitle: '',
-        director: '',
-        year: '',
-        genre: '',
-        watchDate: '',
-        rating: 0,
-        plot: '',
-        reviews: {
-            visual: '',
-            story: '',
-            music: '',
-            meaning: ''
-        },
-        recommendation: '',
-        tags: [],
-        fullHtml: convertMarkdownToHtml(content, filePath)
-    };
-    
-    // 解析標題
-    const titleMatch = content.match(/^# (.+)/m);
-    if (titleMatch) {
-        movie.title = titleMatch[1].replace(/ - .+/, '');
-    }
-    
-    // 解析電影資訊
-    const originalTitleMatch = content.match(/\*\*原名\*\*:\s*(.+)/);
-    if (originalTitleMatch) movie.originalTitle = originalTitleMatch[1];
-    
-    const directorMatch = content.match(/\*\*導演\*\*:\s*(.+)/);
-    if (directorMatch) movie.director = directorMatch[1];
-    
-    const yearMatch = content.match(/\*\*年份\*\*:\s*(.+)/);
-    if (yearMatch) movie.year = yearMatch[1];
-    
-    const genreMatch = content.match(/\*\*類型\*\*:\s*(.+)/);
-    if (genreMatch) movie.genre = genreMatch[1].split('、')[0];
-    
-    const watchDateMatch = content.match(/\*\*觀看日期\*\*:\s*(.+)/);
-    if (watchDateMatch) movie.watchDate = watchDateMatch[1];
-    
-    const ratingMatch = content.match(/\*\*我的評分\*\*:\s*([0-9.]+)/);
-    if (ratingMatch) movie.rating = parseFloat(ratingMatch[1]);
-    
-    // 解析劇情簡介
-    const plotMatch = content.match(/## 劇情簡介\s*\n\n(.+?)(?=\n\n##|\n\n$)/s);
-    if (plotMatch) movie.plot = plotMatch[1].trim();
-    
-    // 解析標籤
-    const tagsMatch = content.match(/#(\w+)/g);
-    if (tagsMatch) {
-        movie.tags = tagsMatch.map(tag => tag.substring(1));
-    }
-    
-    return movie;
-}
-
-// 解析旅行 Markdown 內容
-function parseTravelMarkdown(content, filePath = '') {
-    const travel = {
-        title: '',
-        location: '',
-        date: '',
-        content: '',
-        highlights: [],
-        foods: [],
-        tips: [],
-        fullHtml: convertMarkdownToHtml(content, filePath)
-    };
-    
-    // 解析標題
-    const titleMatch = content.match(/^# (.+)/m);
-    if (titleMatch) {
-        travel.title = titleMatch[1];
-    }
-    
-    // 解析日期
-    const dateMatch = content.match(/\*\*日期\*\*:\s*(.+)/);
-    if (dateMatch) travel.date = dateMatch[1];
-    
-    // 解析地點
-    const locationMatch = content.match(/\*\*地點\*\*:\s*(.+)/);
-    if (locationMatch) travel.location = locationMatch[1];
-    
-    // 解析旅行心得
-    const contentMatch = content.match(/## 旅行心得\s*\n\n(.+?)(?=\n\n###|\n\n##|\n\n---|\n\n$)/s);
-    if (contentMatch) travel.content = contentMatch[1].trim();
-    
-    return travel;
-}
-
 // 產生星級評分 HTML
 function generateStarRating(rating) {
     const fullStars = Math.floor(rating);
@@ -1200,350 +1206,6 @@ window.showMovieDetail = showMovieDetail;
 window.showTravelDetail = showTravelDetail;
 
 // Create travel post element
-function createTravelPostElement(data) {
-    const col = document.createElement('div');
-    col.className = 'col-lg-6';
-    
-    const dateFormatted = data.date ? new Date(data.date).toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit' }) : '最近';
-    
-    // Use icon placeholder instead of placeholder image
-    const imageHtml = data.image instanceof File ? 
-        `<img src="${URL.createObjectURL(data.image)}" class="card-img-top" alt="旅行照片" style="height: 250px; object-fit: cover;">` :
-        `<div class="bg-success rounded d-flex align-items-center justify-content-center" style="height: 250px;">
-            <div class="text-center">
-                <i class="bi bi-image text-white placeholder-icon" style="font-size: 4rem;"></i>
-                <p class="mt-2 mb-0 text-white">旅行照片</p>
-            </div>
-        </div>`;
-    
-    col.innerHTML = `
-        <div class="card shadow-sm h-100 travel-card bg-dark text-white">
-            ${imageHtml}
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-start mb-2">
-                    <h5 class="card-title text-white">${data.title}</h5>
-                    <span class="badge bg-success">${dateFormatted}</span>
-                </div>
-                <p class="card-text text-light">
-                    ${data.notes.substring(0, 100)}${data.notes.length > 100 ? '...' : ''}
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-light">
-                        <i class="bi bi-geo-alt me-1"></i>${data.location}
-                    </small>
-                    <div>
-                        <button class="btn btn-outline-info btn-sm" onclick="showTravelDetail('${data.title}')">
-                            <i class="bi bi-eye me-1"></i>查看詳情
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    return col;
-}
-
-// Create movie review element
-function createMovieReviewElement(data) {
-    const col = document.createElement('div');
-    col.className = 'col-lg-4 col-md-6';
-    
-    const ratingValue = parseFloat(data.rating.split(' - ')[0]);
-    const fullStars = Math.floor(ratingValue);
-    const hasHalfStar = ratingValue % 1 !== 0;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-    
-    let starsHtml = '';
-    for (let i = 0; i < fullStars; i++) {
-        starsHtml += '<i class="bi bi-star-fill"></i>';
-    }
-    if (hasHalfStar) {
-        starsHtml += '<i class="bi bi-star-half"></i>';
-    }
-    for (let i = 0; i < emptyStars; i++) {
-        starsHtml += '<i class="bi bi-star"></i>';
-    }
-    
-    // Use icon placeholder instead of placeholder image
-    const imageHtml = data.poster instanceof File ? 
-        `<img src="${URL.createObjectURL(data.poster)}" class="card-img-top" alt="電影海報" style="height: 300px; object-fit: cover;">` :
-        `<div class="bg-danger rounded-top d-flex align-items-center justify-content-center" style="height: 300px;">
-            <div class="text-center">
-                <i class="bi bi-film text-white placeholder-icon" style="font-size: 4rem;"></i>
-                <p class="mt-2 mb-0 text-white">電影海報</p>
-            </div>
-        </div>`;
-    
-    col.innerHTML = `
-        <div class="card shadow-sm h-100 movie-card bg-secondary text-white">
-            ${imageHtml}
-            <div class="card-body">
-                <h5 class="card-title text-white">${data.title}</h5>
-                <div class="mb-2">
-                    <span class="badge bg-warning text-dark me-2">${data.genre}</span>
-                    <span class="text-warning">
-                        ${starsHtml}
-                        ${ratingValue}/5
-                    </span>
-                </div>
-                <p class="card-text text-light">
-                    ${data.review.substring(0, 80)}${data.review.length > 80 ? '...' : ''}
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <small class="text-light">${new Date().toLocaleDateString('zh-TW')}</small>
-                    <button class="btn btn-outline-info btn-sm" onclick="showMovieDetail('${data.title}')">
-                        <i class="bi bi-eye me-1"></i>完整評論
-                    </button>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    return col;
-}
-
-// Setup file upload previews
-function setupFileUploadPreviews() {
-    const fileInputs = document.querySelectorAll('input[type="file"]');
-    fileInputs.forEach(input => {
-        input.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                // Create preview if needed
-                console.log('Image selected:', file.name);
-            }
-        });
-    });
-}
-
-// Setup modal events
-function setupModalEvents() {
-    // Clear forms when modals are hidden
-    const modals = document.querySelectorAll('.modal');
-    modals.forEach(modal => {
-        modal.addEventListener('hidden.bs.modal', function() {
-            const form = this.querySelector('form');
-            if (form) {
-                form.reset();
-            }
-        });
-    });
-}
-
-// Setup navigation events
-function setupNavigationEvents() {
-    // Active navigation highlighting
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
-        });
-    });
-    
-    // Scroll spy for navigation
-    window.addEventListener('scroll', function() {
-        let current = '';
-        const sections = document.querySelectorAll('section[id]');
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= sectionTop - 200) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
-        });
-    });
-}
-
-// Initialize smooth scrolling
-function initializeSmoothScrolling() {
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-// Initialize back to top button
-function initializeBackToTop() {
-    // Create back to top button
-    const backToTop = document.createElement('button');
-    backToTop.innerHTML = '<i class="bi bi-arrow-up"></i>';
-    backToTop.className = 'back-to-top';
-    backToTop.setAttribute('aria-label', 'Back to top');
-    document.body.appendChild(backToTop);
-    
-    // Show/hide based on scroll position
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
-        }
-    });
-    
-    // Scroll to top when clicked
-    backToTop.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-// Initialize animations
-function initializeAnimations() {
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-up');
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
-    
-    // Observe elements that should animate
-    const animateElements = document.querySelectorAll('.card, .display-5, .lead');
-    animateElements.forEach(el => observer.observe(el));
-}
-
-// Save travel post to localStorage
-function saveTravelPost(data) {
-    const savedPosts = JSON.parse(localStorage.getItem('travelPosts') || '[]');
-    data.id = Date.now().toString();
-    data.createdAt = new Date().toISOString();
-    savedPosts.push(data);
-    localStorage.setItem('travelPosts', JSON.stringify(savedPosts));
-}
-
-// Save movie review to localStorage
-function saveMovieReview(data) {
-    const savedReviews = JSON.parse(localStorage.getItem('movieReviews') || '[]');
-    data.id = Date.now().toString();
-    data.createdAt = new Date().toISOString();
-    savedReviews.push(data);
-    localStorage.setItem('movieReviews', JSON.stringify(savedReviews));
-}
-
-// Load saved content from localStorage
-function loadSavedContent() {
-    // Load travel posts
-    const savedTravelPosts = JSON.parse(localStorage.getItem('travelPosts') || '[]');
-    savedTravelPosts.forEach(post => {
-        addTravelPost(post);
-    });
-    
-    // Load movie reviews
-    const savedMovieReviews = JSON.parse(localStorage.getItem('movieReviews') || '[]');
-    savedMovieReviews.forEach(review => {
-        addMovieReview(review);
-    });
-}
-
-// Show notification
-function showNotification(message, type = 'info') {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show position-fixed`;
-    notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
-    notification.innerHTML = `
-        ${message}
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.remove();
-        }
-    }, 5000);
-}
-
-// Show travel detail - 顯示旅行詳情 Modal
-async function showTravelDetail(travelId) {
-    const travel = travelData.find(t => t.id === travelId);
-    if (!travel) {
-        console.error('找不到旅行資料:', travelId);
-        showNotification('找不到旅行資料', 'error');
-        return;
-    }
-    
-    try {
-        // 如果還沒有載入完整內容，現在載入
-        if (!travel.fullContent) {
-            const content = await getMarkdownContent(travel.file);
-            if (content) {
-                travel.fullContent = content;
-                travel.parsedData = parseTravelMarkdown(content, travel.file);
-            }
-        }
-        
-        // 動態更新 Modal 內容
-        updateTravelModal(travel);
-        
-        // 顯示 Modal
-        const modal = new bootstrap.Modal(document.getElementById('travelModal1'));
-        modal.show();
-    } catch (error) {
-        console.error('載入旅行詳情時發生錯誤:', error);
-        showNotification('載入旅行詳情時發生錯誤', 'error');
-    }
-}
-
-// Show movie detail - 顯示電影詳情 Modal  
-async function showMovieDetail(movieId) {
-    const movie = movieData.find(m => m.id === movieId);
-    if (!movie) {
-        console.error('找不到電影資料:', movieId);
-        showNotification('找不到電影資料', 'error');
-        return;
-    }
-    
-    try {
-        // 如果還沒有載入完整內容，現在載入
-        if (!movie.fullContent) {
-            const content = await getMarkdownContent(movie.file);
-            if (content) {
-                movie.fullContent = content;
-                movie.parsedData = parseMovieMarkdown(content, movie.file);
-            }
-        }
-        
-        // 動態更新 Modal 內容
-        updateMovieModal(movie);
-        
-        // 顯示 Modal
-        const modal = new bootstrap.Modal(document.getElementById('movieModal1'));
-        modal.show();
-    } catch (error) {
-        console.error('載入電影詳情時發生錯誤:', error);
-        showNotification('載入電影詳情時發生錯誤', 'error');
-    }
-}
-
 // Utility functions
 function formatDate(dateString) {
     return new Date(dateString).toLocaleDateString('zh-TW', {
