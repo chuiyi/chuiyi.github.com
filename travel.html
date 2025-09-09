@@ -291,12 +291,22 @@
                     </div>
                     
                     <!-- 旅行建議 -->
-                    <div id="travel-tips" style="background-color: var(--primary-beige); border: 1px solid var(--border-light); padding: var(--spacing-md); border-radius: 4px;">
+                    <div id="travel-tips" style="background-color: var(--primary-beige); border: 1px solid var(--border-light); padding: var(--spacing-md); border-radius: 4px; margin-bottom: var(--spacing-md);">
                         <h6 style="color: var(--deep-brown); margin-bottom: var(--spacing-md);">
                             <i class="bi bi-lightbulb me-2"></i>旅行建議
                         </h6>
                         <div id="tips-content">
                             <!-- 建議內容將在這裡動態插入 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 目錄導航 -->
+                    <div id="table-of-contents" style="background-color: var(--primary-beige); border: 1px solid var(--border-light); padding: var(--spacing-md); border-radius: 4px;">
+                        <h6 style="color: var(--deep-brown); margin-bottom: var(--spacing-md);">
+                            <i class="bi bi-list-ul me-2"></i>目錄
+                        </h6>
+                        <div id="toc-content">
+                            <!-- 目錄內容將在這裡動態插入 -->
                         </div>
                     </div>
                 </div>
@@ -432,10 +442,17 @@
                 updatePageContent(travelData, filename);
                 console.log('頁面內容更新完成');
                 
-                // 顯示內容
+                // 顯示內容 (檢查元素是否還存在)
                 console.log('準備顯示內容...');
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('travel-content').style.display = 'block';
+                const loadingElement = document.getElementById('loading');
+                const travelContentElement = document.getElementById('travel-content');
+                
+                if (loadingElement) {
+                    loadingElement.style.display = 'none';
+                }
+                if (travelContentElement) {
+                    travelContentElement.style.display = 'block';
+                }
                 console.log('內容顯示完成');
                 
             } catch (error) {
@@ -446,9 +463,19 @@
 
         // 顯示錯誤訊息
         function showError(message) {
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('error').style.display = 'block';
-            document.querySelector('#error p').textContent = message;
+            const loadingElement = document.getElementById('loading');
+            const errorElement = document.getElementById('error');
+            
+            if (loadingElement) {
+                loadingElement.style.display = 'none';
+            }
+            if (errorElement) {
+                errorElement.style.display = 'block';
+                const errorMessage = errorElement.querySelector('p');
+                if (errorMessage) {
+                    errorMessage.textContent = message;
+                }
+            }
         }
 
         // 解析旅行 Markdown
@@ -603,6 +630,16 @@
             document.title = `${travelData.title} - 旅行筆記 | Chuiyi's Github Page`;
             document.getElementById('page-title').textContent = `${travelData.title} - 旅行筆記`;
             
+            // 移除暫時性的載入和錯誤訊息
+            const loadingElement = document.getElementById('loading');
+            const errorElement = document.getElementById('error');
+            if (loadingElement) {
+                loadingElement.remove(); // 完全移除載入指示器
+            }
+            if (errorElement && errorElement.style.display !== 'none') {
+                errorElement.remove(); // 移除錯誤訊息
+            }
+            
             // 更新旅行標題顯示
             document.getElementById('travel-title-display').textContent = travelData.title;
             
@@ -706,15 +743,27 @@
                 detailsHTML += `<div style="margin-bottom: var(--spacing-xs);"><strong>天氣:</strong> ${travelData.weather}</div>`;
             }
             
-            // 如果沒有任何資訊，顯示預設訊息
+            // 如果沒有任何資訊，不顯示任何內容或顯示簡潔提示
             if (!detailsHTML) {
-                detailsHTML = '<div style="color: var(--text-light); font-style: italic;">暫無旅行資訊</div>';
+                // 完全不顯示任何內容，或者可以隱藏整個資訊卡片
+                details.innerHTML = ''; // 移除預設的"暫無旅行資訊"
+                // 可選：隱藏整個旅行資訊卡片
+                const infoCard = document.getElementById('travel-info');
+                if (infoCard && !detailsHTML) {
+                    infoCard.style.display = 'none';
+                }
+            } else {
+                details.innerHTML = detailsHTML;
+                // 確保資訊卡片顯示
+                const infoCard = document.getElementById('travel-info');
+                if (infoCard) {
+                    infoCard.style.display = 'block';
+                }
             }
-            
-            details.innerHTML = detailsHTML;
             
             // 更新旅行建議
             const tipsContent = document.getElementById('tips-content');
+            const tipsCard = document.getElementById('travel-tips');
             
             if (travelData.tips && travelData.tips.length > 0) {
                 let tipsHTML = '<ul style="margin: 0; padding-left: 1.2rem;">';
@@ -723,8 +772,16 @@
                 });
                 tipsHTML += '</ul>';
                 tipsContent.innerHTML = tipsHTML;
+                // 確保建議卡片顯示
+                if (tipsCard) {
+                    tipsCard.style.display = 'block';
+                }
             } else {
-                tipsContent.innerHTML = '<div style="color: var(--text-light); font-style: italic;">暫無旅行建議</div>';
+                // 如果沒有建議，隱藏整個建議卡片
+                tipsContent.innerHTML = ''; // 移除預設的"暫無旅行建議"
+                if (tipsCard) {
+                    tipsCard.style.display = 'none';
+                }
             }
             
             // 轉換 Markdown 為 HTML 並處理圖片路徑
@@ -760,11 +817,90 @@
                 };
             });
             
+            // 生成目錄
+            generateTableOfContents();
+            
             // 更新最後更新時間
             document.getElementById('last-updated').textContent = new Date().toLocaleDateString('zh-TW');
             
             // 更新原始檔案連結
             document.getElementById('markdown-link').href = `posts/travel/${filename}.md`;
+        }
+        
+        // 生成目錄
+        function generateTableOfContents() {
+            const tocContainer = document.getElementById('toc-content');
+            const tocCard = document.getElementById('table-of-contents');
+            
+            if (!tocContainer || !tocCard) {
+                return;
+            }
+            
+            // 找到所有標題元素 (h1-h6)
+            const headings = document.querySelectorAll('#markdown-content h1, #markdown-content h2, #markdown-content h3, #markdown-content h4, #markdown-content h5, #markdown-content h6');
+            
+            if (headings.length === 0) {
+                // 如果沒有標題，隱藏目錄區域
+                tocCard.style.display = 'none';
+                return;
+            }
+            
+            // 生成目錄 HTML
+            let tocHTML = '<ul style="list-style-type: none; padding-left: 0; margin: 0;">';
+            
+            headings.forEach((heading, index) => {
+                // 為每個標題添加 ID (如果沒有的話)
+                if (!heading.id) {
+                    heading.id = `heading-${index}`;
+                }
+                
+                // 獲取標題層級
+                const level = parseInt(heading.tagName.substring(1));
+                const text = heading.textContent.trim();
+                
+                // 計算縮排 (h1=0, h2=1rem, h3=2rem, ...)
+                const indent = (level - 1) * 1;
+                
+                // 添加目錄項目
+                tocHTML += `
+                    <li style="margin-bottom: 0.3rem; padding-left: ${indent}rem;">
+                        <a href="#${heading.id}" 
+                           style="text-decoration: none; color: var(--text-dark); font-size: ${level <= 2 ? '0.9rem' : '0.8rem'}; display: block; padding: 0.2rem 0; border-radius: 3px; transition: background-color 0.2s;"
+                           onmouseover="this.style.backgroundColor='var(--soft-gray)'; this.style.paddingLeft='0.5rem';"
+                           onmouseout="this.style.backgroundColor='transparent'; this.style.paddingLeft='0';"
+                           onclick="smoothScrollToHeading('${heading.id}')">
+                            ${level <= 2 ? text : '• ' + text}
+                        </a>
+                    </li>
+                `;
+            });
+            
+            tocHTML += '</ul>';
+            
+            // 插入目錄內容
+            tocContainer.innerHTML = tocHTML;
+            
+            // 確保目錄區域顯示
+            tocCard.style.display = 'block';
+        }
+        
+        // 平滑滾動到指定標題
+        function smoothScrollToHeading(headingId) {
+            const element = document.getElementById(headingId);
+            if (element) {
+                const offsetTop = element.offsetTop - 120; // 考慮固定導航欄高度
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // 高亮顯示目標標題 (可選)
+                element.style.backgroundColor = 'var(--accent-gold, #daa520)';
+                element.style.transition = 'background-color 0.3s';
+                setTimeout(() => {
+                    element.style.backgroundColor = 'transparent';
+                }, 2000);
+            }
         }
     </script>
 </body>
