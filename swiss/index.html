@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞士輪比賽系統</title>
+    <meta name="description" content="專業的瑞士輪比賽管理系統，支援選手配對、結果記錄、排名計算等功能">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="css/swiss-tournament.css">
+</head>
+<body>
+    <div id="app">
+        <header class="tournament-header">
+            <div class="header-content">
+                <h1>瑞士輪比賽系統</h1>
+                <nav class="header-nav">
+                    <button id="history-btn" class="nav-btn">
+                        <span>歷史比賽</span>
+                    </button>
+                    <button id="export-btn" class="nav-btn">
+                        <span>匯出比賽</span>
+                    </button>
+                    <button id="import-btn" class="nav-btn">
+                        <span>匯入比賽</span>
+                    </button>
+                    <input type="file" id="import-file" accept=".json" style="display: none;">
+                </nav>
+            </div>
+        </header>
+
+        <main class="tournament-main">
+            <!-- 比賽設定階段 -->
+            <section id="tournament-setup" class="page">
+                <div class="page-header">
+                    <h2>開啟賽局</h2>
+                    <p>輸入參賽選手清單來開始一場新的瑞士輪比賽</p>
+                </div>
+                
+                <div class="setup-container">
+                    <div class="setup-card">
+                        <div class="player-input-section">
+                            <label for="players-textarea" class="input-label">
+                                選手清單 <span class="required">*</span>
+                                <small>每行輸入一個選手ID或名稱</small>
+                            </label>
+                            <textarea 
+                                id="players-textarea" 
+                                class="players-input"
+                                placeholder="請輸入選手ID，每行一個&#10;例如：&#10;張三&#10;李四&#10;王五&#10;趙六"
+                                rows="10"
+                            ></textarea>
+                            <div class="input-info">
+                                <span id="player-count-preview">0 位選手</span>
+                                <span class="separator">•</span>
+                                <span id="rounds-preview">0 輪比賽</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 比賽設定選項 -->
+                        <div class="tournament-settings">
+                            <h3 class="settings-title">比賽設定</h3>
+                            
+                            <div class="setting-group">
+                                <div class="setting-item">
+                                    <label for="tournament-name" class="setting-label-text">
+                                        賽局名稱
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="tournament-name" 
+                                        class="tournament-name-input" 
+                                        placeholder="若不輸入則自動生成名稱"
+                                        maxlength="50"
+                                    >
+                                    <small class="setting-description">可自訂比賽名稱，留空則使用預設格式</small>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="allow-draws" class="setting-checkbox">
+                                        <span class="checkmark"></span>
+                                        允許平局
+                                    </label>
+                                    <small class="setting-description">啟用後會在記錄比賽結果時顯示平局選項</small>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="allow-double-loss" class="setting-checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        允許雙敗
+                                    </label>
+                                    <small class="setting-description">啟用後會在記錄比賽結果時顯示雙敗選項</small>
+                                </div>
+                                
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="custom-rounds" class="setting-checkbox">
+                                        <span class="checkmark"></span>
+                                        自訂比賽局數
+                                    </label>
+                                    <div class="rounds-input-container" style="display: none;">
+                                        <input type="number" id="rounds-input" min="3" max="10" step="1" class="rounds-input" placeholder="輸入局數">
+                                        <small class="setting-description">最少3局，若不設定則依瑞士輪規則自動計算</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="setup-actions">
+                            <button id="start-tournament" class="btn btn-primary btn-large" disabled>
+                                <span>開始比賽</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 比賽資訊顯示 -->
+            <section id="tournament-info" class="page">
+                <div class="page-header">
+                    <h2 id="tournament-info-title">賽局資訊</h2>
+                    <p>比賽詳細資訊和參賽選手清單</p>
+                </div>
+                
+                <div class="info-container">
+                    <div class="tournament-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-content">
+                                <span class="stat-label">參賽人數</span>
+                                <span id="player-count" class="stat-value">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-content">
+                                <span class="stat-label">比賽輪數</span>
+                                <span id="round-count" class="stat-value">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">⚡</div>
+                            <div class="stat-content">
+                                <span class="stat-label">目前輪次</span>
+                                <span id="current-round" class="stat-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="players-section">
+                        <h3>參賽選手</h3>
+                        <div id="players-display" class="players-grid"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 對戰安排階段 -->
+            <section id="pairing-arrangement" class="page">
+                <div class="page-header">
+                    <h2 id="arrangement-title">第 1 輪對戰安排</h2>
+                    <p id="arrangement-description">請確認對戰配對，或進行手動調整</p>
+                </div>
+                
+                <div class="arrangement-container">
+                    <!-- 配對控制區域 -->
+                    <div class="arrangement-controls">
+                        <div class="control-group">
+                            <button id="random-pairing" class="btn btn-secondary" style="display: none;">
+                                <span>🎲</span>
+                                重新隨機配對
+                            </button>
+                            <button id="manual-pairing" class="btn btn-info">
+                                <span>✏️</span>
+                                手動配對
+                            </button>
+                            <button id="auto-pairing" class="btn btn-primary">
+                                <span>⚡</span>
+                                自動配對
+                            </button>
+                        </div>
+                        <div class="confirm-group">
+                            <button id="confirm-pairings" class="btn btn-success btn-large">
+                                <span>✓</span>
+                                確認對局安排
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 手動配對界面 -->
+                    <div id="manual-pairing-interface" class="manual-pairing" style="display: none;">
+                        <div class="manual-pairing-header">
+                            <h3>手動配對設定</h3>
+                            <p>拖拽選手進行配對，或點擊選手進行配對</p>
+                        </div>
+                        
+                        <div class="manual-pairing-content">
+                            <div class="available-players">
+                                <h4>可配對選手</h4>
+                                <div id="available-players-list" class="players-pool">
+                                    <!-- 動態生成選手列表 -->
+                                </div>
+                            </div>
+                            
+                            <div class="manual-matches">
+                                <h4>手動配對結果</h4>
+                                <div id="manual-matches-list" class="manual-matches-container">
+                                    <!-- 動態生成手動配對 -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="manual-pairing-actions">
+                            <button id="save-manual-pairings" class="btn btn-success">
+                                保存手動配對
+                            </button>
+                            <button id="cancel-manual-pairings" class="btn btn-secondary">
+                                取消手動配對
+                            </button>
+                            <button id="clear-manual-pairings" class="btn btn-warning">
+                                清空所有配對
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 對戰安排預覽 -->
+                    <div class="arrangement-preview">
+                        <h3>對戰配對預覽</h3>
+                        <div id="arrangement-matches" class="arrangement-matches">
+                            <!-- 動態生成配對預覽 -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 對戰配對 -->
+            <section id="pairing-section" class="page">
+                <div class="page-header">
+                    <h2 id="round-title">Round 1 配對</h2>
+                    <p id="round-description">請記錄每場比賽的結果</p>
+                </div>
+                
+                <div class="pairing-container">
+                    <!-- 輪次資訊摘要 -->
+                    <div class="round-summary">
+                        <div class="summary-stats">
+                            <span id="matches-completed">0</span> / <span id="total-matches">0</span> 場已完成
+                        </div>
+                        <div class="round-actions">
+                            <button id="recalculate-pairings" class="btn btn-warning" style="display: none;">
+                                重新計算配對
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 比賽列表 -->
+                    <div class="matches-list">
+                        <div class="list-header">
+                            <div class="match-col-number">場次</div>
+                            <div class="match-col-players">對戰雙方</div>
+                            <div class="match-col-result">比賽結果</div>
+                            <div class="match-col-actions">操作</div>
+                        </div>
+                        <div id="matches-list-content" class="list-content">
+                            <!-- 比賽項目將在這裡動態生成 -->
+                        </div>
+                    </div>
+                    
+                    <div class="round-controls">
+                        <button id="finish-round" class="btn btn-success" style="display: none;">
+                            結束本輪
+                        </button>
+                        <button id="next-round" class="btn btn-primary" style="display: none;">
+                            開始下一輪
+                        </button>
+                        <button id="finish-tournament" class="btn btn-warning" style="display: none;">
+                            結束比賽
+                        </button>
+                        <button id="view-previous-rounds" class="btn btn-info">
+                            查看歷史輪次
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 歷史輪次檢視 -->
+            <section id="previous-rounds" class="page">
+                <div class="page-header">
+                    <h2>歷史輪次</h2>
+                    <p>查看和修改先前輪次的比賽結果</p>
+                </div>
+                
+                <div class="rounds-history-container">
+                    <div class="rounds-navigation">
+                        <div class="rounds-tabs" id="rounds-tabs">
+                            <!-- 動態生成輪次標籤 -->
+                        </div>
+                        <button class="btn btn-secondary" onclick="app.showPage('pairing-section')">
+                            返回當前輪次
+                        </button>
+                    </div>
+                    
+                    <div class="round-content">
+                        <div id="selected-round-info" class="round-info">
+                            <h3 id="selected-round-title">請選擇要查看的輪次</h3>
+                            <p id="selected-round-description"></p>
+                        </div>
+                        
+                        <div id="selected-round-matches" class="round-matches">
+                            <!-- 動態顯示該輪次的比賽內容 -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 最終排名 -->
+            <section id="final-ranking" class="page">
+                <div class="page-header">
+                    <h2>比賽結果</h2>
+                    <p>最終排名與詳細統計資料</p>
+                </div>
+                
+                <div class="ranking-container">
+                    <div class="ranking-summary">
+                        <div id="tournament-summary"></div>
+                    </div>
+                    
+                    <div class="ranking-table-container">
+                        <div id="ranking-table"></div>
+                    </div>
+                    
+                    <div class="scoring-details-container">
+                        <div id="scoring-details"></div>
+                    </div>
+                    
+                    <div class="final-actions">
+                        <button id="new-tournament" class="btn btn-primary">
+                            開始新比賽
+                        </button>
+                        <button id="export-result" class="btn btn-secondary">
+                            匯出結果
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 歷史比賽 -->
+            <section id="tournament-history" class="page active">
+                <div class="page-header">
+                    <h2>歷史比賽</h2>
+                    <p>檢視和管理過往的比賽記錄</p>
+                </div>
+                
+                <!-- 快速動作區 -->
+                <div class="quick-actions">
+                    <button id="start-new-tournament" class="btn btn-primary btn-large">
+                        <span>🏆</span>
+                        開啟新比賽
+                    </button>
+                    <button id="import-tournament" class="btn btn-secondary">
+                        <span>📁</span>
+                        匯入比賽
+                    </button>
+                </div>
+                
+                <div class="history-container">
+                    <!-- 目前比賽狀態 -->
+                    <div class="current-tournament-section">
+                        <h3>目前比賽</h3>
+                        <div id="current-tournament-card" class="tournament-card current">
+                            <div class="tournament-info">
+                                <div class="tournament-title">無進行中的比賽</div>
+                                <div class="tournament-details">請開始新比賽</div>
+                            </div>
+                            <div class="tournament-actions">
+                                <button id="continue-current" class="btn btn-primary" style="display: none;">
+                                    繼續比賽
+                                </button>
+                                <button id="reset-current" class="btn btn-warning" style="display: none;">
+                                    重置比賽
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 歷史比賽列表 -->
+                    <div class="history-tournaments-section">
+                        <div class="section-header">
+                            <h3>歷史比賽</h3>
+                            <button id="clear-all-history" class="btn btn-danger">
+                                清空歷史
+                            </button>
+                        </div>
+                        <div id="history-tournaments-list" class="tournaments-list">
+                            <div class="empty-state">
+                                <p>暫無歷史比賽記錄</p>
+                                <small>完成的比賽會自動儲存到這裡</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 載入中遮罩 -->
+        <div id="loading-overlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <p>處理中...</p>
+            </div>
+        </div>
+
+        <!-- 通知訊息 -->
+        <div id="notification" class="notification" style="display: none;">
+            <span id="notification-message"></span>
+            <button id="notification-close" class="notification-close">&times;</button>
+        </div>
+    </div>
+
+    <!-- 模態視窗 -->
+    <!-- 棄權設定模態視窗 -->
+    <div id="drop-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>選手棄權設定</h3>
+                <button class="modal-close" onclick="app.closeModal('drop-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="drop-modal-message">請選擇棄權的選手：</p>
+                <div id="drop-options" class="drop-options">
+                    <!-- 動態生成選項 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-drop" class="btn btn-danger">確認棄權</button>
+                <button class="btn btn-secondary" onclick="app.closeModal('drop-modal')">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 修改結果模態視窗 -->
+    <div id="edit-result-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>修改比賽結果</h3>
+                <button class="modal-close" onclick="app.closeModal('edit-result-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="edit-modal-message">選擇新的比賽結果：</p>
+                <div id="edit-result-options" class="result-options">
+                    <!-- 動態生成選項 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-edit" class="btn btn-primary">確認修改</button>
+                <button class="btn btn-secondary" onclick="app.closeModal('edit-result-modal')">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 檔案 -->
+    <script src="js/swiss-tournament.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
