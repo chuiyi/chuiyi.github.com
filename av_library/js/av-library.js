@@ -131,8 +131,34 @@
         return { title: title?.trim() || fallbackTitle, cover: resolvedCover };
     };
 
+    const fetchHtml = async (url) => {
+        const sources = [
+            { id: "direct", build: (target) => target },
+            { id: "corsProxy", build: (target) => `https://cors.isomorphic-git.org/${target}` }
+        ];
+
+        for (const source of sources) {
+            try {
+                const response = await fetch(source.build(url));
+                if (!response.ok) continue;
+                const text = await response.text();
+                if (text && text.length > 500) {
+                    return { text, source: source.id };
+                }
+            } catch (error) {
+                continue;
+            }
+        }
+        return null;
+    };
+
     const fetchMeta = async (url, fallbackTitle) => {
         try {
+            const htmlResult = await fetchHtml(url);
+            if (htmlResult?.text) {
+                return findMetaFromHtml(htmlResult.text, fallbackTitle, url);
+            }
+
             const proxyUrl = `https://r.jina.ai/http://${url.replace(/^https?:\/\//, "")}`;
             const response = await fetch(proxyUrl);
             if (!response.ok) {
