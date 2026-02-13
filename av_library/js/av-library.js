@@ -356,10 +356,8 @@
 
         const cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0] || "";
         
-        // Try to extract stream URL
-        const m3u8Match = text.match(/https?:\/\/[^\s"'<>]+\.m3u8/i)?.[0];
-        const streamMatch = text.match(/https?:\/\/[^\s"'<>]*(?:stream|video|play)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
-        const stream = m3u8Match || streamMatch || "";
+        // Try to extract stream URL using improved strategy
+        const stream = extractStreamUrl(text);
         
         return { title, cover, stream };
     };
@@ -387,6 +385,60 @@
             throw new Error("Fetch failed");
         }
         return response.text();
+    };
+
+    // Try to fetch raw HTML directly for better stream extraction
+    const fetchRawHtml = async (targetUrl) => {
+        try {
+            const response = await fetch(targetUrl, {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+                }
+            });
+            if (response.ok) {
+                return await response.text();
+            }
+        } catch (error) {
+            // Silently fail, will fall back to Jina
+        }
+        return null;
+    };
+
+    // Extract stream URL with multiple strategies
+    const extractStreamUrl = (html) => {
+        if (!html) return "";
+        
+        // Strategy 1: Direct m3u8 URL in HTML
+        const m3u8Match = html.match(/https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*/i)?.[0];
+        if (m3u8Match) {
+            return m3u8Match.replace(/[;'"]$/, '');
+        }
+        
+        // Strategy 2: m3u8 inside JavaScript variables/config
+        const jsM3u8Match = html.match(/["']?(https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*)["']?/i)?.[1];
+        if (jsM3u8Match) {
+            return jsM3u8Match;
+        }
+        
+        // Strategy 3: src or data-src attributes
+        const srcMatch = html.match(/(?:src|data-src)\s*=\s*["'](https?:\/\/[^\s"'<>]*\.(?:m3u8|mp4))/i)?.[1];
+        if (srcMatch) {
+            return srcMatch;
+        }
+        
+        // Strategy 4: HLS or streaming URLs with common patterns
+        const streamMatch = html.match(/https?:\/\/[^\s"'<>]*(?:hls|stream|video|play)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
+        if (streamMatch) {
+            return streamMatch;
+        }
+        
+        // Strategy 5: URL patterns with tokens (common in CDN URLs)
+        const tokenMatch = html.match(/https?:\/\/[^\s"'<>]*\?[^\s"'<>]*(?:token|auth|key)[^\s"'<>]*\.m3u8/i)?.[0];
+        if (tokenMatch) {
+            return tokenMatch;
+        }
+        
+        return "";
     };
 
     const findMetaFromHtml = (html, fallbackTitle, baseUrl) => {
@@ -429,27 +481,35 @@
         }
         const resolvedCover = resolveUrl(baseUrl, cover);
         
-        // Try to extract stream URL
-        let stream = "";
-        const m3u8Match = html.match(/https?:\/\/[^\s"'<>]+\.m3u8(?:[^\s"'<>]*)?/i)?.[0];
-        if (m3u8Match) {
-            stream = m3u8Match.replace(/[;'"]$/, '');
-        }
-        if (!stream) {
-            const streamMatch = html.match(/https?:\/\/[^\s"'<>]*(?:stream|video|play|hls)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
-            if (streamMatch) stream = streamMatch;
-        }
+        // Try to extract stream URL using improved strategy
+        const stream = extractStreamUrl(html);
         
         return { title: title?.trim() || fallbackTitle, cover: resolvedCover, stream };
     };
 
     const fetchMeta = async (url, fallbackTitle, slug, domain) => {
         try {
-            // Always use Jina as primary method (like df7b6f9)
-            const html = await fetchFromJina(url);
+            // Try direct fetch first for better stream extraction
+            let html = null;
+            let rawHtmlFetched = false;
+            
+            try {
+                const rawHtml = await fetchRawHtml(url);
+                if (rawHtml) {
+                    html = rawHtml;
+                    rawHtmlFetched = true;
+                }
+            } catch (error) {
+                // Silently fail, will use Jina
+            }
+            
+            // Fallback to Jina if direct fetch failed
+            if (!html) {
+                html = await fetchFromJina(url);
+            }
             
             // Check if it's Markdown format from Jina
-            if (html.includes("Markdown Content:")) {
+            if (!rawHtmlFetched && html.includes("Markdown Content:")) {
                 const meta = findMetaFromMarkdown(html, fallbackTitle);
                 if (!meta.cover && slug) {
                     try {
@@ -464,10 +524,10 @@
                 return meta;
             }
             
-            // Parse HTML (Jina returns raw HTML)
+            // Parse HTML (either from direct fetch or Jina)
             const meta = findMetaFromHtml(html, fallbackTitle, url);
             
-            // For HTML from Jina, also try search page as fallback for cover
+            // For HTML, also try search page as fallback for cover if not found
             if (!meta.cover && slug) {
                 try {
                     const searchHost = (domain || "jable.tv").replace(/^www\./, "");
@@ -478,6 +538,19 @@
                     }
                 } catch (error) {
                     // Silently fail, use what we have
+                }
+            }
+            
+            // If still no stream and we have raw HTML, try a secondary fetch through Jina
+            if (!meta.stream && rawHtmlFetched && html) {
+                try {
+                    const jinaHtml = await fetchFromJina(url);
+                    const jinaStream = extractStreamUrl(jinaHtml);
+                    if (jinaStream) {
+                        meta.stream = jinaStream;
+                    }
+                } catch (error) {
+                    // Silently fail
                 }
             }
             
