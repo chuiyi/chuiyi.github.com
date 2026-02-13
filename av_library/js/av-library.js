@@ -1,5 +1,7 @@
 (() => {
     const STORAGE_KEY = "avLibraryDB";
+    const VIEW_KEY = "avLibraryViewMode";
+    const SORT_KEY = "avLibrarySortMode";
 
     const $ = (selector) => document.querySelector(selector);
 
@@ -27,6 +29,12 @@
     const setDb = (items) => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
     };
+
+    const getViewMode = () => localStorage.getItem(VIEW_KEY) || "grid";
+    const setViewMode = (mode) => localStorage.setItem(VIEW_KEY, mode);
+
+    const getSortMode = () => localStorage.getItem(SORT_KEY) || "newest";
+    const setSortMode = (mode) => localStorage.setItem(SORT_KEY, mode);
 
     const pickFirstText = (elements) => {
         for (const el of elements) {
@@ -76,9 +84,13 @@
             || doc.querySelector("meta[name='twitter:image']")
             || doc.querySelector("link[rel='image_src']");
         const jsonLd = parseJsonLd(doc);
+        const infoHeaderTitle = pickFirstText(
+            doc.querySelectorAll(".info-header h1, .info-header h2, .info-header h3, .info-header .h1, .info-header .h2, .info-header .title")
+        );
         const headingTitle = pickFirstText(doc.querySelectorAll("h1, h2, h3"));
         const title = titleTag?.content
             || jsonLd.name
+            || infoHeaderTitle
             || headingTitle
             || doc.title
             || fallbackTitle;
@@ -95,6 +107,10 @@
         if (!cover) {
             const match = html.match(/poster\s*=\s*"([^"]+)"/i);
             if (match?.[1]) cover = match[1];
+        }
+        if (!cover) {
+            const previewMatch = html.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/);
+            if (previewMatch?.[0]) cover = previewMatch[0];
         }
         const resolvedCover = resolveUrl(baseUrl, cover);
         return { title: title?.trim() || fallbackTitle, cover: resolvedCover };
@@ -140,13 +156,26 @@
         if (!container) return;
         const db = getDb();
         const filtered = db.filter((item) => item.status === status);
+        const sortMode = getSortMode();
+        const sorted = [...filtered].sort((a, b) => {
+            if (sortMode === "oldest") {
+                return new Date(a.addedAt || 0) - new Date(b.addedAt || 0);
+            }
+            if (sortMode === "title") {
+                return (a.title || a.code).localeCompare(b.title || b.code, "zh-Hant");
+            }
+            return new Date(b.addedAt || 0) - new Date(a.addedAt || 0);
+        });
         container.innerHTML = "";
-        if (filtered.length === 0) {
+        if (sorted.length === 0) {
             if (empty) empty.classList.remove("d-none");
             return;
         }
         if (empty) empty.classList.add("d-none");
-        filtered.forEach((item) => {
+        const viewMode = getViewMode();
+        container.classList.toggle("list-grid", viewMode === "list");
+        container.classList.toggle("card-grid", viewMode !== "list");
+        sorted.forEach((item) => {
             const card = document.createElement("div");
             card.className = "av-card";
             const cover = item.cover || "https://via.placeholder.com/480x720?text=No+Cover";
@@ -157,7 +186,10 @@
                     <div class="av-card-code">${item.code}</div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="badge rounded-pill badge-status">${status === "watched" ? "看過的影片" : "稍後觀看"}</span>
-                        <a href="${item.url}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">前往</a>
+                        <div class="d-flex gap-2">
+                            <a href="${item.url}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">前往</a>
+                            <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="${item.id}">刪除</button>
+                        </div>
                     </div>
                     ${item.sourceName ? `<div class="av-card-source">來源：${item.sourceName}</div>` : ""}
                 </div>
@@ -240,10 +272,58 @@
         });
     };
 
+    const deleteItem = (id) => {
+        const db = getDb();
+        const next = db.filter((item) => item.id !== id);
+        setDb(next);
+    };
+
+    const initListPage = (status) => {
+        const sortSelect = $("#av-sort");
+        const viewButtons = document.querySelectorAll("[data-av-view]");
+        const container = $("#av-card-list");
+
+        if (sortSelect) {
+            sortSelect.value = getSortMode();
+            sortSelect.addEventListener("change", () => {
+                setSortMode(sortSelect.value);
+                renderList(status);
+            });
+        }
+
+        viewButtons.forEach((button) => {
+            const mode = button.dataset.avView;
+            if (mode === getViewMode()) {
+                button.classList.add("active");
+            }
+            button.addEventListener("click", () => {
+                setViewMode(mode);
+                viewButtons.forEach((btn) => btn.classList.toggle("active", btn.dataset.avView === mode));
+                renderList(status);
+            });
+        });
+
+        if (container) {
+            container.addEventListener("click", (event) => {
+                const target = event.target;
+                if (!(target instanceof HTMLElement)) return;
+                const action = target.dataset.action;
+                if (action === "delete") {
+                    const id = target.dataset.id;
+                    if (!id) return;
+                    deleteItem(id);
+                    renderList(status);
+                }
+            });
+        }
+
+        renderList(status);
+    };
+
     const initPage = () => {
         const listPage = document.body?.dataset?.avList;
         if (listPage) {
-            renderList(listPage);
+            initListPage(listPage);
         } else {
             initForm();
         }

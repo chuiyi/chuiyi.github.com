@@ -43,6 +43,26 @@ body {
     gap: 20px;
 }
 
+.list-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.list-grid .av-card {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    align-items: center;
+}
+
+.list-grid .av-card img {
+    height: 180px;
+}
+
+.list-grid .av-card-body {
+    padding: 20px;
+}
+
 .av-card {
     background: var(--av-card);
     border-radius: 16px;
@@ -126,6 +146,14 @@ body {
 
     .preview-card img {
         height: 260px;
+    }
+
+    .list-grid .av-card {
+        grid-template-columns: 1fr;
+    }
+
+    .list-grid .av-card img {
+        height: 220px;
     }
 }
 

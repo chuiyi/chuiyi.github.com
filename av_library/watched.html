@@ -41,6 +41,24 @@
     </header>
 
     <main class="container pb-5">
+        <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between mb-3">
+            <div class="btn-group" role="group" aria-label="View mode">
+                <button type="button" class="btn btn-outline-secondary" data-av-view="grid">
+                    <i class="bi bi-grid-3x3-gap"></i> 相簿
+                </button>
+                <button type="button" class="btn btn-outline-secondary" data-av-view="list">
+                    <i class="bi bi-list"></i> 列表
+                </button>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <label for="av-sort" class="text-muted">排序</label>
+                <select id="av-sort" class="form-select form-select-sm" style="width: 160px;">
+                    <option value="newest">最新新增</option>
+                    <option value="oldest">最早新增</option>
+                    <option value="title">依名稱</option>
+                </select>
+            </div>
+        </div>
         <div id="av-empty-state" class="empty-state d-none">尚未新增影片。</div>
         <div id="av-card-list" class="card-grid"></div>
     </main>
