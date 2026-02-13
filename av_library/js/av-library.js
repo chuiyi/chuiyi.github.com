@@ -9,8 +9,8 @@
     const DRIVE_FILE_NAME = "av_library_db.json";
 
     let googleTokenClient = null;
-    let googleAccessToken = "";
-    let googleTokenExpiry = 0;
+    let googleAccessToken = sessionStorage.getItem("avGoogleAccessToken") || "";
+    let googleTokenExpiry = Number(sessionStorage.getItem("avGoogleTokenExpiry") || 0);
     let pendingSyncAction = null;
     let syncDirty = false;
     let syncTimer = null;
@@ -34,7 +34,7 @@
             return;
         }
         pendingSyncAction = action;
-        const prompt = options.silent ? "" : "consent";
+        const prompt = options.silent ? "none" : "consent";
         googleTokenClient.requestAccessToken({ prompt });
     };
 
@@ -542,11 +542,14 @@
                     callback: (tokenResponse) => {
                         if (tokenResponse?.error) {
                             setSyncStatus("需要重新登入 Google");
+                            pendingSyncAction = null;
                             return;
                         }
                         googleAccessToken = tokenResponse.access_token;
                         const expiresIn = tokenResponse.expires_in ? tokenResponse.expires_in * 1000 : 3600 * 1000;
                         googleTokenExpiry = Date.now() + expiresIn;
+                        sessionStorage.setItem("avGoogleAccessToken", googleAccessToken);
+                        sessionStorage.setItem("avGoogleTokenExpiry", String(googleTokenExpiry));
                         setSyncStatus("已登入 Google Drive");
                         if (pendingSyncAction) {
                             const action = pendingSyncAction;
@@ -574,11 +577,15 @@
                 window.google.accounts.oauth2.revoke(googleAccessToken, () => {
                     googleAccessToken = "";
                     googleTokenExpiry = 0;
+                    sessionStorage.removeItem("avGoogleAccessToken");
+                    sessionStorage.removeItem("avGoogleTokenExpiry");
                     setSyncStatus("已登出 Google Drive");
                 });
             } else {
                 googleAccessToken = "";
                 googleTokenExpiry = 0;
+                sessionStorage.removeItem("avGoogleAccessToken");
+                sessionStorage.removeItem("avGoogleTokenExpiry");
                 setSyncStatus("已登出 Google Drive");
             }
         });
