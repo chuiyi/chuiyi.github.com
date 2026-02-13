@@ -53,12 +53,19 @@
                 <button type="button" class="btn btn-outline-primary btn-sm" id="av-sync-login">
                     <i class="bi bi-google me-1"></i>登入 Google
                 </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-logout">
+                    <i class="bi bi-box-arrow-right me-1"></i>登出
+                </button>
                 <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-pull">
                     <i class="bi bi-cloud-download me-1"></i>同步下載
                 </button>
                 <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-push">
                     <i class="bi bi-cloud-upload me-1"></i>同步上傳
                 </button>
+                <div class="form-check form-switch ms-2">
+                    <input class="form-check-input" type="checkbox" id="av-sync-auto">
+                    <label class="form-check-label" for="av-sync-auto">自動同步</label>
+                </div>
             </div>
             <div class="sync-status" id="av-sync-status">尚未登入 Google Drive</div>
         </div>

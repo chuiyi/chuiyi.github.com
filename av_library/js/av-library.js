@@ -2,6 +2,7 @@
     const STORAGE_KEY = "avLibraryDB";
     const VIEW_KEY = "avLibraryViewMode";
     const SORT_KEY = "avLibrarySortMode";
+    const AUTO_SYNC_KEY = "avLibraryAutoSync";
     const PLACEHOLDER_COVER = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23e9ecef'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='%236c757d'%3ENo Cover%3C/text%3E%3C/svg%3E";
     const GOOGLE_CLIENT_ID = "200098245584-ms1ekqgikfvorm7jh4akcmsc1a6ub3dp.apps.googleusercontent.com";
     const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
@@ -11,6 +12,8 @@
     let googleAccessToken = "";
     let googleTokenExpiry = 0;
     let pendingSyncAction = null;
+    let syncDirty = false;
+    let syncTimer = null;
 
     const $ = (selector) => document.querySelector(selector);
 
@@ -21,7 +24,7 @@
 
     const isTokenValid = () => googleAccessToken && Date.now() < googleTokenExpiry - 60000;
 
-    const ensureAuth = (action) => {
+    const ensureAuth = (action, options = {}) => {
         if (isTokenValid()) {
             action();
             return;
@@ -31,7 +34,19 @@
             return;
         }
         pendingSyncAction = action;
-        googleTokenClient.requestAccessToken({ prompt: "consent" });
+        const prompt = options.silent ? "" : "consent";
+        googleTokenClient.requestAccessToken({ prompt });
+    };
+
+    const markDirty = () => {
+        syncDirty = true;
+        if (getAutoSync()) {
+            if (syncTimer) window.clearTimeout(syncTimer);
+            syncTimer = window.setTimeout(() => {
+                if (!syncDirty) return;
+                ensureAuth(() => runPush(true), { silent: true });
+            }, 1500);
+        }
     };
 
     const driveFetch = async (url, options = {}) => {
@@ -93,6 +108,33 @@
             body
         });
         if (!response.ok) throw new Error("Drive create failed");
+    };
+
+    const runPull = async () => {
+        const files = await listDriveFiles();
+        if (!files.length) {
+            setSyncStatus("雲端尚無資料");
+            return;
+        }
+        const content = await downloadDriveFile(files[0].id);
+        const remote = JSON.parse(content || "[]");
+        const merged = mergeDb(getDb(), Array.isArray(remote) ? remote : []);
+        setDb(merged);
+        const listPage = document.body?.dataset?.avList;
+        if (listPage) renderList(listPage);
+        setSyncStatus("同步完成");
+    };
+
+    const runPush = async (silent = false) => {
+        const content = JSON.stringify(getDb());
+        const files = await listDriveFiles();
+        if (files.length) {
+            await uploadDriveFile(files[0].id, content);
+        } else {
+            await createDriveFile(content);
+        }
+        syncDirty = false;
+        setSyncStatus(silent ? "自動同步完成" : "已上傳雲端");
     };
 
     const mergeDb = (local, remote) => {
@@ -163,6 +205,9 @@
 
     const getSortMode = () => localStorage.getItem(SORT_KEY) || "newest";
     const setSortMode = (mode) => localStorage.setItem(SORT_KEY, mode);
+
+    const getAutoSync = () => localStorage.getItem(AUTO_SYNC_KEY) === "true";
+    const setAutoSync = (value) => localStorage.setItem(AUTO_SYNC_KEY, value ? "true" : "false");
 
     const pickFirstText = (elements) => {
         for (const el of elements) {
@@ -426,6 +471,7 @@
                 if (result.saved && input) {
                     input.value = "";
                 }
+                if (result.saved) markDirty();
                 pendingPayload = null;
                 clearPreview();
             });
@@ -478,9 +524,11 @@
 
     const initGoogleSync = () => {
         const loginButton = $("#av-sync-login");
+        const logoutButton = $("#av-sync-logout");
         const pullButton = $("#av-sync-pull");
         const pushButton = $("#av-sync-push");
-        if (!loginButton || !pullButton || !pushButton) return;
+        const autoToggle = $("#av-sync-auto");
+        if (!loginButton || !logoutButton || !pullButton || !pushButton || !autoToggle) return;
 
         const waitForGis = () => {
             if (window.google?.accounts?.oauth2) {
@@ -488,6 +536,10 @@
                     client_id: GOOGLE_CLIENT_ID,
                     scope: DRIVE_SCOPE,
                     callback: (tokenResponse) => {
+                        if (tokenResponse?.error) {
+                            setSyncStatus("需要重新登入 Google");
+                            return;
+                        }
                         googleAccessToken = tokenResponse.access_token;
                         const expiresIn = tokenResponse.expires_in ? tokenResponse.expires_in * 1000 : 3600 * 1000;
                         googleTokenExpiry = Date.now() + expiresIn;
@@ -507,26 +559,31 @@
         setSyncStatus("載入 Google 驗證中...");
         waitForGis();
 
+        autoToggle.checked = getAutoSync();
+
         loginButton.addEventListener("click", () => {
             ensureAuth(() => setSyncStatus("已登入 Google Drive"));
+        });
+
+        logoutButton.addEventListener("click", () => {
+            if (googleAccessToken && window.google?.accounts?.oauth2) {
+                window.google.accounts.oauth2.revoke(googleAccessToken, () => {
+                    googleAccessToken = "";
+                    googleTokenExpiry = 0;
+                    setSyncStatus("已登出 Google Drive");
+                });
+            } else {
+                googleAccessToken = "";
+                googleTokenExpiry = 0;
+                setSyncStatus("已登出 Google Drive");
+            }
         });
 
         pullButton.addEventListener("click", () => {
             ensureAuth(async () => {
                 setSyncStatus("同步下載中...");
                 try {
-                    const files = await listDriveFiles();
-                    if (!files.length) {
-                        setSyncStatus("雲端尚無資料");
-                        return;
-                    }
-                    const content = await downloadDriveFile(files[0].id);
-                    const remote = JSON.parse(content || "[]");
-                    const merged = mergeDb(getDb(), Array.isArray(remote) ? remote : []);
-                    setDb(merged);
-                    const listPage = document.body?.dataset?.avList;
-                    if (listPage) renderList(listPage);
-                    setSyncStatus("同步完成");
+                    await runPull();
                 } catch (error) {
                     setSyncStatus("同步失敗");
                 }
@@ -537,25 +594,47 @@
             ensureAuth(async () => {
                 setSyncStatus("同步上傳中...");
                 try {
-                    const content = JSON.stringify(getDb());
-                    const files = await listDriveFiles();
-                    if (files.length) {
-                        await uploadDriveFile(files[0].id, content);
-                    } else {
-                        await createDriveFile(content);
-                    }
-                    setSyncStatus("已上傳雲端");
+                    await runPush();
                 } catch (error) {
                     setSyncStatus("同步失敗");
                 }
             });
         });
+
+        autoToggle.addEventListener("change", () => {
+            setAutoSync(autoToggle.checked);
+            if (autoToggle.checked) {
+                ensureAuth(async () => {
+                    setSyncStatus("自動同步啟用，進行首次同步...");
+                    try {
+                        await runPull();
+                        if (syncDirty) await runPush(true);
+                    } catch (error) {
+                        setSyncStatus("同步失敗");
+                    }
+                }, { silent: true });
+            } else {
+                setSyncStatus("已關閉自動同步");
+            }
+        });
+
+        if (getAutoSync()) {
+            ensureAuth(async () => {
+                setSyncStatus("自動同步啟用，進行首次同步...");
+                try {
+                    await runPull();
+                } catch (error) {
+                    setSyncStatus("同步失敗");
+                }
+            }, { silent: true });
+        }
     };
 
     const deleteItem = (id) => {
         const db = getDb();
         const next = db.filter((item) => item.id !== id);
         setDb(next);
+        markDirty();
     };
 
     const initListPage = (status) => {
