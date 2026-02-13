@@ -421,7 +421,23 @@
             }
             
             // Parse HTML (whether from raw fetch or Jina)
-            return findMetaFromHtml(html, fallbackTitle, url);
+            const meta = findMetaFromHtml(html, fallbackTitle, url);
+            
+            // If cover not found and we have slug, try to fetch from search page
+            if (!meta.cover && slug && fromRawFetch) {
+                try {
+                    const searchHost = (domain || "jable.tv").replace(/^www\./, "");
+                    const searchHtml = await fetchFromJina(`https://${searchHost}/search/${slug}/`);
+                    const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
+                    if (cover) {
+                        meta.cover = cover;
+                    }
+                } catch (error) {
+                    // Silently fail, use what we have
+                }
+            }
+            
+            return meta;
         } catch (error) {
             return { title: fallbackTitle, cover: "" };
         }
