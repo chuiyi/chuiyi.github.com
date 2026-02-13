@@ -15,8 +15,6 @@
         };
     };
 
-    const buildUrl = (slug) => `https://jable.tv/s0/videos/${slug}/`;
-
     const getDb = () => {
         try {
             const raw = localStorage.getItem(STORAGE_KEY);
@@ -30,14 +28,76 @@
         localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
     };
 
-    const findMetaFromHtml = (html, fallbackTitle) => {
+    const pickFirstText = (elements) => {
+        for (const el of elements) {
+            const text = el?.textContent?.trim();
+            if (text && text.length > 1) return text;
+        }
+        return "";
+    };
+
+    const parseJsonLd = (doc) => {
+        const scripts = Array.from(doc.querySelectorAll("script[type='application/ld+json']"));
+        for (const script of scripts) {
+            try {
+                const parsed = JSON.parse(script.textContent || "");
+                const items = Array.isArray(parsed) ? parsed : [parsed];
+                for (const item of items) {
+                    if (!item || typeof item !== "object") continue;
+                    const name = item.name || item.headline;
+                    const thumbnail = item.thumbnailUrl || item.image;
+                    if (name || thumbnail) {
+                        return { name, thumbnail };
+                    }
+                }
+            } catch (error) {
+                continue;
+            }
+        }
+        return { name: "", thumbnail: "" };
+    };
+
+    const resolveUrl = (baseUrl, value) => {
+        if (!value) return "";
+        try {
+            return new URL(value, baseUrl).toString();
+        } catch (error) {
+            return value;
+        }
+    };
+
+    const findMetaFromHtml = (html, fallbackTitle, baseUrl) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
-        const titleTag = doc.querySelector("meta[property='og:title']");
-        const imageTag = doc.querySelector("meta[property='og:image']");
-        const title = titleTag?.content || doc.title || fallbackTitle;
-        const cover = imageTag?.content || "";
-        return { title: title?.trim() || fallbackTitle, cover };
+        const titleTag = doc.querySelector("meta[property='og:title']")
+            || doc.querySelector("meta[name='twitter:title']")
+            || doc.querySelector("meta[name='title']");
+        const imageTag = doc.querySelector("meta[property='og:image']")
+            || doc.querySelector("meta[name='twitter:image']")
+            || doc.querySelector("link[rel='image_src']");
+        const jsonLd = parseJsonLd(doc);
+        const headingTitle = pickFirstText(doc.querySelectorAll("h1, h2, h3"));
+        const title = titleTag?.content
+            || jsonLd.name
+            || headingTitle
+            || doc.title
+            || fallbackTitle;
+
+        let cover = imageTag?.content || imageTag?.href || jsonLd.thumbnail || "";
+        if (!cover) {
+            const poster = doc.querySelector("video[poster]")?.getAttribute("poster");
+            if (poster) cover = poster;
+        }
+        if (!cover) {
+            const img = doc.querySelector("img[class*='cover'], img[src*='cover'], img[src*='poster'], img[src*='preview']");
+            if (img?.getAttribute("src")) cover = img.getAttribute("src");
+        }
+        if (!cover) {
+            const match = html.match(/poster\s*=\s*"([^"]+)"/i);
+            if (match?.[1]) cover = match[1];
+        }
+        const resolvedCover = resolveUrl(baseUrl, cover);
+        return { title: title?.trim() || fallbackTitle, cover: resolvedCover };
     };
 
     const fetchMeta = async (url, fallbackTitle) => {
@@ -48,9 +108,18 @@
                 throw new Error("Fetch failed");
             }
             const html = await response.text();
-            return findMetaFromHtml(html, fallbackTitle);
+            return findMetaFromHtml(html, fallbackTitle, url);
         } catch (error) {
             return { title: fallbackTitle, cover: "" };
+        }
+    };
+
+    const searchModules = {
+        jable: {
+            id: "jable",
+            label: "Jable",
+            buildUrl: (slug) => `https://jable.tv/s0/videos/${slug}/`,
+            fetchMeta
         }
     };
 
@@ -90,10 +159,36 @@
                         <span class="badge rounded-pill badge-status">${status === "watched" ? "看過的影片" : "稍後觀看"}</span>
                         <a href="${item.url}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">前往</a>
                     </div>
+                    ${item.sourceName ? `<div class="av-card-source">來源：${item.sourceName}</div>` : ""}
                 </div>
             `;
             container.appendChild(card);
         });
+    };
+
+    const renderPreview = (payload) => {
+        const preview = $("#av-preview");
+        const cover = $("#av-preview-cover");
+        const title = $("#av-preview-title");
+        const code = $("#av-preview-code");
+        const source = $("#av-preview-source");
+        const link = $("#av-preview-link");
+        const status = $("#av-preview-status");
+
+        if (!preview || !payload) return;
+        preview.classList.remove("d-none");
+        const coverUrl = payload.cover || "https://via.placeholder.com/480x720?text=No+Cover";
+        if (cover) cover.src = coverUrl;
+        if (title) title.textContent = payload.title || payload.code;
+        if (code) code.textContent = payload.code;
+        if (source) source.textContent = `來源：${payload.sourceName}`;
+        if (link) {
+            link.href = payload.url;
+            link.textContent = payload.url;
+        }
+        if (status) {
+            status.textContent = payload.status === "watched" ? "看過的影片" : "稍後觀看";
+        }
     };
 
     const initForm = () => {
@@ -115,21 +210,28 @@
                 return;
             }
             const status = Array.from(statusInputs).find((item) => item.checked)?.value || "watched";
-            const url = buildUrl(normalized.slug);
+            const source = searchModules.jable;
+            const url = source.buildUrl(normalized.slug);
 
             if (loading) loading.classList.remove("d-none");
-            const meta = await fetchMeta(url, normalized.code);
+            const meta = await source.fetchMeta(url, normalized.code);
             if (loading) loading.classList.add("d-none");
 
-            const result = saveItem({
+            const payload = {
                 code: normalized.code,
                 slug: normalized.slug,
                 url,
                 title: meta.title,
                 cover: meta.cover,
                 status,
+                sourceId: source.id,
+                sourceName: source.label,
                 addedAt: new Date().toISOString()
-            });
+            };
+
+            renderPreview(payload);
+
+            const result = saveItem(payload);
 
             if (hint) hint.textContent = result.message;
             if (result.saved && input) {
