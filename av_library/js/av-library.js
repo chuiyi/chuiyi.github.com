@@ -239,119 +239,7 @@
         return { name: "", thumbnail: "" };
     };
 
-    // Extract actor names from title with improved logic
-    const extractActors = (title) => {
-        if (!title) return [];
-        
-        // Remove code if present (e.g., "START-488")
-        let workingTitle = title.replace(/^[A-Z]+-\d+\s+/i, '').trim();
-        
-        // Common actor name kanji (漢字 used in Japanese names)
-        const nameKanji = /[\u4E00-\u9FFF]/g;
-        
-        // Split by common separators
-        const parts = workingTitle.split(/[\s·•\-\+,，]/);
-        
-        const actorNames = [];
-        
-        // Process parts from right to left (actor names usually at the end)
-        for (let i = parts.length - 1; i >= 0; i--) {
-            const part = parts[i].trim();
-            if (!part) continue;
-            
-            // Check if it looks like a name
-            const isLikelyName = isActorName(part);
-            
-            if (isLikelyName) {
-                actorNames.unshift(part); // Add to beginning to maintain order
-            } else if (actorNames.length > 0) {
-                // Stop collecting once we hit a non-name after finding names
-                break;
-            }
-        }
-        
-        return actorNames;
-    };
 
-    // Determine if a string looks like an actor name
-    const isActorName = (text) => {
-        if (!text || text.length > 10) return false;
-        
-        // Very short text usually not a name
-        if (text.length < 2) return false;
-        
-        // Common non-name words and phrases (including AV content descriptors)
-        const exclude = ['and', 'the', 'a', 'in', 'on', 'at', 'by', 'or', 'with',
-                       '和', '與', '的', '在', '於', '被', '是', '有', '了', '不', '很', '得',
-                       'vol', 'no', 'ep', 'part', 'scene', '版', '集', '話', '第', '章',
-                       'DVD', 'Blu', 'ray', '4K', 'HD', '中文', '字幕', '無修正',
-                       '温泉', '旅行', '家庭', '学園', '学生', '先生', '妻', '夫', '娘', '息子',
-                       'いいなり', 'なじみ', 'ちんぽ', 'おっぱい', 'ふたなり', 'ラッシュ',
-                       'アクメ', 'イキ', 'オマンコ', 'ザーメン', 'ナマ', 'パイズリ',
-                       '凌辱', '輪姦', '調教', '監禁', '催眠', '緊縛', '拘束'];
-        
-        if (exclude.includes(text.toLowerCase())) return false;
-        
-        // Count different character types
-        const hiragana = text.match(/[\u3040-\u309F]/g) || [];
-        const katakana = text.match(/[\u30A0-\u30FF]/g) || [];
-        const kanji = text.match(/[\u4E00-\u9FFF]/g) || [];
-        const english = text.match(/[A-Za-z]/g) || [];
-        const number = text.match(/\d/g) || [];
-        
-        // If mostly numbers or too many numbers, likely not a name
-        if (number.length > text.length / 2) return false;
-        
-        // Pure English: accept if 2-3 words or 3+ characters
-        if (english.length > 0 && hiragana.length === 0 && kanji.length === 0 && katakana.length === 0) {
-            return text.length >= 3 && text.split(/\s+/).length <= 3;
-        }
-        
-        // Pure hiragana: usually not a name (more likely description)
-        if (hiragana.length > 0 && kanji.length === 0 && katakana.length === 0 && english.length === 0) {
-            return false;
-        }
-        
-        // Katakana only: could be name, accept if reasonable length
-        if (katakana.length > 0 && hiragana.length === 0 && kanji.length === 0 && english.length === 0) {
-            return text.length >= 3 && text.length <= 10;
-        }
-        
-        // Kanji + Hiragana combination: need stricter checks
-        if (kanji.length > 0 && hiragana.length > 0) {
-            // Real names are typically short (2-4 kanji + some hiragana)
-            // Movie descriptors are usually longer
-            if (text.length > 8) return false;
-            
-            // Check if it looks like a descriptor (multiple parts)
-            // Names usually have 1-2 kanji with hiragana for furigana
-            const kanjiRatio = kanji.length / text.length;
-            if (kanjiRatio < 0.3) return false; // Too many hiragana, probably descriptor
-            
-            return true;
-        }
-        
-        // Pure kanji (can be name if 2-4 characters)
-        if (kanji.length > 0 && hiragana.length === 0 && katakana.length === 0 && english.length === 0) {
-            // Check against common name kanji patterns
-            const commonNameKanji = ['麗', '子', '美', '代', '月', '香', '華', '愛', '織', '紀', '乃',
-                                    '野', '木', '田', '中', '石', '橋', '山', '川', '本', '藤', '伊',
-                                    '佐', '鈴', '高', '田', '小', '大', '阿', '亜', '杏', '桃', '梅',
-                                    '春', '夏', '秋', '冬', '花', '琴', '衣', '衛', '永', '昇', '郎',
-                                    '太', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
-            
-            // Check if contains at least one common name kanji
-            const hasNameKanji = text.split('').some(char => commonNameKanji.includes(char));
-            if (hasNameKanji && text.length >= 2 && text.length <= 6) {
-                return true;
-            }
-            
-            // Otherwise, pure kanji of 2-3 chars might still be a name
-            return text.length >= 2 && text.length <= 4;
-        }
-        
-        return false;
-    };
 
     const resolveUrl = (baseUrl, value) => {
         if (!value) return "";
@@ -492,13 +380,6 @@
             const previewMatch = html.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/);
             if (previewMatch?.[0]) cover = previewMatch[0];
         }
-        // Additional fallback: look for any image URL that looks like a preview
-        if (!cover) {
-            const imgMatch = html.match(/https?:\/\/[^\s"'<>]*\.(jpg|jpeg|png|webp)(?:[^\s"'<>]*)?/i)?.[0];
-            if (imgMatch && !imgMatch.includes('logo') && !imgMatch.includes('icon')) {
-                cover = imgMatch;
-            }
-        }
         const resolvedCover = resolveUrl(baseUrl, cover);
         
         // Try to extract stream URL using improved strategy
@@ -630,8 +511,6 @@
             card.className = "av-card";
             const cover = item.cover || PLACEHOLDER_COVER;
             const playBtnHtml = item.stream ? `<button type="button" class="btn btn-sm btn-outline-info" data-action="play" data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}">播放</button>` : "";
-            const actors = extractActors(item.title);
-            const actorsHtml = actors.length > 0 ? `<div class="av-card-actors">${actors.join(", ")}</div>` : "";
             card.innerHTML = `
                 <div style="position: relative;">
                     <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}" ${item.stream ? `data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}"` : ""}>
@@ -642,7 +521,6 @@
                 <div class="av-card-body">
                     <div class="av-card-title">${item.title}</div>
                     <div class="av-card-code">${item.code}</div>
-                    ${actorsHtml}
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="badge rounded-pill badge-status">${status === "watched" ? "看過的影片" : "稍後觀看"}</span>
                         <div class="d-flex gap-2">
@@ -663,8 +541,6 @@
         const cover = $("#av-preview-cover");
         const title = $("#av-preview-title");
         const code = $("#av-preview-code");
-        const actorsDiv = $("#av-preview-actors");
-        const actorsName = $("#av-preview-actors-name");
         const source = $("#av-preview-source");
         const link = $("#av-preview-link");
         const status = $("#av-preview-status");
@@ -690,18 +566,6 @@
         }
         if (title) title.textContent = payload.title || payload.code;
         if (code) code.textContent = payload.code;
-        
-        // Extract and display actor names
-        if (actorsDiv && actorsName) {
-            const actors = extractActors(payload.title);
-            if (actors.length > 0) {
-                actorsName.textContent = actors.join(", ");
-                actorsDiv.style.display = "block";
-            } else {
-                actorsDiv.style.display = "none";
-            }
-        }
-        
         if (source) source.textContent = `來源：${payload.sourceName}`;
         if (link) {
             link.href = payload.url;

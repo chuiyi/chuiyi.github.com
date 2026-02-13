@@ -195,13 +195,6 @@ body {
     font-size: 0.9rem;
 }
 
-.av-card-actors {
-    color: var(--av-accent);
-    font-size: 0.85rem;
-    margin-top: 4px;
-    font-weight: 500;
-}
-
 .av-card-source {
     margin-top: 8px;
     color: var(--av-muted);
