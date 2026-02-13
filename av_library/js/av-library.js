@@ -279,6 +279,34 @@
         return match.replace("/320x180/1.jpg", "/preview.jpg");
     };
 
+    const extractStreamUrlFromSearch = (text) => {
+        // 從搜尋結果中尋找流 URL
+        // 通常在 JavaScript 配置或 API 響應中
+        
+        // 策略 1: 尋找 m3u8 URL
+        const m3u8Match = text.match(/https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*/i);
+        if (m3u8Match) {
+            console.log(`[Search] 找到 m3u8: ${m3u8Match[0]}`);
+            return m3u8Match[0].replace(/[;'"]$/, '');
+        }
+
+        // 策略 2: 尋找 mp4 URL
+        const mp4Match = text.match(/https?:\/\/[^\s"'<>]*\.mp4[^\s"'<>]*/i);
+        if (mp4Match) {
+            console.log(`[Search] 找到 mp4: ${mp4Match[0]}`);
+            return mp4Match[0].replace(/[;'"]$/, '');
+        }
+
+        // 策略 3: 尋找 assets-cdn URL
+        const cdnMatch = text.match(/https?:\/\/assets-cdn\.jable\.tv\/[^\s"'<>]*\.(?:m3u8|mp4|mpd)[^\s"'<>]*/i);
+        if (cdnMatch) {
+            console.log(`[Search] 找到 CDN URL: ${cdnMatch[0]}`);
+            return cdnMatch[0].replace(/[;'"]$/, '');
+        }
+
+        return "";
+    };
+
     const fetchFromJina = async (targetUrl) => {
         // 嘗試直接獲取 HTML 格式（添加 Accept 頭）
         let proxyUrl = `https://r.jina.ai/${targetUrl}`;
@@ -433,7 +461,8 @@
                         const searchHost = (domain || "jable.tv").replace(/^www\./, "");
                         const searchHtml = await fetchFromJina(`https://${searchHost}/search/${slug}/`);
                         const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
-                        return { ...meta, cover };
+                        const stream = extractStreamUrlFromSearch(searchHtml);
+                        return { ...meta, cover, stream: stream || meta.stream };
                     } catch (error) {
                         return meta;
                     }
@@ -444,17 +473,27 @@
             // Parse HTML from Jina
             const meta = findMetaFromHtml(html, fallbackTitle, url);
             
-            // If cover not found, try search page fallback
-            if (!meta.cover && slug) {
+            // If cover or stream not found, try search page fallback
+            if ((!meta.cover || !meta.stream) && slug) {
                 try {
                     const searchHost = (domain || "jable.tv").replace(/^www\./, "");
                     const searchHtml = await fetchFromJina(`https://${searchHost}/search/${slug}/`);
-                    const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
-                    if (cover) {
-                        meta.cover = cover;
+                    
+                    if (!meta.cover) {
+                        const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
+                        if (cover) {
+                            meta.cover = cover;
+                        }
+                    }
+                    
+                    if (!meta.stream) {
+                        const stream = extractStreamUrlFromSearch(searchHtml);
+                        if (stream) {
+                            meta.stream = stream;
+                        }
                     }
                 } catch (error) {
-                    // Silently fail, use what we have
+                    console.log(`[fetchMeta] 搜尋頁面備選方案失敗: ${error.message}`);
                 }
             }
             

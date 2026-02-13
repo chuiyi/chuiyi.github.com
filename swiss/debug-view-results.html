@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>檢視結果功能測試</title>
+    <link rel="stylesheet" href="css/swiss-tournament.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-button {
+            margin: 10px 5px;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .log {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>檢視結果功能測試</h1>
+    
+    <div class="test-section">
+        <h3>1. 基本功能測試</h3>
+        <button class="test-button" onclick="testBasicFunction()">測試基本功能</button>
+        <div id="basic-log" class="log"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>2. 模擬歷史資料測試</h3>
+        <button class="test-button" onclick="createMockData()">創建模擬資料</button>
+        <button class="test-button" onclick="testViewResults()">測試檢視結果</button>
+        <div id="mock-log" class="log"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>3. 模態窗口測試</h3>
+        <button class="test-button" onclick="testModalDisplay()">測試模態窗口顯示</button>
+        <div id="modal-log" class="log"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>4. 實際歷史資料測試</h3>
+        <button class="test-button" onclick="testRealHistory()">測試真實歷史資料</button>
+        <div id="real-log" class="log"></div>
+    </div>
+
+    <script src="js/swiss-tournament.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        function log(sectionId, message) {
+            const logElement = document.getElementById(sectionId);
+            logElement.textContent += new Date().toLocaleTimeString() + ': ' + message + '\n';
+        }
+
+        function testBasicFunction() {
+            log('basic-log', '開始基本功能測試...');
+            
+            try {
+                // 檢查 app 物件是否存在
+                if (typeof app !== 'undefined') {
+                    log('basic-log', '✓ app 物件存在');
+                } else {
+                    log('basic-log', '✗ app 物件不存在');
+                    return;
+                }
+                
+                // 檢查 viewTournamentResults 方法是否存在
+                if (typeof app.viewTournamentResults === 'function') {
+                    log('basic-log', '✓ viewTournamentResults 方法存在');
+                } else {
+                    log('basic-log', '✗ viewTournamentResults 方法不存在');
+                    return;
+                }
+                
+                // 檢查 displayHistoryResults 方法是否存在
+                if (typeof app.displayHistoryResults === 'function') {
+                    log('basic-log', '✓ displayHistoryResults 方法存在');
+                } else {
+                    log('basic-log', '✗ displayHistoryResults 方法不存在');
+                    return;
+                }
+                
+                log('basic-log', '基本功能測試完成 - 所有必要方法都存在');
+                
+            } catch (error) {
+                log('basic-log', '基本功能測試失敗: ' + error.message);
+            }
+        }
+
+        function createMockData() {
+            log('mock-log', '創建模擬歷史資料...');
+            
+            try {
+                const mockTournament = {
+                    tournamentId: 'test-tournament-' + Date.now(),
+                    title: '測試比賽',
+                    players: [
+                        { id: 1, name: '選手A', score: 2, opponents: [2, 3], results: ['win', 'win'], buchholz: 1, sosBuchholz: 0 },
+                        { id: 2, name: '選手B', score: 1, opponents: [1, 3], results: ['loss', 'win'], buchholz: 3, sosBuchholz: 1 },
+                        { id: 3, name: '選手C', score: 0, opponents: [1, 2], results: ['loss', 'loss'], buchholz: 3, sosBuchholz: 1 }
+                    ],
+                    rounds: [
+                        {
+                            roundNumber: 1,
+                            pairings: [
+                                { id: 1, player1: { id: 1, name: '選手A' }, player2: { id: 2, name: '選手B' }, result: 'player1_win' }
+                            ]
+                        },
+                        {
+                            roundNumber: 2,
+                            pairings: [
+                                { id: 2, player1: { id: 1, name: '選手A' }, player2: { id: 3, name: '選手C' }, result: 'player1_win' }
+                            ]
+                        }
+                    ],
+                    isFinished: true,
+                    champion: { id: 1, name: '選手A' },
+                    startTime: new Date().toISOString(),
+                    endTime: new Date().toISOString(),
+                    stats: { completedRounds: 2 },
+                    totalRounds: 2
+                };
+                
+                // 儲存到 localStorage（模擬歷史資料）
+                const history = JSON.parse(localStorage.getItem('swissTournamentHistory') || '[]');
+                history.push(mockTournament);
+                localStorage.setItem('swissTournamentHistory', JSON.stringify(history));
+                
+                log('mock-log', '✓ 模擬資料已創建，比賽ID: ' + mockTournament.tournamentId);
+                
+                // 更新歷史列表（如果存在）
+                if (app && typeof app.updateHistoryList === 'function') {
+                    app.updateHistoryList();
+                    log('mock-log', '✓ 歷史列表已更新');
+                }
+                
+                window.testTournamentId = mockTournament.tournamentId;
+                
+            } catch (error) {
+                log('mock-log', '創建模擬資料失敗: ' + error.message);
+            }
+        }
+
+        function testViewResults() {
+            log('mock-log', '測試檢視結果功能...');
+            
+            try {
+                if (!window.testTournamentId) {
+                    log('mock-log', '請先創建模擬資料');
+                    return;
+                }
+                
+                log('mock-log', '調用 viewTournamentResults，ID: ' + window.testTournamentId);
+                app.viewTournamentResults(window.testTournamentId);
+                
+                // 檢查是否有模態窗口出現
+                setTimeout(() => {
+                    const modal = document.getElementById('history-results-modal');
+                    if (modal) {
+                        log('mock-log', '✓ 模態窗口已創建');
+                        if (modal.classList.contains('show')) {
+                            log('mock-log', '✓ 模態窗口已顯示');
+                        } else {
+                            log('mock-log', '✗ 模態窗口未顯示（缺少 show 類別）');
+                        }
+                    } else {
+                        log('mock-log', '✗ 模態窗口未創建');
+                    }
+                }, 100);
+                
+            } catch (error) {
+                log('mock-log', '測試檢視結果失敗: ' + error.message);
+            }
+        }
+
+        function testModalDisplay() {
+            log('modal-log', '測試模態窗口顯示...');
+            
+            try {
+                // 創建簡單的測試模態窗口
+                const modal = document.createElement('div');
+                modal.className = 'modal';
+                modal.id = 'test-modal';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>測試模態窗口</h3>
+                            <button class="modal-close" onclick="closeTestModal()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <p>這是一個測試模態窗口</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" onclick="closeTestModal()">關閉</button>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                log('modal-log', '✓ 測試模態窗口已創建');
+                
+                setTimeout(() => {
+                    modal.classList.add('show');
+                    log('modal-log', '✓ 測試模態窗口已顯示');
+                }, 10);
+                
+                window.closeTestModal = function() {
+                    modal.classList.remove('show');
+                    setTimeout(() => {
+                        modal.remove();
+                        log('modal-log', '✓ 測試模態窗口已關閉和移除');
+                    }, 300);
+                };
+                
+            } catch (error) {
+                log('modal-log', '測試模態窗口失敗: ' + error.message);
+            }
+        }
+
+        function testRealHistory() {
+            log('real-log', '測試真實歷史資料...');
+            
+            try {
+                if (!app || !app.tournament) {
+                    log('real-log', '✗ app 或 tournament 物件不存在');
+                    return;
+                }
+                
+                const history = app.tournament.getTournamentHistory();
+                log('real-log', '歷史記錄數量: ' + history.length);
+                
+                if (history.length === 0) {
+                    log('real-log', '沒有歷史記錄，請先完成一場比賽或創建模擬資料');
+                    return;
+                }
+                
+                // 測試第一個歷史記錄
+                const firstTournament = history[0];
+                log('real-log', '測試第一個歷史記錄: ' + firstTournament.title);
+                log('real-log', '比賽ID: ' + firstTournament.tournamentId);
+                
+                app.viewTournamentResults(firstTournament.tournamentId);
+                
+                setTimeout(() => {
+                    const modal = document.getElementById('history-results-modal');
+                    if (modal && modal.classList.contains('show')) {
+                        log('real-log', '✓ 真實歷史資料檢視成功');
+                    } else {
+                        log('real-log', '✗ 真實歷史資料檢視失敗');
+                    }
+                }, 100);
+                
+            } catch (error) {
+                log('real-log', '測試真實歷史資料失敗: ' + error.message);
+            }
+        }
+
+        // 頁面載入完成後執行基本測試
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                testBasicFunction();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

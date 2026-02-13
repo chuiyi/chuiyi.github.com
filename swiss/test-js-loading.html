@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 載入測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript 載入測試</h1>
+    
+    <div id="test-results">
+        <div class="test-result info">正在檢測 JavaScript 載入狀態...</div>
+    </div>
+
+    <script src="js/swiss-tournament.js"></script>
+    <script>
+        // 檢測 SwissTournament 類是否已載入
+        function runTests() {
+            const resultsContainer = document.getElementById('test-results');
+            resultsContainer.innerHTML = '';
+
+            // 測試 1: SwissTournament 類是否存在
+            try {
+                if (typeof SwissTournament !== 'undefined') {
+                    const result = document.createElement('div');
+                    result.className = 'test-result success';
+                    result.textContent = '✓ SwissTournament 類已成功載入';
+                    resultsContainer.appendChild(result);
+                    
+                    // 測試 2: 是否能創建實例
+                    try {
+                        const tournament = new SwissTournament();
+                        const result2 = document.createElement('div');
+                        result2.className = 'test-result success';
+                        result2.textContent = '✓ SwissTournament 實例創建成功';
+                        resultsContainer.appendChild(result2);
+                        
+                        // 測試 3: 檢查新方法是否存在
+                        const methods = ['generateRandomPairings', 'generateSwissPairings', 'applyCustomPairings'];
+                        methods.forEach(methodName => {
+                            if (typeof tournament[methodName] === 'function') {
+                                const result3 = document.createElement('div');
+                                result3.className = 'test-result success';
+                                result3.textContent = `✓ 方法 ${methodName} 存在`;
+                                resultsContainer.appendChild(result3);
+                            } else {
+                                const result3 = document.createElement('div');
+                                result3.className = 'test-result error';
+                                result3.textContent = `✗ 方法 ${methodName} 不存在`;
+                                resultsContainer.appendChild(result3);
+                            }
+                        });
+                        
+                        // 測試 4: 測試基本功能
+                        try {
+                            tournament.initializeTournament(['Alice', 'Bob', 'Charlie', 'David']);
+                            const randomPairings = tournament.generateRandomPairings();
+                            
+                            const result4 = document.createElement('div');
+                            result4.className = 'test-result success';
+                            result4.textContent = `✓ 基本功能測試成功，生成了 ${randomPairings.length} 個配對`;
+                            resultsContainer.appendChild(result4);
+                        } catch (error) {
+                            const result4 = document.createElement('div');
+                            result4.className = 'test-result error';
+                            result4.textContent = `✗ 基本功能測試失敗: ${error.message}`;
+                            resultsContainer.appendChild(result4);
+                        }
+                        
+                    } catch (error) {
+                        const result2 = document.createElement('div');
+                        result2.className = 'test-result error';
+                        result2.textContent = `✗ SwissTournament 實例創建失敗: ${error.message}`;
+                        resultsContainer.appendChild(result2);
+                    }
+                } else {
+                    const result = document.createElement('div');
+                    result.className = 'test-result error';
+                    result.textContent = '✗ SwissTournament 類未載入';
+                    resultsContainer.appendChild(result);
+                }
+            } catch (error) {
+                const result = document.createElement('div');
+                result.className = 'test-result error';
+                result.textContent = `✗ JavaScript 載入錯誤: ${error.message}`;
+                resultsContainer.appendChild(result);
+            }
+        }
+
+        // 頁面載入完成後執行測試
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', runTests);
+        } else {
+            runTests();
+        }
+    </script>
+</body>
+</html>

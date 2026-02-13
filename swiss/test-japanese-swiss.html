@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日版瑞士制同分決勝測試</title>
+    <link rel="stylesheet" href="css/swiss-tournament.css">
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-button {
+            margin: 10px 5px;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .rules-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .rules-section {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .rules-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .formula {
+            background: #f8f9fa;
+            padding: 10px;
+            border-left: 4px solid #007bff;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        .test-results {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>日版瑞士制同分決勝規則測試</h1>
+    
+    <div class="test-section">
+        <h3>同分決勝規則對比</h3>
+        <div class="rules-comparison">
+            <div class="rules-section">
+                <h3>原有規則</h3>
+                <ol>
+                    <li>總積分</li>
+                    <li>Buchholz 係數（對手積分總和）</li>
+                    <li>SOS Buchholz（對手的 Buchholz 總和）</li>
+                </ol>
+            </div>
+            <div class="rules-section">
+                <h3>日版瑞士制規則</h3>
+                <ol>
+                    <li>總積分</li>
+                    <li><strong>OMW%（對手平均勝率）</strong></li>
+                    <li><strong>戰勝對手積分（WOScore）</strong></li>
+                    <li><strong>OOMW%（平均對手勝率）</strong></li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="formula">
+            <h4>計算公式：</h4>
+            <p><strong>OMW%</strong> = (對手總勝場數 / 對手總場次) × 100</p>
+            <p><strong>WOScore</strong> = 所有對手的積分總和</p>
+            <p><strong>OOMW%</strong> = 對手的 OMW% 平均值</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>功能測試</h3>
+        <button class="test-button" onclick="createTestTournament()">創建測試比賽</button>
+        <button class="test-button" onclick="testTiebreakCalculation()">測試同分決勝計算</button>
+        <button class="test-button" onclick="showRankingComparison()">顯示排名對比</button>
+        <button class="test-button" onclick="resetTest()">重置測試</button>
+    </div>
+
+    <div class="test-results" id="test-results" style="display: none;">
+        <h3>測試結果</h3>
+        <div id="results-content"></div>
+    </div>
+
+    <script src="js/swiss-tournament.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        let testTournament = null;
+
+        function createTestTournament() {
+            console.log('創建測試比賽...');
+            
+            // 創建一個專門用於測試同分決勝的比賽
+            testTournament = new SwissTournament();
+            
+            // 添加測試選手
+            const players = [
+                '張三', '李四', '王五', '趙六', '陳七', '劉八'
+            ];
+            
+            players.forEach(name => {
+                testTournament.addPlayer(name);
+            });
+            
+            console.log('已添加 6 名選手');
+            
+            // 模擬 3 輪比賽結果，創造同分情況
+            simulateTestRounds();
+            
+            showMessage('測試比賽已創建，包含 6 名選手和 3 輪比賽結果');
+        }
+
+        function simulateTestRounds() {
+            console.log('模擬比賽結果...');
+            
+            // 第 1 輪
+            testTournament.startNewRound();
+            let pairings = testTournament.getCurrentRoundPairings();
+            
+            // 模擬第 1 輪結果
+            pairings[0].result = 'player1_win';  // 張三 勝 李四
+            pairings[1].result = 'player1_win';  // 王五 勝 趙六
+            pairings[2].result = 'player1_win';  // 陳七 勝 劉八
+            
+            pairings.forEach(p => p.completed = true);
+            testTournament.updatePlayerStats();
+            
+            // 第 2 輪
+            testTournament.startNewRound();
+            pairings = testTournament.getCurrentRoundPairings();
+            
+            // 模擬第 2 輪結果（創造同分）
+            pairings[0].result = 'player2_win';  // 張三 vs 王五 → 王五勝
+            pairings[1].result = 'player1_win';  // 李四 vs 陳七 → 李四勝
+            pairings[2].result = 'player1_win';  // 趙六 vs 劉八 → 趙六勝
+            
+            pairings.forEach(p => p.completed = true);
+            testTournament.updatePlayerStats();
+            
+            // 第 3 輪
+            testTournament.startNewRound();
+            pairings = testTournament.getCurrentRoundPairings();
+            
+            // 模擬第 3 輪結果
+            pairings[0].result = 'player1_win';  // 王五 vs 李四 → 王五勝
+            pairings[1].result = 'player1_win';  // 張三 vs 趙六 → 張三勝
+            pairings[2].result = 'player2_win';  // 陳七 vs 劉八 → 劉八勝
+            
+            pairings.forEach(p => p.completed = true);
+            testTournament.updatePlayerStats();
+            
+            console.log('比賽結果模擬完成');
+        }
+
+        function testTiebreakCalculation() {
+            if (!testTournament) {
+                showMessage('請先創建測試比賽');
+                return;
+            }
+            
+            console.log('測試同分決勝計算...');
+            
+            // 計算同分決勝統計
+            testTournament.calculateTiebreakStats();
+            
+            // 獲取排名
+            const ranking = testTournament.getFinalRanking();
+            
+            let resultHtml = `
+                <h4>選手統計</h4>
+                <table class="ranking-table">
+                    <thead>
+                        <tr>
+                            <th>排名</th>
+                            <th>選手</th>
+                            <th>積分</th>
+                            <th>OMW%</th>
+                            <th>WOScore</th>
+                            <th>OOMW%</th>
+                            <th>戰績</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            ranking.forEach((player, index) => {
+                const wins = player.results.filter(r => r.resultType === 'win').length;
+                const losses = player.results.filter(r => r.resultType === 'loss').length;
+                
+                resultHtml += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${player.name}</td>
+                        <td>${player.score}</td>
+                        <td>${(player.omwPercentage || 0).toFixed(1)}%</td>
+                        <td>${player.buchholz.toFixed(1)}</td>
+                        <td>${(player.oomwPercentage || 0).toFixed(1)}%</td>
+                        <td>${wins}勝${losses}敗</td>
+                    </tr>
+                `;
+            });
+            
+            resultHtml += `
+                    </tbody>
+                </table>
+                <h4>同分決勝分析</h4>
+                <div class="analysis">
+                    <p><strong>6分選手：</strong>${ranking.filter(p => p.score === 6).map(p => p.name).join(', ')}</p>
+                    <p><strong>3分選手：</strong>${ranking.filter(p => p.score === 3).map(p => p.name).join(', ')}</p>
+                    <p><strong>排序依據：</strong>積分 > OMW% > WOScore > OOMW%</p>
+                </div>
+            `;
+            
+            showResults(resultHtml);
+        }
+
+        function showRankingComparison() {
+            if (!testTournament) {
+                showMessage('請先創建測試比賽');
+                return;
+            }
+            
+            console.log('顯示排名對比...');
+            
+            // 獲取新規則排名
+            const newRanking = testTournament.getFinalRanking();
+            
+            // 模擬舊規則排名
+            const oldRanking = [...testTournament.players].sort((a, b) => {
+                if (Math.abs(b.score - a.score) > 0.001) return b.score - a.score;
+                if (Math.abs(b.buchholz - a.buchholz) > 0.001) return b.buchholz - a.buchholz;
+                return b.sosBuchholz - a.sosBuchholz;
+            });
+            
+            let comparisonHtml = `
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>舊規則排名</h4>
+                        <ol>
+                            ${oldRanking.map(p => `<li>${p.name} (${p.score}分, Buchholz: ${p.buchholz.toFixed(1)})</li>`).join('')}
+                        </ol>
+                    </div>
+                    <div>
+                        <h4>日版瑞士制排名</h4>
+                        <ol>
+                            ${newRanking.map(p => `<li>${p.name} (${p.score}分, OMW%: ${(p.omwPercentage || 0).toFixed(1)}%)</li>`).join('')}
+                        </ol>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <h4>差異說明</h4>
+                    <p>日版瑞士制更重視對手的勝率，而非單純的積分總和，這樣能更準確反映選手面對的對手強度。</p>
+                </div>
+            `;
+            
+            showResults(comparisonHtml);
+        }
+
+        function resetTest() {
+            testTournament = null;
+            document.getElementById('test-results').style.display = 'none';
+            showMessage('測試已重置');
+        }
+
+        function showMessage(message) {
+            console.log(message);
+            const results = document.getElementById('results-content');
+            results.innerHTML = `<div style="padding: 10px; background: #d4edda; border: 1px solid #c3e6cb; border-radius: 4px; color: #155724;">${message}</div>`;
+            document.getElementById('test-results').style.display = 'block';
+        }
+
+        function showResults(html) {
+            const results = document.getElementById('results-content');
+            results.innerHTML = html;
+            document.getElementById('test-results').style.display = 'block';
+        }
+
+        // 頁面載入完成後的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('日版瑞士制測試頁面已載入');
+        });
+    </script>
+</body>
+</html>

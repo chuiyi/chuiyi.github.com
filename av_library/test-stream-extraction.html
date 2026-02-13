@@ -27,6 +27,7 @@
             </div>
             <button class="btn btn-primary" onclick="testExtraction()">開始測試</button>
             <button class="btn btn-secondary ms-2" onclick="testWithRawFetch()">使用直接 Fetch 測試</button>
+            <button class="btn btn-danger ms-2" onclick="testWithNetworkMonitor()">監聽網路請求</button>
             <button class="btn btn-info ms-2" onclick="searchInPreview()">在預覽中搜尋流</button>
             <button class="btn btn-secondary ms-2" onclick="clearLog()">清除日誌</button>
         </div>
@@ -440,6 +441,50 @@
                     log(`${i + 1}. ${match}`, 'info');
                 }
             });
+        };
+
+        const testWithNetworkMonitor = async () => {
+            clearLog();
+            const videoUrl = document.getElementById('videoUrl').value;
+            
+            if (!videoUrl) {
+                log('請輸入影片 URL', 'error');
+                return;
+            }
+
+            log('開始網路監聽測試: ' + videoUrl, 'info');
+            log('⚠️ 此方法需要在實際瀏覽器中訪問頁面', 'error');
+            log('無法在測試工具中直接監聽，建議步驟：', 'info');
+            log('1. 在新標籤頁訪問: ' + videoUrl, 'info');
+            log('2. 按 F12 打開開發者工具', 'info');
+            log('3. 切換到「Network」標籤', 'info');
+            log('4. 重新加載頁面', 'info');
+            log('5. 尋找類型為「XHR」或「Fetch」的請求，包含 m3u8 或 mp4', 'info');
+            log('6. 在「Response」中查看實際流 URL', 'info');
+            log('', 'info');
+            log('或者，嘗試在控制台執行以下代碼:', 'info');
+            
+            const code = `
+// 截取所有 fetch 請求
+const originalFetch = window.fetch;
+window.fetch = function(...args) {
+    console.log('[Fetch Intercept]', args[0]);
+    return originalFetch.apply(this, args);
+};
+
+// 查看所有 video 元素的 src
+document.querySelectorAll('video').forEach((v, i) => {
+    console.log('Video ' + i + ':', v.src, v.currentSrc);
+    if (v.children) {
+        [...v.children].forEach(child => {
+            console.log('  - Child:', child.src || child.data);
+        });
+    }
+});
+            `;
+            
+            log('代碼:', 'info');
+            log(code, 'info');
         };
     </script>
 </body>

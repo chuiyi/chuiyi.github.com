@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞士輪系統測試</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .pass { background-color: #d4edda; color: #155724; }
+        .fail { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>瑞士輪算法測試</h1>
+    <div id="test-results"></div>
+
+    <script src="js/swiss-tournament.js"></script>
+    <script>
+        function runTests() {
+            const results = [];
+            
+            // 測試輪數計算
+            function testRoundCalculation() {
+                const tests = [
+                    { players: 4, expected: 3 }, // ceil(log2(4)) = 2, 但最少3輪
+                    { players: 8, expected: 3 }, // ceil(log2(8)) = 3
+                    { players: 9, expected: 4 }, // ceil(log2(9)) = 4 (修正後)
+                    { players: 16, expected: 4 }, // ceil(log2(16)) = 4
+                    { players: 32, expected: 5 }, // ceil(log2(32)) = 5
+                    { players: 6, expected: 3 }, // ceil(log2(6)) = 3
+                ];
+                
+                tests.forEach(test => {
+                    const tournament = new SwissTournament();
+                    const playerList = Array.from({length: test.players}, (_, i) => `Player${i+1}`);
+                    tournament.initializeTournament(playerList);
+                    
+                    const pass = tournament.totalRounds === test.expected;
+                    results.push({
+                        name: `輪數計算 (${test.players}人)`,
+                        pass: pass,
+                        message: pass ? 
+                            `✓ ${test.players}人 = ${tournament.totalRounds}輪` : 
+                            `✗ ${test.players}人 期望${test.expected}輪，實際${tournament.totalRounds}輪`
+                    });
+                });
+            }
+            
+            // 測試積分系統
+            function testScoringSystem() {
+                const tournament = new SwissTournament();
+                tournament.initializeTournament(['A', 'B', 'C', 'D']);
+                tournament.startNewRound();
+                
+                // 測試勝利積分
+                tournament.recordMatchResult(0, 1, 'player1_win');
+                const playerA = tournament.players.find(p => p.name === 'A');
+                const playerB = tournament.players.find(p => p.name === 'B');
+                
+                results.push({
+                    name: '勝利積分測試',
+                    pass: playerA.score === 3 && playerB.score === 0,
+                    message: playerA.score === 3 && playerB.score === 0 ? 
+                        '✓ 勝者得3分，敗者得0分' : 
+                        `✗ 勝者得${playerA.score}分，敗者得${playerB.score}分`
+                });
+                
+                // 測試平局積分
+                tournament.recordMatchResult(0, 2, 'draw');
+                const playerC = tournament.players.find(p => p.name === 'C');
+                const playerD = tournament.players.find(p => p.name === 'D');
+                
+                results.push({
+                    name: '平局積分測試',
+                    pass: playerC.score === 1 && playerD.score === 1,
+                    message: playerC.score === 1 && playerD.score === 1 ? 
+                        '✓ 平局各得1分' : 
+                        `✗ 平局各得${playerC.score}分和${playerD.score}分`
+                });
+            }
+            
+            // 測試Bye積分
+            function testByeScoring() {
+                const tournament = new SwissTournament();
+                tournament.initializeTournament(['A', 'B', 'C']); // 奇數人數
+                tournament.startNewRound();
+                
+                // 找到輪空的選手
+                const pairings = tournament.getCurrentRoundPairings();
+                const byePairing = pairings.find(p => p.player2 === null);
+                
+                if (byePairing) {
+                    const byePlayer = tournament.players.find(p => p.id === byePairing.player1.id);
+                    results.push({
+                        name: 'Bye積分測試',
+                        pass: byePlayer.score === 3,
+                        message: byePlayer.score === 3 ? 
+                            '✓ Bye得3分' : 
+                            `✗ Bye得${byePlayer.score}分`
+                    });
+                }
+            }
+            
+            // 運行所有測試
+            testRoundCalculation();
+            testScoringSystem();
+            testByeScoring();
+            
+            // 顯示結果
+            const resultsDiv = document.getElementById('test-results');
+            results.forEach(result => {
+                const div = document.createElement('div');
+                div.className = `test-result ${result.pass ? 'pass' : 'fail'}`;
+                div.innerHTML = `<strong>${result.name}:</strong> ${result.message}`;
+                resultsDiv.appendChild(div);
+            });
+            
+            const passCount = results.filter(r => r.pass).length;
+            const totalCount = results.length;
+            
+            const summaryDiv = document.createElement('div');
+            summaryDiv.className = `test-result ${passCount === totalCount ? 'pass' : 'fail'}`;
+            summaryDiv.innerHTML = `<strong>測試總結:</strong> ${passCount}/${totalCount} 項測試通過`;
+            resultsDiv.appendChild(summaryDiv);
+        }
+        
+        // 頁面載入後運行測試
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

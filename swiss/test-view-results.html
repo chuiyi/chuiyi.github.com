@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>檢視結果功能測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 3px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>檢視結果功能測試</h1>
+    
+    <div class="test-section">
+        <h2>測試 1: 檢查 app 物件是否存在</h2>
+        <button onclick="testAppObject()">測試 app 物件</button>
+        <div id="app-test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>測試 2: 檢查歷史比賽記錄</h2>
+        <button onclick="testHistoryData()">測試歷史資料</button>
+        <div id="history-test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>測試 3: 直接測試檢視結果方法</h2>
+        <button onclick="testViewResults()">測試檢視結果</button>
+        <div id="view-test-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>測試 4: 創建測試資料並測試</h2>
+        <button onclick="createTestData()">創建測試比賽</button>
+        <button onclick="testWithTestData()">測試檢視結果</button>
+        <div id="test-data-result"></div>
+    </div>
+
+    <script src="js/swiss-tournament.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        function testAppObject() {
+            const container = document.getElementById('app-test-result');
+            container.innerHTML = '';
+
+            try {
+                if (typeof app !== 'undefined') {
+                    const result = document.createElement('div');
+                    result.className = 'test-result success';
+                    result.innerHTML = '✓ app 物件存在';
+                    container.appendChild(result);
+
+                    if (typeof app.viewTournamentResults === 'function') {
+                        const result2 = document.createElement('div');
+                        result2.className = 'test-result success';
+                        result2.innerHTML = '✓ viewTournamentResults 方法存在';
+                        container.appendChild(result2);
+                    } else {
+                        const result2 = document.createElement('div');
+                        result2.className = 'test-result error';
+                        result2.innerHTML = '✗ viewTournamentResults 方法不存在';
+                        container.appendChild(result2);
+                    }
+                } else {
+                    const result = document.createElement('div');
+                    result.className = 'test-result error';
+                    result.innerHTML = '✗ app 物件不存在';
+                    container.appendChild(result);
+                }
+            } catch (error) {
+                const result = document.createElement('div');
+                result.className = 'test-result error';
+                result.innerHTML = `✗ 錯誤: ${error.message}`;
+                container.appendChild(result);
+            }
+        }
+
+        function testHistoryData() {
+            const container = document.getElementById('history-test-result');
+            container.innerHTML = '';
+
+            try {
+                const history = app.tournament.getTournamentHistory();
+                const result = document.createElement('div');
+                result.className = 'test-result success';
+                result.innerHTML = `✓ 找到 ${history.length} 筆歷史記錄`;
+                container.appendChild(result);
+
+                history.forEach((tournament, index) => {
+                    const tournamentResult = document.createElement('div');
+                    tournamentResult.className = 'test-result success';
+                    tournamentResult.innerHTML = `${index + 1}. ${tournament.title || '未命名比賽'} (ID: ${tournament.tournamentId})`;
+                    container.appendChild(tournamentResult);
+                });
+
+            } catch (error) {
+                const result = document.createElement('div');
+                result.className = 'test-result error';
+                result.innerHTML = `✗ 錯誤: ${error.message}`;
+                container.appendChild(result);
+            }
+        }
+
+        function testViewResults() {
+            const container = document.getElementById('view-test-result');
+            container.innerHTML = '';
+
+            try {
+                const history = app.tournament.getTournamentHistory();
+                
+                if (history.length === 0) {
+                    const result = document.createElement('div');
+                    result.className = 'test-result error';
+                    result.innerHTML = '✗ 沒有歷史記錄可以測試';
+                    container.appendChild(result);
+                    return;
+                }
+
+                const firstTournament = history[0];
+                console.log('測試檢視結果，使用比賽 ID:', firstTournament.tournamentId);
+                
+                app.viewTournamentResults(firstTournament.tournamentId);
+                
+                const result = document.createElement('div');
+                result.className = 'test-result success';
+                result.innerHTML = `✓ 已呼叫檢視結果方法，比賽: ${firstTournament.title}`;
+                container.appendChild(result);
+
+            } catch (error) {
+                const result = document.createElement('div');
+                result.className = 'test-result error';
+                result.innerHTML = `✗ 錯誤: ${error.message}`;
+                container.appendChild(result);
+            }
+        }
+
+        function createTestData() {
+            const container = document.getElementById('test-data-result');
+            container.innerHTML = '';
+
+            try {
+                // 創建測試比賽
+                const players = ['Alice', 'Bob', 'Charlie', 'David'];
+                app.tournament.initializeTournament(players);
+                
+                // 開始第一輪
+                const round1 = app.tournament.startNewRound();
+                
+                // 模擬完成第一輪
+                round1.pairings.forEach(pairing => {
+                    if (pairing.result !== 'bye') {
+                        app.tournament.recordMatchResult(0, pairing.id, 'player1_win');
+                    }
+                });
+
+                // 完成比賽
+                app.tournament.finishTournament();
+
+                const result = document.createElement('div');
+                result.className = 'test-result success';
+                result.innerHTML = '✓ 測試比賽已創建並完成';
+                container.appendChild(result);
+
+            } catch (error) {
+                const result = document.createElement('div');
+                result.className = 'test-result error';
+                result.innerHTML = `✗ 創建測試資料失敗: ${error.message}`;
+                container.appendChild(result);
+            }
+        }
+
+        function testWithTestData() {
+            const container = document.getElementById('test-data-result');
+            
+            try {
+                const history = app.tournament.getTournamentHistory();
+                
+                if (history.length === 0) {
+                    const result = document.createElement('div');
+                    result.className = 'test-result error';
+                    result.innerHTML = '✗ 請先創建測試資料';
+                    container.appendChild(result);
+                    return;
+                }
+
+                const latestTournament = history[0];
+                console.log('測試最新比賽:', latestTournament);
+                
+                app.viewTournamentResults(latestTournament.tournamentId);
+                
+                const result = document.createElement('div');
+                result.className = 'test-result success';
+                result.innerHTML = `✓ 已測試檢視結果功能`;
+                container.appendChild(result);
+
+            } catch (error) {
+                const result = document.createElement('div');
+                result.className = 'test-result error';
+                result.innerHTML = `✗ 測試失敗: ${error.message}`;
+                container.appendChild(result);
+            }
+        }
+
+        // 頁面載入時的初始化
+        window.addEventListener('load', function() {
+            console.log('檢視結果測試頁面已載入');
+            setTimeout(() => {
+                testAppObject();
+            }, 100);
+        });
+    </script>
+</body>
+</html>
