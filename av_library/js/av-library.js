@@ -239,53 +239,105 @@
         return { name: "", thumbnail: "" };
     };
 
-    // Extract actor names from title
+    // Extract actor names from title with improved logic
     const extractActors = (title) => {
         if (!title) return [];
         
-        // Common Japanese female name patterns and AV studio conventions
-        // Usually format: "Code Title - ActorName1 ActorName2"
-        // Try to extract from after the dash or from the entire title
+        // Remove code if present (e.g., "START-488")
+        let workingTitle = title.replace(/^[A-Z]+-\d+\s+/i, '').trim();
         
-        let workingTitle = title;
+        // Common actor name kanji (漢字 used in Japanese names)
+        const nameKanji = /[\u4E00-\u9FFF]/g;
         
-        // Remove code if present (e.g., "SSNI-865" or similar)
-        workingTitle = workingTitle.replace(/^[A-Z]+-\d+\s+/i, '');
-        
-        // Common delimiters between title and actors
-        const parts = workingTitle.split(/[-·•\s]+/);
+        // Split by common separators
+        const parts = workingTitle.split(/[\s·•\-\+,，]/);
         
         const actorNames = [];
         
-        for (const part of parts) {
-            const trimmed = part.trim();
-            if (!trimmed || trimmed.length < 2) continue;
+        // Process parts from right to left (actor names usually at the end)
+        for (let i = parts.length - 1; i >= 0; i--) {
+            const part = parts[i].trim();
+            if (!part) continue;
             
-            // Filter out common non-actor words
-            const exclude = ['and', 'the', 'a', 'in', 'on', 'at', 'by', 'or', 'with', 
-                           '和', '與', '的', '在', '於', '被', '是', '有', '了', '不', '很', '得',
-                           'vol', 'no', 'ep', 'part', 'scene', '版', '集', '話'];
+            // Check if it looks like a name
+            const isLikelyName = isActorName(part);
             
-            if (exclude.includes(trimmed.toLowerCase())) continue;
-            
-            // Katakana/Hiragana names (common in Japanese)
-            if (/[\u3040-\u309F\u30A0-\u30FF]/.test(trimmed)) {
-                actorNames.push(trimmed);
-            }
-            // Chinese characters (common in AV titles)
-            else if (/[\u4E00-\u9FFF]/.test(trimmed)) {
-                // Skip single Chinese characters or common words
-                if (trimmed.length > 1 && !['及', '和', '與', '的', '在'].includes(trimmed)) {
-                    actorNames.push(trimmed);
-                }
-            }
-            // English names (less common but possible)
-            else if (/^[A-Za-z]+$/.test(trimmed) && trimmed.length > 2) {
-                actorNames.push(trimmed);
+            if (isLikelyName) {
+                actorNames.unshift(part); // Add to beginning to maintain order
+            } else if (actorNames.length > 0) {
+                // Stop collecting once we hit a non-name after finding names
+                break;
             }
         }
         
         return actorNames;
+    };
+
+    // Determine if a string looks like an actor name
+    const isActorName = (text) => {
+        if (!text || text.length > 10) return false;
+        
+        // Very short text usually not a name
+        if (text.length < 2) return false;
+        
+        // Common non-name words and phrases
+        const exclude = ['and', 'the', 'a', 'in', 'on', 'at', 'by', 'or', 'with',
+                       '和', '與', '的', '在', '於', '被', '是', '有', '了', '不', '很', '得',
+                       'vol', 'no', 'ep', 'part', 'scene', '版', '集', '話', '第', '章',
+                       'DVD', 'Blu', 'ray', '4K', 'HD', '中文', '字幕', '無修正'];
+        
+        if (exclude.includes(text.toLowerCase())) return false;
+        
+        // Count different character types
+        const hiragana = text.match(/[\u3040-\u309F]/g) || [];
+        const katakana = text.match(/[\u30A0-\u30FF]/g) || [];
+        const kanji = text.match(/[\u4E00-\u9FFF]/g) || [];
+        const english = text.match(/[A-Za-z]/g) || [];
+        const number = text.match(/\d/g) || [];
+        
+        // If mostly numbers or too many numbers, likely not a name
+        if (number.length > text.length / 2) return false;
+        
+        // Pure English: accept if 2-3 words or 3+ characters
+        if (english.length > 0 && hiragana.length === 0 && kanji.length === 0 && katakana.length === 0) {
+            return text.length >= 3 && text.split(/\s+/).length <= 3;
+        }
+        
+        // Pure hiragana: usually not a name (more likely description)
+        if (hiragana.length > 0 && kanji.length === 0 && katakana.length === 0 && english.length === 0) {
+            return false;
+        }
+        
+        // Katakana only: could be name, accept if reasonable length
+        if (katakana.length > 0 && hiragana.length === 0 && kanji.length === 0 && english.length === 0) {
+            return text.length >= 3 && text.length <= 10;
+        }
+        
+        // Kanji + Hiragana combination (typical Japanese names)
+        if (kanji.length > 0 && hiragana.length > 0 && text.length <= 8) {
+            return true;
+        }
+        
+        // Pure kanji (can be name if 2-4 characters)
+        if (kanji.length > 0 && hiragana.length === 0 && katakana.length === 0 && english.length === 0) {
+            // Check against common name kanji patterns
+            const commonNameKanji = ['麗', '子', '美', '代', '月', '香', '華', '愛', '織', '紀', '乃',
+                                    '野', '木', '田', '中', '石', '橋', '山', '川', '本', '藤', '伊',
+                                    '佐', '鈴', '高', '田', '小', '大', '阿', '亜', '杏', '桃', '梅',
+                                    '春', '夏', '秋', '冬', '花', '琴', '衣', '衛', '永', '昇', '郎',
+                                    '太', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+            
+            // Check if contains at least one common name kanji
+            const hasNameKanji = text.split('').some(char => commonNameKanji.includes(char));
+            if (hasNameKanji && text.length >= 2 && text.length <= 6) {
+                return true;
+            }
+            
+            // Otherwise, pure kanji of 2-3 chars might still be a name
+            return text.length >= 2 && text.length <= 4;
+        }
+        
+        return false;
     };
 
     const resolveUrl = (baseUrl, value) => {
