@@ -41,6 +41,20 @@
     </header>
 
     <main class="container pb-5">
+        <div class="sync-bar mb-4">
+            <div class="d-flex flex-wrap gap-2 align-items-center">
+                <button type="button" class="btn btn-outline-primary btn-sm" id="av-sync-login">
+                    <i class="bi bi-google me-1"></i>登入 Google
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-pull">
+                    <i class="bi bi-cloud-download me-1"></i>同步下載
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-push">
+                    <i class="bi bi-cloud-upload me-1"></i>同步上傳
+                </button>
+            </div>
+            <div class="sync-status" id="av-sync-status">尚未登入 Google Drive</div>
+        </div>
         <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between mb-3">
             <div class="btn-group" role="group" aria-label="View mode">
                 <button type="button" class="btn btn-outline-secondary" data-av-view="grid">
@@ -66,6 +80,7 @@
     <div class="footer">AV Library · 2026</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script src="js/av-library.js"></script>
 </body>
 </html>

@@ -31,6 +31,23 @@ body {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
+.sync-bar {
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px 20px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sync-status {
+    color: var(--av-muted);
+    font-size: 0.9rem;
+}
+
 .badge-status {
     background: rgba(176, 122, 74, 0.15);
     color: var(--av-accent);

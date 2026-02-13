@@ -3,8 +3,116 @@
     const VIEW_KEY = "avLibraryViewMode";
     const SORT_KEY = "avLibrarySortMode";
     const PLACEHOLDER_COVER = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23e9ecef'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='%236c757d'%3ENo Cover%3C/text%3E%3C/svg%3E";
+    const GOOGLE_CLIENT_ID = "200098245584-ms1ekqgikfvorm7jh4akcmsc1a6ub3dp.apps.googleusercontent.com";
+    const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
+    const DRIVE_FILE_NAME = "av_library_db.json";
+
+    let googleTokenClient = null;
+    let googleAccessToken = "";
+    let googleTokenExpiry = 0;
+    let pendingSyncAction = null;
 
     const $ = (selector) => document.querySelector(selector);
+
+    const setSyncStatus = (message) => {
+        const status = $("#av-sync-status");
+        if (status) status.textContent = message;
+    };
+
+    const isTokenValid = () => googleAccessToken && Date.now() < googleTokenExpiry - 60000;
+
+    const ensureAuth = (action) => {
+        if (isTokenValid()) {
+            action();
+            return;
+        }
+        if (!googleTokenClient) {
+            setSyncStatus("Google 驗證尚未就緒");
+            return;
+        }
+        pendingSyncAction = action;
+        googleTokenClient.requestAccessToken({ prompt: "consent" });
+    };
+
+    const driveFetch = async (url, options = {}) => {
+        const headers = {
+            Authorization: `Bearer ${googleAccessToken}`,
+            ...(options.headers || {})
+        };
+        return fetch(url, { ...options, headers });
+    };
+
+    const listDriveFiles = async () => {
+        const query = "name='" + DRIVE_FILE_NAME + "' and 'appDataFolder' in parents and trashed=false";
+        const url = `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=files(id,name,modifiedTime)&q=${encodeURIComponent(query)}`;
+        const response = await driveFetch(url);
+        if (!response.ok) throw new Error("Drive list failed");
+        const data = await response.json();
+        return data.files || [];
+    };
+
+    const downloadDriveFile = async (fileId) => {
+        const url = `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
+        const response = await driveFetch(url);
+        if (!response.ok) throw new Error("Drive download failed");
+        return response.text();
+    };
+
+    const uploadDriveFile = async (fileId, content) => {
+        const url = `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=media`;
+        const response = await driveFetch(url, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: content
+        });
+        if (!response.ok) throw new Error("Drive upload failed");
+    };
+
+    const createDriveFile = async (content) => {
+        const boundary = `avlib_${Date.now()}`;
+        const metadata = {
+            name: DRIVE_FILE_NAME,
+            parents: ["appDataFolder"]
+        };
+        const body = [
+            `--${boundary}`,
+            "Content-Type: application/json; charset=UTF-8",
+            "",
+            JSON.stringify(metadata),
+            `--${boundary}`,
+            "Content-Type: application/json",
+            "",
+            content,
+            `--${boundary}--`
+        ].join("\r\n");
+
+        const url = "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart";
+        const response = await driveFetch(url, {
+            method: "POST",
+            headers: { "Content-Type": `multipart/related; boundary=${boundary}` },
+            body
+        });
+        if (!response.ok) throw new Error("Drive create failed");
+    };
+
+    const mergeDb = (local, remote) => {
+        const map = new Map();
+        const upsert = (item) => {
+            if (!item) return;
+            const key = `${item.slug || ""}|${item.status || ""}`;
+            const existing = map.get(key);
+            if (!existing) {
+                map.set(key, item);
+                return;
+            }
+            const a = new Date(existing.addedAt || 0).getTime();
+            const b = new Date(item.addedAt || 0).getTime();
+            map.set(key, b >= a ? item : existing);
+        };
+        local.forEach(upsert);
+        remote.forEach(upsert);
+        return Array.from(map.values());
+    };
 
     const parseInput = (raw) => {
         if (!raw) return null;
@@ -368,6 +476,82 @@
         });
     };
 
+    const initGoogleSync = () => {
+        const loginButton = $("#av-sync-login");
+        const pullButton = $("#av-sync-pull");
+        const pushButton = $("#av-sync-push");
+        if (!loginButton || !pullButton || !pushButton) return;
+
+        const waitForGis = () => {
+            if (window.google?.accounts?.oauth2) {
+                googleTokenClient = window.google.accounts.oauth2.initTokenClient({
+                    client_id: GOOGLE_CLIENT_ID,
+                    scope: DRIVE_SCOPE,
+                    callback: (tokenResponse) => {
+                        googleAccessToken = tokenResponse.access_token;
+                        const expiresIn = tokenResponse.expires_in ? tokenResponse.expires_in * 1000 : 3600 * 1000;
+                        googleTokenExpiry = Date.now() + expiresIn;
+                        setSyncStatus("已登入 Google Drive");
+                        if (pendingSyncAction) {
+                            const action = pendingSyncAction;
+                            pendingSyncAction = null;
+                            action();
+                        }
+                    }
+                });
+                return;
+            }
+            setTimeout(waitForGis, 300);
+        };
+
+        setSyncStatus("載入 Google 驗證中...");
+        waitForGis();
+
+        loginButton.addEventListener("click", () => {
+            ensureAuth(() => setSyncStatus("已登入 Google Drive"));
+        });
+
+        pullButton.addEventListener("click", () => {
+            ensureAuth(async () => {
+                setSyncStatus("同步下載中...");
+                try {
+                    const files = await listDriveFiles();
+                    if (!files.length) {
+                        setSyncStatus("雲端尚無資料");
+                        return;
+                    }
+                    const content = await downloadDriveFile(files[0].id);
+                    const remote = JSON.parse(content || "[]");
+                    const merged = mergeDb(getDb(), Array.isArray(remote) ? remote : []);
+                    setDb(merged);
+                    const listPage = document.body?.dataset?.avList;
+                    if (listPage) renderList(listPage);
+                    setSyncStatus("同步完成");
+                } catch (error) {
+                    setSyncStatus("同步失敗");
+                }
+            });
+        });
+
+        pushButton.addEventListener("click", () => {
+            ensureAuth(async () => {
+                setSyncStatus("同步上傳中...");
+                try {
+                    const content = JSON.stringify(getDb());
+                    const files = await listDriveFiles();
+                    if (files.length) {
+                        await uploadDriveFile(files[0].id, content);
+                    } else {
+                        await createDriveFile(content);
+                    }
+                    setSyncStatus("已上傳雲端");
+                } catch (error) {
+                    setSyncStatus("同步失敗");
+                }
+            });
+        });
+    };
+
     const deleteItem = (id) => {
         const db = getDb();
         const next = db.filter((item) => item.id !== id);
@@ -423,6 +607,7 @@
         } else {
             initForm();
         }
+        initGoogleSync();
     };
 
     document.addEventListener("DOMContentLoaded", initPage);
