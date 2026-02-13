@@ -290,23 +290,12 @@
 
     // Fetch raw HTML from target URL (for stream extraction)
     const fetchRawHtml = async (targetUrl) => {
-        try {
-            // Try direct fetch with CORS
-            const response = await fetch(targetUrl, {
-                headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-                }
-            });
-            if (response.ok) {
-                return await response.text();
+        // Try direct fetch with CORS only
+        const response = await fetch(targetUrl, {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             }
-        } catch (error) {
-            // Fallback to Jina if direct fetch fails
-        }
-        
-        // Fallback to Jina API
-        const jinaUrl = `https://r.jina.ai/http://${targetUrl.replace(/^https?:\/\//, "")}`;
-        const response = await fetch(jinaUrl);
+        });
         if (!response.ok) {
             throw new Error("Fetch failed");
         }
@@ -371,18 +360,19 @@
         try {
             // Try to fetch raw HTML first for better stream extraction
             let html;
-            let fromRawFetch = false;
+            let isRawHtml = false;
             
             try {
                 html = await fetchRawHtml(url);
-                fromRawFetch = true;
+                isRawHtml = true;
             } catch (error) {
                 // Fallback to Jina if raw fetch fails
                 html = await fetchFromJina(url);
+                isRawHtml = false;
             }
             
             // Check if it's Markdown format from Jina
-            if (!fromRawFetch && html.includes("Markdown Content:")) {
+            if (!isRawHtml && html.includes("Markdown Content:")) {
                 const meta = findMetaFromMarkdown(html, fallbackTitle);
                 if (!meta.cover && slug) {
                     try {
