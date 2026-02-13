@@ -822,25 +822,33 @@
 
         if (container) {
             container.addEventListener("click", (event) => {
-                const target = event.target;
+                let target = event.target;
                 if (!(target instanceof HTMLElement)) return;
-                const action = target.dataset.action;
+                
+                // Find closest element with data-action attribute
+                const actionElement = target.closest("[data-action]");
+                if (!actionElement) {
+                    console.log(`[Click event] No data-action found on click target or parents`);
+                    return;
+                }
+                
+                const action = actionElement.dataset.action;
                 console.log(`[Click event] action: ${action}, target: ${target.tagName}`);
                 
                 if (action === "delete") {
-                    const id = target.dataset.id;
+                    const id = actionElement.dataset.id;
                     if (!id) return;
                     deleteItem(id);
                     renderList(status);
                 } else if (action === "play") {
-                    const stream = target.dataset.stream;
-                    const title = target.dataset.title;
+                    const stream = actionElement.dataset.stream;
+                    const title = actionElement.dataset.title;
                     console.log(`[Action: play] stream: ${stream}, title: ${title}`);
                     if (stream) openPlayer(title, stream);
                 } else if (action === "open") {
-                    const stream = target.dataset.stream;
-                    const url = target.dataset.url;
-                    const title = target.dataset.title;
+                    const stream = actionElement.dataset.stream;
+                    const url = actionElement.dataset.url;
+                    const title = actionElement.dataset.title;
                     console.log(`[Action: open] stream: ${stream}, url: ${url}, title: ${title}`);
                     if (stream) {
                         openPlayer(title, stream);
