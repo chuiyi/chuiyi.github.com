@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊戲房間 - 樂透賓果</title>
+    <link rel="stylesheet" href="css/lottery.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="room-container">
+        <header class="room-header">
+            <h1>🎰 遊戲房間</h1>
+            <div class="room-info">
+                <span class="room-id">房間 ID: <strong id="roomId"></strong></span>
+                <span class="player-count">玩家數: <strong id="playerCount">0</strong></span>
+            </div>
+        </header>
+
+        <div class="room-content">
+            <!-- QR Code 區域 -->
+            <div class="qr-section">
+                <div class="qr-card">
+                    <h2>掃描加入遊戲</h2>
+                    <div id="qrcode"></div>
+                    <p class="qr-link">或複製連結: <br><span id="ticketLink"></span></p>
+                    <button id="copyLinkBtn" class="copy-btn">📋 複製連結</button>
+                </div>
+            </div>
+
+            <!-- 抽獎控制區 -->
+            <div class="draw-section">
+                <h2>抽獎控制</h2>
+                <div class="draw-controls">
+                    <button id="drawBtn" class="draw-btn">🎲 抽取數字</button>
+                    <button id="resetBtn" class="reset-btn">🔄 重新開始</button>
+                </div>
+                
+                <div class="current-number" id="currentNumberDisplay">
+                    <div class="number-label">當前號碼</div>
+                    <div class="number-value" id="currentNumber">--</div>
+                </div>
+
+                <div class="drawn-numbers">
+                    <h3>已抽出號碼</h3>
+                    <div id="drawnNumbersList" class="numbers-list"></div>
+                </div>
+            </div>
+
+            <!-- 玩家列表 -->
+            <div class="players-section">
+                <h2>參與玩家</h2>
+                <div id="playersList" class="players-list">
+                    <p class="empty-message">尚無玩家加入...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/room.js"></script>
+</body>
+</html>

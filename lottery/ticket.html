@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的樂透券 - 賓果遊戲</title>
+    <link rel="stylesheet" href="css/lottery.css">
+</head>
+<body>
+    <div class="ticket-container">
+        <!-- 暱稱輸入區 -->
+        <div id="nicknameSection" class="nickname-section">
+            <div class="nickname-card">
+                <h1>🎫 領取您的樂透券</h1>
+                <p>請輸入您的暱稱以加入遊戲</p>
+                <form id="nicknameForm">
+                    <input 
+                        type="text" 
+                        id="nicknameInput" 
+                        placeholder="輸入暱稱..." 
+                        maxlength="20" 
+                        required
+                    >
+                    <button type="submit" class="submit-btn">✨ 領取樂透券</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 樂透券區域 -->
+        <div id="ticketSection" class="ticket-section" style="display: none;">
+            <header class="ticket-header">
+                <h1>🎰 我的樂透券</h1>
+                <div class="player-info">
+                    <span class="nickname">玩家: <strong id="playerNickname"></strong></span>
+                    <span class="room-id">房間: <strong id="roomIdDisplay"></strong></span>
+                </div>
+            </header>
+
+            <div class="ticket-content">
+                <!-- 目前抽出的號碼 -->
+                <div class="current-draw">
+                    <div class="draw-label">當前號碼</div>
+                    <div class="draw-number" id="currentDrawNumber">--</div>
+                </div>
+
+                <!-- 5x5 賓果卡片 -->
+                <div class="bingo-card">
+                    <div class="card-header">BINGO</div>
+                    <div id="bingoGrid" class="bingo-grid">
+                        <!-- 5x5 = 25 個格子，JavaScript 動態生成 -->
+                    </div>
+                </div>
+
+                <!-- 已抽出的號碼清單 -->
+                <div class="drawn-history">
+                    <h3>已抽出號碼</h3>
+                    <div id="drawnHistory" class="history-list"></div>
+                </div>
+
+                <!-- 賓果狀態 -->
+                <div id="bingoStatus" class="bingo-status">
+                    <div class="status-info">
+                        <span>完成線數: <strong id="lineCount">0</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 賓果特效 -->
+        <div id="bingoEffect" class="bingo-effect" style="display: none;">
+            <div class="bingo-animation">
+                <h1 class="bingo-text">🎉 BINGO! 🎉</h1>
+                <p class="congrats-text">恭喜完成一條線！</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/ticket.js"></script>
+</body>
+</html>
