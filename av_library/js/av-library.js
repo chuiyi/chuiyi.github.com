@@ -280,14 +280,43 @@
     };
 
     const fetchFromJina = async (targetUrl) => {
-        const proxyUrl = `https://r.jina.ai/${targetUrl}`;
-        const response = await fetch(proxyUrl);
-        if (!response.ok) {
-            throw new Error("Fetch failed");
+        // 嘗試直接獲取 HTML 格式（添加 Accept 頭）
+        let proxyUrl = `https://r.jina.ai/${targetUrl}`;
+        console.log(`[Jina] Fetching ${targetUrl}`);
+        
+        try {
+            const response = await fetch(proxyUrl, {
+                headers: {
+                    'Accept': 'text/html',
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                }
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            let text = await response.text();
+            console.log(`[Jina] Fetched ${targetUrl}, content length: ${text.length}`);
+            
+            // 如果返回 Markdown，嘗試添加查詢參數
+            if (text.includes('Markdown Content:')) {
+                console.log(`[Jina] 返回 Markdown，嘗試 HTML 版本`);
+                proxyUrl = `https://r.jina.ai/${targetUrl}?Accept=text/html`;
+                const response2 = await fetch(proxyUrl, {
+                    headers: {
+                        'Accept': 'text/html'
+                    }
+                });
+                if (response2.ok) {
+                    text = await response2.text();
+                    console.log(`[Jina] HTML 版本長度: ${text.length}`);
+                }
+            }
+            
+            return text;
+        } catch (error) {
+            console.log(`[Jina] 失敗: ${error.message}`);
+            throw error;
         }
-        const text = await response.text();
-        console.log(`[Jina] Fetched ${targetUrl}, content length: ${text.length}`);
-        return text;
     };
 
     // Extract stream URL with multiple strategies

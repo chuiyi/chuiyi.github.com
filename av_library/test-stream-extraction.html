@@ -203,26 +203,38 @@
             log('開始測試: ' + videoUrl, 'info');
 
             try {
-                const jinaUrl = 'https://r.jina.ai/' + videoUrl;
-                log('使用 Jina 代理: ' + jinaUrl, 'info');
-
-                const response = await fetch(jinaUrl);
-                if (!response.ok) {
-                    throw new Error('HTTP ' + response.status);
+                // 嘗試方法 1: 標準 Jina
+                log('方法 1: 使用標準 Jina 代理', 'info');
+                let jinaUrl = 'https://r.jina.ai/' + videoUrl;
+                let html = await fetchFromJinaWithHtmlMode(jinaUrl);
+                
+                if (!html || html.includes('Markdown Content:')) {
+                    log('⚠️ 標準方法返回 Markdown，嘗試 HTML 模式...', 'error');
+                    
+                    // 嘗試方法 2: 添加 ?Accept=text/html
+                    log('方法 2: 請求 HTML 格式...', 'info');
+                    jinaUrl = 'https://r.jina.ai/' + videoUrl + '?Accept=text/html';
+                    html = await fetchFromJinaWithHtmlMode(jinaUrl);
+                }
+                
+                if (!html) {
+                    throw new Error('無法從 Jina 獲取內容');
                 }
 
-                const html = await response.text();
                 log('✓ 成功獲取頁面 (' + html.length + ' 字元)', 'success');
 
                 // 顯示原始 HTML
                 const preview = document.getElementById('htmlPreview');
                 preview.textContent = html.substring(0, 3000);
 
-                // 檢查是否是 Markdown 格式
-                if (html.includes('Markdown Content:') || html.includes('# ') || !html.includes('<')) {
-                    log('⚠️ 檢測到 Markdown 格式內容，不是 HTML！', 'error');
-                    log('Jina 可能返回了 Markdown 而不是 HTML', 'error');
+                // 檢查內容格式
+                if (html.includes('<') && html.includes('>')) {
+                    log('✅ 檢測到 HTML 格式', 'success');
+                } else if (html.includes('Markdown Content:')) {
+                    log('⚠️ 仍然是 Markdown 格式', 'error');
                     log('前 500 字: ' + html.substring(0, 500), 'info');
+                } else {
+                    log('⚠️ 未知格式', 'error');
                 }
 
                 const streams = extractStreamFromHtml(html);
@@ -231,6 +243,24 @@
 
             } catch (error) {
                 log('✗ 錯誤: ' + error.message, 'error');
+            }
+        };
+
+        const fetchFromJinaWithHtmlMode = async (jinaUrl) => {
+            try {
+                const response = await fetch(jinaUrl, {
+                    headers: {
+                        'Accept': 'text/html',
+                        'User-Agent': 'Mozilla/5.0'
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return await response.text();
+            } catch (error) {
+                log('Jina 請求失敗: ' + error.message, 'error');
+                return null;
             }
         };
 
