@@ -364,6 +364,8 @@
             || fallbackTitle;
 
         let cover = imageTag?.content || imageTag?.href || jsonLd.thumbnail || "";
+        
+        // If no cover from meta tags, try other methods
         if (!cover) {
             const poster = doc.querySelector("video[poster]")?.getAttribute("poster");
             if (poster) cover = poster;
@@ -380,6 +382,13 @@
             const previewMatch = html.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/);
             if (previewMatch?.[0]) cover = previewMatch[0];
         }
+        
+        // Last resort: look for any image that looks reasonable
+        if (!cover) {
+            const anyImg = html.match(/https?:\/\/[^\s"'<>]*assets-cdn[^\s"'<>]*\.jpg/i)?.[0];
+            if (anyImg) cover = anyImg;
+        }
+        
         const resolvedCover = resolveUrl(baseUrl, cover);
         
         // Try to extract stream URL using improved strategy
@@ -428,7 +437,7 @@
             // Parse HTML (either from direct fetch or Jina)
             const meta = findMetaFromHtml(html, fallbackTitle, url);
             
-            // For HTML, also try search page as fallback for cover if not found
+            // If cover not found, try search page fallback
             if (!meta.cover && slug) {
                 try {
                     const searchHost = (domain || "jable.tv").replace(/^www\./, "");
