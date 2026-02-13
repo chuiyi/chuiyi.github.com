@@ -280,12 +280,14 @@
     };
 
     const fetchFromJina = async (targetUrl) => {
-        const proxyUrl = `https://r.jina.ai/http://${targetUrl.replace(/^https?:\/\//, "")}`;
+        const proxyUrl = `https://r.jina.ai/${targetUrl}`;
         const response = await fetch(proxyUrl);
         if (!response.ok) {
             throw new Error("Fetch failed");
         }
-        return response.text();
+        const text = await response.text();
+        console.log(`[Jina] Fetched ${targetUrl}, content length: ${text.length}`);
+        return text;
     };
 
     // Extract stream URL with multiple strategies
@@ -348,31 +350,40 @@
 
         let cover = imageTag?.content || imageTag?.href || jsonLd.thumbnail || "";
         
+        console.log(`[findMetaFromHtml] og:image tag:`, imageTag?.content);
+        console.log(`[findMetaFromHtml] jsonLd.thumbnail:`, jsonLd.thumbnail);
+        
         // If no cover from meta tags, try other methods
         if (!cover) {
             const poster = doc.querySelector("video[poster]")?.getAttribute("poster");
             if (poster) cover = poster;
+            console.log(`[findMetaFromHtml] video poster:`, poster);
         }
         if (!cover) {
             const img = doc.querySelector("img[class*='cover'], img[src*='cover'], img[src*='poster'], img[src*='preview']");
             if (img?.getAttribute("src")) cover = img.getAttribute("src");
+            console.log(`[findMetaFromHtml] img element:`, img?.getAttribute("src"));
         }
         if (!cover) {
             const match = html.match(/poster\s*=\s*"([^"]+)"/i);
             if (match?.[1]) cover = match[1];
+            console.log(`[findMetaFromHtml] poster regex:`, match?.[1]);
         }
         if (!cover) {
             const previewMatch = html.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/);
             if (previewMatch?.[0]) cover = previewMatch[0];
+            console.log(`[findMetaFromHtml] preview regex:`, previewMatch?.[0]);
         }
         
         // Last resort: look for any image that looks reasonable
         if (!cover) {
             const anyImg = html.match(/https?:\/\/[^\s"'<>]*assets-cdn[^\s"'<>]*\.jpg/i)?.[0];
             if (anyImg) cover = anyImg;
+            console.log(`[findMetaFromHtml] assets-cdn regex:`, anyImg);
         }
         
         const resolvedCover = resolveUrl(baseUrl, cover);
+        console.log(`[findMetaFromHtml] Final cover:`, resolvedCover);
         
         // Try to extract stream URL using improved strategy
         const stream = extractStreamUrl(html);
