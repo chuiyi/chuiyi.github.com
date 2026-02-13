@@ -288,23 +288,6 @@
         return response.text();
     };
 
-    // Try to fetch raw HTML directly for better stream extraction
-    const fetchRawHtml = async (targetUrl) => {
-        try {
-            const response = await fetch(targetUrl, {
-                headers: {
-                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-                }
-            });
-            if (response.ok) {
-                return await response.text();
-            }
-        } catch (error) {
-            // Silently fail, will fall back to Jina
-        }
-        return null;
-    };
-
     // Extract stream URL with multiple strategies
     const extractStreamUrl = (html) => {
         if (!html) return "";
@@ -399,27 +382,11 @@
 
     const fetchMeta = async (url, fallbackTitle, slug, domain) => {
         try {
-            // Try direct fetch first for better stream extraction
-            let html = null;
-            let rawHtmlFetched = false;
-            
-            try {
-                const rawHtml = await fetchRawHtml(url);
-                if (rawHtml) {
-                    html = rawHtml;
-                    rawHtmlFetched = true;
-                }
-            } catch (error) {
-                // Silently fail, will use Jina
-            }
-            
-            // Fallback to Jina if direct fetch failed
-            if (!html) {
-                html = await fetchFromJina(url);
-            }
+            // Use Jina as primary method (more reliable for fetching without CORS issues)
+            let html = await fetchFromJina(url);
             
             // Check if it's Markdown format from Jina
-            if (!rawHtmlFetched && html.includes("Markdown Content:")) {
+            if (html.includes("Markdown Content:")) {
                 const meta = findMetaFromMarkdown(html, fallbackTitle);
                 if (!meta.cover && slug) {
                     try {
@@ -434,7 +401,7 @@
                 return meta;
             }
             
-            // Parse HTML (either from direct fetch or Jina)
+            // Parse HTML from Jina
             const meta = findMetaFromHtml(html, fallbackTitle, url);
             
             // If cover not found, try search page fallback
@@ -448,19 +415,6 @@
                     }
                 } catch (error) {
                     // Silently fail, use what we have
-                }
-            }
-            
-            // If still no stream and we have raw HTML, try a secondary fetch through Jina
-            if (!meta.stream && rawHtmlFetched && html) {
-                try {
-                    const jinaHtml = await fetchFromJina(url);
-                    const jinaStream = extractStreamUrl(jinaHtml);
-                    if (jinaStream) {
-                        meta.stream = jinaStream;
-                    }
-                } catch (error) {
-                    // Silently fail
                 }
             }
             
