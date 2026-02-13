@@ -6,15 +6,34 @@
 
     const $ = (selector) => document.querySelector(selector);
 
-    const normalizeCode = (raw) => {
+    const parseInput = (raw) => {
         if (!raw) return null;
-        const compact = raw.replace(/[\s-]+/g, "").toUpperCase();
+        const trimmed = raw.trim();
+        const domainMatch = trimmed.match(/jable\.(tv|tw)/i);
+        if (domainMatch) {
+            const safeUrl = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+            try {
+                const url = new URL(safeUrl);
+                const slugMatch = url.pathname.match(/\/(?:s0\/)?videos\/([^/]+)/i);
+                if (!slugMatch) return null;
+                const slug = slugMatch[1].toLowerCase();
+                return {
+                    code: slug.toUpperCase(),
+                    slug,
+                    domain: url.hostname
+                };
+            } catch (error) {
+                return null;
+            }
+        }
+        const compact = trimmed.replace(/[\s-]+/g, "").toUpperCase();
         const match = compact.match(/^([A-Z]+)(\d+)$/);
         if (!match) return null;
         const [, letters, digits] = match;
         return {
             code: `${letters}-${digits}`,
-            slug: `${letters}-${digits}`.toLowerCase()
+            slug: `${letters}-${digits}`.toLowerCase(),
+            domain: "jable.tv"
         };
     };
 
@@ -86,10 +105,11 @@
 
     const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    const parseCoverFromSearch = (text, slug) => {
+    const parseCoverFromSearch = (text, slug, domain) => {
         const safeSlug = escapeRegExp(slug);
+        const safeHost = escapeRegExp((domain || "jable.tv").replace(/^www\./, ""));
         const pattern = new RegExp(
-            `\\[!\\[[^\\]]*\\]\\((https?://assets-cdn\\.jable\\.tv/contents/videos_screenshots/\\d+/\\d+/320x180/1\\.jpg)\\)[^\\]]*\\]\\(https?://jable\\.tv/videos/${safeSlug}/\\)`,
+            `\\[!\\[[^\\]]*\\]\\((https?://assets-cdn\\.jable\\.tv/contents/videos_screenshots/\\d+/\\d+/320x180/1\\.jpg)\\)[^\\]]*\\]\\(https?://(?:www\\.)?${safeHost}/videos/${safeSlug}/\\)`,
             "i"
         );
         const match = text.match(pattern)?.[1]
@@ -150,15 +170,16 @@
         return { title: title?.trim() || fallbackTitle, cover: resolvedCover };
     };
 
-    const fetchMeta = async (url, fallbackTitle, slug) => {
+    const fetchMeta = async (url, fallbackTitle, slug, domain) => {
         try {
             const html = await fetchFromJina(url);
             if (html.includes("Markdown Content:")) {
                 const meta = findMetaFromMarkdown(html, fallbackTitle);
                 if (!meta.cover && slug) {
                     try {
-                        const searchHtml = await fetchFromJina(`https://jable.tv/search/${slug}/`);
-                        const cover = parseCoverFromSearch(searchHtml, slug);
+                        const searchHost = (domain || "jable.tv").replace(/^www\./, "");
+                        const searchHtml = await fetchFromJina(`https://${searchHost}/search/${slug}/`);
+                        const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
                         return { ...meta, cover };
                     } catch (error) {
                         return meta;
@@ -176,7 +197,7 @@
         jable: {
             id: "jable",
             label: "Jable",
-            buildUrl: (slug) => `https://jable.tv/s0/videos/${slug}/`,
+            buildUrl: (slug, domain = "jable.tv") => `https://${domain}/s0/videos/${slug}/`,
             fetchMeta
         }
     };
@@ -278,17 +299,17 @@
             if (hint) hint.textContent = "";
 
             const raw = input?.value || "";
-            const normalized = normalizeCode(raw);
+            const normalized = parseInput(raw);
             if (!normalized) {
                 if (hint) hint.textContent = "請輸入有效序號，例如 SSNI-865";
                 return;
             }
             const status = Array.from(statusInputs).find((item) => item.checked)?.value || "watched";
             const source = searchModules.jable;
-            const url = source.buildUrl(normalized.slug);
+            const url = source.buildUrl(normalized.slug, normalized.domain);
 
             if (loading) loading.classList.remove("d-none");
-            const meta = await source.fetchMeta(url, normalized.code, normalized.slug);
+            const meta = await source.fetchMeta(url, normalized.code, normalized.slug, normalized.domain);
             if (loading) loading.classList.add("d-none");
 
             const payload = {
