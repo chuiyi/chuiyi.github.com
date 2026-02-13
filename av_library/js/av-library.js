@@ -2,6 +2,7 @@
     const STORAGE_KEY = "avLibraryDB";
     const VIEW_KEY = "avLibraryViewMode";
     const SORT_KEY = "avLibrarySortMode";
+    const PLACEHOLDER_COVER = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23e9ecef'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='%236c757d'%3ENo Cover%3C/text%3E%3C/svg%3E";
 
     const $ = (selector) => document.querySelector(selector);
 
@@ -127,8 +128,6 @@
 
     const fetchHtml = async (url) => {
         const sources = [
-            { id: "direct", build: (target) => target },
-            { id: "corsProxy", build: (target) => `https://cors.isomorphic-git.org/${target}` },
             { id: "allOrigins", build: (target) => `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}` }
         ];
 
@@ -217,7 +216,7 @@
         sorted.forEach((item) => {
             const card = document.createElement("div");
             card.className = "av-card";
-            const cover = item.cover || "https://via.placeholder.com/480x720?text=No+Cover";
+            const cover = item.cover || PLACEHOLDER_COVER;
             card.innerHTML = `
                 <img src="${cover}" alt="${item.title}">
                 <div class="av-card-body">
@@ -248,7 +247,7 @@
 
         if (!preview || !payload) return;
         preview.classList.remove("d-none");
-        const coverUrl = payload.cover || "https://via.placeholder.com/480x720?text=No+Cover";
+        const coverUrl = payload.cover || PLACEHOLDER_COVER;
         if (cover) cover.src = coverUrl;
         if (title) title.textContent = payload.title || payload.code;
         if (code) code.textContent = payload.code;
