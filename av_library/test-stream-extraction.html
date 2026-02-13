@@ -41,6 +41,11 @@
         </div>
 
         <div class="test-section">
+            <h3>原始 HTML 預覽</h3>
+            <div id="htmlPreview" style="max-height: 400px; overflow-y: auto; font-family: monospace; font-size: 12px; background: #f5f5f5; padding: 10px; border-radius: 4px; white-space: pre-wrap; word-break: break-all;"></div>
+        </div>
+
+        <div class="test-section">
             <h3>視頻播放器測試</h3>
             <div id="playerSection" style="display: none;">
                 <button class="btn btn-success mb-3" onclick="testPlayback()">測試播放</button>
@@ -181,6 +186,17 @@
 
                 const html = await response.text();
                 log('✓ 成功獲取頁面 (' + html.length + ' 字元)', 'success');
+
+                // 顯示原始 HTML
+                const preview = document.getElementById('htmlPreview');
+                preview.textContent = html.substring(0, 3000);
+
+                // 檢查是否是 Markdown 格式
+                if (html.includes('Markdown Content:') || html.includes('# ') || !html.includes('<')) {
+                    log('⚠️ 檢測到 Markdown 格式內容，不是 HTML！', 'error');
+                    log('Jina 可能返回了 Markdown 而不是 HTML', 'error');
+                    log('前 500 字: ' + html.substring(0, 500), 'info');
+                }
 
                 const streams = extractStreamFromHtml(html);
                 currentStreams = streams;
