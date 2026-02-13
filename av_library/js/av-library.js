@@ -269,6 +269,8 @@
         const source = $("#av-preview-source");
         const link = $("#av-preview-link");
         const status = $("#av-preview-status");
+        const saveButton = $("#av-preview-save");
+        const cancelButton = $("#av-preview-cancel");
 
         if (!preview || !payload) return;
         preview.classList.remove("d-none");
@@ -284,6 +286,13 @@
         if (status) {
             status.textContent = payload.status === "watched" ? "看過的影片" : "稍後觀看";
         }
+        if (saveButton) saveButton.disabled = !payload.cover;
+        if (cancelButton) cancelButton.disabled = false;
+    };
+
+    const clearPreview = () => {
+        const preview = $("#av-preview");
+        if (preview) preview.classList.add("d-none");
     };
 
     const initForm = () => {
@@ -293,6 +302,33 @@
         const statusInputs = document.querySelectorAll("input[name='av-status']");
         const hint = $("#av-hint");
         const loading = $("#av-loading");
+        const saveButton = $("#av-preview-save");
+        const cancelButton = $("#av-preview-cancel");
+        let pendingPayload = null;
+
+        if (saveButton) {
+            saveButton.addEventListener("click", () => {
+                if (!pendingPayload) return;
+                if (!pendingPayload.cover) {
+                    if (hint) hint.textContent = "未取得封面，無法儲存";
+                    return;
+                }
+                const result = saveItem(pendingPayload);
+                if (hint) hint.textContent = result.message;
+                if (result.saved && input) {
+                    input.value = "";
+                }
+                pendingPayload = null;
+                clearPreview();
+            });
+        }
+
+        if (cancelButton) {
+            cancelButton.addEventListener("click", () => {
+                pendingPayload = null;
+                clearPreview();
+            });
+        }
 
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -325,12 +361,9 @@
             };
 
             renderPreview(payload);
-
-            const result = saveItem(payload);
-
-            if (hint) hint.textContent = result.message;
-            if (result.saved && input) {
-                input.value = "";
+            pendingPayload = payload;
+            if (hint) {
+                hint.textContent = payload.cover ? "已取得影片資訊，請確認後儲存" : "未取得封面，請更換序號";
             }
         });
     };
