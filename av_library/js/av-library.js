@@ -255,7 +255,7 @@
 
         const cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0] || "";
         
-        // Try to extract m3u8 or stream URLs
+        // Try to extract stream URL
         const m3u8Match = text.match(/https?:\/\/[^\s"'<>]+\.m3u8/i)?.[0];
         const streamMatch = text.match(/https?:\/\/[^\s"'<>]*(?:stream|video|play)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
         const stream = m3u8Match || streamMatch || "";
@@ -282,20 +282,6 @@
     const fetchFromJina = async (targetUrl) => {
         const proxyUrl = `https://r.jina.ai/http://${targetUrl.replace(/^https?:\/\//, "")}`;
         const response = await fetch(proxyUrl);
-        if (!response.ok) {
-            throw new Error("Fetch failed");
-        }
-        return response.text();
-    };
-
-    // Fetch raw HTML from target URL (for stream extraction)
-    const fetchRawHtml = async (targetUrl) => {
-        // Try direct fetch with CORS only
-        const response = await fetch(targetUrl, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            }
-        });
         if (!response.ok) {
             throw new Error("Fetch failed");
         }
@@ -358,21 +344,11 @@
 
     const fetchMeta = async (url, fallbackTitle, slug, domain) => {
         try {
-            // Try to fetch raw HTML first for better stream extraction
-            let html;
-            let isRawHtml = false;
-            
-            try {
-                html = await fetchRawHtml(url);
-                isRawHtml = true;
-            } catch (error) {
-                // Fallback to Jina if raw fetch fails
-                html = await fetchFromJina(url);
-                isRawHtml = false;
-            }
+            // Always use Jina as primary method (like df7b6f9)
+            const html = await fetchFromJina(url);
             
             // Check if it's Markdown format from Jina
-            if (!isRawHtml && html.includes("Markdown Content:")) {
+            if (html.includes("Markdown Content:")) {
                 const meta = findMetaFromMarkdown(html, fallbackTitle);
                 if (!meta.cover && slug) {
                     try {
@@ -387,10 +363,10 @@
                 return meta;
             }
             
-            // Parse HTML (whether from raw fetch or Jina)
+            // Parse HTML (Jina returns raw HTML)
             const meta = findMetaFromHtml(html, fallbackTitle, url);
             
-            // If cover not found and we have slug, try to fetch from search page
+            // For HTML from Jina, also try search page as fallback for cover
             if (!meta.cover && slug) {
                 try {
                     const searchHost = (domain || "jable.tv").replace(/^www\./, "");
