@@ -84,6 +84,30 @@
         return { title, cover };
     };
 
+    const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    const parseCoverFromSearch = (text, slug) => {
+        const safeSlug = escapeRegExp(slug);
+        const pattern = new RegExp(
+            `\\[!\\[[^\\]]*\\]\\((https?://assets-cdn\\.jable\\.tv/contents/videos_screenshots/\\d+/\\d+/320x180/1\\.jpg)\\)[^\\]]*\\]\\(https?://jable\\.tv/videos/${safeSlug}/\\)`,
+            "i"
+        );
+        const match = text.match(pattern)?.[1]
+            || text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/320x180\/1\.jpg/i)?.[0]
+            || "";
+        if (!match) return "";
+        return match.replace("/320x180/1.jpg", "/preview.jpg");
+    };
+
+    const fetchFromJina = async (targetUrl) => {
+        const proxyUrl = `https://r.jina.ai/http://${targetUrl.replace(/^https?:\/\//, "")}`;
+        const response = await fetch(proxyUrl);
+        if (!response.ok) {
+            throw new Error("Fetch failed");
+        }
+        return response.text();
+    };
+
     const findMetaFromHtml = (html, fallbackTitle, baseUrl) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
@@ -126,41 +150,21 @@
         return { title: title?.trim() || fallbackTitle, cover: resolvedCover };
     };
 
-    const fetchHtml = async (url) => {
-        const sources = [
-            { id: "allOrigins", build: (target) => `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}` }
-        ];
-
-        for (const source of sources) {
-            try {
-                const response = await fetch(source.build(url));
-                if (!response.ok) continue;
-                const text = await response.text();
-                if (text && text.length > 500) {
-                    return { text, source: source.id };
-                }
-            } catch (error) {
-                continue;
-            }
-        }
-        return null;
-    };
-
-    const fetchMeta = async (url, fallbackTitle) => {
+    const fetchMeta = async (url, fallbackTitle, slug) => {
         try {
-            const htmlResult = await fetchHtml(url);
-            if (htmlResult?.text) {
-                return findMetaFromHtml(htmlResult.text, fallbackTitle, url);
-            }
-
-            const proxyUrl = `https://r.jina.ai/http://${url.replace(/^https?:\/\//, "")}`;
-            const response = await fetch(proxyUrl);
-            if (!response.ok) {
-                throw new Error("Fetch failed");
-            }
-            const html = await response.text();
+            const html = await fetchFromJina(url);
             if (html.includes("Markdown Content:")) {
-                return findMetaFromMarkdown(html, fallbackTitle);
+                const meta = findMetaFromMarkdown(html, fallbackTitle);
+                if (!meta.cover && slug) {
+                    try {
+                        const searchHtml = await fetchFromJina(`https://jable.tv/search/${slug}/`);
+                        const cover = parseCoverFromSearch(searchHtml, slug);
+                        return { ...meta, cover };
+                    } catch (error) {
+                        return meta;
+                    }
+                }
+                return meta;
             }
             return findMetaFromHtml(html, fallbackTitle, url);
         } catch (error) {
@@ -284,7 +288,7 @@
             const url = source.buildUrl(normalized.slug);
 
             if (loading) loading.classList.remove("d-none");
-            const meta = await source.fetchMeta(url, normalized.code);
+            const meta = await source.fetchMeta(url, normalized.code, normalized.slug);
             if (loading) loading.classList.add("d-none");
 
             const payload = {
