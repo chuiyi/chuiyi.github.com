@@ -516,8 +516,12 @@
 
             renderPreview(payload);
             pendingPayload = payload;
-            if (hint) {
-                hint.textContent = payload.cover ? "已取得影片資訊，請確認後儲存" : "未取得封面，請更換序號";
+            if (payload.cover) {
+                const result = saveItem(payload);
+                if (result.saved) markDirty();
+                if (hint) hint.textContent = result.saved ? "已自動儲存" : result.message;
+            } else {
+                if (hint) hint.textContent = "未取得封面，無法自動儲存";
             }
         });
     };
