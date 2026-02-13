@@ -5,29 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
     createGameBtn.addEventListener('click', createNewGame);
 });
 
-const WORD_POOL = [
-    '銀河', '星雲', '彗星', '流星', '黑洞', '白矮星', '超新星', '月光', '晨星', '北斗',
-    '海豚', '藍鯨', '海龜', '章魚', '珊瑚', '海葵', '海馬', '海豹', '企鵝', '鯨鯊',
-    '獅子', '老虎', '獵豹', '長頸鹿', '斑馬', '大象', '河馬', '袋鼠', '熊貓', '狐狸',
-    '松鼠', '刺蝟', '浣熊', '水獺', '鸚鵡', '孔雀', '火鶴', '白鷺', '夜鷹', '蜂鳥',
-    '向日葵', '薰衣草', '玫瑰', '茉莉', '百合', '銀杏', '楓葉', '櫻花', '竹子', '松樹',
-    '山峰', '峽谷', '瀑布', '湖泊', '河流', '冰川', '沙漠', '草原', '森林', '海岸',
-    '琥珀', '翡翠', '水晶', '寶石', '珍珠', '珊瑚玉', '青金石', '紅瑪瑙', '紫水晶', '黑曜石',
-    '風鈴', '紙鳶', '書卷', '墨水', '畫筆', '木琴', '小號', '吉他', '鋼琴', '鼓聲',
-    '咖啡', '抹茶', '可可', '奶茶', '蜂蜜', '楓糖', '薄荷', '香草', '奶酪', '麵包',
-    '日出', '日落', '微風', '晴空', '彩虹', '雲朵', '細雨', '霧氣', '雪花', '雷光'
-];
-
 function createNewGame() {
     // 生成唯一的房間 ID
     const roomId = generateRoomId();
 
-    const tickets = generateUniqueTickets(100, WORD_POOL);
+    const playerCount = getPlayerCount();
+    const wordPool = buildWordPool();
+    const selectedWords = pickRandomWords(playerCount, wordPool);
+    const tickets = generateUniqueTickets(playerCount, selectedWords);
     
     // 初始化房間資料
     const roomData = {
         id: roomId,
         created: Date.now(),
+        maxPlayers: playerCount,
         tickets,
         players: [],
         drawnNumbers: [],
@@ -62,7 +53,8 @@ function generateUniqueTickets(count, words) {
             id: `T${String(i + 1).padStart(3, '0')}`,
             word: words[i] || `詞彙${i + 1}`,
             numbers,
-            claimedBy: null
+            claimedBy: null,
+            assignedTo: null
         });
     }
 
@@ -103,4 +95,41 @@ function generateRoomId() {
         roomId += chars.charAt(Math.floor(Math.random() * chars.length));
     }
     return roomId;
+}
+
+function getPlayerCount() {
+    const input = document.getElementById('playerCountInput');
+    const value = Number(input?.value) || 20;
+    return Math.min(Math.max(value, 1), 100);
+}
+
+function buildWordPool() {
+    const adjectives = [
+        '星光', '月影', '晨曦', '晚霞', '彩虹', '微風', '晴空', '霧語', '雪舞', '雷鳴',
+        '海風', '潮汐', '雲朵', '雨滴', '露珠', '晨露', '暮色', '流星', '彗光', '極光',
+        '銀河', '星雲', '太陽', '琥珀', '翡翠'
+    ];
+    const nouns = [
+        '小鹿', '海豚', '藍鯨', '白狐', '松鼠', '刺蝟', '浣熊', '水獺', '鸚鵡', '蜂鳥',
+        '向日葵', '薰衣草', '玫瑰', '茉莉', '百合', '銀杏', '楓葉', '櫻花', '竹林', '松林'
+    ];
+
+    const pool = [];
+    adjectives.forEach(adj => {
+        nouns.forEach(noun => {
+            pool.push(`${adj}${noun}`);
+        });
+    });
+
+    return pool;
+}
+
+function pickRandomWords(count, pool) {
+    const shuffled = [...pool];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled.slice(0, count);
 }

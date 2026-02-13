@@ -24,6 +24,19 @@
                 </ul>
             </div>
 
+            <div class="config-card">
+                <label for="playerCountInput" class="config-label">預計玩家人數</label>
+                <input
+                    type="number"
+                    id="playerCountInput"
+                    class="config-input"
+                    min="1"
+                    max="100"
+                    value="20"
+                >
+                <p class="config-hint">系統會依人數隨機產生對應數量的專用詞與票券。</p>
+            </div>
+
             <button id="createGameBtn" class="create-game-btn">
                 <span class="btn-icon">🎮</span>
                 開啟新遊戲

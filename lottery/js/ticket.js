@@ -11,6 +11,7 @@ let roomData = null;
 let updateInterval = null;
 let lastBingoCount = 0;
 
+
 document.addEventListener('DOMContentLoaded', () => {
     // 從 URL 取得房間 ID
     const urlParams = new URLSearchParams(window.location.search);
@@ -69,11 +70,19 @@ function loadRoomData() {
     }
     
     roomData = JSON.parse(data);
+
+    if (!roomData.tickets) {
+        const maxPlayers = roomData.maxPlayers || 20;
+        const wordPool = buildWordPool();
+        const selectedWords = pickRandomWords(maxPlayers, wordPool);
+        roomData.tickets = generateUniqueTickets(maxPlayers, selectedWords);
+        saveRoomData();
+    }
 }
 
 function drawTicket() {
     if (!roomData || !roomData.tickets) {
-        alert('房間未建立票券資料，請重新建立房間。');
+        alert('房間尚未建立票券資料，請重新建立房間。');
         return;
     }
 
@@ -119,6 +128,92 @@ function drawTicket() {
     drawBtn.disabled = true;
 
     updateTicketDisplay();
+}
+
+function generateUniqueTickets(count, words) {
+    const tickets = [];
+    const used = new Set();
+
+    for (let i = 0; i < count; i++) {
+        let numbers = [];
+        let key = '';
+        let attempts = 0;
+
+        do {
+            numbers = generateTicketNumbers();
+            key = numbers.join('-');
+            attempts++;
+        } while (used.has(key) && attempts < 500);
+
+        used.add(key);
+
+        tickets.push({
+            id: `T${String(i + 1).padStart(3, '0')}`,
+            word: words[i] || `詞彙${i + 1}`,
+            numbers,
+            claimedBy: null,
+            assignedTo: null
+        });
+    }
+
+    return tickets;
+}
+
+function buildWordPool() {
+    const adjectives = [
+        '星光', '月影', '晨曦', '晚霞', '彩虹', '微風', '晴空', '霧語', '雪舞', '雷鳴',
+        '海風', '潮汐', '雲朵', '雨滴', '露珠', '晨露', '暮色', '流星', '彗光', '極光',
+        '銀河', '星雲', '太陽', '琥珀', '翡翠'
+    ];
+    const nouns = [
+        '小鹿', '海豚', '藍鯨', '白狐', '松鼠', '刺蝟', '浣熊', '水獺', '鸚鵡', '蜂鳥',
+        '向日葵', '薰衣草', '玫瑰', '茉莉', '百合', '銀杏', '楓葉', '櫻花', '竹林', '松林'
+    ];
+
+    const pool = [];
+    adjectives.forEach(adj => {
+        nouns.forEach(noun => {
+            pool.push(`${adj}${noun}`);
+        });
+    });
+
+    return pool;
+}
+
+function pickRandomWords(count, pool) {
+    const shuffled = [...pool];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled.slice(0, count);
+}
+
+function generateTicketNumbers() {
+    const numbers = [];
+    for (let i = 1; i <= 99; i++) {
+        numbers.push(i);
+    }
+
+    for (let i = numbers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+    }
+
+    const selected = numbers.slice(0, 24);
+    const gridNumbers = [];
+    let selectedIndex = 0;
+
+    for (let i = 0; i < 25; i++) {
+        if (i === 12) {
+            gridNumbers.push(0);
+        } else {
+            gridNumbers.push(selected[selectedIndex++]);
+        }
+    }
+
+    return gridNumbers;
 }
 
 function updateTicketDisplay() {
