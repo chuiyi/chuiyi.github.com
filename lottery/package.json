@@ -1,0 +1,20 @@
+{
+  "name": "lottery-bingo-game",
+  "version": "1.0.0",
+  "description": "多人即時樂透賓果遊戲系統",
+  "main": "server-example.js",
+  "scripts": {
+    "start": "node server-example.js",
+    "dev": "nodemon server-example.js"
+  },
+  "keywords": ["lottery", "bingo", "game", "multiplayer", "socket.io"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
