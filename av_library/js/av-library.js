@@ -353,35 +353,12 @@
         }
         const resolvedCover = resolveUrl(baseUrl, cover);
         
-        // Try to extract stream URL from video tag or script
+        // Try to extract stream URL
         let stream = "";
-        
-        // Method 1: video tag
-        const videoTag = doc.querySelector("video");
-        if (videoTag) {
-            const src = videoTag.getAttribute("src") || videoTag.querySelector("source")?.getAttribute("src");
-            if (src) stream = resolveUrl(baseUrl, src);
+        const m3u8Match = html.match(/https?:\/\/[^\s"'<>]+\.m3u8(?:[^\s"'<>]*)?/i)?.[0];
+        if (m3u8Match) {
+            stream = m3u8Match.replace(/[;'"]$/, '');
         }
-        
-        // Method 2: Direct m3u8 URL in HTML
-        if (!stream) {
-            // More aggressive m3u8 pattern - captures full URL with parameters
-            const m3u8Pattern = /https?:\/\/[^\s"'<>]+\.m3u8(?:[^\s"'<>]*)?/i;
-            const m3u8Match = html.match(m3u8Pattern)?.[0];
-            if (m3u8Match) {
-                // Clean up the URL if it has trailing characters
-                stream = m3u8Match.replace(/[;'"]$/, '');
-            }
-        }
-        
-        // Method 3: m3u8 inside JavaScript strings
-        if (!stream) {
-            const jsM3u8Pattern = /["'](https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*)["']/i;
-            const jsM3u8Match = html.match(jsM3u8Pattern)?.[1];
-            if (jsM3u8Match) stream = jsM3u8Match;
-        }
-        
-        // Method 4: mp4 or other stream formats
         if (!stream) {
             const streamMatch = html.match(/https?:\/\/[^\s"'<>]*(?:stream|video|play|hls)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
             if (streamMatch) stream = streamMatch;
@@ -424,7 +401,7 @@
             const meta = findMetaFromHtml(html, fallbackTitle, url);
             
             // If cover not found and we have slug, try to fetch from search page
-            if (!meta.cover && slug && fromRawFetch) {
+            if (!meta.cover && slug) {
                 try {
                     const searchHost = (domain || "jable.tv").replace(/^www\./, "");
                     const searchHtml = await fetchFromJina(`https://${searchHost}/search/${slug}/`);
