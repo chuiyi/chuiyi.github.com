@@ -280,11 +280,15 @@
         // Very short text usually not a name
         if (text.length < 2) return false;
         
-        // Common non-name words and phrases
+        // Common non-name words and phrases (including AV content descriptors)
         const exclude = ['and', 'the', 'a', 'in', 'on', 'at', 'by', 'or', 'with',
                        '和', '與', '的', '在', '於', '被', '是', '有', '了', '不', '很', '得',
                        'vol', 'no', 'ep', 'part', 'scene', '版', '集', '話', '第', '章',
-                       'DVD', 'Blu', 'ray', '4K', 'HD', '中文', '字幕', '無修正'];
+                       'DVD', 'Blu', 'ray', '4K', 'HD', '中文', '字幕', '無修正',
+                       '温泉', '旅行', '家庭', '学園', '学生', '先生', '妻', '夫', '娘', '息子',
+                       'いいなり', 'なじみ', 'ちんぽ', 'おっぱい', 'ふたなり', 'ラッシュ',
+                       'アクメ', 'イキ', 'オマンコ', 'ザーメン', 'ナマ', 'パイズリ',
+                       '凌辱', '輪姦', '調教', '監禁', '催眠', '緊縛', '拘束'];
         
         if (exclude.includes(text.toLowerCase())) return false;
         
@@ -313,8 +317,17 @@
             return text.length >= 3 && text.length <= 10;
         }
         
-        // Kanji + Hiragana combination (typical Japanese names)
-        if (kanji.length > 0 && hiragana.length > 0 && text.length <= 8) {
+        // Kanji + Hiragana combination: need stricter checks
+        if (kanji.length > 0 && hiragana.length > 0) {
+            // Real names are typically short (2-4 kanji + some hiragana)
+            // Movie descriptors are usually longer
+            if (text.length > 8) return false;
+            
+            // Check if it looks like a descriptor (multiple parts)
+            // Names usually have 1-2 kanji with hiragana for furigana
+            const kanjiRatio = kanji.length / text.length;
+            if (kanjiRatio < 0.3) return false; // Too many hiragana, probably descriptor
+            
             return true;
         }
         
@@ -478,6 +491,13 @@
         if (!cover) {
             const previewMatch = html.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/);
             if (previewMatch?.[0]) cover = previewMatch[0];
+        }
+        // Additional fallback: look for any image URL that looks like a preview
+        if (!cover) {
+            const imgMatch = html.match(/https?:\/\/[^\s"'<>]*\.(jpg|jpeg|png|webp)(?:[^\s"'<>]*)?/i)?.[0];
+            if (imgMatch && !imgMatch.includes('logo') && !imgMatch.includes('icon')) {
+                cover = imgMatch;
+            }
         }
         const resolvedCover = resolveUrl(baseUrl, cover);
         
