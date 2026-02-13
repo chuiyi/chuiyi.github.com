@@ -239,6 +239,55 @@
         return { name: "", thumbnail: "" };
     };
 
+    // Extract actor names from title
+    const extractActors = (title) => {
+        if (!title) return [];
+        
+        // Common Japanese female name patterns and AV studio conventions
+        // Usually format: "Code Title - ActorName1 ActorName2"
+        // Try to extract from after the dash or from the entire title
+        
+        let workingTitle = title;
+        
+        // Remove code if present (e.g., "SSNI-865" or similar)
+        workingTitle = workingTitle.replace(/^[A-Z]+-\d+\s+/i, '');
+        
+        // Common delimiters between title and actors
+        const parts = workingTitle.split(/[-·•\s]+/);
+        
+        const actorNames = [];
+        
+        for (const part of parts) {
+            const trimmed = part.trim();
+            if (!trimmed || trimmed.length < 2) continue;
+            
+            // Filter out common non-actor words
+            const exclude = ['and', 'the', 'a', 'in', 'on', 'at', 'by', 'or', 'with', 
+                           '和', '與', '的', '在', '於', '被', '是', '有', '了', '不', '很', '得',
+                           'vol', 'no', 'ep', 'part', 'scene', '版', '集', '話'];
+            
+            if (exclude.includes(trimmed.toLowerCase())) continue;
+            
+            // Katakana/Hiragana names (common in Japanese)
+            if (/[\u3040-\u309F\u30A0-\u30FF]/.test(trimmed)) {
+                actorNames.push(trimmed);
+            }
+            // Chinese characters (common in AV titles)
+            else if (/[\u4E00-\u9FFF]/.test(trimmed)) {
+                // Skip single Chinese characters or common words
+                if (trimmed.length > 1 && !['及', '和', '與', '的', '在'].includes(trimmed)) {
+                    actorNames.push(trimmed);
+                }
+            }
+            // English names (less common but possible)
+            else if (/^[A-Za-z]+$/.test(trimmed) && trimmed.length > 2) {
+                actorNames.push(trimmed);
+            }
+        }
+        
+        return actorNames;
+    };
+
     const resolveUrl = (baseUrl, value) => {
         if (!value) return "";
         try {
@@ -436,6 +485,8 @@
             card.className = "av-card";
             const cover = item.cover || PLACEHOLDER_COVER;
             const playBtnHtml = item.stream ? `<button type="button" class="btn btn-sm btn-outline-info" data-action="play" data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}">播放</button>` : "";
+            const actors = extractActors(item.title);
+            const actorsHtml = actors.length > 0 ? `<div class="av-card-actors">${actors.join(", ")}</div>` : "";
             card.innerHTML = `
                 <div style="position: relative;">
                     <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}" ${item.stream ? `data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}"` : ""}>
@@ -446,6 +497,7 @@
                 <div class="av-card-body">
                     <div class="av-card-title">${item.title}</div>
                     <div class="av-card-code">${item.code}</div>
+                    ${actorsHtml}
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="badge rounded-pill badge-status">${status === "watched" ? "看過的影片" : "稍後觀看"}</span>
                         <div class="d-flex gap-2">
@@ -466,6 +518,8 @@
         const cover = $("#av-preview-cover");
         const title = $("#av-preview-title");
         const code = $("#av-preview-code");
+        const actorsDiv = $("#av-preview-actors");
+        const actorsName = $("#av-preview-actors-name");
         const source = $("#av-preview-source");
         const link = $("#av-preview-link");
         const status = $("#av-preview-status");
@@ -491,6 +545,18 @@
         }
         if (title) title.textContent = payload.title || payload.code;
         if (code) code.textContent = payload.code;
+        
+        // Extract and display actor names
+        if (actorsDiv && actorsName) {
+            const actors = extractActors(payload.title);
+            if (actors.length > 0) {
+                actorsName.textContent = actors.join(", ");
+                actorsDiv.style.display = "block";
+            } else {
+                actorsDiv.style.display = "none";
+            }
+        }
+        
         if (source) source.textContent = `來源：${payload.sourceName}`;
         if (link) {
             link.href = payload.url;
