@@ -111,29 +111,12 @@
                     <div id="av-preview-stream" class="preview-meta d-none">串流網址：<a id="av-preview-stream-link" href="#" target="_blank" rel="noopener" class="preview-link"></a></div>
                     <div class="d-flex gap-2 mt-3">
                         <button type="button" class="btn btn-primary btn-sm" id="av-preview-save">儲存</button>
-                        <button type="button" class="btn btn-outline-secondary btn-sm" id="av-preview-play" style="display: none;">播放</button>
                         <button type="button" class="btn btn-outline-secondary btn-sm" id="av-preview-cancel">取消</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 影片播放器模態框 -->
-        <div class="modal fade" id="av-player-modal" tabindex="-1">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="av-player-title">播放影片</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <video id="av-player" width="100%" height="auto" controls style="background: #000; border-radius: 8px;">
-                            <p>您的瀏覽器不支援 HTML5 視頻。</p>
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="mt-4 text-muted">
             <i class="bi bi-info-circle me-1"></i>資料會保存在此瀏覽器的 localStorage 中。

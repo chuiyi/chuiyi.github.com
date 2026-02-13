@@ -457,7 +457,7 @@
             }
 
             log('在瀏覽器中執行測試: ' + videoUrl, 'info');
-            log('💡 此方法打開新窗口加載頁面，然後在控制台執行腳本提取 hlsUrl', 'info');
+            log('💡 此方法打開新窗口，自動從頁面複製 hlsUrl 到剪貼簿', 'info');
 
             try {
                 // 打開一個新窗口
@@ -468,18 +468,16 @@
                     return;
                 }
 
-                log('✓ 新窗口已打開，等待頁面加載...', 'success');
-                log('請等待 5-10 秒讓新窗口加載完成...', 'info');
+                log('✓ 新窗口已打開', 'success');
 
                 // 等待新窗口加載
                 let retries = 0;
-                const maxRetries = 20; // 10 秒
+                const maxRetries = 40; // 20 秒
 
                 const checkInterval = setInterval(async () => {
                     retries++;
                     
                     if (popup.closed) {
-                        log('新窗口已關閉', 'error');
                         clearInterval(checkInterval);
                         return;
                     }
@@ -488,67 +486,103 @@
                     if (popup.document && popup.document.readyState === 'complete') {
                         try {
                             // 在新窗口中執行腳本
-                            const extractCode = () => {
-                                // 方法 1: 直接訪問
-                                if (typeof window.hlsUrl !== 'undefined') {
-                                    return { found: true, url: window.hlsUrl, method: 'direct' };
-                                }
+                            const extractAndCopy = `
+                                (async () => {
+                                    let hlsUrl = null;
 
-                                // 方法 2: 從 document 搜尋
-                                const scriptTags = document.querySelectorAll('script');
-                                for (let script of scriptTags) {
-                                    if (script.textContent.includes('hlsUrl')) {
-                                        const match = script.textContent.match(/hlsUrl\s*=\s*['"]([^'"]+\.m3u8[^'"]*)['"]/);
-                                        if (match && match[1]) {
-                                            return { found: true, url: match[1], method: 'script_search' };
+                                    // 方法 1: 直接訪問
+                                    if (typeof window.hlsUrl !== 'undefined' && window.hlsUrl) {
+                                        hlsUrl = window.hlsUrl;
+                                        console.log('✅ 找到 hlsUrl (直接):', hlsUrl);
+                                    }
+
+                                    // 方法 2: 從 script 標籤搜尋
+                                    if (!hlsUrl) {
+                                        const scripts = document.querySelectorAll('script');
+                                        for (let script of scripts) {
+                                            const match = script.textContent.match(/hlsUrl\\s*=\\s*['"]([^'"]+\\.m3u8[^'"]*)['"]/i);
+                                            if (match && match[1]) {
+                                                hlsUrl = match[1];
+                                                console.log('✅ 找到 hlsUrl (script 標籤):', hlsUrl);
+                                                break;
+                                            }
                                         }
                                     }
-                                }
 
-                                // 方法 3: 搜尋全局變數
-                                for (let key in window) {
-                                    try {
-                                        if (typeof window[key] === 'string' && window[key].includes('.m3u8')) {
-                                            return { found: true, url: window[key], method: 'global_var: ' + key };
+                                    // 方法 3: 搜尋全局變數
+                                    if (!hlsUrl) {
+                                        for (let key in window) {
+                                            try {
+                                                if (typeof window[key] === 'string' && window[key].includes('.m3u8')) {
+                                                    hlsUrl = window[key];
+                                                    console.log('✅ 找到 hlsUrl (全局變數 ' + key + '):', hlsUrl);
+                                                    break;
+                                                }
+                                            } catch (e) {}
                                         }
-                                    } catch (e) {}
-                                }
+                                    }
 
-                                return { found: false, url: null, method: 'none' };
-                            };
+                                    if (hlsUrl) {
+                                        try {
+                                            // 複製到剪貼簿
+                                            await navigator.clipboard.writeText(hlsUrl);
+                                            console.log('✓ URL 已複製到剪貼簿');
+                                            
+                                            // 在頁面上顯示
+                                            const div = document.createElement('div');
+                                            div.style.cssText = 'position:fixed;top:10px;left:10px;background:#4CAF50;color:white;padding:15px;border-radius:5px;z-index:999999;font-size:14px;max-width:400px;word-break:break-all;';
+                                            div.innerHTML = '✅ hlsUrl 已複製到剪貼簿！<br><small>' + hlsUrl.substring(0, 100) + '...</small>';
+                                            document.body.appendChild(div);
+                                            
+                                            setTimeout(() => div.remove(), 5000);
+                                        } catch (err) {
+                                            console.log('複製失敗:', err);
+                                        }
+                                    } else {
+                                        console.log('❌ 未找到 hlsUrl');
+                                        const div = document.createElement('div');
+                                        div.style.cssText = 'position:fixed;top:10px;left:10px;background:#f44336;color:white;padding:15px;border-radius:5px;z-index:999999;font-size:14px;';
+                                        div.innerHTML = '❌ 未找到 hlsUrl，請稍候再試...';
+                                        document.body.appendChild(div);
+                                        setTimeout(() => div.remove(), 3000);
+                                    }
+                                })();
+                            `;
 
-                            const result = popup.eval(`(${extractCode.toString()})()`);
+                            popup.eval(extractAndCopy);
+                            clearInterval(checkInterval);
                             
-                            if (result && result.found) {
-                                clearInterval(checkInterval);
-                                log('✅ 成功從新窗口獲取 hlsUrl! (方法: ' + result.method + ')', 'success');
-                                log('URL: ' + result.url, 'success');
-
-                                currentStreams = [{
-                                    source: 'hlsUrl (from browser)',
-                                    url: result.url,
-                                    method: 'browser',
-                                    priority: 0
-                                }];
-
-                                displayResults(currentStreams);
-                                return;
-                            } else if (retries >= maxRetries) {
-                                clearInterval(checkInterval);
-                                log('⏱️ 超時: 無法從新窗口獲取 hlsUrl', 'error');
-                                log('請在新窗口的控制台手動執行: console.log(window.hlsUrl)', 'info');
-                                return;
+                            log('✓ 已在新窗口執行提取腳本', 'success');
+                            log('如果 URL 找到，會自動複製到剪貼簿', 'info');
+                            log('請在下方輸入框粘貼 (Ctrl+V):', 'info');
+                            
+                            // 顯示粘貼區域
+                            const pasteSection = document.createElement('div');
+                            pasteSection.className = 'test-section';
+                            pasteSection.innerHTML = `
+                                <h4>粘貼提取的 URL:</h4>
+                                <textarea id="pasteUrl" class="form-control mb-2" rows="3" placeholder="粘貼從新窗口複製的 hlsUrl..."></textarea>
+                                <button class="btn btn-success" onclick="handlePastedUrl()">確認使用此 URL</button>
+                            `;
+                            
+                            const resultsDiv = document.getElementById('results');
+                            if (resultsDiv) {
+                                resultsDiv.innerHTML = '';
+                                resultsDiv.parentElement.insertBefore(pasteSection, resultsDiv);
                             }
+                            
+                            return;
                         } catch (error) {
                             if (retries >= maxRetries) {
                                 clearInterval(checkInterval);
-                                log('❌ 錯誤: ' + error.message, 'error');
-                                log('請在新窗口的控制台手動執行: console.log(window.hlsUrl)', 'info');
+                                log('❌ 無法執行: ' + error.message, 'error');
+                                log('請手動在新窗口執行:', 'info');
+                                log('navigator.clipboard.writeText(window.hlsUrl)', 'info');
                             }
                         }
                     } else {
-                        if (retries % 4 === 0) {
-                            log('⏳ 等待頁面加載... (' + retries + '/' + maxRetries + ')', 'info');
+                        if (retries % 8 === 0) {
+                            log('⏳ 等待頁面加載... (' + Math.floor(retries * 0.5) + '秒)', 'info');
                         }
                     }
                 }, 500);
@@ -557,14 +591,33 @@
                 setTimeout(() => {
                     if (!popup.closed) {
                         clearInterval(checkInterval);
-                        log('⏱️ 檢查超時，新窗口仍未返回 hlsUrl', 'error');
-                        log('提示: 在新窗口控制台 (F12) 執行 console.log(window.hlsUrl) 檢查是否有值', 'info');
+                        log('⏱️ 檢查超時', 'error');
+                        log('手動方法: 在新窗口控制台執行:', 'info');
+                        log('navigator.clipboard.writeText(window.hlsUrl)', 'info');
                     }
                 }, 20000);
 
             } catch (error) {
                 log('✗ 錯誤: ' + error.message, 'error');
             }
+        };
+
+        const handlePastedUrl = () => {
+            const url = document.getElementById('pasteUrl').value.trim();
+            if (!url) {
+                alert('請粘貼 URL');
+                return;
+            }
+
+            currentStreams = [{
+                source: 'hlsUrl (from browser)',
+                url: url,
+                method: 'browser',
+                priority: 0
+            }];
+
+            displayResults(currentStreams);
+            document.getElementById('pasteUrl').closest('.test-section').style.display = 'none';
         };
 
         window.addEventListener('load', () => {

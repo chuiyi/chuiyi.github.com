@@ -14,7 +14,6 @@
     let pendingSyncAction = null;
     let syncDirty = false;
     let syncTimer = null;
-    let playerModal = null;
 
     const $ = (selector) => document.querySelector(selector);
 
@@ -613,11 +612,10 @@
             const card = document.createElement("div");
             card.className = "av-card";
             const cover = item.cover || PLACEHOLDER_COVER;
-            const playBtnHtml = item.stream ? `<button type="button" class="btn btn-sm btn-outline-info" data-action="play" data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}">播放</button>` : "";
             card.innerHTML = `
                 <div style="position: relative;">
-                    <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}" ${item.stream ? `data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}"` : ""}>
-                    <div class="av-card-overlay" data-action="open" data-url="${item.url}" ${item.stream ? `data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}"` : ""}>
+                    <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}">
+                    <div class="av-card-overlay" data-action="open" data-url="${item.url}">
                         <div class="av-play-btn"><i class="bi bi-play-fill"></i></div>
                     </div>
                 </div>
@@ -628,7 +626,6 @@
                         <span class="badge rounded-pill badge-status">${status === "watched" ? "看過的影片" : "稍後觀看"}</span>
                         <div class="d-flex gap-2">
                             <a href="${item.url}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">前往</a>
-                            ${playBtnHtml}
                             <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="${item.id}">刪除</button>
                         </div>
                     </div>
@@ -660,9 +657,7 @@
             cover.src = coverUrl;
             cover.style.cursor = "pointer";
             cover.onclick = () => {
-                if (payload.stream) {
-                    openPlayer(payload.title, payload.stream);
-                } else if (payload.url) {
+                if (payload.url) {
                     window.open(payload.url, "_blank");
                 }
             };
@@ -679,43 +674,6 @@
         }
         if (saveButton) saveButton.disabled = !payload.cover;
         if (cancelButton) cancelButton.disabled = false;
-        
-        // Show play button and stream URL if available
-        if (playButton) {
-            if (payload.stream) {
-                playButton.style.display = "inline-block";
-                playButton.onclick = () => openPlayer(payload.title, payload.stream);
-            } else {
-                playButton.style.display = "none";
-            }
-        }
-        if (streamDiv && streamLink) {
-            if (payload.stream) {
-                streamDiv.classList.remove("d-none");
-                streamLink.href = payload.stream;
-                streamLink.textContent = payload.stream;
-            } else {
-                streamDiv.classList.add("d-none");
-            }
-        }
-    };
-
-    const openPlayer = (title, streamUrl) => {
-        console.log(`[openPlayer] title: ${title}, streamUrl: ${streamUrl}`);
-        if (!playerModal) {
-            console.log(`[openPlayer] Initializing player modal`);
-            playerModal = new bootstrap.Modal(document.getElementById("av-player-modal"));
-        }
-        const playerTitle = document.getElementById("av-player-title");
-        const player = document.getElementById("av-player");
-        if (playerTitle) playerTitle.textContent = title || "播放影片";
-        if (player) {
-            console.log(`[openPlayer] Setting player src to: ${streamUrl}`);
-            player.src = streamUrl;
-            player.load();
-        }
-        playerModal.show();
-        console.log(`[openPlayer] Modal shown`);
     };
 
     const clearPreview = () => {
@@ -969,20 +927,9 @@
                     if (!id) return;
                     deleteItem(id);
                     renderList(status);
-                } else if (action === "play") {
-                    const stream = actionElement.dataset.stream;
-                    const title = actionElement.dataset.title;
-                    console.log(`[Action: play] stream: ${stream}, title: ${title}`);
-                    if (stream) openPlayer(title, stream);
                 } else if (action === "open") {
-                    const stream = actionElement.dataset.stream;
                     const url = actionElement.dataset.url;
-                    const title = actionElement.dataset.title;
-                    console.log(`[Action: open] stream: ${stream}, url: ${url}, title: ${title}`);
-                    if (stream) {
-                        openPlayer(title, stream);
-                    } else if (url) {
-                        console.log(`[Action: open] No stream, opening URL in new tab`);
+                    if (url) {
                         window.open(url, "_blank");
                     }
                 }
@@ -993,12 +940,6 @@
     };
 
     const initPage = () => {
-        // Initialize player modal if it exists
-        const playerModalEl = document.getElementById("av-player-modal");
-        if (playerModalEl) {
-            playerModal = new bootstrap.Modal(playerModalEl);
-        }
-        
         const listPage = document.body?.dataset?.avList;
         if (listPage) {
             initListPage(listPage);
