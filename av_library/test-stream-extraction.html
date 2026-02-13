@@ -85,15 +85,30 @@
                 log('⚠️ 這表示流 URL 是由 JavaScript 動態生成的，需要執行 JS 代碼', 'error');
             }
 
-            // 策略 1: 搜尋 poster 屬性中的圖片 URL (這是我們已有的)
-            log('策略 1: 搜尋 poster 屬性...', 'info');
+            // 策略 1: 搜尋 hlsUrl JavaScript 變數 (最直接)
+            log('策略 1: 搜尋 hlsUrl 變數...', 'info');
+            const hlsMatch = html.match(/var\s+hlsUrl\s*=\s*['"]([^'"]+\.m3u8[^'"]*)['"]/i);
+            if (hlsMatch && hlsMatch[1]) {
+                streams.push({ source: 'hlsUrl', url: hlsMatch[1], method: 1, priority: 0.5 });
+                log('✓ 找到 hlsUrl: ' + hlsMatch[1].substring(0, 100) + '...', 'success');
+            }
+
+            // 策略 1b: 替代 hlsUrl 模式
+            const hlsMatch2 = html.match(/hlsUrl\s*[:=]\s*['"]([^'"]+\.m3u8[^'"]*)['"]/i);
+            if (hlsMatch2 && hlsMatch2[1] && !streams.find(s => s.url === hlsMatch2[1])) {
+                streams.push({ source: 'hlsUrl_alt', url: hlsMatch2[1], method: 1, priority: 0.7 });
+                log('✓ 找到 hlsUrl (替代): ' + hlsMatch2[1].substring(0, 100) + '...', 'success');
+            }
+
+            // 策略 2: 搜尋 poster 屬性中的圖片 URL
+            log('策略 2: 搜尋 poster 屬性...', 'info');
             const posterMatch = html.match(/poster="([^"]+)"/);
             if (posterMatch) {
                 log('✓ 找到 poster: ' + posterMatch[1], 'success');
             }
 
-            // 策略 2: 在 JavaScript 配置中尋找流源
-            log('策略 2: 在 JavaScript 配置中搜尋...', 'info');
+            // 策略 3: 在 JavaScript 配置中尋找流源
+            log('策略 3: 在 JavaScript 配置中搜尋...', 'info');
             const jsSourcePatterns = [
                 /sources\s*:\s*\[\s*\{\s*src\s*:\s*["']([^"']+)["']/i,
                 /mp\.options\.sources.*?src\s*:\s*["']([^"']+)["']/i,
@@ -107,25 +122,25 @@
                 if (match && match[1]) {
                     const url = match[1];
                     if (!streams.find(s => s.url === url)) {
-                        streams.push({ source: 'js_config', url: url, method: 2, priority: 2 });
+                        streams.push({ source: 'js_config', url: url, method: 3, priority: 2 });
                         log('✓ 在 JS 配置中找到: ' + url.substring(0, 100) + '...', 'success');
                     }
                 }
             }
 
-            // 策略 3: 尋找 m3u8 連結
-            log('策略 3: 搜尋直接 m3u8 URL...', 'info');
+            // 策略 4: 尋找 m3u8 連結
+            log('策略 4: 搜尋直接 m3u8 URL...', 'info');
             const m3u8Direct = html.match(/https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*/i);
             if (m3u8Direct) {
                 const url = m3u8Direct[0].replace(/[;'"]$/, '');
                 if (!streams.find(s => s.url === url)) {
-                    streams.push({ source: 'm3u8', url: url, method: 3, priority: 1 });
+                    streams.push({ source: 'm3u8', url: url, method: 4, priority: 1 });
                     log('✓ 找到直接 m3u8: ' + url.substring(0, 100) + '...', 'success');
                 }
             }
 
-            // 策略 4: 在所有 URL 中搜尋潛在的流
-            log('策略 4: 搜尋潛在流 URL 模式...', 'info');
+            // 策略 5: 在所有 URL 中搜尋潛在的流
+            log('策略 5: 搜尋潛在流 URL 模式...', 'info');
             const cdnPatterns = [
                 /https?:\/\/[^\s"'<>]*cdn[^\s"'<>]*\.(?:m3u8|mp4)/gi,
                 /https?:\/\/[^\s"'<>]*stream[^\s"'<>]*\.(?:m3u8|mp4)/gi,
@@ -137,14 +152,14 @@
                 while ((match = pattern.exec(html)) !== null) {
                     const url = match[0].replace(/["';]$/, '');
                     if (!streams.find(s => s.url === url)) {
-                        streams.push({ source: 'cdn', url: url, method: 4, priority: 3 });
+                        streams.push({ source: 'cdn', url: url, method: 5, priority: 3 });
                         log('✓ 找到 CDN URL: ' + url.substring(0, 100) + '...', 'success');
                     }
                 }
             }
 
-            // 策略 5: 廣泛搜尋所有 m3u8
-            log('策略 5: 廣泛搜尋所有 m3u8...', 'info');
+            // 策略 6: 廣泛搜尋所有 m3u8
+            log('策略 6: 廣泛搜尋所有 m3u8...', 'info');
             const m3u8Pattern = /https?:\/\/[^\s"'<>]+\.m3u8(?:[^\s"'<>]*)?/gi;
             let match;
             let count = 0;
@@ -152,39 +167,39 @@
                 const url = match[0].replace(/["';]$/, '');
                 if (url && url.endsWith('.m3u8')) {
                     if (!streams.find(s => s.url === url)) {
-                        streams.push({ source: 'm3u8', url: url, method: 5, priority: 2 + count });
+                        streams.push({ source: 'm3u8', url: url, method: 6, priority: 2 + count });
                         log('✓ 廣泛搜尋 M3U8 ' + (++count) + ': ' + url.substring(0, 80) + '...', 'success');
                     }
                 }
             }
 
-            // 策略 6: 搜尋 .ts 文件並推斷 m3u8 路徑
-            log('策略 6: 搜尋 .ts 文件並推斷 m3u8...', 'info');
+            // 策略 7: 搜尋 .ts 文件並推斷 m3u8 路徑
+            log('策略 7: 搜尋 .ts 文件並推斷 m3u8...', 'info');
             const tsMatch = html.match(/https?:\/\/[^\s"'<>]*\/(vod\/\d+\/\d+\/)\d+\.ts[^\s"'<>]*/i);
             if (tsMatch) {
                 const baseUrl = tsMatch[0].split('/').slice(0, -1).join('/');
                 const m3u8Url = baseUrl + '/playlist.m3u8';
                 if (!streams.find(s => s.url === m3u8Url)) {
-                    streams.push({ source: 'ts_inferred', url: m3u8Url, method: 6, priority: 1.5 });
+                    streams.push({ source: 'ts_inferred', url: m3u8Url, method: 7, priority: 1.5 });
                     log('✓ 從 TS 推斷 M3U8: ' + m3u8Url.substring(0, 100) + '...', 'success');
                 }
             }
 
-            // 策略 7: 搜尋所有 MP4
-            log('策略 7: 搜尋 MP4 連結...', 'info');
+            // 策略 8: 搜尋所有 MP4
+            log('策略 8: 搜尋 MP4 連結...', 'info');
             const mp4Regex = /https?:\/\/[^\s"'<>]+\.mp4/gi;
             const mp4Matches = html.match(mp4Regex) || [];
             log('找到 ' + mp4Matches.length + ' 個 MP4 連結', 'info');
             
             for (let i = 0; i < mp4Matches.length && i < 5; i++) {
                 if (!streams.find(s => s.url === mp4Matches[i])) {
-                    streams.push({ source: 'mp4', url: mp4Matches[i], method: 7, priority: 7 + i });
+                    streams.push({ source: 'mp4', url: mp4Matches[i], method: 8, priority: 7 + i });
                     log('✓ MP4 ' + (i + 1) + ': ' + mp4Matches[i].substring(0, 80) + '...', 'success');
                 }
             }
 
-            // 策略 8: 搜尋 Blob URL 並分析附近的 JavaScript 代碼
-            log('策略 8: 分析 Blob URL 附近的代碼...', 'info');
+            // 策略 9: 搜尋 Blob URL 並分析附近的 JavaScript 代碼
+            log('策略 9: 分析 Blob URL 附近的代碼...', 'info');
             const blobPattern = /blob:[^\s"'<>]+/;
             if (blobPattern.test(html)) {
                 log('⚠️ 檢測到 blob URL - 這表示頁面使用 JavaScript 動態加載流', 'error');
