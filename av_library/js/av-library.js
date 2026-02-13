@@ -74,6 +74,21 @@
         }
     };
 
+    const findMetaFromMarkdown = (text, fallbackTitle) => {
+        const titleLine = text.match(/^Title:\s*(.+)$/m)?.[1]?.trim();
+        const headingLine = text.match(/^####\s+(.+)$/m)?.[1]?.trim();
+        const title = titleLine || headingLine || fallbackTitle;
+
+        let cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0] || "";
+        if (!cover) {
+            const shotPath = text.match(/contents\/videos_screenshots\/(\d+\/\d+)\//i)?.[1];
+            if (shotPath) {
+                cover = `https://assets-cdn.jable.tv/contents/videos_screenshots/${shotPath}/preview.jpg`;
+            }
+        }
+        return { title, cover };
+    };
+
     const findMetaFromHtml = (html, fallbackTitle, baseUrl) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, "text/html");
@@ -124,6 +139,9 @@
                 throw new Error("Fetch failed");
             }
             const html = await response.text();
+            if (html.includes("Markdown Content:")) {
+                return findMetaFromMarkdown(html, fallbackTitle);
+            }
             return findMetaFromHtml(html, fallbackTitle, url);
         } catch (error) {
             return { title: fallbackTitle, cover: "" };
