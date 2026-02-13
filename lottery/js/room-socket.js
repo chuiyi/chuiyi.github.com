@@ -1,8 +1,8 @@
-// room.js - 遊戲房間功能（主持人介面）
+// room-socket.js - 使用 Socket.IO 的遊戲房間功能
+const socket = io();
 let roomId = '';
 let roomData = null;
 let availableNumbers = [];
-let updateInterval = null;
 
 document.addEventListener('DOMContentLoaded', () => {
     // 從 URL 取得房間 ID
@@ -11,48 +11,78 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!roomId) {
         alert('無效的房間 ID');
-        window.location.href = 'index.html';
+        window.location.href = 'index-online.html';
         return;
     }
     
-    // 載入房間資料
-    loadRoomData();
-    
-    // 初始化可用數字
-    initializeAvailableNumbers();
-    
-    // 設置 QR Code
-    setupQRCode();
+    // 加入房間
+    socket.emit('joinRoom', roomId, (response) => {
+        if (!response.success) {
+            alert('找不到房間，請確認房間 ID 是否正確');
+            window.location.href = 'index-online.html';
+            return;
+        }
+        
+        roomData = response.roomData;
+        initializeAvailableNumbers();
+        setupQRCode();
+        updateRoomDisplay();
+    });
     
     // 綁定事件
     document.getElementById('drawBtn').addEventListener('click', drawNumber);
     document.getElementById('resetBtn').addEventListener('click', resetGame);
     document.getElementById('copyLinkBtn').addEventListener('click', copyLink);
     
-    // 開始定期更新
-    updateInterval = setInterval(updateRoom, 1000);
+    // 監聽 Socket 事件
+    setupSocketListeners();
 });
 
-function loadRoomData() {
-    const data = localStorage.getItem(`lottery_room_${roomId}`);
-    if (!data) {
-        alert('找不到房間資料');
-        window.location.href = 'index.html';
-        return;
-    }
+function setupSocketListeners() {
+    // 當有玩家加入時
+    socket.on('playerJoined', (data) => {
+        roomData.players = data.players;
+        updatePlayersList();
+        document.getElementById('playerCount').textContent = roomData.players.length;
+    });
     
-    roomData = JSON.parse(data);
-    updateRoomDisplay();
+    // 當有數字被抽出時
+    socket.on('numberDrawn', (data) => {
+        roomData.drawnNumbers = data.drawnNumbers;
+        document.getElementById('currentNumber').textContent = data.number;
+        updateDrawnNumbersDisplay();
+        
+        // 從可用數字中移除
+        const index = availableNumbers.indexOf(data.number);
+        if (index > -1) {
+            availableNumbers.splice(index, 1);
+        }
+    });
+    
+    // 當玩家賓果狀態更新時
+    socket.on('bingoUpdated', (data) => {
+        roomData.players = data.players;
+        updatePlayersList();
+    });
+    
+    // 當遊戲重置時
+    socket.on('gameReset', (data) => {
+        roomData = data.roomData;
+        initializeAvailableNumbers();
+        document.getElementById('currentNumber').textContent = '--';
+        updateRoomDisplay();
+    });
+    
+    // 錯誤處理
+    socket.on('error', (message) => {
+        alert(message);
+    });
 }
 
 function updateRoomDisplay() {
     document.getElementById('roomId').textContent = roomId;
     document.getElementById('playerCount').textContent = roomData.players.length;
-    
-    // 更新已抽出的號碼
     updateDrawnNumbersDisplay();
-    
-    // 更新玩家列表
     updatePlayersList();
 }
 
@@ -66,8 +96,7 @@ function initializeAvailableNumbers() {
 }
 
 function setupQRCode() {
-    const ticketUrl = `${window.location.origin}${window.location.pathname.replace('room.html', 'ticket.html')}?room=${roomId}`;
-    
+    const ticketUrl = `${window.location.origin}/ticket-online.html?room=${roomId}`;
     document.getElementById('ticketLink').textContent = ticketUrl;
     
     // 生成 QR Code
@@ -103,27 +132,14 @@ function drawNumber() {
     const randomIndex = Math.floor(Math.random() * availableNumbers.length);
     const drawnNumber = availableNumbers[randomIndex];
     
-    // 從可用數字中移除
-    availableNumbers.splice(randomIndex, 1);
-    
-    // 加入已抽出數字
-    roomData.drawnNumbers.push(drawnNumber);
-    
-    // 更新顯示
-    document.getElementById('currentNumber').textContent = drawnNumber;
-    
-    // 儲存到 localStorage
-    saveRoomData();
-    
-    // 更新顯示
-    updateDrawnNumbersDisplay();
+    // 發送到伺服器
+    socket.emit('drawNumber', { roomId, number: drawnNumber });
 }
 
 function updateDrawnNumbersDisplay() {
     const container = document.getElementById('drawnNumbersList');
     container.innerHTML = '';
     
-    // 按照抽取順序顯示（最新的在前面）
     const reversedNumbers = [...roomData.drawnNumbers].reverse();
     reversedNumbers.forEach(num => {
         const badge = document.createElement('div');
@@ -148,17 +164,14 @@ function updatePlayersList() {
         
         const nameSpan = document.createElement('span');
         nameSpan.className = 'player-name';
-        const wordText = player.ticketWord ? `（${player.ticketWord}）` : '（尚未抽取）';
-        nameSpan.textContent = `${player.nickname}${wordText}`;
+        nameSpan.textContent = player.nickname;
         
         playerDiv.appendChild(nameSpan);
         
-        // 如果玩家有賓果，顯示徽章
         if (player.bingoLines && player.bingoLines > 0) {
             const bingoBadge = document.createElement('span');
             bingoBadge.className = 'bingo-badge';
-            const badgeWord = player.ticketWord ? ` - ${player.ticketWord}` : '';
-            bingoBadge.textContent = `🎉 BINGO x${player.bingoLines}${badgeWord}`;
+            bingoBadge.textContent = `🎉 BINGO x${player.bingoLines}`;
             playerDiv.appendChild(bingoBadge);
         }
         
@@ -171,49 +184,5 @@ function resetGame() {
         return;
     }
     
-    roomData.drawnNumbers = [];
-    roomData.players.forEach(player => {
-        player.bingoLines = 0;
-        player.markedIndices = Array(25).fill(false);
-        player.markedIndices[12] = true;
-    });
-    
-    availableNumbers = [];
-    for (let i = 1; i <= 99; i++) {
-        availableNumbers.push(i);
-    }
-    
-    document.getElementById('currentNumber').textContent = '--';
-    
-    saveRoomData();
-    updateRoomDisplay();
+    socket.emit('resetGame', roomId);
 }
-
-function updateRoom() {
-    // 重新載入房間資料以同步玩家列表
-    const data = localStorage.getItem(`lottery_room_${roomId}`);
-    if (data) {
-        const latestData = JSON.parse(data);
-        
-        // 只更新玩家列表，不覆蓋整個 roomData
-        if (JSON.stringify(latestData.players) !== JSON.stringify(roomData.players)) {
-            roomData.players = latestData.players;
-            updatePlayersList();
-            document.getElementById('playerCount').textContent = roomData.players.length;
-        }
-    }
-    
-    // 同時也將最新資料存入 sessionStorage 供跨分頁使用
-    sessionStorage.setItem(`lottery_room_${roomId}_sync`, JSON.stringify(roomData));
-}
-
-function saveRoomData() {
-    localStorage.setItem(`lottery_room_${roomId}`, JSON.stringify(roomData));
-}
-
-// 頁面關閉時清理
-window.addEventListener('beforeunload', () => {
-    if (updateInterval) {
-        clearInterval(updateInterval);
-    }
-});

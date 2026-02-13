@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的樂透券 - 賓果遊戲</title>
+    <title>我的樂透券 - 賓果遊戲（線上版）</title>
     <link rel="stylesheet" href="css/lottery.css">
 </head>
 <body>
@@ -37,16 +37,6 @@
             </header>
 
             <div class="ticket-content">
-                <!-- 抽取樂透券與專用詞 -->
-                <div class="ticket-claim">
-                    <div class="claim-info">
-                        <div class="claim-label">專用詞</div>
-                        <div class="claim-word" id="ticketWordDisplay">尚未抽取</div>
-                        <div class="claim-note">抽到專用詞後，請告知主持人以避免重複。</div>
-                    </div>
-                    <button id="drawTicketBtn" class="draw-ticket-btn">🎫 抽取樂透券</button>
-                </div>
-
                 <!-- 目前抽出的號碼 -->
                 <div class="current-draw">
                     <div class="draw-label">當前號碼</div>
@@ -85,6 +75,7 @@
         </div>
     </div>
 
-    <script src="js/ticket.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/ticket-socket.js"></script>
 </body>
 </html>

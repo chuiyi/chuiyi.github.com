@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>遊戲房間 - 樂透賓果</title>
+    <title>遊戲房間 - 樂透賓果（Firebase 版）</title>
     <link rel="stylesheet" href="css/lottery.css">
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
@@ -50,7 +50,6 @@
             <!-- 玩家列表 -->
             <div class="players-section">
                 <h2>參與玩家</h2>
-                <p class="players-hint">主持人請以「專用詞」公布得獎，玩家用自己的專用詞核對賓果。</p>
                 <div id="playersList" class="players-list">
                     <p class="empty-message">尚無玩家加入...</p>
                 </div>
@@ -58,6 +57,6 @@
         </div>
     </div>
 
-    <script src="js/room.js"></script>
+    <script type="module" src="js/room-firebase.js"></script>
 </body>
 </html>

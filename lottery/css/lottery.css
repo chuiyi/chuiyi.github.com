@@ -318,6 +318,12 @@ footer {
     margin-bottom: 20px;
 }
 
+.players-hint {
+    color: #888;
+    font-size: 0.95em;
+    margin: -10px 0 15px;
+}
+
 .players-list {
     display: flex;
     flex-direction: column;
@@ -469,6 +475,63 @@ footer {
     gap: 20px;
 }
 
+.ticket-claim {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+}
+
+.claim-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.claim-label {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.claim-word {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.claim-note {
+    font-size: 0.9em;
+    color: #999;
+}
+
+.draw-ticket-btn {
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+}
+
+.draw-ticket-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.draw-ticket-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
 .current-draw {
     text-align: center;
     padding: 20px;
@@ -526,6 +589,10 @@ footer {
     color: #333;
     cursor: default;
     transition: all 0.3s;
+}
+
+.bingo-cell.clickable {
+    cursor: pointer;
 }
 
 .bingo-cell.free {

@@ -3,6 +3,10 @@ let roomId = '';
 let playerId = '';
 let playerNickname = '';
 let playerNumbers = [];
+let markedIndices = [];
+let ticketWord = '';
+let ticketId = '';
+let hasTicket = false;
 let roomData = null;
 let updateInterval = null;
 let lastBingoCount = 0;
@@ -23,6 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 綁定暱稱表單
     document.getElementById('nicknameForm').addEventListener('submit', handleNicknameSubmit);
+
+    // 綁定抽取樂透券按鈕
+    document.getElementById('drawTicketBtn').addEventListener('click', drawTicket);
     
     // 開始定期更新
     updateInterval = setInterval(updateTicket, 1000);
@@ -46,12 +53,6 @@ function handleNicknameSubmit(e) {
     // 載入房間資料
     loadRoomData();
     
-    // 生成樂透券數字
-    generateLotteryNumbers();
-    
-    // 加入玩家到房間
-    addPlayerToRoom();
-    
     // 隱藏暱稱輸入區，顯示樂透券
     document.getElementById('nicknameSection').style.display = 'none';
     document.getElementById('ticketSection').style.display = 'block';
@@ -61,107 +62,86 @@ function handleNicknameSubmit(e) {
 }
 
 function loadRoomData() {
-    // 先嘗試從 URL 參數載入
-    const urlParams = new URLSearchParams(window.location.search);
-    const roomDataParam = urlParams.get('data');
-    
-    if (roomDataParam) {
-        try {
-            const decodedData = JSON.parse(decodeURIComponent(roomDataParam));
-            // 檢查 localStorage 是否已有此房間資料
-            const existingData = localStorage.getItem(`lottery_room_${roomId}`);
-            if (existingData) {
-                roomData = JSON.parse(existingData);
-            } else {
-                // 如果沒有，創建新的房間資料
-                roomData = {
-                    id: decodedData.id,
-                    created: decodedData.created,
-                    players: [],
-                    drawnNumbers: [],
-                    status: 'active'
-                };
-                localStorage.setItem(`lottery_room_${roomId}`, JSON.stringify(roomData));
-            }
-            return;
-        } catch (e) {
-            console.error('解析 URL 參數失敗:', e);
-        }
-    }
-    
-    // 如果 URL 沒有資料，嘗試從 localStorage 載入
     const data = localStorage.getItem(`lottery_room_${roomId}`);
     if (!data) {
-        // 最後嘗試從 sessionStorage 載入（跨分頁共享）
-        const syncData = sessionStorage.getItem(`lottery_room_${roomId}_sync`);
-        if (syncData) {
-            roomData = JSON.parse(syncData);
-            localStorage.setItem(`lottery_room_${roomId}`, syncData);
-            return;
-        }
-        
-        alert('找不到房間資料。請確認：\n1. 房間連結是否正確\n2. 是否使用正確的 QR Code\n3. 如需跨裝置使用，建議使用後端伺服器方案');
+        alert('找不到房間資料。請確認：\n1. 房間連結是否正確\n2. 是否使用正確的 QR Code');
         return;
     }
     
     roomData = JSON.parse(data);
 }
 
-function generateLotteryNumbers() {
-    // 從 1-99 隨機選取 24 個不重複的數字
-    const numbers = [];
-    for (let i = 1; i <= 99; i++) {
-        numbers.push(i);
+function drawTicket() {
+    if (!roomData || !roomData.tickets) {
+        alert('房間未建立票券資料，請重新建立房間。');
+        return;
     }
-    
-    // Fisher-Yates 洗牌演算法
-    for (let i = numbers.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
-    }
-    
-    // 取前 24 個數字
-    const selected = numbers.slice(0, 24);
-    
-    // 建立 5x5 陣列，中間格子（索引 12）為 0（萬用格）
-    playerNumbers = [];
-    let selectedIndex = 0;
-    
-    for (let i = 0; i < 25; i++) {
-        if (i === 12) {
-            // 中間格子為萬用格
-            playerNumbers.push(0);
-        } else {
-            playerNumbers.push(selected[selectedIndex++]);
-        }
-    }
-}
 
-function addPlayerToRoom() {
+    if (hasTicket) {
+        return;
+    }
+
+    const availableTickets = roomData.tickets.filter(ticket => !ticket.claimedBy);
+    if (availableTickets.length === 0) {
+        alert('票券已被抽完，無法再抽取。');
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * availableTickets.length);
+    const ticket = availableTickets[randomIndex];
+
+    ticketId = ticket.id;
+    ticketWord = ticket.word;
+    playerNumbers = ticket.numbers;
+    markedIndices = Array(25).fill(false);
+    markedIndices[12] = true;
+    hasTicket = true;
+
+    ticket.claimedBy = playerId;
+
     const player = {
         id: playerId,
         nickname: playerNickname,
         numbers: playerNumbers,
+        ticketId,
+        ticketWord,
+        markedIndices,
         joinedAt: Date.now(),
         bingoLines: 0
     };
-    
+
     roomData.players.push(player);
     saveRoomData();
+
+    document.getElementById('ticketWordDisplay').textContent = ticketWord;
+    const drawBtn = document.getElementById('drawTicketBtn');
+    drawBtn.textContent = '✅ 已抽取';
+    drawBtn.disabled = true;
+
+    updateTicketDisplay();
 }
 
 function updateTicketDisplay() {
     // 更新玩家資訊
     document.getElementById('playerNickname').textContent = playerNickname;
     document.getElementById('roomIdDisplay').textContent = roomId;
+
+    if (ticketWord) {
+        document.getElementById('ticketWordDisplay').textContent = ticketWord;
+    }
     
     // 生成賓果格子
-    generateBingoGrid();
+    if (hasTicket) {
+        generateBingoGrid();
+    }
     
     // 更新當前號碼
-    if (roomData.drawnNumbers.length > 0) {
-        const lastNumber = roomData.drawnNumbers[roomData.drawnNumbers.length - 1];
+    const drawnNumbers = roomData.drawnNumbers || [];
+    if (drawnNumbers.length > 0) {
+        const lastNumber = drawnNumbers[drawnNumbers.length - 1];
         document.getElementById('currentDrawNumber').textContent = lastNumber;
+    } else {
+        document.getElementById('currentDrawNumber').textContent = '--';
     }
     
     // 更新已抽出號碼歷史
@@ -187,28 +167,41 @@ function generateBingoGrid() {
             cell.textContent = 'FREE';
         } else {
             cell.textContent = num;
-            
-            // 檢查是否已被抽中
-            if (roomData.drawnNumbers.includes(num)) {
+            cell.classList.add('clickable');
+
+            if (markedIndices[index]) {
                 cell.classList.add('marked');
             }
+
+            cell.addEventListener('click', () => {
+                toggleCellMark(index, cell);
+            });
         }
         
         grid.appendChild(cell);
     });
 }
 
+function toggleCellMark(index, cell) {
+    markedIndices[index] = !markedIndices[index];
+    cell.classList.toggle('marked', markedIndices[index]);
+
+    updateBingoStatus();
+    persistPlayerState();
+}
+
 function updateDrawnHistory() {
     const container = document.getElementById('drawnHistory');
     container.innerHTML = '';
+    const drawnNumbers = roomData.drawnNumbers || [];
     
-    if (roomData.drawnNumbers.length === 0) {
+    if (drawnNumbers.length === 0) {
         container.innerHTML = '<p style="text-align: center; color: #999;">尚未抽出任何號碼</p>';
         return;
     }
     
     // 按照抽取順序顯示（最新的在前面）
-    const reversedNumbers = [...roomData.drawnNumbers].reverse();
+    const reversedNumbers = [...drawnNumbers].reverse();
     reversedNumbers.forEach(num => {
         const badge = document.createElement('div');
         badge.className = 'history-number';
@@ -224,6 +217,10 @@ function updateDrawnHistory() {
 }
 
 function updateBingoStatus() {
+    if (!hasTicket) {
+        return;
+    }
+
     const bingoLines = countBingoLines();
     document.getElementById('lineCount').textContent = bingoLines;
     
@@ -239,14 +236,14 @@ function updateBingoStatus() {
 
 function countBingoLines() {
     let count = 0;
-    const drawnNumbers = roomData.drawnNumbers;
+    const marks = markedIndices;
     
     // 檢查橫向
     for (let row = 0; row < 5; row++) {
         let matched = 0;
         for (let col = 0; col < 5; col++) {
             const index = row * 5 + col;
-            if (playerNumbers[index] === 0 || drawnNumbers.includes(playerNumbers[index])) {
+            if (playerNumbers[index] === 0 || marks[index]) {
                 matched++;
             }
         }
@@ -258,7 +255,7 @@ function countBingoLines() {
         let matched = 0;
         for (let row = 0; row < 5; row++) {
             const index = row * 5 + col;
-            if (playerNumbers[index] === 0 || drawnNumbers.includes(playerNumbers[index])) {
+            if (playerNumbers[index] === 0 || marks[index]) {
                 matched++;
             }
         }
@@ -269,7 +266,7 @@ function countBingoLines() {
     let diagonal1 = 0;
     for (let i = 0; i < 5; i++) {
         const index = i * 5 + i;
-        if (playerNumbers[index] === 0 || drawnNumbers.includes(playerNumbers[index])) {
+        if (playerNumbers[index] === 0 || marks[index]) {
             diagonal1++;
         }
     }
@@ -279,7 +276,7 @@ function countBingoLines() {
     let diagonal2 = 0;
     for (let i = 0; i < 5; i++) {
         const index = i * 5 + (4 - i);
-        if (playerNumbers[index] === 0 || drawnNumbers.includes(playerNumbers[index])) {
+        if (playerNumbers[index] === 0 || marks[index]) {
             diagonal2++;
         }
     }
@@ -302,27 +299,35 @@ function updatePlayerBingoInRoom(bingoLines) {
     const player = roomData.players.find(p => p.id === playerId);
     if (player) {
         player.bingoLines = bingoLines;
+        player.markedIndices = markedIndices;
+        saveRoomData();
+    }
+}
+
+function persistPlayerState() {
+    const player = roomData.players.find(p => p.id === playerId);
+    if (player) {
+        player.markedIndices = markedIndices;
         saveRoomData();
     }
 }
 
 function updateTicket() {
     // 重新載入房間資料以同步抽出的數字
-    // 優先從 sessionStorage 讀取（跨分頁同步）
-    let data = sessionStorage.getItem(`lottery_room_${roomId}_sync`);
-    if (!data) {
-        data = localStorage.getItem(`lottery_room_${roomId}`);
-    }
-    
+    const data = localStorage.getItem(`lottery_room_${roomId}`);
     if (!data) {
         return;
     }
     
     const latestData = JSON.parse(data);
     
+    if (!roomData) {
+        roomData = latestData;
+    }
+    
     // 檢查是否有新的抽出數字
     if (JSON.stringify(latestData.drawnNumbers) !== JSON.stringify(roomData.drawnNumbers)) {
-        roomData.drawnNumbers = latestData.drawnNumbers;
+        roomData.drawnNumbers = latestData.drawnNumbers || [];
         
         // 更新顯示
         if (roomData.drawnNumbers.length > 0) {
@@ -330,14 +335,8 @@ function updateTicket() {
             document.getElementById('currentDrawNumber').textContent = lastNumber;
         }
         
-        // 重新生成賓果格子（更新標記狀態）
-        generateBingoGrid();
-        
         // 更新歷史記錄
         updateDrawnHistory();
-        
-        // 更新賓果狀態
-        updateBingoStatus();
     }
 }
 

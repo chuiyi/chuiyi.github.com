@@ -30,6 +30,11 @@ const rooms = new Map();
 // 提供靜態檔案
 app.use(express.static(path.join(__dirname)));
 
+// 重定向主頁到線上版本
+app.get('/', (req, res) => {
+    res.redirect('/index-online.html');
+});
+
 // Socket.IO 連線處理
 io.on('connection', (socket) => {
     console.log('新客戶端連線:', socket.id);
