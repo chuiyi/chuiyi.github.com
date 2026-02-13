@@ -286,24 +286,41 @@
         // 策略 1: 尋找 m3u8 URL
         const m3u8Match = text.match(/https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*/i);
         if (m3u8Match) {
-            console.log(`[Search] 找到 m3u8: ${m3u8Match[0]}`);
+            console.log(`[Search] 策略 1 (m3u8): ${m3u8Match[0]}`);
             return m3u8Match[0].replace(/[;'"]$/, '');
         }
 
         // 策略 2: 尋找 mp4 URL
         const mp4Match = text.match(/https?:\/\/[^\s"'<>]*\.mp4[^\s"'<>]*/i);
         if (mp4Match) {
-            console.log(`[Search] 找到 mp4: ${mp4Match[0]}`);
+            console.log(`[Search] 策略 2 (mp4): ${mp4Match[0]}`);
             return mp4Match[0].replace(/[;'"]$/, '');
         }
 
-        // 策略 3: 尋找 assets-cdn URL
+        // 策略 3: 尋找 VOD/TS 文件並推斷 m3u8
+        const tsMatch = text.match(/https?:\/\/[^\s"'<>]*\/(vod\/\d+\/\d+\/)\d+\.ts[^\s"'<>]*/i);
+        if (tsMatch) {
+            const baseUrl = tsMatch[0].split('/').slice(0, -1).join('/');
+            const m3u8Url = baseUrl + '/playlist.m3u8';
+            console.log(`[Search] 策略 3 (TS推斷): ${m3u8Url}`);
+            return m3u8Url;
+        }
+
+        // 策略 4: 尋找 assets-cdn URL
         const cdnMatch = text.match(/https?:\/\/assets-cdn\.jable\.tv\/[^\s"'<>]*\.(?:m3u8|mp4|mpd)[^\s"'<>]*/i);
         if (cdnMatch) {
-            console.log(`[Search] 找到 CDN URL: ${cdnMatch[0]}`);
+            console.log(`[Search] 策略 4 (CDN): ${cdnMatch[0]}`);
             return cdnMatch[0].replace(/[;'"]$/, '');
         }
 
+        // 策略 5: 尋找任何可能的流 URL
+        const streamMatch = text.match(/https?:\/\/[^\s"'<>]*\/(?:vod|stream|video|hls)[^\s"'<>]*\.(?:m3u8|mp4|mpd)[^\s"'<>]*/i);
+        if (streamMatch) {
+            console.log(`[Search] 策略 5 (流): ${streamMatch[0]}`);
+            return streamMatch[0].replace(/[;'"]$/, '');
+        }
+
+        console.log(`[Search] 未找到流 URL`);
         return "";
     };
 
@@ -354,33 +371,56 @@
         // Strategy 1: Direct m3u8 URL in HTML
         const m3u8Match = html.match(/https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*/i)?.[0];
         if (m3u8Match) {
+            console.log(`[extractStreamUrl] Strategy 1 (直接 m3u8): ${m3u8Match}`);
             return m3u8Match.replace(/[;'"]$/, '');
         }
         
         // Strategy 2: m3u8 inside JavaScript variables/config
         const jsM3u8Match = html.match(/["']?(https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*)["']?/i)?.[1];
         if (jsM3u8Match) {
+            console.log(`[extractStreamUrl] Strategy 2 (JS 變數): ${jsM3u8Match}`);
             return jsM3u8Match;
         }
         
         // Strategy 3: src or data-src attributes
         const srcMatch = html.match(/(?:src|data-src)\s*=\s*["'](https?:\/\/[^\s"'<>]*\.(?:m3u8|mp4))/i)?.[1];
         if (srcMatch) {
+            console.log(`[extractStreamUrl] Strategy 3 (src/data-src): ${srcMatch}`);
             return srcMatch;
         }
         
         // Strategy 4: HLS or streaming URLs with common patterns
-        const streamMatch = html.match(/https?:\/\/[^\s"'<>]*(?:hls|stream|video|play)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
+        const streamMatch = html.match(/https?:\/\/[^\s"'<>]*(?:hls|stream|video|play|vod)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
         if (streamMatch) {
+            console.log(`[extractStreamUrl] Strategy 4 (HLS/流): ${streamMatch}`);
             return streamMatch;
         }
         
         // Strategy 5: URL patterns with tokens (common in CDN URLs)
         const tokenMatch = html.match(/https?:\/\/[^\s"'<>]*\?[^\s"'<>]*(?:token|auth|key)[^\s"'<>]*\.m3u8/i)?.[0];
         if (tokenMatch) {
+            console.log(`[extractStreamUrl] Strategy 5 (Token CDN): ${tokenMatch}`);
             return tokenMatch;
         }
+
+        // Strategy 6: Look for .ts file pattern and extract base URL for m3u8
+        const tsMatch = html.match(/https?:\/\/[^\s"'<>]*\/(vod\/\d+\/\d+\/)\d+\.ts[^\s"'<>]*/i);
+        if (tsMatch) {
+            // Extract the base URL and construct m3u8 URL
+            const baseUrl = tsMatch[0].split('/').slice(0, -1).join('/');
+            const m3u8Url = baseUrl + '/playlist.m3u8';
+            console.log(`[extractStreamUrl] Strategy 6 (TS to M3U8): ${m3u8Url}`);
+            return m3u8Url;
+        }
+
+        // Strategy 7: Look for patterns with vod in the path
+        const vodMatch = html.match(/https?:\/\/[^\s"'<>]*\/vod\/[^\s"'<>]*\.m3u8[^\s"'<>]*/i)?.[0];
+        if (vodMatch) {
+            console.log(`[extractStreamUrl] Strategy 7 (VOD path): ${vodMatch}`);
+            return vodMatch;
+        }
         
+        console.log(`[extractStreamUrl] 未找到流 URL`);
         return "";
     };
 
