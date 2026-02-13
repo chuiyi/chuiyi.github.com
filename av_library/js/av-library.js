@@ -79,13 +79,7 @@
         const headingLine = text.match(/^####\s+(.+)$/m)?.[1]?.trim();
         const title = titleLine || headingLine || fallbackTitle;
 
-        let cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0] || "";
-        if (!cover) {
-            const shotPath = text.match(/contents\/videos_screenshots\/(\d+\/\d+)\//i)?.[1];
-            if (shotPath) {
-                cover = `https://assets-cdn.jable.tv/contents/videos_screenshots/${shotPath}/preview.jpg`;
-            }
-        }
+        const cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0] || "";
         return { title, cover };
     };
 
@@ -134,7 +128,8 @@
     const fetchHtml = async (url) => {
         const sources = [
             { id: "direct", build: (target) => target },
-            { id: "corsProxy", build: (target) => `https://cors.isomorphic-git.org/${target}` }
+            { id: "corsProxy", build: (target) => `https://cors.isomorphic-git.org/${target}` },
+            { id: "allOrigins", build: (target) => `https://api.allorigins.win/raw?url=${encodeURIComponent(target)}` }
         ];
 
         for (const source of sources) {
