@@ -61,10 +61,46 @@ function handleNicknameSubmit(e) {
 }
 
 function loadRoomData() {
+    // 先嘗試從 URL 參數載入
+    const urlParams = new URLSearchParams(window.location.search);
+    const roomDataParam = urlParams.get('data');
+    
+    if (roomDataParam) {
+        try {
+            const decodedData = JSON.parse(decodeURIComponent(roomDataParam));
+            // 檢查 localStorage 是否已有此房間資料
+            const existingData = localStorage.getItem(`lottery_room_${roomId}`);
+            if (existingData) {
+                roomData = JSON.parse(existingData);
+            } else {
+                // 如果沒有，創建新的房間資料
+                roomData = {
+                    id: decodedData.id,
+                    created: decodedData.created,
+                    players: [],
+                    drawnNumbers: [],
+                    status: 'active'
+                };
+                localStorage.setItem(`lottery_room_${roomId}`, JSON.stringify(roomData));
+            }
+            return;
+        } catch (e) {
+            console.error('解析 URL 參數失敗:', e);
+        }
+    }
+    
+    // 如果 URL 沒有資料，嘗試從 localStorage 載入
     const data = localStorage.getItem(`lottery_room_${roomId}`);
     if (!data) {
-        alert('找不到房間資料');
-        window.location.href = 'index.html';
+        // 最後嘗試從 sessionStorage 載入（跨分頁共享）
+        const syncData = sessionStorage.getItem(`lottery_room_${roomId}_sync`);
+        if (syncData) {
+            roomData = JSON.parse(syncData);
+            localStorage.setItem(`lottery_room_${roomId}`, syncData);
+            return;
+        }
+        
+        alert('找不到房間資料。請確認：\n1. 房間連結是否正確\n2. 是否使用正確的 QR Code\n3. 如需跨裝置使用，建議使用後端伺服器方案');
         return;
     }
     
@@ -272,7 +308,12 @@ function updatePlayerBingoInRoom(bingoLines) {
 
 function updateTicket() {
     // 重新載入房間資料以同步抽出的數字
-    const data = localStorage.getItem(`lottery_room_${roomId}`);
+    // 優先從 sessionStorage 讀取（跨分頁同步）
+    let data = sessionStorage.getItem(`lottery_room_${roomId}_sync`);
+    if (!data) {
+        data = localStorage.getItem(`lottery_room_${roomId}`);
+    }
+    
     if (!data) {
         return;
     }

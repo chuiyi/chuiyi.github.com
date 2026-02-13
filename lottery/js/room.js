@@ -66,7 +66,12 @@ function initializeAvailableNumbers() {
 }
 
 function setupQRCode() {
-    const ticketUrl = `${window.location.origin}${window.location.pathname.replace('room.html', 'ticket.html')}?room=${roomId}`;
+    // 將房間資料編碼到 URL 中，這樣可以跨裝置使用
+    const roomDataEncoded = encodeURIComponent(JSON.stringify({
+        id: roomId,
+        created: roomData.created
+    }));
+    const ticketUrl = `${window.location.origin}${window.location.pathname.replace('room.html', 'ticket.html')}?room=${roomId}&data=${roomDataEncoded}`;
     
     document.getElementById('ticketLink').textContent = ticketUrl;
     
@@ -261,6 +266,9 @@ function updateRoom() {
             document.getElementById('playerCount').textContent = roomData.players.length;
         }
     }
+    
+    // 同時也將最新資料存入 sessionStorage 供跨分頁使用
+    sessionStorage.setItem(`lottery_room_${roomId}_sync`, JSON.stringify(roomData));
 }
 
 function saveRoomData() {
