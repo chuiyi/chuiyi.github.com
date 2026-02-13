@@ -572,17 +572,21 @@
     };
 
     const openPlayer = (title, streamUrl) => {
+        console.log(`[openPlayer] title: ${title}, streamUrl: ${streamUrl}`);
         if (!playerModal) {
+            console.log(`[openPlayer] Initializing player modal`);
             playerModal = new bootstrap.Modal(document.getElementById("av-player-modal"));
         }
         const playerTitle = document.getElementById("av-player-title");
         const player = document.getElementById("av-player");
         if (playerTitle) playerTitle.textContent = title || "播放影片";
         if (player) {
+            console.log(`[openPlayer] Setting player src to: ${streamUrl}`);
             player.src = streamUrl;
             player.load();
         }
         playerModal.show();
+        console.log(`[openPlayer] Modal shown`);
     };
 
     const clearPreview = () => {
@@ -821,6 +825,7 @@
                 const target = event.target;
                 if (!(target instanceof HTMLElement)) return;
                 const action = target.dataset.action;
+                console.log(`[Click event] action: ${action}, target: ${target.tagName}`);
                 
                 if (action === "delete") {
                     const id = target.dataset.id;
@@ -830,14 +835,17 @@
                 } else if (action === "play") {
                     const stream = target.dataset.stream;
                     const title = target.dataset.title;
+                    console.log(`[Action: play] stream: ${stream}, title: ${title}`);
                     if (stream) openPlayer(title, stream);
                 } else if (action === "open") {
                     const stream = target.dataset.stream;
                     const url = target.dataset.url;
                     const title = target.dataset.title;
+                    console.log(`[Action: open] stream: ${stream}, url: ${url}, title: ${title}`);
                     if (stream) {
                         openPlayer(title, stream);
                     } else if (url) {
+                        console.log(`[Action: open] No stream, opening URL in new tab`);
                         window.open(url, "_blank");
                     }
                 }
