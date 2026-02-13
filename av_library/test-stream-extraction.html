@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stream Extraction Test - AV Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f6f2; padding: 20px; }
+        .container { max-width: 900px; }
+        .test-section { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        pre { background: #f5f5f5; padding: 15px; border-radius: 4px; overflow-x: auto; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Jable.tv 流媒體連結提取測試</h1>
+        
+        <div class="test-section">
+            <h3>測試配置</h3>
+            <div class="mb-3">
+                <label for="videoUrl" class="form-label">影片 URL:</label>
+                <input type="text" id="videoUrl" class="form-control" value="https://jable.tv/s0/videos/ssni-865/" placeholder="輸入影片 URL">
+            </div>
+            <button class="btn btn-primary" onclick="testExtraction()">開始測試</button>
+            <button class="btn btn-secondary ms-2" onclick="testWithRawFetch()">使用直接 Fetch 測試</button>
+            <button class="btn btn-secondary ms-2" onclick="clearLog()">清除日誌</button>
+        </div>
+
+        <div class="test-section">
+            <h3>測試日誌</h3>
+            <div id="log" style="max-height: 500px; overflow-y: auto; font-family: monospace; font-size: 12px;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>提取結果</h3>
+            <div id="results"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>視頻播放器測試</h3>
+            <div id="playerSection" style="display: none;">
+                <button class="btn btn-success mb-3" onclick="testPlayback()">測試播放</button>
+                <video id="testPlayer" width="100%" height="400" controls style="background: black; border-radius: 4px; display: none;"></video>
+                <div id="playerLog" style="margin-top: 10px; max-height: 200px; overflow-y: auto; font-family: monospace; font-size: 12px; background: #f5f5f5; padding: 10px; border-radius: 4px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStreams = [];
+
+        const log = (message, type) => {
+            type = type || 'info';
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : 'info';
+            logDiv.innerHTML += '<div class="' + className + '">[' + timestamp + '] ' + message + '</div>';
+            logDiv.scrollTop = logDiv.scrollHeight;
+        };
+
+        const clearLog = () => {
+            document.getElementById('log').innerHTML = '';
+            document.getElementById('results').innerHTML = '';
+        };
+
+        const extractStreamFromHtml = (html) => {
+            log('開始分析 HTML...', 'info');
+            const streams = [];
+
+            // 方法 2: 尋找 m3u8 連結
+            const m3u8Pattern = /https?:\/\/[^\s"'<>]+\.m3u8(?:[^\s"'<>]*)?/gi;
+            let match;
+            let count = 0;
+            while ((match = m3u8Pattern.exec(html)) !== null) {
+                const url = match[0].replace(/["';]$/, '');
+                if (url && url.endsWith('.m3u8')) {
+                    if (!streams.find((s) => s.url === url)) {
+                        streams.push({ source: 'm3u8', url: url, method: 2 });
+                        log('✓ M3U8: ' + url.substring(0, 80) + '...', 'success');
+                        count++;
+                    }
+                }
+            }
+
+            // 方法 3: 尋找 mp4 連結
+            const mp4Regex = /https?:\/\/[^\s"'<>]+\.mp4/gi;
+            const mp4Matches = html.match(mp4Regex) || [];
+            log('找到 ' + mp4Matches.length + ' 個 MP4 連結', 'info');
+            
+            for (let i = 0; i < mp4Matches.length; i++) {
+                if (!streams.find((s) => s.url === mp4Matches[i])) {
+                    streams.push({ source: 'mp4', url: mp4Matches[i], method: 3 });
+                    log('✓ MP4 ' + (i + 1) + ': ' + mp4Matches[i].substring(0, 80) + '...', 'success');
+                }
+            }
+
+            log('====== 總計: ' + streams.length + ' 個流媒體連結 ======', 'info');
+            return streams;
+        };
+
+        const testExtraction = async () => {
+            clearLog();
+            const videoUrl = document.getElementById('videoUrl').value;
+            
+            if (!videoUrl) {
+                log('請輸入影片 URL', 'error');
+                return;
+            }
+
+            log('開始測試: ' + videoUrl, 'info');
+
+            try {
+                const jinaUrl = 'https://r.jina.ai/' + videoUrl;
+                log('使用 Jina 代理: ' + jinaUrl, 'info');
+
+                const response = await fetch(jinaUrl);
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+
+                const html = await response.text();
+                log('✓ 成功獲取頁面 (' + html.length + ' 字元)', 'success');
+
+                const streams = extractStreamFromHtml(html);
+                currentStreams = streams;
+                displayResults(streams);
+
+            } catch (error) {
+                log('✗ 錯誤: ' + error.message, 'error');
+            }
+        };
+
+        const testWithRawFetch = async () => {
+            clearLog();
+            const videoUrl = document.getElementById('videoUrl').value;
+            
+            if (!videoUrl) {
+                log('請輸入影片 URL', 'error');
+                return;
+            }
+
+            log('開始直接 Fetch 測試: ' + videoUrl, 'info');
+
+            try {
+                log('正在嘗試直接 fetch...', 'info');
+                
+                const response = await fetch(videoUrl, {
+                    headers: {
+                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+
+                const html = await response.text();
+                log('✓ 成功直接獲取頁面 (' + html.length + ' 字元)', 'success');
+
+                const streams = extractStreamFromHtml(html);
+                currentStreams = streams;
+                displayResults(streams);
+
+            } catch (error) {
+                log('✗ 直接 fetch 失敗: ' + error.message + ', 嘗試 Jina 代理...', 'error');
+                testExtraction();
+            }
+        };
+
+        const displayResults = (streams) => {
+            const resultsDiv = document.getElementById('results');
+            
+            if (streams.length === 0) {
+                resultsDiv.innerHTML = '<div class="alert alert-warning">未找到任何流媒體連結</div>';
+                return;
+            }
+
+            let html = '<div class="alert alert-success">找到 ' + streams.length + ' 個流媒體連結</div>';
+            
+            // M3U8 連結
+            const m3u8Links = streams.filter((s) => s.url.includes('.m3u8'));
+            if (m3u8Links.length > 0) {
+                html += '<h5>M3U8 連結 (推薦用於播放)</h5>';
+                for (let i = 0; i < m3u8Links.length; i++) {
+                    const link = m3u8Links[i];
+                    const idx = streams.indexOf(link);
+                    html += '<div style="margin: 5px 0; padding: 10px; background: #e3f2fd; border-left: 4px solid #1976d2; border-radius: 4px;">' +
+                        '<small><strong>方法 ' + link.method + ' (' + link.source + '):</strong></small><br>' +
+                        '<code style="word-break: break-all; font-size: 11px;">' + link.url + '</code><br>' +
+                        '<button class="btn btn-sm btn-primary" onclick="handleTestStream(' + idx + ')">測試播放</button> ' +
+                        '<button class="btn btn-sm btn-secondary" onclick="handleCopyUrl(' + idx + ')">複製 URL</button>' +
+                        '</div>';
+                }
+            }
+            
+            // 其他連結
+            const otherLinks = streams.filter((s) => !s.url.includes('.m3u8'));
+            if (otherLinks.length > 0) {
+                html += '<hr><h5>其他連結</h5>';
+                html += '<table class="table table-sm table-bordered">' +
+                    '<thead><tr><th>方法</th><th>來源</th><th>URL</th><th>操作</th></tr></thead>' +
+                    '<tbody>';
+                
+                for (let i = 0; i < otherLinks.length; i++) {
+                    const stream = otherLinks[i];
+                    const idx = streams.indexOf(stream);
+                    const shortUrl = stream.url.substring(0, 50) + (stream.url.length > 50 ? '...' : '');
+                    html += '<tr>' +
+                        '<td>' + stream.method + '</td>' +
+                        '<td>' + stream.source + '</td>' +
+                        '<td title="' + stream.url + '"><small>' + shortUrl + '</small></td>' +
+                        '<td>' +
+                        '<button class="btn btn-sm btn-primary" onclick="handleTestStream(' + idx + ')">測試</button> ' +
+                        '<button class="btn btn-sm btn-secondary" onclick="handleCopyUrl(' + idx + ')">複製</button>' +
+                        '</td>' +
+                        '</tr>';
+                }
+                
+                html += '</tbody></table>';
+            }
+
+            resultsDiv.innerHTML = html;
+            document.getElementById('playerSection').style.display = 'block';
+        };
+
+        const handleTestStream = (idx) => {
+            if (idx >= 0 && idx < currentStreams.length) {
+                testStream(currentStreams[idx].url, idx);
+            }
+        };
+
+        const handleCopyUrl = (idx) => {
+            if (idx >= 0 && idx < currentStreams.length) {
+                copyToClipboard(currentStreams[idx].url);
+            }
+        };
+
+        const testStream = async (url, idx) => {
+            const playerLog = document.getElementById('playerLog');
+            playerLog.innerHTML = '';
+
+            const logPlayer = (msg, type) => {
+                type = type || 'info';
+                const className = type === 'error' ? 'error' : type === 'success' ? 'success' : 'info';
+                playerLog.innerHTML += '<div class="' + className + '">' + msg + '</div>';
+            };
+
+            logPlayer('測試流 #' + (idx + 1) + ': ' + url.substring(0, 80) + '...', 'info');
+
+            const player = document.getElementById('testPlayer');
+            player.style.display = 'block';
+            
+            try {
+                logPlayer('正在檢查 URL 可訪問性...', 'info');
+                const response = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
+                logPlayer('✓ URL 可訪問 (狀態: ' + response.status + ')', 'success');
+
+                logPlayer('正在設置播放器...', 'info');
+                player.src = url;
+                logPlayer('✓ 播放器已設置', 'success');
+                logPlayer('您可以點擊播放按鈕嘗試播放', 'info');
+
+            } catch (error) {
+                logPlayer('✗ 錯誤: ' + error.message, 'error');
+            }
+        };
+
+        const testPlayback = () => {
+            const player = document.getElementById('testPlayer');
+            if (!player.src) {
+                alert('請先測試一個流連結');
+                return;
+            }
+            player.play().catch((err) => {
+                alert('播放失敗: ' + err.message);
+            });
+        };
+
+        const copyToClipboard = (text) => {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('已複製到剪貼簿');
+            }).catch((err) => {
+                alert('複製失敗: ' + err.message);
+            });
+        };
+
+        window.addEventListener('load', () => {
+            log('測試工具已就緒', 'success');
+            log('輸入影片 URL 並點擊「開始測試」', 'info');
+        });
+    </script>
+</body>
+</html>

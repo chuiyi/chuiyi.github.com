@@ -70,11 +70,39 @@ body {
     display: grid;
     grid-template-columns: 160px 1fr;
     align-items: center;
+    position: relative;
+}
+
+.list-grid .av-card > div:first-child {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
 .list-grid .av-card img {
     aspect-ratio: 16 / 9;
     height: auto;
+}
+
+.list-grid .av-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    aspect-ratio: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.list-grid .av-card:hover .av-card-overlay {
+    opacity: 1;
 }
 
 .list-grid .av-card-body {
@@ -94,12 +122,62 @@ body {
     box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
 }
 
+.av-card > div:first-child {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
+
 .av-card img {
     width: 100%;
     aspect-ratio: 16 / 9;
     height: auto;
     object-fit: cover;
     background: #eee;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    display: block;
+}
+
+.av-card img:hover {
+    opacity: 0.8;
+}
+
+.av-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.av-card:hover .av-card-overlay {
+    opacity: 1;
+}
+
+.av-play-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--av-accent);
+    transition: transform 0.2s ease;
+}
+
+.av-play-btn:hover {
+    transform: scale(1.1);
 }
 
 .av-card-body {

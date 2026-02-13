@@ -14,6 +14,7 @@
     let pendingSyncAction = null;
     let syncDirty = false;
     let syncTimer = null;
+    let playerModal = null;
 
     const $ = (selector) => document.querySelector(selector);
 
@@ -253,7 +254,13 @@
         const title = titleLine || headingLine || fallbackTitle;
 
         const cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0] || "";
-        return { title, cover };
+        
+        // Try to extract m3u8 or stream URLs
+        const m3u8Match = text.match(/https?:\/\/[^\s"'<>]+\.m3u8/i)?.[0];
+        const streamMatch = text.match(/https?:\/\/[^\s"'<>]*(?:stream|video|play)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
+        const stream = m3u8Match || streamMatch || "";
+        
+        return { title, cover, stream };
     };
 
     const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -275,6 +282,31 @@
     const fetchFromJina = async (targetUrl) => {
         const proxyUrl = `https://r.jina.ai/http://${targetUrl.replace(/^https?:\/\//, "")}`;
         const response = await fetch(proxyUrl);
+        if (!response.ok) {
+            throw new Error("Fetch failed");
+        }
+        return response.text();
+    };
+
+    // Fetch raw HTML from target URL (for stream extraction)
+    const fetchRawHtml = async (targetUrl) => {
+        try {
+            // Try direct fetch with CORS
+            const response = await fetch(targetUrl, {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+                }
+            });
+            if (response.ok) {
+                return await response.text();
+            }
+        } catch (error) {
+            // Fallback to Jina if direct fetch fails
+        }
+        
+        // Fallback to Jina API
+        const jinaUrl = `https://r.jina.ai/http://${targetUrl.replace(/^https?:\/\//, "")}`;
+        const response = await fetch(jinaUrl);
         if (!response.ok) {
             throw new Error("Fetch failed");
         }
@@ -320,13 +352,60 @@
             if (previewMatch?.[0]) cover = previewMatch[0];
         }
         const resolvedCover = resolveUrl(baseUrl, cover);
-        return { title: title?.trim() || fallbackTitle, cover: resolvedCover };
+        
+        // Try to extract stream URL from video tag or script
+        let stream = "";
+        
+        // Method 1: video tag
+        const videoTag = doc.querySelector("video");
+        if (videoTag) {
+            const src = videoTag.getAttribute("src") || videoTag.querySelector("source")?.getAttribute("src");
+            if (src) stream = resolveUrl(baseUrl, src);
+        }
+        
+        // Method 2: Direct m3u8 URL in HTML
+        if (!stream) {
+            // More aggressive m3u8 pattern - captures full URL with parameters
+            const m3u8Pattern = /https?:\/\/[^\s"'<>]+\.m3u8(?:[^\s"'<>]*)?/i;
+            const m3u8Match = html.match(m3u8Pattern)?.[0];
+            if (m3u8Match) {
+                // Clean up the URL if it has trailing characters
+                stream = m3u8Match.replace(/[;'"]$/, '');
+            }
+        }
+        
+        // Method 3: m3u8 inside JavaScript strings
+        if (!stream) {
+            const jsM3u8Pattern = /["'](https?:\/\/[^\s"'<>]*\.m3u8[^\s"'<>]*)["']/i;
+            const jsM3u8Match = html.match(jsM3u8Pattern)?.[1];
+            if (jsM3u8Match) stream = jsM3u8Match;
+        }
+        
+        // Method 4: mp4 or other stream formats
+        if (!stream) {
+            const streamMatch = html.match(/https?:\/\/[^\s"'<>]*(?:stream|video|play|hls)[^\s"'<>]*\.(?:mp4|m3u8|mpd)/i)?.[0];
+            if (streamMatch) stream = streamMatch;
+        }
+        
+        return { title: title?.trim() || fallbackTitle, cover: resolvedCover, stream };
     };
 
     const fetchMeta = async (url, fallbackTitle, slug, domain) => {
         try {
-            const html = await fetchFromJina(url);
-            if (html.includes("Markdown Content:")) {
+            // Try to fetch raw HTML first for better stream extraction
+            let html;
+            let fromRawFetch = false;
+            
+            try {
+                html = await fetchRawHtml(url);
+                fromRawFetch = true;
+            } catch (error) {
+                // Fallback to Jina if raw fetch fails
+                html = await fetchFromJina(url);
+            }
+            
+            // Check if it's Markdown format from Jina
+            if (!fromRawFetch && html.includes("Markdown Content:")) {
                 const meta = findMetaFromMarkdown(html, fallbackTitle);
                 if (!meta.cover && slug) {
                     try {
@@ -340,6 +419,8 @@
                 }
                 return meta;
             }
+            
+            // Parse HTML (whether from raw fetch or Jina)
             return findMetaFromHtml(html, fallbackTitle, url);
         } catch (error) {
             return { title: fallbackTitle, cover: "" };
@@ -395,8 +476,14 @@
             const card = document.createElement("div");
             card.className = "av-card";
             const cover = item.cover || PLACEHOLDER_COVER;
+            const playBtnHtml = item.stream ? `<button type="button" class="btn btn-sm btn-outline-info" data-action="play" data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}">播放</button>` : "";
             card.innerHTML = `
-                <img src="${cover}" alt="${item.title}">
+                <div style="position: relative;">
+                    <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}" ${item.stream ? `data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}"` : ""}>
+                    <div class="av-card-overlay" data-action="open" data-url="${item.url}" ${item.stream ? `data-stream="${item.stream.replace(/"/g, '&quot;')}" data-title="${item.title.replace(/"/g, '&quot;')}"` : ""}>
+                        <div class="av-play-btn"><i class="bi bi-play-fill"></i></div>
+                    </div>
+                </div>
                 <div class="av-card-body">
                     <div class="av-card-title">${item.title}</div>
                     <div class="av-card-code">${item.code}</div>
@@ -404,6 +491,7 @@
                         <span class="badge rounded-pill badge-status">${status === "watched" ? "看過的影片" : "稍後觀看"}</span>
                         <div class="d-flex gap-2">
                             <a href="${item.url}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">前往</a>
+                            ${playBtnHtml}
                             <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="${item.id}">刪除</button>
                         </div>
                     </div>
@@ -424,11 +512,24 @@
         const status = $("#av-preview-status");
         const saveButton = $("#av-preview-save");
         const cancelButton = $("#av-preview-cancel");
+        const playButton = $("#av-preview-play");
+        const streamDiv = $("#av-preview-stream");
+        const streamLink = $("#av-preview-stream-link");
 
         if (!preview || !payload) return;
         preview.classList.remove("d-none");
         const coverUrl = payload.cover || PLACEHOLDER_COVER;
-        if (cover) cover.src = coverUrl;
+        if (cover) {
+            cover.src = coverUrl;
+            cover.style.cursor = "pointer";
+            cover.onclick = () => {
+                if (payload.stream) {
+                    openPlayer(payload.title, payload.stream);
+                } else if (payload.url) {
+                    window.open(payload.url, "_blank");
+                }
+            };
+        }
         if (title) title.textContent = payload.title || payload.code;
         if (code) code.textContent = payload.code;
         if (source) source.textContent = `來源：${payload.sourceName}`;
@@ -441,6 +542,39 @@
         }
         if (saveButton) saveButton.disabled = !payload.cover;
         if (cancelButton) cancelButton.disabled = false;
+        
+        // Show play button and stream URL if available
+        if (playButton) {
+            if (payload.stream) {
+                playButton.style.display = "inline-block";
+                playButton.onclick = () => openPlayer(payload.title, payload.stream);
+            } else {
+                playButton.style.display = "none";
+            }
+        }
+        if (streamDiv && streamLink) {
+            if (payload.stream) {
+                streamDiv.classList.remove("d-none");
+                streamLink.href = payload.stream;
+                streamLink.textContent = payload.stream;
+            } else {
+                streamDiv.classList.add("d-none");
+            }
+        }
+    };
+
+    const openPlayer = (title, streamUrl) => {
+        if (!playerModal) {
+            playerModal = new bootstrap.Modal(document.getElementById("av-player-modal"));
+        }
+        const playerTitle = document.getElementById("av-player-title");
+        const player = document.getElementById("av-player");
+        if (playerTitle) playerTitle.textContent = title || "播放影片";
+        if (player) {
+            player.src = streamUrl;
+            player.load();
+        }
+        playerModal.show();
     };
 
     const clearPreview = () => {
@@ -508,6 +642,7 @@
                 url,
                 title: meta.title,
                 cover: meta.cover,
+                stream: meta.stream || "",
                 status,
                 sourceId: source.id,
                 sourceName: source.label,
@@ -678,11 +813,25 @@
                 const target = event.target;
                 if (!(target instanceof HTMLElement)) return;
                 const action = target.dataset.action;
+                
                 if (action === "delete") {
                     const id = target.dataset.id;
                     if (!id) return;
                     deleteItem(id);
                     renderList(status);
+                } else if (action === "play") {
+                    const stream = target.dataset.stream;
+                    const title = target.dataset.title;
+                    if (stream) openPlayer(title, stream);
+                } else if (action === "open") {
+                    const stream = target.dataset.stream;
+                    const url = target.dataset.url;
+                    const title = target.dataset.title;
+                    if (stream) {
+                        openPlayer(title, stream);
+                    } else if (url) {
+                        window.open(url, "_blank");
+                    }
                 }
             });
         }
@@ -691,6 +840,12 @@
     };
 
     const initPage = () => {
+        // Initialize player modal if it exists
+        const playerModalEl = document.getElementById("av-player-modal");
+        if (playerModalEl) {
+            playerModal = new bootstrap.Modal(playerModalEl);
+        }
+        
         const listPage = document.body?.dataset?.avList;
         if (listPage) {
             initListPage(listPage);
