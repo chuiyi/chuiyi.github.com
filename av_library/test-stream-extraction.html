@@ -28,6 +28,7 @@
             <button class="btn btn-primary" onclick="testExtraction()">開始測試</button>
             <button class="btn btn-secondary ms-2" onclick="testWithRawFetch()">使用直接 Fetch 測試</button>
             <button class="btn btn-danger ms-2" onclick="testWithNetworkMonitor()">監聽網路請求</button>
+            <button class="btn btn-success ms-2" onclick="testInBrowser()">在瀏覽器中執行</button>
             <button class="btn btn-info ms-2" onclick="searchInPreview()">在預覽中搜尋流</button>
             <button class="btn btn-secondary ms-2" onclick="clearLog()">清除日誌</button>
         </div>
@@ -446,9 +447,130 @@
             });
         };
 
+        const testInBrowser = async () => {
+            clearLog();
+            const videoUrl = document.getElementById('videoUrl').value;
+            
+            if (!videoUrl) {
+                log('請輸入影片 URL', 'error');
+                return;
+            }
+
+            log('在瀏覽器中執行測試: ' + videoUrl, 'info');
+            log('💡 此方法打開新窗口加載頁面，然後在控制台執行腳本提取 hlsUrl', 'info');
+
+            try {
+                // 打開一個新窗口
+                const popup = window.open(videoUrl, '_blank', 'width=1024,height=768');
+                
+                if (!popup) {
+                    log('❌ 無法打開新窗口（可能被瀏覽器阻止）', 'error');
+                    return;
+                }
+
+                log('✓ 新窗口已打開，等待頁面加載...', 'success');
+                log('請等待 5-10 秒讓新窗口加載完成...', 'info');
+
+                // 等待新窗口加載
+                let retries = 0;
+                const maxRetries = 20; // 10 秒
+
+                const checkInterval = setInterval(async () => {
+                    retries++;
+                    
+                    if (popup.closed) {
+                        log('新窗口已關閉', 'error');
+                        clearInterval(checkInterval);
+                        return;
+                    }
+
+                    // 等待窗口完全加載
+                    if (popup.document && popup.document.readyState === 'complete') {
+                        try {
+                            // 在新窗口中執行腳本
+                            const extractCode = () => {
+                                // 方法 1: 直接訪問
+                                if (typeof window.hlsUrl !== 'undefined') {
+                                    return { found: true, url: window.hlsUrl, method: 'direct' };
+                                }
+
+                                // 方法 2: 從 document 搜尋
+                                const scriptTags = document.querySelectorAll('script');
+                                for (let script of scriptTags) {
+                                    if (script.textContent.includes('hlsUrl')) {
+                                        const match = script.textContent.match(/hlsUrl\s*=\s*['"]([^'"]+\.m3u8[^'"]*)['"]/);
+                                        if (match && match[1]) {
+                                            return { found: true, url: match[1], method: 'script_search' };
+                                        }
+                                    }
+                                }
+
+                                // 方法 3: 搜尋全局變數
+                                for (let key in window) {
+                                    try {
+                                        if (typeof window[key] === 'string' && window[key].includes('.m3u8')) {
+                                            return { found: true, url: window[key], method: 'global_var: ' + key };
+                                        }
+                                    } catch (e) {}
+                                }
+
+                                return { found: false, url: null, method: 'none' };
+                            };
+
+                            const result = popup.eval(`(${extractCode.toString()})()`);
+                            
+                            if (result && result.found) {
+                                clearInterval(checkInterval);
+                                log('✅ 成功從新窗口獲取 hlsUrl! (方法: ' + result.method + ')', 'success');
+                                log('URL: ' + result.url, 'success');
+
+                                currentStreams = [{
+                                    source: 'hlsUrl (from browser)',
+                                    url: result.url,
+                                    method: 'browser',
+                                    priority: 0
+                                }];
+
+                                displayResults(currentStreams);
+                                return;
+                            } else if (retries >= maxRetries) {
+                                clearInterval(checkInterval);
+                                log('⏱️ 超時: 無法從新窗口獲取 hlsUrl', 'error');
+                                log('請在新窗口的控制台手動執行: console.log(window.hlsUrl)', 'info');
+                                return;
+                            }
+                        } catch (error) {
+                            if (retries >= maxRetries) {
+                                clearInterval(checkInterval);
+                                log('❌ 錯誤: ' + error.message, 'error');
+                                log('請在新窗口的控制台手動執行: console.log(window.hlsUrl)', 'info');
+                            }
+                        }
+                    } else {
+                        if (retries % 4 === 0) {
+                            log('⏳ 等待頁面加載... (' + retries + '/' + maxRetries + ')', 'info');
+                        }
+                    }
+                }, 500);
+
+                // 20 秒後停止檢查
+                setTimeout(() => {
+                    if (!popup.closed) {
+                        clearInterval(checkInterval);
+                        log('⏱️ 檢查超時，新窗口仍未返回 hlsUrl', 'error');
+                        log('提示: 在新窗口控制台 (F12) 執行 console.log(window.hlsUrl) 檢查是否有值', 'info');
+                    }
+                }, 20000);
+
+            } catch (error) {
+                log('✗ 錯誤: ' + error.message, 'error');
+            }
+        };
+
         window.addEventListener('load', () => {
             log('測試工具已就緒', 'success');
             log('輸入影片 URL 並點擊「開始測試」', 'info');
+            log('或使用「在瀏覽器中執行」直接從頁面獲取 hlsUrl', 'info');
         });
 
         const searchInPreview = () => {
