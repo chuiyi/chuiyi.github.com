@@ -167,7 +167,6 @@
         remote.forEach(upsert);
         return Array.from(map.values());
     };
-    };
 
     const parseInput = (raw) => {
         if (!raw) return null;
@@ -334,7 +333,8 @@
             migratedMap[item.slug] = true;
         }
         
-        console.log(`[Migration] 远程数据迁移完成，合并后 ${migrated.length} 条数据`);\n        return migrated;
+        console.log(`[Migration] 远程数据迁移完成，合并后 ${migrated.length} 条数据`);
+        return migrated;
     };
 
     const getViewMode = () => localStorage.getItem(VIEW_KEY) || "grid";
