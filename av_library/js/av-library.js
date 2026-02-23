@@ -1126,27 +1126,56 @@
     let fixCoverThrottle = false;
 
     const fixItemCover = async (item) => {
-        if (!item || !item.url || !item.slug) return false;
+        if (!item || !item.url || !item.slug) {
+            console.log(`[fixItemCover] 缺少必要參數`);
+            return false;
+        }
         
         try {
             const source = searchModules[item.sourceId] || searchModules.jable;
             const url = source.buildUrl(item.slug, item.domain);
+            console.log(`[fixItemCover] 正在獲取 meta: ${url}`);
             const meta = await source.fetchMeta(url, item.code, item.slug, item.domain);
             
+            console.log(`[fixItemCover] 獲取的封面: ${meta.cover}`);
+            
             if (meta.cover) {
-                // 更新数据库，添加时间戳参数用于刷新浏览器缓存
-                const db = getDb();
-                const dbItem = db.find((entry) => entry.id === item.id);
-                if (dbItem) {
-                    const timestamp = `t=${Date.now()}`;
-                    const coverUrl = meta.cover.includes('?') ? 
-                        meta.cover + '&' + timestamp : 
-                        meta.cover + '?' + timestamp;
-                    dbItem.cover = coverUrl;
-                    setDb(db);
-                    markDirty();
-                    return true;
+                // 測試圖片是否能載入
+                const testImg = new Image();
+                const canLoad = await new Promise((resolve) => {
+                    testImg.onload = () => {
+                        console.log(`[fixItemCover] 圖片載入成功`);
+                        resolve(true);
+                    };
+                    testImg.onerror = () => {
+                        console.log(`[fixItemCover] 圖片載入失敗`);
+                        resolve(false);
+                    };
+                    testImg.src = meta.cover;
+                    // 5秒超時
+                    setTimeout(() => resolve(false), 5000);
+                });
+                
+                if (canLoad) {
+                    // 確認圖片能載入後才更新數據庫
+                    const db = getDb();
+                    const dbItem = db.find((entry) => entry.id === item.id);
+                    if (dbItem) {
+                        const timestamp = `t=${Date.now()}`;
+                        const coverUrl = meta.cover.includes('?') ? 
+                            meta.cover + '&' + timestamp : 
+                            meta.cover + '?' + timestamp;
+                        console.log(`[fixItemCover] 更新封面為: ${coverUrl}`);
+                        dbItem.cover = coverUrl;
+                        setDb(db);
+                        markDirty();
+                        return true;
+                    }
+                } else {
+                    console.log(`[fixItemCover] 圖片無法載入，不更新資料庫`);
                 }
+            } else {
+                console.log(`[fixItemCover] 未獲取到封面 URL`);
             }
         } catch (error) {
             console.log(`[fixItemCover] 修復失敗: ${error.message}`);
@@ -1185,29 +1214,29 @@
         return fixed;
     };
 
+    // 為所有圖片綁定onerror事件處理
+    const attachImageErrorHandlers = () => {
+        document.querySelectorAll("img[data-item-id]").forEach((img) => {
+            img.onerror = function() {
+                const itemId = this.getAttribute("data-item-id");
+                if (itemId) {
+                    const fixButton = this.parentElement?.querySelector(".fix-cover-btn");
+                    if (fixButton) {
+                        fixButton.classList.remove("d-none");
+                    }
+                    // 標記為失效
+                    brokenCoverCache.add(itemId);
+                }
+            };
+        });
+    };
+
     const initListPage = (status) => {
         const sortSelect = $("#av-sort");
         const viewButtons = document.querySelectorAll("[data-av-view]");
         const container = $("#av-card-list");
-
-        // 为所有图片绑定onerror事件处理
-        const attachImageErrorHandlers = () => {
-            document.querySelectorAll("img[data-item-id]").forEach((img) => {
-                img.onerror = function() {
-                    const itemId = this.getAttribute("data-item-id");
-                    if (itemId) {
-                        const fixButton = this.parentElement?.querySelector(".fix-cover-btn");
-                        if (fixButton) {
-                            fixButton.classList.remove("d-none");
-                        }
-                        // 标记为失效
-                        brokenCoverCache.add(itemId);
-                    }
-                };
-            });
-        };
         
-        // 初始绑定
+        // 初始綁定
         setTimeout(attachImageErrorHandlers, 100);
 
         if (sortSelect) {
@@ -1300,9 +1329,22 @@
                                     if (img) {
                                         const updatedItem = getDb().find((entry) => entry.id === id);
                                         if (updatedItem && updatedItem.cover) {
+                                            console.log(`[Event] 更新圖片 src 為: ${updatedItem.cover}`);
+                                            
+                                            // 設定新的 onload 和 onerror
+                                            img.onload = function() {
+                                                console.log(`[Event] 圖片載入成功`);
+                                                // 載入成功後移除事件處理
+                                                this.onload = null;
+                                                this.onerror = null;
+                                            };
+                                            img.onerror = function() {
+                                                console.log(`[Event] 圖片載入失敗，顯示修復按鈕`);
+                                                button.classList.remove('d-none');
+                                                brokenCoverCache.add(id);
+                                            };
+                                            
                                             img.src = updatedItem.cover;
-                                            // 移除錯誤處理避免重複觸發
-                                            img.onerror = null;
                                         }
                                     }
                                 }
