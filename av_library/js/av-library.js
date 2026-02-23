@@ -468,8 +468,7 @@
     };
 
     const fetchFromJina = async (targetUrl) => {
-        // 嘗試直接獲取 HTML 格式（添加 Accept 頭）
-        let proxyUrl = `https://r.jina.ai/${targetUrl}`;
+        const proxyUrl = `https://r.jina.ai/${targetUrl}`;
         console.log(`[Jina] Fetching ${targetUrl}`);
         
         try {
@@ -482,24 +481,8 @@
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}`);
             }
-            let text = await response.text();
+            const text = await response.text();
             console.log(`[Jina] Fetched ${targetUrl}, content length: ${text.length}`);
-            
-            // 如果返回 Markdown，嘗試添加查詢參數
-            if (text.includes('Markdown Content:')) {
-                console.log(`[Jina] 返回 Markdown，嘗試 HTML 版本`);
-                proxyUrl = `https://r.jina.ai/${targetUrl}?Accept=text/html`;
-                const response2 = await fetch(proxyUrl, {
-                    headers: {
-                        'Accept': 'text/html'
-                    }
-                });
-                if (response2.ok) {
-                    text = await response2.text();
-                    console.log(`[Jina] HTML 版本長度: ${text.length}`);
-                }
-            }
-            
             return text;
         } catch (error) {
             console.log(`[Jina] 失敗: ${error.message}`);
@@ -647,19 +630,23 @@
 
     const fetchMeta = async (url, fallbackTitle, slug, domain) => {
         try {
-            // Use Jina as primary method (more reliable for fetching without CORS issues)
-            let html = await fetchFromJina(url);
+            // 僅發送一次請求獲取詳情頁
+            const html = await fetchFromJina(url);
             
-            // Check if it's Markdown format from Jina
+            // 檢查是否為 Markdown 格式
             if (html.includes("Markdown Content:")) {
                 const meta = findMetaFromMarkdown(html, fallbackTitle);
-                if (!meta.cover && slug) {
+                // Markdown 格式通常沒有封面，只在完全沒有資料時才嘗試搜索頁
+                if (!meta.cover && !meta.title && slug) {
                     try {
                         const searchHost = (domain || "jable.tv").replace(/^www\./, "");
                         const searchHtml = await fetchFromJina(`https://${searchHost}/search/${slug}/`);
                         const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
-                        const stream = extractStreamUrlFromSearch(searchHtml);
-                        return { ...meta, cover, stream: stream || meta.stream };
+                        return { 
+                            title: meta.title || fallbackTitle, 
+                            cover: cover || "", 
+                            stream: meta.stream || ""
+                        };
                     } catch (error) {
                         return meta;
                     }
@@ -667,27 +654,17 @@
                 return meta;
             }
             
-            // Parse HTML from Jina
+            // 解析 HTML 格式（優先使用詳情頁資訊）
             const meta = findMetaFromHtml(html, fallbackTitle, url);
             
-            // If cover or stream not found, try search page fallback
-            if ((!meta.cover || !meta.stream) && slug) {
+            // 只有在封面完全沒有時才嘗試搜索頁（串流通常在詳情頁就能獲取）
+            if (!meta.cover && slug) {
                 try {
                     const searchHost = (domain || "jable.tv").replace(/^www\./, "");
                     const searchHtml = await fetchFromJina(`https://${searchHost}/search/${slug}/`);
-                    
-                    if (!meta.cover) {
-                        const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
-                        if (cover) {
-                            meta.cover = cover;
-                        }
-                    }
-                    
-                    if (!meta.stream) {
-                        const stream = extractStreamUrlFromSearch(searchHtml);
-                        if (stream) {
-                            meta.stream = stream;
-                        }
+                    const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
+                    if (cover) {
+                        meta.cover = cover;
                     }
                 } catch (error) {
                     console.log(`[fetchMeta] 搜尋頁面備選方案失敗: ${error.message}`);
@@ -696,7 +673,8 @@
             
             return meta;
         } catch (error) {
-            return { title: fallbackTitle, cover: "" };
+            console.log(`[fetchMeta] 錯誤: ${error.message}`);
+            return { title: fallbackTitle, cover: "", stream: "" };
         }
     };
 
@@ -1106,15 +1084,15 @@
     // 限流计时器
     let fixCoverThrottle = false;
 
-    const fixItemCover = async (item, showProgress = true) => {
-        if (!item || !item.url || !item.slug) return;
+    const fixItemCover = async (item) => {
+        if (!item || !item.url || !item.slug) return false;
         
         try {
             const source = searchModules[item.sourceId] || searchModules.jable;
             const url = source.buildUrl(item.slug, item.domain);
             const meta = await source.fetchMeta(url, item.code, item.slug, item.domain);
             
-            if (meta.cover && meta.cover !== item.cover) {
+            if (meta.cover) {
                 // 更新数据库，添加时间戳参数用于刷新浏览器缓存
                 const db = getDb();
                 const dbItem = db.find((entry) => entry.id === item.id);
@@ -1130,7 +1108,7 @@
                 }
             }
         } catch (error) {
-            console.log(`[fixItemCover] 修复失败: ${error.message}`);
+            console.log(`[fixItemCover] 修復失敗: ${error.message}`);
         }
         return false;
     };
@@ -1253,30 +1231,65 @@
                     
                     fixCoverThrottle = true;
                     const button = actionElement;
+                    const icon = button.querySelector('i');
                     const originalTitle = button.title;
+                    const originalIconClass = icon ? icon.className : '';
+                    
+                    // 1. 設定按鈕為修復中狀態（禁用按鈕、顯示 loading 圖示）
                     button.disabled = true;
                     button.title = "修復中...";
+                    if (icon) {
+                        icon.className = 'bi bi-arrow-clockwise spin';
+                    }
                     
                     const db = getDb();
                     const item = db.find((entry) => entry.id === id);
                     if (item) {
                         fixItemCover(item).then((success) => {
                             fixCoverThrottle = false;
-                            button.disabled = false;
                             
                             if (success) {
-                                button.title = "修復成功";
-                                button.classList.add("d-none");
+                                // 2. 成功：從 brokenCoverCache 移除
                                 brokenCoverCache.delete(id);
-                                renderList(status);
+                                
+                                // 3. 更新卡片圖片並隱藏修復按鈕
+                                const card = button.closest('.av-card');
+                                if (card) {
+                                    const img = card.querySelector('img[data-item-id="' + id + '"]');
+                                    if (img) {
+                                        const updatedItem = getDb().find((entry) => entry.id === id);
+                                        if (updatedItem && updatedItem.cover) {
+                                            img.src = updatedItem.cover;
+                                            // 移除錯誤處理避免重複觸發
+                                            img.onerror = null;
+                                        }
+                                    }
+                                }
+                                
+                                button.title = "修復成功";
+                                if (icon) {
+                                    icon.className = 'bi bi-check-circle-fill';
+                                }
+                                
+                                // 延遲隱藏按鈕以顯示成功狀態
                                 setTimeout(() => {
-                                    button.title = originalTitle;
-                                }, 1500);
+                                    button.classList.add("d-none");
+                                }, 800);
                             } else {
+                                // 2. 失敗：保持按鈕顯示
+                                button.disabled = false;
                                 button.title = "修復失敗，請稍後重試";
+                                if (icon) {
+                                    icon.className = 'bi bi-exclamation-triangle-fill';
+                                }
+                                
+                                // 3秒後恢復原狀
                                 setTimeout(() => {
                                     button.title = originalTitle;
-                                }, 2000);
+                                    if (icon) {
+                                        icon.className = originalIconClass;
+                                    }
+                                }, 3000);
                             }
                         });
                     } else {
