@@ -812,7 +812,10 @@
             
             card.innerHTML = `
                 <div style="position: relative;">
-                    <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}">
+                    <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}" data-item-id="${item.id}">
+                    <button type="button" class="btn btn-sm fix-cover-btn d-none" data-action="fix-cover" data-id="${item.id}" style="position: absolute; top: 8px; right: 8px;" title="修復封面">
+                        <i class="bi bi-wrench-adjustable"></i>
+                    </button>
                     <div class="av-card-overlay" data-action="open" data-url="${item.url}">
                         <div class="av-play-btn"><i class="bi bi-play-fill"></i></div>
                     </div>
@@ -1092,10 +1095,91 @@
         markDirty();
     };
 
+    // 缓存失效的封面链接，避免重复修复
+    const brokenCoverCache = new Set();
+    // 限流计时器
+    let fixCoverThrottle = false;
+
+    const fixItemCover = async (item, showProgress = true) => {
+        if (!item || !item.url || !item.slug) return;
+        
+        try {
+            const source = searchModules[item.sourceId] || searchModules.jable;
+            const url = source.buildUrl(item.slug, item.domain);
+            const meta = await source.fetchMeta(url, item.code, item.slug, item.domain);
+            
+            if (meta.cover && meta.cover !== item.cover) {
+                // 更新数据库
+                const db = getDb();
+                const dbItem = db.find((entry) => entry.id === item.id);
+                if (dbItem) {
+                    dbItem.cover = meta.cover;
+                    setDb(db);
+                    markDirty();
+                    return true;
+                }
+            }
+        } catch (error) {
+            console.log(`[fixItemCover] 修复失败: ${error.message}`);
+        }
+        return false;
+    };
+
+    const fixAllCoversBatch = async (status, onProgress) => {
+        const db = getDb();
+        let filtered;
+        if (status === "favorite") {
+            filtered = db.filter((item) => item.isFavorite === true);
+        } else {
+            filtered = db.filter((item) => item.status === status);
+        }
+        
+        let fixed = 0;
+        for (let i = 0; i < filtered.length; i++) {
+            const item = filtered[i];
+            if (brokenCoverCache.has(item.id)) {
+                // 跳过已标记为失效的项
+                continue;
+            }
+            
+            const success = await fixItemCover(item, false);
+            if (success) {
+                fixed++;
+                if (onProgress) {
+                    onProgress(i + 1, filtered.length);
+                }
+            }
+            
+            // 限流：每个修复间隔500ms
+            await new Promise((resolve) => setTimeout(resolve, 500));
+        }
+        return fixed;
+    };
+
     const initListPage = (status) => {
         const sortSelect = $("#av-sort");
         const viewButtons = document.querySelectorAll("[data-av-view]");
         const container = $("#av-card-list");
+
+        // 为所有图片绑定onerror事件处理
+        const attachImageErrorHandlers = () => {
+            document.querySelectorAll("img[data-item-id]").forEach((img) => {
+                img.onerror = function() {
+                    const itemId = this.getAttribute("data-item-id");
+                    if (itemId) {
+                        const fixButton = this.parentElement?.querySelector(".fix-cover-btn");
+                        if (fixButton) {
+                            fixButton.classList.remove("d-none");
+                        }
+                        // 标记为失效
+                        brokenCoverCache.add(itemId);
+                    }
+                };
+            });
+        };
+        
+        // 初始绑定
+        setTimeout(attachImageErrorHandlers, 100);
 
         if (sortSelect) {
             sortSelect.value = getSortMode();
@@ -1153,6 +1237,43 @@
                     if (!id || !newStatus) return;
                     moveItem(id, newStatus);
                     renderList(status);
+                } else if (action === "fix-cover") {
+                    const id = actionElement.dataset.id;
+                    if (!id || fixCoverThrottle) return;
+                    
+                    fixCoverThrottle = true;
+                    const button = actionElement;
+                    const originalTitle = button.title;
+                    button.disabled = true;
+                    button.title = "修復中...";
+                    
+                    const db = getDb();
+                    const item = db.find((entry) => entry.id === id);
+                    if (item) {
+                        fixItemCover(item).then((success) => {
+                            fixCoverThrottle = false;
+                            button.disabled = false;
+                            
+                            if (success) {
+                                button.title = "修復成功";
+                                button.classList.add("d-none");
+                                brokenCoverCache.delete(id);
+                                renderList(status);
+                                setTimeout(() => {
+                                    button.title = originalTitle;
+                                }, 1500);
+                            } else {
+                                button.title = "修復失敗，請稍後重試";
+                                setTimeout(() => {
+                                    button.title = originalTitle;
+                                }, 2000);
+                            }
+                        });
+                    } else {
+                        fixCoverThrottle = false;
+                        button.disabled = false;
+                        button.title = originalTitle;
+                    }
                 }
             });
         }

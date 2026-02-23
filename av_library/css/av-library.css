@@ -231,6 +231,27 @@ body {
     border-color: #dc3545;
 }
 
+/* 修復封面按鈕 */
+.fix-cover-btn {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #fff !important;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+}
+
+.fix-cover-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: #fff !important;
+}
+
+.fix-cover-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .preview-card {
     display: grid;
     grid-template-columns: 160px 1fr;
