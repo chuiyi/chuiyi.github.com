@@ -813,7 +813,7 @@
             card.innerHTML = `
                 <div style="position: relative;">
                     <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}" data-item-id="${item.id}">
-                    <button type="button" class="btn btn-sm fix-cover-btn d-none" data-action="fix-cover" data-id="${item.id}" style="position: absolute; top: 8px; right: 8px;" title="修復封面">
+                    <button type="button" class="btn btn-sm fix-cover-btn ${brokenCoverCache.has(item.id) ? '' : 'd-none'}" data-action="fix-cover" data-id="${item.id}" style="position: absolute; top: 8px; right: 8px;" title="修復封面">
                         <i class="bi bi-wrench-adjustable"></i>
                     </button>
                     <div class="av-card-overlay" data-action="open" data-url="${item.url}">
@@ -847,6 +847,12 @@
             `;
             container.appendChild(card);
         });
+        
+        // 為新生成的img元素重新綁定onerror事件
+        setTimeout(attachImageErrorHandlers, 50);
+        
+        // 為新生成的img元素重新綁定onerror事件
+        setTimeout(attachImageErrorHandlers, 50);
     };
 
     const renderPreview = (payload) => {
@@ -1109,11 +1115,15 @@
             const meta = await source.fetchMeta(url, item.code, item.slug, item.domain);
             
             if (meta.cover && meta.cover !== item.cover) {
-                // 更新数据库
+                // 更新数据库，添加时间戳参数用于刷新浏览器缓存
                 const db = getDb();
                 const dbItem = db.find((entry) => entry.id === item.id);
                 if (dbItem) {
-                    dbItem.cover = meta.cover;
+                    const timestamp = `t=${Date.now()}`;
+                    const coverUrl = meta.cover.includes('?') ? 
+                        meta.cover + '&' + timestamp : 
+                        meta.cover + '?' + timestamp;
+                    dbItem.cover = coverUrl;
                     setDb(db);
                     markDirty();
                     return true;
