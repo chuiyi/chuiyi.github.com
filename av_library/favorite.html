@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>AV Library - 稍後觀看</title>
+    <title>影片庫 - 喜愛的影片</title>
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
     <link rel="shortcut icon" href="../assets/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon.ico">
@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="css/av-library.css">
 </head>
-<body data-av-list="later">
+<body data-av-list="favorite">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -26,9 +26,9 @@
             <div class="collapse navbar-collapse" id="avNavbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">主頁面</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="later.html">稍後觀看</a></li>
+                    <li class="nav-item"><a class="nav-link" href="later.html">稍後觀看</a></li>
                     <li class="nav-item"><a class="nav-link" href="watched.html">看過的影片</a></li>
-                    <li class="nav-item"><a class="nav-link" href="favorite.html">喜愛的影片</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="favorite.html">喜愛的影片</a></li>
                 </ul>
             </div>
         </div>
@@ -36,8 +36,8 @@
 
     <header class="hero">
         <div class="container">
-            <h1 class="section-title">稍後觀看</h1>
-            <p class="text-muted">從主頁面新增後，這裡會自動整理成相簿縮圖。</p>
+            <h1 class="section-title">喜愛的影片</h1>
+            <p class="text-muted">從稍後觀看或看過的影片新增至喜愛，這裡會自動整理成相簿縮圖。</p>
         </div>
     </header>
 
@@ -81,7 +81,7 @@
                 </select>
             </div>
         </div>
-        <div id="av-empty-state" class="empty-state d-none">尚未新增影片。</div>
+        <div id="av-empty-state" class="empty-state d-none">尚未新增喜愛的影片。</div>
         <div id="av-card-list" class="card-grid"></div>
     <div class="footer">影片庫 · 2026</div>
 

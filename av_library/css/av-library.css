@@ -201,6 +201,36 @@ body {
     font-size: 0.85rem;
 }
 
+.btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    color: var(--av-muted);
+    transition: all 0.2s ease;
+}
+
+.btn-icon:hover {
+    background-color: rgba(176, 122, 74, 0.1);
+    color: var(--av-accent);
+    border-color: var(--av-accent);
+}
+
+.btn-icon i {
+    font-size: 0.95rem;
+}
+
+.btn-icon.btn-outline-danger:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
 .preview-card {
     display: grid;
     grid-template-columns: 160px 1fr;

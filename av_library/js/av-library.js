@@ -583,12 +583,53 @@
         return { saved: true, message: "已新增至清單" };
     };
 
+    const toggleFavorite = (id) => {
+        const db = getDb();
+        const item = db.find((entry) => entry.id === id);
+        if (!item) return;
+        
+        const favoriteList = JSON.parse(localStorage.getItem("avLibraryFavorites") || "[]");
+        const index = favoriteList.indexOf(id);
+        
+        if (index > -1) {
+            favoriteList.splice(index, 1);
+        } else {
+            favoriteList.push(id);
+        }
+        
+        localStorage.setItem("avLibraryFavorites", JSON.stringify(favoriteList));
+        markDirty();
+    };
+
+    const isFavorite = (id) => {
+        const favoriteList = JSON.parse(localStorage.getItem("avLibraryFavorites") || "[]");
+        return favoriteList.includes(id);
+    };
+
+    const moveItem = (id, newStatus) => {
+        const db = getDb();
+        const item = db.find((entry) => entry.id === id);
+        if (!item || item.status === newStatus) return;
+        
+        item.status = newStatus;
+        setDb(db);
+        markDirty();
+    };
+
     const renderList = (status) => {
         const container = $("#av-card-list");
         const empty = $("#av-empty-state");
         if (!container) return;
         const db = getDb();
-        const filtered = db.filter((item) => item.status === status);
+        
+        let filtered;
+        if (status === "favorite") {
+            const favoriteList = JSON.parse(localStorage.getItem("avLibraryFavorites") || "[]");
+            filtered = db.filter((item) => favoriteList.includes(item.id));
+        } else {
+            filtered = db.filter((item) => item.status === status);
+        }
+        
         const sortMode = getSortMode();
         const sorted = [...filtered].sort((a, b) => {
             if (sortMode === "oldest") {
@@ -612,6 +653,19 @@
             const card = document.createElement("div");
             card.className = "av-card";
             const cover = item.cover || PLACEHOLDER_COVER;
+            const isFav = isFavorite(item.id);
+            
+            // Determine button labels based on current status
+            let moveButtonLabel = "";
+            let moveButtonAction = "";
+            if (item.status === "later") {
+                moveButtonLabel = "看過";
+                moveButtonAction = "watched";
+            } else if (item.status === "watched") {
+                moveButtonLabel = "稍後觀看";
+                moveButtonAction = "later";
+            }
+            
             card.innerHTML = `
                 <div style="position: relative;">
                     <img src="${cover}" alt="${item.title}" style="cursor: pointer; width: 100%; aspect-ratio: 16/9; object-fit: cover;" data-action="open" data-url="${item.url}">
@@ -623,10 +677,22 @@
                     <div class="av-card-title">${item.title}</div>
                     <div class="av-card-code">${item.code}</div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
-                        <span class="badge rounded-pill badge-status">${status === "watched" ? "看過的影片" : "稍後觀看"}</span>
-                        <div class="d-flex gap-2">
-                            <a href="${item.url}" target="_blank" rel="noopener" class="btn btn-sm btn-outline-secondary">前往</a>
-                            <button type="button" class="btn btn-sm btn-outline-danger" data-action="delete" data-id="${item.id}">刪除</button>
+                        <span class="badge rounded-pill badge-status">${item.status === "watched" ? "看過的影片" : item.status === "later" ? "稍後觀看" : "喜愛的影片"}</span>
+                        <div class="d-flex gap-2 align-items-center">
+                            <button type="button" class="btn btn-sm btn-icon" data-action="favorite" data-id="${item.id}" title="${isFav ? '取消收藏' : '加入喜愛'}">
+                                <i class="bi ${isFav ? 'bi-heart-fill' : 'bi-heart'}"></i>
+                            </button>
+                            ${status !== "favorite" ? `
+                            <button type="button" class="btn btn-sm btn-icon" data-action="move" data-id="${item.id}" data-new-status="${moveButtonAction}" title="${moveButtonLabel}">
+                                <i class="bi bi-arrow-left-right"></i>
+                            </button>
+                            ` : ""}
+                            <a href="${item.url}" target="_blank" rel="noopener" class="btn btn-sm btn-icon" title="前往">
+                                <i class="bi bi-link-45deg"></i>
+                            </a>
+                            <button type="button" class="btn btn-sm btn-icon" data-action="delete" data-id="${item.id}" title="刪除">
+                                <i class="bi bi-trash3"></i>
+                            </button>
                         </div>
                     </div>
                     ${item.sourceName ? `<div class="av-card-source">來源：${item.sourceName}</div>` : ""}
@@ -932,6 +998,17 @@
                     if (url) {
                         window.open(url, "_blank");
                     }
+                } else if (action === "favorite") {
+                    const id = actionElement.dataset.id;
+                    if (!id) return;
+                    toggleFavorite(id);
+                    renderList(status);
+                } else if (action === "move") {
+                    const id = actionElement.dataset.id;
+                    const newStatus = actionElement.dataset.newStatus;
+                    if (!id || !newStatus) return;
+                    moveItem(id, newStatus);
+                    renderList(status);
                 }
             });
         }
