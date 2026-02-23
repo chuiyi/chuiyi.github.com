@@ -117,7 +117,11 @@
             return;
         }
         const content = await downloadDriveFile(files[0].id);
-        const remote = JSON.parse(content || "[]");
+        let remote = JSON.parse(content || "[]");
+        
+        // 检查并迁移远程数据
+        remote = migrateRemoteDataIfNeeded(remote);
+        
         const merged = mergeDb(getDb(), Array.isArray(remote) ? remote : []);
         setDb(merged);
         const listPage = document.body?.dataset?.avList;
@@ -141,19 +145,28 @@
         const map = new Map();
         const upsert = (item) => {
             if (!item) return;
-            const key = `${item.slug || ""}|${item.status || ""}`;
+            // 新数据结构：使用 slug 作为唯一键
+            const key = item.slug || "";
             const existing = map.get(key);
             if (!existing) {
                 map.set(key, item);
                 return;
             }
+            // 保留更新时间较新的版本
             const a = new Date(existing.addedAt || 0).getTime();
             const b = new Date(item.addedAt || 0).getTime();
-            map.set(key, b >= a ? item : existing);
+            if (b >= a) {
+                // 保持现有的 isFavorite 状态（如果新项没有明确设置的话）
+                if (item.isFavorite === undefined) {
+                    item.isFavorite = existing.isFavorite;
+                }
+                map.set(key, item);
+            }
         };
         local.forEach(upsert);
         remote.forEach(upsert);
         return Array.from(map.values());
+    };
     };
 
     const parseInput = (raw) => {
@@ -198,6 +211,130 @@
 
     const setDb = (items) => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    };
+
+    // ============= 数据迁移相关函数 =============
+    const needsMigration = () => {
+        const db = getDb();
+        const favorites = localStorage.getItem("avLibraryFavorites");
+        
+        // 如果存在旧的独立收藏列表，需要迁移
+        if (favorites) return true;
+        
+        // 检查是否有 isFavorite 字段（新结构特征）
+        const hasNewStructure = db.length > 0 && db.some((item) => item.isFavorite !== undefined);
+        if (hasNewStructure) return false;  // 已经是新结构，无需迁移
+        
+        // 检查是否有重复的 slug（不同 status）- 旧结构特征
+        if (db.length > 0) {
+            const slugStatusMap = {};
+            for (const item of db) {
+                if (!slugStatusMap[item.slug]) {
+                    slugStatusMap[item.slug] = new Set();
+                }
+                slugStatusMap[item.slug].add(item.status);
+            }
+            
+            // 如果同一 slug 有多个不同的 status，说明是旧结构
+            for (const statuses of Object.values(slugStatusMap)) {
+                if (statuses.size > 1) return true;
+            }
+        }
+        
+        return false;
+    };
+
+    const migrateToNewStructure = () => {
+        console.log("[Migration] 开始数据迁移...");
+        const db = getDb();
+        const favorites = JSON.parse(localStorage.getItem("avLibraryFavorites") || "[]");
+        
+        const migratedMap = {};
+        const migrated = [];
+        
+        // 遍历旧数据，按 slug 合并
+        for (const item of db) {
+            if (migratedMap[item.slug]) {
+                // 同 slug 的影片已处理，跳过
+                continue;
+            }
+            
+            // 找到该 slug 的所有条目
+            const allEntriesWithSlug = db.filter((entry) => entry.slug === item.slug);
+            
+            // 优先级：watched > later
+            let targetItem = allEntriesWithSlug.find((entry) => entry.status === "watched");
+            if (!targetItem) {
+                targetItem = allEntriesWithSlug.find((entry) => entry.status === "later");
+            }
+            if (!targetItem) {
+                targetItem = allEntriesWithSlug[0];
+            }
+            
+            // 更新 isFavorite 状态
+            targetItem.isFavorite = favorites.includes(targetItem.id);
+            
+            migrated.push(targetItem);
+            migratedMap[item.slug] = true;
+        }
+        
+        // 保存迁移后的数据
+        setDb(migrated);
+        
+        // 清理旧的收藏列表
+        localStorage.removeItem("avLibraryFavorites");
+        
+        console.log(`[Migration] 成功迁移 ${migrated.length} 条数据到新结构`);
+    };
+
+    const migrateRemoteDataIfNeeded = (remoteData) => {
+        // 检查远程数据是否是新结构
+        const hasNewStructure = remoteData.length > 0 && remoteData.some((item) => item.isFavorite !== undefined);
+        
+        if (hasNewStructure) {
+            // 已经是新结构，无需迁移
+            return remoteData;
+        }
+        
+        // 旧结构需要迁移
+        if (remoteData.length === 0) {
+            return remoteData;
+        }
+        
+        console.log("[Migration] 远程数据是旧结构，正在迁移...");
+        
+        const migratedMap = {};
+        const migrated = [];
+        
+        // 遍历旧数据，按 slug 合并
+        for (const item of remoteData) {
+            if (migratedMap[item.slug]) {
+                // 同 slug 的影片已处理，跳过
+                continue;
+            }
+            
+            // 找到该 slug 的所有条目
+            const allEntriesWithSlug = remoteData.filter((entry) => entry.slug === item.slug);
+            
+            // 优先级：watched > later
+            let targetItem = allEntriesWithSlug.find((entry) => entry.status === "watched");
+            if (!targetItem) {
+                targetItem = allEntriesWithSlug.find((entry) => entry.status === "later");
+            }
+            if (!targetItem) {
+                targetItem = allEntriesWithSlug[0];
+            }
+            
+            // 设置默认的 isFavorite 状态
+            if (targetItem.isFavorite === undefined) {
+                targetItem.isFavorite = false;
+            }
+            
+            migrated.push(targetItem);
+            migratedMap[item.slug] = true;
+        }
+        
+        console.log(`[Migration] 远程数据迁移完成，合并后 ${migrated.length} 条数据`);\n        return migrated;
     };
 
     const getViewMode = () => localStorage.getItem(VIEW_KEY) || "grid";
@@ -574,11 +711,24 @@
 
     const saveItem = (item) => {
         const db = getDb();
-        const exists = db.find((entry) => entry.slug === item.slug && entry.status === item.status);
+        // 检查是否已存在相同 slug 的影片（无论 status）
+        const exists = db.find((entry) => entry.slug === item.slug);
+        
         if (exists) {
-            return { saved: false, message: "此影片已存在清單中" };
+            // 影片已存在，只更新状态
+            exists.status = item.status;
+            exists.isFavorite = exists.isFavorite || false;  // 保持现有的喜爱状态
+            setDb(db);
+            return { saved: false, message: `已将"${exists.title}"更新为"${item.status === 'watched' ? '看過的影片' : '稍後觀看'}"` };
         }
-        const next = [{ ...item, id: crypto.randomUUID?.() || `${Date.now()}-${Math.random()}` }, ...db];
+        
+        // 影片不存在，新增
+        const newItem = {
+            ...item,
+            id: crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`,
+            isFavorite: false
+        };
+        const next = [newItem, ...db];
         setDb(next);
         return { saved: true, message: "已新增至清單" };
     };
@@ -588,22 +738,15 @@
         const item = db.find((entry) => entry.id === id);
         if (!item) return;
         
-        const favoriteList = JSON.parse(localStorage.getItem("avLibraryFavorites") || "[]");
-        const index = favoriteList.indexOf(id);
-        
-        if (index > -1) {
-            favoriteList.splice(index, 1);
-        } else {
-            favoriteList.push(id);
-        }
-        
-        localStorage.setItem("avLibraryFavorites", JSON.stringify(favoriteList));
+        item.isFavorite = !item.isFavorite;
+        setDb(db);
         markDirty();
     };
 
     const isFavorite = (id) => {
-        const favoriteList = JSON.parse(localStorage.getItem("avLibraryFavorites") || "[]");
-        return favoriteList.includes(id);
+        const db = getDb();
+        const item = db.find((entry) => entry.id === id);
+        return item?.isFavorite || false;
     };
 
     const moveItem = (id, newStatus) => {
@@ -624,9 +767,10 @@
         
         let filtered;
         if (status === "favorite") {
-            const favoriteList = JSON.parse(localStorage.getItem("avLibraryFavorites") || "[]");
-            filtered = db.filter((item) => favoriteList.includes(item.id));
+            // favorite 页面显示所有 isFavorite=true 的项目
+            filtered = db.filter((item) => item.isFavorite === true);
         } else {
+            // later/watched 页面按 status 过滤
             filtered = db.filter((item) => item.status === status);
         }
         
@@ -653,7 +797,7 @@
             const card = document.createElement("div");
             card.className = "av-card";
             const cover = item.cover || PLACEHOLDER_COVER;
-            const isFav = isFavorite(item.id);
+            const isFav = item.isFavorite === true;
             
             // Determine button labels based on current status
             let moveButtonLabel = "";
@@ -1017,6 +1161,12 @@
     };
 
     const initPage = () => {
+        // 检测并执行迁移
+        if (needsMigration()) {
+            console.log("[Migration] 检测到旧版数据结构，开始迁移...");
+            migrateToNewStructure();
+        }
+        
         const listPage = document.body?.dataset?.avList;
         if (listPage) {
             initListPage(listPage);
