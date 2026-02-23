@@ -1140,17 +1140,10 @@
             console.log(`[fixItemCover] 獲取的封面: ${meta.cover}`);
             
             if (meta.cover) {
-                // 先生成帶時間戳的 URL
-                const timestamp = `t=${Date.now()}`;
-                const coverUrl = meta.cover.includes('?') ? 
-                    meta.cover + '&' + timestamp : 
-                    meta.cover + '?' + timestamp;
+                // 測試圖片 URL 是否能載入
+                console.log(`[fixItemCover] 測試圖片 URL: ${meta.cover}`);
                 
-                console.log(`[fixItemCover] 準備測試的 URL: ${coverUrl}`);
-                
-                // 測試圖片是否能載入（不使用 CORS）
                 const testImg = new Image();
-                // 不設定 crossOrigin，避免 CORS 問題
                 
                 const canLoad = await new Promise((resolve) => {
                     let resolved = false;
@@ -1170,10 +1163,9 @@
                         }
                     };
                     
-                    // 開始載入
-                    testImg.src = coverUrl;
+                    testImg.src = meta.cover;
                     
-                    // 10秒超時（增加時間以應對慢速網路）
+                    // 10秒超時
                     setTimeout(() => {
                         if (!resolved) {
                             resolved = true;
@@ -1184,12 +1176,12 @@
                 });
                 
                 if (canLoad) {
-                    // 確認圖片能載入後才更新數據庫
+                    // 圖片能載入，直接保存新的 URL（不需要時間戳）
                     const db = getDb();
                     const dbItem = db.find((entry) => entry.id === item.id);
                     if (dbItem) {
-                        console.log(`[fixItemCover] 更新封面為: ${coverUrl}`);
-                        dbItem.cover = coverUrl;
+                        console.log(`[fixItemCover] 更新封面為: ${meta.cover}`);
+                        dbItem.cover = meta.cover;
                         setDb(db);
                         markDirty();
                         return true;
