@@ -1148,23 +1148,39 @@
                 
                 console.log(`[fixItemCover] 準備測試的 URL: ${coverUrl}`);
                 
-                // 測試圖片是否能載入
+                // 測試圖片是否能載入（不使用 CORS）
                 const testImg = new Image();
+                // 不設定 crossOrigin，避免 CORS 問題
+                
                 const canLoad = await new Promise((resolve) => {
+                    let resolved = false;
+                    
                     testImg.onload = () => {
-                        console.log(`[fixItemCover] 圖片載入成功`);
-                        resolve(true);
+                        if (!resolved) {
+                            resolved = true;
+                            console.log(`[fixItemCover] 圖片載入成功，尺寸: ${testImg.width}x${testImg.height}`);
+                            resolve(true);
+                        }
                     };
-                    testImg.onerror = () => {
-                        console.log(`[fixItemCover] 圖片載入失敗`);
-                        resolve(false);
+                    testImg.onerror = (e) => {
+                        if (!resolved) {
+                            resolved = true;
+                            console.log(`[fixItemCover] 圖片載入失敗:`, e);
+                            resolve(false);
+                        }
                     };
+                    
+                    // 開始載入
                     testImg.src = coverUrl;
-                    // 5秒超時
+                    
+                    // 10秒超時（增加時間以應對慢速網路）
                     setTimeout(() => {
-                        console.log(`[fixItemCover] 圖片載入超時`);
-                        resolve(false);
-                    }, 5000);
+                        if (!resolved) {
+                            resolved = true;
+                            console.log(`[fixItemCover] 圖片載入超時（10秒）`);
+                            resolve(false);
+                        }
+                    }, 10000);
                 });
                 
                 if (canLoad) {

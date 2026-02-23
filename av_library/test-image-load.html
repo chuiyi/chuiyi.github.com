@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>測試圖片載入</title>
+    <style>
+        body { padding: 20px; font-family: sans-serif; }
+        .test-box { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        input { width: 100%; padding: 8px; margin: 10px 0; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 15px; padding: 10px; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        img { max-width: 500px; border: 2px solid #ddd; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>測試圖片載入</h1>
+    
+    <div class="test-box">
+        <h3>方法 1: 直接顯示圖片（不受 CORS 限制）</h3>
+        <input type="text" id="directUrl" value="https://assets-cdn.jable.tv/contents/videos_screenshots/56000/56940/preview.jpg" placeholder="輸入圖片 URL">
+        <button onclick="testDirect()">測試直接載入</button>
+        <div id="directResult"></div>
+    </div>
+    
+    <div class="test-box">
+        <h3>方法 2: JavaScript Image 物件測試</h3>
+        <input type="text" id="jsUrl" value="https://assets-cdn.jable.tv/contents/videos_screenshots/56000/56940/preview.jpg" placeholder="輸入圖片 URL">
+        <button onclick="testJS()">測試 JS 載入</button>
+        <div id="jsResult"></div>
+    </div>
+    
+    <div class="test-box">
+        <h3>方法 3: 使用 crossOrigin</h3>
+        <input type="text" id="corsUrl" value="https://assets-cdn.jable.tv/contents/videos_screenshots/56000/56940/preview.jpg" placeholder="輸入圖片 URL">
+        <button onclick="testCORS()">測試 CORS</button>
+        <div id="corsResult"></div>
+    </div>
+
+    <script>
+        function testDirect() {
+            const url = document.getElementById('directUrl').value;
+            const resultDiv = document.getElementById('directResult');
+            
+            resultDiv.innerHTML = `
+                <p>測試 URL: ${url}</p>
+                <img src="${url}" 
+                     onload="document.getElementById('directStatus').innerHTML = '<div class=\\'success\\'>✓ 圖片載入成功</div>'" 
+                     onerror="document.getElementById('directStatus').innerHTML = '<div class=\\'error\\'>✗ 圖片載入失敗</div>'" 
+                     alt="測試圖片">
+                <div id="directStatus"></div>
+            `;
+        }
+        
+        function testJS() {
+            const url = document.getElementById('jsUrl').value;
+            const resultDiv = document.getElementById('jsResult');
+            
+            resultDiv.innerHTML = '<p>測試中...</p>';
+            
+            const img = new Image();
+            const startTime = Date.now();
+            
+            img.onload = function() {
+                const loadTime = Date.now() - startTime;
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        ✓ 圖片載入成功 (${loadTime}ms)<br>
+                        尺寸: ${this.width} x ${this.height}
+                    </div>
+                    <img src="${url}" alt="測試圖片">
+                `;
+            };
+            
+            img.onerror = function(e) {
+                const loadTime = Date.now() - startTime;
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ✗ 圖片載入失敗 (${loadTime}ms)<br>
+                        可能原因: CORS 限制或圖片不存在
+                    </div>
+                `;
+                console.error('Image load error:', e);
+            };
+            
+            img.src = url;
+            
+            // 設定 10 秒超時
+            setTimeout(() => {
+                if (!img.complete) {
+                    resultDiv.innerHTML += '<div class="error">⚠ 載入超時（10秒）</div>';
+                }
+            }, 10000);
+        }
+        
+        function testCORS() {
+            const url = document.getElementById('corsUrl').value;
+            const resultDiv = document.getElementById('corsResult');
+            
+            resultDiv.innerHTML = '<p>測試中...</p>';
+            
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            const startTime = Date.now();
+            
+            img.onload = function() {
+                const loadTime = Date.now() - startTime;
+                resultDiv.innerHTML = `
+                    <div class="success">
+                        ✓ 圖片載入成功（使用 CORS）(${loadTime}ms)<br>
+                        尺寸: ${this.width} x ${this.height}
+                    </div>
+                    <img src="${url}" crossOrigin="anonymous" alt="測試圖片">
+                `;
+            };
+            
+            img.onerror = function(e) {
+                const loadTime = Date.now() - startTime;
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        ✗ 圖片載入失敗（CORS 模式）(${loadTime}ms)<br>
+                        可能原因: 伺服器不允許 CORS 或圖片不存在
+                    </div>
+                `;
+                console.error('CORS image load error:', e);
+            };
+            
+            img.src = url;
+            
+            setTimeout(() => {
+                if (!img.complete) {
+                    resultDiv.innerHTML += '<div class="error">⚠ 載入超時（10秒）</div>';
+                }
+            }, 10000);
+        }
+    </script>
+</body>
+</html>
