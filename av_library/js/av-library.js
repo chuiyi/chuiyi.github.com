@@ -391,12 +391,37 @@
         const headingLine = text.match(/^####\s+(.+)$/m)?.[1]?.trim();
         const title = titleLine || headingLine || fallbackTitle;
 
-        const cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0] || "";
+        // 策略 1: 尋找 preview.jpg (完整解析度)
+        let cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0];
         
-        // Try to extract stream URL using improved strategy
+        // 策略 2: 尋找任何 jable.tv 的圖片 URL (包括縮圖)
+        if (!cover) {
+            const thumbMatch = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/(\d+)\/(\d+)\/320x180\/1\.jpg/i);
+            if (thumbMatch) {
+                // 轉換縮圖 URL 為完整 preview.jpg
+                cover = `https://assets-cdn.jable.tv/contents/videos_screenshots/${thumbMatch[1]}/${thumbMatch[2]}/preview.jpg`;
+            }
+        }
+        
+        // 策略 3: 尋找任何 assets-cdn 的 jpg 圖片
+        if (!cover) {
+            cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/[^\s"'<>]*\.jpg/i)?.[0] || "";
+        }
+        
+        // 策略 4: 尋找 Markdown 圖片語法中的 URL
+        if (!cover) {
+            const mdImgMatch = text.match(/!\[[^\]]*\]\((https?:\/\/[^)]+\.jpg)\)/i);
+            if (mdImgMatch) {
+                cover = mdImgMatch[1];
+            }
+        }
+        
+        console.log(`[findMetaFromMarkdown] title:`, title);
+        console.log(`[findMetaFromMarkdown] cover:`, cover);
+        
         const stream = extractStreamUrl(text);
         
-        return { title, cover, stream };
+        return { title, cover: cover || "", stream };
     };
 
     const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -597,9 +622,15 @@
             console.log(`[findMetaFromHtml] video poster:`, poster);
         }
         if (!cover) {
-            const img = doc.querySelector("img[class*='cover'], img[src*='cover'], img[src*='poster'], img[src*='preview']");
-            if (img?.getAttribute("src")) cover = img.getAttribute("src");
-            console.log(`[findMetaFromHtml] img element:`, img?.getAttribute("src"));
+            // 嘗試各種圖片元素和 data attributes
+            const img = doc.querySelector(
+                "img[class*='cover'], img[src*='cover'], img[src*='poster'], img[src*='preview'], " +
+                "img[data-src*='preview'], img[data-original], .video-img img, .thumb img"
+            );
+            if (img) {
+                cover = img.getAttribute("src") || img.getAttribute("data-src") || img.getAttribute("data-original") || "";
+            }
+            console.log(`[findMetaFromHtml] img element:`, cover);
         }
         if (!cover) {
             const match = html.match(/poster\s*=\s*"([^"]+)"/i);
@@ -610,6 +641,14 @@
             const previewMatch = html.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/);
             if (previewMatch?.[0]) cover = previewMatch[0];
             console.log(`[findMetaFromHtml] preview regex:`, previewMatch?.[0]);
+        }
+        if (!cover) {
+            // 尋找縮圖並轉換為完整解析度
+            const thumbMatch = html.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/(\d+)\/(\d+)\/320x180\/1\.jpg/i);
+            if (thumbMatch) {
+                cover = `https://assets-cdn.jable.tv/contents/videos_screenshots/${thumbMatch[1]}/${thumbMatch[2]}/preview.jpg`;
+                console.log(`[findMetaFromHtml] converted from thumbnail:`, cover);
+            }
         }
         
         // Last resort: look for any image that looks reasonable
@@ -636,18 +675,20 @@
             // 檢查是否為 Markdown 格式
             if (html.includes("Markdown Content:")) {
                 const meta = findMetaFromMarkdown(html, fallbackTitle);
-                // Markdown 格式通常沒有封面，只在完全沒有資料時才嘗試搜索頁
-                if (!meta.cover && !meta.title && slug) {
+                // Markdown 格式通常沒有正確的封面（只有推薦影片的縮圖）
+                // 直接使用搜索頁獲取正確的封面
+                if (slug) {
                     try {
                         const searchHost = (domain || "jable.tv").replace(/^www\./, "");
                         const searchHtml = await fetchFromJina(`https://${searchHost}/search/${slug}/`);
                         const cover = parseCoverFromSearch(searchHtml, slug, searchHost);
                         return { 
                             title: meta.title || fallbackTitle, 
-                            cover: cover || "", 
+                            cover: cover || meta.cover || "", 
                             stream: meta.stream || ""
                         };
                     } catch (error) {
+                        console.log(`[fetchMeta] 搜尋頁面失敗: ${error.message}`);
                         return meta;
                     }
                 }
@@ -657,7 +698,7 @@
             // 解析 HTML 格式（優先使用詳情頁資訊）
             const meta = findMetaFromHtml(html, fallbackTitle, url);
             
-            // 只有在封面完全沒有時才嘗試搜索頁（串流通常在詳情頁就能獲取）
+            // 只有在封面完全沒有時才嘗試搜索頁（減少請求次數）
             if (!meta.cover && slug) {
                 try {
                     const searchHost = (domain || "jable.tv").replace(/^www\./, "");
