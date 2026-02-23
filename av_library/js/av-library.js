@@ -1140,6 +1140,14 @@
             console.log(`[fixItemCover] 獲取的封面: ${meta.cover}`);
             
             if (meta.cover) {
+                // 先生成帶時間戳的 URL
+                const timestamp = `t=${Date.now()}`;
+                const coverUrl = meta.cover.includes('?') ? 
+                    meta.cover + '&' + timestamp : 
+                    meta.cover + '?' + timestamp;
+                
+                console.log(`[fixItemCover] 準備測試的 URL: ${coverUrl}`);
+                
                 // 測試圖片是否能載入
                 const testImg = new Image();
                 const canLoad = await new Promise((resolve) => {
@@ -1151,9 +1159,12 @@
                         console.log(`[fixItemCover] 圖片載入失敗`);
                         resolve(false);
                     };
-                    testImg.src = meta.cover;
+                    testImg.src = coverUrl;
                     // 5秒超時
-                    setTimeout(() => resolve(false), 5000);
+                    setTimeout(() => {
+                        console.log(`[fixItemCover] 圖片載入超時`);
+                        resolve(false);
+                    }, 5000);
                 });
                 
                 if (canLoad) {
@@ -1161,10 +1172,6 @@
                     const db = getDb();
                     const dbItem = db.find((entry) => entry.id === item.id);
                     if (dbItem) {
-                        const timestamp = `t=${Date.now()}`;
-                        const coverUrl = meta.cover.includes('?') ? 
-                            meta.cover + '&' + timestamp : 
-                            meta.cover + '?' + timestamp;
                         console.log(`[fixItemCover] 更新封面為: ${coverUrl}`);
                         dbItem.cover = coverUrl;
                         setDb(db);
