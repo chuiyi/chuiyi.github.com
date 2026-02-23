@@ -1230,8 +1230,12 @@
     };
 
     // 為所有圖片綁定onerror事件處理
+    // 為所有圖片綁定onerror事件處理
     const attachImageErrorHandlers = () => {
-        document.querySelectorAll("img[data-item-id]").forEach((img) => {
+        let errorCount = 0;
+        const images = document.querySelectorAll("img[data-item-id]");
+        
+        images.forEach((img) => {
             img.onerror = function() {
                 const itemId = this.getAttribute("data-item-id");
                 if (itemId) {
@@ -1241,9 +1245,32 @@
                     }
                     // 標記為失效
                     brokenCoverCache.add(itemId);
+                    errorCount++;
                 }
             };
         });
+        
+        // 延遲檢查並顯示錯誤訊息（等待圖片載入完成）
+        setTimeout(() => {
+            updateErrorBanner();
+        }, 1000);
+    };
+    
+    // 更新錯誤提示標語
+    const updateErrorBanner = () => {
+        const banner = document.getElementById("av-error-banner");
+        const message = document.getElementById("av-error-message");
+        
+        if (!banner || !message) return;
+        
+        const errorCount = brokenCoverCache.size;
+        
+        if (errorCount > 0) {
+            message.textContent = `有 ${errorCount} 個圖片無法開啟，請點擊卡片上的修復按鈕進行修復。`;
+            banner.classList.remove("d-none");
+        } else {
+            banner.classList.add("d-none");
+        }
     };
 
     const initListPage = (status) => {
@@ -1372,6 +1399,8 @@
                                 // 延遲隱藏按鈕以顯示成功狀態
                                 setTimeout(() => {
                                     button.classList.add("d-none");
+                                    // 更新錯誤提示
+                                    updateErrorBanner();
                                 }, 800);
                             } else {
                                 // 2. 失敗：保持按鈕顯示

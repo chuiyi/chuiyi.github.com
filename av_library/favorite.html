@@ -42,6 +42,12 @@
     </header>
 
     <main class="container pb-5">
+        <!-- 錯誤提示區域 -->
+        <div id="av-error-banner" class="alert alert-danger d-none mb-3" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <span id="av-error-message"></span>
+        </div>
+        
         <div class="sync-bar mb-4">
             <div class="d-flex flex-wrap gap-2 align-items-center">
                 <button type="button" class="btn btn-outline-primary btn-sm" id="av-sync-login">
