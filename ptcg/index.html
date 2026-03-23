@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTCG 情報站 - 寶可夢集換式卡牌</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- PTCG Custom CSS -->
+    <link rel="stylesheet" href="css/ptcg.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="ptcg-navbar navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <span class="ptcg-logo-icon">&#9670;</span>
+                <span>PTCG 情報站</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ptcgNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="ptcgNav">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            <i class="bi bi-house me-1"></i>首頁
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tournaments.html">
+                            <i class="bi bi-trophy me-1"></i>賽事資訊
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="players.html">
+                            <i class="bi bi-people me-1"></i>玩家排行
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="ptcg-hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="container position-relative">
+            <div class="row align-items-center min-vh-hero">
+                <div class="col-lg-7">
+                    <div class="hero-badge mb-3">
+                        <span class="badge-dot"></span>
+                        <span>台灣 PTCG 賽事情報</span>
+                    </div>
+                    <h1 class="hero-title">
+                        寶可夢集換式<br>
+                        <span class="text-accent">卡牌情報站</span>
+                    </h1>
+                    <p class="hero-desc">
+                        彙整台灣地區高級球賽事記錄、
+                        以及高排名玩家資料，讓您掌握最新積分趨勢。
+                    </p>
+                    <div class="d-flex gap-3 flex-wrap mt-4">
+                        <a href="tournaments.html" class="btn btn-primary-ptcg">
+                            <i class="bi bi-trophy me-2"></i>查看最新賽事
+                        </a>
+                        <a href="players.html" class="btn btn-outline-ptcg">
+                            <i class="bi bi-bar-chart me-2"></i>玩家排行榜
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="row g-0">
+                    <div class="col-6 col-md-4">
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-tournaments">--</span>
+                        <span class="stat-label">場賽事記錄</span>
+                    </div>
+                </div>
+                    <div class="col-6 col-md-4">
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-players">--</span>
+                        <span class="stat-label">位追蹤玩家</span>
+                    </div>
+                </div>
+                    <div class="col-6 col-md-4">
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-updated">--</span>
+                        <span class="stat-label">最後更新</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Cards -->
+    <section class="section-features py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title">功能總覽</h2>
+                <p class="section-subtitle">涵蓋台灣 PTCG 競技圈的三大核心資訊面向</p>
+            </div>
+            <div class="row g-4">
+
+                <!-- Tournaments Card -->
+                <div class="col-md-4">
+                    <a href="tournaments.html" class="feature-card-link">
+                        <div class="feature-card tournament-card">
+                            <div class="feature-card-icon">
+                                <i class="bi bi-trophy-fill"></i>
+                            </div>
+                            <h3 class="feature-card-title">賽事資訊</h3>
+                            <p class="feature-card-desc">
+                                彙整全台高級球等重要賽事的資訊、對戰結果與使用牌型統計。
+                            </p>
+                            <ul class="feature-list">
+                                <li><i class="bi bi-check2-circle me-2"></i>賽事日期與地點</li>
+                                <li><i class="bi bi-check2-circle me-2"></i>高排名玩家資料</li>
+                            </ul>
+                            <span class="feature-card-cta">
+                                查看賽事 <i class="bi bi-arrow-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Players Card -->
+                <div class="col-md-4">
+                    <a href="players.html" class="feature-card-link">
+                        <div class="feature-card player-card">
+                            <div class="feature-card-icon">
+                                <i class="bi bi-person-badge-fill"></i>
+                            </div>
+                            <h3 class="feature-card-title">玩家排行</h3>
+                            <p class="feature-card-desc">
+                                追蹤台灣地區高排名玩家的積分動態、組別分布與排行變化，
+                                掌握各組頂尖玩家的競技動向。
+                            </p>
+                            <ul class="feature-list">
+                                <li><i class="bi bi-check2-circle me-2"></i>積分排行榜</li>
+                                <li><i class="bi bi-check2-circle me-2"></i>組別切換檢視</li>
+                                <li><i class="bi bi-check2-circle me-2"></i>最新 CSV 排名資料</li>
+                            </ul>
+                            <span class="feature-card-cta">
+                                查看排行 <i class="bi bi-arrow-right"></i>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Source Notice -->
+    <section class="section-notice py-4">
+        <div class="container">
+            <div class="notice-card">
+                <div class="d-flex align-items-start gap-3">
+                    <i class="bi bi-info-circle-fill notice-icon"></i>
+                    <div>
+                        <h5 class="notice-title">資料來源說明</h5>
+                        <p class="notice-text mb-0">
+                            本站資料透過自動化程式從
+                            <strong>Pokémon 官方賽事系統</strong>等公開平台彙整，
+                            將不定期更新。所有資料僅供競技研究參考，
+                            若有數據誤差請透過 GitHub 回報。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="ptcg-footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="footer-brand">
+                        <span class="ptcg-logo-icon me-2">&#9670;</span>
+                        PTCG 情報站
+                    </div>
+                    <p class="footer-desc">台灣寶可夢集換式卡牌競技情報彙整平台</p>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="footer-heading">快速導覽</h6>
+                    <ul class="footer-links">
+                        <li><a href="tournaments.html"><i class="bi bi-trophy me-2"></i>賽事資訊</a></li>
+                        <li><a href="players.html"><i class="bi bi-people me-2"></i>玩家排行</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="footer-heading">資料更新</h6>
+                    <p class="footer-desc small">
+                        <i class="bi bi-clock me-1"></i>賽事資料：賽後擇期更新<br>
+                        <i class="bi bi-clock me-1"></i>積分排行：不定期更新<br>
+                        <i class="bi bi-clock me-1"></i>牌組資料：沒這種東西
+                    </p>
+                    <span class="footer-update-badge" id="footer-last-update">資料載入中...</span>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <p class="footer-copy mb-0">
+                    &copy; 2026 PTCG 情報站 ·
+                    <a href="../index.html" class="footer-main-link">回 Chuiyi 的生活札記</a>
+                </p>
+                <p class="footer-disclaimer mb-0">
+                    Pokémon &amp; PTCG 相關商標歸任天堂/寶可夢公司所有，本站無商業用途。
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- PTCG Main JS -->
+    <script src="js/ptcg.js"></script>
+    <script>
+        // 首頁初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            PTCG.loadHomePage();
+        });
+    </script>
+</body>
+</html>

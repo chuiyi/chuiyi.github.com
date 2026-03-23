@@ -1,0 +1,1241 @@
+/* ============================================================
+   PTCG 情報站 - 寶可夢集換式卡牌樣式表
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap');
+
+/* ============================================================
+   CSS 變數 / 主題色彩系統
+   ============================================================ */
+:root {
+    /* 主題色 - 深邃的寶可夢競技感 */
+    --ptcg-bg:          #f0f4ff;
+    --ptcg-bg-alt:      #e8edf8;
+    --ptcg-surface:     #ffffff;
+    --ptcg-surface-alt: #f7f9ff;
+    --ptcg-border:      #d0d8f0;
+
+    --ptcg-primary:     #1d4ed8;   /* 寶可夢藍 */
+    --ptcg-primary-dk:  #1e3a8a;
+    --ptcg-primary-lt:  #3b82f6;
+    --ptcg-red:         #dc2626;   /* 寶可夢紅 */
+    --ptcg-red-lt:      #ef4444;
+    --ptcg-yellow:      #f59e0b;   /* 皮卡丘黃 */
+    --ptcg-yellow-lt:   #fbbf24;
+    --ptcg-green:       #16a34a;
+    --ptcg-purple:      #7c3aed;
+
+    --ptcg-text:        #1e293b;
+    --ptcg-text-muted:  #64748b;
+    --ptcg-text-light:  #94a3b8;
+
+    --ptcg-navbar-bg:   #0f172a;
+    --ptcg-footer-bg:   #0f172a;
+    --ptcg-hero-bg:     linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0c1a3e 100%);
+
+    --ptcg-shadow-sm:   0 2px 8px rgba(30, 27, 75, 0.08);
+    --ptcg-shadow-md:   0 8px 24px rgba(30, 27, 75, 0.12);
+    --ptcg-shadow-lg:   0 16px 40px rgba(30, 27, 75, 0.18);
+
+    --ptcg-radius:      12px;
+    --ptcg-radius-sm:   8px;
+    --ptcg-radius-lg:   20px;
+    --ptcg-transition:  all 0.25s ease;
+}
+
+/* ============================================================
+   基礎重設
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+}
+
+body {
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--ptcg-bg);
+    color: var(--ptcg-text);
+    line-height: 1.7;
+    font-weight: 300;
+    padding-top: 64px;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Noto Serif TC', Georgia, serif;
+    font-weight: 600;
+    color: var(--ptcg-text);
+}
+
+/* ============================================================
+   導航欄
+   ============================================================ */
+.ptcg-navbar {
+    background-color: var(--ptcg-navbar-bg) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.75rem 0;
+    backdrop-filter: blur(12px);
+}
+
+.ptcg-navbar .navbar-brand {
+    color: #ffffff !important;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+}
+
+.ptcg-logo-icon {
+    color: var(--ptcg-yellow);
+    font-size: 1.1rem;
+    display: inline-block;
+    animation: ptcg-logo-pulse 3s ease-in-out infinite;
+}
+
+@keyframes ptcg-logo-pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.75; transform: scale(1.15); }
+}
+
+.ptcg-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.65) !important;
+    font-size: 0.88rem;
+    font-weight: 400;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: var(--ptcg-radius-sm);
+    transition: var(--ptcg-transition);
+}
+
+.ptcg-navbar .nav-link:hover,
+.ptcg-navbar .nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.ptcg-navbar .nav-link.active {
+    color: var(--ptcg-yellow-lt) !important;
+    background: rgba(251, 191, 36, 0.12);
+}
+
+.ptcg-navbar .nav-home-link {
+    color: rgba(255, 255, 255, 0.45) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.ptcg-navbar .nav-home-link:hover {
+    color: #fff !important;
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.ptcg-navbar .navbar-toggler {
+    border-color: rgba(255,255,255,0.2);
+}
+
+.ptcg-navbar .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ============================================================
+   Hero Section
+   ============================================================ */
+.ptcg-hero {
+    background: var(--ptcg-hero-bg);
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0 60px;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(29, 78, 216, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 60% 10%, rgba(245, 158, 11, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+.min-vh-hero {
+    min-height: 380px;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: var(--ptcg-yellow-lt);
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--ptcg-yellow);
+    border-radius: 50%;
+    display: inline-block;
+    animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.text-accent {
+    color: var(--ptcg-yellow-lt);
+}
+
+.hero-desc {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 1rem;
+    max-width: 520px;
+    line-height: 1.8;
+}
+
+/* Hero floating cards */
+.hero-card-visual {
+    position: relative;
+    width: 280px;
+    height: 320px;
+}
+
+.hero-pokeball {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.08);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:
+        linear-gradient(180deg,
+            rgba(220,38,38,0.25) 0%,
+            rgba(220,38,38,0.25) 48%,
+            rgba(255,255,255,0.12) 48%,
+            rgba(255,255,255,0.12) 52%,
+            rgba(30,27,75,0.3) 52%,
+            rgba(30,27,75,0.3) 100%);
+}
+
+.floating-card {
+    position: absolute;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--ptcg-radius);
+    width: 90px;
+    height: 120px;
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-1 { top: 10px; left: 20px; animation: float1 4s ease-in-out infinite; }
+.card-2 { top: 50px; right: 10px; animation: float2 4.5s ease-in-out infinite; }
+.card-3 { bottom: 20px; left: 60px; animation: float3 3.8s ease-in-out infinite; }
+
+@keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes float2 { 0%,100%{transform:translateY(-5px)} 50%{transform:translateY(5px)} }
+@keyframes float3 { 0%,100%{transform:translateY(5px)} 50%{transform:translateY(-8px)} }
+
+.card-inner { text-align: center; }
+
+.card-type {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin: 0 auto 8px;
+}
+
+.card-type.fire   { background: rgba(220,38,38,0.25); color: #ef4444; }
+.card-type.water  { background: rgba(29,78,216,0.25); color: #60a5fa; }
+.card-type.grass  { background: rgba(22,163,74,0.25); color: #34d399; }
+
+.card-label { color: rgba(255,255,255,0.7); font-size: 0.7rem; }
+
+/* Hero Buttons */
+.btn-primary-ptcg {
+    background: var(--ptcg-primary);
+    color: #fff;
+    border: none;
+    padding: 0.65rem 1.5rem;
+    border-radius: var(--ptcg-radius-sm);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: var(--ptcg-transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-primary-ptcg:hover {
+    background: var(--ptcg-primary-dk);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 78, 216, 0.4);
+}
+
+.btn-outline-ptcg {
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.65rem 1.5rem;
+    border-radius: var(--ptcg-radius-sm);
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: var(--ptcg-transition);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-outline-ptcg:hover {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+}
+
+/* 淺色背景上的 outline 按鈕 */
+.section-features .btn-outline-ptcg,
+.section-recent .btn-outline-ptcg,
+.section-meta .btn-outline-ptcg,
+.section-top-players .btn-outline-ptcg,
+main .btn-outline-ptcg {
+    color: var(--ptcg-primary);
+    border-color: var(--ptcg-primary);
+}
+
+.section-features .btn-outline-ptcg:hover,
+.section-recent .btn-outline-ptcg:hover,
+.section-meta .btn-outline-ptcg:hover,
+.section-top-players .btn-outline-ptcg:hover,
+main .btn-outline-ptcg:hover {
+    background: var(--ptcg-primary);
+    color: #fff;
+}
+
+/* ============================================================
+   Stats Bar
+   ============================================================ */
+.stats-bar {
+    background: var(--ptcg-navbar-bg);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--ptcg-yellow-lt);
+    font-family: 'Noto Serif TC', serif;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.25rem;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   Section Common
+   ============================================================ */
+.section-title {
+    font-size: 1.6rem;
+    color: var(--ptcg-text);
+    margin-bottom: 0.25rem;
+}
+
+.section-subtitle {
+    color: var(--ptcg-text-muted);
+    font-size: 0.95rem;
+}
+
+.section-header { margin-bottom: 2.5rem; }
+
+.section-features { background: var(--ptcg-surface); }
+.section-recent   { background: var(--ptcg-bg); }
+.section-meta     { background: var(--ptcg-surface); }
+.section-top-players { background: var(--ptcg-bg); }
+
+/* ============================================================
+   Feature Cards (首頁三大功能)
+   ============================================================ */
+.feature-card-link {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+
+.feature-card {
+    background: var(--ptcg-surface-alt);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius-lg);
+    padding: 2rem;
+    height: 100%;
+    transition: var(--ptcg-transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: var(--ptcg-radius-lg) var(--ptcg-radius-lg) 0 0;
+}
+
+.tournament-card::before { background: linear-gradient(90deg, var(--ptcg-yellow), var(--ptcg-red)); }
+.deck-card::before        { background: linear-gradient(90deg, var(--ptcg-primary), var(--ptcg-purple)); }
+.player-card::before      { background: linear-gradient(90deg, var(--ptcg-green), var(--ptcg-primary)); }
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--ptcg-shadow-lg);
+    border-color: transparent;
+}
+
+.feature-card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--ptcg-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 1.25rem;
+}
+
+.tournament-card .feature-card-icon { background: rgba(245,158,11,0.12); color: var(--ptcg-yellow); }
+.deck-card .feature-card-icon        { background: rgba(29,78,216,0.12); color: var(--ptcg-primary-lt); }
+.player-card .feature-card-icon      { background: rgba(22,163,74,0.12); color: var(--ptcg-green); }
+
+.feature-card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--ptcg-text);
+}
+
+.feature-card-desc {
+    font-size: 0.88rem;
+    color: var(--ptcg-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+.feature-list li {
+    font-size: 0.85rem;
+    color: var(--ptcg-text-muted);
+    padding: 0.25rem 0;
+}
+
+.feature-list i { color: var(--ptcg-green); }
+
+.feature-card-cta {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ptcg-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+/* ============================================================
+   Tournament Card (賽事卡片)
+   ============================================================ */
+.tournament-card-item {
+    background: var(--ptcg-surface);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius);
+    padding: 1.25rem 1.5rem;
+    transition: var(--ptcg-transition);
+    cursor: pointer;
+}
+
+.tournament-card-item:hover {
+    box-shadow: var(--ptcg-shadow-md);
+    border-color: var(--ptcg-primary);
+    transform: translateY(-2px);
+}
+
+.tournament-type-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.badge-pc  { background: rgba(245,158,11,0.15); color: var(--ptcg-yellow); border: 1px solid rgba(245,158,11,0.3); }
+.badge-rlc { background: rgba(220,38,38,0.12); color: var(--ptcg-red); border: 1px solid rgba(220,38,38,0.25); }
+.badge-spr { background: rgba(29,78,216,0.12); color: var(--ptcg-primary-lt); border: 1px solid rgba(29,78,216,0.25); }
+
+/* 組別 badge */
+.badge-level-master { background: rgba(124,58,237,0.12); color: #7c3aed; border: 1px solid rgba(124,58,237,0.25); }
+.badge-level-senior { background: rgba(5,150,105,0.12); color: #059669; border: 1px solid rgba(5,150,105,0.25); }
+.badge-level-junior { background: rgba(234,88,12,0.12); color: #ea580c; border: 1px solid rgba(234,88,12,0.25); }
+
+.tournament-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ptcg-text);
+    margin: 0.5rem 0 0.25rem;
+}
+
+.tournament-meta {
+    font-size: 0.82rem;
+    color: var(--ptcg-text-muted);
+}
+
+.tournament-meta span + span::before {
+    content: ' · ';
+    margin: 0 0.25rem;
+    opacity: 0.5;
+}
+
+.deck-usage-bar {
+    display: flex;
+    gap: 3px;
+    margin-top: 0.75rem;
+}
+
+.deck-usage-segment {
+    height: 6px;
+    border-radius: 3px;
+    transition: var(--ptcg-transition);
+}
+
+/* ============================================================
+   Meta Snapshot (環境牌型)
+   ============================================================ */
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.meta-deck-card {
+    background: var(--ptcg-surface);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius);
+    padding: 1.25rem;
+    transition: var(--ptcg-transition);
+}
+
+.meta-deck-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ptcg-shadow-md);
+}
+
+.meta-deck-rank {
+    font-size: 0.75rem;
+    color: var(--ptcg-text-light);
+    margin-bottom: 0.25rem;
+}
+
+.meta-deck-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ptcg-text);
+    margin-bottom: 0.5rem;
+}
+
+.meta-usage-bar {
+    height: 6px;
+    background: var(--ptcg-bg-alt);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.4rem;
+}
+
+.meta-usage-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--ptcg-primary), var(--ptcg-primary-lt));
+    border-radius: 3px;
+    transition: width 0.6s ease;
+}
+
+.meta-usage-label {
+    font-size: 0.78rem;
+    color: var(--ptcg-text-muted);
+}
+
+/* ============================================================
+   Players Table
+   ============================================================ */
+.top-players-table-wrap {
+    overflow-x: auto;
+    border-radius: var(--ptcg-radius);
+    border: 1px solid var(--ptcg-border);
+}
+
+.ptcg-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--ptcg-surface);
+    font-size: 0.88rem;
+}
+
+.ptcg-table thead tr {
+    background: var(--ptcg-navbar-bg);
+}
+
+.ptcg-table thead th {
+    color: rgba(255,255,255,0.65);
+    font-weight: 500;
+    padding: 0.85rem 1rem;
+    text-align: left;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    border: none;
+}
+
+.ptcg-table thead th.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.ptcg-table thead th.sortable:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.05);
+}
+
+.ptcg-table tbody tr {
+    border-bottom: 1px solid var(--ptcg-border);
+    transition: background 0.15s ease;
+}
+
+.ptcg-table tbody tr.player-qualified-row {
+    background: rgba(34, 197, 94, 0.12);
+}
+
+.ptcg-table tbody tr:last-child { border-bottom: none; }
+
+.ptcg-table tbody tr:hover { background: var(--ptcg-bg-alt); }
+
+.ptcg-table tbody tr.player-qualified-row:hover {
+    background: rgba(34, 197, 94, 0.18);
+}
+
+.ptcg-table td {
+    padding: 0.85rem 1rem;
+    vertical-align: middle;
+    color: var(--ptcg-text);
+}
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.rank-1 { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+.rank-2 { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+.rank-3 { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+.rank-n { background: var(--ptcg-bg-alt); color: var(--ptcg-text-muted); border: 1px solid var(--ptcg-border); }
+
+.player-name-cell {
+    font-weight: 500;
+    color: var(--ptcg-text);
+}
+
+.player-name-cell span {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--ptcg-text-light);
+    font-weight: 400;
+}
+
+.score-cell {
+    font-weight: 700;
+    color: var(--ptcg-primary);
+    font-size: 1rem;
+}
+
+.deck-tag {
+    display: inline-block;
+    background: rgba(29,78,216,0.1);
+    color: var(--ptcg-primary);
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid rgba(29,78,216,0.2);
+}
+
+.btn-view-detail {
+    background: none;
+    border: 1px solid var(--ptcg-border);
+    color: var(--ptcg-text-muted);
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--ptcg-radius-sm);
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: var(--ptcg-transition);
+}
+
+.btn-view-detail:hover {
+    background: var(--ptcg-primary);
+    color: #fff;
+    border-color: var(--ptcg-primary);
+}
+
+/* ============================================================
+   Notice Card
+   ============================================================ */
+.section-notice { background: var(--ptcg-surface); }
+
+.notice-card {
+    background: rgba(29,78,216,0.05);
+    border: 1px solid rgba(29,78,216,0.15);
+    border-radius: var(--ptcg-radius);
+    padding: 1.25rem 1.5rem;
+}
+
+.notice-icon { color: var(--ptcg-primary-lt); font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+.notice-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; color: var(--ptcg-primary); }
+.notice-text { font-size: 0.85rem; color: var(--ptcg-text-muted); line-height: 1.6; }
+
+/* ============================================================
+   Page Header (子頁面)
+   ============================================================ */
+.page-header {
+    background: var(--ptcg-hero-bg);
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ptcg-breadcrumb {
+    background: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.ptcg-breadcrumb .breadcrumb-item a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+}
+
+.ptcg-breadcrumb .breadcrumb-item a:hover { color: rgba(255,255,255,0.8); }
+.ptcg-breadcrumb .breadcrumb-item.active  { color: rgba(255,255,255,0.7); }
+.ptcg-breadcrumb .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,0.3); }
+
+.page-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+}
+
+.page-subtitle {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.92rem;
+    margin: 0;
+}
+
+.data-update-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+}
+
+/* ============================================================
+   Filter Bar
+   ============================================================ */
+.filter-bar {
+    background: var(--ptcg-surface);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius);
+    padding: 1rem 1.25rem;
+}
+
+.filter-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ptcg-text-muted);
+    white-space: nowrap;
+}
+
+.filter-group .btn-filter {
+    background: var(--ptcg-bg);
+    border-color: var(--ptcg-border);
+    color: var(--ptcg-text-muted);
+    font-size: 0.82rem;
+    padding: 0.3rem 0.8rem;
+    transition: var(--ptcg-transition);
+}
+
+.filter-group .btn-check:checked + .btn-filter {
+    background: var(--ptcg-primary);
+    border-color: var(--ptcg-primary);
+    color: #fff;
+}
+
+.btn-filter:hover {
+    background: var(--ptcg-bg-alt);
+    border-color: var(--ptcg-primary);
+    color: var(--ptcg-primary);
+}
+
+.dashboard-division-switch .btn-group {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.dashboard-division-switch .btn-filter {
+    border-radius: 999px;
+}
+
+.dashboard-division-switch .btn-filter.active {
+    background: var(--ptcg-primary);
+    border-color: var(--ptcg-primary);
+    color: #fff;
+}
+
+.form-select, .form-control {
+    border-color: var(--ptcg-border);
+    background: var(--ptcg-surface);
+    color: var(--ptcg-text);
+    font-size: 0.85rem;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: var(--ptcg-primary);
+    box-shadow: 0 0 0 3px rgba(29,78,216,0.12);
+}
+
+.input-group-text {
+    border-color: var(--ptcg-border);
+    color: var(--ptcg-text-muted);
+}
+
+/* ============================================================
+   Deck Grid (牌組資料庫)
+   ============================================================ */
+.deck-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+
+.deck-card-item {
+    background: var(--ptcg-surface);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius);
+    overflow: hidden;
+    transition: var(--ptcg-transition);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.deck-card-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ptcg-shadow-lg);
+    border-color: var(--ptcg-primary);
+}
+
+.deck-card-header {
+    padding: 1.25rem 1.25rem 0.75rem;
+    position: relative;
+}
+
+.deck-card-color-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+}
+
+.deck-archetype-badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.arch-攻擊 { background: rgba(220,38,38,0.1); color: var(--ptcg-red); border: 1px solid rgba(220,38,38,0.2); }
+.arch-控制 { background: rgba(29,78,216,0.1); color: var(--ptcg-primary-lt); border: 1px solid rgba(29,78,216,0.2); }
+.arch-封鎖 { background: rgba(124,58,237,0.1); color: var(--ptcg-purple); border: 1px solid rgba(124,58,237,0.2); }
+.arch-擴散 { background: rgba(22,163,74,0.1); color: var(--ptcg-green); border: 1px solid rgba(22,163,74,0.2); }
+
+.deck-card-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ptcg-text);
+    margin-bottom: 0.25rem;
+}
+
+.deck-card-meta {
+    font-size: 0.78rem;
+    color: var(--ptcg-text-muted);
+}
+
+.deck-card-body { padding: 0.75rem 1.25rem 1.25rem; flex: 1; }
+
+.deck-stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--ptcg-border);
+    font-size: 0.82rem;
+}
+
+.deck-stat-row:last-child { border-bottom: none; }
+
+.deck-stat-label { color: var(--ptcg-text-muted); }
+
+.deck-stat-value {
+    font-weight: 600;
+    color: var(--ptcg-text);
+}
+
+.winrate-good { color: var(--ptcg-green) !important; }
+.winrate-avg  { color: var(--ptcg-yellow) !important; }
+.winrate-low  { color: var(--ptcg-red) !important; }
+
+/* ============================================================
+   Player Stat Cards
+   ============================================================ */
+.player-stat-card {
+    background: var(--ptcg-surface);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius);
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.player-stat-icon {
+    font-size: 1.4rem;
+    color: var(--ptcg-primary-lt);
+    margin-bottom: 0.5rem;
+}
+
+.player-stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ptcg-text);
+    font-family: 'Noto Serif TC', serif;
+    display: block;
+}
+
+.player-stat-label {
+    font-size: 0.78rem;
+    color: var(--ptcg-text-muted);
+    margin-top: 0.2rem;
+}
+
+/* ============================================================
+   Modal
+   ============================================================ */
+.ptcg-modal {
+    background: var(--ptcg-surface);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius-lg);
+}
+
+.ptcg-modal .modal-header {
+    background: var(--ptcg-navbar-bg);
+    color: #fff;
+    border-radius: calc(var(--ptcg-radius-lg) - 1px) calc(var(--ptcg-radius-lg) - 1px) 0 0;
+    border-bottom: none;
+}
+
+.ptcg-modal .modal-title { color: #fff; font-size: 1.1rem; }
+.ptcg-modal .btn-close { filter: invert(1); }
+
+/* 牌組 Modal 內的牌表 */
+.deck-list-section {
+    margin-bottom: 1.5rem;
+}
+
+.deck-list-section h6 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ptcg-text-muted);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--ptcg-border);
+}
+
+.deck-card-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.deck-card-qty {
+    background: var(--ptcg-bg-alt);
+    color: var(--ptcg-text-muted);
+    padding: 0.1rem 0.5rem;
+    border-radius: var(--ptcg-radius-sm);
+    font-weight: 700;
+    font-size: 0.78rem;
+    min-width: 28px;
+    text-align: center;
+}
+
+/* ============================================================
+   Spinner
+   ============================================================ */
+.ptcg-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--ptcg-border);
+    border-top-color: var(--ptcg-primary);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   Pagination
+   ============================================================ */
+.ptcg-pagination .page-link {
+    background: var(--ptcg-surface);
+    border-color: var(--ptcg-border);
+    color: var(--ptcg-text-muted);
+    border-radius: var(--ptcg-radius-sm) !important;
+    margin: 0 2px;
+    font-size: 0.85rem;
+    transition: var(--ptcg-transition);
+}
+
+.ptcg-pagination .page-link:hover,
+.ptcg-pagination .page-item.active .page-link {
+    background: var(--ptcg-primary);
+    border-color: var(--ptcg-primary);
+    color: #fff;
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.ptcg-footer {
+    background: var(--ptcg-footer-bg);
+    padding: 2.5rem 0 1.5rem;
+}
+
+.footer-brand {
+    color: #fff;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.footer-desc {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+.footer-heading {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li { margin-bottom: 0.4rem; }
+
+.footer-links a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: var(--ptcg-transition);
+    display: inline-flex;
+    align-items: center;
+}
+
+.footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+.footer-update-badge {
+    display: inline-block;
+    background: rgba(245,158,11,0.15);
+    color: var(--ptcg-yellow-lt);
+    border: 1px solid rgba(245,158,11,0.25);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+}
+
+.footer-divider {
+    border-color: rgba(255,255,255,0.08);
+    margin: 1.5rem 0 1rem;
+}
+
+.footer-copy {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.82rem;
+}
+
+.footer-main-link {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+}
+
+.footer-main-link:hover { color: rgba(255,255,255,0.85); }
+
+.footer-disclaimer {
+    color: rgba(255,255,255,0.2);
+    font-size: 0.75rem;
+}
+
+/* ============================================================
+   Empty State
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--ptcg-text-muted);
+}
+
+.empty-state-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--ptcg-border);
+}
+
+.empty-state p { font-size: 0.9rem; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+    .ptcg-hero    { padding: 60px 0 40px; min-height: auto; }
+    .deck-grid    { grid-template-columns: 1fr; }
+    .meta-grid    { grid-template-columns: repeat(2, 1fr); }
+    .filter-bar .btn-filter { padding: 0.25rem 0.65rem; font-size: 0.78rem; }
+
+    /* 手機版改用緊湊排版，維持詳情按鈕可見且不破壞表格視覺 */
+    #players-full-table {
+        table-layout: fixed;
+    }
+
+    #players-full-table thead th,
+    #players-full-table tbody td {
+        padding: 0.7rem 0.55rem;
+    }
+
+    #players-full-table thead th:nth-child(1),
+    #players-full-table tbody td:nth-child(1) {
+        width: 58px;
+    }
+
+    #players-full-table thead th:nth-child(3),
+    #players-full-table tbody td:nth-child(3) {
+        width: 72px;
+        text-align: right;
+    }
+
+    #players-full-table thead th:nth-child(6),
+    #players-full-table tbody td:nth-child(6) {
+        width: 72px;
+        text-align: center;
+    }
+
+    #players-full-table .player-name-cell {
+        font-size: 0.92rem;
+    }
+
+    #players-full-table .player-name-cell span {
+        font-size: 0.76rem;
+    }
+
+    #players-full-table .score-cell {
+        font-size: 0.95rem;
+    }
+
+    #players-full-table .btn-view-detail {
+        min-width: 34px;
+        min-height: 32px;
+        padding: 0.28rem 0.52rem;
+        border-color: rgba(29, 78, 216, 0.35);
+        color: var(--ptcg-primary);
+        background: rgba(29, 78, 216, 0.06);
+    }
+}
+
+@media (max-width: 480px) {
+    .meta-grid { grid-template-columns: 1fr; }
+    .stat-value { font-size: 1.3rem; }
+}

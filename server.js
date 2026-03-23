@@ -41,6 +41,15 @@ app.get('/movie.html', (req, res) => {
     res.sendFile(path.join(__dirname, 'movie.html'));
 });
 
+// 處理 PTCG 首頁路由
+app.get('/ptcg', (req, res) => {
+    res.redirect('/ptcg/');
+});
+
+app.get('/ptcg/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'ptcg/index.html'));
+});
+
 // 處理所有其他路由，回退到 index.html
 app.get('*', (req, res) => {
     // 如果是 API 請求或文件請求，不重定向
@@ -69,6 +78,7 @@ app.listen(PORT, () => {
     console.log('📋 可用路由:');
     console.log(`   - 首頁: http://localhost:${PORT}/`);
     console.log(`   - 電影頁面: http://localhost:${PORT}/movie.html`);
+    console.log(`   - PTCG 情報站: http://localhost:${PORT}/ptcg/`);
     console.log(`   - 靜態資源: http://localhost:${PORT}/assets/`);
     console.log('');
     console.log('🔧 使用 Ctrl+C 來停止服務器');

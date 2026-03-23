@@ -1,0 +1,262 @@
+{
+  "UBL": [
+    {
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=8225008",
+      "id": "8225008",
+      "title": "2025/9/20-1 2025-26 UBL 1-1 大師組",
+      "createdAt": "2026-03-23T08:59:32.822Z",
+      "lastCrawledAt": "2026-03-23T09:21:25.689Z",
+      "round1Max": 217,
+      "finalRankCount": 312,
+      "csvFile": "8225008.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T09:10:56.319Z",
+          "round1Max": 217,
+          "finalRankCount": 312,
+          "csvFile": "8225008.csv"
+        },
+        {
+          "crawledAt": "2026-03-23T09:21:25.689Z",
+          "level": "master",
+          "series": "1-1",
+          "round1Max": 217,
+          "finalRankCount": 312,
+          "csvFile": "8225008.csv"
+        }
+      ],
+      "type": "ubl",
+      "level": "master",
+      "series": "1-1"
+    },
+    {
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=7560542",
+      "id": "7560542",
+      "title": "2025/10/5-1 2025-26 UBL 1-2 大師組",
+      "createdAt": "2026-03-23T09:12:09.745Z",
+      "lastCrawledAt": "2026-03-23T09:21:27.477Z",
+      "round1Max": 345,
+      "finalRankCount": 418,
+      "csvFile": "7560542.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T09:12:09.745Z",
+          "round1Max": 345,
+          "finalRankCount": 418,
+          "csvFile": "7560542.csv"
+        },
+        {
+          "crawledAt": "2026-03-23T09:21:27.477Z",
+          "level": "master",
+          "series": "1-2",
+          "round1Max": 345,
+          "finalRankCount": 418,
+          "csvFile": "7560542.csv"
+        }
+      ],
+      "type": "ubl",
+      "level": "master",
+      "series": "1-2"
+    },
+    {
+      "type": "ubl",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=3189918",
+      "id": "3189918",
+      "title": "2025/10/18-1 2025-26 UBL 1-3 大師組",
+      "level": "master",
+      "series": "1-3",
+      "createdAt": "2026-03-23T09:21:28.863Z",
+      "lastCrawledAt": "2026-03-23T09:21:28.863Z",
+      "round1Max": 256,
+      "finalRankCount": 323,
+      "csvFile": "3189918.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T09:21:28.863Z",
+          "level": "master",
+          "series": "1-3",
+          "round1Max": 256,
+          "finalRankCount": 323,
+          "csvFile": "3189918.csv"
+        }
+      ]
+    },
+    {
+      "type": "ubl",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=9829845",
+      "id": "9829845",
+      "title": "2025/11/15-1 2025-26 UBL 1-4 大師組",
+      "level": "master",
+      "series": "1-4",
+      "createdAt": "2026-03-23T09:21:30.181Z",
+      "lastCrawledAt": "2026-03-23T09:21:30.181Z",
+      "round1Max": 247,
+      "finalRankCount": 306,
+      "csvFile": "9829845.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T09:21:30.181Z",
+          "level": "master",
+          "series": "1-4",
+          "round1Max": 247,
+          "finalRankCount": 306,
+          "csvFile": "9829845.csv"
+        }
+      ]
+    },
+    {
+      "type": "ubl",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=9905152",
+      "id": "9905152",
+      "title": "2025/11/29-1 2025-26 UBL 2-1 大師組",
+      "level": "master",
+      "series": "2-1",
+      "createdAt": "2026-03-23T09:21:31.536Z",
+      "lastCrawledAt": "2026-03-23T09:21:31.536Z",
+      "round1Max": 261,
+      "finalRankCount": 326,
+      "csvFile": "9905152.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T09:21:31.536Z",
+          "level": "master",
+          "series": "2-1",
+          "round1Max": 261,
+          "finalRankCount": 326,
+          "csvFile": "9905152.csv"
+        }
+      ]
+    },
+    {
+      "type": "ubl",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=1434167",
+      "id": "1434167",
+      "title": "2025/12/27-1 2025-26 UBL 2-2 大師組",
+      "level": "master",
+      "series": "2-2",
+      "createdAt": "2026-03-23T09:21:32.783Z",
+      "lastCrawledAt": "2026-03-23T10:45:48.973Z",
+      "round1Max": 404,
+      "finalRankCount": 299,
+      "csvFile": "1434167.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T10:45:11.536Z",
+          "level": "master",
+          "series": "2-2",
+          "round1Max": 404,
+          "finalRankCount": 299,
+          "csvFile": "1434167.csv"
+        },
+        {
+          "crawledAt": "2026-03-23T10:45:48.973Z",
+          "level": "master",
+          "series": "2-2",
+          "round1Max": 404,
+          "finalRankCount": 299,
+          "csvFile": "1434167.csv"
+        }
+      ]
+    },
+    {
+      "type": "ubl",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=6341822",
+      "id": "6341822",
+      "title": "2026/1/17-1 2025-26 UBL 2-3 大師組",
+      "level": "master",
+      "series": "2-3",
+      "createdAt": "2026-03-23T09:21:34.083Z",
+      "lastCrawledAt": "2026-03-23T09:21:34.083Z",
+      "round1Max": 226,
+      "finalRankCount": 309,
+      "csvFile": "6341822.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T09:21:34.083Z",
+          "level": "master",
+          "series": "2-3",
+          "round1Max": 226,
+          "finalRankCount": 309,
+          "csvFile": "6341822.csv"
+        }
+      ]
+    },
+    {
+      "type": "ubl",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=3198910",
+      "id": "3198910",
+      "title": "2026/2/27-1 2025-26 UBL 2-4 大師組",
+      "level": "master",
+      "series": "2-4",
+      "createdAt": "2026-03-23T09:21:35.869Z",
+      "lastCrawledAt": "2026-03-23T10:46:04.323Z",
+      "round1Max": 591,
+      "finalRankCount": 419,
+      "csvFile": "3198910.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T10:45:13.908Z",
+          "level": "master",
+          "series": "2-4",
+          "round1Max": 591,
+          "finalRankCount": 419,
+          "csvFile": "3198910.csv"
+        },
+        {
+          "crawledAt": "2026-03-23T10:46:04.323Z",
+          "level": "master",
+          "series": "2-4",
+          "round1Max": 591,
+          "finalRankCount": 419,
+          "csvFile": "3198910.csv"
+        }
+      ]
+    },
+    {
+      "type": "ubl",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=8440095",
+      "id": "8440095",
+      "title": "2026/3/14-1 2025-26 UBL 3-1 大師組",
+      "level": "master",
+      "series": "3-1",
+      "createdAt": "2026-03-23T09:21:37.090Z",
+      "lastCrawledAt": "2026-03-23T09:21:37.090Z",
+      "round1Max": 226,
+      "finalRankCount": 279,
+      "csvFile": "8440095.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T09:21:37.090Z",
+          "level": "master",
+          "series": "3-1",
+          "round1Max": 226,
+          "finalRankCount": 279,
+          "csvFile": "8440095.csv"
+        }
+      ]
+    },
+    {
+      "type": "ubl",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=4496745",
+      "id": "4496745",
+      "title": "2025/10/5-1 2025-26 UBL 1-2 孩童組",
+      "level": "junior",
+      "series": "1-2",
+      "createdAt": "2026-03-23T13:39:53.661Z",
+      "lastCrawledAt": "2026-03-23T13:39:53.661Z",
+      "round1Max": 49,
+      "finalRankCount": 93,
+      "csvFile": "4496745.csv",
+      "history": [
+        {
+          "crawledAt": "2026-03-23T13:39:53.661Z",
+          "level": "junior",
+          "series": "1-2",
+          "round1Max": 49,
+          "finalRankCount": 93,
+          "csvFile": "4496745.csv"
+        }
+      ]
+    }
+  ]
+}

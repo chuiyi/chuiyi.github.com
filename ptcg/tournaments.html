@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賽事資訊 - PTCG 情報站</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ptcg.css">
+</head>
+<body>
+
+    <nav class="ptcg-navbar navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <span class="ptcg-logo-icon">&#9670;</span>
+                <span>PTCG 情報站</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ptcgNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="ptcgNav">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house me-1"></i>首頁</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="tournaments.html"><i class="bi bi-trophy me-1"></i>賽事資訊</a></li>
+                    <li class="nav-item"><a class="nav-link" href="players.html"><i class="bi bi-people me-1"></i>玩家排行</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb" class="mb-2">
+                        <ol class="breadcrumb ptcg-breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">PTCG 情報站</a></li>
+                            <li class="breadcrumb-item active">賽事資訊</li>
+                        </ol>
+                    </nav>
+                    <h1 class="page-title"><i class="bi bi-trophy me-2"></i>賽事資訊彙整</h1>
+                    <p class="page-subtitle">高級球、紀念球與大師球賽事彙整</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <span class="data-update-badge">
+                        <i class="bi bi-arrow-clockwise me-1"></i>
+                        <span id="tournament-update-time">資料更新中...</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container py-4">
+
+        <!-- Filter Bar -->
+        <div class="filter-bar mb-4">
+            <div class="row g-2 align-items-center">
+                <div class="col-auto">
+                    <label class="filter-label">賽事類型</label>
+                </div>
+                <div class="col-auto">
+                    <div class="btn-group filter-group" role="group" id="type-filter">
+                        <input type="radio" class="btn-check" name="type" id="type-ubl" value="UBL" checked>
+                        <label class="btn btn-filter" for="type-ubl">高級球</label>
+
+                        <input type="radio" class="btn-check" name="type" id="type-premiere" value="PREMIERE">
+                        <label class="btn btn-filter" for="type-premiere">紀念球</label>
+
+                        <input type="radio" class="btn-check" name="type" id="type-masterball" value="MASTERBALL">
+                        <label class="btn btn-filter" for="type-masterball">大師球</label>
+                    </div>
+                </div>
+                <div class="col-auto ms-md-auto">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text bg-transparent">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" class="form-control" id="tournament-search" placeholder="搜尋賽事名稱...">
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select form-select-sm" id="season-select">
+                        <option value="">全部賽季</option>
+                        <option value="2025-2026">2025-26 賽季</option>
+                        <option value="2024-2025">2024-25 賽季</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tournaments List -->
+        <div id="tournaments-container">
+            <div class="text-center py-5">
+                <div class="ptcg-spinner mx-auto"></div>
+                <p class="mt-3 text-muted">載入賽事資料中...</p>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-4" id="tournament-pagination" style="display:none;">
+            <ul class="pagination ptcg-pagination justify-content-center">
+            </ul>
+        </nav>
+
+    </main>
+
+    <div class="modal fade" id="tournamentDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content ptcg-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tournamentDetailTitle">賽事詳情</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="tournamentDetailBody">
+                    <!-- 動態載入 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="ptcg-footer mt-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">
+                <p class="footer-copy mb-0">
+                    &copy; 2026 PTCG 情報站 ·
+                    <a href="../index.html" class="footer-main-link">回 Chuiyi 的生活札記</a>
+                </p>
+                <p class="footer-disclaimer mb-0">
+                    Pokémon &amp; PTCG 相關商標歸任天堂/寶可夢公司所有
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ptcg.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            PTCG.loadTournamentsPage();
+        });
+    </script>
+</body>
+</html>
