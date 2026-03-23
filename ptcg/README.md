@@ -28,7 +28,7 @@ ptcg/
 │   ├── tournaments_ubl.json          # UBL 爬蟲記錄
 │   ├── tournaments_premiere.json     # Premiere 爬蟲記錄
 │   ├── decks.json        # 牌組資料庫
-│   └── players.json      # 玩家排行 manifest
+│   └── ranking.json      # 玩家排行 manifest
 └── scraper/              # 後端爬蟲
   ├── scraper.js        # Node.js 主程式
     └── players_manual.csv # 手動維護的玩家資料
@@ -115,7 +115,7 @@ name,name_en,score,tournaments,division,region,top_decks
 ]
 ```
 
-### `data/players.json`（manifest）
+### `data/ranking.json`（manifest）
 
 ```json
 {

@@ -245,11 +245,24 @@ const PTCG = (() => {
     }
 
     async function loadPlayersManifest() {
-        const manifest = await fetchJSON('players.json');
+        const manifest = await fetchJSON('ranking.json');
         if (!manifest || typeof manifest !== 'object' || !manifest.latest) {
-            throw new Error('players.json 格式不正確');
+            throw new Error('ranking.json 格式不正確');
         }
         return manifest;
+    }
+
+    async function loadPlayerHistoryIndex() {
+        try {
+            const index = await fetchJSON('players/players.json');
+            if (!index || typeof index !== 'object' || !Array.isArray(index.players)) {
+                throw new Error('players/players.json 格式不正確');
+            }
+            return index;
+        } catch (err) {
+            console.warn('[PTCG] players/players.json 載入失敗，詳情按鈕將依已載入資訊顯示。', err);
+            return { players: [] };
+        }
     }
 
     function parseRankingCsvToPlayers(csvText, level) {
@@ -366,7 +379,7 @@ const PTCG = (() => {
             const [meta, tournaments, playersManifest] = await Promise.all([
                 fetchJSON('meta.json'),
                 loadUnifiedTournaments(),
-                fetchJSON('players.json'),
+                fetchJSON('ranking.json'),
             ]);
             const availableLevels = getAvailablePlayerLevels(playersManifest);
             const playerResults = await Promise.all(
@@ -901,33 +914,40 @@ const PTCG = (() => {
     let _currentPlayerPage = 1;
     const _playerHistoryAvailability = new Map();
     const _playerHistoryPromiseById = new Map();
+    const _playerHistoryIndexById = new Map();
 
-    async function _hasPlayerHistory(playerId) {
-        const id = String(playerId || '').trim();
-        if (!id) return false;
-        if (_playerHistoryAvailability.has(id)) {
-            return _playerHistoryAvailability.get(id) === true;
-        }
+    function _setPlayerHistoryIndex(index) {
+        _playerHistoryIndexById.clear();
+        const players = Array.isArray(index?.players) ? index.players : [];
+        for (const item of players) {
+            const id = String(item?.ptcg_id || '').trim().toLowerCase();
+            if (!id) continue;
 
-        try {
-            const response = await fetch(`./data/players/${id}.json`, { method: 'HEAD' });
-            const ok = response.ok;
-            _playerHistoryAvailability.set(id, ok);
-            return ok;
-        } catch (err) {
-            _playerHistoryAvailability.set(id, false);
-            return false;
+            // Backward compatible: accept legacy levels[] and new level string.
+            const level = String(
+                item?.level
+                || (Array.isArray(item?.levels) ? item.levels[0] : '')
+                || ''
+            ).trim().toLowerCase();
+            _playerHistoryIndexById.set(id, {
+                status: String(item?.status || '').trim().toLowerCase(),
+                hasHistory: item?.has_history === true,
+                level,
+            });
         }
     }
 
-    async function _primePlayerHistoryAvailability(players) {
-        const ids = Array.from(new Set((players || [])
-            .map(player => String(player.ptcg_id || '').trim())
-            .filter(Boolean)))
-            .filter(id => !_playerHistoryAvailability.has(id));
+    function _canOpenPlayerDetail(playerId) {
+        const id = String(playerId || '').trim().toLowerCase();
+        if (!id) return false;
 
-        if (!ids.length) return;
-        await Promise.all(ids.map(id => _hasPlayerHistory(id)));
+        if (_playerHistoryIndexById.has(id)) {
+            const item = _playerHistoryIndexById.get(id);
+            if (item.hasHistory === true) return true;
+            return item.status === 'ok';
+        }
+
+        return _playerHistoryAvailability.get(id) === true;
     }
 
     async function _loadPlayerHistory(playerId) {
@@ -958,6 +978,8 @@ const PTCG = (() => {
     async function loadPlayersPage() {
         try {
             _playersManifest = await loadPlayersManifest();
+            const historyIndex = await loadPlayerHistoryIndex();
+            _setPlayerHistoryIndex(historyIndex);
             _initDivisionSwitch(_playersManifest);
             await _loadPlayersForLevel(_currentPlayerLevel);
 
@@ -986,6 +1008,10 @@ const PTCG = (() => {
             _currentPlayerPage = 1;
             _renderPlayersTable();
         }, 250));
+        document.getElementById('player-only-detail')?.addEventListener('change', () => {
+            _currentPlayerPage = 1;
+            _renderPlayersTable();
+        });
 
         document.getElementById('players-page-size')?.addEventListener('change', e => {
             const nextSize = parseInt(e.target.value, 10);
@@ -1030,9 +1056,11 @@ const PTCG = (() => {
 
     function _getFilteredPlayers() {
         const search   = (document.getElementById('player-search')?.value || '').trim().toLowerCase();
+        const onlyDetail = document.getElementById('player-only-detail')?.checked === true;
 
         return _allPlayers.filter(p => {
             if (search && !p.name.toLowerCase().includes(search) && !String(p.ptcg_id || '').toLowerCase().includes(search)) return false;
+            if (onlyDetail && !_canOpenPlayerDetail(p.ptcg_id)) return false;
             return true;
         });
     }
@@ -1067,7 +1095,6 @@ const PTCG = (() => {
         const result = await loadPlayersFromManifest(_playersManifest, level);
         _allPlayers = result.players;
         _currentWorldPlayers = parseInt(_playersManifest?.latest?.[level]?.world_players, 10) || 0;
-        await _primePlayerHistoryAvailability(_allPlayers);
 
         _setText('pstat-tracked', _allPlayers.length);
         const topScore = _allPlayers.reduce((max, player) => Math.max(max, player.scoreValue || 0), 0);
@@ -1104,7 +1131,7 @@ const PTCG = (() => {
                 <td class="score-cell">${escapeHtml(String(p.score ?? '--'))}</td>
                 <td class="d-none d-lg-table-cell">${escapeHtml(p.divisionLabel || '--')}</td>
                 <td class="d-none d-lg-table-cell">${escapeHtml(p.region || '--')}</td>
-                <td>${_playerHistoryAvailability.get(String(p.ptcg_id || '').trim()) === true ? `<button class="btn-view-detail" data-idx="${pageStart + i}"><i class="bi bi-search"></i></button>` : ''}</td>
+                <td>${_canOpenPlayerDetail(p.ptcg_id) ? `<button class="btn-view-detail" data-idx="${pageStart + i}"><i class="bi bi-search"></i></button>` : ''}</td>
             </tr>
         `).join('');
 
