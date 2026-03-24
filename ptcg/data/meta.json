@@ -1,0 +1,16 @@
+{
+  "last_updated": "2026-03-23",
+  "total_tournaments": 12,
+  "total_decks": 28,
+  "season": "2025-2026",
+  "meta_decks": [
+    { "name": "Dragapult ex / 幽靈龍",   "usage_pct": 22, "winrate": 58 },
+    { "name": "Lugia VSTAR / 路奇歐",     "usage_pct": 18, "winrate": 55 },
+    { "name": "Charizard ex / 噴火龍",    "usage_pct": 15, "winrate": 52 },
+    { "name": "Gardevoir ex / 沙奈朵",    "usage_pct": 12, "winrate": 51 },
+    { "name": "Raging Bolt ex / 雷霆王",  "usage_pct": 10, "winrate": 53 },
+    { "name": "Terapagos ex / 寶貝丘",    "usage_pct": 8,  "winrate": 49 },
+    { "name": "Regidrago VSTAR / 雷吉龍", "usage_pct": 7,  "winrate": 47 },
+    { "name": "其他",                      "usage_pct": 8,  "winrate": 44 }
+  ]
+}

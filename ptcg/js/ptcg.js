@@ -635,7 +635,7 @@ const PTCG = (() => {
                             : ''}
                 <div class="mt-3">
                     <button class="btn btn-outline-ptcg btn-sm btn-view-top16" data-tid="${escapeHtml(String(t.id))}" ${t.type === 'UBL' ? '' : 'disabled'}>
-                        查看前16名
+                        查看瑞士輪前16名
                     </button>
                 </div>
             </div>
