@@ -1,0 +1,41 @@
+{
+  "id": "tw24436381",
+  "url": "https://asia.pokemon-card.com/tw/users/tw24436381/?eventFilter=4&eventGivingCSPPointsFlg=1",
+  "fetchedAt": "2026-03-24T05:53:13.265Z",
+  "totalEvents": 3,
+  "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 2,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-4 (大師組)",
+      "eventTime": "02-27-2026 08:30",
+      "eventDateTime": "2026-02-27 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "641",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 3,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-4 (大師組)-二次抽選",
+      "eventTime": "02-27-2026 08:30",
+      "eventDateTime": "2026-02-27 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 1,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季1-2",
+      "eventTime": "10-05-2025 08:00",
+      "eventDateTime": "2025-10-05 08:00",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "230",
+      "lp": "6"
+    }
+  ]
+}
