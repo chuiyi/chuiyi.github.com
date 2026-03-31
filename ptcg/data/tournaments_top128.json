@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-31T10:49:01.207Z",
+  "updatedAt": "2026-03-31T14:46:02.409Z",
   "TOP128": [
     {
       "id": "8225008",
@@ -14,7 +14,9 @@
       "officialId": "43644",
       "top128File": "top128_ubl_43644.csv",
       "top128Count": 128,
-      "updatedAt": "2026-03-31T10:46:56.059Z"
+      "title": "2025-26 Taiwan Ultra Ball League Season 1-1 Masters Category",
+      "capacity": "480 人",
+      "updatedAt": "2026-03-31T14:43:45.756Z"
     },
     {
       "id": "ubl-43643-senior",
@@ -29,7 +31,9 @@
       "officialId": "43643",
       "top128File": "top128_ubl_43643.csv",
       "top128Count": 16,
-      "updatedAt": "2026-03-31T10:46:57.950Z"
+      "title": "2025-26 Taiwan Ultra Ball League Season 1-1 Senior Category",
+      "capacity": "64 人",
+      "updatedAt": "2026-03-31T14:43:47.672Z"
     },
     {
       "id": "ubl-43642-junior",
@@ -44,7 +48,9 @@
       "officialId": "43642",
       "top128File": "top128_ubl_43642.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:47:00.185Z"
+      "title": "2025-26 Taiwan Ultra Ball League Season 1-1 Junior Category",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:43:50.547Z"
     },
     {
       "id": "7560542",
@@ -59,7 +65,9 @@
       "officialId": "44421",
       "top128File": "top128_ubl_44421.csv",
       "top128Count": 256,
-      "updatedAt": "2026-03-31T10:47:10.834Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-2",
+      "capacity": "768 人",
+      "updatedAt": "2026-03-31T14:44:01.832Z"
     },
     {
       "id": "ubl-44422-senior",
@@ -74,7 +82,9 @@
       "officialId": "44422",
       "top128File": "top128_ubl_44422.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:47:13.150Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-2",
+      "capacity": "64 人",
+      "updatedAt": "2026-03-31T14:44:04.215Z"
     },
     {
       "id": "4496745",
@@ -89,7 +99,9 @@
       "officialId": "44423",
       "top128File": "top128_ubl_44423.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:47:15.512Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-2",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:44:06.616Z"
     },
     {
       "id": "3189918",
@@ -104,7 +116,9 @@
       "officialId": "44424",
       "top128File": "top128_ubl_44424.csv",
       "top128Count": 256,
-      "updatedAt": "2026-03-31T10:47:26.064Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-3",
+      "capacity": "768 人",
+      "updatedAt": "2026-03-31T14:44:17.778Z"
     },
     {
       "id": "ubl-44425-senior",
@@ -119,7 +133,9 @@
       "officialId": "44425",
       "top128File": "top128_ubl_44425.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:47:28.466Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-3",
+      "capacity": "64 人",
+      "updatedAt": "2026-03-31T14:44:19.943Z"
     },
     {
       "id": "ubl-44426-junior",
@@ -134,7 +150,9 @@
       "officialId": "44426",
       "top128File": "top128_ubl_44426.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:47:30.712Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-3",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:44:22.366Z"
     },
     {
       "id": "9829845",
@@ -149,7 +167,9 @@
       "officialId": "44427",
       "top128File": "top128_ubl_44427.csv",
       "top128Count": 255,
-      "updatedAt": "2026-03-31T10:47:40.910Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-4",
+      "capacity": "636 人",
+      "updatedAt": "2026-03-31T14:44:31.869Z"
     },
     {
       "id": "ubl-44428-senior",
@@ -164,7 +184,9 @@
       "officialId": "44428",
       "top128File": "top128_ubl_44428.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:47:43.404Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-4",
+      "capacity": "64 人",
+      "updatedAt": "2026-03-31T14:44:34.341Z"
     },
     {
       "id": "ubl-44429-junior",
@@ -179,7 +201,9 @@
       "officialId": "44429",
       "top128File": "top128_ubl_44429.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:47:45.702Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季1-4",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:44:36.646Z"
     },
     {
       "id": "9905152",
@@ -194,7 +218,9 @@
       "officialId": "48267",
       "top128File": "top128_ubl_48267.csv",
       "top128Count": 256,
-      "updatedAt": "2026-03-31T10:47:56.042Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-1 (大師組)",
+      "capacity": "636 人",
+      "updatedAt": "2026-03-31T14:44:48.614Z"
     },
     {
       "id": "ubl-48268-senior",
@@ -209,7 +235,9 @@
       "officialId": "48268",
       "top128File": "top128_ubl_48268.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:47:58.509Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-1 (少年組)",
+      "capacity": "64 人",
+      "updatedAt": "2026-03-31T14:44:51.556Z"
     },
     {
       "id": "ubl-48269-junior",
@@ -224,7 +252,9 @@
       "officialId": "48269",
       "top128File": "top128_ubl_48269.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:48:00.831Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-1 (孩童組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:44:53.850Z"
     },
     {
       "id": "1434167",
@@ -239,7 +269,9 @@
       "officialId": "49508",
       "top128File": "top128_ubl_49508.csv",
       "top128Count": 128,
-      "updatedAt": "2026-03-31T10:48:06.912Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-2 (大師組)",
+      "capacity": "662 人",
+      "updatedAt": "2026-03-31T14:44:59.901Z"
     },
     {
       "id": "ubl-49509-senior",
@@ -254,7 +286,9 @@
       "officialId": "49509",
       "top128File": "top128_ubl_49509.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:48:09.229Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-2 (少年組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:02.383Z"
     },
     {
       "id": "ubl-49510-junior",
@@ -269,7 +303,9 @@
       "officialId": "49510",
       "top128File": "top128_ubl_49510.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:48:11.358Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-2 (孩童組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:05.000Z"
     },
     {
       "id": "6341822",
@@ -284,7 +320,9 @@
       "officialId": "49735",
       "top128File": "top128_ubl_49735.csv",
       "top128Count": 256,
-      "updatedAt": "2026-03-31T10:48:21.085Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-3 (大師組)",
+      "capacity": "480 人",
+      "updatedAt": "2026-03-31T14:45:14.762Z"
     },
     {
       "id": "ubl-49736-senior",
@@ -299,7 +337,9 @@
       "officialId": "49736",
       "top128File": "top128_ubl_49736.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:48:23.322Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-3 (少年組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:17.196Z"
     },
     {
       "id": "ubl-49737-junior",
@@ -314,7 +354,9 @@
       "officialId": "49737",
       "top128File": "top128_ubl_49737.csv",
       "top128Count": 32,
-      "updatedAt": "2026-03-31T10:48:25.616Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-3 (孩童組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:19.474Z"
     },
     {
       "id": "3198910",
@@ -329,7 +371,9 @@
       "officialId": "49742",
       "top128File": "top128_ubl_49742.csv",
       "top128Count": 256,
-      "updatedAt": "2026-03-31T10:48:35.781Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-4 (大師組)",
+      "capacity": "660 人",
+      "updatedAt": "2026-03-31T14:45:30.708Z"
     },
     {
       "id": "ubl-49743-senior",
@@ -344,7 +388,9 @@
       "officialId": "49743",
       "top128File": "top128_ubl_49743.csv",
       "top128Count": 64,
-      "updatedAt": "2026-03-31T10:48:38.908Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-4 (少年組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:34.343Z"
     },
     {
       "id": "ubl-49744-junior",
@@ -359,7 +405,60 @@
       "officialId": "49744",
       "top128File": "top128_ubl_49744.csv",
       "top128Count": 64,
-      "updatedAt": "2026-03-31T10:48:42.519Z"
+      "title": "2025-26 臺灣高級球聯盟賽 賽季2-4 (孩童組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:38.008Z"
+    },
+    {
+      "id": "8440095",
+      "type": "ubl",
+      "level": "master",
+      "series": "3-1",
+      "season": "2025-2026",
+      "date": "2026-03-14",
+      "officialDate": "2026-03-14",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/53482/",
+      "sourceUrl": "https://tcg.sfc-jpn.jp/tour.asp?tid=8440095",
+      "officialId": "53482",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-1 (大師組)",
+      "capacity": "660 人",
+      "updatedAt": "2026-03-31T14:45:39.197Z"
+    },
+    {
+      "id": "ubl-53483-senior",
+      "type": "ubl",
+      "level": "senior",
+      "series": "3-1",
+      "season": "2025-2026",
+      "date": "2026-03-14",
+      "officialDate": "2026-03-14",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/53483/",
+      "sourceUrl": "",
+      "officialId": "53483",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季 3-1 (少年組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:39.742Z"
+    },
+    {
+      "id": "ubl-53484-junior",
+      "type": "ubl",
+      "level": "junior",
+      "series": "3-1",
+      "season": "2025-2026",
+      "date": "2026-03-14",
+      "officialDate": "2026-03-14",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/53484/",
+      "sourceUrl": "",
+      "officialId": "53484",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-1 (孩童組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:40.283Z"
     },
     {
       "id": "3884414",
@@ -374,7 +473,9 @@
       "officialId": "43594",
       "top128File": "top128_premiere_43594.csv",
       "top128Count": 128,
-      "updatedAt": "2026-03-31T10:48:49.139Z"
+      "title": "2025-26 Taiwan Premier Ball League TCG Division Masters Category",
+      "capacity": "3846 人",
+      "updatedAt": "2026-03-31T14:45:45.996Z"
     },
     {
       "id": "premiere-43593-senior",
@@ -389,7 +490,9 @@
       "officialId": "43593",
       "top128File": "top128_premiere_43593.csv",
       "top128Count": 128,
-      "updatedAt": "2026-03-31T10:48:54.888Z"
+      "title": "2025-26 Taiwan Premier Ball League TCG Division Senior Category",
+      "capacity": "696 人",
+      "updatedAt": "2026-03-31T14:45:52.281Z"
     },
     {
       "id": "premiere-43592-junior",
@@ -404,7 +507,162 @@
       "officialId": "43592",
       "top128File": "top128_premiere_43592.csv",
       "top128Count": 128,
-      "updatedAt": "2026-03-31T10:49:00.693Z"
+      "title": "2025-26 Taiwan Premier Ball League TCG Division Junior Category",
+      "capacity": "756 人",
+      "updatedAt": "2026-03-31T14:45:58.064Z"
+    },
+    {
+      "id": "ubl-56269-master",
+      "type": "ubl",
+      "level": "master",
+      "series": "3-2",
+      "season": "2025-2026",
+      "date": "2026-04-11",
+      "officialDate": "2026-04-11",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56269/",
+      "sourceUrl": "",
+      "officialId": "56269",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-2 (大師組)",
+      "capacity": "660 人",
+      "updatedAt": "2026-03-31T14:45:59.098Z"
+    },
+    {
+      "id": "ubl-56270-senior",
+      "type": "ubl",
+      "level": "senior",
+      "series": "3-2",
+      "season": "2025-2026",
+      "date": "2026-04-11",
+      "officialDate": "2026-04-11",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56270/",
+      "sourceUrl": "",
+      "officialId": "56270",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季 3-2 (少年組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:59.516Z"
+    },
+    {
+      "id": "ubl-56271-junior",
+      "type": "ubl",
+      "level": "junior",
+      "series": "3-2",
+      "season": "2025-2026",
+      "date": "2026-04-11",
+      "officialDate": "2026-04-11",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56271/",
+      "sourceUrl": "",
+      "officialId": "56271",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-2 (孩童組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:45:59.954Z"
+    },
+    {
+      "id": "ubl-56272-master",
+      "type": "ubl",
+      "level": "master",
+      "series": "3-3",
+      "season": "2025-2026",
+      "date": "2026-05-09",
+      "officialDate": "2026-05-09",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56272/",
+      "sourceUrl": "",
+      "officialId": "56272",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
+      "capacity": "660 人",
+      "updatedAt": "2026-03-31T14:46:00.433Z"
+    },
+    {
+      "id": "ubl-56273-senior",
+      "type": "ubl",
+      "level": "senior",
+      "series": "3-3",
+      "season": "2025-2026",
+      "date": "2026-05-09",
+      "officialDate": "2026-05-09",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56273/",
+      "sourceUrl": "",
+      "officialId": "56273",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季 3-3 (少年組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:46:00.834Z"
+    },
+    {
+      "id": "ubl-56274-junior",
+      "type": "ubl",
+      "level": "junior",
+      "series": "3-3",
+      "season": "2025-2026",
+      "date": "2026-05-09",
+      "officialDate": "2026-05-09",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56274/",
+      "sourceUrl": "",
+      "officialId": "56274",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季 3-3 (孩童組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:46:01.225Z"
+    },
+    {
+      "id": "ubl-56275-master",
+      "type": "ubl",
+      "level": "master",
+      "series": "3-4",
+      "season": "2025-2026",
+      "date": "2026-05-30",
+      "officialDate": "2026-05-30",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56275/",
+      "sourceUrl": "",
+      "officialId": "56275",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-4 (大師組)",
+      "capacity": "496 人",
+      "updatedAt": "2026-03-31T14:46:01.643Z"
+    },
+    {
+      "id": "ubl-56276-senior",
+      "type": "ubl",
+      "level": "senior",
+      "series": "3-4",
+      "season": "2025-2026",
+      "date": "2026-05-30",
+      "officialDate": "2026-05-30",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56276/",
+      "sourceUrl": "",
+      "officialId": "56276",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季 3-4 (少年組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:46:02.018Z"
+    },
+    {
+      "id": "ubl-56277-junior",
+      "type": "ubl",
+      "level": "junior",
+      "series": "3-4",
+      "season": "2025-2026",
+      "date": "2026-05-30",
+      "officialDate": "2026-05-30",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56277/",
+      "sourceUrl": "",
+      "officialId": "56277",
+      "top128File": "",
+      "top128Count": 0,
+      "title": "2025-26 臺灣高級球聯盟賽 賽季 3-4 (孩童組)",
+      "capacity": "128 人",
+      "updatedAt": "2026-03-31T14:46:02.409Z"
     }
   ]
 }

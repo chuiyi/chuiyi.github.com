@@ -7,6 +7,8 @@
     "start": "node server.js",
     "dev": "nodemon server.js",
     "scrape:ptcg": "node ptcg/scraper/scraper.js",
+    "scrape:ptcg:gbl": "node ptcg/scraper/schedule_scrape_gbl_season.js",
+    "scrape:ptcg:ubl": "node ptcg/scraper/schedule_scrape_ubl_urls.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

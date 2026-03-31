@@ -20,9 +20,11 @@ const PTCG = (() => {
 
     // 賽事等級對應 badge class / 文字
     const TOURNAMENT_TYPE_MAP = {
-        'UBL':        { cls: 'badge-rlc', label: '高級球' },
-        'PREMIERE':   { cls: 'badge-pc',  label: '紀念球' },
-        'MASTERBALL': { cls: 'badge-spr', label: '大師球' },
+        'SUPERBALL':  { cls: 'badge-superball',  label: '超級球' },
+        'GBL':        { cls: 'badge-superball',  label: '超級球' },
+        'UBL':        { cls: 'badge-ubl',        label: '高級球' },
+        'PREMIERE':   { cls: 'badge-premiere',   label: '紀念球' },
+        'MASTERBALL': { cls: 'badge-masterball', label: '大師球' },
     };
 
     const PLAYER_LEVELS = ['master', 'senior', 'junior'];
@@ -182,8 +184,27 @@ const PTCG = (() => {
         return Number.isNaN(t) ? -Infinity : t;
     }
 
+    function normalizeTournamentType(type) {
+        const normalized = String(type || '').trim().toUpperCase();
+        if (normalized === 'GBL' || normalized === 'SUPERBALL') return 'SUPERBALL';
+        return normalized;
+    }
+
+    function getTournamentDateState(dateStr) {
+        const eventDate = parseDateTimeValue(dateStr);
+        if (!eventDate) return 'unknown';
+
+        const today = new Date();
+        const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        const eventStart = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate());
+
+        if (eventStart.getTime() === todayStart.getTime()) return 'today';
+        if (eventStart.getTime() > todayStart.getTime()) return 'upcoming';
+        return 'past';
+    }
+
     function normalizeTournamentRecord(item, sourceType) {
-        const type = String(sourceType || item?.type || '').toUpperCase();
+        const type = normalizeTournamentType(sourceType || item?.type || '');
         const title = String(item?.title || '').trim();
         const date = String(item?.officialDate || '').trim()
             || parseDateFromTournamentTitle(title)
@@ -192,8 +213,13 @@ const PTCG = (() => {
         const level = String(item?.level || parseLevelFromTournamentTitle(title) || '').toLowerCase();
         const round1Max = Number.isFinite(item?.round1Max) ? item.round1Max : null;
         const estimatedParticipants = round1Max && round1Max > 0 ? `${round1Max * 2}(估)` : null;
-        const participants = estimatedParticipants || (Number.isFinite(item?.finalRankCount) ? item.finalRankCount : '--');
+        const participants = estimatedParticipants
+            || (Number.isFinite(item?.finalRankCount) ? item.finalRankCount : null)
+            || String(item?.capacity || '').trim()
+            || '--';
         const series = item?.series ? String(item.series) : '';
+        const organizer = String(item?.organizer || '').trim();
+        const location = organizer || (series ? `系列 ${series}` : '--');
 
         return {
             id: String(item?.id || `${type}-${Date.now()}`),
@@ -201,7 +227,7 @@ const PTCG = (() => {
             type,
             season,
             date,
-            location: series ? `系列 ${series}` : '--',
+            location,
             participants,
             finalRankCount: Number.isFinite(item?.finalRankCount) ? item.finalRankCount : null,
             round1Max,
@@ -222,7 +248,7 @@ const PTCG = (() => {
     }
 
     function normalizeTop128OnlyRecord(item) {
-        const type = String(item?.type || 'ubl').toUpperCase();
+        const type = normalizeTournamentType(item?.type || 'ubl');
         const level = String(item?.level || '').toLowerCase();
         const levelLabel = PLAYER_LEVEL_LABELS[level] || '';
         const series = String(item?.series || '').trim();
@@ -272,16 +298,18 @@ const PTCG = (() => {
     }
 
     async function loadUnifiedTournaments() {
-        const [ublSource, premiereSource, top128Manifest] = await Promise.all([
+        const [ublSource, premiereSource, superballSource, top128Manifest] = await Promise.all([
             fetchJSON('tournaments_ubl.json'),
             fetchJSON('tournaments_premiere.json'),
+            fetchJSON('tournaments_gbl.json').catch(() => ({ GBL: [] })),
             loadTop128Manifest(),
         ]);
 
         const ublList = Array.isArray(ublSource?.UBL) ? ublSource.UBL : [];
         const premiereList = Array.isArray(premiereSource?.PREMIERE) ? premiereSource.PREMIERE : [];
+        const superballList = Array.isArray(superballSource?.GBL) ? superballSource.GBL : [];
         const existingTop128Files = new Set(
-            [...ublList, ...premiereList]
+            [...ublList, ...premiereList, ...superballList]
                 .map(item => String(item?.top128File || '').trim())
                 .filter(Boolean)
         );
@@ -294,6 +322,7 @@ const PTCG = (() => {
             .map(item => normalizeTop128OnlyRecord(item));
 
         const tournaments = [
+            ...superballList.map(item => normalizeTournamentRecord(item, 'SUPERBALL')),
             ...ublList.map(item => normalizeTournamentRecord(item, 'UBL')),
             ...premiereList.map(item => normalizeTournamentRecord(item, 'PREMIERE')),
             ...top128OnlyList,
@@ -394,6 +423,7 @@ const PTCG = (() => {
     }
 
     const _rankingLookupPromiseByLevel = new Map();
+    let _combinedRankingLookupPromise = null;
 
     async function loadRankingLookupByPtcgId(level) {
         const normalizedLevel = String(level || '').toLowerCase();
@@ -432,6 +462,30 @@ const PTCG = (() => {
 
         _rankingLookupPromiseByLevel.set(normalizedLevel, promise);
         return promise;
+    }
+
+    async function loadCombinedRankingLookupByPtcgId() {
+        if (_combinedRankingLookupPromise) {
+            return _combinedRankingLookupPromise;
+        }
+
+        _combinedRankingLookupPromise = (async () => {
+            const maps = await Promise.all(PLAYER_LEVELS.map(level => loadRankingLookupByPtcgId(level)));
+            const combined = new Map();
+
+            // Keep first-seen record by level order: master -> senior -> junior.
+            maps.forEach((lookup) => {
+                lookup.forEach((value, key) => {
+                    if (!combined.has(key)) {
+                        combined.set(key, value);
+                    }
+                });
+            });
+
+            return combined;
+        })();
+
+        return _combinedRankingLookupPromise;
     }
 
     function showError(containerId, message) {
@@ -599,7 +653,7 @@ const PTCG = (() => {
 
     let _allTournaments = [];
     let _tournamentPage = 1;
-    const _PAGE_SIZE = 12;
+    const _PAGE_SIZE = 30;
 
     async function loadTournamentsPage() {
         try {
@@ -644,7 +698,7 @@ const PTCG = (() => {
 
     function _getFilteredTournaments() {
         const typeEl   = document.querySelector('input[name="type"]:checked');
-        const type     = typeEl?.value || 'UBL';
+        const type     = typeEl?.value || 'SUPERBALL';
         const season   = document.getElementById('season-select')?.value || '';
         const search   = (document.getElementById('tournament-search')?.value || '').trim().toLowerCase();
 
@@ -677,6 +731,10 @@ const PTCG = (() => {
 
     function _buildTournamentCard(t) {
         const typeInfo  = TOURNAMENT_TYPE_MAP[t.type] || { cls: 'badge-spr', label: t.type };
+        const dateState = getTournamentDateState(t.date);
+        const dateStateClass = dateState === 'upcoming'
+            ? 'tournament-card-upcoming'
+            : (dateState === 'today' ? 'tournament-card-today' : '');
         const levelLabel = PLAYER_LEVEL_LABELS[t.level] || null;
         const topCount = Number.isFinite(t.top128Count) ? t.top128Count : null;
         const topCountLabel = topCount ? `${topCount}` : '--';
@@ -699,7 +757,7 @@ const PTCG = (() => {
 
         return `
         <div class="col-md-6 col-xl-4">
-            <div class="tournament-card-item h-100 d-flex flex-column">
+            <div class="tournament-card-item ${dateStateClass} h-100 d-flex flex-column">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                     <div class="d-flex gap-1 flex-wrap">
                         <span class="tournament-type-badge ${escapeHtml(typeInfo.cls)}">
@@ -1078,6 +1136,7 @@ const PTCG = (() => {
         const idx = k => header.indexOf(k);
         const rankI = idx('rank'), pointsI = idx('points'), userI = idx('username');
         const idI = idx('player_id'), regionI = idx('region'), deckI = idx('deck_url');
+
         return rows.slice(1).map(cols => ({
             rank: cols[rankI] || '',
             points: cols[pointsI] || '',
@@ -1085,10 +1144,12 @@ const PTCG = (() => {
             player_id: cols[idI] || '',
             region: cols[regionI] || '',
             deck_url: cols[deckI] || '',
+            division: '',
         })).filter(r => r.rank);
     }
 
-    function _renderTop128Body(players) {
+    function _renderTop128Body(players, options = {}) {
+        const showDivision = Boolean(options.showDivision);
         if (!players.length) return '<p class="text-muted mb-0">尚無排名資料。</p>';
         return `
             <div class="table-responsive">
@@ -1098,6 +1159,7 @@ const PTCG = (() => {
                             <th width="70">#</th>
                             <th width="90">點數</th>
                             <th>玩家</th>
+                            ${showDivision ? '<th class="d-none d-md-table-cell">組別</th>' : ''}
                             <th class="d-none d-sm-table-cell">區域</th>
                             <th width="70" class="d-none d-md-table-cell">牌組</th>
                         </tr>
@@ -1122,6 +1184,7 @@ const PTCG = (() => {
                                     ${escapeHtml(p.username)}
                                     <span>${escapeHtml(p.player_id)}</span>
                                 </td>
+                                ${showDivision ? `<td class="d-none d-md-table-cell">${escapeHtml(p.division || '--')}</td>` : ''}
                                 <td class="d-none d-sm-table-cell">${escapeHtml(p.region)}</td>
                                 <td class="d-none d-md-table-cell">${deckLink}</td>
                             </tr>`;
@@ -1144,13 +1207,25 @@ const PTCG = (() => {
         try {
             const csvText = await fetchText(`tournaments/${tournament.top128File}`);
             const players = _parseTop128Csv(csvText);
+            const showDivision = tournament.type === 'SUPERBALL';
+            const divisionLookup = showDivision ? await loadCombinedRankingLookupByPtcgId() : new Map();
+            const renderedPlayers = showDivision
+                ? players.map((player) => {
+                    const idKey = String(player.player_id || '').trim().toLowerCase();
+                    const matched = idKey ? divisionLookup.get(idKey) : null;
+                    return {
+                        ...player,
+                        division: matched?.divisionLabel || '',
+                    };
+                })
+                : players;
             bodyEl.innerHTML = `
                 <div class="tournament-detail-summary mb-3">
                     <div class="tournament-detail-chip"><span>來源</span><strong>官方頁面</strong></div>
                     <div class="tournament-detail-chip"><span>筆數</span><strong>${players.length} 人</strong></div>
                     ${tournament.officialUrl ? `<div class="tournament-detail-chip"><a href="${escapeHtml(tournament.officialUrl)}" target="_blank" rel="noopener" class="text-decoration-none"><i class="bi bi-box-arrow-up-right me-1"></i>官方頁面</a></div>` : ''}
                 </div>
-                ${_renderTop128Body(players)}`;
+                ${_renderTop128Body(renderedPlayers, { showDivision })}`;
         } catch (err) {
             bodyEl.innerHTML = `<p class="text-muted mb-0">載入官方 Top 128 失敗：${escapeHtml(err.message || '未知錯誤')}</p>`;
         }

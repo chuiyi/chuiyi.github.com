@@ -505,6 +505,16 @@ main .btn-outline-ptcg:hover {
     transform: translateY(-2px);
 }
 
+.tournament-card-item.tournament-card-upcoming {
+    background: #fff7dd;
+    border-color: #e8d79a;
+}
+
+.tournament-card-item.tournament-card-today {
+    background: #eaf4ff;
+    border-color: #b7d7fb;
+}
+
 .tournament-type-badge {
     display: inline-flex;
     align-items: center;
@@ -516,9 +526,10 @@ main .btn-outline-ptcg:hover {
     letter-spacing: 0.03em;
 }
 
-.badge-pc  { background: rgba(245,158,11,0.15); color: var(--ptcg-yellow); border: 1px solid rgba(245,158,11,0.3); }
-.badge-rlc { background: rgba(220,38,38,0.12); color: var(--ptcg-red); border: 1px solid rgba(220,38,38,0.25); }
-.badge-spr { background: rgba(29,78,216,0.12); color: var(--ptcg-primary-lt); border: 1px solid rgba(29,78,216,0.25); }
+.badge-ubl        { background: rgba(245,158,11,0.2); color: #a16207; border: 1px solid rgba(245,158,11,0.55); }
+.badge-superball  { background: rgba(37,99,235,0.18); color: #1d4ed8; border: 1px solid rgba(37,99,235,0.45); }
+.badge-premiere   { background: #ffffff; color: #b91c1c; border: 1px solid rgba(185,28,28,0.55); }
+.badge-masterball { background: rgba(124,58,237,0.16); color: #6d28d9; border: 1px solid rgba(124,58,237,0.45); }
 
 /* 組別 badge */
 .badge-level-master { background: rgba(124,58,237,0.12); color: #7c3aed; border: 1px solid rgba(124,58,237,0.25); }
