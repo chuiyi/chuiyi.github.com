@@ -386,17 +386,31 @@
         }
     };
 
+    const getPrimaryMarkdownSection = (text) => {
+        if (!text) return "";
+        const markers = ["\n###### 推薦", "\n## 猜你喜歡", "\n##### 關於"];
+        let endIndex = text.length;
+        for (const marker of markers) {
+            const markerIndex = text.indexOf(marker);
+            if (markerIndex > -1 && markerIndex < endIndex) {
+                endIndex = markerIndex;
+            }
+        }
+        return text.slice(0, endIndex);
+    };
+
     const findMetaFromMarkdown = (text, fallbackTitle) => {
         const titleLine = text.match(/^Title:\s*(.+)$/m)?.[1]?.trim();
         const headingLine = text.match(/^####\s+(.+)$/m)?.[1]?.trim();
         const title = titleLine || headingLine || fallbackTitle;
+        const primarySection = getPrimaryMarkdownSection(text);
 
         // 策略 1: 尋找 preview.jpg (完整解析度)
-        let cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0];
+        let cover = primarySection.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i)?.[0];
         
         // 策略 2: 尋找任何 jable.tv 的圖片 URL (包括縮圖)
         if (!cover) {
-            const thumbMatch = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/(\d+)\/(\d+)\/320x180\/1\.jpg/i);
+            const thumbMatch = primarySection.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/(\d+)\/(\d+)\/320x180\/1\.jpg/i);
             if (thumbMatch) {
                 // 轉換縮圖 URL 為完整 preview.jpg
                 cover = `https://assets-cdn.jable.tv/contents/videos_screenshots/${thumbMatch[1]}/${thumbMatch[2]}/preview.jpg`;
@@ -405,12 +419,12 @@
         
         // 策略 3: 尋找任何 assets-cdn 的 jpg 圖片
         if (!cover) {
-            cover = text.match(/https?:\/\/assets-cdn\.jable\.tv\/[^\s"'<>]*\.jpg/i)?.[0] || "";
+            cover = primarySection.match(/https?:\/\/assets-cdn\.jable\.tv\/[^\s"'<>]*\.jpg/i)?.[0] || "";
         }
         
         // 策略 4: 尋找 Markdown 圖片語法中的 URL
         if (!cover) {
-            const mdImgMatch = text.match(/!\[[^\]]*\]\((https?:\/\/[^)]+\.jpg)\)/i);
+            const mdImgMatch = primarySection.match(/!\[[^\]]*\]\((https?:\/\/[^)]+\.jpg)\)/i);
             if (mdImgMatch) {
                 cover = mdImgMatch[1];
             }
@@ -521,8 +535,19 @@
     };
 
     const fetchFromJina = async (targetUrl) => {
-        const proxyUrl = `https://r.jina.ai/${targetUrl}`;
-        console.log(`[Jina] Fetching ${targetUrl}`);
+        let normalizedTargetUrl = targetUrl;
+        try {
+            const parsed = new URL(targetUrl);
+            if (/^jable\.(tv|tw)$/i.test(parsed.hostname.replace(/^www\./, ""))) {
+                parsed.protocol = "http:";
+                normalizedTargetUrl = parsed.toString();
+            }
+        } catch (error) {
+            normalizedTargetUrl = targetUrl;
+        }
+
+        const proxyUrl = `https://r.jina.ai/${normalizedTargetUrl}`;
+        console.log(`[Jina] Fetching ${normalizedTargetUrl}`);
         
         try {
             const response = await fetch(proxyUrl, {
@@ -535,7 +560,7 @@
                 throw new Error(`HTTP ${response.status}`);
             }
             const text = await response.text();
-            console.log(`[Jina] Fetched ${targetUrl}, content length: ${text.length}`);
+            console.log(`[Jina] Fetched ${normalizedTargetUrl}, content length: ${text.length}`);
             return text;
         } catch (error) {
             console.log(`[Jina] 失敗: ${error.message}`);
