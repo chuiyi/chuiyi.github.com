@@ -1,0 +1,41 @@
+{
+  "id": "tw72010204",
+  "url": "https://asia.pokemon-card.com/tw/users/tw72010204/?eventFilter=4&eventGivingCSPPointsFlg=1",
+  "fetchedAt": "2026-03-30T09:34:13.747Z",
+  "totalEvents": 3,
+  "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 1,
+      "activityName": "2025-26 Taiwan Premier Ball League TCG Division Senior Category",
+      "eventTime": "11-01-2025 11:00",
+      "eventDateTime": "2025-11-01 11:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "138",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 3,
+      "activityName": "2025-26 Taiwan Great Ball League Season 1",
+      "eventTime": "09-29-2025 13:00",
+      "eventDateTime": "2025-09-29 13:00",
+      "location": "孩子玩伴-關埔店",
+      "address": "新竹市東區關新路85號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 2,
+      "activityName": "2025-26 Taiwan Great Ball League Season 1",
+      "eventTime": "09-07-2025 12:00",
+      "eventDateTime": "2025-09-07 12:00",
+      "location": "新世紀遊戲館",
+      "address": "新竹市北區平和街7號2樓",
+      "rank": "-",
+      "lp": "-"
+    }
+  ]
+}

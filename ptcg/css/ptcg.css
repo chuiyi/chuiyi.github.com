@@ -1007,6 +1007,118 @@ main .btn-outline-ptcg:hover {
 .ptcg-modal .modal-title { color: #fff; font-size: 1.1rem; }
 .ptcg-modal .btn-close { filter: invert(1); }
 
+.tournament-detail-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.tournament-detail-chip {
+    background: var(--ptcg-bg-alt);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius-md);
+    padding: 0.75rem 0.9rem;
+}
+
+.tournament-detail-chip span {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--ptcg-text-muted);
+    margin-bottom: 0.2rem;
+}
+
+.tournament-detail-chip strong {
+    color: var(--ptcg-text);
+    font-size: 1rem;
+}
+
+.tournament-detail-tabs {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.tournament-detail-tab {
+    border: 1px solid var(--ptcg-border);
+    background: var(--ptcg-bg-alt);
+    color: var(--ptcg-text-muted);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: var(--ptcg-transition);
+}
+
+.tournament-detail-tab:hover {
+    color: var(--ptcg-text);
+    border-color: var(--ptcg-primary);
+}
+
+.tournament-detail-tab.is-active {
+    background: var(--ptcg-primary);
+    border-color: var(--ptcg-primary);
+    color: #fff;
+}
+
+.tournament-detail-panel {
+    display: none;
+}
+
+.tournament-detail-panel.is-active {
+    display: block;
+}
+
+.round-detail-section {
+    margin-bottom: 1rem;
+}
+
+.round-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.55rem;
+}
+
+.round-section-heading h6 {
+    font-size: 0.95rem;
+    color: var(--ptcg-text);
+}
+
+.round-section-meta {
+    font-size: 0.78rem;
+    color: var(--ptcg-text-muted);
+}
+
+.round-player-card {
+    min-width: 180px;
+}
+
+.round-player-name {
+    color: var(--ptcg-text);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.round-player-meta,
+.round-table-meta {
+    color: var(--ptcg-text-muted);
+    font-size: 0.78rem;
+    margin-top: 0.2rem;
+}
+
+.tournament-final-top16-row td {
+    background: rgba(245, 158, 11, 0.12);
+}
+
+.tournament-final-top16-row:hover td {
+    background: rgba(245, 158, 11, 0.2) !important;
+}
+
 /* 牌組 Modal 內的牌表 */
 .deck-list-section {
     margin-bottom: 1.5rem;

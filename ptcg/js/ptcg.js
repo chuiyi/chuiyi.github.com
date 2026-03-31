@@ -202,10 +202,14 @@ const PTCG = (() => {
             date,
             location: series ? `系列 ${series}` : '--',
             participants,
+            finalRankCount: Number.isFinite(item?.finalRankCount) ? item.finalRankCount : null,
+            round1Max,
             format: 'Standard',
             top8_archetypes: [],
             top8: [],
             csvFile: item?.csvFile || '',
+            csvVersion: item?.csvVersion || '',
+            roundCount: Number.isFinite(item?.roundCount) ? item.roundCount : 0,
             level,
             status: item?.lastStatus || '',
             error: item?.lastError || '',
@@ -552,14 +556,14 @@ const PTCG = (() => {
         document.getElementById('season-select')?.addEventListener('change', () => { _tournamentPage = 1; _renderTournamentsList(); });
         document.getElementById('tournament-search')?.addEventListener('input', _debounce(() => { _tournamentPage = 1; _renderTournamentsList(); }, 250));
         document.getElementById('tournaments-container')?.addEventListener('click', async (event) => {
-            const btn = event.target.closest('.btn-view-top16');
+            const btn = event.target.closest('.btn-view-tournament-detail');
             if (!btn || btn.disabled) return;
 
             const tid = btn.dataset.tid;
             const tournament = _allTournaments.find(t => String(t.id) === String(tid));
             if (!tournament) return;
 
-            await _openTournamentTop16Modal(tournament);
+            await _openTournamentDetailModal(tournament);
         });
     }
 
@@ -634,8 +638,8 @@ const PTCG = (() => {
                             ? `<div class="text-muted small mt-auto">待更新入賞資料</div>`
                             : ''}
                 <div class="mt-3">
-                    <button class="btn btn-outline-ptcg btn-sm btn-view-top16" data-tid="${escapeHtml(String(t.id))}" ${t.type === 'UBL' ? '' : 'disabled'}>
-                        查看瑞士輪前16名
+                    <button class="btn btn-outline-ptcg btn-sm btn-view-tournament-detail" data-tid="${escapeHtml(String(t.id))}" ${t.csvFile ? '' : 'disabled'}>
+                        詳情
                     </button>
                 </div>
             </div>
@@ -651,19 +655,307 @@ const PTCG = (() => {
         return estimated ? `${base}人(估計)` : `${base}人`;
     }
 
-    async function _openTournamentTop16Modal(tournament) {
+    function _parseUnifiedTournamentCsv(rows) {
+        if (rows.length <= 1) return [];
+
+        const header = rows[0].map(value => String(value || '').trim().toLowerCase());
+        if (!header.includes('record_type') || !header.includes('round')) {
+            return [];
+        }
+
+        return rows.slice(1)
+            .filter(cols => cols.some(value => String(value || '').trim().length > 0))
+            .map(cols => {
+                const record = {};
+                header.forEach((name, index) => {
+                    record[name] = String(cols[index] || '').trim();
+                });
+                return record;
+            });
+    }
+
+    function _sortRoundLabel(a, b) {
+        const aMatch = String(a || '').match(/round\s*(\d+)/i);
+        const bMatch = String(b || '').match(/round\s*(\d+)/i);
+        const aNum = aMatch ? parseInt(aMatch[1], 10) : Number.POSITIVE_INFINITY;
+        const bNum = bMatch ? parseInt(bMatch[1], 10) : Number.POSITIVE_INFINITY;
+        return aNum - bNum;
+    }
+
+    function _buildTournamentPlayerCell(playerId, lookup) {
+        const normalizedId = String(playerId || '').trim().toLowerCase();
+        const matched = normalizedId ? lookup.get(normalizedId) : null;
+        const name = matched?.name || playerId || '--';
+        const meta = [playerId || '--'];
+        if (matched?.divisionLabel) meta.push(matched.divisionLabel);
+
+        return `
+            <div class="round-player-card">
+                <div class="round-player-name">${escapeHtml(String(name))}</div>
+                <div class="round-player-meta">${escapeHtml(meta.join(' · '))}</div>
+            </div>`;
+    }
+
+    function _buildRoundMatchups(records) {
+        const groups = new Map();
+
+        records.forEach((record, index) => {
+            const tableNo = String(record.table_no || '').trim() || `P${record.page_index || '1'}-${index + 1}`;
+            const playerId = String(record.player_id || '').trim();
+            const opponentId = String(record.opponent_id || '').trim();
+            const idKey = [playerId, opponentId].filter(Boolean).sort().join('|') || `row-${index}`;
+            const key = `${tableNo}|${idKey}`;
+
+            if (!groups.has(key)) {
+                groups.set(key, {
+                    tableNo,
+                    pageIndex: String(record.page_index || '').trim(),
+                    rows: [],
+                });
+            }
+
+            const group = groups.get(key);
+            const exists = group.rows.some(row => String(row.player_id || '').trim() === playerId && String(row.opponent_id || '').trim() === opponentId);
+            if (!exists) {
+                group.rows.push(record);
+            }
+        });
+
+        return Array.from(groups.values())
+            .map(group => {
+                const orderedRows = [...group.rows].sort((left, right) => {
+                    const leftNo = parseInt(String(left.player_no || ''), 10);
+                    const rightNo = parseInt(String(right.player_no || ''), 10);
+                    if (Number.isFinite(leftNo) && Number.isFinite(rightNo)) {
+                        return leftNo - rightNo;
+                    }
+                    return String(left.player_id || '').localeCompare(String(right.player_id || ''), 'en');
+                });
+                const ids = Array.from(new Set(orderedRows.flatMap(row => [String(row.player_id || '').trim(), String(row.opponent_id || '').trim()]).filter(Boolean))).slice(0, 2);
+                return {
+                    tableNo: group.tableNo,
+                    pageIndex: group.pageIndex,
+                    playerA: ids[0] || '',
+                    playerB: ids[1] || '',
+                };
+            })
+            .sort((left, right) => {
+                const leftNo = parseInt(String(left.tableNo || ''), 10);
+                const rightNo = parseInt(String(right.tableNo || ''), 10);
+                if (Number.isFinite(leftNo) && Number.isFinite(rightNo)) {
+                    return leftNo - rightNo;
+                }
+                return String(left.tableNo || '').localeCompare(String(right.tableNo || ''), 'en');
+            });
+    }
+
+    function _buildTournamentDetailTabs(labels) {
+        if (!labels.length) return '';
+
+        return `
+            <div class="tournament-detail-tabs" role="tablist" aria-label="賽事詳情切換">
+                ${labels.map((label, index) => `
+                    <button
+                        type="button"
+                        class="tournament-detail-tab ${index === 0 ? 'is-active' : ''}"
+                        data-detail-tab="${escapeHtml(String(label))}"
+                        aria-pressed="${index === 0 ? 'true' : 'false'}">
+                        ${escapeHtml(String(label))}
+                    </button>
+                `).join('')}
+            </div>`;
+    }
+
+    function _renderUnifiedTournamentFinalRankBody(records, lookup) {
+        const finalRankRows = records
+            .filter(record => String(record.record_type || '').trim().toLowerCase() === 'final_rank')
+            .sort((left, right) => {
+                const leftRank = parseInt(String(left.rank || ''), 10);
+                const rightRank = parseInt(String(right.rank || ''), 10);
+                if (Number.isFinite(leftRank) && Number.isFinite(rightRank)) {
+                    return leftRank - rightRank;
+                }
+                return String(left.rank || '').localeCompare(String(right.rank || ''), 'en');
+            });
+
+        if (!finalRankRows.length) {
+            return '<p class="text-muted mb-0">此賽事沒有 Final rank 資料。</p>';
+        }
+
+        return `
+            <div class="table-responsive">
+                <table class="ptcg-table mb-0">
+                    <thead>
+                        <tr>
+                            <th width="100">賽事名次</th>
+                            <th>玩家</th>
+                            <th width="120">目前排名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${finalRankRows.map(row => {
+                            const tournamentRank = parseInt(String(row.rank || ''), 10);
+                            const ptcgId = String(row.player_id || '').trim();
+                            const matched = lookup.get(ptcgId.toLowerCase()) || null;
+                            return `
+                                <tr class="${Number.isFinite(tournamentRank) && tournamentRank <= 16 ? 'tournament-final-top16-row' : ''}">
+                                    <td>${escapeHtml(String(row.rank || '--'))}</td>
+                                    <td class="player-name-cell">
+                                        ${escapeHtml(String(matched?.name || ptcgId || '--'))}
+                                        <span>${escapeHtml(String(ptcgId || '--'))} · ${escapeHtml(String(matched?.divisionLabel || '--'))}</span>
+                                    </td>
+                                    <td>${matched?.rank ? getRankBadge(Number(matched.rank)) : '--'}</td>
+                                </tr>`;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>`;
+    }
+
+    function _renderUnifiedTournamentDetailBody(tournament, records, lookup) {
+        const roundRecords = records.filter(record => String(record.record_type || '').trim().toLowerCase() === 'round_pairing');
+        if (!roundRecords.length) {
+            return '<p class="text-muted mb-0">這份 CSV 尚未包含 round 對局資料。</p>';
+        }
+
+        const roundLabels = Array.from(new Set(roundRecords.map(record => String(record.round || '').trim()).filter(Boolean))).sort(_sortRoundLabel);
+        const tabLabels = [...roundLabels, 'Final rank'];
+        const sections = roundLabels.map((roundLabel, index) => {
+            const matchups = _buildRoundMatchups(roundRecords.filter(record => String(record.round || '').trim() === roundLabel));
+            return `
+                <section class="round-detail-section tournament-detail-panel ${index === 0 ? 'is-active' : ''}" data-detail-panel="${escapeHtml(roundLabel)}">
+                    <div class="round-section-heading">
+                        <h6 class="mb-0">${escapeHtml(roundLabel)}</h6>
+                        <span class="round-section-meta">${escapeHtml(String(matchups.length))} 桌</span>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="ptcg-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th width="100">桌次</th>
+                                    <th>玩家 A</th>
+                                    <th>玩家 B</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${matchups.map(matchup => `
+                                    <tr>
+                                        <td>
+                                            ${escapeHtml(String(matchup.tableNo || '--'))}
+                                            ${matchup.pageIndex ? `<div class="round-table-meta">Page ${escapeHtml(String(matchup.pageIndex))}</div>` : ''}
+                                        </td>
+                                        <td>${_buildTournamentPlayerCell(matchup.playerA, lookup)}</td>
+                                        <td>${_buildTournamentPlayerCell(matchup.playerB, lookup)}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>`;
+        }).join('');
+
+        const finalRankSection = `
+            <section class="round-detail-section tournament-detail-panel" data-detail-panel="Final rank">
+                <div class="round-section-heading">
+                    <h6 class="mb-0">Final rank</h6>
+                    <span class="round-section-meta">${escapeHtml(String(tournament.finalRankCount ?? '--'))} 人</span>
+                </div>
+                ${_renderUnifiedTournamentFinalRankBody(records, lookup)}
+            </section>`;
+
+        return `
+            <div class="tournament-detail-summary">
+                <div class="tournament-detail-chip"><span>Round 數</span><strong>${escapeHtml(String(roundLabels.length))}</strong></div>
+                <div class="tournament-detail-chip"><span>Round 1 總桌次</span><strong>${escapeHtml(String(tournament.round1Max ?? '--'))}</strong></div>
+                <div class="tournament-detail-chip"><span>Final Rank</span><strong>${escapeHtml(String(tournament.finalRankCount ?? '--'))}</strong></div>
+            </div>
+            ${_buildTournamentDetailTabs(tabLabels)}
+            <div class="tournament-detail-panels">
+                ${sections}
+                ${finalRankSection}
+            </div>`;
+    }
+
+    async function _renderLegacyTournamentDetailBody(rows, tournament) {
+        if (rows.length <= 1) {
+            return '<p class="text-muted mb-0">CSV 無可顯示資料。</p>';
+        }
+
+        const header = rows[0];
+        const rankIndex = header.findIndex(h => String(h).trim().toLowerCase() === 'rank');
+        const playerIndex = header.findIndex(h => String(h).trim().toLowerCase() === 'your name');
+        const lookupLevel = tournament.level || parseLevelFromTournamentTitle(tournament.name);
+        const lookup = await loadRankingLookupByPtcgId(lookupLevel);
+
+        const allRows = rows.slice(1).map(cols => {
+            const tournamentRank = cols[rankIndex] || '--';
+            const tournamentId = String(cols[playerIndex] || '').trim();
+            const matched = lookup.get(tournamentId.toLowerCase()) || null;
+
+            return {
+                tournamentRank,
+                ptcgId: tournamentId || '--',
+                matchedName: matched?.name || '--',
+                matchedRank: matched?.rank ?? '--',
+                divisionLabel: matched?.divisionLabel || '--',
+            };
+        });
+
+        return `
+            <p class="text-muted small mb-3">此賽事尚未轉換為 round 詳情格式，先顯示 Final rank 全榜。</p>
+            <div class="table-responsive">
+                <table class="ptcg-table mb-0">
+                    <thead>
+                        <tr>
+                            <th width="100">賽事名次</th>
+                            <th>玩家</th>
+                            <th width="120">目前排名</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${allRows.map(row => `
+                            <tr class="${(parseInt(String(row.tournamentRank), 10) || Number.POSITIVE_INFINITY) <= 16 ? 'tournament-final-top16-row' : ''}">
+                                <td>${escapeHtml(String(row.tournamentRank))}</td>
+                                <td class="player-name-cell">
+                                    ${escapeHtml(String(row.matchedName))}
+                                    <span>${escapeHtml(String(row.ptcgId))} · ${escapeHtml(String(row.divisionLabel))}</span>
+                                </td>
+                                <td>${row.matchedRank === '--' ? '--' : getRankBadge(Number(row.matchedRank))}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>`;
+    }
+
+    function _bindTournamentDetailTabs(bodyEl) {
+        const tabButtons = Array.from(bodyEl.querySelectorAll('[data-detail-tab]'));
+        const panels = Array.from(bodyEl.querySelectorAll('[data-detail-panel]'));
+        if (!tabButtons.length || !panels.length) return;
+
+        const activate = (label) => {
+            tabButtons.forEach((button) => {
+                const isActive = button.dataset.detailTab === label;
+                button.classList.toggle('is-active', isActive);
+                button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+            panels.forEach((panel) => {
+                panel.classList.toggle('is-active', panel.dataset.detailPanel === label);
+            });
+        };
+
+        tabButtons.forEach((button) => {
+            button.addEventListener('click', () => activate(button.dataset.detailTab || ''));
+        });
+    }
+
+    async function _openTournamentDetailModal(tournament) {
         const modalEl = document.getElementById('tournamentDetailModal');
         const bodyEl = document.getElementById('tournamentDetailBody');
         const titleEl = document.getElementById('tournamentDetailTitle');
         if (!modalEl || !bodyEl || !titleEl) return;
 
-        titleEl.textContent = `${tournament.name} · 前16名`;
-
-        if (tournament.type !== 'UBL') {
-            bodyEl.innerHTML = '<p class="text-muted mb-0">目前僅支援 UBL 顯示前16名資料。</p>';
-            new bootstrap.Modal(modalEl).show();
-            return;
-        }
+        titleEl.textContent = `${tournament.name} · 詳情`;
 
         if (!tournament.csvFile) {
             bodyEl.innerHTML = '<p class="text-muted mb-0">此賽事尚未建立對應 CSV 檔案。</p>';
@@ -671,69 +963,22 @@ const PTCG = (() => {
             return;
         }
 
-        bodyEl.innerHTML = '<div class="text-center py-4"><div class="ptcg-spinner mx-auto"></div><p class="mt-3 text-muted mb-0">載入前16名資料中...</p></div>';
+        bodyEl.innerHTML = '<div class="text-center py-4"><div class="ptcg-spinner mx-auto"></div><p class="mt-3 text-muted mb-0">載入賽事詳情中...</p></div>';
         new bootstrap.Modal(modalEl).show();
 
         try {
             const csvText = await fetchText(`tournaments/${tournament.csvFile}`);
             const rows = parseCsvText(csvText);
-            if (rows.length <= 1) {
-                bodyEl.innerHTML = '<p class="text-muted mb-0">CSV 無可顯示資料。</p>';
-                return;
-            }
-
-            const header = rows[0];
-            const rankIndex = header.findIndex(h => String(h).trim().toLowerCase() === 'rank');
-            const playerIndex = header.findIndex(h => String(h).trim().toLowerCase() === 'your name');
             const lookupLevel = tournament.level || parseLevelFromTournamentTitle(tournament.name);
             const lookup = await loadRankingLookupByPtcgId(lookupLevel);
 
-            const top16 = rows.slice(1, 17).map(cols => {
-                const tournamentRank = cols[rankIndex] || '--';
-                const tournamentId = String(cols[playerIndex] || '').trim();
-                const matched = lookup.get(tournamentId.toLowerCase()) || null;
-
-                return {
-                    tournamentRank,
-                    ptcgId: tournamentId || '--',
-                    matchedName: matched?.name || '--',
-                    matchedRank: matched?.rank ?? '--',
-                    matchedScore: matched?.score ?? '--',
-                    divisionLabel: matched?.divisionLabel || '--',
-                };
-            });
-
-            const matchedCount = top16.filter(row => row.matchedName !== '--').length;
-
-            bodyEl.innerHTML = `
-                <p class="text-muted small mb-3">已配對 ${matchedCount}/16 名（依 ${escapeHtml(mapDivisionLabel(lookupLevel) || '--')} 排行 CSV 比對）</p>
-                <div class="table-responsive">
-                    <table class="ptcg-table mb-0">
-                        <thead>
-                            <tr>
-                                <th width="100">賽事名次</th>
-                                <th>玩家</th>
-                                <th width="120">目前排名</th>
-                                <th width="140" class="text-end">目前積分</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${top16.map(row => `
-                                <tr>
-                                    <td>${escapeHtml(String(row.tournamentRank))}</td>
-                                    <td class="player-name-cell">
-                                        ${escapeHtml(String(row.matchedName))}
-                                        <span>${escapeHtml(String(row.ptcgId))} · ${escapeHtml(String(row.divisionLabel))}</span>
-                                    </td>
-                                    <td>${row.matchedRank === '--' ? '--' : getRankBadge(Number(row.matchedRank))}</td>
-                                    <td class="score-cell text-end">${escapeHtml(String(row.matchedScore))}</td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
-                    </table>
-                </div>`;
+            const unifiedRecords = _parseUnifiedTournamentCsv(rows);
+            bodyEl.innerHTML = unifiedRecords.length
+                ? _renderUnifiedTournamentDetailBody(tournament, unifiedRecords, lookup)
+                : await _renderLegacyTournamentDetailBody(rows, tournament);
+            _bindTournamentDetailTabs(bodyEl);
         } catch (err) {
-            bodyEl.innerHTML = `<p class="text-muted mb-0">載入前16名失敗：${escapeHtml(err.message || '未知錯誤')}</p>`;
+            bodyEl.innerHTML = `<p class="text-muted mb-0">載入賽事詳情失敗：${escapeHtml(err.message || '未知錯誤')}</p>`;
         }
     }
 

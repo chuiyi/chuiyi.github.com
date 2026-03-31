@@ -429,15 +429,43 @@
     const parseCoverFromSearch = (text, slug, domain) => {
         const safeSlug = escapeRegExp(slug);
         const safeHost = escapeRegExp((domain || "jable.tv").replace(/^www\./, ""));
+
+        // 策略 1: Markdown 連結格式 [![...](img)](video_url)，同時支援 /videos/ 和 /s0/videos/
         const pattern = new RegExp(
-            `\\[!\\[[^\\]]*\\]\\((https?://assets-cdn\\.jable\\.tv/contents/videos_screenshots/\\d+/\\d+/320x180/1\\.jpg)\\)[^\\]]*\\]\\(https?://(?:www\\.)?${safeHost}/videos/${safeSlug}/\\)`,
+            `\\[!\\[[^\\]]*\\]\\((https?://assets-cdn\\.jable\\.tv/contents/videos_screenshots/\\d+/\\d+/320x180/1\\.jpg)\\)[^\\]]*\\]\\(https?://(?:www\\.)?${safeHost}/(?:s0/)?videos/${safeSlug}/\\)`,
             "i"
         );
-        const match = text.match(pattern)?.[1]
-            || text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/320x180\/1\.jpg/i)?.[0]
-            || "";
-        if (!match) return "";
-        return match.replace("/320x180/1.jpg", "/preview.jpg");
+        const directMatch = text.match(pattern)?.[1];
+        if (directMatch) {
+            console.log(`[parseCoverFromSearch] 策略 1 命中: ${directMatch}`);
+            return directMatch.replace("/320x180/1.jpg", "/preview.jpg");
+        }
+
+        // 策略 2: 在 slug 出現位置附近（前 600 字元）尋找圖片 URL，避免抓到無關的推薦影片
+        const slugIndex = text.search(new RegExp(`/${safeSlug}/`, "i"));
+        if (slugIndex > -1) {
+            const nearby = text.substring(Math.max(0, slugIndex - 600), slugIndex + 200);
+            const nearbyThumb = nearby.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/(\d+)\/(\d+)\/320x180\/1\.jpg/i);
+            if (nearbyThumb) {
+                const nearbyPreview = `https://assets-cdn.jable.tv/contents/videos_screenshots/${nearbyThumb[1]}/${nearbyThumb[2]}/preview.jpg`;
+                console.log(`[parseCoverFromSearch] 策略 2 (slug 附近) 命中: ${nearbyPreview}`);
+                return nearbyPreview;
+            }
+            const nearbyPreviewDirect = nearby.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/preview\.jpg/i);
+            if (nearbyPreviewDirect) {
+                console.log(`[parseCoverFromSearch] 策略 2 (slug 附近 preview) 命中: ${nearbyPreviewDirect[0]}`);
+                return nearbyPreviewDirect[0];
+            }
+        }
+
+        // 策略 3 (最後手段): 全頁第一個縮圖（可能不準確）
+        const fallbackThumb = text.match(/https?:\/\/assets-cdn\.jable\.tv\/contents\/videos_screenshots\/\d+\/\d+\/320x180\/1\.jpg/i)?.[0];
+        if (fallbackThumb) {
+            console.log(`[parseCoverFromSearch] 策略 3 (全頁第一張，可能不準) 命中: ${fallbackThumb}`);
+            return fallbackThumb.replace("/320x180/1.jpg", "/preview.jpg");
+        }
+
+        return "";
     };
 
     const extractStreamUrlFromSearch = (text) => {
