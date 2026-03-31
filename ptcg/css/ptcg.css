@@ -822,8 +822,10 @@ main .btn-outline-ptcg:hover {
     background: var(--ptcg-bg);
     border-color: var(--ptcg-border);
     color: var(--ptcg-text-muted);
-    font-size: 0.82rem;
-    padding: 0.3rem 0.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.45rem 1.1rem;
+    min-height: 40px;
     transition: var(--ptcg-transition);
 }
 
@@ -852,6 +854,81 @@ main .btn-outline-ptcg:hover {
     background: var(--ptcg-primary);
     border-color: var(--ptcg-primary);
     color: #fff;
+}
+
+.btn-tournament-action {
+    border-radius: 10px !important;
+    padding: 0.32rem 0.75rem;
+    font-size: 0.84rem;
+    line-height: 1.2;
+}
+
+.top-count-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.45rem;
+    height: 1.2rem;
+    margin-left: 0.35rem;
+    padding: 0 0.32rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: rgba(29, 78, 216, 0.12);
+    border: 1px solid rgba(29, 78, 216, 0.25);
+    color: var(--ptcg-primary);
+}
+
+.deck-preview-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    color: var(--ptcg-primary);
+    text-decoration: none;
+}
+
+.deck-preview-link:hover {
+    color: var(--ptcg-primary-dk);
+}
+
+.deck-preview-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ptcg-border);
+    border-radius: 8px;
+    width: 1.9rem;
+    height: 1.6rem;
+    background: var(--ptcg-surface-alt);
+    font-size: 0.86rem;
+}
+
+.deck-preview-tooltip {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 1060;
+    background: #fff;
+    border: 1px solid var(--ptcg-border);
+    border-radius: 14px;
+    box-shadow: var(--ptcg-shadow-lg);
+    padding: 0.6rem;
+}
+
+.deck-preview-tooltip img {
+    display: block;
+    width: min(88vw, 520px);
+    max-width: 520px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.deck-preview-link:hover .deck-preview-tooltip,
+.deck-preview-link:focus-visible .deck-preview-tooltip {
+    display: block;
 }
 
 .form-select, .form-control {
