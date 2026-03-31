@@ -185,7 +185,8 @@ const PTCG = (() => {
     function normalizeTournamentRecord(item, sourceType) {
         const type = String(sourceType || item?.type || '').toUpperCase();
         const title = String(item?.title || '').trim();
-        const date = parseDateFromTournamentTitle(title)
+        const date = String(item?.officialDate || '').trim()
+            || parseDateFromTournamentTitle(title)
             || (item?.createdAt ? String(item.createdAt).slice(0, 10) : '');
         const season = parseSeasonFromTournamentTitle(title);
         const level = String(item?.level || parseLevelFromTournamentTitle(title) || '').toLowerCase();
@@ -213,21 +214,89 @@ const PTCG = (() => {
             level,
             status: item?.lastStatus || '',
             error: item?.lastError || '',
+            officialUrl: item?.officialUrl || '',
+            top128File: item?.top128File || '',
+            top128Count: Number.isFinite(item?.top128Count) ? item.top128Count : null,
+            officialDate: item?.officialDate || '',
         };
     }
 
+    function normalizeTop128OnlyRecord(item) {
+        const type = String(item?.type || 'ubl').toUpperCase();
+        const level = String(item?.level || '').toLowerCase();
+        const levelLabel = PLAYER_LEVEL_LABELS[level] || '';
+        const series = String(item?.series || '').trim();
+        const season = String(item?.season || '').trim() || '2025-2026';
+        const typeLabel = TOURNAMENT_TYPE_MAP[type]?.label || type;
+        const name = [season.replace('-', '-').replace('-', '-'), typeLabel, series ? `系列 ${series}` : '', levelLabel]
+            .filter(Boolean)
+            .join(' ')
+            .trim();
+
+        return {
+            id: String(item?.id || `top128-${type}-${series || Date.now()}-${level || 'unknown'}`),
+            name: name || `${typeLabel} 官方 Top 128`,
+            type,
+            season,
+            date: String(item?.officialDate || item?.date || ''),
+            location: '',
+            participants: Number.isFinite(item?.top128Count) ? item.top128Count : '',
+            finalRankCount: null,
+            round1Max: null,
+            format: 'Standard',
+            top8_archetypes: [],
+            top8: [],
+            csvFile: '',
+            csvVersion: '',
+            roundCount: 0,
+            level,
+            status: '',
+            error: '',
+            officialUrl: String(item?.officialUrl || ''),
+            top128File: String(item?.top128File || ''),
+            top128Count: Number.isFinite(item?.top128Count) ? item.top128Count : null,
+            officialDate: String(item?.officialDate || item?.date || ''),
+        };
+    }
+
+    async function loadTop128Manifest() {
+        try {
+            const data = await fetchJSON('tournaments_top128.json');
+            if (!data || typeof data !== 'object' || !Array.isArray(data.TOP128)) {
+                return [];
+            }
+            return data.TOP128;
+        } catch {
+            return [];
+        }
+    }
+
     async function loadUnifiedTournaments() {
-        const [ublSource, premiereSource] = await Promise.all([
+        const [ublSource, premiereSource, top128Manifest] = await Promise.all([
             fetchJSON('tournaments_ubl.json'),
             fetchJSON('tournaments_premiere.json'),
+            loadTop128Manifest(),
         ]);
 
         const ublList = Array.isArray(ublSource?.UBL) ? ublSource.UBL : [];
         const premiereList = Array.isArray(premiereSource?.PREMIERE) ? premiereSource.PREMIERE : [];
+        const existingTop128Files = new Set(
+            [...ublList, ...premiereList]
+                .map(item => String(item?.top128File || '').trim())
+                .filter(Boolean)
+        );
+
+        const top128OnlyList = top128Manifest
+            .filter(item => {
+                const top128File = String(item?.top128File || '').trim();
+                return top128File && !existingTop128Files.has(top128File);
+            })
+            .map(item => normalizeTop128OnlyRecord(item));
 
         const tournaments = [
             ...ublList.map(item => normalizeTournamentRecord(item, 'UBL')),
             ...premiereList.map(item => normalizeTournamentRecord(item, 'PREMIERE')),
+            ...top128OnlyList,
         ];
 
         tournaments.sort((a, b) => toDateValue(b.date) - toDateValue(a.date));
@@ -557,13 +626,19 @@ const PTCG = (() => {
         document.getElementById('tournament-search')?.addEventListener('input', _debounce(() => { _tournamentPage = 1; _renderTournamentsList(); }, 250));
         document.getElementById('tournaments-container')?.addEventListener('click', async (event) => {
             const btn = event.target.closest('.btn-view-tournament-detail');
-            if (!btn || btn.disabled) return;
+            if (btn && !btn.disabled) {
+                const tid = btn.dataset.tid;
+                const tournament = _allTournaments.find(t => String(t.id) === String(tid));
+                if (tournament) await _openTournamentDetailModal(tournament);
+                return;
+            }
 
-            const tid = btn.dataset.tid;
-            const tournament = _allTournaments.find(t => String(t.id) === String(tid));
-            if (!tournament) return;
-
-            await _openTournamentDetailModal(tournament);
+            const btn128 = event.target.closest('.btn-view-top128');
+            if (btn128 && !btn128.disabled) {
+                const tid = btn128.dataset.tid;
+                const tournament = _allTournaments.find(t => String(t.id) === String(tid));
+                if (tournament) await _openTop128Modal(tournament);
+            }
         });
     }
 
@@ -603,6 +678,19 @@ const PTCG = (() => {
     function _buildTournamentCard(t) {
         const typeInfo  = TOURNAMENT_TYPE_MAP[t.type] || { cls: 'badge-spr', label: t.type };
         const levelLabel = PLAYER_LEVEL_LABELS[t.level] || null;
+        const topCount = Number.isFinite(t.top128Count) ? t.top128Count : null;
+        const topCountLabel = topCount ? `${topCount}` : '--';
+        const participantsText = _formatTournamentParticipants(t.participants);
+        const metaParts = [];
+        if (t.date) {
+            metaParts.push(`<span><i class="bi bi-calendar3 me-1"></i>${formatDate(t.date)}</span>`);
+        }
+        if (t.location && t.location !== '--') {
+            metaParts.push(`<span><i class="bi bi-geo-alt me-1"></i>${escapeHtml(t.location)}</span>`);
+        }
+        if (participantsText !== '--') {
+            metaParts.push(`<span><i class="bi bi-people me-1"></i>${escapeHtml(participantsText)}</span>`);
+        }
         const top8Html  = (t.top8 || []).map((p, i) => `
             <div class="deck-card-entry">
                 <span>${getRankBadge(i+1)} <span class="ms-2">${escapeHtml(p.player)}</span></span>
@@ -619,14 +707,10 @@ const PTCG = (() => {
                         </span>
                         ${levelLabel ? `<span class="tournament-type-badge badge-level-${escapeHtml(t.level)}">${escapeHtml(levelLabel)}</span>` : ''}
                     </div>
-                    <span class="tournament-meta">${escapeHtml(t.season || '')}</span>
+                    ${t.season ? `<span class="tournament-meta">${escapeHtml(t.season)}</span>` : ''}
                 </div>
                 <div class="tournament-name">${escapeHtml(t.name)}</div>
-                <div class="tournament-meta mb-3">
-                    <span><i class="bi bi-calendar3 me-1"></i>${formatDate(t.date)}</span>
-                    <span><i class="bi bi-geo-alt me-1"></i>${escapeHtml(t.location || '--')}</span>
-                    <span><i class="bi bi-people me-1"></i>${escapeHtml(_formatTournamentParticipants(t.participants))}</span>
-                </div>
+                ${metaParts.length ? `<div class="tournament-meta mb-3">${metaParts.join('')}</div>` : ''}
                 ${top8Html
                     ? `<div class="mt-auto">
                         <div style="font-size:0.78rem;color:var(--ptcg-text-muted);margin-bottom:0.4rem;">前八強</div>
@@ -634,13 +718,16 @@ const PTCG = (() => {
                        </div>`
                     : t.status === 'failed'
                         ? `<div class="text-muted small mt-auto">目前無法擷取：${escapeHtml(t.error || '資料來源限制')}</div>`
-                        : !t.csvFile
+                        : (!t.csvFile && !t.top128File)
                             ? `<div class="text-muted small mt-auto">待更新入賞資料</div>`
                             : ''}
-                <div class="mt-3">
-                    <button class="btn btn-outline-ptcg btn-sm btn-view-tournament-detail" data-tid="${escapeHtml(String(t.id))}" ${t.csvFile ? '' : 'disabled'}>
-                        詳情
-                    </button>
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                    ${t.csvFile ? `<button class="btn btn-outline-ptcg btn-sm btn-tournament-action btn-view-tournament-detail" data-tid="${escapeHtml(String(t.id))}">
+                        <i class="bi bi-diagram-3-fill me-1"></i>Pairing詳情
+                    </button>` : ''}
+                    ${t.top128File ? `<button class="btn btn-outline-ptcg btn-sm btn-tournament-action btn-view-top128" data-tid="${escapeHtml(String(t.id))}">
+                        <i class="bi bi-trophy-fill me-1"></i>官方Top表 <span class="top-count-pill">${escapeHtml(topCountLabel)}</span>
+                    </button>` : ''}
                 </div>
             </div>
         </div>`;
@@ -981,6 +1068,95 @@ const PTCG = (() => {
             bodyEl.innerHTML = `<p class="text-muted mb-0">載入賽事詳情失敗：${escapeHtml(err.message || '未知錯誤')}</p>`;
         }
     }
+
+    // ─── 官方 Top 128 Modal ───────────────────────────────────
+
+    function _parseTop128Csv(csvText) {
+        const rows = parseCsvText(csvText);
+        if (rows.length <= 1) return [];
+        const header = rows[0].map(v => String(v || '').trim().toLowerCase());
+        const idx = k => header.indexOf(k);
+        const rankI = idx('rank'), pointsI = idx('points'), userI = idx('username');
+        const idI = idx('player_id'), regionI = idx('region'), deckI = idx('deck_url');
+        return rows.slice(1).map(cols => ({
+            rank: cols[rankI] || '',
+            points: cols[pointsI] || '',
+            username: cols[userI] || '',
+            player_id: cols[idI] || '',
+            region: cols[regionI] || '',
+            deck_url: cols[deckI] || '',
+        })).filter(r => r.rank);
+    }
+
+    function _renderTop128Body(players) {
+        if (!players.length) return '<p class="text-muted mb-0">尚無排名資料。</p>';
+        return `
+            <div class="table-responsive">
+                <table class="ptcg-table mb-0">
+                    <thead>
+                        <tr>
+                            <th width="70">#</th>
+                            <th width="90">點數</th>
+                            <th>玩家</th>
+                            <th class="d-none d-sm-table-cell">區域</th>
+                            <th width="70" class="d-none d-md-table-cell">牌組</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${players.map(p => {
+                            const rankNum = parseInt(p.rank, 10) || 0;
+                            const rowCls = rankNum <= 8 ? 'tournament-final-top16-row' : '';
+                            const deckCodeMatch = String(p.deck_url || '').match(/\/deck-build\/recipe\/([^/]+)\/?/);
+                            const deckCode = deckCodeMatch ? deckCodeMatch[1] : '';
+                            const deckImage = deckCode ? `https://asia.pokemon-card.com/tw/deck-img/${deckCode}.png` : '';
+                            const deckLink = p.deck_url
+                                ? `<a href="https://asia.pokemon-card.com${escapeHtml(p.deck_url)}" target="_blank" rel="noopener" class="deck-preview-link" aria-label="查看牌組">
+                                        <span class="deck-preview-trigger"><i class="bi bi-suit-spade-fill"></i></span>
+                                        ${deckImage ? `<span class="deck-preview-tooltip"><img src="${escapeHtml(deckImage)}" alt="牌組圖片"></span>` : ''}
+                                   </a>`
+                                : '--';
+                            return `<tr class="${rowCls}">
+                                <td>${rankNum <= 3 ? getRankBadge(rankNum) : escapeHtml(p.rank)}</td>
+                                <td class="score-cell">${escapeHtml(p.points)} pt</td>
+                                <td class="player-name-cell">
+                                    ${escapeHtml(p.username)}
+                                    <span>${escapeHtml(p.player_id)}</span>
+                                </td>
+                                <td class="d-none d-sm-table-cell">${escapeHtml(p.region)}</td>
+                                <td class="d-none d-md-table-cell">${deckLink}</td>
+                            </tr>`;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>`;
+    }
+
+    async function _openTop128Modal(tournament) {
+        const modalEl = document.getElementById('tournamentDetailModal');
+        const bodyEl  = document.getElementById('tournamentDetailBody');
+        const titleEl = document.getElementById('tournamentDetailTitle');
+        if (!modalEl || !bodyEl || !titleEl) return;
+
+        titleEl.textContent = `${tournament.name} · 官方Top表`;
+        bodyEl.innerHTML = '<div class="text-center py-4"><div class="ptcg-spinner mx-auto"></div><p class="mt-3 text-muted mb-0">載入官方排名中...</p></div>';
+        new bootstrap.Modal(modalEl).show();
+
+        try {
+            const csvText = await fetchText(`tournaments/${tournament.top128File}`);
+            const players = _parseTop128Csv(csvText);
+            bodyEl.innerHTML = `
+                <div class="tournament-detail-summary mb-3">
+                    <div class="tournament-detail-chip"><span>來源</span><strong>官方頁面</strong></div>
+                    <div class="tournament-detail-chip"><span>筆數</span><strong>${players.length} 人</strong></div>
+                    ${tournament.officialUrl ? `<div class="tournament-detail-chip"><a href="${escapeHtml(tournament.officialUrl)}" target="_blank" rel="noopener" class="text-decoration-none"><i class="bi bi-box-arrow-up-right me-1"></i>官方頁面</a></div>` : ''}
+                </div>
+                ${_renderTop128Body(players)}`;
+        } catch (err) {
+            bodyEl.innerHTML = `<p class="text-muted mb-0">載入官方 Top 128 失敗：${escapeHtml(err.message || '未知錯誤')}</p>`;
+        }
+    }
+
+    // ─── 分頁 ─────────────────────────────────────────────────
 
     function _renderPagination(pages, containerId) {
         const nav = document.getElementById(containerId);

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-30T09:53:50.226Z",
+  "generated_at": "2026-03-31T11:01:04.576Z",
   "generated_by": "schedule_scrape_players.js",
   "total_players": 6104,
   "players": [
@@ -141,10 +141,10 @@
     {
       "ptcg_id": "tw00244458",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T11:00:47.360Z",
+      "source_file": "tw00244458.json",
       "note": ""
     },
     {
@@ -258,10 +258,10 @@
     {
       "ptcg_id": "tw00440397",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:12:16.215Z",
+      "source_file": "tw00440397.json",
       "note": ""
     },
     {
@@ -276,10 +276,10 @@
     {
       "ptcg_id": "tw00466627",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:53:10.915Z",
+      "source_file": "tw00466627.json",
       "note": ""
     },
     {
@@ -375,11 +375,11 @@
     {
       "ptcg_id": "tw00624922",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:25:54.824Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw00651092",
@@ -600,10 +600,10 @@
     {
       "ptcg_id": "tw01031400",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:36:19.116Z",
+      "source_file": "tw01031400.json",
       "note": ""
     },
     {
@@ -627,11 +627,11 @@
     {
       "ptcg_id": "tw01111702",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:41:34.002Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw01124210",
@@ -861,11 +861,11 @@
     {
       "ptcg_id": "tw01602665",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:28:22.427Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw01630016",
@@ -1248,11 +1248,11 @@
     {
       "ptcg_id": "tw02269447",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:38:58.641Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw02284151",
@@ -1347,11 +1347,11 @@
     {
       "ptcg_id": "tw02535624",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:46:25.158Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw02537457",
@@ -1410,11 +1410,11 @@
     {
       "ptcg_id": "tw02583881",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:31:03.469Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw02597386",
@@ -1437,10 +1437,10 @@
     {
       "ptcg_id": "tw02633302",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:28:18.664Z",
+      "source_file": "tw02633302.json",
       "note": ""
     },
     {
@@ -1536,20 +1536,20 @@
     {
       "ptcg_id": "tw02765494",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:18:39.269Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw02787975",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:31:16.617Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw02791820",
@@ -1617,10 +1617,10 @@
     {
       "ptcg_id": "tw02907113",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:16:06.948Z",
+      "source_file": "tw02907113.json",
       "note": ""
     },
     {
@@ -1653,10 +1653,10 @@
     {
       "ptcg_id": "tw03016894",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:47:32.832Z",
+      "source_file": "tw03016894.json",
       "note": ""
     },
     {
@@ -1680,10 +1680,10 @@
     {
       "ptcg_id": "tw03087567",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:49:21.235Z",
+      "source_file": "tw03087567.json",
       "note": ""
     },
     {
@@ -1860,11 +1860,11 @@
     {
       "ptcg_id": "tw03333214",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:03:40.180Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw03376553",
@@ -1977,11 +1977,11 @@
     {
       "ptcg_id": "tw03538932",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:55:53.147Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw03539566",
@@ -1995,10 +1995,10 @@
     {
       "ptcg_id": "tw03571198",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:53:19.706Z",
+      "source_file": "tw03571198.json",
       "note": ""
     },
     {
@@ -2022,10 +2022,10 @@
     {
       "ptcg_id": "tw03588092",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:50:46.987Z",
+      "source_file": "tw03588092.json",
       "note": ""
     },
     {
@@ -2130,19 +2130,19 @@
     {
       "ptcg_id": "tw03798354",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:38:40.923Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw03800951",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:59:26.769Z",
+      "source_file": "tw03800951.json",
       "note": ""
     },
     {
@@ -2337,10 +2337,10 @@
     {
       "ptcg_id": "tw04149115",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:37:31.889Z",
+      "source_file": "tw04149115.json",
       "note": ""
     },
     {
@@ -2391,10 +2391,10 @@
     {
       "ptcg_id": "tw04224093",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:47:44.638Z",
+      "source_file": "tw04224093.json",
       "note": ""
     },
     {
@@ -2445,11 +2445,11 @@
     {
       "ptcg_id": "tw04290509",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:28.089Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw04313550",
@@ -2580,10 +2580,10 @@
     {
       "ptcg_id": "tw04520367",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:47:22.112Z",
+      "source_file": "tw04520367.json",
       "note": ""
     },
     {
@@ -2661,11 +2661,11 @@
     {
       "ptcg_id": "tw04644149",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:43:48.019Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw04647150",
@@ -2832,10 +2832,10 @@
     {
       "ptcg_id": "tw04866459",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:20:00.783Z",
+      "source_file": "tw04866459.json",
       "note": ""
     },
     {
@@ -2868,11 +2868,11 @@
     {
       "ptcg_id": "tw04925681",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:39:17.928Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw04928859",
@@ -3264,11 +3264,11 @@
     {
       "ptcg_id": "tw05738879",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:56:17.722Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw05779731",
@@ -3309,11 +3309,11 @@
     {
       "ptcg_id": "tw05857437",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:18:36.346Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw05867331",
@@ -3426,11 +3426,11 @@
     {
       "ptcg_id": "tw06034751",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:58:32.396Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw06072288",
@@ -3507,11 +3507,11 @@
     {
       "ptcg_id": "tw06198131",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:55.863Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw06215923",
@@ -3534,11 +3534,11 @@
     {
       "ptcg_id": "tw06221510",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:16:30.965Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw06225308",
@@ -3606,10 +3606,10 @@
     {
       "ptcg_id": "tw06341686",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:49:56.976Z",
+      "source_file": "tw06341686.json",
       "note": ""
     },
     {
@@ -3777,20 +3777,20 @@
     {
       "ptcg_id": "tw06634632",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:23:37.033Z",
+      "source_file": "tw06634632.json",
       "note": ""
     },
     {
       "ptcg_id": "tw06637395",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:18:33.434Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw06654484",
@@ -3831,10 +3831,10 @@
     {
       "ptcg_id": "tw06703131",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:54:14.658Z",
+      "source_file": "tw06703131.json",
       "note": ""
     },
     {
@@ -3912,10 +3912,10 @@
     {
       "ptcg_id": "tw06844220",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:34:34.074Z",
+      "source_file": "tw06844220.json",
       "note": ""
     },
     {
@@ -4002,11 +4002,11 @@
     {
       "ptcg_id": "tw06981249",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:45:37.559Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw07020662",
@@ -4056,10 +4056,10 @@
     {
       "ptcg_id": "tw07063945",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:55:30.446Z",
+      "source_file": "tw07063945.json",
       "note": ""
     },
     {
@@ -4074,10 +4074,10 @@
     {
       "ptcg_id": "tw07103027",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:22:32.055Z",
+      "source_file": "tw07103027.json",
       "note": ""
     },
     {
@@ -4128,10 +4128,10 @@
     {
       "ptcg_id": "tw07200032",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:27:36.042Z",
+      "source_file": "tw07200032.json",
       "note": ""
     },
     {
@@ -4290,10 +4290,10 @@
     {
       "ptcg_id": "tw07494906",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:18:53.401Z",
+      "source_file": "tw07494906.json",
       "note": ""
     },
     {
@@ -4317,10 +4317,10 @@
     {
       "ptcg_id": "tw07560069",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:46:43.134Z",
+      "source_file": "tw07560069.json",
       "note": ""
     },
     {
@@ -4497,10 +4497,10 @@
     {
       "ptcg_id": "tw07841936",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:37:49.414Z",
+      "source_file": "tw07841936.json",
       "note": ""
     },
     {
@@ -4533,11 +4533,11 @@
     {
       "ptcg_id": "tw07893493",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:49:00.497Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw07910724",
@@ -4866,10 +4866,10 @@
     {
       "ptcg_id": "tw08703678",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:55:24.906Z",
+      "source_file": "tw08703678.json",
       "note": ""
     },
     {
@@ -4884,10 +4884,10 @@
     {
       "ptcg_id": "tw08761642",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:53:32.391Z",
+      "source_file": "tw08761642.json",
       "note": ""
     },
     {
@@ -5055,20 +5055,20 @@
     {
       "ptcg_id": "tw08948324",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:31:34.905Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw08952821",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:56:24.287Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw08969542",
@@ -5127,11 +5127,11 @@
     {
       "ptcg_id": "tw09068225",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:16:28.024Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw09071101",
@@ -5361,11 +5361,11 @@
     {
       "ptcg_id": "tw09395817",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:22:12.288Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw09432546",
@@ -5451,11 +5451,11 @@
     {
       "ptcg_id": "tw09573043",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:49:10.049Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw09574160",
@@ -5505,11 +5505,11 @@
     {
       "ptcg_id": "tw09658991",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:58:27.714Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw09663536",
@@ -5748,10 +5748,10 @@
     {
       "ptcg_id": "tw10112482",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:21:16.338Z",
+      "source_file": "tw10112482.json",
       "note": ""
     },
     {
@@ -5793,10 +5793,10 @@
     {
       "ptcg_id": "tw10149794",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:43:45.158Z",
+      "source_file": "tw10149794.json",
       "note": ""
     },
     {
@@ -5829,10 +5829,10 @@
     {
       "ptcg_id": "tw10195208",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:41:59.673Z",
+      "source_file": "tw10195208.json",
       "note": ""
     },
     {
@@ -5874,10 +5874,10 @@
     {
       "ptcg_id": "tw10263420",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:43:43.958Z",
+      "source_file": "tw10263420.json",
       "note": ""
     },
     {
@@ -5964,19 +5964,19 @@
     {
       "ptcg_id": "tw10437106",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:45:26.999Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw10443601",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:59:16.668Z",
+      "source_file": "tw10443601.json",
       "note": ""
     },
     {
@@ -6099,10 +6099,10 @@
     {
       "ptcg_id": "tw10603639",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:48:43.041Z",
+      "source_file": "tw10603639.json",
       "note": ""
     },
     {
@@ -6180,11 +6180,11 @@
     {
       "ptcg_id": "tw10834493",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:03:36.948Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw10838920",
@@ -6225,10 +6225,10 @@
     {
       "ptcg_id": "tw10984717",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:50:42.138Z",
+      "source_file": "tw10984717.json",
       "note": ""
     },
     {
@@ -6243,10 +6243,10 @@
     {
       "ptcg_id": "tw10990659",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:42:24.498Z",
+      "source_file": "tw10990659.json",
       "note": ""
     },
     {
@@ -6540,11 +6540,11 @@
     {
       "ptcg_id": "tw11586070",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:42:13.700Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw11593061",
@@ -6720,10 +6720,10 @@
     {
       "ptcg_id": "tw11863950",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:30:39.228Z",
+      "source_file": "tw11863950.json",
       "note": ""
     },
     {
@@ -6864,10 +6864,10 @@
     {
       "ptcg_id": "tw12155269",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:50:11.547Z",
+      "source_file": "tw12155269.json",
       "note": ""
     },
     {
@@ -6936,10 +6936,10 @@
     {
       "ptcg_id": "tw12320398",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:09:39.247Z",
+      "source_file": "tw12320398.json",
       "note": ""
     },
     {
@@ -7125,10 +7125,10 @@
     {
       "ptcg_id": "tw12541872",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:40:12.696Z",
+      "source_file": "tw12541872.json",
       "note": ""
     },
     {
@@ -7314,10 +7314,10 @@
     {
       "ptcg_id": "tw12891908",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:02:09.553Z",
+      "source_file": "tw12891908.json",
       "note": ""
     },
     {
@@ -7386,10 +7386,10 @@
     {
       "ptcg_id": "tw13046045",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:19:11.939Z",
+      "source_file": "tw13046045.json",
       "note": ""
     },
     {
@@ -7458,11 +7458,11 @@
     {
       "ptcg_id": "tw13165108",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:18.922Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw13174665",
@@ -7593,10 +7593,10 @@
     {
       "ptcg_id": "tw13308021",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T11:00:11.051Z",
+      "source_file": "tw13308021.json",
       "note": ""
     },
     {
@@ -7620,20 +7620,20 @@
     {
       "ptcg_id": "tw13380713",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:50:33.047Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw13385115",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:40:16.528Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw13426893",
@@ -7791,11 +7791,11 @@
     {
       "ptcg_id": "tw13733005",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:48:40.996Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw13746363",
@@ -7881,10 +7881,10 @@
     {
       "ptcg_id": "tw13886746",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:22:48.985Z",
+      "source_file": "tw13886746.json",
       "note": ""
     },
     {
@@ -7962,11 +7962,11 @@
     {
       "ptcg_id": "tw13995413",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:58:40.712Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw14005529",
@@ -7998,10 +7998,10 @@
     {
       "ptcg_id": "tw14109317",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:36:19.304Z",
+      "source_file": "tw14109317.json",
       "note": ""
     },
     {
@@ -8070,10 +8070,10 @@
     {
       "ptcg_id": "tw14212286",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:48:15.392Z",
+      "source_file": "tw14212286.json",
       "note": ""
     },
     {
@@ -8151,19 +8151,19 @@
     {
       "ptcg_id": "tw14385566",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:41:03.291Z",
+      "source_file": "tw14385566.json",
       "note": ""
     },
     {
       "ptcg_id": "tw14386391",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:17:20.437Z",
+      "source_file": "tw14386391.json",
       "note": ""
     },
     {
@@ -8214,10 +8214,10 @@
     {
       "ptcg_id": "tw14474658",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:42:34.610Z",
+      "source_file": "tw14474658.json",
       "note": ""
     },
     {
@@ -8349,10 +8349,10 @@
     {
       "ptcg_id": "tw14711518",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:46:53.311Z",
+      "source_file": "tw14711518.json",
       "note": ""
     },
     {
@@ -8448,11 +8448,11 @@
     {
       "ptcg_id": "tw14794857",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:17:45.390Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw14799494",
@@ -8619,11 +8619,11 @@
     {
       "ptcg_id": "tw15165847",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:45:30.933Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw15171356",
@@ -8727,10 +8727,10 @@
     {
       "ptcg_id": "tw15384084",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:18:30.381Z",
+      "source_file": "tw15384084.json",
       "note": ""
     },
     {
@@ -8826,10 +8826,10 @@
     {
       "ptcg_id": "tw15534950",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:46:22.128Z",
+      "source_file": "tw15534950.json",
       "note": ""
     },
     {
@@ -8844,11 +8844,11 @@
     {
       "ptcg_id": "tw15567133",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:39:07.200Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw15581512",
@@ -9105,11 +9105,11 @@
     {
       "ptcg_id": "tw16120388",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T11:00:36.918Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw16132632",
@@ -9276,11 +9276,11 @@
     {
       "ptcg_id": "tw16356327",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:51:15.798Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw16370693",
@@ -9726,10 +9726,10 @@
     {
       "ptcg_id": "tw17152765",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:55:03.734Z",
+      "source_file": "tw17152765.json",
       "note": ""
     },
     {
@@ -9879,10 +9879,10 @@
     {
       "ptcg_id": "tw17473021",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:36:56.484Z",
+      "source_file": "tw17473021.json",
       "note": ""
     },
     {
@@ -10095,10 +10095,10 @@
     {
       "ptcg_id": "tw17855373",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:52:33.557Z",
+      "source_file": "tw17855373.json",
       "note": ""
     },
     {
@@ -10608,10 +10608,10 @@
     {
       "ptcg_id": "tw18738511",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:43:00.586Z",
+      "source_file": "tw18738511.json",
       "note": ""
     },
     {
@@ -10626,10 +10626,10 @@
     {
       "ptcg_id": "tw18767712",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:18:04.218Z",
+      "source_file": "tw18767712.json",
       "note": ""
     },
     {
@@ -10725,10 +10725,10 @@
     {
       "ptcg_id": "tw18947254",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:40:02.418Z",
+      "source_file": "tw18947254.json",
       "note": ""
     },
     {
@@ -10770,19 +10770,19 @@
     {
       "ptcg_id": "tw19067728",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:56:14.739Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw19067926",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:45:15.181Z",
+      "source_file": "tw19067926.json",
       "note": ""
     },
     {
@@ -10869,10 +10869,10 @@
     {
       "ptcg_id": "tw19218480",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:48:54.278Z",
+      "source_file": "tw19218480.json",
       "note": ""
     },
     {
@@ -11031,10 +11031,10 @@
     {
       "ptcg_id": "tw19603450",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:47:32.434Z",
+      "source_file": "tw19603450.json",
       "note": ""
     },
     {
@@ -11148,19 +11148,19 @@
     {
       "ptcg_id": "tw19962622",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:21:22.653Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw19963605",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:46:43.539Z",
+      "source_file": "tw19963605.json",
       "note": ""
     },
     {
@@ -11598,10 +11598,10 @@
     {
       "ptcg_id": "tw20997286",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:44:21.885Z",
+      "source_file": "tw20997286.json",
       "note": ""
     },
     {
@@ -11769,11 +11769,11 @@
     {
       "ptcg_id": "tw21246501",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:33:03.077Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw21251140",
@@ -11796,10 +11796,10 @@
     {
       "ptcg_id": "tw21302583",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:49:56.540Z",
+      "source_file": "tw21302583.json",
       "note": ""
     },
     {
@@ -11913,11 +11913,11 @@
     {
       "ptcg_id": "tw21443160",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:20:14.160Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw21473522",
@@ -11958,11 +11958,11 @@
     {
       "ptcg_id": "tw21561947",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:23.529Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw21565922",
@@ -12192,10 +12192,10 @@
     {
       "ptcg_id": "tw21962415",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:44:11.088Z",
+      "source_file": "tw21962415.json",
       "note": ""
     },
     {
@@ -12246,10 +12246,10 @@
     {
       "ptcg_id": "tw22071324",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T11:00:02.256Z",
+      "source_file": "tw22071324.json",
       "note": ""
     },
     {
@@ -12624,10 +12624,10 @@
     {
       "ptcg_id": "tw22756831",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:07:34.482Z",
+      "source_file": "tw22756831.json",
       "note": ""
     },
     {
@@ -12813,10 +12813,10 @@
     {
       "ptcg_id": "tw23137545",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:14:38.120Z",
+      "source_file": "tw23137545.json",
       "note": ""
     },
     {
@@ -13245,11 +13245,11 @@
     {
       "ptcg_id": "tw24176995",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:49:34.800Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw24179179",
@@ -13632,10 +13632,10 @@
     {
       "ptcg_id": "tw24866240",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:22:58.796Z",
+      "source_file": "tw24866240.json",
       "note": ""
     },
     {
@@ -13749,11 +13749,11 @@
     {
       "ptcg_id": "tw25007020",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:04:37.100Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw25015513",
@@ -13803,10 +13803,10 @@
     {
       "ptcg_id": "tw25167742",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:49:05.914Z",
+      "source_file": "tw25167742.json",
       "note": ""
     },
     {
@@ -13848,20 +13848,20 @@
     {
       "ptcg_id": "tw25321756",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:11:24.986Z",
+      "source_file": "tw25321756.json",
       "note": ""
     },
     {
       "ptcg_id": "tw25334780",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:43:04.568Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw25336636",
@@ -14019,10 +14019,10 @@
     {
       "ptcg_id": "tw25513412",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:39:13.841Z",
+      "source_file": "tw25513412.json",
       "note": ""
     },
     {
@@ -14163,10 +14163,10 @@
     {
       "ptcg_id": "tw25712407",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:37:06.849Z",
+      "source_file": "tw25712407.json",
       "note": ""
     },
     {
@@ -14235,10 +14235,10 @@
     {
       "ptcg_id": "tw25863125",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:52:09.629Z",
+      "source_file": "tw25863125.json",
       "note": ""
     },
     {
@@ -14289,10 +14289,10 @@
     {
       "ptcg_id": "tw25946658",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:45:51.091Z",
+      "source_file": "tw25946658.json",
       "note": ""
     },
     {
@@ -14766,10 +14766,10 @@
     {
       "ptcg_id": "tw26801592",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:07:50.253Z",
+      "source_file": "tw26801592.json",
       "note": ""
     },
     {
@@ -14829,10 +14829,10 @@
     {
       "ptcg_id": "tw26918012",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:40:38.754Z",
+      "source_file": "tw26918012.json",
       "note": ""
     },
     {
@@ -14910,11 +14910,11 @@
     {
       "ptcg_id": "tw27039186",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T11:00:33.820Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw27051062",
@@ -15045,10 +15045,10 @@
     {
       "ptcg_id": "tw27301563",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:40:41.028Z",
+      "source_file": "tw27301563.json",
       "note": ""
     },
     {
@@ -15198,10 +15198,10 @@
     {
       "ptcg_id": "tw27558785",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:53:01.346Z",
+      "source_file": "tw27558785.json",
       "note": ""
     },
     {
@@ -15450,10 +15450,10 @@
     {
       "ptcg_id": "tw27928464",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:42:05.166Z",
+      "source_file": "tw27928464.json",
       "note": ""
     },
     {
@@ -15540,10 +15540,10 @@
     {
       "ptcg_id": "tw28078413",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:31:45.837Z",
+      "source_file": "tw28078413.json",
       "note": ""
     },
     {
@@ -15639,10 +15639,10 @@
     {
       "ptcg_id": "tw28239982",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:27:46.181Z",
+      "source_file": "tw28239982.json",
       "note": ""
     },
     {
@@ -15846,11 +15846,11 @@
     {
       "ptcg_id": "tw28581277",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:28:49.268Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw28605165",
@@ -16278,10 +16278,10 @@
     {
       "ptcg_id": "tw29555686",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:39:28.081Z",
+      "source_file": "tw29555686.json",
       "note": ""
     },
     {
@@ -16449,10 +16449,10 @@
     {
       "ptcg_id": "tw29979802",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:43:17.100Z",
+      "source_file": "tw29979802.json",
       "note": ""
     },
     {
@@ -16530,11 +16530,11 @@
     {
       "ptcg_id": "tw30149588",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:49:14.682Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw30182919",
@@ -16557,11 +16557,11 @@
     {
       "ptcg_id": "tw30194729",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:43:52.111Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw30204893",
@@ -16674,10 +16674,10 @@
     {
       "ptcg_id": "tw30352379",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:51:31.121Z",
+      "source_file": "tw30352379.json",
       "note": ""
     },
     {
@@ -16782,11 +16782,11 @@
     {
       "ptcg_id": "tw30547134",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:44:26.132Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw30570837",
@@ -16935,10 +16935,10 @@
     {
       "ptcg_id": "tw30943815",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T11:00:57.095Z",
+      "source_file": "tw30943815.json",
       "note": ""
     },
     {
@@ -16953,10 +16953,10 @@
     {
       "ptcg_id": "tw30975565",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:38:02.640Z",
+      "source_file": "tw30975565.json",
       "note": ""
     },
     {
@@ -16998,10 +16998,10 @@
     {
       "ptcg_id": "tw31039115",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:54:53.938Z",
+      "source_file": "tw31039115.json",
       "note": ""
     },
     {
@@ -17124,10 +17124,10 @@
     {
       "ptcg_id": "tw31328173",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:43:55.284Z",
+      "source_file": "tw31328173.json",
       "note": ""
     },
     {
@@ -17511,10 +17511,10 @@
     {
       "ptcg_id": "tw32092217",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:49:12.333Z",
+      "source_file": "tw32092217.json",
       "note": ""
     },
     {
@@ -17853,10 +17853,10 @@
     {
       "ptcg_id": "tw32711938",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:16:52.205Z",
+      "source_file": "tw32711938.json",
       "note": ""
     },
     {
@@ -18069,10 +18069,10 @@
     {
       "ptcg_id": "tw33000082",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:20:09.707Z",
+      "source_file": "tw33000082.json",
       "note": ""
     },
     {
@@ -18465,11 +18465,11 @@
     {
       "ptcg_id": "tw33769846",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:50:00.991Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw33785925",
@@ -18582,11 +18582,11 @@
     {
       "ptcg_id": "tw34038322",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:52:52.606Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw34051393",
@@ -18627,10 +18627,10 @@
     {
       "ptcg_id": "tw34093826",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:54:19.999Z",
+      "source_file": "tw34093826.json",
       "note": ""
     },
     {
@@ -18717,10 +18717,10 @@
     {
       "ptcg_id": "tw34233770",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:34:55.364Z",
+      "source_file": "tw34233770.json",
       "note": ""
     },
     {
@@ -18744,10 +18744,10 @@
     {
       "ptcg_id": "tw34297641",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:59:46.221Z",
+      "source_file": "tw34297641.json",
       "note": ""
     },
     {
@@ -18816,10 +18816,10 @@
     {
       "ptcg_id": "tw34463295",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:35:59.725Z",
+      "source_file": "tw34463295.json",
       "note": ""
     },
     {
@@ -18924,10 +18924,10 @@
     {
       "ptcg_id": "tw34662212",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:11:13.530Z",
+      "source_file": "tw34662212.json",
       "note": ""
     },
     {
@@ -19167,11 +19167,11 @@
     {
       "ptcg_id": "tw35077402",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:24:01.622Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw35119266",
@@ -19446,10 +19446,10 @@
     {
       "ptcg_id": "tw35622829",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:52:56.061Z",
+      "source_file": "tw35622829.json",
       "note": ""
     },
     {
@@ -19554,10 +19554,10 @@
     {
       "ptcg_id": "tw35736449",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:55:57.494Z",
+      "source_file": "tw35736449.json",
       "note": ""
     },
     {
@@ -19671,28 +19671,28 @@
     {
       "ptcg_id": "tw35915327",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:40:52.943Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw35923025",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:24:04.691Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw35923132",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:31:25.876Z",
+      "source_file": "tw35923132.json",
       "note": ""
     },
     {
@@ -19734,11 +19734,11 @@
     {
       "ptcg_id": "tw36010830",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:52:20.416Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw36053247",
@@ -19797,10 +19797,10 @@
     {
       "ptcg_id": "tw36230915",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:36:30.961Z",
+      "source_file": "tw36230915.json",
       "note": ""
     },
     {
@@ -19941,11 +19941,11 @@
     {
       "ptcg_id": "tw36382138",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:38:46.019Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw36418774",
@@ -20085,10 +20085,10 @@
     {
       "ptcg_id": "tw36652243",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:13:00.969Z",
+      "source_file": "tw36652243.json",
       "note": ""
     },
     {
@@ -20175,11 +20175,11 @@
     {
       "ptcg_id": "tw36758652",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:45:18.927Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw36759052",
@@ -20472,10 +20472,10 @@
     {
       "ptcg_id": "tw37208259",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:58:23.415Z",
+      "source_file": "tw37208259.json",
       "note": ""
     },
     {
@@ -20562,10 +20562,10 @@
     {
       "ptcg_id": "tw37352245",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:43:15.493Z",
+      "source_file": "tw37352245.json",
       "note": ""
     },
     {
@@ -20688,10 +20688,10 @@
     {
       "ptcg_id": "tw37570069",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:35:50.568Z",
+      "source_file": "tw37570069.json",
       "note": ""
     },
     {
@@ -20724,10 +20724,10 @@
     {
       "ptcg_id": "tw37692474",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:58:15.795Z",
+      "source_file": "tw37692474.json",
       "note": ""
     },
     {
@@ -21273,10 +21273,10 @@
     {
       "ptcg_id": "tw38788190",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:13:10.964Z",
+      "source_file": "tw38788190.json",
       "note": ""
     },
     {
@@ -21300,11 +21300,11 @@
     {
       "ptcg_id": "tw38874392",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:21:59.762Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw38893297",
@@ -21390,11 +21390,11 @@
     {
       "ptcg_id": "tw39037279",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:34:49.942Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw39062068",
@@ -21453,20 +21453,20 @@
     {
       "ptcg_id": "tw39158973",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:45:05.081Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw39171885",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:50:01.096Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw39174853",
@@ -21552,11 +21552,11 @@
     {
       "ptcg_id": "tw39371632",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:00:55.785Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw39397843",
@@ -21669,11 +21669,11 @@
     {
       "ptcg_id": "tw39637174",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:23:16.086Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw39642469",
@@ -21714,11 +21714,11 @@
     {
       "ptcg_id": "tw39719937",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:13:17.853Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw39726493",
@@ -21732,11 +21732,11 @@
     {
       "ptcg_id": "tw39737252",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:59:07.225Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw39745294",
@@ -21750,11 +21750,11 @@
     {
       "ptcg_id": "tw39746201",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:46:13.779Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw39773805",
@@ -21876,11 +21876,11 @@
     {
       "ptcg_id": "tw40060727",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:53:57.177Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw40069256",
@@ -22047,11 +22047,11 @@
     {
       "ptcg_id": "tw40365551",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:13:14.346Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw40370232",
@@ -22110,10 +22110,10 @@
     {
       "ptcg_id": "tw40475144",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:47:53.574Z",
+      "source_file": "tw40475144.json",
       "note": ""
     },
     {
@@ -22335,19 +22335,19 @@
     {
       "ptcg_id": "tw40727736",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:27:24.687Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw40746228",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:39:17.605Z",
+      "source_file": "tw40746228.json",
       "note": ""
     },
     {
@@ -22434,11 +22434,11 @@
     {
       "ptcg_id": "tw40924784",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:51:08.959Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw40960140",
@@ -22542,10 +22542,10 @@
     {
       "ptcg_id": "tw41114921",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:41:38.377Z",
+      "source_file": "tw41114921.json",
       "note": ""
     },
     {
@@ -23037,28 +23037,28 @@
     {
       "ptcg_id": "tw41862913",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:18:14.650Z",
+      "source_file": "tw41862913.json",
       "note": ""
     },
     {
       "ptcg_id": "tw41869820",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:56:01.327Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw41895447",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:37:17.471Z",
+      "source_file": "tw41895447.json",
       "note": ""
     },
     {
@@ -23091,19 +23091,19 @@
     {
       "ptcg_id": "tw41946933",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:44:10.146Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw41958538",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:42:13.861Z",
+      "source_file": "tw41958538.json",
       "note": ""
     },
     {
@@ -23136,10 +23136,10 @@
     {
       "ptcg_id": "tw42005868",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:23:47.402Z",
+      "source_file": "tw42005868.json",
       "note": ""
     },
     {
@@ -23199,11 +23199,11 @@
     {
       "ptcg_id": "tw42163963",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:03:05.010Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw42210389",
@@ -23253,10 +23253,10 @@
     {
       "ptcg_id": "tw42256001",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:28:37.200Z",
+      "source_file": "tw42256001.json",
       "note": ""
     },
     {
@@ -23298,11 +23298,11 @@
     {
       "ptcg_id": "tw42397162",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:39:46.355Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw42420456",
@@ -23343,11 +23343,11 @@
     {
       "ptcg_id": "tw42484676",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:55:28.299Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw42505350",
@@ -23361,10 +23361,10 @@
     {
       "ptcg_id": "tw42516222",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:26:11.980Z",
+      "source_file": "tw42516222.json",
       "note": ""
     },
     {
@@ -23433,11 +23433,11 @@
     {
       "ptcg_id": "tw42668876",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:36:03.179Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw42676808",
@@ -23523,10 +23523,10 @@
     {
       "ptcg_id": "tw42816284",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:19:45.451Z",
+      "source_file": "tw42816284.json",
       "note": ""
     },
     {
@@ -23685,11 +23685,11 @@
     {
       "ptcg_id": "tw43113906",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:37:18.407Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw43118125",
@@ -23757,11 +23757,11 @@
     {
       "ptcg_id": "tw43235202",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:56:22.683Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw43248631",
@@ -23793,11 +23793,11 @@
     {
       "ptcg_id": "tw43317463",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:57:26.214Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw43322316",
@@ -23937,19 +23937,19 @@
     {
       "ptcg_id": "tw43594615",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:57:01.235Z",
+      "source_file": "tw43594615.json",
       "note": ""
     },
     {
       "ptcg_id": "tw43639990",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:36:33.511Z",
+      "source_file": "tw43639990.json",
       "note": ""
     },
     {
@@ -23973,38 +23973,38 @@
     {
       "ptcg_id": "tw43708137",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:45:53.596Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw43724313",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:52:22.740Z",
+      "source_file": "tw43724313.json",
       "note": ""
     },
     {
       "ptcg_id": "tw43735908",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:53:53.129Z",
+      "source_file": "tw43735908.json",
       "note": ""
     },
     {
       "ptcg_id": "tw43757053",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:58:49.685Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw43768909",
@@ -24063,10 +24063,10 @@
     {
       "ptcg_id": "tw43869961",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:48:37.902Z",
+      "source_file": "tw43869961.json",
       "note": ""
     },
     {
@@ -24090,10 +24090,10 @@
     {
       "ptcg_id": "tw43951645",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:31:56.707Z",
+      "source_file": "tw43951645.json",
       "note": ""
     },
     {
@@ -24225,10 +24225,10 @@
     {
       "ptcg_id": "tw44250385",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:46:34.385Z",
+      "source_file": "tw44250385.json",
       "note": ""
     },
     {
@@ -24315,10 +24315,10 @@
     {
       "ptcg_id": "tw44446459",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:40:56.654Z",
+      "source_file": "tw44446459.json",
       "note": ""
     },
     {
@@ -24342,10 +24342,10 @@
     {
       "ptcg_id": "tw44472901",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:15:03.823Z",
+      "source_file": "tw44472901.json",
       "note": ""
     },
     {
@@ -24396,20 +24396,20 @@
     {
       "ptcg_id": "tw44561682",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:29:13.368Z",
+      "source_file": "tw44561682.json",
       "note": ""
     },
     {
       "ptcg_id": "tw44562572",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:58:18.984Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw44577327",
@@ -24693,10 +24693,10 @@
     {
       "ptcg_id": "tw45064771",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:56:10.893Z",
+      "source_file": "tw45064771.json",
       "note": ""
     },
     {
@@ -25089,10 +25089,10 @@
     {
       "ptcg_id": "tw45872304",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:35:31.878Z",
+      "source_file": "tw45872304.json",
       "note": ""
     },
     {
@@ -25278,11 +25278,11 @@
     {
       "ptcg_id": "tw46100395",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:40:02.395Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw46143358",
@@ -25305,11 +25305,11 @@
     {
       "ptcg_id": "tw46228271",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:47:59.773Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw46248346",
@@ -25449,10 +25449,10 @@
     {
       "ptcg_id": "tw46476589",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:52:42.648Z",
+      "source_file": "tw46476589.json",
       "note": ""
     },
     {
@@ -25602,11 +25602,11 @@
     {
       "ptcg_id": "tw46645471",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:51:37.466Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw46645690",
@@ -25701,10 +25701,10 @@
     {
       "ptcg_id": "tw46778389",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:35:20.922Z",
+      "source_file": "tw46778389.json",
       "note": ""
     },
     {
@@ -25791,11 +25791,11 @@
     {
       "ptcg_id": "tw46877625",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:55:45.388Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw46899884",
@@ -25863,10 +25863,10 @@
     {
       "ptcg_id": "tw47069747",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:50:34.442Z",
+      "source_file": "tw47069747.json",
       "note": ""
     },
     {
@@ -26151,10 +26151,10 @@
     {
       "ptcg_id": "tw47677695",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:39:58.116Z",
+      "source_file": "tw47677695.json",
       "note": ""
     },
     {
@@ -26178,11 +26178,11 @@
     {
       "ptcg_id": "tw47765933",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:19:22.185Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw47769971",
@@ -26475,10 +26475,10 @@
     {
       "ptcg_id": "tw48375877",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:57:37.045Z",
+      "source_file": "tw48375877.json",
       "note": ""
     },
     {
@@ -26592,11 +26592,11 @@
     {
       "ptcg_id": "tw48498418",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:28:52.976Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw48501459",
@@ -26646,20 +26646,20 @@
     {
       "ptcg_id": "tw48530621",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:01:27.263Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw48538169",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:15:47.496Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw48557484",
@@ -27195,10 +27195,10 @@
     {
       "ptcg_id": "tw49350731",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:40:30.860Z",
+      "source_file": "tw49350731.json",
       "note": ""
     },
     {
@@ -27267,19 +27267,19 @@
     {
       "ptcg_id": "tw49506962",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:56:25.629Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw49525131",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:28:46.204Z",
+      "source_file": "tw49525131.json",
       "note": ""
     },
     {
@@ -27438,11 +27438,11 @@
     {
       "ptcg_id": "tw49855379",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:49:33.227Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw49868105",
@@ -27483,10 +27483,10 @@
     {
       "ptcg_id": "tw49924330",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:17:09.846Z",
+      "source_file": "tw49924330.json",
       "note": ""
     },
     {
@@ -27699,11 +27699,11 @@
     {
       "ptcg_id": "tw50268688",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:03:01.300Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw50328610",
@@ -27780,10 +27780,10 @@
     {
       "ptcg_id": "tw50551352",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:35:53.861Z",
+      "source_file": "tw50551352.json",
       "note": ""
     },
     {
@@ -28167,10 +28167,10 @@
     {
       "ptcg_id": "tw51222111",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:55:06.152Z",
+      "source_file": "tw51222111.json",
       "note": ""
     },
     {
@@ -28437,11 +28437,11 @@
     {
       "ptcg_id": "tw51700508",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:48:57.416Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw51710380",
@@ -28599,11 +28599,11 @@
     {
       "ptcg_id": "tw51964903",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:51:40.608Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw51970133",
@@ -28617,11 +28617,11 @@
     {
       "ptcg_id": "tw51976601",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:35:58.383Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw52014839",
@@ -28707,20 +28707,20 @@
     {
       "ptcg_id": "tw52212483",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:23:58.551Z",
+      "source_file": "tw52212483.json",
       "note": ""
     },
     {
       "ptcg_id": "tw52228600",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:03:08.373Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw52240838",
@@ -28770,10 +28770,10 @@
     {
       "ptcg_id": "tw52313759",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:54:56.950Z",
+      "source_file": "tw52313759.json",
       "note": ""
     },
     {
@@ -28815,11 +28815,11 @@
     {
       "ptcg_id": "tw52441919",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:38:21.395Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw52486334",
@@ -28887,10 +28887,10 @@
     {
       "ptcg_id": "tw52539551",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:25:50.189Z",
+      "source_file": "tw52539551.json",
       "note": ""
     },
     {
@@ -28986,11 +28986,11 @@
     {
       "ptcg_id": "tw52665529",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:51:59.932Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw52665946",
@@ -29013,10 +29013,10 @@
     {
       "ptcg_id": "tw52693065",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:49:42.018Z",
+      "source_file": "tw52693065.json",
       "note": ""
     },
     {
@@ -29031,11 +29031,11 @@
     {
       "ptcg_id": "tw52707168",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:52:15.288Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw52712451",
@@ -29076,10 +29076,10 @@
     {
       "ptcg_id": "tw52762134",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:40:48.942Z",
+      "source_file": "tw52762134.json",
       "note": ""
     },
     {
@@ -29148,10 +29148,10 @@
     {
       "ptcg_id": "tw52869868",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:36:52.258Z",
+      "source_file": "tw52869868.json",
       "note": ""
     },
     {
@@ -29175,10 +29175,10 @@
     {
       "ptcg_id": "tw52890746",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:25:10.028Z",
+      "source_file": "tw52890746.json",
       "note": ""
     },
     {
@@ -29283,10 +29283,10 @@
     {
       "ptcg_id": "tw53082926",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:49:30.606Z",
+      "source_file": "tw53082926.json",
       "note": ""
     },
     {
@@ -29301,11 +29301,11 @@
     {
       "ptcg_id": "tw53095361",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:34:55.604Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw53101420",
@@ -29382,10 +29382,10 @@
     {
       "ptcg_id": "tw53287778",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:39:47.404Z",
+      "source_file": "tw53287778.json",
       "note": ""
     },
     {
@@ -29517,11 +29517,11 @@
     {
       "ptcg_id": "tw53499789",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:51.678Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw53506901",
@@ -29661,11 +29661,11 @@
     {
       "ptcg_id": "tw53737347",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:36:08.260Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw53738551",
@@ -29904,11 +29904,11 @@
     {
       "ptcg_id": "tw54152249",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:55:57.053Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw54166685",
@@ -30066,10 +30066,10 @@
     {
       "ptcg_id": "tw54428794",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:55:15.800Z",
+      "source_file": "tw54428794.json",
       "note": ""
     },
     {
@@ -30093,11 +30093,11 @@
     {
       "ptcg_id": "tw54461786",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:58:07.010Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw54462001",
@@ -30147,11 +30147,11 @@
     {
       "ptcg_id": "tw54526787",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:51:34.909Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw54549171",
@@ -30174,10 +30174,10 @@
     {
       "ptcg_id": "tw54580127",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:55:37.822Z",
+      "source_file": "tw54580127.json",
       "note": ""
     },
     {
@@ -30345,10 +30345,10 @@
     {
       "ptcg_id": "tw54942718",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:20:55.004Z",
+      "source_file": "tw54942718.json",
       "note": ""
     },
     {
@@ -30606,10 +30606,10 @@
     {
       "ptcg_id": "tw55370103",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:54:24.310Z",
+      "source_file": "tw55370103.json",
       "note": ""
     },
     {
@@ -30678,10 +30678,10 @@
     {
       "ptcg_id": "tw55474671",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:34:45.024Z",
+      "source_file": "tw55474671.json",
       "note": ""
     },
     {
@@ -30723,10 +30723,10 @@
     {
       "ptcg_id": "tw55552824",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:38:36.709Z",
+      "source_file": "tw55552824.json",
       "note": ""
     },
     {
@@ -30867,19 +30867,19 @@
     {
       "ptcg_id": "tw55796625",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:38:50.104Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw55813053",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:21:56.611Z",
+      "source_file": "tw55813053.json",
       "note": ""
     },
     {
@@ -30957,11 +30957,11 @@
     {
       "ptcg_id": "tw55993300",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:38:17.359Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw56026821",
@@ -30993,11 +30993,11 @@
     {
       "ptcg_id": "tw56055649",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:59:49.399Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw56082998",
@@ -31101,10 +31101,10 @@
     {
       "ptcg_id": "tw56239139",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:38:31.679Z",
+      "source_file": "tw56239139.json",
       "note": ""
     },
     {
@@ -31254,10 +31254,10 @@
     {
       "ptcg_id": "tw56537863",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:41:17.795Z",
+      "source_file": "tw56537863.json",
       "note": ""
     },
     {
@@ -31335,10 +31335,10 @@
     {
       "ptcg_id": "tw56703325",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:34:18.756Z",
+      "source_file": "tw56703325.json",
       "note": ""
     },
     {
@@ -31740,11 +31740,11 @@
     {
       "ptcg_id": "tw57300547",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:37:22.175Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw57352754",
@@ -31965,11 +31965,11 @@
     {
       "ptcg_id": "tw58008525",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:57:47.774Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw58025473",
@@ -32073,11 +32073,11 @@
     {
       "ptcg_id": "tw58170732",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:32:01.216Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw58176881",
@@ -32190,10 +32190,10 @@
     {
       "ptcg_id": "tw58297741",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:24:46.644Z",
+      "source_file": "tw58297741.json",
       "note": ""
     },
     {
@@ -32208,11 +32208,11 @@
     {
       "ptcg_id": "tw58328483",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:41:07.539Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw58337201",
@@ -32433,11 +32433,11 @@
     {
       "ptcg_id": "tw58745749",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:39:42.288Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw58754172",
@@ -32541,10 +32541,10 @@
     {
       "ptcg_id": "tw58925393",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:13:27.778Z",
+      "source_file": "tw58925393.json",
       "note": ""
     },
     {
@@ -32559,11 +32559,11 @@
     {
       "ptcg_id": "tw58929225",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:41:53.096Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw58969560",
@@ -32649,10 +32649,10 @@
     {
       "ptcg_id": "tw59077725",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:47:43.588Z",
+      "source_file": "tw59077725.json",
       "note": ""
     },
     {
@@ -32766,20 +32766,20 @@
     {
       "ptcg_id": "tw59350658",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:35:16.552Z",
+      "source_file": "tw59350658.json",
       "note": ""
     },
     {
       "ptcg_id": "tw59356681",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:51:22.081Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw59377214",
@@ -32856,11 +32856,11 @@
     {
       "ptcg_id": "tw59559247",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:09.432Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw59572633",
@@ -32874,11 +32874,11 @@
     {
       "ptcg_id": "tw59589233",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:36:45.694Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw59632621",
@@ -32910,10 +32910,10 @@
     {
       "ptcg_id": "tw59699947",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:21:41.768Z",
+      "source_file": "tw59699947.json",
       "note": ""
     },
     {
@@ -32991,10 +32991,10 @@
     {
       "ptcg_id": "tw59827090",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:58:00.815Z",
+      "source_file": "tw59827090.json",
       "note": ""
     },
     {
@@ -33009,11 +33009,11 @@
     {
       "ptcg_id": "tw59845381",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:42:03.978Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw59856064",
@@ -33063,11 +33063,11 @@
     {
       "ptcg_id": "tw59932079",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:32.625Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw59947617",
@@ -33090,11 +33090,11 @@
     {
       "ptcg_id": "tw59978398",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:57:50.904Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw59978529",
@@ -33144,10 +33144,10 @@
     {
       "ptcg_id": "tw60076016",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:51:12.766Z",
+      "source_file": "tw60076016.json",
       "note": ""
     },
     {
@@ -33243,11 +33243,11 @@
     {
       "ptcg_id": "tw60362249",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:43:19.718Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw60400986",
@@ -33279,11 +33279,11 @@
     {
       "ptcg_id": "tw60413484",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:39:37.400Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw60440420",
@@ -33396,10 +33396,10 @@
     {
       "ptcg_id": "tw60634955",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:05:11.546Z",
+      "source_file": "tw60634955.json",
       "note": ""
     },
     {
@@ -33864,10 +33864,10 @@
     {
       "ptcg_id": "tw61342334",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:24:14.132Z",
+      "source_file": "tw61342334.json",
       "note": ""
     },
     {
@@ -33963,10 +33963,10 @@
     {
       "ptcg_id": "tw61573942",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:54:06.004Z",
+      "source_file": "tw61573942.json",
       "note": ""
     },
     {
@@ -34017,11 +34017,11 @@
     {
       "ptcg_id": "tw61655586",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:45:34.903Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw61675906",
@@ -34188,11 +34188,11 @@
     {
       "ptcg_id": "tw61881775",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:56:05.033Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw61897937",
@@ -34449,11 +34449,11 @@
     {
       "ptcg_id": "tw62394804",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:13:34.408Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw62456794",
@@ -34476,10 +34476,10 @@
     {
       "ptcg_id": "tw62463648",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:54:36.687Z",
+      "source_file": "tw62463648.json",
       "note": ""
     },
     {
@@ -34737,11 +34737,11 @@
     {
       "ptcg_id": "tw63007000",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:50:45.243Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw63008541",
@@ -34782,10 +34782,10 @@
     {
       "ptcg_id": "tw63041398",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:08:13.393Z",
+      "source_file": "tw63041398.json",
       "note": ""
     },
     {
@@ -34845,10 +34845,10 @@
     {
       "ptcg_id": "tw63137219",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:38:09.626Z",
+      "source_file": "tw63137219.json",
       "note": ""
     },
     {
@@ -34953,10 +34953,10 @@
     {
       "ptcg_id": "tw63300150",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:45:49.272Z",
+      "source_file": "tw63300150.json",
       "note": ""
     },
     {
@@ -34971,10 +34971,10 @@
     {
       "ptcg_id": "tw63331658",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:50:29.996Z",
+      "source_file": "tw63331658.json",
       "note": ""
     },
     {
@@ -35070,10 +35070,10 @@
     {
       "ptcg_id": "tw63503878",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:44:41.576Z",
+      "source_file": "tw63503878.json",
       "note": ""
     },
     {
@@ -35106,10 +35106,10 @@
     {
       "ptcg_id": "tw63553237",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:38:13.023Z",
+      "source_file": "tw63553237.json",
       "note": ""
     },
     {
@@ -35160,10 +35160,10 @@
     {
       "ptcg_id": "tw63617314",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:50:21.185Z",
+      "source_file": "tw63617314.json",
       "note": ""
     },
     {
@@ -35178,11 +35178,11 @@
     {
       "ptcg_id": "tw63652660",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:44:45.945Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw63663852",
@@ -35241,11 +35241,11 @@
     {
       "ptcg_id": "tw63731684",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:36:37.461Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw63732641",
@@ -35268,11 +35268,11 @@
     {
       "ptcg_id": "tw63803647",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:34:33.898Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw63823732",
@@ -35367,11 +35367,11 @@
     {
       "ptcg_id": "tw64038007",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:14.154Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw64041902",
@@ -35430,10 +35430,10 @@
     {
       "ptcg_id": "tw64123148",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:23:13.066Z",
+      "source_file": "tw64123148.json",
       "note": ""
     },
     {
@@ -35547,11 +35547,11 @@
     {
       "ptcg_id": "tw64397141",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:54:43.893Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw64434381",
@@ -35592,10 +35592,10 @@
     {
       "ptcg_id": "tw64474352",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:57:11.956Z",
+      "source_file": "tw64474352.json",
       "note": ""
     },
     {
@@ -35808,10 +35808,10 @@
     {
       "ptcg_id": "tw64960649",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:36:41.436Z",
+      "source_file": "tw64960649.json",
       "note": ""
     },
     {
@@ -35826,10 +35826,10 @@
     {
       "ptcg_id": "tw64967369",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:38:41.795Z",
+      "source_file": "tw64967369.json",
       "note": ""
     },
     {
@@ -35862,11 +35862,11 @@
     {
       "ptcg_id": "tw65067260",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:45:40.896Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw65072216",
@@ -35880,10 +35880,10 @@
     {
       "ptcg_id": "tw65107115",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:49:45.192Z",
+      "source_file": "tw65107115.json",
       "note": ""
     },
     {
@@ -35907,20 +35907,20 @@
     {
       "ptcg_id": "tw65187155",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:58:03.881Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw65187569",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:52:24.653Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw65233698",
@@ -35979,10 +35979,10 @@
     {
       "ptcg_id": "tw65367518",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:42:45.083Z",
+      "source_file": "tw65367518.json",
       "note": ""
     },
     {
@@ -36105,11 +36105,11 @@
     {
       "ptcg_id": "tw65586414",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:31:30.254Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw65608113",
@@ -36132,10 +36132,10 @@
     {
       "ptcg_id": "tw65726372",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:56:52.180Z",
+      "source_file": "tw65726372.json",
       "note": ""
     },
     {
@@ -36186,11 +36186,11 @@
     {
       "ptcg_id": "tw65758855",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:24:35.760Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw65760535",
@@ -36312,10 +36312,10 @@
     {
       "ptcg_id": "tw65912070",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:17:42.326Z",
+      "source_file": "tw65912070.json",
       "note": ""
     },
     {
@@ -36330,11 +36330,11 @@
     {
       "ptcg_id": "tw65932690",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:17:23.309Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw65936819",
@@ -36348,10 +36348,10 @@
     {
       "ptcg_id": "tw65952377",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:58:27.813Z",
+      "source_file": "tw65952377.json",
       "note": ""
     },
     {
@@ -36366,10 +36366,10 @@
     {
       "ptcg_id": "tw65988397",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:03:30.217Z",
+      "source_file": "tw65988397.json",
       "note": ""
     },
     {
@@ -36393,11 +36393,11 @@
     {
       "ptcg_id": "tw66015260",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:52:49.443Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw66024438",
@@ -36564,10 +36564,10 @@
     {
       "ptcg_id": "tw66357714",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:57:44.610Z",
+      "source_file": "tw66357714.json",
       "note": ""
     },
     {
@@ -36600,11 +36600,11 @@
     {
       "ptcg_id": "tw66387397",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:03:33.610Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw66394912",
@@ -36897,10 +36897,10 @@
     {
       "ptcg_id": "tw66851395",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:37:14.084Z",
+      "source_file": "tw66851395.json",
       "note": ""
     },
     {
@@ -36987,11 +36987,11 @@
     {
       "ptcg_id": "tw66972389",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:01:23.540Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw66974062",
@@ -37185,11 +37185,11 @@
     {
       "ptcg_id": "tw67458411",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:03:45.027Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw67479231",
@@ -37212,11 +37212,11 @@
     {
       "ptcg_id": "tw67489398",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:42:49.586Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw67496482",
@@ -37248,11 +37248,11 @@
     {
       "ptcg_id": "tw67514618",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:31:00.274Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw67540519",
@@ -37392,10 +37392,10 @@
     {
       "ptcg_id": "tw67765608",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:15:44.540Z",
+      "source_file": "tw67765608.json",
       "note": ""
     },
     {
@@ -37410,29 +37410,29 @@
     {
       "ptcg_id": "tw67831953",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:17:48.438Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw67859741",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:50:10.286Z",
+      "source_file": "tw67859741.json",
       "note": ""
     },
     {
       "ptcg_id": "tw67868562",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:56:28.517Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw67886542",
@@ -37446,10 +37446,10 @@
     {
       "ptcg_id": "tw67886635",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:35:41.736Z",
+      "source_file": "tw67886635.json",
       "note": ""
     },
     {
@@ -37590,10 +37590,10 @@
     {
       "ptcg_id": "tw68080815",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:49:30.013Z",
+      "source_file": "tw68080815.json",
       "note": ""
     },
     {
@@ -37671,10 +37671,10 @@
     {
       "ptcg_id": "tw68238948",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:57:35.778Z",
+      "source_file": "tw68238948.json",
       "note": ""
     },
     {
@@ -37734,10 +37734,10 @@
     {
       "ptcg_id": "tw68355833",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:10:56.255Z",
+      "source_file": "tw68355833.json",
       "note": ""
     },
     {
@@ -37779,10 +37779,10 @@
     {
       "ptcg_id": "tw68417234",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:17:32.814Z",
+      "source_file": "tw68417234.json",
       "note": ""
     },
     {
@@ -37959,19 +37959,19 @@
     {
       "ptcg_id": "tw68923388",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:53:33.089Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw68930381",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:47:11.613Z",
+      "source_file": "tw68930381.json",
       "note": ""
     },
     {
@@ -38040,19 +38040,19 @@
     {
       "ptcg_id": "tw69035917",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:53:57.110Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw69035987",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:46:55.027Z",
+      "source_file": "tw69035987.json",
       "note": ""
     },
     {
@@ -38085,11 +38085,11 @@
     {
       "ptcg_id": "tw69121729",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:58:36.623Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw69124505",
@@ -38121,10 +38121,10 @@
     {
       "ptcg_id": "tw69197193",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:00:52.405Z",
+      "source_file": "tw69197193.json",
       "note": ""
     },
     {
@@ -38148,10 +38148,10 @@
     {
       "ptcg_id": "tw69234704",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:48:04.992Z",
+      "source_file": "tw69234704.json",
       "note": ""
     },
     {
@@ -38175,10 +38175,10 @@
     {
       "ptcg_id": "tw69303894",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:59:36.935Z",
+      "source_file": "tw69303894.json",
       "note": ""
     },
     {
@@ -38283,10 +38283,10 @@
     {
       "ptcg_id": "tw69416767",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:08:37.459Z",
+      "source_file": "tw69416767.json",
       "note": ""
     },
     {
@@ -38490,10 +38490,10 @@
     {
       "ptcg_id": "tw69774476",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:45:14.825Z",
+      "source_file": "tw69774476.json",
       "note": ""
     },
     {
@@ -38589,10 +38589,10 @@
     {
       "ptcg_id": "tw69916924",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:47:54.506Z",
+      "source_file": "tw69916924.json",
       "note": ""
     },
     {
@@ -38679,10 +38679,10 @@
     {
       "ptcg_id": "tw70079797",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:53:13.178Z",
+      "source_file": "tw70079797.json",
       "note": ""
     },
     {
@@ -38715,11 +38715,11 @@
     {
       "ptcg_id": "tw70196302",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:50:37.276Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw70209772",
@@ -38868,10 +38868,10 @@
     {
       "ptcg_id": "tw70563861",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:54:30.976Z",
+      "source_file": "tw70563861.json",
       "note": ""
     },
     {
@@ -39084,11 +39084,11 @@
     {
       "ptcg_id": "tw70992269",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:29:33.623Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw71016622",
@@ -39165,11 +39165,11 @@
     {
       "ptcg_id": "tw71161900",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:55:37.189Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw71186799",
@@ -39219,10 +39219,10 @@
     {
       "ptcg_id": "tw71355273",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:34:29.580Z",
+      "source_file": "tw71355273.json",
       "note": ""
     },
     {
@@ -39246,10 +39246,10 @@
     {
       "ptcg_id": "tw71384081",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:55:47.541Z",
+      "source_file": "tw71384081.json",
       "note": ""
     },
     {
@@ -39318,19 +39318,19 @@
     {
       "ptcg_id": "tw71538181",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:51:19.039Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw71540600",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:44:59.114Z",
+      "source_file": "tw71540600.json",
       "note": ""
     },
     {
@@ -39381,11 +39381,11 @@
     {
       "ptcg_id": "tw71688252",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:56:11.801Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw71730704",
@@ -39489,10 +39489,10 @@
     {
       "ptcg_id": "tw72008579",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:42:56.511Z",
+      "source_file": "tw72008579.json",
       "note": ""
     },
     {
@@ -39651,10 +39651,10 @@
     {
       "ptcg_id": "tw72278781",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:16:24.392Z",
+      "source_file": "tw72278781.json",
       "note": ""
     },
     {
@@ -39732,10 +39732,10 @@
     {
       "ptcg_id": "tw72375538",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:33:37.174Z",
+      "source_file": "tw72375538.json",
       "note": ""
     },
     {
@@ -39813,10 +39813,10 @@
     {
       "ptcg_id": "tw72584093",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:53:29.491Z",
+      "source_file": "tw72584093.json",
       "note": ""
     },
     {
@@ -39867,10 +39867,10 @@
     {
       "ptcg_id": "tw72722713",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:36:09.622Z",
+      "source_file": "tw72722713.json",
       "note": ""
     },
     {
@@ -39885,10 +39885,10 @@
     {
       "ptcg_id": "tw72740783",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:56:43.394Z",
+      "source_file": "tw72740783.json",
       "note": ""
     },
     {
@@ -40011,19 +40011,19 @@
     {
       "ptcg_id": "tw72949913",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:37:52.265Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw72949917",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:32:59.311Z",
+      "source_file": "tw72949917.json",
       "note": ""
     },
     {
@@ -40353,11 +40353,11 @@
     {
       "ptcg_id": "tw73733824",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:42:44.200Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw73762496",
@@ -40452,10 +40452,10 @@
     {
       "ptcg_id": "tw73935880",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:09:57.301Z",
+      "source_file": "tw73935880.json",
       "note": ""
     },
     {
@@ -40515,11 +40515,11 @@
     {
       "ptcg_id": "tw74070399",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:44:06.236Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw74088159",
@@ -40551,10 +40551,10 @@
     {
       "ptcg_id": "tw74135667",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:51:05.747Z",
+      "source_file": "tw74135667.json",
       "note": ""
     },
     {
@@ -40569,11 +40569,11 @@
     {
       "ptcg_id": "tw74183379",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:39:02.937Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw74188379",
@@ -40650,10 +40650,10 @@
     {
       "ptcg_id": "tw74352344",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:02:57.835Z",
+      "source_file": "tw74352344.json",
       "note": ""
     },
     {
@@ -40686,10 +40686,10 @@
     {
       "ptcg_id": "tw74390718",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:59:25.032Z",
+      "source_file": "tw74390718.json",
       "note": ""
     },
     {
@@ -40785,11 +40785,11 @@
     {
       "ptcg_id": "tw74566090",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:49:03.377Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw74568091",
@@ -40938,10 +40938,10 @@
     {
       "ptcg_id": "tw74834256",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:50:54.594Z",
+      "source_file": "tw74834256.json",
       "note": ""
     },
     {
@@ -40965,10 +40965,10 @@
     {
       "ptcg_id": "tw74871763",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:54:08.462Z",
+      "source_file": "tw74871763.json",
       "note": ""
     },
     {
@@ -40983,10 +40983,10 @@
     {
       "ptcg_id": "tw74905288",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:51:58.748Z",
+      "source_file": "tw74905288.json",
       "note": ""
     },
     {
@@ -41037,10 +41037,10 @@
     {
       "ptcg_id": "tw74970005",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:41:49.920Z",
+      "source_file": "tw74970005.json",
       "note": ""
     },
     {
@@ -41226,10 +41226,10 @@
     {
       "ptcg_id": "tw75265013",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:52:37.294Z",
+      "source_file": "tw75265013.json",
       "note": ""
     },
     {
@@ -41334,11 +41334,11 @@
     {
       "ptcg_id": "tw75543412",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:23:02.972Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw75551324",
@@ -41451,11 +41451,11 @@
     {
       "ptcg_id": "tw75760219",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:42:09.540Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw75774280",
@@ -41487,10 +41487,10 @@
     {
       "ptcg_id": "tw75778514",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:47:22.255Z",
+      "source_file": "tw75778514.json",
       "note": ""
     },
     {
@@ -41937,19 +41937,19 @@
     {
       "ptcg_id": "tw76438841",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:52:12.275Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw76445156",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:10:38.455Z",
+      "source_file": "tw76445156.json",
       "note": ""
     },
     {
@@ -42027,10 +42027,10 @@
     {
       "ptcg_id": "tw76584301",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:50:55.998Z",
+      "source_file": "tw76584301.json",
       "note": ""
     },
     {
@@ -42045,10 +42045,10 @@
     {
       "ptcg_id": "tw76622951",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T11:00:30.499Z",
+      "source_file": "tw76622951.json",
       "note": ""
     },
     {
@@ -42207,11 +42207,11 @@
     {
       "ptcg_id": "tw77088088",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:37:58.563Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw77101544",
@@ -42369,10 +42369,10 @@
     {
       "ptcg_id": "tw77429610",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:44:02.023Z",
+      "source_file": "tw77429610.json",
       "note": ""
     },
     {
@@ -42531,11 +42531,11 @@
     {
       "ptcg_id": "tw77684021",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:14:41.413Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw77692063",
@@ -42675,11 +42675,11 @@
     {
       "ptcg_id": "tw77919530",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:56:20.763Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw77924229",
@@ -42774,10 +42774,10 @@
     {
       "ptcg_id": "tw78095888",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:51:31.012Z",
+      "source_file": "tw78095888.json",
       "note": ""
     },
     {
@@ -42819,11 +42819,11 @@
     {
       "ptcg_id": "tw78207749",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:19:17.913Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw78228318",
@@ -42891,10 +42891,10 @@
     {
       "ptcg_id": "tw78372275",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:50:18.815Z",
+      "source_file": "tw78372275.json",
       "note": ""
     },
     {
@@ -42918,11 +42918,11 @@
     {
       "ptcg_id": "tw78454431",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:21:25.710Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw78460830",
@@ -42954,10 +42954,10 @@
     {
       "ptcg_id": "tw78560483",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:42:39.935Z",
+      "source_file": "tw78560483.json",
       "note": ""
     },
     {
@@ -43053,10 +43053,10 @@
     {
       "ptcg_id": "tw78758706",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:59:53.880Z",
+      "source_file": "tw78758706.json",
       "note": ""
     },
     {
@@ -43089,10 +43089,10 @@
     {
       "ptcg_id": "tw78831210",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:43:06.672Z",
+      "source_file": "tw78831210.json",
       "note": ""
     },
     {
@@ -43341,11 +43341,11 @@
     {
       "ptcg_id": "tw79303763",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:34:12.350Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw79350785",
@@ -43584,10 +43584,10 @@
     {
       "ptcg_id": "tw79680820",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:53:52.882Z",
+      "source_file": "tw79680820.json",
       "note": ""
     },
     {
@@ -43683,10 +43683,10 @@
     {
       "ptcg_id": "tw79839806",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:30:57.252Z",
+      "source_file": "tw79839806.json",
       "note": ""
     },
     {
@@ -43755,11 +43755,11 @@
     {
       "ptcg_id": "tw79968805",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:53:17.592Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw79969223",
@@ -43836,11 +43836,11 @@
     {
       "ptcg_id": "tw80050703",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:34:59.107Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw80051704",
@@ -43989,20 +43989,20 @@
     {
       "ptcg_id": "tw80430967",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:52:46.317Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw80481404",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:19:14.913Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw80521031",
@@ -44133,11 +44133,11 @@
     {
       "ptcg_id": "tw80669380",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:43:35.319Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw80676630",
@@ -44187,10 +44187,10 @@
     {
       "ptcg_id": "tw80794690",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:31:13.212Z",
+      "source_file": "tw80794690.json",
       "note": ""
     },
     {
@@ -44241,10 +44241,10 @@
     {
       "ptcg_id": "tw80972698",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:51:49.446Z",
+      "source_file": "tw80972698.json",
       "note": ""
     },
     {
@@ -44340,11 +44340,11 @@
     {
       "ptcg_id": "tw81078109",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T11:01:03.528Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw81081532",
@@ -44358,11 +44358,11 @@
     {
       "ptcg_id": "tw81103300",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:53:22.116Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw81121676",
@@ -44457,10 +44457,10 @@
     {
       "ptcg_id": "tw81240634",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:59:03.898Z",
+      "source_file": "tw81240634.json",
       "note": ""
     },
     {
@@ -44709,29 +44709,29 @@
     {
       "ptcg_id": "tw81751939",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:47:35.431Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw81788530",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:36:42.200Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw81796909",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:47:56.623Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw81806985",
@@ -44763,11 +44763,11 @@
     {
       "ptcg_id": "tw81836542",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:58:53.507Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw81838129",
@@ -44943,11 +44943,11 @@
     {
       "ptcg_id": "tw82214575",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:50:24.780Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw82219653",
@@ -45024,11 +45024,11 @@
     {
       "ptcg_id": "tw82272345",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:59:32.459Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw82289672",
@@ -45150,11 +45150,11 @@
     {
       "ptcg_id": "tw82494238",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:55:41.358Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw82501703",
@@ -45222,19 +45222,19 @@
     {
       "ptcg_id": "tw82644400",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:38:51.790Z",
+      "source_file": "tw82644400.json",
       "note": ""
     },
     {
       "ptcg_id": "tw82674376",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:51:03.653Z",
+      "source_file": "tw82674376.json",
       "note": ""
     },
     {
@@ -45276,11 +45276,11 @@
     {
       "ptcg_id": "tw82755386",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:55:49.302Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw82756336",
@@ -45294,10 +45294,10 @@
     {
       "ptcg_id": "tw82777276",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:32:17.833Z",
+      "source_file": "tw82777276.json",
       "note": ""
     },
     {
@@ -45339,11 +45339,11 @@
     {
       "ptcg_id": "tw82815591",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:38:54.230Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw82817109",
@@ -45357,10 +45357,10 @@
     {
       "ptcg_id": "tw82842679",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:45:34.517Z",
+      "source_file": "tw82842679.json",
       "note": ""
     },
     {
@@ -45402,10 +45402,10 @@
     {
       "ptcg_id": "tw82928313",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:01:19.915Z",
+      "source_file": "tw82928313.json",
       "note": ""
     },
     {
@@ -45492,10 +45492,10 @@
     {
       "ptcg_id": "tw83119817",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:57:09.813Z",
+      "source_file": "tw83119817.json",
       "note": ""
     },
     {
@@ -45528,11 +45528,11 @@
     {
       "ptcg_id": "tw83249375",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:43:31.187Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw83256073",
@@ -45600,10 +45600,10 @@
     {
       "ptcg_id": "tw83441900",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:46:09.722Z",
+      "source_file": "tw83441900.json",
       "note": ""
     },
     {
@@ -45699,11 +45699,11 @@
     {
       "ptcg_id": "tw83709077",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:45:22.982Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw83739705",
@@ -45753,10 +45753,10 @@
     {
       "ptcg_id": "tw83897958",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:44:48.520Z",
+      "source_file": "tw83897958.json",
       "note": ""
     },
     {
@@ -45906,10 +45906,10 @@
     {
       "ptcg_id": "tw84238347",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:34:44.971Z",
+      "source_file": "tw84238347.json",
       "note": ""
     },
     {
@@ -46158,11 +46158,11 @@
     {
       "ptcg_id": "tw84778743",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:56:01.073Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw84828731",
@@ -46338,10 +46338,10 @@
     {
       "ptcg_id": "tw85135259",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:56:19.739Z",
+      "source_file": "tw85135259.json",
       "note": ""
     },
     {
@@ -46356,11 +46356,11 @@
     {
       "ptcg_id": "tw85143398",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:48:47.482Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw85147749",
@@ -46446,11 +46446,11 @@
     {
       "ptcg_id": "tw85259334",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:54:27.370Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw85262760",
@@ -46500,10 +46500,10 @@
     {
       "ptcg_id": "tw85352531",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:47:03.969Z",
+      "source_file": "tw85352531.json",
       "note": ""
     },
     {
@@ -46518,11 +46518,11 @@
     {
       "ptcg_id": "tw85402596",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:43:23.630Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw85406652",
@@ -46563,11 +46563,11 @@
     {
       "ptcg_id": "tw85540066",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:52:41.460Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw85563070",
@@ -46653,10 +46653,10 @@
     {
       "ptcg_id": "tw85693137",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:13:50.882Z",
+      "source_file": "tw85693137.json",
       "note": ""
     },
     {
@@ -46797,11 +46797,11 @@
     {
       "ptcg_id": "tw85968628",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:40:20.665Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw85970570",
@@ -46860,10 +46860,10 @@
     {
       "ptcg_id": "tw86130021",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:22:09.190Z",
+      "source_file": "tw86130021.json",
       "note": ""
     },
     {
@@ -47058,10 +47058,10 @@
     {
       "ptcg_id": "tw86444135",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:41:28.116Z",
+      "source_file": "tw86444135.json",
       "note": ""
     },
     {
@@ -47094,11 +47094,11 @@
     {
       "ptcg_id": "tw86544614",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:29:28.875Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw86559690",
@@ -47121,11 +47121,11 @@
     {
       "ptcg_id": "tw86591343",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:56:08.881Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw86603093",
@@ -47265,10 +47265,10 @@
     {
       "ptcg_id": "tw86826208",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:04:34.027Z",
+      "source_file": "tw86826208.json",
       "note": ""
     },
     {
@@ -47319,10 +47319,10 @@
     {
       "ptcg_id": "tw86906617",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:53:42.943Z",
+      "source_file": "tw86906617.json",
       "note": ""
     },
     {
@@ -47481,10 +47481,10 @@
     {
       "ptcg_id": "tw87312651",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:41:29.563Z",
+      "source_file": "tw87312651.json",
       "note": ""
     },
     {
@@ -47571,11 +47571,11 @@
     {
       "ptcg_id": "tw87477790",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T11:01:00.351Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw87480332",
@@ -47643,10 +47643,10 @@
     {
       "ptcg_id": "tw87520683",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:58:45.739Z",
+      "source_file": "tw87520683.json",
       "note": ""
     },
     {
@@ -47697,10 +47697,10 @@
     {
       "ptcg_id": "tw87594661",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:46:00.592Z",
+      "source_file": "tw87594661.json",
       "note": ""
     },
     {
@@ -47796,11 +47796,11 @@
     {
       "ptcg_id": "tw87786791",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:44:30.533Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw87798331",
@@ -47841,11 +47841,11 @@
     {
       "ptcg_id": "tw87891110",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:52:45.592Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw87892507",
@@ -48093,11 +48093,11 @@
     {
       "ptcg_id": "tw88268489",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:55:19.941Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw88288372",
@@ -48309,10 +48309,10 @@
     {
       "ptcg_id": "tw88562353",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:35:05.944Z",
+      "source_file": "tw88562353.json",
       "note": ""
     },
     {
@@ -48327,10 +48327,10 @@
     {
       "ptcg_id": "tw88584663",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:15:57.211Z",
+      "source_file": "tw88584663.json",
       "note": ""
     },
     {
@@ -48480,28 +48480,28 @@
     {
       "ptcg_id": "tw88879468",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:51:56.089Z",
+      "source_file": "tw88879468.json",
       "note": ""
     },
     {
       "ptcg_id": "tw88883410",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:51:34.242Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw88916703",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:11:36.463Z",
+      "source_file": "tw88916703.json",
       "note": ""
     },
     {
@@ -48525,20 +48525,20 @@
     {
       "ptcg_id": "tw88955558",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:46:23.623Z",
+      "source_file": "tw88955558.json",
       "note": ""
     },
     {
       "ptcg_id": "tw88956966",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:37:47.901Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw88965764",
@@ -48669,10 +48669,10 @@
     {
       "ptcg_id": "tw89224755",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:09:21.462Z",
+      "source_file": "tw89224755.json",
       "note": ""
     },
     {
@@ -48840,10 +48840,10 @@
     {
       "ptcg_id": "tw89591201",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:54:46.404Z",
+      "source_file": "tw89591201.json",
       "note": ""
     },
     {
@@ -48921,10 +48921,10 @@
     {
       "ptcg_id": "tw89645111",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:47:02.319Z",
+      "source_file": "tw89645111.json",
       "note": ""
     },
     {
@@ -48966,11 +48966,11 @@
     {
       "ptcg_id": "tw89711590",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:48:29.081Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw89713560",
@@ -49020,11 +49020,11 @@
     {
       "ptcg_id": "tw89832715",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:21:19.631Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw89855200",
@@ -49182,10 +49182,10 @@
     {
       "ptcg_id": "tw90174716",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:29:56.678Z",
+      "source_file": "tw90174716.json",
       "note": ""
     },
     {
@@ -49515,11 +49515,11 @@
     {
       "ptcg_id": "tw90710961",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:46:12.777Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw90733991",
@@ -49542,20 +49542,20 @@
     {
       "ptcg_id": "tw90786092",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:41:56.278Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw90804846",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:42:47.582Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw90806836",
@@ -49605,10 +49605,10 @@
     {
       "ptcg_id": "tw90858467",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:38:26.025Z",
+      "source_file": "tw90858467.json",
       "note": ""
     },
     {
@@ -49641,10 +49641,10 @@
     {
       "ptcg_id": "tw90895384",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:35:32.682Z",
+      "source_file": "tw90895384.json",
       "note": ""
     },
     {
@@ -49794,10 +49794,10 @@
     {
       "ptcg_id": "tw91114690",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:41:13.416Z",
+      "source_file": "tw91114690.json",
       "note": ""
     },
     {
@@ -49812,10 +49812,10 @@
     {
       "ptcg_id": "tw91149697",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:39:38.400Z",
+      "source_file": "tw91149697.json",
       "note": ""
     },
     {
@@ -49974,10 +49974,10 @@
     {
       "ptcg_id": "tw91480781",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:41:49.213Z",
+      "source_file": "tw91480781.json",
       "note": ""
     },
     {
@@ -50118,10 +50118,10 @@
     {
       "ptcg_id": "tw91665878",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:45:24.890Z",
+      "source_file": "tw91665878.json",
       "note": ""
     },
     {
@@ -50181,10 +50181,10 @@
     {
       "ptcg_id": "tw91728744",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:35:43.164Z",
+      "source_file": "tw91728744.json",
       "note": ""
     },
     {
@@ -50262,11 +50262,11 @@
     {
       "ptcg_id": "tw91832860",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:52:27.009Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw91836229",
@@ -50433,10 +50433,10 @@
     {
       "ptcg_id": "tw92114726",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:28:08.317Z",
+      "source_file": "tw92114726.json",
       "note": ""
     },
     {
@@ -50487,10 +50487,10 @@
     {
       "ptcg_id": "tw92190914",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:29:02.393Z",
+      "source_file": "tw92190914.json",
       "note": ""
     },
     {
@@ -50658,19 +50658,19 @@
     {
       "ptcg_id": "tw92537962",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:37:27.948Z",
+      "source_file": "tw92537962.json",
       "note": ""
     },
     {
       "ptcg_id": "tw92539805",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:43:27.133Z",
+      "source_file": "tw92539805.json",
       "note": ""
     },
     {
@@ -50991,10 +50991,10 @@
     {
       "ptcg_id": "tw93186349",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:37:38.839Z",
+      "source_file": "tw93186349.json",
       "note": ""
     },
     {
@@ -51288,10 +51288,10 @@
     {
       "ptcg_id": "tw93772052",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:58:36.908Z",
+      "source_file": "tw93772052.json",
       "note": ""
     },
     {
@@ -51549,10 +51549,10 @@
     {
       "ptcg_id": "tw94073321",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:48:25.405Z",
+      "source_file": "tw94073321.json",
       "note": ""
     },
     {
@@ -51639,10 +51639,10 @@
     {
       "ptcg_id": "tw94161499",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:45:01.008Z",
+      "source_file": "tw94161499.json",
       "note": ""
     },
     {
@@ -51702,11 +51702,11 @@
     {
       "ptcg_id": "tw94315025",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:48:45.007Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw94338344",
@@ -51765,10 +51765,10 @@
     {
       "ptcg_id": "tw94468423",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:40:12.582Z",
+      "source_file": "tw94468423.json",
       "note": ""
     },
     {
@@ -51918,10 +51918,10 @@
     {
       "ptcg_id": "tw94758573",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:24:30.933Z",
+      "source_file": "tw94758573.json",
       "note": ""
     },
     {
@@ -51954,11 +51954,11 @@
     {
       "ptcg_id": "tw94835821",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:44:50.342Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw94856709",
@@ -52062,20 +52062,20 @@
     {
       "ptcg_id": "tw95074743",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:13:31.126Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw95084853",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:57:22.293Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw95117832",
@@ -52152,11 +52152,11 @@
     {
       "ptcg_id": "tw95217273",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:42:17.758Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw95235085",
@@ -52179,10 +52179,10 @@
     {
       "ptcg_id": "tw95273659",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:27:20.305Z",
+      "source_file": "tw95273659.json",
       "note": ""
     },
     {
@@ -52350,11 +52350,11 @@
     {
       "ptcg_id": "tw95484359",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:59:52.575Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw95533657",
@@ -52458,10 +52458,10 @@
     {
       "ptcg_id": "tw95644190",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:51:45.207Z",
+      "source_file": "tw95644190.json",
       "note": ""
     },
     {
@@ -52566,11 +52566,11 @@
     {
       "ptcg_id": "tw95753136",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:39:22.080Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw95761035",
@@ -52656,10 +52656,10 @@
     {
       "ptcg_id": "tw95967582",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:53:42.453Z",
+      "source_file": "tw95967582.json",
       "note": ""
     },
     {
@@ -52674,19 +52674,19 @@
     {
       "ptcg_id": "tw95996047",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:46:09.790Z",
+      "source_file": "tw95996047.json",
       "note": ""
     },
     {
       "ptcg_id": "tw96006069",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:57:18.695Z",
+      "source_file": "tw96006069.json",
       "note": ""
     },
     {
@@ -52926,10 +52926,10 @@
     {
       "ptcg_id": "tw96600955",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:54:40.692Z",
+      "source_file": "tw96600955.json",
       "note": ""
     },
     {
@@ -53007,10 +53007,10 @@
     {
       "ptcg_id": "tw96797685",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:46:33.894Z",
+      "source_file": "tw96797685.json",
       "note": ""
     },
     {
@@ -53034,10 +53034,10 @@
     {
       "ptcg_id": "tw96850405",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:43:33.938Z",
+      "source_file": "tw96850405.json",
       "note": ""
     },
     {
@@ -53268,20 +53268,20 @@
     {
       "ptcg_id": "tw97139567",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:47:12.982Z",
+      "source_file": "tw97139567.json",
       "note": ""
     },
     {
       "ptcg_id": "tw97154037",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:37:53.651Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw97155025",
@@ -53304,10 +53304,10 @@
     {
       "ptcg_id": "tw97183798",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:40:23.020Z",
+      "source_file": "tw97183798.json",
       "note": ""
     },
     {
@@ -53448,11 +53448,11 @@
     {
       "ptcg_id": "tw97396398",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:36:23.316Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw97442393",
@@ -53745,11 +53745,11 @@
     {
       "ptcg_id": "tw97989927",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:46:46.238Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw98020395",
@@ -53826,10 +53826,10 @@
     {
       "ptcg_id": "tw98146359",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:30:48.410Z",
+      "source_file": "tw98146359.json",
       "note": ""
     },
     {
@@ -53916,10 +53916,10 @@
     {
       "ptcg_id": "tw98286133",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:51:18.946Z",
+      "source_file": "tw98286133.json",
       "note": ""
     },
     {
@@ -53961,19 +53961,19 @@
     {
       "ptcg_id": "tw98358576",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:59:29.364Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw98375206",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:29:24.226Z",
+      "source_file": "tw98375206.json",
       "note": ""
     },
     {
@@ -53988,20 +53988,20 @@
     {
       "ptcg_id": "tw98403682",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:52:07.944Z",
+      "source_file": "tw98403682.json",
       "note": ""
     },
     {
       "ptcg_id": "tw98425963",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:55:34.389Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw98443005",
@@ -54096,10 +54096,10 @@
     {
       "ptcg_id": "tw98553235",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:39:33.083Z",
+      "source_file": "tw98553235.json",
       "note": ""
     },
     {
@@ -54465,10 +54465,10 @@
     {
       "ptcg_id": "tw99243748",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:55:15.612Z",
+      "source_file": "tw99243748.json",
       "note": ""
     },
     {
@@ -54726,11 +54726,11 @@
     {
       "ptcg_id": "tw99705293",
       "level": "senior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T09:50:21.930Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw99714386",
@@ -54771,11 +54771,11 @@
     {
       "ptcg_id": "tw99770826",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-03-31T10:45:38.920Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw99775946",
@@ -54834,10 +54834,10 @@
     {
       "ptcg_id": "tw99838588",
       "level": "senior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T09:37:41.733Z",
+      "source_file": "tw99838588.json",
       "note": ""
     },
     {
@@ -54870,10 +54870,10 @@
     {
       "ptcg_id": "tw99857258",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-03-31T10:22:21.106Z",
+      "source_file": "tw99857258.json",
       "note": ""
     },
     {

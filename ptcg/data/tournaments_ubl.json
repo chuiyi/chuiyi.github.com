@@ -39,7 +39,11 @@
       "level": "master",
       "series": "1-1",
       "roundCount": 9,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/43644/",
+      "top128File": "top128_ubl_43644.csv",
+      "top128Count": 128,
+      "officialDate": "2025-09-20"
     },
     {
       "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=7560542",
@@ -80,7 +84,11 @@
       "level": "master",
       "series": "1-2",
       "roundCount": 9,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/44421/",
+      "top128File": "top128_ubl_44421.csv",
+      "top128Count": 256,
+      "officialDate": "2025-10-05"
     },
     {
       "type": "ubl",
@@ -115,7 +123,11 @@
         }
       ],
       "roundCount": 9,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/44424/",
+      "top128File": "top128_ubl_44424.csv",
+      "top128Count": 256,
+      "officialDate": "2025-10-19"
     },
     {
       "type": "ubl",
@@ -150,7 +162,11 @@
         }
       ],
       "roundCount": 9,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/44427/",
+      "top128File": "top128_ubl_44427.csv",
+      "top128Count": 255,
+      "officialDate": "2025-11-15"
     },
     {
       "type": "ubl",
@@ -185,7 +201,11 @@
         }
       ],
       "roundCount": 9,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/48267/",
+      "top128File": "top128_ubl_48267.csv",
+      "top128Count": 256,
+      "officialDate": "2025-11-29"
     },
     {
       "type": "ubl",
@@ -228,7 +248,11 @@
         }
       ],
       "roundCount": 9,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/49508/",
+      "top128File": "top128_ubl_49508.csv",
+      "top128Count": 128,
+      "officialDate": "2025-12-27"
     },
     {
       "type": "ubl",
@@ -263,7 +287,11 @@
         }
       ],
       "roundCount": 9,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/49735/",
+      "top128File": "top128_ubl_49735.csv",
+      "top128Count": 256,
+      "officialDate": "2026-01-17"
     },
     {
       "type": "ubl",
@@ -306,7 +334,11 @@
         }
       ],
       "roundCount": 9,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/49742/",
+      "top128File": "top128_ubl_49742.csv",
+      "top128Count": 256,
+      "officialDate": "2026-02-27"
     },
     {
       "type": "ubl",
@@ -376,7 +408,11 @@
         }
       ],
       "roundCount": 7,
-      "csvVersion": "unified_rounds_v2"
+      "csvVersion": "unified_rounds_v2",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/44423/",
+      "top128File": "top128_ubl_44423.csv",
+      "top128Count": 32,
+      "officialDate": "2025-10-05"
     }
   ]
 }
