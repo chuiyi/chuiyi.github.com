@@ -10,6 +10,13 @@ const PTCG = (() => {
     // ─── 設定 ────────────────────────────────────────────────
     const DATA_BASE = './data/';
 
+    // Google Analytics（GA4）設定：可透過 window.PTCG_GA_MEASUREMENT_ID 或 localStorage 設定。
+    const ANALYTICS_CONFIG = {
+        measurementId: 'G-PTYEC4BGLC',
+        debug: false,
+    };
+    let _analyticsInitialized = false;
+
     // 牌型對應顏色（CSS 漸層）
     const DECK_COLORS = {
         '攻擊': ['#dc2626', '#f97316'],
@@ -497,6 +504,50 @@ const PTCG = (() => {
                 <p class="mb-0">${escapeHtml(message)}</p>
                 <p class="small text-muted mt-1">請確認 data/ 目錄下的 JSON 資料檔案是否存在。</p>
             </div>`;
+    }
+
+    function _resolveAnalyticsMeasurementId() {
+        const globalId = String(window.PTCG_GA_MEASUREMENT_ID || '').trim();
+        if (globalId) return globalId;
+
+        const storageId = String(window.localStorage?.getItem('ptcg_ga_measurement_id') || '').trim();
+        if (storageId) return storageId;
+
+        return String(ANALYTICS_CONFIG.measurementId || '').trim();
+    }
+
+    function _initAnalytics() {
+        if (_analyticsInitialized) return;
+
+        const measurementId = _resolveAnalyticsMeasurementId();
+        if (!measurementId) {
+            console.info('[PTCG] GA4 未設定 measurement ID，略過統計追蹤初始化。');
+            return;
+        }
+
+        const gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+        document.head.appendChild(gtagScript);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function gtag() {
+            window.dataLayer.push(arguments);
+        };
+
+        window.gtag('js', new Date());
+        window.gtag('config', measurementId, {
+            debug_mode: ANALYTICS_CONFIG.debug,
+            page_title: document.title,
+            page_path: window.location.pathname,
+        });
+
+        _analyticsInitialized = true;
+    }
+
+    function _trackAnalyticsEvent(eventName, params = {}) {
+        if (typeof window.gtag !== 'function') return;
+        window.gtag('event', eventName, params);
     }
 
     // ─── 首頁 ─────────────────────────────────────────────────
@@ -1101,6 +1152,10 @@ const PTCG = (() => {
         if (!modalEl || !bodyEl || !titleEl) return;
 
         titleEl.textContent = `${tournament.name} · 詳情`;
+        _trackAnalyticsEvent('view_tournament_detail', {
+            tournament_id: String(tournament.id || ''),
+            tournament_type: String(tournament.type || ''),
+        });
 
         if (!tournament.csvFile) {
             bodyEl.innerHTML = '<p class="text-muted mb-0">此賽事尚未建立對應 CSV 檔案。</p>';
@@ -1201,6 +1256,10 @@ const PTCG = (() => {
         if (!modalEl || !bodyEl || !titleEl) return;
 
         titleEl.textContent = `${tournament.name} · 官方Top表`;
+        _trackAnalyticsEvent('view_tournament_top128', {
+            tournament_id: String(tournament.id || ''),
+            tournament_type: String(tournament.type || ''),
+        });
         bodyEl.innerHTML = '<div class="text-center py-4"><div class="ptcg-spinner mx-auto"></div><p class="mt-3 text-muted mb-0">載入官方排名中...</p></div>';
         new bootstrap.Modal(modalEl).show();
 
@@ -1674,6 +1733,10 @@ const PTCG = (() => {
     }
 
     async function _openPlayerModal(player) {
+        _trackAnalyticsEvent('view_player_detail', {
+            player_id: String(player.ptcg_id || ''),
+            player_division: String(player.division || ''),
+        });
         document.getElementById('playerModalTitle').textContent = player.name;
         const fetchedAtEl = document.getElementById('playerModalFetchedAt');
         if (fetchedAtEl) fetchedAtEl.textContent = '';
@@ -1814,11 +1877,14 @@ const PTCG = (() => {
     }
 
     // ─── 公開 API ─────────────────────────────────────────────
+    _initAnalytics();
+
     return {
         loadHomePage,
         loadTournamentsPage,
         loadDecksPage,
         loadPlayersPage,
+        trackEvent: _trackAnalyticsEvent,
     };
 
 })();
