@@ -132,6 +132,39 @@ name,name_en,score,tournaments,division,region,top_decks
 
 ## 注意事項
 
+## Google Analytics（GA4）
+
+`js/ptcg.js` 已內建 GA4 初始化。預設不送資料，需提供 Measurement ID 後才會啟用。
+
+可用以下任一方式設定：
+
+```js
+// 方式 1：在任一 PTCG 頁面載入 ptcg.js 前設定
+window.PTCG_GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+// 方式 2：寫入 localStorage（同網域持久生效）
+localStorage.setItem('ptcg_ga_measurement_id', 'G-XXXXXXXXXX');
+```
+
+目前內建事件：
+
+- `view_tournament_detail`
+- `view_tournament_top128`
+- `view_player_detail`
+- `nav_click`
+- `home_feature_click`
+- `footer_main_link_click`
+- `tournament_filter_type_change`
+- `tournament_filter_season_change`
+- `tournament_search`
+- `tournament_pagination_click`
+- `player_level_change`
+- `player_search`
+- `player_only_detail_toggle`
+- `player_page_size_change`
+- `player_sort_click`
+- `player_pagination_click`
+
 - Node.js 爬蟲會抓取頁面中所有表格並輸出單一 CSV；若遇到網站防護機制，請調整 Header 或加入重試策略。
 - 官方 Pokémon 積分系統若需登入，建議維持手動匯入流程。
 - 所有資料僅供競技研究參考，不得用於商業用途。

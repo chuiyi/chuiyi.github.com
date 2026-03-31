@@ -16,6 +16,7 @@ const PTCG = (() => {
         debug: false,
     };
     let _analyticsInitialized = false;
+    let _analyticsBindingsApplied = false;
 
     // 牌型對應顏色（CSS 漸層）
     const DECK_COLORS = {
@@ -550,10 +551,52 @@ const PTCG = (() => {
         window.gtag('event', eventName, params);
     }
 
+    function _trackFeatureUsage(eventName, params = {}) {
+        _trackAnalyticsEvent(eventName, {
+            page_path: window.location.pathname,
+            ...params,
+        });
+    }
+
+    function _bindGlobalAnalyticsInteractions() {
+        if (_analyticsBindingsApplied) return;
+
+        document.addEventListener('click', (event) => {
+            const link = event.target.closest('a[href]');
+            if (!link) return;
+
+            const href = String(link.getAttribute('href') || '').trim();
+            if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+
+            if (link.closest('.navbar-nav')) {
+                _trackFeatureUsage('nav_click', {
+                    target_href: href,
+                });
+                return;
+            }
+
+            if (link.closest('.feature-card-link')) {
+                _trackFeatureUsage('home_feature_click', {
+                    target_href: href,
+                });
+                return;
+            }
+
+            if (link.closest('.footer-main-link')) {
+                _trackFeatureUsage('footer_main_link_click', {
+                    target_href: href,
+                });
+            }
+        });
+
+        _analyticsBindingsApplied = true;
+    }
+
     // ─── 首頁 ─────────────────────────────────────────────────
 
     async function loadHomePage() {
         try {
+            _bindGlobalAnalyticsInteractions();
             const [meta, tournaments, playersManifest] = await Promise.all([
                 fetchJSON('meta.json'),
                 loadUnifiedTournaments(),
@@ -708,6 +751,7 @@ const PTCG = (() => {
 
     async function loadTournamentsPage() {
         try {
+            _bindGlobalAnalyticsInteractions();
             _allTournaments = await loadUnifiedTournaments();
 
             const latestWithDate = _allTournaments.find(t => toDateValue(t.date) > -Infinity);
@@ -726,9 +770,34 @@ const PTCG = (() => {
     }
 
     function _bindTournamentFilters() {
-        document.getElementById('type-filter')?.addEventListener('change', () => { _tournamentPage = 1; _renderTournamentsList(); });
-        document.getElementById('season-select')?.addEventListener('change', () => { _tournamentPage = 1; _renderTournamentsList(); });
-        document.getElementById('tournament-search')?.addEventListener('input', _debounce(() => { _tournamentPage = 1; _renderTournamentsList(); }, 250));
+        document.getElementById('type-filter')?.addEventListener('change', () => {
+            _tournamentPage = 1;
+            _renderTournamentsList();
+            const selectedType = document.querySelector('input[name="type"]:checked')?.value || 'SUPERBALL';
+            _trackFeatureUsage('tournament_filter_type_change', {
+                filter_type: selectedType,
+                result_count: _getFilteredTournaments().length,
+            });
+        });
+        document.getElementById('season-select')?.addEventListener('change', () => {
+            _tournamentPage = 1;
+            _renderTournamentsList();
+            const season = document.getElementById('season-select')?.value || 'all';
+            _trackFeatureUsage('tournament_filter_season_change', {
+                filter_season: season,
+                result_count: _getFilteredTournaments().length,
+            });
+        });
+        document.getElementById('tournament-search')?.addEventListener('input', _debounce(() => {
+            _tournamentPage = 1;
+            _renderTournamentsList();
+            const keyword = (document.getElementById('tournament-search')?.value || '').trim();
+            _trackFeatureUsage('tournament_search', {
+                query_length: keyword.length,
+                has_keyword: keyword.length > 0,
+                result_count: _getFilteredTournaments().length,
+            });
+        }, 250));
         document.getElementById('tournaments-container')?.addEventListener('click', async (event) => {
             const btn = event.target.closest('.btn-view-tournament-detail');
             if (btn && !btn.disabled) {
@@ -1316,6 +1385,9 @@ const PTCG = (() => {
             btn.addEventListener('click', () => {
                 _tournamentPage = parseInt(btn.dataset.page, 10);
                 _renderTournamentsList();
+                _trackFeatureUsage('tournament_pagination_click', {
+                    page_number: _tournamentPage,
+                });
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
@@ -1532,6 +1604,7 @@ const PTCG = (() => {
 
     async function loadPlayersPage() {
         try {
+            _bindGlobalAnalyticsInteractions();
             _playersManifest = await loadPlayersManifest();
             const historyIndex = await loadPlayerHistoryIndex();
             _setPlayerHistoryIndex(historyIndex);
@@ -1557,15 +1630,30 @@ const PTCG = (() => {
                 _setActiveDivisionButton(_currentPlayerLevel);
                 await _loadPlayersForLevel(_currentPlayerLevel);
                 _renderPlayersTable();
+                _trackFeatureUsage('player_level_change', {
+                    player_level: _currentPlayerLevel,
+                    result_count: _getFilteredPlayers().length,
+                });
             });
         });
         document.getElementById('player-search')?.addEventListener('input', _debounce(() => {
             _currentPlayerPage = 1;
             _renderPlayersTable();
+            const keyword = (document.getElementById('player-search')?.value || '').trim();
+            _trackFeatureUsage('player_search', {
+                query_length: keyword.length,
+                has_keyword: keyword.length > 0,
+                result_count: _getFilteredPlayers().length,
+            });
         }, 250));
         document.getElementById('player-only-detail')?.addEventListener('change', () => {
             _currentPlayerPage = 1;
             _renderPlayersTable();
+            const enabled = document.getElementById('player-only-detail')?.checked === true;
+            _trackFeatureUsage('player_only_detail_toggle', {
+                enabled,
+                result_count: _getFilteredPlayers().length,
+            });
         });
 
         document.getElementById('players-page-size')?.addEventListener('change', e => {
@@ -1574,6 +1662,9 @@ const PTCG = (() => {
             _playerPageSize = nextSize;
             _currentPlayerPage = 1;
             _renderPlayersTable();
+            _trackFeatureUsage('player_page_size_change', {
+                page_size: _playerPageSize,
+            });
         });
 
         document.querySelectorAll('.sortable').forEach(th => {
@@ -1588,6 +1679,9 @@ const PTCG = (() => {
                     return 0;
                 });
                 _renderPlayersTable();
+                _trackFeatureUsage('player_sort_click', {
+                    sort_key: sort || '',
+                });
             });
         });
 
@@ -1606,6 +1700,9 @@ const PTCG = (() => {
             if (!Number.isFinite(nextPage) || nextPage < 1) return;
             _currentPlayerPage = nextPage;
             _renderPlayersTable();
+            _trackFeatureUsage('player_pagination_click', {
+                page_number: _currentPlayerPage,
+            });
         });
     }
 
