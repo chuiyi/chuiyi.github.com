@@ -859,6 +859,10 @@ const PTCG = (() => {
                 result_count: _getFilteredTournaments().length,
             });
         }, 250));
+        document.getElementById('show-upcoming')?.addEventListener('change', () => {
+            _tournamentPage = 1;
+            _renderTournamentsList();
+        });
         document.getElementById('tournaments-container')?.addEventListener('click', async (event) => {
             const btn = event.target.closest('.btn-view-tournament-detail');
             if (btn && !btn.disabled) {
@@ -882,11 +886,13 @@ const PTCG = (() => {
         const type     = typeEl?.value || 'SUPERBALL';
         const season   = document.getElementById('season-select')?.value || '';
         const search   = (document.getElementById('tournament-search')?.value || '').trim().toLowerCase();
+        const showUpcoming = document.getElementById('show-upcoming')?.checked ?? false;
 
         return _allTournaments.filter(t => {
             if (t.type !== type) return false;
             if (season && t.season !== season)      return false;
             if (search && !t.name.toLowerCase().includes(search) && !(t.location || '').toLowerCase().includes(search)) return false;
+            if (!showUpcoming && getTournamentDateState(t.date) === 'upcoming') return false;
             return true;
         });
     }
