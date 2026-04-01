@@ -6,7 +6,7 @@ const PORT = 13145;
 // 設置靜態文件目錄
 app.use(express.static(path.join(__dirname)));
 
-// 設置正確的 MIME 類型
+// 設置正確的 MIME 類型 + JSON 檔案禁止快取
 app.use((req, res, next) => {
     if (req.path.endsWith('.js')) {
         res.type('application/javascript');
@@ -23,6 +23,14 @@ app.use((req, res, next) => {
     } else if (req.path.endsWith('.svg')) {
         res.type('image/svg+xml');
     }
+
+    // JSON 資料檔案禁止瀏覽器快取，確保爬蟲排程後前端能即時讀取新資料
+    if (req.path.endsWith('.json')) {
+        res.set('Cache-Control', 'no-cache, must-revalidate, max-age=0');
+        res.set('Pragma', 'no-cache');
+        res.set('Expires', '0');
+    }
+
     next();
 });
 

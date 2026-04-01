@@ -9,6 +9,7 @@
     "scrape:ptcg:menu": "node ptcg/scraper/scrape_menu.js",
     "scrape:ptcg:gbl": "node ptcg/scraper/scrape_gbl_season.js",
     "scrape:ptcg:ubl": "node ptcg/scraper/scrape_ubl_urls.js",
+    "scrape:ptcg:masterball": "node ptcg/scraper/scrape_masterball_urls.js",
     "scrape:ptcg:players": "node ptcg/scraper/scrape_players.js",
     "scrape:ptcg:top128": "node ptcg/scraper/scrape_official_top128.js",
     "test": "echo \"Error: no test specified\" && exit 1"

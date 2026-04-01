@@ -364,18 +364,20 @@ const PTCG = (() => {
     }
 
     async function loadUnifiedTournaments() {
-        const [ublSource, premiereSource, superballSource, top128Manifest] = await Promise.all([
+        const [ublSource, premiereSource, superballSource, masterballSource, top128Manifest] = await Promise.all([
             fetchJSON('tournaments_ubl.json'),
             fetchJSON('tournaments_premiere.json'),
             fetchJSON('tournaments_gbl.json').catch(() => ({ GBL: [] })),
+            fetchJSON('tournaments_masterball.json').catch(() => ({ MASTERBALL: [] })),
             loadTop128Manifest(),
         ]);
 
         const ublList = Array.isArray(ublSource?.UBL) ? ublSource.UBL : [];
         const premiereList = Array.isArray(premiereSource?.PREMIERE) ? premiereSource.PREMIERE : [];
         const superballList = Array.isArray(superballSource?.GBL) ? superballSource.GBL : [];
+        const masterballList = Array.isArray(masterballSource?.MASTERBALL) ? masterballSource.MASTERBALL : [];
         const existingTop128Files = new Set(
-            [...ublList, ...premiereList, ...superballList]
+            [...ublList, ...premiereList, ...superballList, ...masterballList]
                 .map(item => String(item?.top128File || '').trim())
                 .filter(Boolean)
         );
@@ -391,6 +393,7 @@ const PTCG = (() => {
             ...superballList.map(item => normalizeTournamentRecord(item, 'SUPERBALL')),
             ...ublList.map(item => normalizeTournamentRecord(item, 'UBL')),
             ...premiereList.map(item => normalizeTournamentRecord(item, 'PREMIERE')),
+            ...masterballList.map(item => normalizeTournamentRecord(item, 'MASTERBALL')),
             ...top128OnlyList,
         ];
 
