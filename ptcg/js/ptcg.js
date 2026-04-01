@@ -97,6 +97,62 @@ const PTCG = (() => {
         return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
     }
 
+    function getLatestTimestampFromValues(values) {
+        let latestTime = Number.NEGATIVE_INFINITY;
+        let latestRaw = '';
+
+        values.forEach((value) => {
+            const d = parseDateTimeValue(value);
+            if (!d) return;
+            const t = d.getTime();
+            if (t > latestTime) {
+                latestTime = t;
+                latestRaw = String(value || '').trim();
+            }
+        });
+
+        return latestRaw;
+    }
+
+    function getLatestCrawlDateFromRecord(record) {
+        const candidates = [
+            record?.lastCrawledAt,
+            record?.updatedAt,
+            record?.createdAt,
+            record?.last_scraped_at,
+            record?.generated_at,
+        ];
+
+        const history = Array.isArray(record?.history) ? record.history : [];
+        history.forEach((entry) => {
+            candidates.push(entry?.crawledAt, entry?.updatedAt, entry?.last_scraped_at);
+        });
+
+        return getLatestTimestampFromValues(candidates);
+    }
+
+    function getLatestTournamentCrawlDate(tournaments) {
+        const candidates = [];
+        (Array.isArray(tournaments) ? tournaments : []).forEach((item) => {
+            candidates.push(item?.crawlUpdatedAt, item?.lastCrawledAt, item?.updatedAt, item?.createdAt);
+        });
+        return getLatestTimestampFromValues(candidates);
+    }
+
+    function getLatestPlayersScrapedAt(playersIndex) {
+        const candidates = [playersIndex?.generated_at];
+        const players = Array.isArray(playersIndex?.players) ? playersIndex.players : [];
+        players.forEach((player) => {
+            candidates.push(player?.last_scraped_at);
+        });
+        return getLatestTimestampFromValues(candidates);
+    }
+
+    function formatAsDataAsOf(dateStr) {
+        const dateText = formatDate(dateStr);
+        return dateText === '--' ? '資料已載入' : `資料截至 ${dateText}`;
+    }
+
     function escapeHtml(str) {
         const el = document.createElement('div');
         el.textContent = str ?? '';
@@ -252,6 +308,7 @@ const PTCG = (() => {
             top128File: item?.top128File || '',
             top128Count: Number.isFinite(item?.top128Count) ? item.top128Count : null,
             officialDate: item?.officialDate || '',
+            crawlUpdatedAt: getLatestCrawlDateFromRecord(item),
         };
     }
 
@@ -290,6 +347,7 @@ const PTCG = (() => {
             top128File: String(item?.top128File || ''),
             top128Count: Number.isFinite(item?.top128Count) ? item.top128Count : null,
             officialDate: String(item?.officialDate || item?.date || ''),
+            crawlUpdatedAt: getLatestCrawlDateFromRecord(item),
         };
     }
 
@@ -345,6 +403,8 @@ const PTCG = (() => {
     }
 
     function formatRankingDate(dateStr) {
+        const parsed = parseDateTimeValue(dateStr);
+        if (parsed) return `資料截至 ${formatDate(dateStr)}`;
         const match = String(dateStr || '').match(/^(\d{4})(\d{2})(\d{2})$/);
         if (!match) return '資料已載入';
         return `資料截至 ${match[1]}/${match[2]}/${match[3]}`;
@@ -597,10 +657,11 @@ const PTCG = (() => {
     async function loadHomePage() {
         try {
             _bindGlobalAnalyticsInteractions();
-            const [meta, tournaments, playersManifest] = await Promise.all([
+            const [meta, tournaments, playersManifest, playersHistoryIndex] = await Promise.all([
                 fetchJSON('meta.json'),
                 loadUnifiedTournaments(),
                 fetchJSON('ranking.json'),
+                loadPlayerHistoryIndex(),
             ]);
             const availableLevels = getAvailablePlayerLevels(playersManifest);
             const playerResults = await Promise.all(
@@ -619,12 +680,15 @@ const PTCG = (() => {
                 (sum, result) => sum + ((result.players && result.players.length) || 0),
                 0
             );
+            const latestPlayersScrapedAt = getLatestPlayersScrapedAt(playersHistoryIndex);
+            const latestTournamentCrawlAt = getLatestTournamentCrawlDate(tournaments);
+            const homepageUpdatedAt = getLatestTimestampFromValues([latestPlayersScrapedAt, latestTournamentCrawlAt]) || String(meta.last_updated || '');
 
             // 統計數字
             _setStatValue('stat-tournaments', tournaments.length);
             _setStatValue('stat-players',     trackedPlayersTotal);
-            _setStatValue('stat-updated',     meta.last_updated ? _shortDate(meta.last_updated) : '--');
-            _setText('footer-last-update', `最後更新：${meta.last_updated || '--'}`);
+            _setStatValue('stat-updated',     homepageUpdatedAt ? _shortDate(homepageUpdatedAt) : '--');
+            _setText('footer-last-update', `最後更新：${homepageUpdatedAt ? formatDate(homepageUpdatedAt) : '--'}`);
 
             // 最近賽事（取前 3 場）
             const recent = [...tournaments].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
@@ -753,13 +817,10 @@ const PTCG = (() => {
         try {
             _bindGlobalAnalyticsInteractions();
             _allTournaments = await loadUnifiedTournaments();
-
-            const latestWithDate = _allTournaments.find(t => toDateValue(t.date) > -Infinity);
+            const latestTournamentCrawlAt = getLatestTournamentCrawlDate(_allTournaments);
 
             // 更新時間
-            _setText('tournament-update-time', latestWithDate?.date
-                ? `資料截至 ${formatDate(latestWithDate.date)}`
-                : '資料已載入');
+            _setText('tournament-update-time', formatAsDataAsOf(latestTournamentCrawlAt));
 
             _bindTournamentFilters();
             _renderTournamentsList();
@@ -1535,6 +1596,7 @@ const PTCG = (() => {
 
     let _allPlayers = [];
     let _playersManifest = null;
+    let _playersLatestScrapedAt = '';
     let _currentPlayerLevel = 'master';
     let _currentWorldPlayers = 0;
     let _playerPageSize = 200;
@@ -1608,6 +1670,7 @@ const PTCG = (() => {
             _playersManifest = await loadPlayersManifest();
             const historyIndex = await loadPlayerHistoryIndex();
             _setPlayerHistoryIndex(historyIndex);
+            _playersLatestScrapedAt = getLatestPlayersScrapedAt(historyIndex);
             _initDivisionSwitch(_playersManifest);
             await _loadPlayersForLevel(_currentPlayerLevel);
 
@@ -1752,7 +1815,9 @@ const PTCG = (() => {
         const topScore = _allPlayers.reduce((max, player) => Math.max(max, player.scoreValue || 0), 0);
         _setText('pstat-top-score', topScore ? `${topScore}pt` : '--');
         _setText('pstat-world-players', _currentWorldPlayers || '--');
-        _setText('players-update-time', result.date ? formatRankingDate(result.date) : '尚無排行資料');
+        _setText('players-update-time', _playersLatestScrapedAt
+            ? formatAsDataAsOf(_playersLatestScrapedAt)
+            : (result.date ? formatRankingDate(result.date) : '尚無排行資料'));
     }
 
     function _renderPlayersTable() {
