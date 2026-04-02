@@ -283,7 +283,9 @@ const PTCG = (() => {
             || '--';
         const series = item?.series ? String(item.series) : '';
         const organizer = String(item?.organizer || '').trim();
-        const location = organizer || (series ? `系列 ${series}` : '--');
+        const venue = String(item?.venue || '').trim();
+        const address = String(item?.address || '').trim();
+        const location = venue || address || organizer || (series ? `系列 ${series}` : '--');
 
         return {
             id: String(item?.id || `${type}-${Date.now()}`),
@@ -323,6 +325,8 @@ const PTCG = (() => {
             .filter(Boolean)
             .join(' ')
             .trim();
+        const venue = String(item?.venue || '').trim();
+        const address = String(item?.address || '').trim();
 
         return {
             id: String(item?.id || `top128-${type}-${series || Date.now()}-${level || 'unknown'}`),
@@ -330,7 +334,7 @@ const PTCG = (() => {
             type,
             season,
             date: String(item?.officialDate || item?.date || ''),
-            location: '',
+            location: venue || address || '',
             participants: Number.isFinite(item?.top128Count) ? item.top128Count : '',
             finalRankCount: null,
             round1Max: null,

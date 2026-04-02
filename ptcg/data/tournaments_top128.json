@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-01T06:26:46.786Z",
+  "updatedAt": "2026-04-01T08:17:45.573Z",
   "TOP128": [
     {
       "id": "masterball-54377-junior",
@@ -16,7 +16,9 @@
       "top128Count": 0,
       "title": "2025-26 Taiwan Master Ball League TCG Division Junior Category",
       "capacity": "612 人",
-      "updatedAt": "2026-04-01T06:26:46.039Z"
+      "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
+      "address": "臺中市 臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
+      "updatedAt": "2026-04-01T08:17:44.675Z"
     },
     {
       "id": "masterball-54378-senior",
@@ -33,7 +35,9 @@
       "top128Count": 0,
       "title": "2025-26 Taiwan Master Ball League TCG Division Senior Category",
       "capacity": "630 人",
-      "updatedAt": "2026-04-01T06:26:46.427Z"
+      "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
+      "address": "臺中市 臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
+      "updatedAt": "2026-04-01T08:17:45.093Z"
     },
     {
       "id": "masterball-54379-master",
@@ -50,7 +54,9 @@
       "top128Count": 0,
       "title": "2025-26 Taiwan Master Ball League TCG Division Masters Category",
       "capacity": "3036 人",
-      "updatedAt": "2026-04-01T06:26:46.786Z"
+      "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
+      "address": "臺中市 臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
+      "updatedAt": "2026-04-01T08:17:45.573Z"
     }
   ]
 }

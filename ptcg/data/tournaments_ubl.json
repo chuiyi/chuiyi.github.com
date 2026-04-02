@@ -44,7 +44,9 @@
       "top128File": "top128_ubl_43644.csv",
       "top128Count": 128,
       "officialDate": "2025-09-20",
-      "capacity": "480 人"
+      "capacity": "480 人",
+      "venue": "臺南市",
+      "address": "711 臺南市"
     },
     {
       "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=7560542",
@@ -90,7 +92,9 @@
       "top128File": "top128_ubl_44421.csv",
       "top128Count": 256,
       "officialDate": "2025-10-05",
-      "capacity": "768 人"
+      "capacity": "768 人",
+      "venue": "臺北市",
+      "address": "110 臺北市"
     },
     {
       "type": "ubl",
@@ -130,7 +134,9 @@
       "top128File": "top128_ubl_44424.csv",
       "top128Count": 256,
       "officialDate": "2025-10-19",
-      "capacity": "768 人"
+      "capacity": "768 人",
+      "venue": "高雄市",
+      "address": "813 高雄市"
     },
     {
       "type": "ubl",
@@ -170,7 +176,9 @@
       "top128File": "top128_ubl_44427.csv",
       "top128Count": 255,
       "officialDate": "2025-11-15",
-      "capacity": "636 人"
+      "capacity": "636 人",
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -210,7 +218,9 @@
       "top128File": "top128_ubl_48267.csv",
       "top128Count": 256,
       "officialDate": "2025-11-29",
-      "capacity": "636 人"
+      "capacity": "636 人",
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -258,7 +268,9 @@
       "top128File": "top128_ubl_49508.csv",
       "top128Count": 128,
       "officialDate": "2025-12-27",
-      "capacity": "662 人"
+      "capacity": "662 人",
+      "venue": "臺南市",
+      "address": "711 臺南市"
     },
     {
       "type": "ubl",
@@ -298,7 +310,9 @@
       "top128File": "top128_ubl_49735.csv",
       "top128Count": 256,
       "officialDate": "2026-01-17",
-      "capacity": "480 人"
+      "capacity": "480 人",
+      "venue": "宜蘭縣",
+      "address": "268 宜蘭縣"
     },
     {
       "type": "ubl",
@@ -346,7 +360,9 @@
       "top128File": "top128_ubl_49742.csv",
       "top128Count": 256,
       "officialDate": "2026-02-27",
-      "capacity": "660 人"
+      "capacity": "660 人",
+      "venue": "桃園市",
+      "address": "320 桃園市"
     },
     {
       "type": "ubl",
@@ -386,7 +402,9 @@
       "top128File": "",
       "top128Count": 0,
       "officialDate": "2026-03-14",
-      "capacity": "660 人"
+      "capacity": "660 人",
+      "venue": "高雄市",
+      "address": "813 高雄市"
     },
     {
       "type": "ubl",
@@ -426,7 +444,9 @@
       "top128File": "top128_ubl_44423.csv",
       "top128Count": 32,
       "officialDate": "2025-10-05",
-      "capacity": "128 人"
+      "capacity": "128 人",
+      "venue": "臺北市",
+      "address": "110 臺北市"
     },
     {
       "type": "ubl",
@@ -441,7 +461,9 @@
       "top128Count": 0,
       "officialDate": "2026-04-11",
       "capacity": "660 人",
-      "history": []
+      "history": [],
+      "venue": "桃園市",
+      "address": "320 桃園市"
     },
     {
       "type": "ubl",
@@ -456,7 +478,9 @@
       "top128Count": 0,
       "officialDate": "2026-04-11",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "桃園市",
+      "address": "320 桃園市"
     },
     {
       "type": "ubl",
@@ -471,7 +495,9 @@
       "top128Count": 0,
       "officialDate": "2026-04-11",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "桃園市",
+      "address": "320 桃園市"
     },
     {
       "type": "ubl",
@@ -486,7 +512,9 @@
       "top128Count": 0,
       "officialDate": "2026-05-09",
       "capacity": "660 人",
-      "history": []
+      "history": [],
+      "venue": "臺北市",
+      "address": "110 臺北市"
     },
     {
       "type": "ubl",
@@ -501,7 +529,9 @@
       "top128Count": 0,
       "officialDate": "2026-05-09",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺北市",
+      "address": "110 臺北市"
     },
     {
       "type": "ubl",
@@ -516,7 +546,9 @@
       "top128Count": 0,
       "officialDate": "2026-05-09",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺北市",
+      "address": "110 臺北市"
     },
     {
       "type": "ubl",
@@ -531,7 +563,9 @@
       "top128Count": 0,
       "officialDate": "2026-05-30",
       "capacity": "496 人",
-      "history": []
+      "history": [],
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -546,7 +580,9 @@
       "top128Count": 0,
       "officialDate": "2026-05-30",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -561,7 +597,9 @@
       "top128Count": 0,
       "officialDate": "2026-05-30",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -576,7 +614,9 @@
       "top128Count": 0,
       "officialDate": "2026-03-14",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "高雄市",
+      "address": "813 高雄市"
     },
     {
       "type": "ubl",
@@ -591,7 +631,9 @@
       "top128Count": 0,
       "officialDate": "2026-03-14",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "高雄市",
+      "address": "813 高雄市"
     },
     {
       "type": "ubl",
@@ -606,7 +648,9 @@
       "top128Count": 16,
       "officialDate": "2025-09-20",
       "capacity": "64 人",
-      "history": []
+      "history": [],
+      "venue": "其它地區",
+      "address": "711 其它地區"
     },
     {
       "type": "ubl",
@@ -621,7 +665,9 @@
       "top128Count": 32,
       "officialDate": "2025-09-20",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺南市",
+      "address": "711 臺南市"
     },
     {
       "type": "ubl",
@@ -636,7 +682,9 @@
       "top128Count": 32,
       "officialDate": "2025-10-05",
       "capacity": "64 人",
-      "history": []
+      "history": [],
+      "venue": "臺北市",
+      "address": "110 臺北市"
     },
     {
       "type": "ubl",
@@ -651,7 +699,9 @@
       "top128Count": 32,
       "officialDate": "2025-10-19",
       "capacity": "64 人",
-      "history": []
+      "history": [],
+      "venue": "高雄市",
+      "address": "813 高雄市"
     },
     {
       "type": "ubl",
@@ -666,7 +716,9 @@
       "top128Count": 32,
       "officialDate": "2025-10-19",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "高雄市",
+      "address": "813 高雄市"
     },
     {
       "type": "ubl",
@@ -681,7 +733,9 @@
       "top128Count": 32,
       "officialDate": "2025-11-15",
       "capacity": "64 人",
-      "history": []
+      "history": [],
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -696,7 +750,9 @@
       "top128Count": 32,
       "officialDate": "2025-11-15",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -711,7 +767,9 @@
       "top128Count": 32,
       "officialDate": "2025-11-29",
       "capacity": "64 人",
-      "history": []
+      "history": [],
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -726,7 +784,9 @@
       "top128Count": 32,
       "officialDate": "2025-11-29",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺中市",
+      "address": "403 臺中市"
     },
     {
       "type": "ubl",
@@ -741,7 +801,9 @@
       "top128Count": 32,
       "officialDate": "2025-12-27",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺南市",
+      "address": "711 臺南市"
     },
     {
       "type": "ubl",
@@ -756,7 +818,9 @@
       "top128Count": 32,
       "officialDate": "2025-12-27",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "臺南市",
+      "address": "711 臺南市"
     },
     {
       "type": "ubl",
@@ -771,7 +835,9 @@
       "top128Count": 32,
       "officialDate": "2026-01-17",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "宜蘭縣",
+      "address": "268 宜蘭縣"
     },
     {
       "type": "ubl",
@@ -786,7 +852,9 @@
       "top128Count": 32,
       "officialDate": "2026-01-17",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "宜蘭縣",
+      "address": "268 宜蘭縣"
     },
     {
       "type": "ubl",
@@ -801,7 +869,9 @@
       "top128Count": 64,
       "officialDate": "2026-02-27",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "桃園市",
+      "address": "320 桃園市"
     },
     {
       "type": "ubl",
@@ -816,7 +886,9 @@
       "top128Count": 64,
       "officialDate": "2026-02-27",
       "capacity": "128 人",
-      "history": []
+      "history": [],
+      "venue": "桃園市",
+      "address": "320 桃園市"
     }
   ]
 }
