@@ -1605,6 +1605,255 @@ const PTCG = (() => {
         new bootstrap.Modal(document.getElementById('deckModal')).show();
     }
 
+    // ─── 戰隊頁 ───────────────────────────────────────────────
+
+    let _allTeams = [];
+    let _teamCombinedRankingLookup = new Map();
+    const _teamRankingLookupByLevel = new Map();
+
+    function _normalizeTeamSocialItem(item) {
+        if (!item || typeof item !== 'object') return null;
+        const platform = String(item.platform || '').trim().toLowerCase();
+        const url = String(item.url || '').trim();
+        if (!url) return null;
+        return {
+            platform,
+            url,
+        };
+    }
+
+    function _normalizeTeamRecord(team) {
+        const members = Array.isArray(team?.members) ? team.members : [];
+        return {
+            id: String(team?.id || '').trim() || `team-${Math.random().toString(36).slice(2, 9)}`,
+            name: String(team?.name || '').trim() || '未命名戰隊',
+            description: String(team?.description || '').trim(),
+            website: String(team?.website || '').trim(),
+            icon: String(team?.icon || '').trim(),
+            members: members.map((member) => {
+                const social = Array.isArray(member?.social)
+                    ? member.social.map(_normalizeTeamSocialItem).filter(Boolean)
+                    : [];
+                return {
+                    id: String(member?.id || '').trim(),
+                    nickname: String(member?.nickname || '').trim() || '未設定暱稱',
+                    level: String(member?.level || '').trim().toLowerCase(),
+                    social,
+                };
+            }).filter(member => member.id),
+        };
+    }
+
+    async function loadTeamsPage() {
+        try {
+            _bindGlobalAnalyticsInteractions();
+            const teamsData = await fetchJSON('teams/teams.json');
+            const teams = Array.isArray(teamsData?.teams) ? teamsData.teams : [];
+            _allTeams = teams.map(_normalizeTeamRecord);
+
+            _setText('teams-update-time', formatAsDataAsOf(teamsData?.generated_at || ''));
+
+            const requiredLevels = new Set();
+            _allTeams.forEach((team) => {
+                team.members.forEach((member) => {
+                    if (PLAYER_LEVELS.includes(member.level)) {
+                        requiredLevels.add(member.level);
+                    }
+                });
+            });
+
+            _teamRankingLookupByLevel.clear();
+            await Promise.all(Array.from(requiredLevels).map(async (level) => {
+                const lookup = await loadRankingLookupByPtcgId(level);
+                _teamRankingLookupByLevel.set(level, lookup);
+            }));
+            _teamCombinedRankingLookup = await loadCombinedRankingLookupByPtcgId();
+
+            _renderTeamsGrid();
+            _bindTeamEvents();
+        } catch (err) {
+            showError('teams-container', '戰隊資料載入失敗：' + err.message);
+        }
+    }
+
+    function _renderTeamsGrid() {
+        const container = document.getElementById('teams-container');
+        if (!container) return;
+
+        if (!_allTeams.length) {
+            container.innerHTML = '<div class="empty-state w-100"><div class="empty-state-icon"><i class="bi bi-shield"></i></div><p>目前尚無戰隊資料</p></div>';
+            return;
+        }
+
+        container.innerHTML = _allTeams.map(team => `
+            <article class="team-card-item" data-team-id="${escapeHtml(team.id)}">
+                <div class="team-card-head">
+                    <div class="team-icon-box">
+                        <i class="bi bi-shield-fill-check team-icon-fallback ${team.icon ? 'is-hidden' : ''}"></i>
+                        ${team.icon
+                            ? `<img class="team-icon-img" src="${escapeHtml(team.icon)}" alt="${escapeHtml(team.name)}" loading="lazy">`
+                            : ''}
+                    </div>
+                    <div class="flex-grow-1 min-w-0">
+                        <h3 class="team-name">${escapeHtml(team.name)}</h3>
+                        ${team.website ? `<a class="team-website" href="${escapeHtml(team.website)}" target="_blank" rel="noopener"><i class="bi bi-globe2 me-1"></i>官網</a>` : '<span class="team-website text-muted">尚無官網</span>'}
+                    </div>
+                </div>
+
+                <p class="team-desc">${escapeHtml(team.description || '尚未提供戰隊簡介。')}</p>
+
+                <div class="team-meta-row">
+                    <span class="team-meta-chip"><i class="bi bi-people"></i>${team.members.length} 位成員</span>
+                    <button type="button" class="btn-team-members btn-open-team-members" data-team-id="${escapeHtml(team.id)}" ${team.members.length ? '' : 'disabled'}>
+                        成員
+                    </button>
+                </div>
+            </article>
+        `).join('');
+
+        container.querySelectorAll('.team-icon-img').forEach((img) => {
+            img.addEventListener('error', () => {
+                const box = img.closest('.team-icon-box');
+                const fallback = box?.querySelector('.team-icon-fallback');
+                img.remove();
+                fallback?.classList.remove('is-hidden');
+            }, { once: true });
+        });
+    }
+
+    function _bindTeamEvents() {
+        document.getElementById('teams-container')?.addEventListener('click', (event) => {
+            const btn = event.target.closest('.btn-open-team-members');
+            if (!btn || btn.disabled) return;
+
+            const teamId = String(btn.dataset.teamId || '');
+            const team = _allTeams.find(item => String(item.id) === teamId);
+            if (!team) return;
+
+            _openTeamMembersModal(team);
+        });
+    }
+
+    function _getSocialIcon(platform) {
+        const key = String(platform || '').trim().toLowerCase();
+        if (key === 'instagram' || key === 'ig') return 'bi-instagram';
+        if (key === 'threads') return 'bi-threads';
+        if (key === 'facebook' || key === 'fb') return 'bi-facebook';
+        if (key === 'x' || key === 'twitter') return 'bi-twitter-x';
+        if (key === 'youtube' || key === 'yt') return 'bi-youtube';
+        if (key === 'discord') return 'bi-discord';
+        if (key === 'twitch') return 'bi-twitch';
+        return 'bi-link-45deg';
+    }
+
+    function _renderTeamSocialLinks(socialList) {
+        if (!Array.isArray(socialList) || !socialList.length) {
+            return '<span class="text-muted">--</span>';
+        }
+
+        return `<span class="team-social-links">${socialList.map((item) => {
+            const icon = _getSocialIcon(item.platform);
+            const title = item.platform || 'link';
+            return `<a class="team-social-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener" title="${escapeHtml(title)}"><i class="bi ${icon}"></i></a>`;
+        }).join('')}</span>`;
+    }
+
+    function _resolveMemberRanking(member) {
+        const idKey = String(member?.id || '').trim().toLowerCase();
+        if (!idKey) return null;
+
+        const level = String(member?.level || '').trim().toLowerCase();
+        if (PLAYER_LEVELS.includes(level) && _teamRankingLookupByLevel.has(level)) {
+            const levelLookup = _teamRankingLookupByLevel.get(level);
+            const matchedByLevel = levelLookup?.get(idKey) || null;
+            if (matchedByLevel) return matchedByLevel;
+        }
+
+        return _teamCombinedRankingLookup.get(idKey) || null;
+    }
+
+    function _openTeamMembersModal(team) {
+        _trackFeatureUsage('view_team_members', {
+            team_id: String(team.id || ''),
+            member_count: Array.isArray(team.members) ? team.members.length : 0,
+        });
+
+        const titleEl = document.getElementById('teamMembersModalTitle');
+        const bodyEl = document.getElementById('teamMembersModalBody');
+        if (!titleEl || !bodyEl) return;
+
+        titleEl.textContent = `${team.name} · 成員列表`;
+
+        const levelOrder = {
+            master: 0,
+            senior: 1,
+            junior: 2,
+        };
+
+        const rows = (Array.isArray(team.members) ? team.members : []).map((member) => {
+            const ranking = _resolveMemberRanking(member);
+            const levelKey = String(member?.level || '').trim().toLowerCase();
+            const resolvedLevelKey = PLAYER_LEVELS.includes(levelKey)
+                ? levelKey
+                : String(ranking?.divisionLabel || '').trim().toLowerCase();
+            const scoreText = ranking?.score ? String(ranking.score) : '--';
+            const scoreValue = ranking?.score ? parsePointsValue(ranking.score) : -1;
+            const levelText = PLAYER_LEVEL_LABELS[resolvedLevelKey] || '--';
+            const levelBadge = resolvedLevelKey && PLAYER_LEVEL_LABELS[resolvedLevelKey]
+                ? `<span class="tournament-type-badge badge-level-${escapeHtml(resolvedLevelKey)}">${escapeHtml(levelText)}</span>`
+                : '<span class="text-muted">--</span>';
+
+            return {
+                nickname: member.nickname || '--',
+                levelText,
+                levelBadge,
+                levelOrder: Object.prototype.hasOwnProperty.call(levelOrder, resolvedLevelKey) ? levelOrder[resolvedLevelKey] : 99,
+                scoreText,
+                scoreValue,
+                social: Array.isArray(member.social) ? member.social : [],
+            };
+        }).sort((a, b) => {
+            if (a.levelOrder !== b.levelOrder) return a.levelOrder - b.levelOrder;
+            if (b.scoreValue !== a.scoreValue) return b.scoreValue - a.scoreValue;
+            return String(a.nickname).localeCompare(String(b.nickname), 'zh-Hant');
+        });
+
+        if (!rows.length) {
+            bodyEl.innerHTML = '<p class="text-muted mb-0">此戰隊尚未設定成員資料。</p>';
+            new bootstrap.Modal(document.getElementById('teamMembersModal')).show();
+            return;
+        }
+
+        bodyEl.innerHTML = `
+            <div class="table-responsive">
+                <table class="table table-hover team-members-table mb-0">
+                    <thead>
+                        <tr>
+                            <th width="70">#</th>
+                            <th>暱稱</th>
+                            <th width="120">組別</th>
+                            <th width="140">目前積分</th>
+                            <th width="170">個人連結</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rows.map((row, idx) => `
+                            <tr>
+                                <td>${idx + 1}</td>
+                                <td>${escapeHtml(row.nickname)}</td>
+                                <td>${row.levelBadge}</td>
+                                <td class="team-member-score ${row.scoreValue < 0 ? 'is-empty' : ''}">${escapeHtml(row.scoreText)}</td>
+                                <td>${_renderTeamSocialLinks(row.social)}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        `;
+
+        new bootstrap.Modal(document.getElementById('teamMembersModal')).show();
+    }
+
     // ─── 玩家頁 ───────────────────────────────────────────────
 
     let _allPlayers = [];
@@ -2059,6 +2308,7 @@ const PTCG = (() => {
         loadTournamentsPage,
         loadDecksPage,
         loadPlayersPage,
+        loadTeamsPage,
         trackEvent: _trackAnalyticsEvent,
     };
 

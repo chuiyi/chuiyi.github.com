@@ -429,6 +429,7 @@ main .btn-outline-ptcg:hover {
 .tournament-card::before { background: linear-gradient(90deg, var(--ptcg-yellow), var(--ptcg-red)); }
 .deck-card::before        { background: linear-gradient(90deg, var(--ptcg-primary), var(--ptcg-purple)); }
 .player-card::before      { background: linear-gradient(90deg, var(--ptcg-green), var(--ptcg-primary)); }
+.team-card::before        { background: linear-gradient(90deg, #0ea5e9, #14b8a6); }
 
 .feature-card:hover {
     transform: translateY(-4px);
@@ -450,6 +451,7 @@ main .btn-outline-ptcg:hover {
 .tournament-card .feature-card-icon { background: rgba(245,158,11,0.12); color: var(--ptcg-yellow); }
 .deck-card .feature-card-icon        { background: rgba(29,78,216,0.12); color: var(--ptcg-primary-lt); }
 .player-card .feature-card-icon      { background: rgba(22,163,74,0.12); color: var(--ptcg-green); }
+.team-card .feature-card-icon        { background: rgba(20,184,166,0.12); color: #0f766e; }
 
 .feature-card-title {
     font-size: 1.2rem;
@@ -1074,6 +1076,177 @@ main .btn-outline-ptcg:hover {
     font-size: 0.78rem;
     color: var(--ptcg-text-muted);
     margin-top: 0.2rem;
+}
+
+/* ============================================================
+   Teams
+   ============================================================ */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.team-card-item {
+    background: var(--ptcg-surface);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius);
+    padding: 1.1rem;
+    box-shadow: var(--ptcg-shadow-sm);
+    transition: var(--ptcg-transition);
+}
+
+.team-card-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ptcg-shadow-md);
+    border-color: rgba(14, 165, 233, 0.45);
+}
+
+.team-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.85rem;
+}
+
+.team-icon-box {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    background: var(--ptcg-bg-alt);
+    border: 1px solid var(--ptcg-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.team-icon-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-icon-fallback {
+    color: var(--ptcg-primary);
+    font-size: 1.4rem;
+    line-height: 1;
+}
+
+.team-icon-fallback.is-hidden {
+    display: none;
+}
+
+.team-name {
+    font-size: 1.02rem;
+    color: var(--ptcg-text);
+    margin: 0;
+}
+
+.team-website {
+    font-size: 0.78rem;
+    color: var(--ptcg-primary);
+    text-decoration: none;
+}
+
+.team-website:hover {
+    color: var(--ptcg-primary-dk);
+    text-decoration: underline;
+}
+
+.team-desc {
+    color: var(--ptcg-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.65;
+    margin-bottom: 0.9rem;
+    min-height: 3.2em;
+}
+
+.team-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.team-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.2rem 0.62rem;
+    border-radius: 999px;
+    font-size: 0.76rem;
+    color: var(--ptcg-text-muted);
+    background: var(--ptcg-bg-alt);
+    border: 1px solid var(--ptcg-border);
+}
+
+.btn-team-members {
+    border: 1px solid var(--ptcg-primary);
+    color: var(--ptcg-primary);
+    background: transparent;
+    border-radius: 9px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: var(--ptcg-transition);
+}
+
+.btn-team-members:hover {
+    background: var(--ptcg-primary);
+    color: #fff;
+}
+
+.team-members-table th,
+.team-members-table td {
+    vertical-align: middle;
+    font-size: 0.86rem;
+}
+
+.team-members-table thead th {
+    background: var(--ptcg-bg-alt);
+    color: var(--ptcg-text-muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.team-member-score {
+    font-weight: 700;
+    color: var(--ptcg-primary);
+}
+
+.team-member-score.is-empty {
+    font-weight: 500;
+    color: var(--ptcg-text-light);
+}
+
+.team-social-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.team-social-link {
+    width: 1.9rem;
+    height: 1.9rem;
+    border-radius: 8px;
+    border: 1px solid var(--ptcg-border);
+    color: var(--ptcg-text-muted);
+    background: var(--ptcg-surface-alt);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: var(--ptcg-transition);
+}
+
+.team-social-link:hover {
+    border-color: var(--ptcg-primary);
+    color: var(--ptcg-primary);
+    background: rgba(29, 78, 216, 0.08);
 }
 
 /* ============================================================

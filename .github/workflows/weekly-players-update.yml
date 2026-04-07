@@ -1,0 +1,37 @@
+name: Weekly Players Update
+
+on:
+  schedule:
+    # 每個星期日 UTC 時間 0 點 (台灣時間早上 8 點) 執行，相當於每 7 天執行一次
+    - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+jobs:
+  run-players-update:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Force Scrape All Players
+        # 切換到 scraper 目錄執行原本的 scrape_players.js 並帶入全部抓取參數
+        run: |
+          cd ptcg/scraper
+          node scrape_players.js --all --include-404
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: weekly force update all players profile [skip ci]"

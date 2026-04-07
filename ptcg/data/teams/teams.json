@@ -1,0 +1,100 @@
+{
+  "generated_at": "2026-04-02T00:00:00.000Z",
+  "version": 1,
+  "teams": [
+    {
+      "id": "team_xjh",
+      "name": "XJH戰隊",
+      "description": "新北為主的寶可夢戰隊，本質是戰鬥陀螺跟美食戰隊，一群沒用的大人。",
+      "website": "https://www.facebook.com/p/XJH-Team-61578061649955/",
+      "icon": "../assets/images/teams/teams_xjh.jpg",
+      "members": [
+        {
+          "id": "tw15026318",
+          "nickname": "風哥(隊長)",
+          "level": "master",
+          "social": [
+          ]
+        },
+        {
+          "id": "tw67199394",
+          "nickname": "翰哥(喵喵小窩)",
+          "level": "master",
+          "social": [
+            {
+              "platform": "official",
+              "url": "https://www.meow2house.com/"
+            }
+          ]
+        },
+        {
+          "id": "tw52301948",
+          "nickname": "Chuiyi",
+          "level": "master",
+          "social": [
+            {
+              "platform": "threads",
+              "url": "https://www.threads.com/@chuiyi"
+            }
+          ]
+        },
+        {
+          "id": "tw13830995",
+          "nickname": "老蕭",
+          "level": "master",
+          "social": [
+          ]
+        },
+        {
+          "id": "tw18906406",
+          "nickname": "浩廷",
+          "level": "master",
+          "social": [
+          ]
+        },
+        {
+          "id": "tw44127879",
+          "nickname": "AndyChou",
+          "level": "master",
+          "social": [
+          ]
+        },
+        {
+          "id": "tw66134077",
+          "nickname": "KC",
+          "level": "master",
+          "social": [
+          ]
+        },
+        {
+          "id": "tw51147332",
+          "nickname": "明峰",
+          "level": "master",
+          "social": [
+          ]
+        },
+        {
+          "id": "tw67479231",
+          "nickname": "杜哥",
+          "level": "master",
+          "social": [
+          ]
+        },
+        {
+          "id": "tw93020902",
+          "nickname": "廷宇",
+          "level": "master",
+          "social": [
+          ]
+        },
+        {
+          "id": "tw92544749",
+          "nickname": "師傅",
+          "level": "master",
+          "social": [
+          ]
+        }
+      ]
+    }
+  ]
+}

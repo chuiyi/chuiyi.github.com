@@ -1,0 +1,41 @@
+name: Scheduled Data Collector
+
+# 1. 觸發條件 (Triggers)
+on:
+  schedule:
+    # 每天台灣時間早上 8 點執行 (UTC 時間 0 點)
+    - cron: '0 0 * * *'  
+  workflow_dispatch: # 允許在 GitHub 網頁上手動觸發
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      # 這行很重要！這賦予 Actions 修改 repo 內容並推播的權限
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Data Collection Script
+        # 請確認你有一支 Node.js 程式來抓資料，這裡假設叫 scraper.js
+        # 如果你的檔名不同，請在這裡修改它！
+        run: node scraper.js
+
+      # 自動將抓取後產生的新檔案 Commit 並 Push 回到這個 Repo 中
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-update collected data [skip ci]"
+          # 你可以指定只 commit 特定檔案：
+          # file_pattern: 'data/*.json' 

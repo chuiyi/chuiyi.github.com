@@ -10,6 +10,7 @@
 | [tournaments.html](tournaments.html) | 賽事資訊：UBL / Premiere 賽事彙整 |
 | [decks.html](decks.html) | 牌組資料庫：入賞牌型完整 60 張牌表與統計 |
 | [players.html](players.html) | 玩家排行：積分追蹤、賽事出場紀錄 |
+| [teams.html](teams.html) | 戰隊介紹：戰隊卡片、成員積分排序、社群連結 |
 
 ## 目錄結構
 
@@ -29,6 +30,8 @@ ptcg/
 │   ├── tournaments_premiere.json     # Premiere 爬蟲記錄
 │   ├── decks.json        # 牌組資料庫
 │   └── ranking.json      # 玩家排行 manifest
+│   └── teams/
+│       └── teams.json    # 戰隊與成員資料
 └── scraper/              # 後端爬蟲
   ├── scraper.js        # Node.js 主程式
     └── players_manual.csv # 手動維護的玩家資料
@@ -129,6 +132,43 @@ name,name_en,score,tournaments,division,region,top_decks
   }
 }
 ```
+
+### `data/teams/teams.json`（戰隊資料）
+
+```json
+{
+  "generated_at": "2026-04-02T00:00:00.000Z",
+  "version": 1,
+  "teams": [
+    {
+      "id": "team_aurora",
+      "name": "Aurora PTCG",
+      "description": "戰隊簡介",
+      "website": "https://example.com",
+      "icon": "../assets/images/teams/aurora.png",
+      "members": [
+        {
+          "id": "tw93433450",
+          "nickname": "DKA_PIGRIGHT0",
+          "level": "master",
+          "social": [
+            { "platform": "instagram", "url": "https://instagram.com/xxx" },
+            { "platform": "threads", "url": "https://www.threads.net/@xxx" }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+欄位說明：
+
+- `teams[].icon`: 前端顯示用 icon 圖片路徑
+- `teams[].members[].id`: 對應玩家 `ptcg_id`
+- `teams[].members[].nickname`: 戰隊內顯示暱稱
+- `teams[].members[].level`: 可選欄位，`master|senior|junior`，用於精準對應該組別積分
+- `teams[].members[].social[]`: 個人社群連結陣列（可放 `instagram`、`threads` 等平台）
 
 ## 注意事項
 
