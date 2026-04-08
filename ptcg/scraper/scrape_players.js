@@ -8,6 +8,7 @@ const DATA_DIR = path.join(__dirname, '..', 'data');
 const PLAYERS_DIR = path.join(DATA_DIR, 'players');
 const PLAYERS_MANIFEST_PATH = path.join(DATA_DIR, 'ranking.json');
 const PLAYER_HISTORY_INDEX_PATH = path.join(PLAYERS_DIR, 'players.json');
+const COUNT_STATE_PATH = path.join(DATA_DIR, 'scrape_players_count.json');
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -23,6 +24,7 @@ function parseArgs(argv) {
     max: 0,
     forcedIds: [],
     level: '', // '' = all levels; 'master' | 'senior' | 'junior' = specific level only
+    timeoutMins: 330, // 5.5 hours default
   };
 
   const forcedIdSet = new Set();
@@ -75,6 +77,15 @@ function parseArgs(argv) {
       const n = parseInt(argv[i + 1], 10);
       if (Number.isFinite(n) && n > 0) {
         args.max = n;
+      }
+      i += 1;
+      continue;
+    }
+
+    if ((token === '--timeout-mins' || token === '-t') && argv[i + 1]) {
+      const n = parseInt(argv[i + 1], 10);
+      if (Number.isFinite(n) && n > 0) {
+        args.timeoutMins = n;
       }
       i += 1;
       continue;
@@ -380,6 +391,21 @@ async function scrapePlayer(playerId) {
   });
 }
 
+function loadCountState() {
+  if (fs.existsSync(COUNT_STATE_PATH)) {
+    try {
+      return JSON.parse(fs.readFileSync(COUNT_STATE_PATH, 'utf8'));
+    } catch (err) {
+      return null;
+    }
+  }
+  return null;
+}
+
+function saveCountState(state) {
+  fs.writeFileSync(COUNT_STATE_PATH, JSON.stringify(state, null, 2), 'utf8');
+}
+
 async function main() {
   const args = parseArgs(process.argv);
   const manifest = loadManifest();
@@ -420,11 +446,64 @@ async function main() {
   const uniqueIds = Array.from(levelById.keys());
   const existingFileIds = getExistingPlayerJsonIds();
 
+  const currentCsvFiles = [...csvFiles].map((f) => f.file).sort();
+  let state = {
+    startedAt: new Date().toISOString(),
+    csvFiles: currentCsvFiles,
+    completed: false
+  };
+
+  let shouldSkipEntirely = false;
+
+  if (args.all) {
+    const loadedState = loadCountState();
+    if (loadedState && loadedState.csvFiles) {
+      const loadedCsvs = [...loadedState.csvFiles].sort();
+      const isSameCsvs = currentCsvFiles.length === loadedCsvs.length && currentCsvFiles.every((v, index) => v === loadedCsvs[index]);
+      
+      if (!isSameCsvs) {
+        console.log('[schedule] CSV files changed. Resetting state.');
+        saveCountState(state);
+      } else {
+        if (loadedState.completed) {
+          const startedAt = new Date(loadedState.startedAt).getTime();
+          const now = Date.now();
+          const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
+          
+          if (now - startedAt > sevenDaysMs) {
+             console.log('[schedule] Completed and 7 days passed. Resetting state to start a new cycle.');
+             saveCountState(state);
+          } else {
+             console.log(`[schedule] All players scraped for this cycle. Needs to wait until ${new Date(startedAt + sevenDaysMs).toLocaleString()} before next rescrape. Skipping.`);
+             shouldSkipEntirely = true;
+          }
+        } else {
+          state = loadedState;
+          console.log(`[schedule] Resuming previous cycle started at ${state.startedAt}`);
+        }
+      }
+    } else {
+      console.log('[schedule] Starting new scrape cycle...');
+      saveCountState(state);
+    }
+  }
+
+  if (shouldSkipEntirely) {
+     return;
+  }
+
   // Filter target IDs based on players.json index (primary) and filesystem (fallback)
   let targetIds = uniqueIds.filter((id) => {
     const entry = existingIndexById.get(id);
 
     if (args.all) {
+      if (entry && entry.last_scraped_at) {
+        const scrapedAt = new Date(entry.last_scraped_at).getTime();
+        const cycleStart = new Date(state.startedAt).getTime();
+        if (scrapedAt >= cycleStart) {
+          return false; // Already scraped in the current cycle
+        }
+      }
       return true;
     }
 
@@ -496,7 +575,18 @@ async function main() {
   let failedOther = 0;
   const runResultsById = new Map();
 
+  const scriptStartTime = Date.now();
+  const timeoutMs = args.timeoutMins * 60 * 1000;
+  let stoppedByTimeout = false;
+
   for (let i = 0; i < targetIds.length; i += 1) {
+    if (timeoutMs > 0 && Date.now() - scriptStartTime >= timeoutMs) {
+      console.log('');
+      console.log(`[schedule] Timeout of ${args.timeoutMins} mins reached. Stopping to resume in next schedule...`);
+      stoppedByTimeout = true;
+      break;
+    }
+
     const id = targetIds[i];
     console.log('');
     console.log(`[schedule] (${i + 1}/${targetIds.length}) scraping ${id}`);
@@ -546,6 +636,12 @@ async function main() {
     runResultsById,
     existingIndexById,
   });
+
+  if (args.all && !stoppedByTimeout && targetIds.length >= 0) {
+    console.log('[schedule] All target IDs processed for this cycle. Marking as completed.');
+    state.completed = true;
+    saveCountState(state);
+  }
 }
 
 main().catch((err) => {
