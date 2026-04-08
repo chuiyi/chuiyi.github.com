@@ -29,7 +29,7 @@ jobs:
         # 切換到 scraper 目錄執行原本的 scrape_players.js 並帶入全部抓取參數
         run: |
           cd ptcg/scraper
-          node scrape_players.js --all --include-404
+          node scrape_players.js --all --include-404 --delay-ms 500 --quiet
 
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5

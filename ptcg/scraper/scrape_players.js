@@ -25,6 +25,7 @@ function parseArgs(argv) {
     forcedIds: [],
     level: '', // '' = all levels; 'master' | 'senior' | 'junior' = specific level only
     timeoutMins: 330, // 5.5 hours default
+    quiet: false,
   };
 
   const forcedIdSet = new Set();
@@ -100,6 +101,11 @@ function parseArgs(argv) {
 
     if (token === '--dry-run') {
       args.dryRun = true;
+      continue;
+    }
+
+    if (token === '--quiet' || token === '-q') {
+      args.quiet = true;
       continue;
     }
 
@@ -346,7 +352,7 @@ function writePlayerHistoryIndexVerbose(opts) {
   console.log(`[schedule] wrote player history index: ${PLAYER_HISTORY_INDEX_PATH} (${count} players)`);
 }
 
-async function scrapePlayer(playerId) {
+async function scrapePlayer(playerId, quiet) {
   return new Promise((resolve) => {
     const proc = spawn('node', ['./scrape_player_history.js', '--id', playerId], {
       cwd: __dirname,
@@ -359,13 +365,13 @@ async function scrapePlayer(playerId) {
     proc.stdout.on('data', (chunk) => {
       const text = chunk.toString();
       stdout += text;
-      process.stdout.write(text);
+      if (!quiet) process.stdout.write(text);
     });
 
     proc.stderr.on('data', (chunk) => {
       const text = chunk.toString();
       stderr += text;
-      process.stderr.write(text);
+      if (!quiet) process.stderr.write(text);
     });
 
     proc.on('close', (code) => {
@@ -588,11 +594,15 @@ async function main() {
     }
 
     const id = targetIds[i];
-    console.log('');
-    console.log(`[schedule] (${i + 1}/${targetIds.length}) scraping ${id}`);
+    if (!args.quiet) {
+      console.log('');
+      console.log(`[schedule] (${i + 1}/${targetIds.length}) scraping ${id}`);
+    } else if (i % 50 === 0) {
+      console.log(`[schedule] progress: (${i + 1}/${targetIds.length}) scraping ...`);
+    }
 
     // eslint-disable-next-line no-await-in-loop
-    const result = await scrapePlayer(id);
+    const result = await scrapePlayer(id, args.quiet);
 
     if (result.ok) {
       success += 1;
