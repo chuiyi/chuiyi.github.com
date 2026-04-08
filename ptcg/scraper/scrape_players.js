@@ -627,7 +627,9 @@ async function main() {
       });
     }
 
-    writePlayerHistoryIndexQuiet({ levelById, runResultsById, existingIndexById });
+    if (i % 20 === 0) {
+      writePlayerHistoryIndexQuiet({ levelById, runResultsById, existingIndexById });
+    }
 
     if (i < targetIds.length - 1 && args.delayMs > 0) {
       // eslint-disable-next-line no-await-in-loop
