@@ -32,6 +32,19 @@ jobs:
         # 如果你的檔名不同，請在這裡修改它！
         run: node scraper.js
 
+      - name: Sync with Remote before Commit
+        run: |
+          if git diff-index --quiet HEAD --; then
+            echo "No local changes to sync."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "temp"
+            git pull --rebase -X theirs origin main
+            git reset HEAD~1
+          fi
+
       # 自動將抓取後產生的新檔案 Commit 並 Push 回到這個 Repo 中
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5

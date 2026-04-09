@@ -31,6 +31,19 @@ jobs:
           cd ptcg/scraper
           node scrape_players.js --all --include-404 --delay-ms 600
 
+      - name: Sync with Remote before Commit
+        run: |
+          if git diff-index --quiet HEAD --; then
+            echo "No local changes to sync."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "temp"
+            git pull --rebase -X theirs origin main
+            git reset HEAD~1
+          fi
+
       - name: Commit and Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
