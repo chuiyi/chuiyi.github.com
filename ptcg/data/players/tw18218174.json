@@ -1,8 +1,8 @@
 {
   "id": "tw18218174",
   "url": "https://asia.pokemon-card.com/tw/users/tw18218174/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T03:32:56.908Z",
-  "totalEvents": 16,
+  "fetchedAt": "2026-04-10T11:39:25.210Z",
+  "totalEvents": 17,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -24,6 +24,17 @@
       "location": "宮治卡牌遊戲專門店",
       "address": "高雄市阿蓮區中正路483號",
       "rank": "19",
+      "lp": "4"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 17,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "03-07-2026 14:00",
+      "eventDateTime": "2026-03-07 14:00",
+      "location": "瘋桌遊-益智遊戲專賣店(高雄楠梓店)",
+      "address": "高雄市楠梓區宏昌街2號",
+      "rank": "18",
       "lp": "-"
     },
     {
@@ -34,8 +45,8 @@
       "eventDateTime": "2025-11-22 14:00",
       "location": "瘋桌遊-益智遊戲專賣店(高雄楠梓店)",
       "address": "高雄市楠梓區宏昌街2號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "5",
+      "lp": "8"
     },
     {
       "pageNo": 1,
@@ -110,7 +121,7 @@
       "eventTime": "01-12-2025 14:00",
       "eventDateTime": "2025-01-12 14:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "17",
       "lp": "-"
     },
