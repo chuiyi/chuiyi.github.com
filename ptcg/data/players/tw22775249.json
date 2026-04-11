@@ -1,8 +1,8 @@
 {
   "id": "tw22775249",
   "url": "https://asia.pokemon-card.com/tw/users/tw22775249/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T06:50:49.468Z",
-  "totalEvents": 8,
+  "fetchedAt": "2026-04-11T04:04:28.060Z",
+  "totalEvents": 11,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -12,6 +12,39 @@
       "eventDateTime": "2026-06-13 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 11,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-19-2026 13:30",
+      "eventDateTime": "2026-04-19 13:30",
+      "location": "雙子星高雄鹽埕店",
+      "address": "高雄市鹽埕區田單街17號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 10,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-18-2026 13:30",
+      "eventDateTime": "2026-04-18 13:30",
+      "location": "漢謚玩具社",
+      "address": "高雄市苓雅區中華四路244號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 9,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-05-2026 13:00",
+      "eventDateTime": "2026-04-05 13:00",
+      "location": "Bruce桌遊空間-三多店",
+      "address": "高雄市前鎮區三多三路213號8樓",
       "rank": "-",
       "lp": "-"
     },

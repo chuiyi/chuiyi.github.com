@@ -1,8 +1,8 @@
 {
   "id": "tw47440588",
   "url": "https://asia.pokemon-card.com/tw/users/tw47440588/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T02:51:46.184Z",
-  "totalEvents": 33,
+  "fetchedAt": "2026-04-11T00:46:51.138Z",
+  "totalEvents": 34,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -23,6 +23,17 @@
       "eventDateTime": "2026-05-09 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 14,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-25-2026 09:00",
+      "eventDateTime": "2026-04-25 09:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -60,8 +71,8 @@
       "lp": "8"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 8,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-21-2025 14:00",
       "eventDateTime": "2025-12-21 14:00",
@@ -72,7 +83,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 7,
+      "rowIndex": 6,
       "activityName": "2025-26 Taiwan Premier Ball League TCG Division Masters Category",
       "eventTime": "11-01-2025 09:00",
       "eventDateTime": "2025-11-01 09:00",
@@ -83,7 +94,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 8,
+      "rowIndex": 7,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季1-2",
       "eventTime": "10-05-2025 08:00",
       "eventDateTime": "2025-10-05 08:00",
@@ -94,7 +105,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 5,
+      "rowIndex": 4,
       "activityName": "Master Ball League 2024-25 Taiwan TCG Division Masters Category",
       "eventTime": "06-07-2025 08:00",
       "eventDateTime": "2025-06-07 08:00",
@@ -105,7 +116,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 3,
+      "rowIndex": 2,
       "activityName": "",
       "eventTime": "05-25-2025 08:30",
       "eventDateTime": "2025-05-25 08:30",
@@ -116,7 +127,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 2,
+      "rowIndex": 1,
       "activityName": "",
       "eventTime": "05-10-2025 08:30",
       "eventDateTime": "2025-05-10 08:30",
@@ -127,7 +138,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 6,
+      "rowIndex": 5,
       "activityName": "",
       "eventTime": "05-10-2025 08:30",
       "eventDateTime": "2025-05-10 08:30",
@@ -138,7 +149,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 4,
+      "rowIndex": 3,
       "activityName": "",
       "eventTime": "04-19-2025 08:30",
       "eventDateTime": "2025-04-19 08:30",
@@ -149,7 +160,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 19,
+      "rowIndex": 20,
       "activityName": "",
       "eventTime": "04-06-2025 08:30",
       "eventDateTime": "2025-04-06 08:30",
@@ -160,7 +171,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 18,
+      "rowIndex": 19,
       "activityName": "",
       "eventTime": "03-16-2025 08:30",
       "eventDateTime": "2025-03-16 08:30",
@@ -171,7 +182,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 18,
       "activityName": "",
       "eventTime": "02-15-2025 08:30",
       "eventDateTime": "2025-02-15 08:30",
@@ -182,7 +193,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 16,
+      "rowIndex": 17,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "12-28-2024 08:00",
       "eventDateTime": "2024-12-28 08:00",
@@ -193,7 +204,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 15,
+      "rowIndex": 16,
       "activityName": "",
       "eventTime": "12-07-2024 08:30",
       "eventDateTime": "2024-12-07 08:30",
@@ -203,8 +214,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 15,
       "activityName": "Premier Ball League 2024-25 Taiwan TCG Division Masters Category",
       "eventTime": "11-30-2024 00:30",
       "eventDateTime": "2024-11-30 00:30",

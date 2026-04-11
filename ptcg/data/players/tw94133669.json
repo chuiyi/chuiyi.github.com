@@ -1,8 +1,8 @@
 {
   "id": "tw94133669",
   "url": "https://asia.pokemon-card.com/tw/users/tw94133669/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T09:49:02.547Z",
-  "totalEvents": 23,
+  "fetchedAt": "2026-04-11T01:04:57.364Z",
+  "totalEvents": 24,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -27,8 +27,19 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 4,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "03-07-2026 14:00",
+      "eventDateTime": "2026-03-07 14:00",
+      "location": "瘋桌遊-益智遊戲專賣店(高雄楠梓店)",
+      "address": "高雄市楠梓區宏昌街2號",
+      "rank": "14",
+      "lp": "6"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-14-2026 13:30",
       "eventDateTime": "2026-02-14 13:30",
@@ -39,7 +50,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 19,
+      "rowIndex": 20,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-13-2025 13:30",
       "eventDateTime": "2025-12-13 13:30",
@@ -50,18 +61,18 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 18,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-22-2025 14:00",
       "eventDateTime": "2025-11-22 14:00",
       "location": "瘋桌遊-益智遊戲專賣店(高雄楠梓店)",
       "address": "高雄市楠梓區宏昌街2號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "11",
+      "lp": "6"
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 18,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "11-09-2025 14:00",
       "eventDateTime": "2025-11-09 14:00",
@@ -72,7 +83,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 16,
+      "rowIndex": 17,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "11-02-2025 08:30",
       "eventDateTime": "2025-11-02 08:30",
@@ -82,8 +93,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 13,
       "activityName": "2025-26 Taiwan Premier Ball League TCG Division Masters Category",
       "eventTime": "11-01-2025 09:00",
       "eventDateTime": "2025-11-01 09:00",
@@ -94,7 +105,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 15,
+      "rowIndex": 16,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-26-2025 13:00",
       "eventDateTime": "2025-10-26 13:00",
@@ -105,7 +116,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 14,
+      "rowIndex": 15,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-25-2025 13:30",
       "eventDateTime": "2025-10-25 13:30",
@@ -116,7 +127,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 13,
+      "rowIndex": 14,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2025 13:30",
       "eventDateTime": "2025-10-18 13:30",

@@ -1,8 +1,8 @@
 {
   "id": "tw65072216",
   "url": "https://asia.pokemon-card.com/tw/users/tw65072216/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T07:28:13.639Z",
-  "totalEvents": 7,
+  "fetchedAt": "2026-04-11T05:02:20.026Z",
+  "totalEvents": 8,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -56,7 +56,7 @@
       "eventDateTime": "2026-04-05 13:00",
       "location": "Bruce桌遊空間-三多店",
       "address": "高雄市前鎮區三多三路213號8樓",
-      "rank": "-",
+      "rank": "71",
       "lp": "-"
     },
     {
@@ -67,7 +67,18 @@
       "eventDateTime": "2026-04-04 13:30",
       "location": "松梅桌遊",
       "address": "高雄市前鎮區瑞興街11號",
-      "rank": "-",
+      "rank": "38",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 8,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-1 (大師組)",
+      "eventTime": "03-14-2026 08:30",
+      "eventDateTime": "2026-03-14 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "457",
       "lp": "-"
     },
     {

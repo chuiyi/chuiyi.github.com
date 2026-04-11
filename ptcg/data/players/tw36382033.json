@@ -1,8 +1,8 @@
 {
   "id": "tw36382033",
   "url": "https://asia.pokemon-card.com/tw/users/tw36382033/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T07:51:40.583Z",
-  "totalEvents": 16,
+  "fetchedAt": "2026-04-11T05:35:43.938Z",
+  "totalEvents": 17,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -17,13 +17,24 @@
     },
     {
       "pageNo": 1,
+      "rowIndex": 17,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-23-2026 10:30",
+      "eventDateTime": "2026-05-23 10:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
       "rowIndex": 15,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-16-2025 12:00",
       "eventDateTime": "2025-11-16 12:00",
       "location": "一新書局",
       "address": "高雄市苓雅區廣州一街143-6號",
-      "rank": "-",
+      "rank": "32",
       "lp": "-"
     },
     {
