@@ -4,7 +4,7 @@
  *
  * 針對 2025-26 賽季 UBL（高級球）執行官方資料抓取流程：
  * 1) 從活動搜尋分頁（csps[0]=6）抓出所有賽事官方 URL，
- *    補入 2025-26大型賽事 - 工作表1.csv（新增欄位 title），
+ *    補入 2025-26高級球賽事.csv（新增欄位 title），
  *    並忽略「二次抽選」賽事
  * 2) 針對所有 url_official 條目回填標題（title 欄位）
  * 3) 依照 UBL 邏輯執行 scrape_official_top128.js
@@ -92,7 +92,7 @@ function parseArgs(argv) {
   const seasonDefaults = resolveSeasonDefaults(args.seasonLabel);
   args.seasonLabel = seasonDefaults.seasonLabel;
   if (!args.startDate) args.startDate = seasonDefaults.startDate;
-  args.csvPath = path.join(DATA_DIR, `${args.seasonLabel}大型賽事 - 工作表1.csv`);
+  args.csvPath = path.join(DATA_DIR, `${args.seasonLabel}高級球賽事.csv`);
 
   return args;
 }

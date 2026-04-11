@@ -1030,9 +1030,250 @@ const PTCG = (() => {
 
         return `
             <div class="round-player-card">
-                <div class="round-player-name">${escapeHtml(String(name))}</div>
+                <div class="round-player-name-line">
+                    <button type="button" class="round-player-inspect-btn" data-player-id="${escapeHtml(String(playerId || ''))}" title="查看該玩家本場所有對戰">
+                        <i class="bi bi-person-lines-fill"></i>
+                    </button>
+                    <div class="round-player-name">${escapeHtml(String(name))}</div>
+                </div>
                 <div class="round-player-meta">${escapeHtml(meta.join(' · '))}</div>
             </div>`;
+    }
+
+    function _parseRoundNo(label) {
+        const match = String(label || '').match(/round\s*(\d+)/i);
+        return match ? parseInt(match[1], 10) : Number.POSITIVE_INFINITY;
+    }
+
+    function _toIntOrNull(value) {
+        const parsed = parseInt(String(value || '').trim(), 10);
+        return Number.isFinite(parsed) ? parsed : null;
+    }
+
+    function _buildPlayerRoundIndex(records) {
+        const index = new Map();
+        records
+            .filter(record => String(record.record_type || '').trim().toLowerCase() === 'round_pairing')
+            .forEach((record) => {
+                const playerId = String(record.player_id || '').trim().toLowerCase();
+                const roundLabel = String(record.round || '').trim();
+                if (!playerId || !roundLabel) return;
+
+                if (!index.has(playerId)) index.set(playerId, new Map());
+                const roundMap = index.get(playerId);
+                if (!roundMap.has(roundLabel)) {
+                    roundMap.set(roundLabel, record);
+                }
+            });
+        return index;
+    }
+
+    function _buildFinalScoreIndex(records) {
+        const index = new Map();
+        records
+            .filter(record => String(record.record_type || '').trim().toLowerCase() === 'final_rank')
+            .forEach((record) => {
+                const playerId = String(record.player_id || '').trim().toLowerCase();
+                if (!playerId) return;
+                index.set(playerId, _toIntOrNull(record.total_score));
+            });
+        return index;
+    }
+
+    function _buildFinalRankIndex(records) {
+        const index = new Map();
+        records
+            .filter(record => String(record.record_type || '').trim().toLowerCase() === 'final_rank')
+            .forEach((record) => {
+                const playerId = String(record.player_id || '').trim().toLowerCase();
+                if (!playerId) return;
+                index.set(playerId, {
+                    rank: _toIntOrNull(record.rank),
+                    totalScore: _toIntOrNull(record.total_score),
+                });
+            });
+        return index;
+    }
+
+    function _judgeMatchResult(baseSelf, nextSelf, baseOpp, nextOpp) {
+        if (nextSelf == null) return '未判定';
+
+        // 常見於 Round 1：本輪分數缺值時，改用下一輪是否已有分數推斷。
+        if (baseSelf == null) {
+            if (nextSelf > 0) return '勝場';
+            if (baseOpp != null && nextOpp != null && nextOpp <= baseOpp) return '雙敗';
+            return '落敗';
+        }
+
+        if (nextSelf > baseSelf) return '勝場';
+
+        // 未增加分數：若雙方都未增加，判定為雙敗；否則為落敗。
+        if (baseOpp != null && nextOpp != null && nextOpp <= baseOpp) {
+            return '雙敗';
+        }
+        return '落敗';
+    }
+
+    function _buildPlayerJourney(playerId, records) {
+        const normalizedPlayerId = String(playerId || '').trim().toLowerCase();
+        if (!normalizedPlayerId) {
+            return {
+                entries: [],
+                finalInfo: null,
+            };
+        }
+
+        const playerRoundIndex = _buildPlayerRoundIndex(records);
+        const finalScoreIndex = _buildFinalScoreIndex(records);
+        const finalRankIndex = _buildFinalRankIndex(records);
+        const roundMap = playerRoundIndex.get(normalizedPlayerId);
+        if (!roundMap || !roundMap.size) {
+            return {
+                entries: [],
+                finalInfo: finalRankIndex.get(normalizedPlayerId) || null,
+            };
+        }
+
+        const roundLabels = Array.from(roundMap.keys()).sort((a, b) => _parseRoundNo(a) - _parseRoundNo(b));
+        const entries = roundLabels.map((roundLabel) => {
+            const row = roundMap.get(roundLabel);
+            return {
+                roundLabel,
+                tableNo: String(row.table_no || '').trim(),
+                playerId: String(row.player_id || '').trim(),
+                opponentId: String(row.opponent_id || '').trim(),
+                selfScore: _toIntOrNull(row.player_score),
+                oppScore: _toIntOrNull(row.opponent_score),
+                result: '待判定',
+            };
+        });
+
+        for (let i = 0; i < entries.length; i += 1) {
+            const current = entries[i];
+            const opponentKey = String(current.opponentId || '').trim().toLowerCase();
+            const opponentRoundMap = playerRoundIndex.get(opponentKey);
+
+            if (i < entries.length - 1) {
+                const nextRoundLabel = entries[i + 1].roundLabel;
+                const nextSelf = entries[i + 1].selfScore;
+                const nextOpp = opponentRoundMap ? _toIntOrNull(opponentRoundMap.get(nextRoundLabel)?.player_score) : null;
+                current.result = _judgeMatchResult(current.selfScore, nextSelf, current.oppScore, nextOpp);
+                continue;
+            }
+
+            const finalSelf = finalScoreIndex.get(normalizedPlayerId) ?? null;
+            const finalOpp = opponentKey ? (finalScoreIndex.get(opponentKey) ?? null) : null;
+            current.result = _judgeMatchResult(current.selfScore, finalSelf, current.oppScore, finalOpp);
+        }
+
+        return {
+            entries,
+            finalInfo: finalRankIndex.get(normalizedPlayerId) || null,
+        };
+    }
+
+    function _getJourneyResultClass(result) {
+        const key = String(result || '').trim();
+        if (key === '勝場') return 'is-win';
+        if (key === '落敗') return 'is-loss';
+        if (key === '雙敗') return 'is-double-loss';
+        return 'is-pending';
+    }
+
+    function _renderPlayerJourneyBody(journey, lookup) {
+        const entries = Array.isArray(journey?.entries) ? journey.entries : [];
+        const finalInfo = journey?.finalInfo || null;
+
+        if (!entries.length) {
+            return '<p class="text-muted mb-0">此玩家在本場賽事沒有可顯示的 pairing 資料。</p>';
+        }
+
+        const finalSummaryText = finalInfo
+            ? `完賽：Final Rank ${finalInfo.rank ?? '--'}（總分 ${finalInfo.totalScore ?? '--'}）`
+            : '未完賽：沒有出現在 Final Rank。';
+        const finalSummaryClass = finalInfo ? 'is-finished' : 'is-unfinished';
+
+        return `
+            <div class="table-responsive">
+                <table class="ptcg-table mb-0">
+                    <thead>
+                        <tr>
+                            <th width="90">Round</th>
+                            <th width="80">桌次</th>
+                            <th>對手</th>
+                            <th width="110">本輪 TtlScore</th>
+                            <th width="90">結果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${entries.map((entry) => {
+                            const oppKey = String(entry.opponentId || '').trim().toLowerCase();
+                            const matched = oppKey ? lookup.get(oppKey) : null;
+                            const opponentName = matched?.name || entry.opponentId || '--';
+                            const resultClass = _getJourneyResultClass(entry.result);
+                            return `
+                                <tr>
+                                    <td>${escapeHtml(entry.roundLabel || '--')}</td>
+                                    <td>${escapeHtml(entry.tableNo || '--')}</td>
+                                    <td class="player-name-cell">
+                                        ${escapeHtml(String(opponentName))}
+                                        <span>${escapeHtml(String(entry.opponentId || '--'))}</span>
+                                    </td>
+                                    <td>${entry.selfScore == null ? '--' : escapeHtml(String(entry.selfScore))}</td>
+                                    <td><span class="journey-result-pill ${resultClass}">${escapeHtml(entry.result || '--')}</span></td>
+                                </tr>`;
+                        }).join('')}
+                    </tbody>
+                </table>
+            </div>
+            <div class="journey-final-summary ${finalSummaryClass}">
+                <div class="journey-final-summary-label">本場最終結果</div>
+                <div class="journey-final-summary-text">${escapeHtml(finalSummaryText)}</div>
+            </div>`;
+    }
+
+    function _ensurePlayerJourneyModal() {
+        let modalEl = document.getElementById('playerJourneyModal');
+        if (modalEl) return modalEl;
+
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+            <div class="modal fade" id="playerJourneyModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content ptcg-modal player-journey-modal">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="playerJourneyTitle">玩家對戰摘要</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="playerJourneyBody"></div>
+                    </div>
+                </div>
+            </div>`;
+        modalEl = wrapper.firstElementChild;
+        document.body.appendChild(modalEl);
+        return modalEl;
+    }
+
+    function _bindPlayerJourneyButtons(bodyEl, tournament, records, lookup) {
+        const modalEl = _ensurePlayerJourneyModal();
+        const titleEl = modalEl.querySelector('#playerJourneyTitle');
+        const journeyBodyEl = modalEl.querySelector('#playerJourneyBody');
+        if (!titleEl || !journeyBodyEl) return;
+
+        const buttons = Array.from(bodyEl.querySelectorAll('.round-player-inspect-btn[data-player-id]'));
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const playerId = String(button.getAttribute('data-player-id') || '').trim();
+                if (!playerId) return;
+
+                const matched = lookup.get(playerId.toLowerCase());
+                const displayName = matched?.name || playerId;
+                const entries = _buildPlayerJourney(playerId, records);
+                titleEl.textContent = `${displayName} · ${tournament.name}`;
+                journeyBodyEl.innerHTML = _renderPlayerJourneyBody(entries, lookup);
+                new bootstrap.Modal(modalEl).show();
+            });
+        });
     }
 
     function _buildRoundMatchups(records) {
@@ -1316,10 +1557,16 @@ const PTCG = (() => {
             const lookup = await loadRankingLookupByPtcgId(lookupLevel);
 
             const unifiedRecords = _parseUnifiedTournamentCsv(rows);
-            bodyEl.innerHTML = unifiedRecords.length
+            const detailBody = unifiedRecords.length
                 ? _renderUnifiedTournamentDetailBody(tournament, unifiedRecords, lookup)
                 : await _renderLegacyTournamentDetailBody(rows, tournament);
+            bodyEl.innerHTML = `
+                ${tournament.url ? `<div class="d-flex justify-content-end mb-3"><a href="${escapeHtml(tournament.url)}" target="_blank" rel="noopener" class="btn btn-outline-ptcg btn-sm"><i class="bi bi-box-arrow-up-right me-1"></i>Pairing頁面</a></div>` : ''}
+                ${detailBody}`;
             _bindTournamentDetailTabs(bodyEl);
+            if (unifiedRecords.length) {
+                _bindPlayerJourneyButtons(bodyEl, tournament, unifiedRecords, lookup);
+            }
         } catch (err) {
             bodyEl.innerHTML = `<p class="text-muted mb-0">載入賽事詳情失敗：${escapeHtml(err.message || '未知錯誤')}</p>`;
         }

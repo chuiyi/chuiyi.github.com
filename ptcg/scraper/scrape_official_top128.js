@@ -2,14 +2,14 @@
 /**
  * scrape_official_top128.js
  *
- * 讀取 ptcg/data/2025-26大型賽事 - 工作表1.csv（含 url_official 欄位），
+ * 讀取 ptcg/data/2025-26高級球賽事.csv / 2025-26紀念球賽事.csv（含 url_official 欄位），
  * 對每個有 url_official 的條目，從官方 Pokemon 頁面抓取 Top 128 排名資料，
  * 儲存至 ptcg/data/tournaments/top128_{type}_{officialId}.csv，
  * 並更新對應的 tournaments_ubl.json / tournaments_premiere.json。
  *
  * 用法:
  *   node scrape_official_top128.js
- *   node scrape_official_top128.js --csv "path/to/events.csv"
+ *   node scrape_official_top128.js --csv "path/to/events.csv"      # 可重複指定多次
  *   node scrape_official_top128.js --force          # 重新抓取已有的檔案
  *   node scrape_official_top128.js --dry-run        # 只顯示要抓取的 URL，不實際抓取
  */
@@ -23,7 +23,10 @@ const cheerio = require('cheerio');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const TOURNAMENTS_DIR = path.join(DATA_DIR, 'tournaments');
-const DEFAULT_CSV = path.join(DATA_DIR, '2025-26大型賽事 - 工作表1.csv');
+const DEFAULT_CSVS = [
+  path.join(DATA_DIR, '2025-26高級球賽事.csv'),
+  path.join(DATA_DIR, '2025-26紀念球賽事.csv'),
+];
 const UBL_JSON = path.join(DATA_DIR, 'tournaments_ubl.json');
 const PREMIERE_JSON = path.join(DATA_DIR, 'tournaments_premiere.json');
 const MASTERBALL_JSON = path.join(DATA_DIR, 'tournaments_masterball.json');
@@ -32,12 +35,13 @@ const TOP128_MANIFEST_JSON = path.join(DATA_DIR, 'tournaments_top128.json');
 // ─── 引數解析 ────────────────────────────────────────────────
 
 function parseArgs(argv) {
-  const args = { csv: DEFAULT_CSV, force: false, dryRun: false };
+  const args = { csvs: [], force: false, dryRun: false };
   for (let i = 2; i < argv.length; i += 1) {
-    if (argv[i] === '--csv' && argv[i + 1]) { args.csv = argv[i + 1]; i += 1; }
+    if (argv[i] === '--csv' && argv[i + 1]) { args.csvs.push(argv[i + 1]); i += 1; }
     if (argv[i] === '--force') args.force = true;
     if (argv[i] === '--dry-run') args.dryRun = true;
   }
+  if (!args.csvs.length) args.csvs = [...DEFAULT_CSVS];
   return args;
 }
 
@@ -362,14 +366,19 @@ function countRowsFromTop128Csv(filePath) {
 async function main() {
   const args = parseArgs(process.argv);
 
-  if (!fs.existsSync(args.csv)) {
-    console.error(`[error] 找不到 CSV：${args.csv}`);
-    process.exitCode = 1;
-    return;
+  const records = [];
+  for (const csvPath of args.csvs) {
+    if (!fs.existsSync(csvPath)) {
+      console.error(`[error] 找不到 CSV：${csvPath}`);
+      process.exitCode = 1;
+      return;
+    }
+
+    const csvText = fs.readFileSync(csvPath, 'utf8');
+    const csvRecords = parseSimpleCsv(csvText);
+    records.push(...csvRecords);
   }
 
-  const csvText = fs.readFileSync(args.csv, 'utf8');
-  const records = parseSimpleCsv(csvText);
   fs.mkdirSync(TOURNAMENTS_DIR, { recursive: true });
 
   // 過濾出有 url_official 的條目

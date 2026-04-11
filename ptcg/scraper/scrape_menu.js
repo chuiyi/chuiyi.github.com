@@ -57,7 +57,7 @@ const MENU_OPTIONS = [
   {
     key: '4',
     label: '抓取官方 Top 128（新場次）',
-    description: '從 2025-26大型賽事.csv 的 url_official 欄位抓取各場次官方排名（新場次）',
+    description: '從高級球/紀念球賽事 CSV 的 url_official 欄位抓取各場次官方排名（新場次）',
     command: 'node',
     args: ['./scrape_official_top128.js'],
   },
@@ -68,6 +68,13 @@ const MENU_OPTIONS = [
     command: 'node',
     args: ['./scrape_official_top128.js', '--force'],
     confirm: '這會重新抓取所有官方 Top 128，確定要繼續嗎？ (y/N): ',
+  },
+  {
+    key: 'p',
+    label: '抓取指定賽事 Pairing / Final rank',
+    description: '抓取 SFC 賽事頁 round pairing + final/interim result，更新 tournaments/{tid}.csv 與 tournaments_ubl.json',
+    command: 'node',
+    args: ['./scrape_tournament_pairings.js', '--tid', '6682363,6617577,7361615'],
   },
   // ── GBL 超級球 ────────────────────────────────────────────────
   {
