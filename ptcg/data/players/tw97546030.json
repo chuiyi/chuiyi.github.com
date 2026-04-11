@@ -1,8 +1,8 @@
 {
   "id": "tw97546030",
   "url": "https://asia.pokemon-card.com/tw/users/tw97546030/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T03:06:31.581Z",
-  "totalEvents": 10,
+  "fetchedAt": "2026-04-11T01:13:18.156Z",
+  "totalEvents": 12,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -28,13 +28,35 @@
     },
     {
       "pageNo": 1,
+      "rowIndex": 12,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-16-2026 09:00",
+      "eventDateTime": "2026-05-16 09:00",
+      "location": "鬥樂一中店",
+      "address": "台中市北區尊賢街9號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 11,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-18-2026 10:00",
+      "eventDateTime": "2026-04-18 10:00",
+      "location": "諾亞方舟益智遊戲",
+      "address": "台中市西屯區台灣大道二段910號5樓之1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
       "rowIndex": 8,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-28-2026 13:00",
       "eventDateTime": "2026-03-28 13:00",
       "location": "台中明志玩具",
       "address": "407台中市西屯區中平路1227號",
-      "rank": "-",
+      "rank": "28",
       "lp": "-"
     },
     {
