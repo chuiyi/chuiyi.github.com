@@ -1,9 +1,20 @@
 {
   "id": "tw69899543",
   "url": "https://asia.pokemon-card.com/tw/users/tw69899543/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T08:56:07.027Z",
-  "totalEvents": 33,
+  "fetchedAt": "2026-04-12T01:40:45.273Z",
+  "totalEvents": 34,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 14,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-19-2026 14:00",
+      "eventDateTime": "2026-04-19 14:00",
+      "location": "Play Lab Game 休閒館 台南",
+      "address": "台南市中西區民族路二段62號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 12,
@@ -137,8 +148,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "12-14-2024 13:30",
       "eventDateTime": "2024-12-14 13:30",
@@ -148,8 +159,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 19,
       "activityName": "",
       "eventTime": "12-07-2024 08:30",
       "eventDateTime": "2024-12-07 08:30",
@@ -160,7 +171,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 19,
+      "rowIndex": 20,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-30-2024 13:00",
       "eventDateTime": "2024-11-30 13:00",

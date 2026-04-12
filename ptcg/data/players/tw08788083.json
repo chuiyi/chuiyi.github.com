@@ -1,8 +1,8 @@
 {
   "id": "tw08788083",
   "url": "https://asia.pokemon-card.com/tw/users/tw08788083/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T08:38:12.688Z",
-  "totalEvents": 2,
+  "fetchedAt": "2026-04-12T04:25:05.411Z",
+  "totalEvents": 3,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -13,6 +13,17 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 3,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "03-22-2026 13:00",
+      "eventDateTime": "2026-03-22 13:00",
+      "location": "卡庫桌遊店",
+      "address": "高雄市岡山區後協理柳橋西路一段81號",
+      "rank": "20",
       "lp": "-"
     },
     {

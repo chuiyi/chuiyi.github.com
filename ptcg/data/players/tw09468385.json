@@ -1,8 +1,8 @@
 {
   "id": "tw09468385",
   "url": "https://asia.pokemon-card.com/tw/users/tw09468385/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T07:32:09.350Z",
-  "totalEvents": 231,
+  "fetchedAt": "2026-04-12T03:24:31.032Z",
+  "totalEvents": 232,
   "participatedTournaments": [
     {
       "pageNo": 12,
@@ -34,6 +34,17 @@
       "eventDateTime": "2026-05-09 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 12,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-25-2026 09:00",
+      "eventDateTime": "2026-04-25 09:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -76,7 +87,7 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-05-2026 18:00",
       "eventDateTime": "2026-04-05 18:00",
-      "location": "御三家咖啡廳",
+      "location": "御三家桌遊共享空間",
       "address": "台北市松山區光復南路55號3樓",
       "rank": "-",
       "lp": "-"
@@ -307,7 +318,7 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-14-2026 18:00",
       "eventDateTime": "2026-02-14 18:00",
-      "location": "御三家咖啡廳",
+      "location": "御三家桌遊共享空間",
       "address": "台北市松山區光復南路55號3樓",
       "rank": "-",
       "lp": "-"
@@ -683,7 +694,7 @@
       "eventDateTime": "2025-12-07 15:00",
       "location": "兔格樂 桌上休閒館",
       "address": "新北市板橋區南雅南路一段一巷11號1樓",
-      "rank": "4",
+      "rank": "3",
       "lp": "-"
     },
     {

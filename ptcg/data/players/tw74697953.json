@@ -1,8 +1,8 @@
 {
   "id": "tw74697953",
   "url": "https://asia.pokemon-card.com/tw/users/tw74697953/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T07:56:26.974Z",
-  "totalEvents": 133,
+  "fetchedAt": "2026-04-12T03:40:51.306Z",
+  "totalEvents": 134,
   "participatedTournaments": [
     {
       "pageNo": 7,
@@ -23,6 +23,17 @@
       "eventDateTime": "2026-05-30 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 7,
+      "rowIndex": 14,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-23-2026 10:30",
+      "eventDateTime": "2026-05-23 10:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -89,7 +100,7 @@
       "eventDateTime": "2026-04-05 13:00",
       "location": "Bruce桌遊空間-三多店",
       "address": "高雄市前鎮區三多三路213號8樓",
-      "rank": "-",
+      "rank": "6",
       "lp": "-"
     },
     {
@@ -111,8 +122,8 @@
       "eventDateTime": "2026-04-04 13:30",
       "location": "松梅桌遊",
       "address": "高雄市前鎮區瑞興街11號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "14",
+      "lp": "6"
     },
     {
       "pageNo": 7,
@@ -122,7 +133,7 @@
       "eventDateTime": "2026-03-29 12:00",
       "location": "一新書局",
       "address": "高雄市苓雅區廣州一街143-6號",
-      "rank": "-",
+      "rank": "46",
       "lp": "-"
     },
     {
@@ -550,7 +561,7 @@
       "eventTime": "10-24-2025 13:00",
       "eventDateTime": "2025-10-24 13:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "1",
       "lp": "20"
     },
@@ -616,7 +627,7 @@
       "eventTime": "10-11-2025 13:00",
       "eventDateTime": "2025-10-11 13:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "30",
       "lp": "-"
     },
@@ -968,7 +979,7 @@
       "eventTime": "03-16-2025 14:00",
       "eventDateTime": "2025-03-16 14:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "18",
       "lp": "-"
     },
@@ -1056,7 +1067,7 @@
       "eventTime": "02-02-2025 14:00",
       "eventDateTime": "2025-02-02 14:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "30",
       "lp": "-"
     },
@@ -1155,7 +1166,7 @@
       "eventTime": "01-12-2025 14:00",
       "eventDateTime": "2025-01-12 14:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "20",
       "lp": "-"
     },

@@ -1,8 +1,8 @@
 {
   "id": "tw30732451",
   "url": "https://asia.pokemon-card.com/tw/users/tw30732451/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T08:07:29.434Z",
-  "totalEvents": 21,
+  "fetchedAt": "2026-04-12T03:59:51.898Z",
+  "totalEvents": 22,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -17,13 +17,24 @@
     },
     {
       "pageNo": 2,
+      "rowIndex": 2,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-02-2026 11:00",
+      "eventDateTime": "2026-05-02 11:00",
+      "location": "新世紀遊戲館",
+      "address": "新竹市北區平和街7號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
       "rowIndex": 1,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-05-2026 13:30",
       "eventDateTime": "2026-04-05 13:30",
       "location": "塔普卡桌遊卡牌",
       "address": "新竹縣竹北市仁義路182號2樓",
-      "rank": "-",
+      "rank": "53",
       "lp": "-"
     },
     {
@@ -34,8 +45,8 @@
       "eventDateTime": "2026-04-04 11:00",
       "location": "Ririco - 集換式卡牌專賣",
       "address": "406台中市北屯區北屯路288號B1",
-      "rank": "-",
-      "lp": "-"
+      "rank": "31",
+      "lp": "4"
     },
     {
       "pageNo": 1,

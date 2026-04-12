@@ -1,8 +1,8 @@
 {
   "id": "tw03453827",
   "url": "https://asia.pokemon-card.com/tw/users/tw03453827/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T09:51:26.873Z",
-  "totalEvents": 42,
+  "fetchedAt": "2026-04-12T05:19:32.817Z",
+  "totalEvents": 43,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -27,6 +27,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 3,
+      "rowIndex": 3,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-25-2026 09:00",
+      "eventDateTime": "2026-04-25 09:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
       "pageNo": 2,
       "rowIndex": 19,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-2 (少年組)",
@@ -43,7 +54,7 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-05-2026 18:00",
       "eventDateTime": "2026-04-05 18:00",
-      "location": "御三家咖啡廳",
+      "location": "御三家桌遊共享空間",
       "address": "台北市松山區光復南路55號3樓",
       "rank": "-",
       "lp": "-"

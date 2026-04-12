@@ -1,8 +1,8 @@
 {
   "id": "tw40670915",
   "url": "https://asia.pokemon-card.com/tw/users/tw40670915/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T07:36:42.168Z",
-  "totalEvents": 151,
+  "fetchedAt": "2026-04-12T03:28:53.250Z",
+  "totalEvents": 153,
   "participatedTournaments": [
     {
       "pageNo": 8,
@@ -28,6 +28,17 @@
     },
     {
       "pageNo": 8,
+      "rowIndex": 13,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-16-2026 09:00",
+      "eventDateTime": "2026-05-16 09:00",
+      "location": "鬥樂一中店",
+      "address": "台中市北區尊賢街9號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
       "rowIndex": 4,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-3 (少年組)",
       "eventTime": "05-09-2026 08:30",
@@ -39,7 +50,29 @@
     },
     {
       "pageNo": 8,
-      "rowIndex": 9,
+      "rowIndex": 12,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-02-2026 11:00",
+      "eventDateTime": "2026-05-02 11:00",
+      "location": "新世紀遊戲館",
+      "address": "新竹市北區平和街7號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 11,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-25-2026 09:00",
+      "eventDateTime": "2026-04-25 09:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 8,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-19-2026 14:00",
       "eventDateTime": "2026-04-19 14:00",
@@ -50,23 +83,12 @@
     },
     {
       "pageNo": 8,
-      "rowIndex": 8,
+      "rowIndex": 7,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-18-2026 14:00",
       "eventDateTime": "2026-04-18 14:00",
       "location": "貓腳印士林店",
       "address": "台北市士林區大西路66號B1",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 8,
-      "rowIndex": 7,
-      "activityName": "2025-26 Taiwan Great Ball League Season 3",
-      "eventTime": "04-18-2026 10:00",
-      "eventDateTime": "2026-04-18 10:00",
-      "location": "諾亞方舟益智遊戲",
-      "address": "台中市西屯區台灣大道二段910號5樓之1",
       "rank": "-",
       "lp": "-"
     },
@@ -83,7 +105,7 @@
     },
     {
       "pageNo": 8,
-      "rowIndex": 11,
+      "rowIndex": 10,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-12-2026 14:00",
       "eventDateTime": "2026-04-12 14:00",
@@ -105,7 +127,7 @@
     },
     {
       "pageNo": 8,
-      "rowIndex": 10,
+      "rowIndex": 9,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-05-2026 13:30",
       "eventDateTime": "2026-04-05 13:30",

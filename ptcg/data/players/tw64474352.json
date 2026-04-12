@@ -1,8 +1,8 @@
 {
   "id": "tw64474352",
   "url": "https://asia.pokemon-card.com/tw/users/tw64474352/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-31T09:57:11.932Z",
-  "totalEvents": 134,
+  "fetchedAt": "2026-04-12T05:38:25.228Z",
+  "totalEvents": 135,
   "participatedTournaments": [
     {
       "pageNo": 7,
@@ -12,6 +12,17 @@
       "eventDateTime": "2026-05-30 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 7,
+      "rowIndex": 15,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-23-2026 10:30",
+      "eventDateTime": "2026-05-23 10:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -89,7 +100,7 @@
       "eventDateTime": "2026-04-05 13:00",
       "location": "Bruce桌遊空間-三多店",
       "address": "高雄市前鎮區三多三路213號8樓",
-      "rank": "-",
+      "rank": "28",
       "lp": "-"
     },
     {
@@ -111,8 +122,8 @@
       "eventDateTime": "2026-04-04 13:30",
       "location": "松梅桌遊",
       "address": "高雄市前鎮區瑞興街11號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "22",
+      "lp": "4"
     },
     {
       "pageNo": 7,
@@ -144,7 +155,7 @@
       "eventDateTime": "2026-03-22 13:00",
       "location": "卡庫桌遊店",
       "address": "高雄市岡山區後協理柳橋西路一段81號",
-      "rank": "-",
+      "rank": "14",
       "lp": "-"
     },
     {
@@ -188,7 +199,7 @@
       "eventDateTime": "2026-03-07 14:00",
       "location": "瘋桌遊-益智遊戲專賣店(高雄楠梓店)",
       "address": "高雄市楠梓區宏昌街2號",
-      "rank": "-",
+      "rank": "26",
       "lp": "-"
     },
     {
@@ -199,7 +210,7 @@
       "eventDateTime": "2026-03-01 13:00",
       "location": "卡片特快車桌遊工作室",
       "address": "屏東縣屏東市北勢里廣東路739-1號",
-      "rank": "-",
+      "rank": "23",
       "lp": "-"
     },
     {
@@ -529,8 +540,8 @@
       "eventDateTime": "2025-11-22 14:00",
       "location": "瘋桌遊-益智遊戲專賣店(高雄楠梓店)",
       "address": "高雄市楠梓區宏昌街2號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "6",
+      "lp": "8"
     },
     {
       "pageNo": 5,

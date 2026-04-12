@@ -1,8 +1,8 @@
 {
   "id": "tw36652243",
   "url": "https://asia.pokemon-card.com/tw/users/tw36652243/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-31T10:13:00.955Z",
-  "totalEvents": 61,
+  "fetchedAt": "2026-04-12T05:53:21.650Z",
+  "totalEvents": 63,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -39,6 +39,28 @@
     },
     {
       "pageNo": 4,
+      "rowIndex": 3,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-02-2026 11:00",
+      "eventDateTime": "2026-05-02 11:00",
+      "location": "新世紀遊戲館",
+      "address": "新竹市北區平和街7號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 2,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-25-2026 09:00",
+      "eventDateTime": "2026-04-25 09:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
       "rowIndex": 1,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-19-2026 14:00",
@@ -67,7 +89,7 @@
       "eventDateTime": "2026-04-05 13:30",
       "location": "塔普卡桌遊卡牌",
       "address": "新竹縣竹北市仁義路182號2樓",
-      "rank": "-",
+      "rank": "42",
       "lp": "-"
     },
     {
@@ -89,7 +111,7 @@
       "eventDateTime": "2026-03-28 13:00",
       "location": "孩子玩伴-關埔店",
       "address": "新竹市東區關新路85號",
-      "rank": "17",
+      "rank": "20",
       "lp": "-"
     },
     {

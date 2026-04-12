@@ -1,8 +1,8 @@
 {
   "id": "tw75131206",
   "url": "https://asia.pokemon-card.com/tw/users/tw75131206/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T07:46:55.846Z",
-  "totalEvents": 101,
+  "fetchedAt": "2026-04-12T03:37:04.982Z",
+  "totalEvents": 102,
   "participatedTournaments": [
     {
       "pageNo": 5,
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 6,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-19-2026 13:30",
       "eventDateTime": "2026-04-19 13:30",
@@ -27,8 +27,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 5,
-      "rowIndex": 20,
+      "pageNo": 6,
+      "rowIndex": 1,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-18-2026 13:30",
       "eventDateTime": "2026-04-18 13:30",
@@ -56,7 +56,7 @@
       "eventDateTime": "2026-04-05 13:00",
       "location": "Bruce桌遊空間-三多店",
       "address": "高雄市前鎮區三多三路213號8樓",
-      "rank": "-",
+      "rank": "36",
       "lp": "-"
     },
     {
@@ -67,8 +67,8 @@
       "eventDateTime": "2026-04-04 13:30",
       "location": "松梅桌遊",
       "address": "高雄市前鎮區瑞興街11號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "7",
+      "lp": "8"
     },
     {
       "pageNo": 5,
@@ -83,14 +83,25 @@
     },
     {
       "pageNo": 5,
+      "rowIndex": 20,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "03-07-2026 14:00",
+      "eventDateTime": "2026-03-07 14:00",
+      "location": "瘋桌遊-益智遊戲專賣店(高雄楠梓店)",
+      "address": "高雄市楠梓區宏昌街2號",
+      "rank": "2",
+      "lp": "12"
+    },
+    {
+      "pageNo": 5,
       "rowIndex": 14,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-01-2026 09:30",
       "eventDateTime": "2026-03-01 09:30",
       "location": "喬桌遊林森店",
       "address": "高雄市新興區林森一路178號2樓",
-      "rank": "26",
-      "lp": "4"
+      "rank": "-",
+      "lp": "-"
     },
     {
       "pageNo": 5,
@@ -155,8 +166,8 @@
       "eventDateTime": "2026-01-24 14:00",
       "location": "瘋桌遊-益智遊戲專賣店(高雄楠梓店)",
       "address": "高雄市楠梓區宏昌街2號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "13",
+      "lp": "6"
     },
     {
       "pageNo": 5,
@@ -176,7 +187,7 @@
       "eventTime": "01-04-2026 13:00",
       "eventDateTime": "2026-01-04 13:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "17",
       "lp": "-"
     },
@@ -352,7 +363,7 @@
       "eventTime": "10-24-2025 13:00",
       "eventDateTime": "2025-10-24 13:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "3",
       "lp": "10"
     },
@@ -407,7 +418,7 @@
       "eventTime": "10-11-2025 13:00",
       "eventDateTime": "2025-10-11 13:00",
       "location": "卡片特快車桌遊工作室",
-      "address": "屏東縣屏東市廣東路739-1",
+      "address": "屏東縣屏東市北勢里廣東路739-1號",
       "rank": "12",
       "lp": "6"
     },

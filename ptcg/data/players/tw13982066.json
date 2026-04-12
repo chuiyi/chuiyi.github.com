@@ -1,8 +1,8 @@
 {
   "id": "tw13982066",
   "url": "https://asia.pokemon-card.com/tw/users/tw13982066/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T09:30:01.702Z",
-  "totalEvents": 17,
+  "fetchedAt": "2026-04-12T02:24:58.423Z",
+  "totalEvents": 18,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -24,6 +24,17 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 18,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-05-2026 13:00",
+      "eventDateTime": "2026-04-05 13:00",
+      "location": "Bruce桌遊空間-三多店",
+      "address": "高雄市前鎮區三多三路213號8樓",
+      "rank": "70",
       "lp": "-"
     },
     {
@@ -56,7 +67,7 @@
       "eventDateTime": "2026-03-01 09:30",
       "location": "喬桌遊林森店",
       "address": "高雄市新興區林森一路178號2樓",
-      "rank": "44",
+      "rank": "-",
       "lp": "-"
     },
     {
@@ -78,7 +89,7 @@
       "eventDateTime": "2026-01-18 18:30",
       "location": "奧特狐桌遊店",
       "address": "台北市萬華區內江街38號1樓",
-      "rank": "-",
+      "rank": "22",
       "lp": "-"
     },
     {

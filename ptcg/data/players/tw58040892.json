@@ -1,7 +1,7 @@
 {
   "id": "tw58040892",
   "url": "https://asia.pokemon-card.com/tw/users/tw58040892/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T07:52:11.454Z",
+  "fetchedAt": "2026-04-12T03:44:29.924Z",
   "totalEvents": 269,
   "participatedTournaments": [
     {
@@ -41,6 +41,17 @@
       "pageNo": 14,
       "rowIndex": 9,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-25-2026 09:00",
+      "eventDateTime": "2026-04-25 09:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 14,
+      "rowIndex": 8,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-19-2026 14:00",
       "eventDateTime": "2026-04-19 14:00",
       "location": "幽靈屋",
@@ -50,7 +61,7 @@
     },
     {
       "pageNo": 14,
-      "rowIndex": 8,
+      "rowIndex": 7,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-18-2026 14:00",
       "eventDateTime": "2026-04-18 14:00",
@@ -61,7 +72,7 @@
     },
     {
       "pageNo": 14,
-      "rowIndex": 7,
+      "rowIndex": 6,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-18-2026 10:00",
       "eventDateTime": "2026-04-18 10:00",
@@ -78,17 +89,6 @@
       "eventDateTime": "2026-04-12 14:00",
       "location": "PiggyLand豬豬玩具",
       "address": "新北市永和區永和路二段203號9樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 14,
-      "rowIndex": 6,
-      "activityName": "2025-26 Taiwan Great Ball League Season 3",
-      "eventTime": "04-12-2026 14:00",
-      "eventDateTime": "2026-04-12 14:00",
-      "location": "卡舖啦啦",
-      "address": "台中市南區復興路二段30-26號2樓",
       "rank": "-",
       "lp": "-"
     },
@@ -211,7 +211,7 @@
       "location": "ALG-Academy Legacy Games",
       "address": "台北市中山區長春路368號5樓",
       "rank": "27",
-      "lp": "-"
+      "lp": "4"
     },
     {
       "pageNo": 13,
@@ -461,7 +461,7 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-14-2026 18:00",
       "eventDateTime": "2026-02-14 18:00",
-      "location": "御三家咖啡廳",
+      "location": "御三家桌遊共享空間",
       "address": "台北市松山區光復南路55號3樓",
       "rank": "-",
       "lp": "-"
@@ -750,7 +750,7 @@
       "location": "兔格樂 桌上休閒館",
       "address": "新北市板橋區南雅南路一段一巷11號1樓",
       "rank": "15",
-      "lp": "-"
+      "lp": "6"
     },
     {
       "pageNo": 11,

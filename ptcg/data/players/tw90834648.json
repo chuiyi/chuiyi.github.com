@@ -1,9 +1,20 @@
 {
   "id": "tw90834648",
   "url": "https://asia.pokemon-card.com/tw/users/tw90834648/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-24T08:32:59.447Z",
-  "totalEvents": 8,
+  "fetchedAt": "2026-04-12T01:08:34.236Z",
+  "totalEvents": 9,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 9,
+      "activityName": "2025-26 Taiwan Master Ball League TCG Division Masters Category",
+      "eventTime": "06-13-2026 08:00",
+      "eventDateTime": "2026-06-13 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 8,
@@ -34,7 +45,7 @@
       "eventDateTime": "2025-11-08 15:00",
       "location": "PANZO玩具",
       "address": "台北市士林區德行東路261號一樓",
-      "rank": "-",
+      "rank": "26",
       "lp": "-"
     },
     {

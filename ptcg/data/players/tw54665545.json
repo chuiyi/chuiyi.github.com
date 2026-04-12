@@ -1,8 +1,8 @@
 {
   "id": "tw54665545",
   "url": "https://asia.pokemon-card.com/tw/users/tw54665545/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-03-30T07:54:20.138Z",
-  "totalEvents": 65,
+  "fetchedAt": "2026-04-12T03:45:40.071Z",
+  "totalEvents": 66,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -12,6 +12,17 @@
       "eventDateTime": "2026-06-13 11:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 6,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-23-2026 10:30",
+      "eventDateTime": "2026-05-23 10:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -56,7 +67,7 @@
       "eventDateTime": "2026-04-05 13:00",
       "location": "Bruce桌遊空間-三多店",
       "address": "高雄市前鎮區三多三路213號8樓",
-      "rank": "-",
+      "rank": "68",
       "lp": "-"
     },
     {
@@ -78,8 +89,8 @@
       "eventDateTime": "2026-04-04 13:30",
       "location": "松梅桌遊",
       "address": "高雄市前鎮區瑞興街11號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "15",
+      "lp": "6"
     },
     {
       "pageNo": 3,
@@ -111,7 +122,7 @@
       "eventDateTime": "2026-03-01 09:30",
       "location": "喬桌遊林森店",
       "address": "高雄市新興區林森一路178號2樓",
-      "rank": "37",
+      "rank": "-",
       "lp": "-"
     },
     {
