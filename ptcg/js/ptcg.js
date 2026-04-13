@@ -289,8 +289,10 @@ const PTCG = (() => {
         const location = venue || address || organizer || (series ? `系列 ${series}` : '--');
         const sourceUrl = String(item?.url || '').trim();
         const hasSfcTid = /[?&]tid=\d+/i.test(sourceUrl);
+        const showPairing = item?.showPairing !== false;
         const fallbackCsvFile = hasSfcTid && /^\d+$/.test(recordId) ? `${recordId}.csv` : '';
-        const csvFile = String(item?.csvFile || '').trim() || fallbackCsvFile;
+        const csvFileRaw = String(item?.csvFile || '').trim() || fallbackCsvFile;
+        const csvFile = showPairing ? csvFileRaw : '';
 
         return {
             id: recordId,
@@ -306,6 +308,7 @@ const PTCG = (() => {
             top8_archetypes: [],
             top8: [],
             csvFile,
+            showPairing,
             csvVersion: item?.csvVersion || '',
             roundCount: Number.isFinite(item?.roundCount) ? item.roundCount : 0,
             level,
@@ -347,6 +350,7 @@ const PTCG = (() => {
             top8_archetypes: [],
             top8: [],
             csvFile: '',
+            showPairing: false,
             csvVersion: '',
             roundCount: 0,
             level,
@@ -979,7 +983,7 @@ const PTCG = (() => {
                             ? `<div class="text-muted small mt-auto">待更新入賞資料</div>`
                             : ''}
                 <div class="mt-3 d-flex gap-2 flex-wrap">
-                    ${t.csvFile ? `<button class="btn btn-outline-ptcg btn-sm btn-tournament-action btn-view-tournament-detail" data-tid="${escapeHtml(String(t.id))}">
+                    ${(t.showPairing !== false && t.csvFile) ? `<button class="btn btn-outline-ptcg btn-sm btn-tournament-action btn-view-tournament-detail" data-tid="${escapeHtml(String(t.id))}">
                         <i class="bi bi-diagram-3-fill me-1"></i>Pairing詳情
                     </button>` : ''}
                     ${t.top128File ? `<button class="btn btn-outline-ptcg btn-sm btn-tournament-action btn-view-top128" data-tid="${escapeHtml(String(t.id))}">
@@ -1611,6 +1615,12 @@ const PTCG = (() => {
             tournament_id: String(tournament.id || ''),
             tournament_type: String(tournament.type || ''),
         });
+
+        if (tournament.showPairing === false) {
+            bodyEl.innerHTML = '<p class="text-muted mb-0">此賽事已關閉 Pairing 顯示。</p>';
+            new bootstrap.Modal(modalEl).show();
+            return;
+        }
 
         if (!tournament.csvFile) {
             bodyEl.innerHTML = '<p class="text-muted mb-0">此賽事尚未建立對應 CSV 檔案。</p>';
