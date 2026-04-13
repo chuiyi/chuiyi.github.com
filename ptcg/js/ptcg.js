@@ -1216,7 +1216,12 @@ const PTCG = (() => {
                                     <td>${escapeHtml(entry.roundLabel || '--')}</td>
                                     <td>${escapeHtml(entry.tableNo || '--')}</td>
                                     <td class="player-name-cell">
-                                        ${escapeHtml(String(opponentName))}
+                                        <div class="round-player-name-line">
+                                            <button type="button" class="round-player-inspect-btn journey-opponent-inspect-btn" data-player-id="${escapeHtml(String(entry.opponentId || ''))}" title="查看對手本場所有對戰">
+                                                <i class="bi bi-person-lines-fill"></i>
+                                            </button>
+                                            <div class="journey-opponent-name">${escapeHtml(String(opponentName))}</div>
+                                        </div>
                                         <span>${escapeHtml(String(entry.opponentId || '--'))}</span>
                                     </td>
                                     <td>${entry.selfScore == null ? '--' : escapeHtml(String(entry.selfScore))}</td>
@@ -1260,18 +1265,32 @@ const PTCG = (() => {
         const journeyBodyEl = modalEl.querySelector('#playerJourneyBody');
         if (!titleEl || !journeyBodyEl) return;
 
+        const openJourney = (playerId) => {
+            const normalizedPlayerId = String(playerId || '').trim();
+            if (!normalizedPlayerId) return;
+
+            const matched = lookup.get(normalizedPlayerId.toLowerCase());
+            const displayName = matched?.name || normalizedPlayerId;
+            const entries = _buildPlayerJourney(normalizedPlayerId, records);
+            titleEl.textContent = `${displayName} · ${tournament.name}`;
+            journeyBodyEl.innerHTML = _renderPlayerJourneyBody(entries, lookup);
+            new bootstrap.Modal(modalEl).show();
+        };
+
+        if (!modalEl.dataset.journeyOpponentBound) {
+            journeyBodyEl.addEventListener('click', (event) => {
+                const trigger = event.target?.closest?.('.journey-opponent-inspect-btn[data-player-id]');
+                if (!trigger) return;
+                event.preventDefault();
+                openJourney(trigger.getAttribute('data-player-id'));
+            });
+            modalEl.dataset.journeyOpponentBound = '1';
+        }
+
         const buttons = Array.from(bodyEl.querySelectorAll('.round-player-inspect-btn[data-player-id]'));
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
-                const playerId = String(button.getAttribute('data-player-id') || '').trim();
-                if (!playerId) return;
-
-                const matched = lookup.get(playerId.toLowerCase());
-                const displayName = matched?.name || playerId;
-                const entries = _buildPlayerJourney(playerId, records);
-                titleEl.textContent = `${displayName} · ${tournament.name}`;
-                journeyBodyEl.innerHTML = _renderPlayerJourneyBody(entries, lookup);
-                new bootstrap.Modal(modalEl).show();
+                openJourney(button.getAttribute('data-player-id'));
             });
         });
     }
@@ -1369,7 +1388,7 @@ const PTCG = (() => {
                         <tr>
                             <th width="100">賽事名次</th>
                             <th>玩家</th>
-                            <th width="120">目前排名</th>
+                            <th width="120">玩家排名</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1489,7 +1508,7 @@ const PTCG = (() => {
                         <tr>
                             <th width="100">賽事名次</th>
                             <th>玩家</th>
-                            <th width="120">目前排名</th>
+                            <th width="120">玩家排名</th>
                         </tr>
                     </thead>
                     <tbody>
