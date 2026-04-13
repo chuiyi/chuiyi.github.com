@@ -13,6 +13,7 @@
     "scrape:ptcg:players": "node ptcg/scraper/scrape_players.js",
     "scrape:ptcg:top128": "node ptcg/scraper/scrape_official_top128.js",
     "scrape:ptcg:pairings": "node ptcg/scraper/scrape_tournament_pairings.js",
+    "check:ptcg:stage-change": "node ptcg/scraper/check_tournament_stage_changes.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

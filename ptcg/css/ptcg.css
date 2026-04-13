@@ -1386,6 +1386,12 @@ main .btn-outline-ptcg:hover {
     background: rgba(29, 78, 216, 0.08);
 }
 
+.round-player-inspect-btn.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .round-player-name {
     color: var(--ptcg-text);
     font-weight: 600;

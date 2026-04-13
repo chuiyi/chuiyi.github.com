@@ -1,0 +1,58 @@
+name: PTCG Check Tournament Stage Changes
+
+on:
+  workflow_dispatch:
+    inputs:
+      update_snapshot:
+        description: Persist current result to snapshot file
+        required: false
+        default: false
+        type: boolean
+      fail_on_change:
+        description: Mark workflow failed if any tournament changed
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  check-stage-change:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check tournament stage changes
+        run: |
+          ARGS=""
+          if [ "${{ github.event.inputs.update_snapshot }}" = "true" ]; then
+            ARGS="$ARGS --update-snapshot"
+          fi
+          if [ "${{ github.event.inputs.fail_on_change }}" = "true" ]; then
+            ARGS="$ARGS --fail-on-change"
+          fi
+          node ptcg/scraper/check_tournament_stage_changes.js $ARGS
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tournament-stage-check-report
+          path: ptcg/data/reports/tournament-stage-check-report.md
+
+      - name: Commit and push snapshot update
+        if: github.event.inputs.update_snapshot == 'true'
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update tournament stage snapshot [skip ci]"
+          file_pattern: ptcg/data/tournament_stage_snapshot.json

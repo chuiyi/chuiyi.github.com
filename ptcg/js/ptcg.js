@@ -269,6 +269,7 @@ const PTCG = (() => {
 
     function normalizeTournamentRecord(item, sourceType) {
         const type = normalizeTournamentType(sourceType || item?.type || '');
+        const recordId = String(item?.id || `${type}-${Date.now()}`);
         const title = String(item?.title || '').trim();
         const date = String(item?.officialDate || '').trim()
             || parseDateFromTournamentTitle(title)
@@ -286,9 +287,13 @@ const PTCG = (() => {
         const venue = String(item?.venue || '').trim();
         const address = String(item?.address || '').trim();
         const location = venue || address || organizer || (series ? `系列 ${series}` : '--');
+        const sourceUrl = String(item?.url || '').trim();
+        const hasSfcTid = /[?&]tid=\d+/i.test(sourceUrl);
+        const fallbackCsvFile = hasSfcTid && /^\d+$/.test(recordId) ? `${recordId}.csv` : '';
+        const csvFile = String(item?.csvFile || '').trim() || fallbackCsvFile;
 
         return {
-            id: String(item?.id || `${type}-${Date.now()}`),
+            id: recordId,
             name: title || `${TOURNAMENT_TYPE_MAP[type]?.label || type} ${series || String(item?.id || '')}`.trim(),
             type,
             season,
@@ -300,7 +305,7 @@ const PTCG = (() => {
             format: 'Standard',
             top8_archetypes: [],
             top8: [],
-            csvFile: item?.csvFile || '',
+            csvFile,
             csvVersion: item?.csvVersion || '',
             roundCount: Number.isFinite(item?.roundCount) ? item.roundCount : 0,
             level,
@@ -1021,22 +1026,31 @@ const PTCG = (() => {
         return aNum - bNum;
     }
 
-    function _buildTournamentPlayerCell(playerId, lookup) {
-        const normalizedId = String(playerId || '').trim().toLowerCase();
+    function _buildTournamentPlayerCell(player, lookup) {
+        const rawId = typeof player === 'string'
+            ? String(player || '').trim()
+            : String(player?.id || '').trim();
+        const fallbackName = typeof player === 'object'
+            ? String(player?.name || '').trim()
+            : '';
+
+        const normalizedId = _isPlayerId(rawId) ? rawId.toLowerCase() : '';
         const matched = normalizedId ? lookup.get(normalizedId) : null;
-        const name = matched?.name || playerId || '--';
-        const meta = [playerId || '--'];
+        const name = matched?.name || fallbackName || rawId || '--';
+        const meta = [];
+        if (rawId) meta.push(rawId);
         if (matched?.divisionLabel) meta.push(matched.divisionLabel);
+        const canInspect = _isPlayerId(rawId);
 
         return `
             <div class="round-player-card">
                 <div class="round-player-name-line">
-                    <button type="button" class="round-player-inspect-btn" data-player-id="${escapeHtml(String(playerId || ''))}" title="查看該玩家本場所有對戰">
-                        <i class="bi bi-person-lines-fill"></i>
-                    </button>
+                    ${canInspect
+                        ? `<button type="button" class="round-player-inspect-btn" data-player-id="${escapeHtml(String(rawId || ''))}" title="查看該玩家本場所有對戰"><i class="bi bi-person-lines-fill"></i></button>`
+                        : `<button type="button" class="round-player-inspect-btn is-disabled" title="此賽事未提供玩家ID" disabled aria-disabled="true" tabindex="-1"><i class="bi bi-person-lines-fill"></i></button>`}
                     <div class="round-player-name">${escapeHtml(String(name))}</div>
                 </div>
-                <div class="round-player-meta">${escapeHtml(meta.join(' · '))}</div>
+                <div class="round-player-meta">${escapeHtml(meta.length ? meta.join(' · ') : '--')}</div>
             </div>`;
     }
 
@@ -1048,6 +1062,10 @@ const PTCG = (() => {
     function _toIntOrNull(value) {
         const parsed = parseInt(String(value || '').trim(), 10);
         return Number.isFinite(parsed) ? parsed : null;
+    }
+
+    function _isPlayerId(value) {
+        return /^tw\d+$/i.test(String(value || '').trim());
     }
 
     function _buildPlayerRoundIndex(records) {
@@ -1142,6 +1160,7 @@ const PTCG = (() => {
                 tableNo: String(row.table_no || '').trim(),
                 playerId: String(row.player_id || '').trim(),
                 opponentId: String(row.opponent_id || '').trim(),
+                opponentName: String(row.opponent_name || '').trim(),
                 selfScore: _toIntOrNull(row.player_score),
                 oppScore: _toIntOrNull(row.opponent_score),
                 result: '待判定',
@@ -1150,7 +1169,8 @@ const PTCG = (() => {
 
         for (let i = 0; i < entries.length; i += 1) {
             const current = entries[i];
-            const opponentKey = String(current.opponentId || '').trim().toLowerCase();
+            const opponentId = String(current.opponentId || '').trim();
+            const opponentKey = _isPlayerId(opponentId) ? opponentId.toLowerCase() : '';
             const opponentRoundMap = playerRoundIndex.get(opponentKey);
 
             if (i < entries.length - 1) {
@@ -1208,8 +1228,10 @@ const PTCG = (() => {
                     <tbody>
                         ${entries.map((entry) => {
                             const oppKey = String(entry.opponentId || '').trim().toLowerCase();
-                            const matched = oppKey ? lookup.get(oppKey) : null;
-                            const opponentName = matched?.name || entry.opponentId || '--';
+                            const matched = oppKey && _isPlayerId(entry.opponentId) ? lookup.get(oppKey) : null;
+                            const fallbackOpponentName = String(entry.opponentName || '').trim();
+                            const opponentName = matched?.name || fallbackOpponentName || entry.opponentId || '--';
+                            const canInspectOpponent = _isPlayerId(entry.opponentId);
                             const resultClass = _getJourneyResultClass(entry.result);
                             return `
                                 <tr>
@@ -1217,9 +1239,9 @@ const PTCG = (() => {
                                     <td>${escapeHtml(entry.tableNo || '--')}</td>
                                     <td class="player-name-cell">
                                         <div class="round-player-name-line">
-                                            <button type="button" class="round-player-inspect-btn journey-opponent-inspect-btn" data-player-id="${escapeHtml(String(entry.opponentId || ''))}" title="查看對手本場所有對戰">
-                                                <i class="bi bi-person-lines-fill"></i>
-                                            </button>
+                                            ${canInspectOpponent
+                                                ? `<button type="button" class="round-player-inspect-btn journey-opponent-inspect-btn" data-player-id="${escapeHtml(String(entry.opponentId || ''))}" title="查看對手本場所有對戰"><i class="bi bi-person-lines-fill"></i></button>`
+                                                : `<button type="button" class="round-player-inspect-btn is-disabled" title="此賽事未提供對手玩家ID" disabled aria-disabled="true" tabindex="-1"><i class="bi bi-person-lines-fill"></i></button>`}
                                             <div class="journey-opponent-name">${escapeHtml(String(opponentName))}</div>
                                         </div>
                                         <span>${escapeHtml(String(entry.opponentId || '--'))}</span>
@@ -1298,11 +1320,27 @@ const PTCG = (() => {
     function _buildRoundMatchups(records) {
         const groups = new Map();
 
+        const toParticipant = (id, name) => {
+            const normalizedId = String(id || '').trim();
+            const normalizedName = String(name || '').trim();
+            return {
+                id: normalizedId,
+                name: normalizedName,
+                key: normalizedId
+                    ? `id:${normalizedId.toLowerCase()}`
+                    : (normalizedName ? `name:${normalizedName}` : ''),
+            };
+        };
+
         records.forEach((record, index) => {
             const tableNo = String(record.table_no || '').trim() || `P${record.page_index || '1'}-${index + 1}`;
             const playerId = String(record.player_id || '').trim();
+            const playerName = String(record.player_name || '').trim();
             const opponentId = String(record.opponent_id || '').trim();
-            const idKey = [playerId, opponentId].filter(Boolean).sort().join('|') || `row-${index}`;
+            const opponentName = String(record.opponent_name || '').trim();
+            const player = toParticipant(playerId, playerName);
+            const opponent = toParticipant(opponentId, opponentName);
+            const idKey = [player.key, opponent.key].filter(Boolean).sort().join('|') || `row-${index}`;
             const key = `${tableNo}|${idKey}`;
 
             if (!groups.has(key)) {
@@ -1314,7 +1352,12 @@ const PTCG = (() => {
             }
 
             const group = groups.get(key);
-            const exists = group.rows.some(row => String(row.player_id || '').trim() === playerId && String(row.opponent_id || '').trim() === opponentId);
+            const exists = group.rows.some(row =>
+                String(row.player_id || '').trim() === playerId
+                && String(row.player_name || '').trim() === playerName
+                && String(row.opponent_id || '').trim() === opponentId
+                && String(row.opponent_name || '').trim() === opponentName,
+            );
             if (!exists) {
                 group.rows.push(record);
             }
@@ -1330,12 +1373,21 @@ const PTCG = (() => {
                     }
                     return String(left.player_id || '').localeCompare(String(right.player_id || ''), 'en');
                 });
-                const ids = Array.from(new Set(orderedRows.flatMap(row => [String(row.player_id || '').trim(), String(row.opponent_id || '').trim()]).filter(Boolean))).slice(0, 2);
+
+                const participantMap = new Map();
+                orderedRows.forEach((row) => {
+                    const player = toParticipant(row.player_id, row.player_name);
+                    const opponent = toParticipant(row.opponent_id, row.opponent_name);
+                    if (player.key && !participantMap.has(player.key)) participantMap.set(player.key, player);
+                    if (opponent.key && !participantMap.has(opponent.key)) participantMap.set(opponent.key, opponent);
+                });
+                const participants = Array.from(participantMap.values()).slice(0, 2);
+
                 return {
                     tableNo: group.tableNo,
                     pageIndex: group.pageIndex,
-                    playerA: ids[0] || '',
-                    playerB: ids[1] || '',
+                    playerA: participants[0] || { id: '', name: '' },
+                    playerB: participants[1] || { id: '', name: '' },
                 };
             })
             .sort((left, right) => {

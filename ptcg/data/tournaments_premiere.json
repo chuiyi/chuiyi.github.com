@@ -12,10 +12,40 @@
       "top128File": "top128_premiere_43594.csv",
       "top128Count": 128,
       "officialDate": "2025-11-01",
-      "history": [],
+      "history": [
+        {
+          "crawledAt": "2026-04-13T06:48:33.917Z",
+          "level": "master",
+          "series": "",
+          "round1Max": 1474,
+          "finalRankCount": 2983,
+          "roundCount": 7,
+          "csvFile": "3884414.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-04-13T06:56:05.846Z",
+          "level": "master",
+          "series": "",
+          "round1Max": 1474,
+          "finalRankCount": 2983,
+          "roundCount": 7,
+          "csvFile": "3884414.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        }
+      ],
       "capacity": "3846 人",
       "venue": "南港展覽館2館1樓 臺北市南港區經貿二路2號",
-      "address": "南港展覽館2館1樓 臺北市南港區經貿二路2號"
+      "address": "南港展覽館2館1樓 臺北市南港區經貿二路2號",
+      "lastCrawledAt": "2026-04-13T06:56:05.846Z",
+      "round1Max": 1474,
+      "finalRankCount": 2983,
+      "roundCount": 7,
+      "csvFile": "3884414.csv",
+      "csvVersion": "unified_rounds_v2",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "premiere",

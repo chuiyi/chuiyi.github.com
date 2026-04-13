@@ -22,6 +22,18 @@ const cheerio = require('cheerio');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const TOURNAMENTS_DIR = path.join(DATA_DIR, 'tournaments');
 const UBL_JSON = path.join(DATA_DIR, 'tournaments_ubl.json');
+const PREMIERE_JSON = path.join(DATA_DIR, 'tournaments_premiere.json');
+const MASTERBALL_JSON = path.join(DATA_DIR, 'tournaments_masterball.json');
+const TOURNAMENT_JSON_TARGETS = [
+  { file: UBL_JSON, key: 'UBL' },
+  { file: PREMIERE_JSON, key: 'PREMIERE' },
+  { file: MASTERBALL_JSON, key: 'MASTERBALL' },
+];
+const BASE_HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+  'Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+};
+const SESSION_BY_TID = new Map();
 
 function parseArgs(argv) {
   const args = {
@@ -90,14 +102,151 @@ function parseLinkParams(href) {
 }
 
 async function fetchHtml(url) {
-  const resp = await axios.get(url, {
+  const parsed = parseLinkParams(url);
+  const tid = parsed?.tid || '';
+  if (!tid) {
+    const resp = await axios.get(url, {
+      timeout: 30000,
+      headers: BASE_HEADERS,
+    });
+    return String(resp.data || '');
+  }
+
+  await ensureTidSession(tid);
+  return requestTourHtml(url, tid, { refreshedAfterLogin: false, redirectDepth: 0 });
+}
+
+function parseCookieHeader(cookieHeader) {
+  const map = new Map();
+  String(cookieHeader || '')
+    .split(';')
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .forEach((part) => {
+      const eq = part.indexOf('=');
+      if (eq <= 0) return;
+      const key = part.slice(0, eq).trim();
+      const value = part.slice(eq + 1).trim();
+      if (!key) return;
+      map.set(key, value);
+    });
+  return map;
+}
+
+function mergeSetCookie(cookieHeader, setCookieHeader) {
+  const merged = parseCookieHeader(cookieHeader);
+  const setCookieList = Array.isArray(setCookieHeader)
+    ? setCookieHeader
+    : (setCookieHeader ? [setCookieHeader] : []);
+
+  setCookieList.forEach((entry) => {
+    const first = String(entry || '').split(';')[0].trim();
+    if (!first) return;
+    const eq = first.indexOf('=');
+    if (eq <= 0) return;
+    const key = first.slice(0, eq).trim();
+    const value = first.slice(eq + 1).trim();
+    if (!key) return;
+    merged.set(key, value);
+  });
+
+  return Array.from(merged.entries()).map(([k, v]) => `${k}=${v}`).join('; ');
+}
+
+function getSessionCookie(tid) {
+  const found = SESSION_BY_TID.get(String(tid));
+  return found?.cookie || '';
+}
+
+function setSessionCookie(tid, setCookieHeader) {
+  if (!setCookieHeader) return;
+  const key = String(tid);
+  const cookie = mergeSetCookie(getSessionCookie(key), setCookieHeader);
+  SESSION_BY_TID.set(key, { cookie });
+}
+
+async function ensureTidSession(tid) {
+  const key = String(tid || '').trim();
+  if (!key) return;
+  if (getSessionCookie(key)) return;
+
+  let currentUrl = `https://tcg.sfc-jpn.jp/loginnum.asp?tid=${key}&MMP=&flu=`;
+  for (let i = 0; i < 8; i += 1) {
+    const cookie = getSessionCookie(key);
+    const resp = await axios.get(currentUrl, {
+      timeout: 30000,
+      maxRedirects: 0,
+      validateStatus: () => true,
+      headers: {
+        ...BASE_HEADERS,
+        ...(cookie ? { Cookie: cookie } : {}),
+      },
+    });
+
+    setSessionCookie(key, resp.headers?.['set-cookie']);
+
+    if (resp.status >= 400) {
+      throw new Error(`登入頁初始化失敗 tid=${key} status=${resp.status}`);
+    }
+
+    if (resp.status < 300 || resp.status >= 400 || !resp.headers?.location) {
+      break;
+    }
+
+    currentUrl = new URL(String(resp.headers.location), currentUrl).toString();
+  }
+
+  if (!getSessionCookie(key)) {
+    throw new Error(`登入頁初始化失敗 tid=${key} (cookie empty)`);
+  }
+}
+
+async function requestTourHtml(url, tid, state) {
+  const fullUrl = url.startsWith('http') ? url : `https://tcg.sfc-jpn.jp${url}`;
+  const cookie = getSessionCookie(tid);
+  const resp = await axios.get(fullUrl, {
     timeout: 30000,
+    maxRedirects: 0,
+    validateStatus: () => true,
     headers: {
-      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
-      'Accept-Language': 'zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+      ...BASE_HEADERS,
+      ...(cookie ? { Cookie: cookie } : {}),
     },
   });
-  return String(resp.data || '');
+
+  setSessionCookie(tid, resp.headers?.['set-cookie']);
+
+  if (resp.status >= 200 && resp.status < 300) {
+    return String(resp.data || '');
+  }
+
+  if (resp.status >= 300 && resp.status < 400 && resp.headers?.location) {
+    const nextUrl = new URL(String(resp.headers.location), fullUrl).toString();
+    const loginRedirect = /\/loginnum\.asp/i.test(nextUrl);
+
+    if (loginRedirect) {
+      if (state.refreshedAfterLogin) {
+        throw new Error(`重導到登入頁失敗 tid=${tid} url=${fullUrl}`);
+      }
+      SESSION_BY_TID.delete(String(tid));
+      await ensureTidSession(tid);
+      return requestTourHtml(fullUrl, tid, {
+        refreshedAfterLogin: true,
+        redirectDepth: (state.redirectDepth || 0) + 1,
+      });
+    }
+
+    if ((state.redirectDepth || 0) >= 6) {
+      throw new Error(`重導過多 tid=${tid} url=${fullUrl}`);
+    }
+
+    return requestTourHtml(nextUrl, tid, {
+      refreshedAfterLogin: state.refreshedAfterLogin,
+      redirectDepth: (state.redirectDepth || 0) + 1,
+    });
+  }
+
+  throw new Error(`抓取失敗 tid=${tid} status=${resp.status} url=${fullUrl}`);
 }
 
 function findRoundAndFinalTargets(html, tid) {
@@ -215,20 +364,33 @@ function extractRoundRowsFromHtml(html, roundLabel, pageIndex) {
   }
 
   // Round 2+ 常見表頭為: Your name,TtlScore,Opponent,TtlScore
-  const idxPlayerScore = idxPlayerId + 1;
-  const idxOpponentScore = idxOpponentId + 1;
+  // 但紀念球常見表頭為: Table,No.,Your name,Opponent（無分數欄，且 No.=twID）
+  const ttlScoreIndexes = [];
+  headLower.forEach((label, index) => {
+    if (label.includes('ttlscore')) ttlScoreIndexes.push(index);
+  });
+  const idxPlayerScore = ttlScoreIndexes.find((index) => index > idxPlayerId && index < idxOpponentId) ?? -1;
+  const idxOpponentScore = ttlScoreIndexes.find((index) => index > idxOpponentId) ?? -1;
 
   const rows = [];
   table.find('tr').slice(1).each((_, tr) => {
     const cols = $(tr).find('td,th').map((__, c) => $(c).text().replace(/\s+/g, ' ').trim()).get();
     const tableNo = cols[idxTable] || '';
-    const playerNo = cols[idxPlayerNo] || '';
-    const playerId = cols[idxPlayerId] || '';
-    const opponentId = cols[idxOpponentId] || '';
-    const playerScoreRaw = cols[idxPlayerScore] || '';
-    const opponentScoreRaw = cols[idxOpponentScore] || '';
-    if (!/^\d+$/.test(tableNo) || !/^\d+$/.test(playerNo)) return;
-    if (!/^tw\d+$/i.test(playerId) || !/^tw\d+$/i.test(opponentId)) return;
+    const playerNoRaw = cols[idxPlayerNo] || '';
+    const playerNameOrId = cols[idxPlayerId] || '';
+    const opponentNameOrId = cols[idxOpponentId] || '';
+    const playerScoreRaw = idxPlayerScore >= 0 ? (cols[idxPlayerScore] || '') : '';
+    const opponentScoreRaw = idxOpponentScore >= 0 ? (cols[idxOpponentScore] || '') : '';
+    if (!/^\d+$/.test(tableNo)) return;
+
+    const playerIdFromNo = /^tw\d+$/i.test(playerNoRaw) ? playerNoRaw : '';
+    const playerIdFromName = /^tw\d+$/i.test(playerNameOrId) ? playerNameOrId : '';
+    const playerId = playerIdFromName || playerIdFromNo || playerNameOrId;
+    const playerName = playerIdFromName ? '' : playerNameOrId;
+    const opponentId = /^tw\d+$/i.test(opponentNameOrId) ? opponentNameOrId : '';
+    const opponentName = opponentId ? '' : opponentNameOrId;
+    const playerNo = /^\d+$/.test(playerNoRaw) ? playerNoRaw : '';
+    if (!String(playerId || '').trim()) return;
 
     const playerScore = /^\d+$/.test(playerScoreRaw) ? playerScoreRaw : '';
     const opponentScore = /^\d+$/.test(opponentScoreRaw) ? opponentScoreRaw : '';
@@ -240,8 +402,10 @@ function extractRoundRowsFromHtml(html, roundLabel, pageIndex) {
       table_no: tableNo,
       player_no: playerNo,
       player_id: playerId,
+      player_name: playerName,
       player_score: playerScore,
       opponent_id: opponentId,
+      opponent_name: opponentName,
       opponent_score: opponentScore,
       rank: '',
       total_score: '',
@@ -265,14 +429,20 @@ function extractFinalRowsFromHtml(html, pageIndex) {
     if (cols.length < 7) return;
 
     const rank = cols[0];
-    const playerNo = cols[1];
-    const playerId = cols[2];
+    const playerNoRaw = cols[1];
+    const playerNameOrId = cols[2];
     const totalScore = cols[3];
     const omw = cols[4];
     const wo = cols[5];
     const avomw = cols[6];
 
-    if (!/^\d+$/.test(rank) || !/^\d+$/.test(playerNo) || !/^tw\d+$/i.test(playerId)) return;
+    const playerNo = /^\d+$/.test(playerNoRaw) ? playerNoRaw : '';
+    const playerIdFromNo = /^tw\d+$/i.test(playerNoRaw) ? playerNoRaw : '';
+    const playerIdFromName = /^tw\d+$/i.test(playerNameOrId) ? playerNameOrId : '';
+    const playerId = playerIdFromName || playerIdFromNo;
+    const playerName = playerIdFromName ? '' : playerNameOrId;
+
+    if (!/^\d+$/.test(rank) || !playerId) return;
 
     rows.push({
       record_type: 'final_rank',
@@ -281,8 +451,10 @@ function extractFinalRowsFromHtml(html, pageIndex) {
       table_no: '',
       player_no: playerNo,
       player_id: playerId,
+      player_name: playerName,
       player_score: '',
       opponent_id: '',
+      opponent_name: '',
       opponent_score: '',
       rank,
       total_score: totalScore,
@@ -296,11 +468,12 @@ function extractFinalRowsFromHtml(html, pageIndex) {
 }
 
 async function scrapePagesByTarget(tid, kno, znt, rowExtractor, label, delayMs) {
-  const firstUrl = `https://tcg.sfc-jpn.jp/tour.asp?tid=${tid}&kno=${kno}&znt=${znt}&MMP=&flu=&Exclusive=0&Sort=Table&Order=`;
+  const firstUrl = `https://tcg.sfc-jpn.jp/tour.asp?tid=${tid}&kno=${kno}&znt=${znt}&MMP=&flu=&Exclusive=0&Sort=Table&Order=&Page=1`;
   const allRows = [];
 
   let currentPage = 1;
   const visitedPages = new Set();
+  let maxKnownPage = 1;
 
   while (!visitedPages.has(currentPage)) {
     visitedPages.add(currentPage);
@@ -312,7 +485,22 @@ async function scrapePagesByTarget(tid, kno, znt, rowExtractor, label, delayMs) 
     allRows.push(...rows);
 
     const pages = extractCandidatePagesFromHtml(html, tid, kno, znt);
-    const nextPage = pages.find((p) => p > currentPage && !visitedPages.has(p));
+    if (pages.length) {
+      const candidateMax = pages[pages.length - 1];
+      if (Number.isFinite(candidateMax) && candidateMax > maxKnownPage) {
+        maxKnownPage = candidateMax;
+      }
+    }
+
+    // 某些頁面只會露出首末頁連結（例如 1 和 7），改為逐頁前進避免漏抓中間頁。
+    const nextBySequence = currentPage + 1;
+    let nextPage = null;
+    if (nextBySequence <= maxKnownPage && !visitedPages.has(nextBySequence)) {
+      nextPage = nextBySequence;
+    } else {
+      nextPage = pages.find((p) => p > currentPage && !visitedPages.has(p)) || null;
+    }
+
     if (!nextPage) break;
     currentPage = nextPage;
 
@@ -333,8 +521,10 @@ function buildCsv(rows) {
     'table_no',
     'player_no',
     'player_id',
+    'player_name',
     'player_score',
     'opponent_id',
+    'opponent_name',
     'opponent_score',
     'rank',
     'total_score',
@@ -375,42 +565,49 @@ function parseCsvRows(csvText) {
   });
 }
 
-function updateUblJson(tid, stats) {
-  if (!fs.existsSync(UBL_JSON)) return;
-  const data = JSON.parse(fs.readFileSync(UBL_JSON, 'utf8'));
-  if (!Array.isArray(data.UBL)) return;
-
-  const idx = data.UBL.findIndex((item) => String(item.id) === String(tid));
-  if (idx < 0) return;
-
+function updateTournamentJsonStats(tid, stats) {
   const now = new Date().toISOString();
-  const prev = data.UBL[idx];
-  const history = Array.isArray(prev.history) ? [...prev.history] : [];
-  history.push({
-    crawledAt: now,
-    level: prev.level || '',
-    series: prev.series || '',
-    round1Max: stats.round1Max,
-    finalRankCount: stats.finalRankCount,
-    roundCount: stats.roundCount,
-    csvFile: `${tid}.csv`,
-    csvVersion: 'unified_rounds_v2',
-    finalSourceLabel: stats.finalSourceLabel,
-  });
+  const idStr = String(tid);
 
-  data.UBL[idx] = {
-    ...prev,
-    lastCrawledAt: now,
-    round1Max: stats.round1Max,
-    finalRankCount: stats.finalRankCount,
-    roundCount: stats.roundCount,
-    csvFile: `${tid}.csv`,
-    csvVersion: 'unified_rounds_v2',
-    finalSourceLabel: stats.finalSourceLabel,
-    history,
-  };
+  for (const target of TOURNAMENT_JSON_TARGETS) {
+    if (!fs.existsSync(target.file)) continue;
 
-  fs.writeFileSync(UBL_JSON, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+    const data = JSON.parse(fs.readFileSync(target.file, 'utf8'));
+    const records = data?.[target.key];
+    if (!Array.isArray(records)) continue;
+
+    const idx = records.findIndex((item) => String(item.id) === idStr);
+    if (idx < 0) continue;
+
+    const prev = records[idx];
+    const history = Array.isArray(prev.history) ? [...prev.history] : [];
+    history.push({
+      crawledAt: now,
+      level: prev.level || '',
+      series: prev.series || '',
+      round1Max: stats.round1Max,
+      finalRankCount: stats.finalRankCount,
+      roundCount: stats.roundCount,
+      csvFile: `${tid}.csv`,
+      csvVersion: 'unified_rounds_v2',
+      finalSourceLabel: stats.finalSourceLabel,
+    });
+
+    records[idx] = {
+      ...prev,
+      lastCrawledAt: now,
+      round1Max: stats.round1Max,
+      finalRankCount: stats.finalRankCount,
+      roundCount: stats.roundCount,
+      csvFile: `${tid}.csv`,
+      csvVersion: 'unified_rounds_v2',
+      finalSourceLabel: stats.finalSourceLabel,
+      history,
+    };
+
+    fs.writeFileSync(target.file, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+    return;
+  }
 }
 
 function getRound1Max(rows) {
@@ -496,7 +693,7 @@ async function scrapeSingleTid(tid, args) {
   }
 
   fs.writeFileSync(outFile, buildCsv(allRows), 'utf8');
-  updateUblJson(tid, stats);
+  updateTournamentJsonStats(tid, stats);
 
   console.log(`[pairing] 完成 tid=${tid} -> ${path.basename(outFile)} | roundCount=${stats.roundCount} | round1Max=${stats.round1Max} | finalRows=${stats.finalRankCount}`);
 }
