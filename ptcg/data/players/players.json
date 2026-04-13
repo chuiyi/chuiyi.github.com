@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-12T06:10:56.138Z",
+  "generated_at": "2026-04-13T01:36:30.728Z",
   "generated_by": "scrape_players.js",
   "total_players": 6140,
   "players": [
@@ -143,7 +143,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:00:47.360Z",
+      "last_scraped_at": "2026-04-13T01:01:30.521Z",
       "source_file": "tw00244458.json",
       "note": ""
     },
@@ -179,7 +179,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:14:16.205Z",
+      "last_scraped_at": "2026-04-13T01:10:51.512Z",
       "source_file": "tw00291694.json",
       "note": ""
     },
@@ -395,7 +395,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:09:26.373Z",
+      "last_scraped_at": "2026-04-13T01:07:33.383Z",
       "source_file": "tw00725092.json",
       "note": ""
     },
@@ -440,7 +440,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:04:16.763Z",
+      "last_scraped_at": "2026-04-13T01:17:31.466Z",
       "source_file": "tw00806610.json",
       "note": ""
     },
@@ -521,7 +521,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:05:18.461Z",
+      "last_scraped_at": "2026-04-13T01:04:44.516Z",
       "source_file": "tw00987405.json",
       "note": ""
     },
@@ -584,7 +584,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:08:05.112Z",
+      "last_scraped_at": "2026-04-13T01:06:25.662Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -629,7 +629,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:41:34.002Z",
+      "last_scraped_at": "2026-04-13T00:47:07.280Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -764,7 +764,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:08:09.055Z",
+      "last_scraped_at": "2026-04-13T01:06:27.150Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -809,7 +809,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:07:46.591Z",
+      "last_scraped_at": "2026-04-13T01:19:57.737Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -872,7 +872,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:11:31.756Z",
+      "last_scraped_at": "2026-04-13T01:08:58.715Z",
       "source_file": "tw01630016.json",
       "note": ""
     },
@@ -1079,7 +1079,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:24:44.682Z",
+      "last_scraped_at": "2026-04-13T01:31:24.915Z",
       "source_file": "tw01931483.json",
       "note": ""
     },
@@ -1187,7 +1187,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:06:22.560Z",
+      "last_scraped_at": "2026-04-13T01:19:05.050Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -1268,7 +1268,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:03:10.275Z",
+      "last_scraped_at": "2026-04-13T01:03:08.835Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -1601,7 +1601,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:17:37.121Z",
+      "last_scraped_at": "2026-04-13T01:13:20.322Z",
       "source_file": "tw02867487.json",
       "note": ""
     },
@@ -1646,7 +1646,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:09:19.693Z",
+      "last_scraped_at": "2026-04-13T01:20:58.438Z",
       "source_file": "tw02998823.json",
       "note": ""
     },
@@ -1655,7 +1655,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:47:32.832Z",
+      "last_scraped_at": "2026-04-13T00:51:25.309Z",
       "source_file": "tw03016894.json",
       "note": ""
     },
@@ -1925,7 +1925,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:22:02.279Z",
+      "last_scraped_at": "2026-04-13T01:29:27.926Z",
       "source_file": "tw03440733.json",
       "note": ""
     },
@@ -1934,7 +1934,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:17:40.810Z",
+      "last_scraped_at": "2026-04-13T01:26:31.569Z",
       "source_file": "tw03452266.json",
       "note": ""
     },
@@ -2015,7 +2015,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:18:46.669Z",
+      "last_scraped_at": "2026-04-13T01:14:17.947Z",
       "source_file": "tw03577317.json",
       "note": ""
     },
@@ -2141,7 +2141,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:38:40.923Z",
+      "last_scraped_at": "2026-04-13T00:44:53.659Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2150,7 +2150,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:59:26.769Z",
+      "last_scraped_at": "2026-04-13T01:00:21.206Z",
       "source_file": "tw03800951.json",
       "note": ""
     },
@@ -2456,7 +2456,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:28.089Z",
+      "last_scraped_at": "2026-04-13T00:51:56.241Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2591,7 +2591,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:47:22.112Z",
+      "last_scraped_at": "2026-04-13T00:51:17.709Z",
       "source_file": "tw04520367.json",
       "note": ""
     },
@@ -2690,7 +2690,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:11:25.203Z",
+      "last_scraped_at": "2026-04-13T01:22:24.938Z",
       "source_file": "tw04651511.json",
       "note": ""
     },
@@ -2879,7 +2879,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:39:17.928Z",
+      "last_scraped_at": "2026-04-13T00:45:23.830Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2915,7 +2915,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:05:08.300Z",
+      "last_scraped_at": "2026-04-13T01:04:36.764Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2942,7 +2942,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:20:56.975Z",
+      "last_scraped_at": "2026-04-13T01:28:45.952Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2985,10 +2985,10 @@
     {
       "ptcg_id": "tw05033566",
       "level": "senior",
-      "status": "not_found",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-04-12T03:59:20.744Z",
-      "source_file": "",
+      "source_file": "tw05033566.json",
       "note": "404 not found"
     },
     {
@@ -3068,7 +3068,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:04:03.587Z",
+      "last_scraped_at": "2026-04-13T01:03:46.451Z",
       "source_file": "tw05325053.json",
       "note": ""
     },
@@ -3149,7 +3149,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:08:25.094Z",
+      "last_scraped_at": "2026-04-13T01:20:21.561Z",
       "source_file": "tw05443607.json",
       "note": ""
     },
@@ -3221,7 +3221,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:17:02.525Z",
+      "last_scraped_at": "2026-04-13T01:12:53.665Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -3473,7 +3473,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:29:12.227Z",
+      "last_scraped_at": "2026-04-13T01:34:22.789Z",
       "source_file": "tw06100851.json",
       "note": ""
     },
@@ -3527,7 +3527,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:55.863Z",
+      "last_scraped_at": "2026-04-13T00:52:09.098Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -3743,7 +3743,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:32:06.336Z",
+      "last_scraped_at": "2026-04-13T01:36:21.078Z",
       "source_file": "tw06518979.json",
       "note": ""
     },
@@ -3824,7 +3824,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:19:02.352Z",
+      "last_scraped_at": "2026-04-13T01:27:25.294Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -3851,7 +3851,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:54:14.658Z",
+      "last_scraped_at": "2026-04-13T00:56:01.782Z",
       "source_file": "tw06703131.json",
       "note": ""
     },
@@ -4110,10 +4110,10 @@
     {
       "ptcg_id": "tw07170462",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-04-13T01:00:13.530Z",
+      "source_file": "tw07170462.json",
       "note": ""
     },
     {
@@ -4193,7 +4193,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:20:00.200Z",
+      "last_scraped_at": "2026-04-13T01:28:09.946Z",
       "source_file": "tw07245364.json",
       "note": ""
     },
@@ -4247,7 +4247,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:10:27.912Z",
+      "last_scraped_at": "2026-04-13T01:08:10.486Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -4292,7 +4292,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:05:45.572Z",
+      "last_scraped_at": "2026-04-13T01:05:03.111Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -4409,7 +4409,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:31:05.529Z",
+      "last_scraped_at": "2026-04-13T01:35:38.137Z",
       "source_file": "tw07637955.json",
       "note": ""
     },
@@ -4517,7 +4517,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:04:24.636Z",
+      "last_scraped_at": "2026-04-13T01:17:34.214Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -4526,7 +4526,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:37:49.414Z",
+      "last_scraped_at": "2026-04-13T00:44:19.827Z",
       "source_file": "tw07841936.json",
       "note": ""
     },
@@ -4553,7 +4553,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:13:14.685Z",
+      "last_scraped_at": "2026-04-13T01:23:43.406Z",
       "source_file": "tw07879058.json",
       "note": ""
     },
@@ -4607,7 +4607,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:14:58.946Z",
+      "last_scraped_at": "2026-04-13T01:24:52.872Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -4877,7 +4877,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:16:31.293Z",
+      "last_scraped_at": "2026-04-13T01:12:31.668Z",
       "source_file": "tw08624670.json",
       "note": ""
     },
@@ -4904,7 +4904,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:55:24.906Z",
+      "last_scraped_at": "2026-04-13T00:57:05.216Z",
       "source_file": "tw08703678.json",
       "note": ""
     },
@@ -4922,7 +4922,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:53:32.391Z",
+      "last_scraped_at": "2026-04-13T00:55:29.683Z",
       "source_file": "tw08761642.json",
       "note": ""
     },
@@ -5237,7 +5237,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:06:32.161Z",
+      "last_scraped_at": "2026-04-13T01:05:37.545Z",
       "source_file": "tw09160306.json",
       "note": ""
     },
@@ -5282,7 +5282,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:03:36.272Z",
+      "last_scraped_at": "2026-04-13T01:17:01.663Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -5489,7 +5489,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:49:10.049Z",
+      "last_scraped_at": "2026-04-13T00:52:18.527Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -5831,7 +5831,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:43:45.158Z",
+      "last_scraped_at": "2026-04-13T00:48:45.019Z",
       "source_file": "tw10149794.json",
       "note": ""
     },
@@ -5885,7 +5885,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:20:04.256Z",
+      "last_scraped_at": "2026-04-13T01:28:11.463Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6002,7 +6002,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:45:26.999Z",
+      "last_scraped_at": "2026-04-13T00:49:50.019Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6011,7 +6011,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:59:16.668Z",
+      "last_scraped_at": "2026-04-13T01:00:06.193Z",
       "source_file": "tw10443601.json",
       "note": ""
     },
@@ -6137,7 +6137,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:48:43.041Z",
+      "last_scraped_at": "2026-04-13T00:52:04.823Z",
       "source_file": "tw10603639.json",
       "note": ""
     },
@@ -6173,7 +6173,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:26:29.877Z",
+      "last_scraped_at": "2026-04-13T01:32:34.443Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6263,7 +6263,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:50:42.138Z",
+      "last_scraped_at": "2026-04-13T00:53:27.642Z",
       "source_file": "tw10984717.json",
       "note": ""
     },
@@ -6353,7 +6353,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:18:54.007Z",
+      "last_scraped_at": "2026-04-13T01:27:22.482Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6398,7 +6398,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:03:43.460Z",
+      "last_scraped_at": "2026-04-13T01:03:30.922Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6578,7 +6578,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:42:13.700Z",
+      "last_scraped_at": "2026-04-13T00:47:33.835Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6857,7 +6857,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:14:02.628Z",
+      "last_scraped_at": "2026-04-13T01:24:12.784Z",
       "source_file": "tw12120895.json",
       "note": ""
     },
@@ -6902,7 +6902,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:50:11.547Z",
+      "last_scraped_at": "2026-04-13T00:53:01.111Z",
       "source_file": "tw12155269.json",
       "note": ""
     },
@@ -6956,7 +6956,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:32:10.372Z",
+      "last_scraped_at": "2026-04-13T01:36:22.273Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -7163,7 +7163,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:16:19.612Z",
+      "last_scraped_at": "2026-04-13T01:25:38.496Z",
       "source_file": "tw12536050.json",
       "note": ""
     },
@@ -7352,7 +7352,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:10:19.681Z",
+      "last_scraped_at": "2026-04-13T01:08:07.944Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -7413,11 +7413,11 @@
     {
       "ptcg_id": "tw13004657",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-04-13T00:42:09.337Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw13014881",
@@ -7440,11 +7440,11 @@
     {
       "ptcg_id": "tw13023402",
       "level": "junior",
-      "status": "missing",
+      "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "",
+      "last_scraped_at": "2026-04-13T01:10:24.251Z",
       "source_file": "",
-      "note": ""
+      "note": "404 not found"
     },
     {
       "ptcg_id": "tw13046045",
@@ -7460,7 +7460,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:09:56.774Z",
+      "last_scraped_at": "2026-04-13T01:21:28.023Z",
       "source_file": "tw13047090.json",
       "note": ""
     },
@@ -7523,7 +7523,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:18.922Z",
+      "last_scraped_at": "2026-04-13T00:51:53.272Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -7658,7 +7658,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:00:11.051Z",
+      "last_scraped_at": "2026-04-13T01:00:56.485Z",
       "source_file": "tw13308021.json",
       "note": ""
     },
@@ -7685,7 +7685,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:50:33.047Z",
+      "last_scraped_at": "2026-04-13T00:53:18.419Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -7694,7 +7694,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:40:16.528Z",
+      "last_scraped_at": "2026-04-13T00:46:05.503Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -7730,7 +7730,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:09:08.308Z",
+      "last_scraped_at": "2026-04-13T01:07:17.868Z",
       "source_file": "tw13453876.json",
       "note": ""
     },
@@ -7775,7 +7775,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:02:52.575Z",
+      "last_scraped_at": "2026-04-13T01:02:57.927Z",
       "source_file": "tw13538799.json",
       "note": ""
     },
@@ -8063,7 +8063,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:36:19.304Z",
+      "last_scraped_at": "2026-04-13T00:43:15.779Z",
       "source_file": "tw14109317.json",
       "note": ""
     },
@@ -8171,7 +8171,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:16:46.132Z",
+      "last_scraped_at": "2026-04-13T01:25:55.297Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8261,7 +8261,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:22:19.474Z",
+      "last_scraped_at": "2026-04-13T01:29:36.848Z",
       "source_file": "tw14447540.json",
       "note": ""
     },
@@ -8270,7 +8270,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:07:27.659Z",
+      "last_scraped_at": "2026-04-13T01:06:07.841Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8414,7 +8414,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:46:53.311Z",
+      "last_scraped_at": "2026-04-13T00:50:54.371Z",
       "source_file": "tw14711518.json",
       "note": ""
     },
@@ -8648,7 +8648,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:13:31.457Z",
+      "last_scraped_at": "2026-04-13T01:23:53.179Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8684,7 +8684,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:45:30.933Z",
+      "last_scraped_at": "2026-04-13T00:49:51.249Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8747,7 +8747,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:18:27.107Z",
+      "last_scraped_at": "2026-04-13T01:13:57.242Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8963,7 +8963,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:43.544Z",
+      "last_scraped_at": "2026-04-13T01:10:21.756Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9026,7 +9026,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:11:36.668Z",
+      "last_scraped_at": "2026-04-13T01:08:59.953Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9125,7 +9125,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:20:27.915Z",
+      "last_scraped_at": "2026-04-13T01:28:27.120Z",
       "source_file": "tw16059486.json",
       "note": ""
     },
@@ -9170,7 +9170,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:00:36.918Z",
+      "last_scraped_at": "2026-04-13T01:01:21.683Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9242,7 +9242,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:16:34.258Z",
+      "last_scraped_at": "2026-04-13T01:12:33.193Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9260,7 +9260,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:03:35.415Z",
+      "last_scraped_at": "2026-04-13T01:03:27.888Z",
       "source_file": "tw16216211.json",
       "note": ""
     },
@@ -9341,7 +9341,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:51:15.798Z",
+      "last_scraped_at": "2026-04-13T00:53:56.518Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9422,7 +9422,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:06:15.307Z",
+      "last_scraped_at": "2026-04-13T01:05:27.321Z",
       "source_file": "tw16525402.json",
       "note": ""
     },
@@ -9476,7 +9476,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:29:22.313Z",
+      "last_scraped_at": "2026-04-13T01:34:30.124Z",
       "source_file": "tw16617889.json",
       "note": ""
     },
@@ -9809,7 +9809,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:58.523Z",
+      "last_scraped_at": "2026-04-13T01:05:47.586Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9944,7 +9944,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:36:56.484Z",
+      "last_scraped_at": "2026-04-13T00:43:40.790Z",
       "source_file": "tw17473021.json",
       "note": ""
     },
@@ -9989,7 +9989,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:07:10.476Z",
+      "last_scraped_at": "2026-04-13T01:05:57.168Z",
       "source_file": "tw17559512.json",
       "note": ""
     },
@@ -10142,7 +10142,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:03:26.193Z",
+      "last_scraped_at": "2026-04-13T01:03:19.925Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -10241,7 +10241,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:23:26.675Z",
+      "last_scraped_at": "2026-04-13T01:30:18.464Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -10295,7 +10295,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T14:41:26.402Z",
+      "last_scraped_at": "2026-04-13T01:15:30.986Z",
       "source_file": "tw18151878.json",
       "note": ""
     },
@@ -10331,7 +10331,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:19:33.180Z",
+      "last_scraped_at": "2026-04-13T01:27:48.135Z",
       "source_file": "tw18211204.json",
       "note": ""
     },
@@ -10376,7 +10376,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:27:45.843Z",
+      "last_scraped_at": "2026-04-13T01:33:25.198Z",
       "source_file": "tw18289078.json",
       "note": ""
     },
@@ -10403,7 +10403,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:01:33.889Z",
+      "last_scraped_at": "2026-04-13T01:02:02.803Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -10430,7 +10430,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:20:42.716Z",
+      "last_scraped_at": "2026-04-13T01:28:36.494Z",
       "source_file": "tw18392606.json",
       "note": ""
     },
@@ -10529,7 +10529,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:12:15.489Z",
+      "last_scraped_at": "2026-04-13T01:09:21.007Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -10736,7 +10736,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:01:38.662Z",
+      "last_scraped_at": "2026-04-13T01:02:04.372Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -10772,7 +10772,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:01:12.387Z",
+      "last_scraped_at": "2026-04-13T01:01:50.873Z",
       "source_file": "tw18941589.json",
       "note": ""
     },
@@ -10790,7 +10790,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:40:02.418Z",
+      "last_scraped_at": "2026-04-13T00:45:55.802Z",
       "source_file": "tw18947254.json",
       "note": ""
     },
@@ -10808,7 +10808,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:14:20.922Z",
+      "last_scraped_at": "2026-04-13T01:10:53.289Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -11114,7 +11114,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:08:48.944Z",
+      "last_scraped_at": "2026-04-13T01:07:01.325Z",
       "source_file": "tw19709119.json",
       "note": ""
     },
@@ -11132,7 +11132,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:15:26.554Z",
+      "last_scraped_at": "2026-04-13T01:11:42.584Z",
       "source_file": "tw19737012.json",
       "note": ""
     },
@@ -11204,7 +11204,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:31:34.683Z",
+      "last_scraped_at": "2026-04-13T01:35:56.073Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -11231,7 +11231,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:46:43.539Z",
+      "last_scraped_at": "2026-04-13T00:50:46.317Z",
       "source_file": "tw19963605.json",
       "note": ""
     },
@@ -11276,7 +11276,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:11:50.762Z",
+      "last_scraped_at": "2026-04-13T01:22:45.691Z",
       "source_file": "tw20066895.json",
       "note": ""
     },
@@ -11321,7 +11321,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:06:49.880Z",
+      "last_scraped_at": "2026-04-13T01:19:22.106Z",
       "source_file": "tw20140753.json",
       "note": ""
     },
@@ -11420,7 +11420,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:19:37.888Z",
+      "last_scraped_at": "2026-04-13T01:14:59.166Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -11618,7 +11618,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:08:18.661Z",
+      "last_scraped_at": "2026-04-13T01:06:34.978Z",
       "source_file": "tw20890965.json",
       "note": ""
     },
@@ -11627,7 +11627,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:05:09.982Z",
+      "last_scraped_at": "2026-04-13T01:18:08.433Z",
       "source_file": "tw20931594.json",
       "note": ""
     },
@@ -11672,7 +11672,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:44:21.885Z",
+      "last_scraped_at": "2026-04-13T00:49:14.435Z",
       "source_file": "tw20997286.json",
       "note": ""
     },
@@ -11870,7 +11870,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:49:56.540Z",
+      "last_scraped_at": "2026-04-13T00:52:51.754Z",
       "source_file": "tw21302583.json",
       "note": ""
     },
@@ -12032,7 +12032,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:23.529Z",
+      "last_scraped_at": "2026-04-13T00:51:54.760Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -12158,7 +12158,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:17:01.376Z",
+      "last_scraped_at": "2026-04-13T01:26:05.626Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -12266,7 +12266,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:44:11.088Z",
+      "last_scraped_at": "2026-04-13T00:49:06.884Z",
       "source_file": "tw21962415.json",
       "note": ""
     },
@@ -12320,7 +12320,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:00:02.256Z",
+      "last_scraped_at": "2026-04-13T01:00:48.435Z",
       "source_file": "tw22071324.json",
       "note": ""
     },
@@ -12329,7 +12329,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:13:43.586Z",
+      "last_scraped_at": "2026-04-13T01:24:01.650Z",
       "source_file": "tw22074330.json",
       "note": ""
     },
@@ -12356,7 +12356,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:31:26.517Z",
+      "last_scraped_at": "2026-04-13T01:35:53.374Z",
       "source_file": "tw22170618.json",
       "note": ""
     },
@@ -12381,10 +12381,10 @@
     {
       "ptcg_id": "tw22214921",
       "level": "master",
-      "status": "not_found",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-04-12T02:43:17.976Z",
-      "source_file": "",
+      "source_file": "tw22214921.json",
       "note": "404 not found"
     },
     {
@@ -12401,7 +12401,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:12:47.834Z",
+      "last_scraped_at": "2026-04-13T01:09:47.078Z",
       "source_file": "tw22254647.json",
       "note": ""
     },
@@ -12761,7 +12761,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:25:34.991Z",
+      "last_scraped_at": "2026-04-13T01:31:59.554Z",
       "source_file": "tw22839196.json",
       "note": ""
     },
@@ -13103,7 +13103,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:28:31.874Z",
+      "last_scraped_at": "2026-04-13T01:33:56.952Z",
       "source_file": "tw23619820.json",
       "note": ""
     },
@@ -13283,7 +13283,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:10:15.477Z",
+      "last_scraped_at": "2026-04-13T01:08:06.477Z",
       "source_file": "tw24147094.json",
       "note": ""
     },
@@ -13319,7 +13319,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:49:34.800Z",
+      "last_scraped_at": "2026-04-13T00:52:36.249Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -13436,7 +13436,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:27:31.626Z",
+      "last_scraped_at": "2026-04-13T00:42:19.064Z",
       "source_file": "tw24353338.json",
       "note": ""
     },
@@ -13886,7 +13886,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:49:05.914Z",
+      "last_scraped_at": "2026-04-13T00:52:17.178Z",
       "source_file": "tw25167742.json",
       "note": ""
     },
@@ -13967,7 +13967,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:04:39.386Z",
+      "last_scraped_at": "2026-04-13T01:17:44.128Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14003,7 +14003,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:10:23.918Z",
+      "last_scraped_at": "2026-04-13T01:08:09.145Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14102,7 +14102,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:39:13.841Z",
+      "last_scraped_at": "2026-04-13T00:45:22.351Z",
       "source_file": "tw25513412.json",
       "note": ""
     },
@@ -14192,7 +14192,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:58.155Z",
+      "last_scraped_at": "2026-04-13T01:10:34.036Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14246,7 +14246,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:37:06.849Z",
+      "last_scraped_at": "2026-04-13T00:43:48.668Z",
       "source_file": "tw25712407.json",
       "note": ""
     },
@@ -14309,7 +14309,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:25:55.770Z",
+      "last_scraped_at": "2026-04-13T01:32:15.065Z",
       "source_file": "tw25862608.json",
       "note": ""
     },
@@ -14336,7 +14336,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:06:08.448Z",
+      "last_scraped_at": "2026-04-13T01:18:56.145Z",
       "source_file": "tw25879854.json",
       "note": ""
     },
@@ -14534,7 +14534,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:23:49.184Z",
+      "last_scraped_at": "2026-04-13T01:30:34.218Z",
       "source_file": "tw26259641.json",
       "note": ""
     },
@@ -14543,7 +14543,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:09:37.036Z",
+      "last_scraped_at": "2026-04-13T01:07:41.231Z",
       "source_file": "tw26308001.json",
       "note": ""
     },
@@ -14705,7 +14705,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:03:13.462Z",
+      "last_scraped_at": "2026-04-13T01:03:10.345Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14732,7 +14732,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:17:05.985Z",
+      "last_scraped_at": "2026-04-13T01:26:06.839Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14795,7 +14795,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:03:39.507Z",
+      "last_scraped_at": "2026-04-13T01:03:29.380Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14804,7 +14804,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:08:55.159Z",
+      "last_scraped_at": "2026-04-13T01:20:42.107Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14849,7 +14849,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:19:49.578Z",
+      "last_scraped_at": "2026-04-13T01:28:02.376Z",
       "source_file": "tw26762826.json",
       "note": ""
     },
@@ -15002,7 +15002,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:00:33.820Z",
+      "last_scraped_at": "2026-04-13T01:01:20.164Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -15020,7 +15020,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:13:55.075Z",
+      "last_scraped_at": "2026-04-13T01:10:32.799Z",
       "source_file": "tw27052255.json",
       "note": ""
     },
@@ -15083,7 +15083,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:21:44.902Z",
+      "last_scraped_at": "2026-04-13T01:29:17.866Z",
       "source_file": "tw27152613.json",
       "note": ""
     },
@@ -15128,7 +15128,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:26:25.149Z",
+      "last_scraped_at": "2026-04-13T01:32:33.091Z",
       "source_file": "tw27266003.json",
       "note": ""
     },
@@ -15137,7 +15137,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:40:41.028Z",
+      "last_scraped_at": "2026-04-13T00:46:22.707Z",
       "source_file": "tw27301563.json",
       "note": ""
     },
@@ -15344,7 +15344,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:17:14.740Z",
+      "last_scraped_at": "2026-04-13T01:13:02.898Z",
       "source_file": "tw27616531.json",
       "note": ""
     },
@@ -15542,7 +15542,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:42:05.166Z",
+      "last_scraped_at": "2026-04-13T00:47:30.812Z",
       "source_file": "tw27928464.json",
       "note": ""
     },
@@ -15785,7 +15785,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:17:28.932Z",
+      "last_scraped_at": "2026-04-13T01:26:22.860Z",
       "source_file": "tw28355520.json",
       "note": ""
     },
@@ -16136,7 +16136,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:27:10.715Z",
+      "last_scraped_at": "2026-04-13T01:33:07.385Z",
       "source_file": "tw29045262.json",
       "note": ""
     },
@@ -16271,7 +16271,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:12:00.250Z",
+      "last_scraped_at": "2026-04-13T01:09:12.202Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -16289,7 +16289,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:24:48.902Z",
+      "last_scraped_at": "2026-04-13T01:31:26.387Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -16370,7 +16370,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:39:28.081Z",
+      "last_scraped_at": "2026-04-13T00:45:31.239Z",
       "source_file": "tw29555686.json",
       "note": ""
     },
@@ -16422,10 +16422,10 @@
     {
       "ptcg_id": "tw29665443",
       "level": "junior",
-      "status": "missing",
-      "has_history": false,
-      "last_scraped_at": "",
-      "source_file": "",
+      "status": "ok",
+      "has_history": true,
+      "last_scraped_at": "2026-04-13T00:56:33.678Z",
+      "source_file": "tw29665443.json",
       "note": ""
     },
     {
@@ -16460,7 +16460,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:14:35.529Z",
+      "last_scraped_at": "2026-04-13T01:24:36.156Z",
       "source_file": "tw29759395.json",
       "note": ""
     },
@@ -16496,7 +16496,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:05:32.892Z",
+      "last_scraped_at": "2026-04-13T01:18:27.255Z",
       "source_file": "tw29893252.json",
       "note": ""
     },
@@ -16514,7 +16514,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:20:53.130Z",
+      "last_scraped_at": "2026-04-13T01:28:44.398Z",
       "source_file": "tw29895534.json",
       "note": ""
     },
@@ -16550,7 +16550,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:43:17.100Z",
+      "last_scraped_at": "2026-04-13T00:48:26.159Z",
       "source_file": "tw29979802.json",
       "note": ""
     },
@@ -16667,7 +16667,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:17:46.077Z",
+      "last_scraped_at": "2026-04-13T01:13:28.039Z",
       "source_file": "tw30204893.json",
       "note": ""
     },
@@ -16784,7 +16784,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:51:31.121Z",
+      "last_scraped_at": "2026-04-13T00:54:05.747Z",
       "source_file": "tw30352379.json",
       "note": ""
     },
@@ -16838,7 +16838,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:18:07.876Z",
+      "last_scraped_at": "2026-04-13T01:13:45.379Z",
       "source_file": "tw30443070.json",
       "note": ""
     },
@@ -16892,7 +16892,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:44:26.132Z",
+      "last_scraped_at": "2026-04-13T00:49:15.995Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -16937,7 +16937,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:18:14.395Z",
+      "last_scraped_at": "2026-04-13T01:26:55.387Z",
       "source_file": "tw30630182.json",
       "note": ""
     },
@@ -16973,7 +16973,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:13:02.851Z",
+      "last_scraped_at": "2026-04-13T01:23:35.175Z",
       "source_file": "tw30828758.json",
       "note": ""
     },
@@ -17045,7 +17045,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:00:57.095Z",
+      "last_scraped_at": "2026-04-13T01:01:38.706Z",
       "source_file": "tw30943815.json",
       "note": ""
     },
@@ -17234,7 +17234,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:43:55.284Z",
+      "last_scraped_at": "2026-04-13T00:48:52.520Z",
       "source_file": "tw31328173.json",
       "note": ""
     },
@@ -17351,7 +17351,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:18:10.979Z",
+      "last_scraped_at": "2026-04-13T01:13:46.905Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17387,7 +17387,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:05:37.880Z",
+      "last_scraped_at": "2026-04-13T01:05:00.676Z",
       "source_file": "tw31583544.json",
       "note": ""
     },
@@ -17405,7 +17405,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:55.585Z",
+      "last_scraped_at": "2026-04-13T01:05:46.377Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17522,7 +17522,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:09:48.106Z",
+      "last_scraped_at": "2026-04-13T01:07:48.580Z",
       "source_file": "tw31938723.json",
       "note": ""
     },
@@ -17882,7 +17882,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:31:45.168Z",
+      "last_scraped_at": "2026-04-13T01:36:04.268Z",
       "source_file": "tw32544234.json",
       "note": ""
     },
@@ -18071,7 +18071,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:28:21.749Z",
+      "last_scraped_at": "2026-04-13T01:33:48.488Z",
       "source_file": "tw32897860.json",
       "note": ""
     },
@@ -18215,7 +18215,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:07:23.208Z",
+      "last_scraped_at": "2026-04-13T01:06:06.556Z",
       "source_file": "tw33027113.json",
       "note": ""
     },
@@ -18242,7 +18242,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:29:26.186Z",
+      "last_scraped_at": "2026-04-13T01:34:31.667Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -18485,7 +18485,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:46.024Z",
+      "last_scraped_at": "2026-04-13T01:05:42.448Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -18584,7 +18584,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:28:50.750Z",
+      "last_scraped_at": "2026-04-13T01:34:07.118Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -18728,7 +18728,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:31:15.410Z",
+      "last_scraped_at": "2026-04-13T01:35:45.821Z",
       "source_file": "tw34051393.json",
       "note": ""
     },
@@ -18818,7 +18818,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:17:49.035Z",
+      "last_scraped_at": "2026-04-13T01:13:29.573Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -18881,7 +18881,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:59:46.221Z",
+      "last_scraped_at": "2026-04-13T01:00:37.570Z",
       "source_file": "tw34297641.json",
       "note": ""
     },
@@ -18998,7 +18998,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:10:20.357Z",
+      "last_scraped_at": "2026-04-13T01:21:43.913Z",
       "source_file": "tw34549343.json",
       "note": ""
     },
@@ -19043,7 +19043,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:16:47.357Z",
+      "last_scraped_at": "2026-04-13T01:12:42.758Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -19133,7 +19133,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:30:40.760Z",
+      "last_scraped_at": "2026-04-13T01:35:21.290Z",
       "source_file": "tw34731007.json",
       "note": ""
     },
@@ -19295,7 +19295,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:26:00.323Z",
+      "last_scraped_at": "2026-04-13T01:32:16.260Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -19421,7 +19421,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:18.628Z",
+      "last_scraped_at": "2026-04-13T01:05:28.804Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -19439,7 +19439,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:09:30.517Z",
+      "last_scraped_at": "2026-04-13T01:21:08.403Z",
       "source_file": "tw35405367.json",
       "note": ""
     },
@@ -19448,7 +19448,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:25:24.276Z",
+      "last_scraped_at": "2026-04-13T01:31:51.203Z",
       "source_file": "tw35406269.json",
       "note": ""
     },
@@ -19583,7 +19583,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:52:56.061Z",
+      "last_scraped_at": "2026-04-13T00:55:03.141Z",
       "source_file": "tw35622829.json",
       "note": ""
     },
@@ -19700,7 +19700,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:55:57.494Z",
+      "last_scraped_at": "2026-04-13T00:57:31.296Z",
       "source_file": "tw35736449.json",
       "note": ""
     },
@@ -19718,7 +19718,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:01:24.926Z",
+      "last_scraped_at": "2026-04-13T01:02:00.092Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -19943,7 +19943,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:36:30.961Z",
+      "last_scraped_at": "2026-04-13T00:43:23.668Z",
       "source_file": "tw36230915.json",
       "note": ""
     },
@@ -20024,7 +20024,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:12:25.736Z",
+      "last_scraped_at": "2026-04-13T01:09:29.656Z",
       "source_file": "tw36318694.json",
       "note": ""
     },
@@ -20051,7 +20051,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:07:42.744Z",
+      "last_scraped_at": "2026-04-13T01:19:56.299Z",
       "source_file": "tw36363909.json",
       "note": ""
     },
@@ -20123,7 +20123,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T14:42:28.754Z",
+      "last_scraped_at": "2026-04-13T01:16:27.499Z",
       "source_file": "tw36464158.json",
       "note": ""
     },
@@ -20321,7 +20321,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:45:18.927Z",
+      "last_scraped_at": "2026-04-13T00:49:47.517Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -20339,7 +20339,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:02.717Z",
+      "last_scraped_at": "2026-04-13T01:09:57.047Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -20564,7 +20564,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:01:54.223Z",
+      "last_scraped_at": "2026-04-13T01:02:13.755Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -20798,7 +20798,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:08:51.116Z",
+      "last_scraped_at": "2026-04-13T01:20:40.459Z",
       "source_file": "tw37459669.json",
       "note": ""
     },
@@ -20852,7 +20852,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:29:44.528Z",
+      "last_scraped_at": "2026-04-13T01:34:41.865Z",
       "source_file": "tw37644684.json",
       "note": ""
     },
@@ -20870,7 +20870,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:58:15.795Z",
+      "last_scraped_at": "2026-04-13T00:59:21.280Z",
       "source_file": "tw37692474.json",
       "note": ""
     },
@@ -20888,7 +20888,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:14:53.865Z",
+      "last_scraped_at": "2026-04-13T01:24:51.361Z",
       "source_file": "tw37740270.json",
       "note": ""
     },
@@ -21185,7 +21185,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:10:04.871Z",
+      "last_scraped_at": "2026-04-13T01:07:57.999Z",
       "source_file": "tw38300662.json",
       "note": ""
     },
@@ -21338,7 +21338,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:03:02.713Z",
+      "last_scraped_at": "2026-04-13T01:03:06.387Z",
       "source_file": "tw38603513.json",
       "note": ""
     },
@@ -21374,7 +21374,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:01:29.340Z",
+      "last_scraped_at": "2026-04-13T01:02:01.284Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21437,7 +21437,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:18:50.095Z",
+      "last_scraped_at": "2026-04-13T01:27:21.153Z",
       "source_file": "tw38870047.json",
       "note": ""
     },
@@ -21536,7 +21536,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:34:49.942Z",
+      "last_scraped_at": "2026-04-13T00:42:08.067Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21599,7 +21599,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:45:05.081Z",
+      "last_scraped_at": "2026-04-13T00:49:38.398Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21608,7 +21608,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:50:01.096Z",
+      "last_scraped_at": "2026-04-13T00:52:53.050Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21878,7 +21878,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:59:07.225Z",
+      "last_scraped_at": "2026-04-13T00:59:58.671Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21896,7 +21896,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:46:13.779Z",
+      "last_scraped_at": "2026-04-13T00:50:20.154Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21914,7 +21914,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:16:59.427Z",
+      "last_scraped_at": "2026-04-13T01:12:51.872Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -22058,7 +22058,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:09:53.574Z",
+      "last_scraped_at": "2026-04-13T01:07:50.107Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -22202,7 +22202,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:10:59.079Z",
+      "last_scraped_at": "2026-04-13T01:22:08.494Z",
       "source_file": "tw40370232.json",
       "note": ""
     },
@@ -22310,7 +22310,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:28:42.345Z",
+      "last_scraped_at": "2026-04-13T01:34:05.585Z",
       "source_file": "tw40520489.json",
       "note": ""
     },
@@ -22319,7 +22319,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:07:51.195Z",
+      "last_scraped_at": "2026-04-13T01:06:16.595Z",
       "source_file": "tw40531482.json",
       "note": ""
     },
@@ -22391,7 +22391,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T14:41:45.396Z",
+      "last_scraped_at": "2026-04-13T01:15:46.414Z",
       "source_file": "tw40588548.json",
       "note": ""
     },
@@ -22724,7 +22724,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:07:01.368Z",
+      "last_scraped_at": "2026-04-13T01:05:49.372Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -22841,7 +22841,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:05:28.455Z",
+      "last_scraped_at": "2026-04-13T01:04:52.556Z",
       "source_file": "tw41404206.json",
       "note": ""
     },
@@ -22931,7 +22931,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:04:13.812Z",
+      "last_scraped_at": "2026-04-13T01:03:54.690Z",
       "source_file": "tw41528837.json",
       "note": ""
     },
@@ -23066,7 +23066,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:03:28.419Z",
+      "last_scraped_at": "2026-04-13T01:16:58.615Z",
       "source_file": "tw41685781.json",
       "note": ""
     },
@@ -23201,7 +23201,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:56:01.327Z",
+      "last_scraped_at": "2026-04-13T00:57:32.525Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23210,7 +23210,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:37:17.471Z",
+      "last_scraped_at": "2026-04-13T00:43:56.623Z",
       "source_file": "tw41895447.json",
       "note": ""
     },
@@ -23453,7 +23453,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:39:46.355Z",
+      "last_scraped_at": "2026-04-13T00:45:42.113Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23489,7 +23489,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:03:53.443Z",
+      "last_scraped_at": "2026-04-13T01:03:38.854Z",
       "source_file": "tw42471010.json",
       "note": ""
     },
@@ -23498,7 +23498,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:55:28.299Z",
+      "last_scraped_at": "2026-04-13T00:57:06.753Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23660,7 +23660,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:11:03.869Z",
+      "last_scraped_at": "2026-04-13T01:22:09.777Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23777,7 +23777,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:06:18.808Z",
+      "last_scraped_at": "2026-04-13T01:19:03.561Z",
       "source_file": "tw42929129.json",
       "note": ""
     },
@@ -23894,7 +23894,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:05:04.264Z",
+      "last_scraped_at": "2026-04-13T01:04:34.941Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23921,7 +23921,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:56:22.683Z",
+      "last_scraped_at": "2026-04-13T00:57:49.404Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23957,7 +23957,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:57:26.214Z",
+      "last_scraped_at": "2026-04-13T00:58:42.624Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24020,7 +24020,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:15:06.485Z",
+      "last_scraped_at": "2026-04-13T01:11:27.166Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24101,7 +24101,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:57:01.235Z",
+      "last_scraped_at": "2026-04-13T00:58:24.166Z",
       "source_file": "tw43594615.json",
       "note": ""
     },
@@ -24137,7 +24137,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:45:53.596Z",
+      "last_scraped_at": "2026-04-13T00:50:03.683Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24146,7 +24146,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:52:22.740Z",
+      "last_scraped_at": "2026-04-13T00:54:43.792Z",
       "source_file": "tw43724313.json",
       "note": ""
     },
@@ -24155,7 +24155,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:53:53.129Z",
+      "last_scraped_at": "2026-04-13T00:55:45.093Z",
       "source_file": "tw43735908.json",
       "note": ""
     },
@@ -24164,7 +24164,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:58:49.685Z",
+      "last_scraped_at": "2026-04-13T00:59:47.716Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24209,7 +24209,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:24:01.436Z",
+      "last_scraped_at": "2026-04-13T01:30:42.418Z",
       "source_file": "tw43841485.json",
       "note": ""
     },
@@ -24290,7 +24290,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T14:41:35.791Z",
+      "last_scraped_at": "2026-04-13T01:15:38.801Z",
       "source_file": "tw44093349.json",
       "note": ""
     },
@@ -24479,7 +24479,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:40:56.654Z",
+      "last_scraped_at": "2026-04-13T00:46:37.408Z",
       "source_file": "tw44446459.json",
       "note": ""
     },
@@ -24569,7 +24569,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:58:18.984Z",
+      "last_scraped_at": "2026-04-13T00:59:22.506Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24578,7 +24578,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:14:06.697Z",
+      "last_scraped_at": "2026-04-13T01:24:14.057Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24803,7 +24803,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:46.394Z",
+      "last_scraped_at": "2026-04-13T01:10:22.981Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24812,7 +24812,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:12:17.795Z",
+      "last_scraped_at": "2026-04-13T01:23:03.021Z",
       "source_file": "tw45014943.json",
       "note": ""
     },
@@ -24866,7 +24866,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:56:10.893Z",
+      "last_scraped_at": "2026-04-13T00:57:40.217Z",
       "source_file": "tw45064771.json",
       "note": ""
     },
@@ -24920,7 +24920,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:36.619Z",
+      "last_scraped_at": "2026-04-13T01:05:38.757Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24974,7 +24974,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:04:35.300Z",
+      "last_scraped_at": "2026-04-13T01:17:42.545Z",
       "source_file": "tw45345926.json",
       "note": ""
     },
@@ -25127,7 +25127,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:10:35.045Z",
+      "last_scraped_at": "2026-04-13T01:21:52.405Z",
       "source_file": "tw45547776.json",
       "note": ""
     },
@@ -25235,7 +25235,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:49.168Z",
+      "last_scraped_at": "2026-04-13T01:05:43.637Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25262,7 +25262,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:35:31.878Z",
+      "last_scraped_at": "2026-04-13T00:42:48.959Z",
       "source_file": "tw45872304.json",
       "note": ""
     },
@@ -25442,7 +25442,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:21.698Z",
+      "last_scraped_at": "2026-04-13T01:05:30.011Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25505,7 +25505,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:04:06.099Z",
+      "last_scraped_at": "2026-04-13T01:17:23.480Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25640,7 +25640,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:16:23.375Z",
+      "last_scraped_at": "2026-04-13T01:25:39.983Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25703,7 +25703,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:08:13.330Z",
+      "last_scraped_at": "2026-04-13T01:20:13.709Z",
       "source_file": "tw46558719.json",
       "note": ""
     },
@@ -25784,7 +25784,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:51:37.466Z",
+      "last_scraped_at": "2026-04-13T00:54:08.827Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25883,7 +25883,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:35:20.922Z",
+      "last_scraped_at": "2026-04-13T00:42:40.590Z",
       "source_file": "tw46778389.json",
       "note": ""
     },
@@ -25937,7 +25937,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:03:07.039Z",
+      "last_scraped_at": "2026-04-13T01:03:07.611Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25946,7 +25946,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:20:31.981Z",
+      "last_scraped_at": "2026-04-13T01:28:28.640Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25955,7 +25955,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:32:20.499Z",
+      "last_scraped_at": "2026-04-13T01:36:30.455Z",
       "source_file": "tw46863073.json",
       "note": ""
     },
@@ -26549,7 +26549,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:19:01.550Z",
+      "last_scraped_at": "2026-04-13T01:14:26.966Z",
       "source_file": "tw48143401.json",
       "note": ""
     },
@@ -26621,7 +26621,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T14:41:11.638Z",
+      "last_scraped_at": "2026-04-13T01:15:20.793Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -26657,7 +26657,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:15:45.912Z",
+      "last_scraped_at": "2026-04-13T01:12:00.261Z",
       "source_file": "tw48336261.json",
       "note": ""
     },
@@ -26675,7 +26675,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:21:32.628Z",
+      "last_scraped_at": "2026-04-13T01:29:10.181Z",
       "source_file": "tw48389923.json",
       "note": ""
     },
@@ -26738,7 +26738,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:07:04.405Z",
+      "last_scraped_at": "2026-04-13T01:19:31.220Z",
       "source_file": "tw48444075.json",
       "note": ""
     },
@@ -26972,7 +26972,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:02:02.729Z",
+      "last_scraped_at": "2026-04-13T01:02:16.561Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -27188,7 +27188,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:25:10.033Z",
+      "last_scraped_at": "2026-04-13T01:31:41.763Z",
       "source_file": "tw48973629.json",
       "note": ""
     },
@@ -27332,7 +27332,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:11:41.127Z",
+      "last_scraped_at": "2026-04-13T01:09:01.461Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -27350,7 +27350,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:30:30.562Z",
+      "last_scraped_at": "2026-04-13T01:35:13.084Z",
       "source_file": "tw49316449.json",
       "note": ""
     },
@@ -27386,7 +27386,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:40:30.860Z",
+      "last_scraped_at": "2026-04-13T00:46:14.922Z",
       "source_file": "tw49350731.json",
       "note": ""
     },
@@ -27458,7 +27458,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:56:25.629Z",
+      "last_scraped_at": "2026-04-13T00:57:50.680Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -27692,7 +27692,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:15:56.375Z",
+      "last_scraped_at": "2026-04-13T01:12:08.013Z",
       "source_file": "tw49935831.json",
       "note": ""
     },
@@ -27872,7 +27872,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:01:57.857Z",
+      "last_scraped_at": "2026-04-13T01:02:15.022Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -27971,7 +27971,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:35:53.861Z",
+      "last_scraped_at": "2026-04-13T00:43:04.944Z",
       "source_file": "tw50551352.json",
       "note": ""
     },
@@ -28160,7 +28160,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:11:21.689Z",
+      "last_scraped_at": "2026-04-13T01:08:51.017Z",
       "source_file": "tw50862692.json",
       "note": ""
     },
@@ -28232,7 +28232,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:03:39.837Z",
+      "last_scraped_at": "2026-04-13T01:17:02.867Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -28358,7 +28358,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:55:06.152Z",
+      "last_scraped_at": "2026-04-13T00:56:49.006Z",
       "source_file": "tw51222111.json",
       "note": ""
     },
@@ -28691,7 +28691,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:19:41.545Z",
+      "last_scraped_at": "2026-04-13T01:15:00.699Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -28790,7 +28790,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:51:40.608Z",
+      "last_scraped_at": "2026-04-13T00:54:10.017Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -28808,7 +28808,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:35:58.383Z",
+      "last_scraped_at": "2026-04-13T00:43:06.578Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -28961,7 +28961,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:54:56.950Z",
+      "last_scraped_at": "2026-04-13T00:56:41.079Z",
       "source_file": "tw52313759.json",
       "note": ""
     },
@@ -29303,7 +29303,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:30:51.004Z",
+      "last_scraped_at": "2026-04-13T01:35:29.095Z",
       "source_file": "tw52809510.json",
       "note": ""
     },
@@ -29474,7 +29474,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:49:30.606Z",
+      "last_scraped_at": "2026-04-13T00:52:34.719Z",
       "source_file": "tw53082926.json",
       "note": ""
     },
@@ -29492,7 +29492,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:34:55.604Z",
+      "last_scraped_at": "2026-04-13T00:42:10.606Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -29519,7 +29519,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:25:45.417Z",
+      "last_scraped_at": "2026-04-13T01:32:07.734Z",
       "source_file": "tw53113291.json",
       "note": ""
     },
@@ -29654,7 +29654,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:07:41.250Z",
+      "last_scraped_at": "2026-04-13T00:41:57.340Z",
       "source_file": "tw53429128.json",
       "note": ""
     },
@@ -29708,7 +29708,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:51.678Z",
+      "last_scraped_at": "2026-04-13T00:52:07.841Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -29762,7 +29762,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:09:45.376Z",
+      "last_scraped_at": "2026-04-13T01:21:18.067Z",
       "source_file": "tw53619217.json",
       "note": ""
     },
@@ -29852,7 +29852,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:36:08.260Z",
+      "last_scraped_at": "2026-04-13T00:43:07.816Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -29861,7 +29861,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:22:07.483Z",
+      "last_scraped_at": "2026-04-13T01:29:29.157Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -30257,7 +30257,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:55:15.800Z",
+      "last_scraped_at": "2026-04-13T00:56:57.348Z",
       "source_file": "tw54428794.json",
       "note": ""
     },
@@ -30284,7 +30284,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:58:07.010Z",
+      "last_scraped_at": "2026-04-13T00:59:13.431Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -30365,7 +30365,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:55:37.822Z",
+      "last_scraped_at": "2026-04-13T00:57:15.499Z",
       "source_file": "tw54580127.json",
       "note": ""
     },
@@ -30482,7 +30482,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:09:17.087Z",
+      "last_scraped_at": "2026-04-13T01:07:25.638Z",
       "source_file": "tw54780572.json",
       "note": ""
     },
@@ -30797,7 +30797,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:54:24.310Z",
+      "last_scraped_at": "2026-04-13T00:56:09.423Z",
       "source_file": "tw55370103.json",
       "note": ""
     },
@@ -30869,7 +30869,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:34:45.024Z",
+      "last_scraped_at": "2026-04-13T00:42:06.512Z",
       "source_file": "tw55474671.json",
       "note": ""
     },
@@ -30914,7 +30914,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:38:36.709Z",
+      "last_scraped_at": "2026-04-13T00:44:52.120Z",
       "source_file": "tw55552824.json",
       "note": ""
     },
@@ -31184,7 +31184,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:59:49.399Z",
+      "last_scraped_at": "2026-04-13T01:00:39.151Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -31256,7 +31256,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:03:49.344Z",
+      "last_scraped_at": "2026-04-13T01:17:11.643Z",
       "source_file": "tw56183489.json",
       "note": ""
     },
@@ -31283,7 +31283,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:23:09.239Z",
+      "last_scraped_at": "2026-04-13T01:30:09.380Z",
       "source_file": "tw56222594.json",
       "note": ""
     },
@@ -31337,7 +31337,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:08:29.064Z",
+      "last_scraped_at": "2026-04-13T01:06:42.899Z",
       "source_file": "tw56351610.json",
       "note": ""
     },
@@ -31661,7 +31661,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:22:35.724Z",
+      "last_scraped_at": "2026-04-13T01:29:46.310Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -31886,7 +31886,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:15:31.287Z",
+      "last_scraped_at": "2026-04-13T01:25:09.870Z",
       "source_file": "tw57211621.json",
       "note": ""
     },
@@ -32174,7 +32174,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:57:47.774Z",
+      "last_scraped_at": "2026-04-13T00:59:00.534Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32201,7 +32201,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:30:55.056Z",
+      "last_scraped_at": "2026-04-13T01:35:30.337Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32219,7 +32219,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:18:35.600Z",
+      "last_scraped_at": "2026-04-13T01:27:12.360Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32642,7 +32642,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:39:42.288Z",
+      "last_scraped_at": "2026-04-13T00:45:40.619Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32768,7 +32768,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:41:53.096Z",
+      "last_scraped_at": "2026-04-13T00:48:01.624Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32813,7 +32813,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:18:14.133Z",
+      "last_scraped_at": "2026-04-13T01:13:48.420Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32858,7 +32858,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:47:43.588Z",
+      "last_scraped_at": "2026-04-13T00:51:33.180Z",
       "source_file": "tw59077725.json",
       "note": ""
     },
@@ -32930,7 +32930,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:18:50.844Z",
+      "last_scraped_at": "2026-04-13T01:14:19.253Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32984,7 +32984,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:51:22.081Z",
+      "last_scraped_at": "2026-04-13T00:41:40.055Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -33065,7 +33065,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:09.432Z",
+      "last_scraped_at": "2026-04-13T00:51:50.265Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -33092,7 +33092,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:36:45.694Z",
+      "last_scraped_at": "2026-04-13T00:43:32.951Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -33209,7 +33209,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:58:00.815Z",
+      "last_scraped_at": "2026-04-13T00:59:10.387Z",
       "source_file": "tw59827090.json",
       "note": ""
     },
@@ -33281,7 +33281,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:32.625Z",
+      "last_scraped_at": "2026-04-13T00:51:57.473Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -33308,7 +33308,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:57:50.904Z",
+      "last_scraped_at": "2026-04-13T00:59:01.786Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -33362,7 +33362,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:51:12.766Z",
+      "last_scraped_at": "2026-04-13T00:53:55.041Z",
       "source_file": "tw60076016.json",
       "note": ""
     },
@@ -33857,7 +33857,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:05:55.150Z",
+      "last_scraped_at": "2026-04-13T01:18:45.940Z",
       "source_file": "tw61010056.json",
       "note": ""
     },
@@ -34010,7 +34010,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:14:51.819Z",
+      "last_scraped_at": "2026-04-13T01:11:18.185Z",
       "source_file": "tw61274898.json",
       "note": ""
     },
@@ -34181,7 +34181,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:54:06.004Z",
+      "last_scraped_at": "2026-04-13T00:55:53.876Z",
       "source_file": "tw61573942.json",
       "note": ""
     },
@@ -34235,7 +34235,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:45:34.903Z",
+      "last_scraped_at": "2026-04-13T00:49:53.031Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -34316,7 +34316,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:05:55.126Z",
+      "last_scraped_at": "2026-04-13T01:05:11.353Z",
       "source_file": "tw61751563.json",
       "note": ""
     },
@@ -34496,7 +34496,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:22:58.041Z",
+      "last_scraped_at": "2026-04-13T01:30:01.608Z",
       "source_file": "tw62057177.json",
       "note": ""
     },
@@ -34676,7 +34676,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:13:47.648Z",
+      "last_scraped_at": "2026-04-13T01:24:02.897Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -34694,7 +34694,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:54:36.687Z",
+      "last_scraped_at": "2026-04-13T00:56:18.534Z",
       "source_file": "tw62463648.json",
       "note": ""
     },
@@ -34955,7 +34955,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:50:45.243Z",
+      "last_scraped_at": "2026-04-13T00:53:29.156Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35063,7 +35063,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:38:09.626Z",
+      "last_scraped_at": "2026-04-13T00:44:30.749Z",
       "source_file": "tw63137219.json",
       "note": ""
     },
@@ -35153,7 +35153,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:18:02.921Z",
+      "last_scraped_at": "2026-04-13T01:26:47.435Z",
       "source_file": "tw63265400.json",
       "note": ""
     },
@@ -35180,7 +35180,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:45:49.272Z",
+      "last_scraped_at": "2026-04-13T00:50:02.145Z",
       "source_file": "tw63300150.json",
       "note": ""
     },
@@ -35198,7 +35198,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:50:29.996Z",
+      "last_scraped_at": "2026-04-13T00:53:17.173Z",
       "source_file": "tw63331658.json",
       "note": ""
     },
@@ -35288,7 +35288,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:13:51.619Z",
+      "last_scraped_at": "2026-04-13T01:24:04.132Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35297,7 +35297,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:44:41.576Z",
+      "last_scraped_at": "2026-04-13T00:49:25.344Z",
       "source_file": "tw63503878.json",
       "note": ""
     },
@@ -35360,7 +35360,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:13:21.745Z",
+      "last_scraped_at": "2026-04-13T01:10:07.988Z",
       "source_file": "tw63573547.json",
       "note": ""
     },
@@ -35387,7 +35387,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:50:21.185Z",
+      "last_scraped_at": "2026-04-13T00:53:09.187Z",
       "source_file": "tw63617314.json",
       "note": ""
     },
@@ -35405,7 +35405,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:44:45.945Z",
+      "last_scraped_at": "2026-04-13T00:49:26.880Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35432,7 +35432,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:21:11.294Z",
+      "last_scraped_at": "2026-04-13T01:28:54.700Z",
       "source_file": "tw63677106.json",
       "note": ""
     },
@@ -35495,7 +35495,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:34:33.898Z",
+      "last_scraped_at": "2026-04-13T00:41:49.128Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35558,7 +35558,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:16:21.431Z",
+      "last_scraped_at": "2026-04-13T01:12:23.999Z",
       "source_file": "tw63964791.json",
       "note": ""
     },
@@ -35594,7 +35594,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:14.154Z",
+      "last_scraped_at": "2026-04-13T00:51:51.737Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35882,7 +35882,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:24:59.797Z",
+      "last_scraped_at": "2026-04-13T01:31:34.108Z",
       "source_file": "tw64583022.json",
       "note": ""
     },
@@ -36044,7 +36044,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:36:41.436Z",
+      "last_scraped_at": "2026-04-13T00:43:31.658Z",
       "source_file": "tw64960649.json",
       "note": ""
     },
@@ -36053,7 +36053,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:05:44.216Z",
+      "last_scraped_at": "2026-04-13T01:18:36.730Z",
       "source_file": "tw64961329.json",
       "note": ""
     },
@@ -36116,7 +36116,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:49:45.192Z",
+      "last_scraped_at": "2026-04-13T00:52:43.921Z",
       "source_file": "tw65107115.json",
       "note": ""
     },
@@ -36143,7 +36143,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:58:03.881Z",
+      "last_scraped_at": "2026-04-13T00:59:11.646Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -36287,7 +36287,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:12:05.588Z",
+      "last_scraped_at": "2026-04-13T01:22:54.883Z",
       "source_file": "tw65514915.json",
       "note": ""
     },
@@ -36377,7 +36377,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:56:52.180Z",
+      "last_scraped_at": "2026-04-13T00:58:14.389Z",
       "source_file": "tw65726372.json",
       "note": ""
     },
@@ -36386,7 +36386,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:18:24.035Z",
+      "last_scraped_at": "2026-04-13T01:13:55.985Z",
       "source_file": "tw65739902.json",
       "note": ""
     },
@@ -36476,7 +36476,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:26:13.960Z",
+      "last_scraped_at": "2026-04-13T01:32:25.056Z",
       "source_file": "tw65814627.json",
       "note": ""
     },
@@ -36521,7 +36521,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:16:44.394Z",
+      "last_scraped_at": "2026-04-13T01:12:41.230Z",
       "source_file": "tw65866331.json",
       "note": ""
     },
@@ -36593,7 +36593,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:58:27.813Z",
+      "last_scraped_at": "2026-04-13T00:59:30.299Z",
       "source_file": "tw65952377.json",
       "note": ""
     },
@@ -36782,7 +36782,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:18:31.466Z",
+      "last_scraped_at": "2026-04-13T01:27:11.127Z",
       "source_file": "tw66247777.json",
       "note": ""
     },
@@ -36809,7 +36809,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:57:44.610Z",
+      "last_scraped_at": "2026-04-13T00:58:59.261Z",
       "source_file": "tw66357714.json",
       "note": ""
     },
@@ -36872,7 +36872,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:04:49.629Z",
+      "last_scraped_at": "2026-04-13T01:17:52.345Z",
       "source_file": "tw66447671.json",
       "note": ""
     },
@@ -36908,7 +36908,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:02:42.030Z",
+      "last_scraped_at": "2026-04-13T01:02:49.098Z",
       "source_file": "tw66518344.json",
       "note": ""
     },
@@ -37133,7 +37133,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:15:12.524Z",
+      "last_scraped_at": "2026-04-13T01:25:00.672Z",
       "source_file": "tw66847677.json",
       "note": ""
     },
@@ -37349,7 +37349,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:04:59.841Z",
+      "last_scraped_at": "2026-04-13T01:18:00.282Z",
       "source_file": "tw67272459.json",
       "note": ""
     },
@@ -37538,7 +37538,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:06:33.412Z",
+      "last_scraped_at": "2026-04-13T01:19:12.932Z",
       "source_file": "tw67635723.json",
       "note": ""
     },
@@ -37574,7 +37574,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:39.901Z",
+      "last_scraped_at": "2026-04-13T01:05:39.951Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37673,7 +37673,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:56:28.517Z",
+      "last_scraped_at": "2026-04-13T00:57:51.860Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37682,7 +37682,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:24.834Z",
+      "last_scraped_at": "2026-04-13T01:10:09.480Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37700,7 +37700,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:23:38.134Z",
+      "last_scraped_at": "2026-04-13T01:30:26.337Z",
       "source_file": "tw67898406.json",
       "note": ""
     },
@@ -37718,7 +37718,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:13:34.581Z",
+      "last_scraped_at": "2026-04-13T01:10:17.547Z",
       "source_file": "tw67963923.json",
       "note": ""
     },
@@ -37781,7 +37781,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:06:05.205Z",
+      "last_scraped_at": "2026-04-13T01:05:19.300Z",
       "source_file": "tw68001090.json",
       "note": ""
     },
@@ -37907,7 +37907,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:04:16.855Z",
+      "last_scraped_at": "2026-04-13T01:03:55.914Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37916,7 +37916,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:57:35.778Z",
+      "last_scraped_at": "2026-04-13T00:58:50.525Z",
       "source_file": "tw68238948.json",
       "note": ""
     },
@@ -37943,7 +37943,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:16:56.437Z",
+      "last_scraped_at": "2026-04-13T01:12:50.638Z",
       "source_file": "tw68273572.json",
       "note": ""
     },
@@ -38096,7 +38096,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:25:13.981Z",
+      "last_scraped_at": "2026-04-13T01:31:43.285Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -38141,7 +38141,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:29:29.859Z",
+      "last_scraped_at": "2026-04-13T01:34:33.185Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -38159,7 +38159,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:05:20.215Z",
+      "last_scraped_at": "2026-04-13T01:18:16.403Z",
       "source_file": "tw68807154.json",
       "note": ""
     },
@@ -38213,7 +38213,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:47:11.613Z",
+      "last_scraped_at": "2026-04-13T00:51:10.023Z",
       "source_file": "tw68930381.json",
       "note": ""
     },
@@ -38285,7 +38285,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:53:57.110Z",
+      "last_scraped_at": "2026-04-13T00:55:46.341Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -38339,7 +38339,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:20:08.274Z",
+      "last_scraped_at": "2026-04-13T01:15:19.284Z",
       "source_file": "tw69124505.json",
       "note": ""
     },
@@ -38393,7 +38393,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:48:04.992Z",
+      "last_scraped_at": "2026-04-13T00:51:49.052Z",
       "source_file": "tw69234704.json",
       "note": ""
     },
@@ -38420,7 +38420,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:59:36.935Z",
+      "last_scraped_at": "2026-04-13T01:00:29.246Z",
       "source_file": "tw69303894.json",
       "note": ""
     },
@@ -38690,7 +38690,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:17:51.779Z",
+      "last_scraped_at": "2026-04-13T01:26:39.446Z",
       "source_file": "tw69664233.json",
       "note": ""
     },
@@ -38735,7 +38735,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:45:14.825Z",
+      "last_scraped_at": "2026-04-13T00:49:46.291Z",
       "source_file": "tw69774476.json",
       "note": ""
     },
@@ -38762,7 +38762,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:07:31.069Z",
+      "last_scraped_at": "2026-04-13T01:19:48.587Z",
       "source_file": "tw69816395.json",
       "note": ""
     },
@@ -38834,7 +38834,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:47:54.506Z",
+      "last_scraped_at": "2026-04-13T00:51:41.202Z",
       "source_file": "tw69916924.json",
       "note": ""
     },
@@ -38879,7 +38879,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:07:08.737Z",
+      "last_scraped_at": "2026-04-13T01:19:32.742Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -38915,7 +38915,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:08:01.226Z",
+      "last_scraped_at": "2026-04-13T01:06:24.455Z",
       "source_file": "tw70076947.json",
       "note": ""
     },
@@ -38924,7 +38924,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:53:13.178Z",
+      "last_scraped_at": "2026-04-13T00:55:18.838Z",
       "source_file": "tw70079797.json",
       "note": ""
     },
@@ -38978,7 +38978,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:26:49.897Z",
+      "last_scraped_at": "2026-04-13T01:32:51.147Z",
       "source_file": "tw70229564.json",
       "note": ""
     },
@@ -39131,7 +39131,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:05:41.759Z",
+      "last_scraped_at": "2026-04-13T01:05:01.890Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -39194,7 +39194,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:21:50.021Z",
+      "last_scraped_at": "2026-04-13T01:29:19.345Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -39212,7 +39212,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:21:00.568Z",
+      "last_scraped_at": "2026-04-13T01:28:47.202Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -39464,7 +39464,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:34:29.580Z",
+      "last_scraped_at": "2026-04-13T00:41:47.869Z",
       "source_file": "tw71355273.json",
       "note": ""
     },
@@ -39482,7 +39482,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T14:41:16.809Z",
+      "last_scraped_at": "2026-04-13T01:15:22.295Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -39491,7 +39491,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:55:47.541Z",
+      "last_scraped_at": "2026-04-13T00:57:23.064Z",
       "source_file": "tw71384081.json",
       "note": ""
     },
@@ -39500,7 +39500,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:08:39.072Z",
+      "last_scraped_at": "2026-04-13T01:06:52.522Z",
       "source_file": "tw71396702.json",
       "note": ""
     },
@@ -39554,7 +39554,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:26:39.868Z",
+      "last_scraped_at": "2026-04-13T01:32:43.099Z",
       "source_file": "tw71512322.json",
       "note": ""
     },
@@ -39563,7 +39563,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:51:19.039Z",
+      "last_scraped_at": "2026-04-13T00:53:57.728Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -39716,7 +39716,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:03:09.425Z",
+      "last_scraped_at": "2026-04-13T01:16:43.051Z",
       "source_file": "tw71982966.json",
       "note": ""
     },
@@ -39725,7 +39725,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:03:59.158Z",
+      "last_scraped_at": "2026-04-13T01:17:20.274Z",
       "source_file": "tw71989757.json",
       "note": ""
     },
@@ -39734,7 +39734,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:42:56.511Z",
+      "last_scraped_at": "2026-04-13T00:48:10.468Z",
       "source_file": "tw72008579.json",
       "note": ""
     },
@@ -39788,7 +39788,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:29:01.571Z",
+      "last_scraped_at": "2026-04-13T01:34:15.377Z",
       "source_file": "tw72088481.json",
       "note": ""
     },
@@ -40130,7 +40130,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:56:43.394Z",
+      "last_scraped_at": "2026-04-13T00:58:06.632Z",
       "source_file": "tw72740783.json",
       "note": ""
     },
@@ -40292,7 +40292,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:04:30.745Z",
+      "last_scraped_at": "2026-04-13T01:04:07.847Z",
       "source_file": "tw73009604.json",
       "note": ""
     },
@@ -40400,7 +40400,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:52.486Z",
+      "last_scraped_at": "2026-04-13T01:05:44.863Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -40526,7 +40526,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:17:27.468Z",
+      "last_scraped_at": "2026-04-13T01:13:11.996Z",
       "source_file": "tw73516405.json",
       "note": ""
     },
@@ -40598,7 +40598,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:42:44.200Z",
+      "last_scraped_at": "2026-04-13T00:48:00.399Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -40940,7 +40940,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:10:38.155Z",
+      "last_scraped_at": "2026-04-13T01:08:17.895Z",
       "source_file": "tw74391632.json",
       "note": ""
     },
@@ -41066,7 +41066,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:07.251Z",
+      "last_scraped_at": "2026-04-13T01:09:58.265Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -41183,7 +41183,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:50:54.594Z",
+      "last_scraped_at": "2026-04-13T00:53:38.907Z",
       "source_file": "tw74834256.json",
       "note": ""
     },
@@ -41228,7 +41228,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:51:58.748Z",
+      "last_scraped_at": "2026-04-13T00:54:25.829Z",
       "source_file": "tw74905288.json",
       "note": ""
     },
@@ -41282,7 +41282,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:41:49.920Z",
+      "last_scraped_at": "2026-04-13T00:47:21.770Z",
       "source_file": "tw74970005.json",
       "note": ""
     },
@@ -41291,7 +41291,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:11:11.539Z",
+      "last_scraped_at": "2026-04-13T01:08:42.823Z",
       "source_file": "tw74972714.json",
       "note": ""
     },
@@ -41372,7 +41372,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:10:51.954Z",
+      "last_scraped_at": "2026-04-13T01:08:27.421Z",
       "source_file": "tw75053390.json",
       "note": ""
     },
@@ -41471,7 +41471,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:52:37.294Z",
+      "last_scraped_at": "2026-04-13T00:54:52.762Z",
       "source_file": "tw75265013.json",
       "note": ""
     },
@@ -41534,7 +41534,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:17:58.177Z",
+      "last_scraped_at": "2026-04-13T01:13:37.573Z",
       "source_file": "tw75459672.json",
       "note": ""
     },
@@ -41696,7 +41696,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:42:09.540Z",
+      "last_scraped_at": "2026-04-13T00:47:32.300Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -41750,7 +41750,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:12:36.073Z",
+      "last_scraped_at": "2026-04-13T01:09:37.800Z",
       "source_file": "tw75805836.json",
       "note": ""
     },
@@ -42182,7 +42182,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:52:12.275Z",
+      "last_scraped_at": "2026-04-13T00:54:35.303Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -42209,7 +42209,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:27:35.369Z",
+      "last_scraped_at": "2026-04-13T01:33:17.119Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -42290,7 +42290,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:00:30.499Z",
+      "last_scraped_at": "2026-04-13T01:01:18.587Z",
       "source_file": "tw76622951.json",
       "note": ""
     },
@@ -42452,7 +42452,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:37:58.563Z",
+      "last_scraped_at": "2026-04-13T00:44:22.753Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -42479,7 +42479,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:01:49.825Z",
+      "last_scraped_at": "2026-04-13T01:02:12.244Z",
       "source_file": "tw77153350.json",
       "note": ""
     },
@@ -42488,7 +42488,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:02:56.261Z",
+      "last_scraped_at": "2026-04-13T01:16:35.496Z",
       "source_file": "tw77156696.json",
       "note": ""
     },
@@ -42920,7 +42920,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:19:45.379Z",
+      "last_scraped_at": "2026-04-13T01:15:02.201Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -43100,7 +43100,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:09:34.802Z",
+      "last_scraped_at": "2026-04-13T01:21:10.011Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -43190,7 +43190,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:11:01.794Z",
+      "last_scraped_at": "2026-04-13T01:08:35.388Z",
       "source_file": "tw78494100.json",
       "note": ""
     },
@@ -43208,7 +43208,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:42:39.935Z",
+      "last_scraped_at": "2026-04-13T00:47:58.861Z",
       "source_file": "tw78560483.json",
       "note": ""
     },
@@ -43343,7 +43343,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:43:06.672Z",
+      "last_scraped_at": "2026-04-13T00:48:18.260Z",
       "source_file": "tw78831210.json",
       "note": ""
     },
@@ -43577,7 +43577,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:19:48.257Z",
+      "last_scraped_at": "2026-04-13T01:15:03.438Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -43883,7 +43883,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:37.596Z",
+      "last_scraped_at": "2026-04-13T01:10:19.121Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -43991,7 +43991,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:17:17.876Z",
+      "last_scraped_at": "2026-04-13T01:13:04.382Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44018,7 +44018,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:53:17.592Z",
+      "last_scraped_at": "2026-04-13T00:55:20.381Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44063,7 +44063,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:21:21.540Z",
+      "last_scraped_at": "2026-04-13T01:29:02.624Z",
       "source_file": "tw80028974.json",
       "note": ""
     },
@@ -44153,7 +44153,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:12:29.472Z",
+      "last_scraped_at": "2026-04-13T01:23:11.570Z",
       "source_file": "tw80234260.json",
       "note": ""
     },
@@ -44180,7 +44180,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:29:48.404Z",
+      "last_scraped_at": "2026-04-13T01:34:43.071Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44369,7 +44369,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:12:40.150Z",
+      "last_scraped_at": "2026-04-13T01:23:19.797Z",
       "source_file": "tw80656085.json",
       "note": ""
     },
@@ -44405,7 +44405,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:43:35.319Z",
+      "last_scraped_at": "2026-04-13T00:48:37.317Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44513,7 +44513,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:51:49.446Z",
+      "last_scraped_at": "2026-04-13T00:54:18.170Z",
       "source_file": "tw80972698.json",
       "note": ""
     },
@@ -44612,7 +44612,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:01:03.528Z",
+      "last_scraped_at": "2026-04-13T01:01:41.122Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44621,7 +44621,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:14:41.485Z",
+      "last_scraped_at": "2026-04-13T01:11:10.279Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44630,7 +44630,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:53:22.116Z",
+      "last_scraped_at": "2026-04-13T00:55:21.631Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44675,7 +44675,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:04:19.884Z",
+      "last_scraped_at": "2026-04-13T01:03:57.440Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44729,7 +44729,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:59:03.898Z",
+      "last_scraped_at": "2026-04-13T00:59:57.138Z",
       "source_file": "tw81240634.json",
       "note": ""
     },
@@ -44873,7 +44873,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:16:07.507Z",
+      "last_scraped_at": "2026-04-13T01:25:30.358Z",
       "source_file": "tw81496105.json",
       "note": ""
     },
@@ -45026,7 +45026,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:16:10.373Z",
+      "last_scraped_at": "2026-04-13T01:12:16.573Z",
       "source_file": "tw81823566.json",
       "note": ""
     },
@@ -45044,7 +45044,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:58:53.507Z",
+      "last_scraped_at": "2026-04-13T00:59:48.985Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -45098,7 +45098,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:15:16.710Z",
+      "last_scraped_at": "2026-04-13T01:11:34.885Z",
       "source_file": "tw81941730.json",
       "note": ""
     },
@@ -45503,7 +45503,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:38:51.790Z",
+      "last_scraped_at": "2026-04-13T00:45:01.568Z",
       "source_file": "tw82644400.json",
       "note": ""
     },
@@ -45512,7 +45512,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:51:03.653Z",
+      "last_scraped_at": "2026-04-13T00:53:47.300Z",
       "source_file": "tw82674376.json",
       "note": ""
     },
@@ -45773,7 +45773,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:57:09.813Z",
+      "last_scraped_at": "2026-04-13T00:58:31.997Z",
       "source_file": "tw83119817.json",
       "note": ""
     },
@@ -45809,7 +45809,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:43:31.187Z",
+      "last_scraped_at": "2026-04-13T00:48:36.078Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -45935,7 +45935,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:27:21.259Z",
+      "last_scraped_at": "2026-04-13T01:33:15.572Z",
       "source_file": "tw83566424.json",
       "note": ""
     },
@@ -45980,7 +45980,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:45:22.982Z",
+      "last_scraped_at": "2026-04-13T00:49:48.793Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46052,7 +46052,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:07:20.144Z",
+      "last_scraped_at": "2026-04-13T01:19:40.556Z",
       "source_file": "tw83930011.json",
       "note": ""
     },
@@ -46061,7 +46061,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:27:57.107Z",
+      "last_scraped_at": "2026-04-13T01:33:33.025Z",
       "source_file": "tw83930961.json",
       "note": ""
     },
@@ -46070,7 +46070,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:11:55.976Z",
+      "last_scraped_at": "2026-04-13T01:09:10.651Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46214,7 +46214,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:40.475Z",
+      "last_scraped_at": "2026-04-13T01:10:20.267Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46322,7 +46322,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:22:31.156Z",
+      "last_scraped_at": "2026-04-13T01:29:45.045Z",
       "source_file": "tw84417684.json",
       "note": ""
     },
@@ -46466,7 +46466,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:10:41.992Z",
+      "last_scraped_at": "2026-04-13T01:08:19.400Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46610,7 +46610,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:12:58.192Z",
+      "last_scraped_at": "2026-04-13T01:09:55.507Z",
       "source_file": "tw85115912.json",
       "note": ""
     },
@@ -46619,7 +46619,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:56:19.739Z",
+      "last_scraped_at": "2026-04-13T00:57:47.863Z",
       "source_file": "tw85135259.json",
       "note": ""
     },
@@ -46637,7 +46637,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:48:47.482Z",
+      "last_scraped_at": "2026-04-13T00:52:06.319Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46727,7 +46727,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:54:27.370Z",
+      "last_scraped_at": "2026-04-13T00:56:10.934Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46754,7 +46754,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:15:36.277Z",
+      "last_scraped_at": "2026-04-13T01:11:51.664Z",
       "source_file": "tw85271765.json",
       "note": ""
     },
@@ -46844,7 +46844,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:52:41.460Z",
+      "last_scraped_at": "2026-04-13T00:54:54.249Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46889,7 +46889,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:15:55.500Z",
+      "last_scraped_at": "2026-04-13T01:25:22.535Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46916,7 +46916,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:18:39.394Z",
+      "last_scraped_at": "2026-04-13T01:27:13.595Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -47078,7 +47078,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:40:20.665Z",
+      "last_scraped_at": "2026-04-13T00:46:07.012Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -47303,7 +47303,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:11:51.794Z",
+      "last_scraped_at": "2026-04-13T01:09:09.157Z",
       "source_file": "tw86398471.json",
       "note": ""
     },
@@ -47429,7 +47429,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:03:18.949Z",
+      "last_scraped_at": "2026-04-13T01:16:50.830Z",
       "source_file": "tw86635851.json",
       "note": ""
     },
@@ -47537,7 +47537,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:23:22.042Z",
+      "last_scraped_at": "2026-04-13T01:30:17.246Z",
       "source_file": "tw86822862.json",
       "note": ""
     },
@@ -47600,7 +47600,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:53:42.943Z",
+      "last_scraped_at": "2026-04-13T00:55:37.592Z",
       "source_file": "tw86906617.json",
       "note": ""
     },
@@ -47753,7 +47753,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:12:11.224Z",
+      "last_scraped_at": "2026-04-13T01:09:19.781Z",
       "source_file": "tw87298067.json",
       "note": ""
     },
@@ -47762,7 +47762,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:41:29.563Z",
+      "last_scraped_at": "2026-04-13T00:47:05.758Z",
       "source_file": "tw87312651.json",
       "note": ""
     },
@@ -47852,7 +47852,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:01:00.351Z",
+      "last_scraped_at": "2026-04-13T01:01:39.904Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -47924,7 +47924,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:58:45.739Z",
+      "last_scraped_at": "2026-04-13T00:59:46.512Z",
       "source_file": "tw87520683.json",
       "note": ""
     },
@@ -48068,7 +48068,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:03:32.464Z",
+      "last_scraped_at": "2026-04-13T01:17:00.117Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48077,7 +48077,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:44:30.533Z",
+      "last_scraped_at": "2026-04-13T00:49:17.520Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48122,7 +48122,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:52:45.592Z",
+      "last_scraped_at": "2026-04-13T00:54:55.466Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48167,7 +48167,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:08:37.744Z",
+      "last_scraped_at": "2026-04-13T01:20:32.386Z",
       "source_file": "tw87919037.json",
       "note": ""
     },
@@ -48230,7 +48230,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:16:41.252Z",
+      "last_scraped_at": "2026-04-13T01:25:53.742Z",
       "source_file": "tw88014909.json",
       "note": ""
     },
@@ -48491,7 +48491,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:03:22.684Z",
+      "last_scraped_at": "2026-04-13T01:03:18.420Z",
       "source_file": "tw88443275.json",
       "note": ""
     },
@@ -48500,7 +48500,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:01:21.534Z",
+      "last_scraped_at": "2026-04-13T01:01:58.589Z",
       "source_file": "tw88462401.json",
       "note": ""
     },
@@ -48572,7 +48572,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:19:13.957Z",
+      "last_scraped_at": "2026-04-13T01:27:33.282Z",
       "source_file": "tw88554433.json",
       "note": ""
     },
@@ -48770,7 +48770,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:51:34.242Z",
+      "last_scraped_at": "2026-04-13T00:54:07.255Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48788,7 +48788,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:07:13.488Z",
+      "last_scraped_at": "2026-04-13T01:05:58.736Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48806,7 +48806,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:46:23.623Z",
+      "last_scraped_at": "2026-04-13T00:50:28.679Z",
       "source_file": "tw88955558.json",
       "note": ""
     },
@@ -48851,7 +48851,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:07:32.012Z",
+      "last_scraped_at": "2026-04-13T01:06:09.054Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48941,7 +48941,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:31:30.595Z",
+      "last_scraped_at": "2026-04-13T01:35:54.593Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48959,7 +48959,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:20:16.421Z",
+      "last_scraped_at": "2026-04-13T01:28:19.217Z",
       "source_file": "tw89242970.json",
       "note": ""
     },
@@ -48995,7 +48995,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:15:50.946Z",
+      "last_scraped_at": "2026-04-13T01:25:21.044Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -49121,7 +49121,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:54:46.404Z",
+      "last_scraped_at": "2026-04-13T00:56:26.211Z",
       "source_file": "tw89591201.json",
       "note": ""
     },
@@ -49184,7 +49184,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:30:19.786Z",
+      "last_scraped_at": "2026-04-13T01:35:05.651Z",
       "source_file": "tw89636351.json",
       "note": ""
     },
@@ -49202,7 +49202,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:47:02.319Z",
+      "last_scraped_at": "2026-04-13T00:51:02.264Z",
       "source_file": "tw89645111.json",
       "note": ""
     },
@@ -49445,7 +49445,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:17:05.598Z",
+      "last_scraped_at": "2026-04-13T01:12:54.884Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -49607,7 +49607,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:19:57.115Z",
+      "last_scraped_at": "2026-04-13T01:15:11.554Z",
       "source_file": "tw90431417.json",
       "note": ""
     },
@@ -49733,7 +49733,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:08:58.876Z",
+      "last_scraped_at": "2026-04-13T01:07:09.483Z",
       "source_file": "tw90583339.json",
       "note": ""
     },
@@ -49832,7 +49832,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:41:56.278Z",
+      "last_scraped_at": "2026-04-13T00:47:23.341Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -49841,7 +49841,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:42:47.582Z",
+      "last_scraped_at": "2026-04-13T00:48:02.844Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -49895,7 +49895,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:38:26.025Z",
+      "last_scraped_at": "2026-04-13T00:44:44.624Z",
       "source_file": "tw90858467.json",
       "note": ""
     },
@@ -50093,7 +50093,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:41:13.416Z",
+      "last_scraped_at": "2026-04-13T00:46:52.274Z",
       "source_file": "tw91114690.json",
       "note": ""
     },
@@ -50111,7 +50111,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:39:38.400Z",
+      "last_scraped_at": "2026-04-13T00:45:39.430Z",
       "source_file": "tw91149697.json",
       "note": ""
     },
@@ -50471,7 +50471,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:28:11.202Z",
+      "last_scraped_at": "2026-04-13T01:33:41.071Z",
       "source_file": "tw91721365.json",
       "note": ""
     },
@@ -50480,7 +50480,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:35:43.164Z",
+      "last_scraped_at": "2026-04-13T00:42:57.177Z",
       "source_file": "tw91728744.json",
       "note": ""
     },
@@ -50561,7 +50561,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:52:27.009Z",
+      "last_scraped_at": "2026-04-13T00:54:45.334Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -50579,7 +50579,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:05:00.195Z",
+      "last_scraped_at": "2026-04-13T01:04:33.707Z",
       "source_file": "tw91836958.json",
       "note": ""
     },
@@ -50651,7 +50651,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:16:56.425Z",
+      "last_scraped_at": "2026-04-13T01:26:04.415Z",
       "source_file": "tw91979891.json",
       "note": ""
     },
@@ -50759,7 +50759,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:15:02.307Z",
+      "last_scraped_at": "2026-04-13T01:11:25.930Z",
       "source_file": "tw92170104.json",
       "note": ""
     },
@@ -50849,7 +50849,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:06:37.334Z",
+      "last_scraped_at": "2026-04-13T01:19:14.423Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -50903,7 +50903,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:15:43.146Z",
+      "last_scraped_at": "2026-04-13T01:25:18.302Z",
       "source_file": "tw92430228.json",
       "note": ""
     },
@@ -50957,7 +50957,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:37:27.948Z",
+      "last_scraped_at": "2026-04-13T00:44:04.316Z",
       "source_file": "tw92537962.json",
       "note": ""
     },
@@ -50966,7 +50966,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:43:27.133Z",
+      "last_scraped_at": "2026-04-13T00:48:34.870Z",
       "source_file": "tw92539805.json",
       "note": ""
     },
@@ -51299,7 +51299,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:37:38.839Z",
+      "last_scraped_at": "2026-04-13T00:44:12.053Z",
       "source_file": "tw93186349.json",
       "note": ""
     },
@@ -51470,7 +51470,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:12:39.046Z",
+      "last_scraped_at": "2026-04-13T01:09:39.019Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -51596,7 +51596,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:58:36.908Z",
+      "last_scraped_at": "2026-04-13T00:59:38.701Z",
       "source_file": "tw93772052.json",
       "note": ""
     },
@@ -51623,7 +51623,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:29:58.403Z",
+      "last_scraped_at": "2026-04-13T01:34:50.514Z",
       "source_file": "tw93784768.json",
       "note": ""
     },
@@ -51839,7 +51839,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:12:50.509Z",
+      "last_scraped_at": "2026-04-13T01:23:27.500Z",
       "source_file": "tw94059782.json",
       "note": ""
     },
@@ -51920,7 +51920,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:13:27.326Z",
+      "last_scraped_at": "2026-04-13T01:23:51.643Z",
       "source_file": "tw94150599.json",
       "note": ""
     },
@@ -51947,7 +51947,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:45:01.008Z",
+      "last_scraped_at": "2026-04-13T00:49:36.918Z",
       "source_file": "tw94161499.json",
       "note": ""
     },
@@ -51974,7 +51974,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:06:43.127Z",
+      "last_scraped_at": "2026-04-13T01:05:41.205Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52073,7 +52073,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:40:12.582Z",
+      "last_scraped_at": "2026-04-13T00:46:03.981Z",
       "source_file": "tw94468423.json",
       "note": ""
     },
@@ -52145,7 +52145,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:22:47.118Z",
+      "last_scraped_at": "2026-04-13T01:29:54.144Z",
       "source_file": "tw94610479.json",
       "note": ""
     },
@@ -52154,7 +52154,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:04:02.458Z",
+      "last_scraped_at": "2026-04-13T01:17:21.897Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52244,7 +52244,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:28:01.024Z",
+      "last_scraped_at": "2026-04-13T00:47:35.088Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52262,7 +52262,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:44:50.342Z",
+      "last_scraped_at": "2026-04-13T00:49:28.392Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52271,7 +52271,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:14:07.157Z",
+      "last_scraped_at": "2026-04-13T01:10:42.683Z",
       "source_file": "tw94856709.json",
       "note": ""
     },
@@ -52379,7 +52379,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:57:22.293Z",
+      "last_scraped_at": "2026-04-13T00:58:41.118Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52388,7 +52388,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:04:40.398Z",
+      "last_scraped_at": "2026-04-13T01:04:16.061Z",
       "source_file": "tw95117832.json",
       "note": ""
     },
@@ -52460,7 +52460,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:42:17.758Z",
+      "last_scraped_at": "2026-04-13T00:47:36.331Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52658,7 +52658,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:59:52.575Z",
+      "last_scraped_at": "2026-04-13T01:00:40.396Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52991,7 +52991,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:46:09.790Z",
+      "last_scraped_at": "2026-04-13T00:50:18.874Z",
       "source_file": "tw95996047.json",
       "note": ""
     },
@@ -53000,7 +53000,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:57:18.695Z",
+      "last_scraped_at": "2026-04-13T00:58:39.882Z",
       "source_file": "tw96006069.json",
       "note": ""
     },
@@ -53009,7 +53009,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:13:11.647Z",
+      "last_scraped_at": "2026-04-13T01:09:59.816Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -53207,7 +53207,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:04:50.231Z",
+      "last_scraped_at": "2026-04-13T01:04:24.574Z",
       "source_file": "tw96566220.json",
       "note": ""
     },
@@ -53315,7 +53315,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:08:00.196Z",
+      "last_scraped_at": "2026-04-13T01:20:05.500Z",
       "source_file": "tw96773257.json",
       "note": ""
     },
@@ -53324,7 +53324,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:46:33.894Z",
+      "last_scraped_at": "2026-04-13T00:50:36.593Z",
       "source_file": "tw96797685.json",
       "note": ""
     },
@@ -53387,7 +53387,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:19:11.711Z",
+      "last_scraped_at": "2026-04-13T01:14:34.688Z",
       "source_file": "tw96894411.json",
       "note": ""
     },
@@ -53468,7 +53468,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:11:54.481Z",
+      "last_scraped_at": "2026-04-13T01:22:47.253Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -53477,7 +53477,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:29:33.699Z",
+      "last_scraped_at": "2026-04-13T01:34:34.294Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -53549,7 +53549,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:04:20.790Z",
+      "last_scraped_at": "2026-04-13T01:17:32.997Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -53594,7 +53594,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:37:53.651Z",
+      "last_scraped_at": "2026-04-13T00:44:21.265Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -53711,7 +53711,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:30:09.036Z",
+      "last_scraped_at": "2026-04-13T01:34:58.226Z",
       "source_file": "tw97356255.json",
       "note": ""
     },
@@ -53828,7 +53828,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:02:31.779Z",
+      "last_scraped_at": "2026-04-13T01:02:41.108Z",
       "source_file": "tw97523709.json",
       "note": ""
     },
@@ -53945,7 +53945,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:10:07.968Z",
+      "last_scraped_at": "2026-04-13T01:21:35.909Z",
       "source_file": "tw97755940.json",
       "note": ""
     },
@@ -54116,7 +54116,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:18:58.025Z",
+      "last_scraped_at": "2026-04-13T01:27:23.806Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -54152,7 +54152,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:17:10.643Z",
+      "last_scraped_at": "2026-04-13T01:26:08.053Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -54188,7 +54188,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:02:11.501Z",
+      "last_scraped_at": "2026-04-13T01:02:24.541Z",
       "source_file": "tw98239528.json",
       "note": ""
     },
@@ -54197,7 +54197,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:09:09.356Z",
+      "last_scraped_at": "2026-04-13T01:20:50.098Z",
       "source_file": "tw98239812.json",
       "note": ""
     },
@@ -54314,7 +54314,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T10:52:07.944Z",
+      "last_scraped_at": "2026-04-13T00:54:34.080Z",
       "source_file": "tw98403682.json",
       "note": ""
     },
@@ -54341,7 +54341,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:14:37.137Z",
+      "last_scraped_at": "2026-04-13T01:11:08.746Z",
       "source_file": "tw98478191.json",
       "note": ""
     },
@@ -54404,7 +54404,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:31:55.644Z",
+      "last_scraped_at": "2026-04-13T01:36:12.804Z",
       "source_file": "tw98539979.json",
       "note": ""
     },
@@ -54530,7 +54530,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:28:47.126Z",
+      "last_scraped_at": "2026-04-13T01:33:58.144Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -54656,7 +54656,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:19:33.786Z",
+      "last_scraped_at": "2026-04-13T01:14:57.642Z",
       "source_file": "tw99012551.json",
       "note": ""
     },
@@ -54710,7 +54710,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T11:16:00.382Z",
+      "last_scraped_at": "2026-04-13T01:12:09.237Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -54737,7 +54737,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T11:02:21.734Z",
+      "last_scraped_at": "2026-04-13T01:02:32.561Z",
       "source_file": "tw99118086.json",
       "note": ""
     },
@@ -54944,7 +54944,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:15:47.275Z",
+      "last_scraped_at": "2026-04-13T01:25:19.550Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -55097,7 +55097,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T10:45:38.920Z",
+      "last_scraped_at": "2026-04-13T00:49:54.227Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -55241,7 +55241,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-03-31T12:26:59.958Z",
+      "last_scraped_at": "2026-04-13T01:32:59.243Z",
       "source_file": "tw99959102.json",
       "note": ""
     },
@@ -55250,7 +55250,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-03-31T12:15:17.626Z",
+      "last_scraped_at": "2026-04-13T01:25:01.870Z",
       "source_file": "",
       "note": "404 not found"
     },
