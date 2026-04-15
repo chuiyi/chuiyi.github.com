@@ -1,12 +1,12 @@
 /**
- * 瑞士輪比賽系統主應用程式
+ * 瑞士輪賽事系統主應用程式
  * 處理 UI 互動、頁面切換、事件監聽等功能
  */
 
 class SwissTournamentApp {
     constructor() {
-        this.tournament = new SwissTournament();
-        this.currentPage = 'tournament-history'; // 預設顯示歷史頁面
+        this.tournament = new SwissTournament(); // 目前進行中的比賽（進入某場賽事後設定）
+        this.currentPage = 'tournament-history';
         this.init();
     }
 
@@ -16,12 +16,43 @@ class SwissTournamentApp {
     init() {
         console.log('瑞士輪比賽系統啟動');
         this.setupEventListeners();
-        this.loadExistingTournament();
-        this.showPage(this.currentPage);
-        // 如果預設頁面是歷史頁面，初始化歷史資料
-        if (this.currentPage === 'tournament-history') {
-            this.updateHistoryList();
+        this.migrateOldStorage();       // 從舊的 swiss_tournament_current 遷移
+        this.loadAllActiveTournaments(); // 載入所有進行中賽事 ID
+        this.showPage('tournament-history');
+        this.updateCurrentTournamentCard();
+        this.updateHistoryList();
+    }
+
+    /**
+     * 遷移舊版 swiss_tournament_current 到新的 ID-based 格式
+     */
+    migrateOldStorage() {
+        try {
+            const oldData = localStorage.getItem('swiss_tournament_current');
+            if (!oldData) return;
+            const parsed = JSON.parse(oldData);
+            if (parsed && parsed.tournamentId) {
+                const newKey = `swiss_tournament_${parsed.tournamentId}`;
+                if (!localStorage.getItem(newKey)) {
+                    localStorage.setItem(newKey, oldData);
+                    SwissTournament.registerTournament(parsed.tournamentId);
+                    console.log('已遷移舊賽事資料:', parsed.tournamentId);
+                }
+            }
+            localStorage.removeItem('swiss_tournament_current');
+        } catch (e) {
+            console.warn('遷移舊資料失敗，已跳過:', e);
         }
+    }
+
+    /**
+     * 載入所有進行中的賽事 ID（供首頁顯示用）
+     */
+    loadAllActiveTournaments() {
+        // ID 已在 localStorage 的 swiss_active_tournaments 中管理
+        // 這裡只需要確保 this.tournament 的 tournamentId 仍有效
+        const ids = SwissTournament.getActiveTournamentIds();
+        console.log('目前進行中的賽事:', ids.length, '場');
     }
 
     /**
@@ -90,6 +121,13 @@ class SwissTournamentApp {
             });
         }
 
+        const homeTitle = document.getElementById('home-title');
+        if (homeTitle) {
+            homeTitle.addEventListener('click', () => {
+                this.showTournamentHistory();
+            });
+        }
+
         const importBtn = document.getElementById('import-btn');
         if (importBtn) {
             importBtn.addEventListener('click', () => {
@@ -111,21 +149,6 @@ class SwissTournamentApp {
             });
         }
 
-        // 歷史比賽功能
-        const continueCurrentBtn = document.getElementById('continue-current');
-        if (continueCurrentBtn) {
-            continueCurrentBtn.addEventListener('click', () => {
-                this.continueCurrent();
-            });
-        }
-
-        const resetCurrentBtn = document.getElementById('reset-current');
-        if (resetCurrentBtn) {
-            resetCurrentBtn.addEventListener('click', () => {
-                this.resetCurrent();
-            });
-        }
-
         const clearAllHistoryBtn = document.getElementById('clear-all-history');
         if (clearAllHistoryBtn) {
             clearAllHistoryBtn.addEventListener('click', () => {
@@ -137,7 +160,7 @@ class SwissTournamentApp {
         const startNewTournamentBtn = document.getElementById('start-new-tournament');
         if (startNewTournamentBtn) {
             startNewTournamentBtn.addEventListener('click', () => {
-                this.showPage('tournament-setup');
+                this.newTournament();
             });
         }
 
@@ -168,6 +191,28 @@ class SwissTournamentApp {
         if (roundsInput) {
             roundsInput.addEventListener('input', () => {
                 this.updateRoundsPreview();
+            });
+        }
+
+        const enablePlayoffCheckbox = document.getElementById('enable-playoff');
+        if (enablePlayoffCheckbox) {
+            enablePlayoffCheckbox.addEventListener('change', (e) => {
+                this.togglePlayoffSettings(e.target.checked);
+            });
+        }
+
+        const startFirstRoundBtn = document.getElementById('start-first-round');
+        if (startFirstRoundBtn) {
+            startFirstRoundBtn.addEventListener('click', () => {
+                this.showPairingArrangement();
+            });
+        }
+
+        const editTournamentSettingsBtn = document.getElementById('edit-tournament-settings');
+        if (editTournamentSettingsBtn) {
+            editTournamentSettingsBtn.addEventListener('click', () => {
+                this.populateSetupFormFromTournament();
+                this.showPage('tournament-setup');
             });
         }
 
@@ -239,23 +284,40 @@ class SwissTournamentApp {
     }
 
     /**
-     * 載入現有比賽
+     * 進入特定賽事（載入資料到 this.tournament 並導航）
+     */
+    enterTournament(id) {
+        const t = SwissTournament.loadById(id);
+        if (!t) {
+            this.showNotification('找不到指定賽事', 'error');
+            return;
+        }
+        this.tournament = t;
+        this.loadExistingTournament();
+    }
+
+    /**
+     * 根據目前 this.tournament 狀態導航到對應頁面
      */
     loadExistingTournament() {
-        if (this.tournament.loadTournament()) {
-            if (this.tournament.isFinished) {
-                this.currentPage = 'final-ranking';
-                this.displayFinalRanking();
-            } else if (this.tournament.players.length > 0) {
-                if (this.tournament.currentRound > 0) {
-                    this.currentPage = 'pairing-section';
-                    this.displayCurrentRound();
-                } else {
-                    this.currentPage = 'tournament-info';
-                    this.displayTournamentInfo();
-                }
-            }
-            this.showNotification('載入了先前的比賽資料', 'success');
+        const status = this.tournament.getStatus();
+        if (status === 'finished' || status === 'in_playoff') {
+            this.showPlayoffBracket();
+        } else if (status === 'playoff_ready') {
+            this.showPlayoffSetup();
+        } else if (status === 'swiss_complete') {
+            this.displayFinalRanking();
+            this.showPage('final-ranking');
+        } else if (status === 'playing' || status === 'round_complete' || status === 'last_round_complete') {
+            this.displayCurrentRound();
+        } else if (status === 'setup') {
+            this.displayTournamentInfo();
+        } else {
+            // idle: 回到設定頁讓使用者輸入選手
+            document.getElementById('players-textarea').value = '';
+            this.populateSetupFormFromTournament();
+            this.updatePlayerPreview();
+            this.showPage('tournament-setup');
         }
     }
 
@@ -306,6 +368,7 @@ class SwissTournamentApp {
         }
         
         roundsSpan.textContent = `${rounds} 輪比賽`;
+        this.updatePlayoffAdvanceOptions(playerList.length);
     }
 
     /**
@@ -317,6 +380,73 @@ class SwissTournamentApp {
             container.style.display = enabled ? 'block' : 'none';
         }
         this.updateRoundsPreview();
+    }
+
+    togglePlayoffSettings(enabled) {
+        const container = document.getElementById('playoff-settings-inline');
+        if (container) {
+            container.style.display = enabled ? 'block' : 'none';
+        }
+        this.updatePlayoffAdvanceOptions();
+    }
+
+    updatePlayoffAdvanceOptions(playerCount = null) {
+        const select = document.getElementById('playoff-advance-count-setup');
+        const checkbox = document.getElementById('enable-playoff');
+        if (!select || !checkbox) return;
+
+        const inferredCount = playerCount ?? document.getElementById('players-textarea')?.value.trim().split('\n').filter(line => line.trim()).length ?? 0;
+        const previousValue = parseInt(select.value || this.tournament.settings.playoffAdvanceCount || '4', 10);
+        const maxPower = inferredCount >= 2 ? Math.min(16, 2 ** Math.floor(Math.log2(inferredCount))) : 0;
+
+        select.innerHTML = '';
+        if (!checkbox.checked || maxPower < 2) {
+            const option = document.createElement('option');
+            option.value = '';
+            option.textContent = inferredCount < 2 ? '至少 2 人後可設定' : '請先啟用複賽';
+            select.appendChild(option);
+            select.disabled = true;
+            return;
+        }
+
+        select.disabled = false;
+        for (let count = 2; count <= maxPower; count *= 2) {
+            const option = document.createElement('option');
+            option.value = count;
+            option.textContent = `取 ${count} 強`;
+            option.selected = count === Math.min(previousValue, maxPower);
+            select.appendChild(option);
+        }
+    }
+
+    populateSetupFormFromTournament() {
+        const playersTextarea = document.getElementById('players-textarea');
+        const nameEl = document.getElementById('tournament-name');
+        const allowDrawsEl = document.getElementById('allow-draws');
+        const allowDoubleLossEl = document.getElementById('allow-double-loss');
+        const customRoundsEl = document.getElementById('custom-rounds');
+        const roundsInputEl = document.getElementById('rounds-input');
+        const enablePlayoffEl = document.getElementById('enable-playoff');
+        const advanceSelectEl = document.getElementById('playoff-advance-count-setup');
+
+        if (playersTextarea) {
+            playersTextarea.value = (this.tournament.players || []).map(player => player.name).join('\n');
+        }
+        if (nameEl) nameEl.value = this.tournament.tournamentName || '';
+        if (allowDrawsEl) allowDrawsEl.checked = !!this.tournament.settings.allowDraws;
+        if (allowDoubleLossEl) allowDoubleLossEl.checked = !!this.tournament.settings.allowDoubleLoss;
+        if (customRoundsEl) customRoundsEl.checked = !!this.tournament.settings.customRounds;
+        if (roundsInputEl) roundsInputEl.value = this.tournament.settings.manualRounds || '';
+        if (enablePlayoffEl) enablePlayoffEl.checked = !!this.tournament.settings.enablePlayoff;
+
+        this.toggleCustomRounds(!!this.tournament.settings.customRounds);
+        this.togglePlayoffSettings(!!this.tournament.settings.enablePlayoff);
+
+        if (advanceSelectEl && this.tournament.settings.playoffAdvanceCount) {
+            advanceSelectEl.value = String(this.tournament.settings.playoffAdvanceCount);
+        }
+
+        this.updatePlayerPreview();
     }
 
     /**
@@ -337,6 +467,10 @@ class SwissTournamentApp {
             const tournamentSettings = this.getTournamentSettings();
             
             this.tournament.initializeTournament(playerList, tournamentSettings);
+            if (tournamentSettings.enablePlayoff && tournamentSettings.playoffAdvanceCount) {
+                this.tournament.configurePlayoff(tournamentSettings.playoffAdvanceCount, 'single_elimination');
+            }
+            this.updateCurrentTournamentCard();
             
             this.displayTournamentInfo();
             this.showNotification('比賽初始化完成！請安排第一輪配對', 'success');
@@ -371,13 +505,21 @@ class SwissTournamentApp {
         
         const roundsInputEl = document.getElementById('rounds-input');
         const manualRounds = customRounds ? (roundsInputEl ? parseInt(roundsInputEl.value) || null : null) : null;
+
+        const enablePlayoffEl = document.getElementById('enable-playoff');
+        const enablePlayoff = enablePlayoffEl ? enablePlayoffEl.checked : false;
+
+        const playoffAdvanceEl = document.getElementById('playoff-advance-count-setup');
+        const playoffAdvanceCount = enablePlayoff ? (playoffAdvanceEl ? parseInt(playoffAdvanceEl.value) || null : null) : null;
         
         return {
             tournamentName,
             allowDraws,
             allowDoubleLoss,
             customRounds,
-            manualRounds
+            manualRounds,
+            enablePlayoff,
+            playoffAdvanceCount
         };
     }
 
@@ -431,6 +573,18 @@ class SwissTournamentApp {
             playersDisplay.appendChild(playerCard);
         });
 
+        const infoActions = document.getElementById('tournament-info-actions');
+        const playoffSummary = document.getElementById('tournament-info-playoff-summary');
+        if (infoActions) {
+            const summary = this.tournament.settings.enablePlayoff && this.tournament.settings.playoffAdvanceCount
+                ? `已設定複賽：取 ${this.tournament.settings.playoffAdvanceCount} 強`
+                : '未啟用複賽';
+            infoActions.setAttribute('data-playoff-summary', summary);
+            if (playoffSummary) {
+                playoffSummary.textContent = summary;
+            }
+        }
+
         this.showPage('tournament-info');
     }
 
@@ -442,15 +596,9 @@ class SwissTournamentApp {
         
         const pairings = this.tournament.getCurrentRoundPairings();
         const roundTitle = document.getElementById('round-title');
-        const roundDescription = document.getElementById('round-description');
         
         if (roundTitle) {
             roundTitle.textContent = `Round ${this.tournament.currentRound} 配對`;
-        }
-        
-        if (roundDescription) {
-            const activePlayers = this.tournament.players.filter(p => !p.dropped).length;
-            roundDescription.textContent = `${activePlayers} 位選手參與，請記錄每場比賽的結果`;
         }
         
         // 更新摘要統計
@@ -469,11 +617,17 @@ class SwissTournamentApp {
     updateRoundSummary(pairings) {
         const completedSpan = document.getElementById('matches-completed');
         const totalSpan = document.getElementById('total-matches');
+        const playersCountSpan = document.getElementById('active-players-count');
         
         if (completedSpan && totalSpan) {
             const completed = pairings.filter(p => p.completed).length;
             completedSpan.textContent = completed;
             totalSpan.textContent = pairings.length;
+        }
+
+        if (playersCountSpan) {
+            const activePlayers = this.tournament.players.filter(p => !p.dropped).length;
+            playersCountSpan.textContent = activePlayers;
         }
 
         // 檢查是否需要顯示重新計算按鈕
@@ -519,27 +673,29 @@ class SwissTournamentApp {
         row.className = `match-row ${pairing.completed ? 'completed' : 'pending'} ${pairing.corrected ? 'corrected' : ''}`;
         row.dataset.matchId = pairing.id;
 
+        const showRecord = this.tournament.currentRound > 1;
+
         if (pairing.player2 === null) {
             // Bye 的情況
+            const p1Record = showRecord ? this.getPlayerRecordBadge(pairing.player1.id) : '';
             row.innerHTML = `
                 <div class="match-col-number">
                     <span class="match-number">${pairing.id}</span>
                     ${pairing.corrected ? '<span class="correction-badge">已修正</span>' : ''}
                 </div>
                 <div class="match-col-players">
-                    <div class="player bye-player">${this.escapeHtml(pairing.player1.name)}</div>
+                    <div class="player bye-player">${this.escapeHtml(pairing.player1.name)}${p1Record}</div>
                     <div class="vs-bye">BYE</div>
                 </div>
                 <div class="match-col-result">
                     <span class="result-text completed">輪空 (3分)</span>
                 </div>
-                <div class="match-col-actions">
-                    <span class="auto-result">自動完成</span>
-                </div>
             `;
         } else {
             const isCompleted = pairing.completed;
-            const resultText = this.getResultText(pairing.result);
+            const resultText = this.getPairingResultText(pairing);
+            const p1Record = showRecord ? this.getPlayerRecordBadge(pairing.player1.id) : '';
+            const p2Record = showRecord ? this.getPlayerRecordBadge(pairing.player2.id) : '';
             
             row.innerHTML = `
                 <div class="match-col-number">
@@ -547,15 +703,12 @@ class SwissTournamentApp {
                     ${pairing.corrected ? '<span class="correction-badge">已修正</span>' : ''}
                 </div>
                 <div class="match-col-players">
-                    <div class="player ${pairing.result === 'player1_win' ? 'winner' : ''}">${this.escapeHtml(pairing.player1.name)}</div>
+                    <button onclick="app.openQuickResultPicker(${pairing.id}, 1)" class="player-action-btn player ${pairing.result === 'player1_win' ? 'winner' : ''}">${this.escapeHtml(pairing.player1.name)}${p1Record}</button>
                     <div class="vs">VS</div>
-                    <div class="player ${pairing.result === 'player2_win' ? 'winner' : ''}">${this.escapeHtml(pairing.player2.name)}</div>
+                    <button onclick="app.openQuickResultPicker(${pairing.id}, 2)" class="player-action-btn player ${pairing.result === 'player2_win' ? 'winner' : ''}">${this.escapeHtml(pairing.player2.name)}${p2Record}</button>
                 </div>
                 <div class="match-col-result">
                     <span class="result-text ${isCompleted ? 'completed' : 'pending'}">${resultText}</span>
-                </div>
-                <div class="match-col-actions">
-                    ${this.createMatchActions(pairing)}
                 </div>
             `;
         }
@@ -563,29 +716,132 @@ class SwissTournamentApp {
         return row;
     }
 
-    /**
-     * 創建比賽操作按鈕
-     */
-    createMatchActions(pairing) {
-        const isCompleted = pairing.completed;
-        
-        if (isCompleted) {
-            return `
-                <button onclick="app.editMatchResult(${pairing.id})" class="btn-action edit">
-                    修改
-                </button>
-            `;
-        } else {
-            const resultButtons = this.createResultButtons(pairing);
-            return `
-                <div class="result-buttons">
-                    ${resultButtons}
-                    <button onclick="app.showDropDialog(${pairing.id})" class="btn-result drop">
-                        棄權
-                    </button>
-                </div>
-            `;
+    getPlayerRecordBadge(playerId) {
+        const player = this.tournament.players.find(p => p.id === playerId);
+        if (!player || !player.results || player.results.length === 0) return '';
+        const wins = player.results.filter(r => r.resultType === 'win' || r.resultType === 'bye').length;
+        const losses = player.results.filter(r => r.resultType === 'loss').length;
+        const draws = player.results.filter(r => r.resultType === 'draw').length;
+        const text = draws > 0 ? `${wins}勝${losses}敗${draws}平` : `${wins}勝${losses}敗`;
+        return ` <span class="player-record-badge">${text}</span>`;
+    }
+
+    getPairingResultText(pairing) {
+        if (!pairing || !pairing.result) return '點選選手記錄';
+        if (pairing.result === 'bye') return '輪空';
+        if (pairing.result === 'draw') return '平局';
+        if (pairing.result === 'double_loss') return '雙敗';
+        if (pairing.result === 'player1_win') return `${pairing.player1.name} 勝`;
+        if (pairing.result === 'player2_win') return `${pairing.player2.name} 勝`;
+        return '已記錄';
+    }
+
+    openQuickResultPicker(pairId, focusPlayer) {
+        const pairing = this.tournament.getCurrentRoundPairings().find(p => p.id === pairId);
+        if (!pairing || pairing.player2 === null) return;
+
+        this.quickResultContext = { pairId, focusPlayer };
+
+        const focus = focusPlayer === 1 ? pairing.player1 : pairing.player2;
+        const opponent = focusPlayer === 1 ? pairing.player2 : pairing.player1;
+        const currentText = this.getPairingResultText(pairing);
+
+        const title = document.getElementById('quick-result-title');
+        const current = document.getElementById('quick-result-current');
+        const options = document.getElementById('quick-result-options');
+
+        if (title) {
+            title.textContent = `${pairing.player1.name} vs ${pairing.player2.name}`;
         }
+        if (current) {
+            current.textContent = `目前結果：${currentText}`;
+        }
+
+        const focusWinItem = {
+            action: 'win',
+            title: `${focus.name} 勝`,
+            desc: `記錄 ${focus.name} 獲勝`
+        };
+        const opponentWinItem = {
+            action: 'lose',
+            title: `${opponent.name} 勝`,
+            desc: `記錄 ${opponent.name} 獲勝`
+        };
+        const topRowItems = focusPlayer === 1
+            ? [focusWinItem, opponentWinItem]
+            : [opponentWinItem, focusWinItem];
+
+        const actionItems = [
+            ...topRowItems,
+            {
+                action: 'double_loss',
+                title: '雙敗',
+                desc: '雙方都記為敗場'
+            },
+            {
+                action: 'drop',
+                title: `${focus.name} 棄權`,
+                desc: `直接判定 ${focus.name} 棄權`
+            }
+        ];
+
+        if (this.tournament.settings.allowDraws) {
+            actionItems.splice(2, 0, {
+                action: 'draw',
+                title: '平局',
+                desc: '雙方各得 1 分'
+            });
+        }
+
+        options.innerHTML = actionItems.map(item => `
+            <button class="quick-result-option" onclick="app.applyQuickResultSelection('${item.action}')">
+                <span class="quick-result-option-title">${this.escapeHtml(item.title)}</span>
+                <span class="quick-result-option-desc">${this.escapeHtml(item.desc)}</span>
+            </button>
+        `).join('');
+
+        this.showModal('quick-result-modal');
+    }
+
+    applyQuickResultSelection(action) {
+        if (!this.quickResultContext) return;
+
+        const { pairId, focusPlayer } = this.quickResultContext;
+        const pairing = this.tournament.getCurrentRoundPairings().find(p => p.id === pairId);
+        if (!pairing || pairing.player2 === null) return;
+
+        let result = null;
+        let droppedPlayers = [];
+
+        switch (action) {
+            case 'win':
+                result = focusPlayer === 1 ? 'player1_win' : 'player2_win';
+                break;
+            case 'lose':
+                result = focusPlayer === 1 ? 'player2_win' : 'player1_win';
+                break;
+            case 'draw':
+                result = 'draw';
+                break;
+            case 'double_loss':
+                result = 'double_loss';
+                break;
+            case 'drop':
+                result = focusPlayer === 1 ? 'player2_win' : 'player1_win';
+                droppedPlayers = [focusPlayer === 1 ? pairing.player1.id : pairing.player2.id];
+                break;
+            default:
+                return;
+        }
+
+        if (pairing.completed) {
+            this.correctMatchResult(pairId, result, droppedPlayers);
+        } else {
+            this.recordResult(pairId, result, droppedPlayers);
+        }
+
+        this.closeModal('quick-result-modal');
+        this.quickResultContext = null;
     }
 
     /**
@@ -642,10 +898,10 @@ class SwissTournamentApp {
     /**
      * 記錄比賽結果
      */
-    recordResult(pairId, result) {
+    recordResult(pairId, result, droppedPlayers = []) {
         try {
             const roundIndex = this.tournament.currentRound - 1;
-            this.tournament.recordMatchResult(roundIndex, pairId, result);
+            this.tournament.recordMatchResult(roundIndex, pairId, result, droppedPlayers);
             this.displayCurrentRound();
             this.showNotification('結果已記錄', 'success');
         } catch (error) {
@@ -714,7 +970,7 @@ class SwissTournamentApp {
      */
     getResultText(result) {
         if (!result) return '未完成';
-        if (result === 'bye') return 'Bye';
+        if (result === 'bye') return '輪空';
         if (result === 'draw') return '平局 (各1分)';
         if (result === 'player1_win') return 'P1 勝 (3分)';
         if (result === 'player2_win') return 'P2 勝 (3分)';
@@ -807,9 +1063,16 @@ class SwissTournamentApp {
         try {
             this.showLoading(true);
             this.tournament.finishTournament();
-            this.displayFinalRanking();
-            this.showPage('final-ranking');
-            this.showNotification('比賽結束！已自動儲存到歷史記錄', 'success');
+                this.updateCurrentTournamentCard();
+
+                if (this.tournament.playoff && this.tournament.playoff.enabled) {
+                    this.showPlayoffSetup();
+                    this.showNotification('瑞士輪已結束，請確認複賽設定', 'success');
+                } else {
+                    this.displayFinalRanking();
+                    this.showPage('final-ranking');
+                    this.showNotification('比賽結束！已自動儲存到歷史記錄', 'success');
+                }
         } catch (error) {
             this.showNotification(error.message, 'error');
         } finally {
@@ -889,7 +1152,9 @@ class SwissTournamentApp {
                                 <td class="rank ${rankClass}">${player.rank}</td>
                                 <td>${this.escapeHtml(player.name)}</td>
                                 <td>${player.score}</td>
+                                <td>${(player.omwPercentage || 0).toFixed(1)}%</td>
                                 <td>${player.buchholz.toFixed(1)}</td>
+                                <td>${(player.oomwPercentage || 0).toFixed(1)}%</td>
                                 <td>${wins}</td>
                                 <td>${draws}</td>
                                 <td>${losses}</td>
@@ -909,6 +1174,25 @@ class SwissTournamentApp {
 
         // 添加詳細計分說明
         this.displayScoringDetails(ranking, stats);
+
+        const finalActionsBar = document.getElementById('final-actions-bar');
+        if (finalActionsBar) {
+            const status = this.tournament.getStatus();
+            const playoffConfigured = !!this.tournament.playoff?.enabled;
+            const canConfigurePlayoff = status === 'swiss_complete' || status === 'playoff_ready';
+
+            finalActionsBar.innerHTML = `
+                ${canConfigurePlayoff && this.tournament.settings.enablePlayoff ? '<button id="final-playoff-setup" class="btn btn-warning">複賽設定</button>' : ''}
+                ${status === 'playoff_ready' && playoffConfigured ? '<button id="final-start-playoff" class="btn btn-danger">開始複賽</button>' : ''}
+                <button id="new-tournament" class="btn btn-primary">開始新比賽</button>
+                <button id="export-result" class="btn btn-secondary">匯出結果</button>
+            `;
+
+            document.getElementById('final-playoff-setup')?.addEventListener('click', () => this.showPlayoffSetup());
+            document.getElementById('final-start-playoff')?.addEventListener('click', () => this.startPlayoff());
+            document.getElementById('new-tournament')?.addEventListener('click', () => this.newTournament());
+            document.getElementById('export-result')?.addEventListener('click', () => this.exportResult());
+        }
     }
 
     /**
@@ -1178,16 +1462,12 @@ class SwissTournamentApp {
     }
 
     /**
-     * 新比賽
+     * 新比賽（建立全新獨立的 SwissTournament）
      */
     newTournament() {
-        if (!confirm('確定要開始新比賽嗎？目前的比賽資料將會清除。')) return;
-        
-        this.tournament.resetTournament();
-        document.getElementById('players-textarea').value = '';
-        this.updatePlayerPreview();
+        this.tournament = new SwissTournament();
+        this.populateSetupFormFromTournament();
         this.showPage('tournament-setup');
-        this.showNotification('已清除比賽資料，可以開始新比賽', 'success');
     }
 
     /**
@@ -1210,7 +1490,7 @@ class SwissTournamentApp {
     }
 
     /**
-     * 匯入比賽
+     * 匯入比賽（建立新的獨立賽事）
      */
     importTournament(file) {
         if (!file) return;
@@ -1219,7 +1499,10 @@ class SwissTournamentApp {
         reader.onload = (e) => {
             try {
                 const data = JSON.parse(e.target.result);
-                this.tournament.importTournament(data);
+                const t = new SwissTournament();
+                t.importTournament(data); // 內部會呼叫 saveTournament → 自動 register
+                this.tournament = t;
+                this.updateCurrentTournamentCard();
                 this.loadExistingTournament();
                 this.showNotification('比賽匯入成功！', 'success');
             } catch (error) {
@@ -1309,66 +1592,108 @@ class SwissTournamentApp {
     }
 
     /**
-     * 更新目前比賽卡片
+     * 更新目前賽事區塊（支援多場賽事同時進行）
+     * 在首頁顯示所有進行中的賽事卡片
      */
     updateCurrentTournamentCard() {
-        const card = document.getElementById('current-tournament-card');
-        const continueBtn = document.getElementById('continue-current');
-        const resetBtn = document.getElementById('reset-current');
-        
-        if (!card) return;
+        const grid = document.getElementById('active-tournaments-grid');
+        if (!grid) return;
 
-        if (this.tournament.players.length > 0) {
-            const stats = this.tournament.getStatistics();
-            const status = this.tournament.isFinished ? '已完成' : 
-                         this.tournament.currentRound > 0 ? `進行中 (第${this.tournament.currentRound}輪)` : '已設定';
-            
-            card.innerHTML = `
-                <div class="tournament-info">
-                    <div class="tournament-title">
-                        ${this.escapeHtml(this.tournament.generateTournamentTitle())}
-                    </div>
-                    <div class="tournament-details">
-                        <span class="status ${this.tournament.isFinished ? 'finished' : 'active'}">${status}</span>
-                        <span class="players-count">${stats.totalPlayers} 位選手</span>
-                        <span class="rounds-info">${stats.completedRounds}/${stats.totalRounds} 輪</span>
-                        ${this.tournament.isFinished && stats.champion ? 
-                          `<span class="champion">冠軍: ${this.escapeHtml(stats.champion.name)}</span>` : ''}
-                    </div>
-                </div>
-                <div class="tournament-actions">
-                    <button id="continue-current" class="btn btn-primary" ${this.tournament.isFinished ? 'style="display: none;"' : ''}>
-                        ${this.tournament.currentRound > 0 ? '繼續比賽' : '查看比賽'}
-                    </button>
-                    <button id="reset-current" class="btn btn-warning">
-                        重置比賽
-                    </button>
-                </div>
-            `;
-            
-            // 重新綁定事件
-            const newContinueBtn = document.getElementById('continue-current');
-            const newResetBtn = document.getElementById('reset-current');
-            
-            if (newContinueBtn) {
-                newContinueBtn.addEventListener('click', () => this.continueCurrent());
-            }
-            if (newResetBtn) {
-                newResetBtn.addEventListener('click', () => this.resetCurrent());
-            }
-        } else {
-            card.innerHTML = `
-                <div class="tournament-info">
-                    <div class="tournament-title">無進行中的比賽</div>
-                    <div class="tournament-details">請開始新比賽</div>
-                </div>
-                <div class="tournament-actions">
-                    <button onclick="app.showPage('tournament-setup')" class="btn btn-primary">
-                        開始新比賽
-                    </button>
+        const tournaments = SwissTournament.getActiveTournamentIds()
+            .map(id => SwissTournament.loadById(id))
+            .filter(Boolean)
+            .sort((a, b) => new Date(b.lastUpdate || 0) - new Date(a.lastUpdate || 0));
+        let html = '';
+
+        tournaments.forEach(t => {
+            html += this.renderActiveTournamentCard(t);
+        });
+
+        if (!html) {
+            html = `
+                <div class="no-active-tournaments">
+                    <div class="no-tournaments-icon">🏆</div>
+                    <div class="no-tournaments-text">尚無進行中的賽事</div>
+                    <div class="no-tournaments-hint">點擊「開啟新比賽」開始</div>
                 </div>
             `;
         }
+
+        grid.innerHTML = html;
+    }
+
+    /**
+     * 產生單一賽事卡片 HTML
+     */
+    renderActiveTournamentCard(t) {
+        const id = t.tournamentId;
+        const status = t.getStatus();
+
+        const statusLabels = {
+            idle:               { label: '未開賽',   cls: 'badge-idle',    icon: '⏳' },
+            setup:              { label: '等待開賽', cls: 'badge-setup',   icon: '⏳' },
+            playing:            { label: '比賽中',   cls: 'badge-playing', icon: '⚔️' },
+            round_complete:     { label: '輪次結束', cls: 'badge-warning', icon: '⏸' },
+            last_round_complete:{ label: '最終輪結束',cls:'badge-warning', icon: '🏁' },
+            swiss_complete:     { label: '瑞士輪完成',cls:'badge-success', icon: '🏆' },
+            playoff_ready:      { label: '複賽就緒', cls: 'badge-playoff', icon: '🔥' },
+            in_playoff:         { label: '複賽中',   cls: 'badge-playoff', icon: '⚡' },
+            finished:           { label: '已結束',   cls: 'badge-finished',icon: '🎊' }
+        };
+
+        const sl = statusLabels[status] || statusLabels.idle;
+        const baseTitle = status === 'idle' && !t.tournamentName ? '未命名賽事' : t.generateTournamentTitle();
+        const title = this.escapeHtml(baseTitle);
+
+        let desc = '';
+        switch (status) {
+            case 'idle':       desc = '尚未輸入選手，點選進入設定'; break;
+            case 'setup':      desc = `${t.players.length} 位選手 · 共 ${t.totalRounds} 輪`; break;
+            case 'playing': {
+                const rd = t.rounds[t.currentRound - 1];
+                const done = rd ? rd.pairings.filter(p => p.completed).length : 0;
+                const total = rd ? rd.pairings.length : 0;
+                desc = `第 ${t.currentRound}/${t.totalRounds} 輪 · ${done}/${total} 場完成`;
+                break;
+            }
+            case 'round_complete':
+                desc = `第 ${t.currentRound} 輪完成 → 準備第 ${t.currentRound + 1} 輪`;
+                break;
+            case 'last_round_complete':
+                desc = '所有輪次完成，請確認結果';
+                break;
+            case 'swiss_complete': {
+                const r = t.getFinalRanking();
+                desc = r.length > 0 ? `第一名：${this.escapeHtml(r[0].name)}（${r[0].score}分）` : '瑞士輪完成';
+                break;
+            }
+            case 'playoff_ready':
+                desc = `晉級 ${t.playoff.advanceCount} 強 · 單淘汰制`;
+                break;
+            case 'in_playoff':
+                desc = `複賽第 ${t.playoff.currentRound}/${t.playoff.totalRounds} 輪`;
+                break;
+            case 'finished': {
+                const ch = t.playoff?.champion;
+                desc = ch ? `冠軍：${this.escapeHtml(ch.name)}` : '比賽已結束';
+                break;
+            }
+        }
+
+        return `
+            <div class="active-tournament-card card-status-${status}">
+                <div class="atc-header">
+                    <span class="status-badge ${sl.cls}">${sl.icon} ${sl.label}</span>
+                    <button class="atc-delete-btn" onclick="app.deleteTournamentById('${id}')" title="刪除賽事">✕</button>
+                </div>
+                <div class="atc-title">${title}</div>
+                <div class="atc-desc">${desc}</div>
+                <div class="atc-actions">
+                    <button class="btn btn-primary atc-enter-btn" onclick="app.enterTournament('${id}')">進入賽事</button>
+                    <button class="btn btn-outline-warning atc-reset-btn" onclick="app.resetTournamentById('${id}')">重置</button>
+                </div>
+            </div>
+        `;
     }
 
     /**
@@ -1428,39 +1753,95 @@ class SwissTournamentApp {
     }
 
     /**
-     * 繼續目前比賽
+     * 繼續目前比賽（根據狀態導航到正確頁面）
      */
     continueCurrent() {
-        if (this.tournament.isFinished) {
-            this.showPage('final-ranking');
-        } else if (this.tournament.currentRound > 0) {
-            this.showPage('pairing-section');
-        } else {
-            this.showPage('tournament-info');
+        const status = this.tournament.getStatus();
+        switch (status) {
+            case 'finished':
+            case 'in_playoff':
+                this.showPlayoffBracket();
+                break;
+            case 'playoff_ready':
+                this.showPlayoffSetup();
+                break;
+            case 'swiss_complete':
+                this.displayFinalRanking();
+                this.showPage('final-ranking');
+                break;
+            case 'playing':
+            case 'round_complete':
+            case 'last_round_complete':
+                this.displayCurrentRound();
+                break;
+            case 'setup':
+                this.displayTournamentInfo();
+                break;
+            default:
+                this.showPage('tournament-setup');
         }
     }
 
     /**
-     * 重置目前比賽
+     * 重置比賽（回到未開賽狀態，保留賽事名稱和 ID）
      */
     resetCurrent() {
-        if (!confirm('確定要重置目前的比賽嗎？所有比賽資料將會清除。')) return;
-        
+        const name = this.tournament.generateTournamentTitle();
+        if (!confirm(`確定要重置「${name}」？比賽資料（選手、輪次、結果）將全部清空，賽事名稱保留。`)) return;
+
         this.tournament.resetTournament();
+        this.showPage('tournament-history');
         this.updateCurrentTournamentCard();
-        this.showNotification('目前比賽已重置', 'success');
+        this.showNotification('比賽已重置為未開賽狀態', 'info');
     }
 
     /**
-     * 載入歷史比賽
+     * 頁面上的「重置比賽」按鈕（由賽事 ID 操作）
+     */
+    resetTournamentById(id) {
+        const t = SwissTournament.loadById(id);
+        if (!t) return;
+        const name = t.generateTournamentTitle();
+        if (!confirm(`確定要重置「${name}」？比賽資料將清空，賽事名稱保留。`)) return;
+
+        t.resetTournament();
+        // 如果目前進入的正是這場賽事，同步更新 this.tournament
+        if (this.tournament.tournamentId === id) {
+            this.tournament = t;
+        }
+        this.updateCurrentTournamentCard();
+        this.showNotification('比賽已重置為未開賽狀態', 'info');
+    }
+
+    /**
+     * 刪除指定賽事（完全移除，不可回復）
+     */
+    deleteTournamentById(id) {
+        const t = SwissTournament.loadById(id);
+        if (!t) return;
+        const name = t.generateTournamentTitle();
+        if (!confirm(`確定要刪除「${name}」？此操作無法復原。`)) return;
+
+        t.deleteTournament();
+        // 如果刪的是目前進入的賽事，重置 this.tournament
+        if (this.tournament.tournamentId === id) {
+            this.tournament = new SwissTournament();
+        }
+        this.updateCurrentTournamentCard();
+        this.showNotification('賽事已刪除', 'warning');
+    }
+
+    /**
+     * 載入歷史比賽（建立新的獨立賽事，不覆蓋現有賽事）
      */
     loadHistoryTournament(tournamentId) {
-        if (!confirm('載入歷史比賽會覆蓋目前的比賽資料，確定要繼續嗎？')) return;
-        
         try {
-            this.tournament.loadFromHistory(tournamentId);
+            const t = new SwissTournament();
+            t.loadFromHistory(tournamentId); // 內部呼叫 saveTournament → 自動 register
+            this.tournament = t;
+            this.updateCurrentTournamentCard();
             this.loadExistingTournament();
-            this.showNotification('歷史比賽載入成功', 'success');
+            this.showNotification('歷史比賽已載入為新賽事', 'success');
         } catch (error) {
             this.showNotification('載入失敗: ' + error.message, 'error');
         }
@@ -1610,6 +1991,7 @@ class SwissTournamentApp {
             
             // 排序選手（與日版瑞士制邏輯一致）
             const sortedPlayers = players.sort((a, b) => {
+                if (a.dropped !== b.dropped) return a.dropped ? 1 : -1;
                 if (Math.abs(b.score - a.score) > 0.001) return b.score - a.score;
                 if (Math.abs(b.omwPercentage - a.omwPercentage) > 0.001) return b.omwPercentage - a.omwPercentage;
                 if (Math.abs(b.buchholz - a.buchholz) > 0.001) return b.buchholz - a.buchholz;
@@ -1621,7 +2003,8 @@ class SwissTournamentApp {
             sortedPlayers.forEach((player, index) => {
                 if (index > 0) {
                     const prevPlayer = sortedPlayers[index - 1];
-                    if (player.score !== prevPlayer.score || 
+                    if (player.dropped !== prevPlayer.dropped ||
+                        player.score !== prevPlayer.score || 
                         Math.abs(player.buchholz - prevPlayer.buchholz) > 0.001 ||
                         Math.abs(player.sosBuchholz - prevPlayer.sosBuchholz) > 0.001) {
                         currentRank = index + 1;
@@ -1632,7 +2015,7 @@ class SwissTournamentApp {
             
             // 生成統計資料
             const stats = {
-                champion: sortedPlayers[0],
+                champion: tournament.playoff?.champion || tournament.champion || sortedPlayers.find(player => !player.dropped) || sortedPlayers[0],
                 totalPlayers: players.length,
                 completedRounds: tournament.stats?.completedRounds || tournament.rounds?.length || 0
             };
@@ -1719,8 +2102,9 @@ class SwissTournamentApp {
 
             // 各輪對戰結果
             const roundsSection = this.generateHistoryRoundsSection(tournament);
+            const playoffSection = this.generateHistoryPlayoffSection(tournament);
 
-            return summarySection + rankingSection + roundsSection;
+            return summarySection + rankingSection + roundsSection + playoffSection;
             
         } catch (error) {
             console.error('生成歷史結果內容時發生錯誤:', error);
@@ -1771,6 +2155,48 @@ class SwissTournamentApp {
                                         }
                                         return `<div class="match-result">${resultText}</div>`;
                                     }
+                                }).join('')}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    generateHistoryPlayoffSection(tournament) {
+        const playoff = tournament.playoff;
+        if (!playoff || !Array.isArray(playoff.rounds) || playoff.rounds.length === 0) {
+            return '';
+        }
+
+        const playoffTitle = playoff.isFinished ? '複賽結果（已完成）' : '複賽結果（進行中）';
+        const championLine = playoff.champion ? `<p class="playoff-champion-line">冠軍：${this.escapeHtml(playoff.champion.name)}</p>` : '';
+
+        return `
+            <div class="rounds-section playoff-results-section">
+                <h4>${playoffTitle}</h4>
+                ${championLine}
+                <div class="rounds-container">
+                    ${playoff.rounds.map((round, roundIndex) => `
+                        <div class="round-result">
+                            <h5>${roundIndex === playoff.totalRounds - 1 ? '決賽' : `複賽第 ${round.round} 輪`}</h5>
+                            <div class="round-matches">
+                                ${(round.matches || []).map(match => {
+                                    const p1 = match.player1 ? this.escapeHtml(match.player1.name) : '待定';
+                                    const p2 = match.player2 ? this.escapeHtml(match.player2.name) : '待定';
+
+                                    if (match.isBye) {
+                                        const winner = match.player1 ? this.escapeHtml(match.player1.name) : this.escapeHtml(match.player2?.name || '待定');
+                                        return `<div class="match-result bye">${winner} BYE 自動晉級</div>`;
+                                    }
+
+                                    if (match.completed) {
+                                        const winnerName = match.player1?.id === match.winner ? p1 : p2;
+                                        return `<div class="match-result">${winnerName} 勝 ${winnerName === p1 ? p2 : p1}</div>`;
+                                    }
+
+                                    return `<div class="match-result">${p1} vs ${p2} (未完成)</div>`;
                                 }).join('')}
                             </div>
                         </div>
@@ -2095,13 +2521,16 @@ class SwissTournamentApp {
         row.className = `historical-match-row ${pairing.completed ? 'completed' : 'pending'} ${pairing.player2 === null ? 'bye' : ''}`;
 
         const player1Name = pairing.player1.name;
-        const player2Name = pairing.player2 ? pairing.player2.name : 'BYE';
+        const player2Name = pairing.player2 ? pairing.player2.name : '輪空';
         const resultText = this.getHistoricalResultText(pairing);
+        const playersText = pairing.player2
+            ? `${this.escapeHtml(player1Name)} vs ${this.escapeHtml(player2Name)}`
+            : `${this.escapeHtml(player1Name)} 輪空`;
 
         row.innerHTML = `
             <div class="historical-match-info">
                 <div class="historical-match-players">
-                    ${this.escapeHtml(player1Name)} vs ${this.escapeHtml(player2Name)}
+                    ${playersText}
                 </div>
                 <div class="historical-match-result">
                     ${resultText}
@@ -2183,7 +2612,7 @@ class SwissTournamentApp {
         const options = document.getElementById('edit-result-options');
         
         const roundText = roundNumber ? `第 ${roundNumber} 輪` : '當前輪次';
-        const player2Name = pairing.player2 ? pairing.player2.name : 'BYE';
+        const player2Name = pairing.player2 ? pairing.player2.name : '輪空';
         message.textContent = `修改 ${roundText} ${pairing.player1.name} vs ${player2Name} 的比賽結果：`;
         
         // 生成結果選項
@@ -2283,32 +2712,27 @@ class SwissTournamentApp {
     showPairingArrangement() {
         const titleElement = document.getElementById('arrangement-title');
         const descriptionElement = document.getElementById('arrangement-description');
-        
+
         if (titleElement) {
             titleElement.textContent = `第 ${this.tournament.currentRound + 1} 輪對戰安排`;
         }
-        
+
         if (descriptionElement) {
-            const activePlayers = this.tournament.players.filter(p => !p.dropped).length;
+            const activePlayers = this.tournament.players.filter(player => !player.dropped).length;
             descriptionElement.textContent = `${activePlayers} 位選手參與，請確認對戰配對`;
         }
 
-        // 顯示/隱藏重新隨機配對按鈕（僅第一輪顯示）
         const randomPairingBtn = document.getElementById('random-pairing');
         if (randomPairingBtn) {
-            randomPairingBtn.style.display = (this.tournament.currentRound === 0) ? 'inline-block' : 'none';
+            randomPairingBtn.style.display = this.tournament.currentRound === 0 ? 'inline-block' : 'none';
         }
 
-        // 初始化手動配對狀態
         this.manualPairingMode = false;
-        
-        // 生成初始配對建議
+
         try {
             if (this.tournament.currentRound === 0) {
-                // 第一輪：生成隨機配對
                 this.tempPairings = this.tournament.generateRandomPairings();
             } else {
-                // 後續輪次：生成瑞士制配對
                 this.tempPairings = this.tournament.generateSwissPairings();
             }
         } catch (error) {
@@ -2316,10 +2740,8 @@ class SwissTournamentApp {
             this.tempPairings = [];
         }
 
-        // 顯示當前配對預覽
         this.displayArrangementPreview();
-        
-        // 隱藏手動配對界面
+
         const manualInterface = document.getElementById('manual-pairing-interface');
         if (manualInterface) {
             manualInterface.style.display = 'none';
@@ -2328,50 +2750,35 @@ class SwissTournamentApp {
         this.showPage('pairing-arrangement');
     }
 
-    /**
-     * 顯示配對預覽
-     */
     displayArrangementPreview() {
         const pairings = this.tempPairings || this.tournament.getCurrentRoundPairings();
         const matchesContainer = document.getElementById('arrangement-matches');
-        
         if (!matchesContainer) return;
 
         matchesContainer.innerHTML = '';
 
-        // 將配對分為一般對戰和BYE，BYE排在最後
-        const regularMatches = pairings.filter(p => p.player2 !== null);
-        const byeMatches = pairings.filter(p => p.player2 === null);
+        const regularMatches = pairings.filter(pairing => pairing.player2 !== null);
+        const byeMatches = pairings.filter(pairing => pairing.player2 === null);
         const allMatches = [...regularMatches, ...byeMatches];
 
         allMatches.forEach(pairing => {
-            const matchRow = this.createArrangementMatchRow(pairing);
-            matchesContainer.appendChild(matchRow);
+            matchesContainer.appendChild(this.createArrangementMatchRow(pairing));
         });
     }
 
-    /**
-     * 創建對戰安排行
-     */
     createArrangementMatchRow(pairing) {
         const row = document.createElement('div');
         row.className = `arrangement-match ${pairing.player2 === null ? 'bye' : ''}`;
         row.dataset.matchId = pairing.id;
 
         if (pairing.player2 === null) {
-            // BYE 的情況
             row.innerHTML = `
-                <div class="arrangement-match-number">${pairing.id}</div>
+                <div class="arrangement-match-number">輪空</div>
                 <div class="arrangement-players">
-                    <div class="arrangement-player bye-player">${this.escapeHtml(pairing.player1.name)}</div>
-                    <div class="arrangement-vs">BYE</div>
+                    <div class="arrangement-player">${this.escapeHtml(pairing.player1.name)}</div>
                 </div>
-                <div class="arrangement-score">
-                    積分: ${pairing.player1.score}
-                </div>
-                <div class="arrangement-actions">
-                    <span class="auto-result">輪空</span>
-                </div>
+                <div class="arrangement-score">積分: ${pairing.player1.score}</div>
+                <div class="arrangement-actions"><span class="auto-result">輪空</span></div>
             `;
         } else {
             row.innerHTML = `
@@ -2381,28 +2788,19 @@ class SwissTournamentApp {
                     <div class="arrangement-vs">VS</div>
                     <div class="arrangement-player">${this.escapeHtml(pairing.player2.name)}</div>
                 </div>
-                <div class="arrangement-score">
-                    ${pairing.player1.score} : ${pairing.player2.score}
-                </div>
+                <div class="arrangement-score">${pairing.player1.score} : ${pairing.player2.score}</div>
             `;
         }
 
         return row;
     }
 
-    /**
-     * 重新隨機配對
-     */
     randomizePairings() {
         if (!confirm('確定要重新進行隨機配對嗎？這將會覆蓋當前的配對安排。')) return;
 
         try {
             this.showLoading(true);
-            
-            // 重新生成隨機配對
-            const newPairings = this.tournament.generateRandomPairings();
-            this.tempPairings = newPairings;
-            
+            this.tempPairings = this.tournament.generateRandomPairings();
             this.displayArrangementPreview();
             this.showNotification('已重新生成隨機配對', 'success');
         } catch (error) {
@@ -2412,9 +2810,6 @@ class SwissTournamentApp {
         }
     }
 
-    /**
-     * 切換手動配對模式
-     */
     toggleManualPairing() {
         const manualInterface = document.getElementById('manual-pairing-interface');
         if (!manualInterface) return;
@@ -2431,87 +2826,64 @@ class SwissTournamentApp {
         }
     }
 
-    /**
-     * 初始化手動配對
-     */
     initializeManualPairing() {
-        // 重置手動配對狀態
         this.manualPairings = [];
         this.selectedPlayers = [];
-
-        // 顯示可配對選手
         this.displayAvailablePlayers();
         this.displayManualMatches();
     }
 
-    /**
-     * 顯示可配對選手
-     */
     displayAvailablePlayers() {
         const container = document.getElementById('available-players-list');
         if (!container) return;
 
-        // 獲取所有未棄權的選手
-        const availablePlayers = this.tournament.players.filter(p => !p.dropped);
-        
-        // 移除已經在手動配對中的選手
+        const availablePlayers = this.tournament.players.filter(player => !player.dropped);
         const pairedPlayerIds = new Set();
         this.manualPairings.forEach(pair => {
             pairedPlayerIds.add(pair.player1.id);
             if (pair.player2) pairedPlayerIds.add(pair.player2.id);
         });
 
-        const unpairedPlayers = availablePlayers.filter(p => !pairedPlayerIds.has(p.id));
-
+        const unpairedPlayers = availablePlayers.filter(player => !pairedPlayerIds.has(player.id));
         container.innerHTML = '';
 
         unpairedPlayers.forEach(player => {
             const playerCard = document.createElement('div');
             playerCard.className = 'manual-player';
             playerCard.dataset.playerId = player.id;
-            
-            // 添加選手名稱和積分
+
             const playerName = document.createElement('span');
             playerName.className = 'player-name';
             playerName.textContent = player.name;
-            
+
             const playerScore = document.createElement('span');
             playerScore.className = 'player-score';
             playerScore.textContent = `(${player.score}分)`;
-            
+
             playerCard.appendChild(playerName);
             playerCard.appendChild(playerScore);
             playerCard.onclick = () => this.selectPlayer(player);
-            
-            // 如果選手已被選中，添加選中樣式
-            if (this.selectedPlayers.some(p => p.id === player.id)) {
+
+            if (this.selectedPlayers.some(selected => selected.id === player.id)) {
                 playerCard.classList.add('selected');
             }
 
             container.appendChild(playerCard);
         });
 
-        // 如果只剩一個選手，自動設為BYE
         if (unpairedPlayers.length === 1) {
             this.addByeMatch(unpairedPlayers[0]);
         }
     }
 
-    /**
-     * 選擇選手進行配對
-     */
     selectPlayer(player) {
-        const existingIndex = this.selectedPlayers.findIndex(p => p.id === player.id);
-        
+        const existingIndex = this.selectedPlayers.findIndex(selected => selected.id === player.id);
         if (existingIndex !== -1) {
-            // 取消選擇
             this.selectedPlayers.splice(existingIndex, 1);
         } else {
-            // 添加選擇
             this.selectedPlayers.push(player);
         }
 
-        // 如果選中了兩個選手，自動創建配對
         if (this.selectedPlayers.length === 2) {
             this.createManualMatch(this.selectedPlayers[0], this.selectedPlayers[1]);
             this.selectedPlayers = [];
@@ -2520,16 +2892,11 @@ class SwissTournamentApp {
         this.displayAvailablePlayers();
     }
 
-    /**
-     * 創建手動配對
-     */
     createManualMatch(player1, player2) {
-        const matchId = this.manualPairings.length + 1;
-        
         this.manualPairings.push({
-            id: matchId,
-            player1: player1,
-            player2: player2,
+            id: this.manualPairings.length + 1,
+            player1,
+            player2,
             completed: false,
             result: null
         });
@@ -2538,14 +2905,12 @@ class SwissTournamentApp {
         this.displayAvailablePlayers();
     }
 
-    /**
-     * 添加BYE配對
-     */
     addByeMatch(player) {
-        const matchId = this.manualPairings.length + 1;
-        
+        const alreadyExists = this.manualPairings.some(match => match.player1.id === player.id || match.player2?.id === player.id);
+        if (alreadyExists) return;
+
         this.manualPairings.push({
-            id: matchId,
+            id: this.manualPairings.length + 1,
             player1: player,
             player2: null,
             completed: true,
@@ -2556,30 +2921,23 @@ class SwissTournamentApp {
         this.displayAvailablePlayers();
     }
 
-    /**
-     * 顯示手動配對列表
-     */
     displayManualMatches() {
         const container = document.getElementById('manual-matches-list');
         if (!container) return;
 
         container.innerHTML = '';
-
         this.manualPairings.forEach(match => {
             const matchItem = document.createElement('div');
             matchItem.className = 'manual-match-item';
-            
+
             if (match.player2 === null) {
-                // BYE 配對
                 matchItem.innerHTML = `
                     <div class="manual-match-players">
                         <div class="manual-match-player">${this.escapeHtml(match.player1.name)}</div>
                         <div class="manual-match-vs">BYE</div>
                     </div>
                     <div class="manual-match-actions">
-                        <button class="btn-remove-match" onclick="app.removeManualMatch(${match.id})">
-                            移除
-                        </button>
+                        <button class="btn-remove-match" onclick="app.removeManualMatch(${match.id})">移除</button>
                     </div>
                 `;
             } else {
@@ -2590,9 +2948,7 @@ class SwissTournamentApp {
                         <div class="manual-match-player">${this.escapeHtml(match.player2.name)}</div>
                     </div>
                     <div class="manual-match-actions">
-                        <button class="btn-remove-match" onclick="app.removeManualMatch(${match.id})">
-                            移除
-                        </button>
+                        <button class="btn-remove-match" onclick="app.removeManualMatch(${match.id})">移除</button>
                     </div>
                 `;
             }
@@ -2601,13 +2957,8 @@ class SwissTournamentApp {
         });
     }
 
-    /**
-     * 移除手動配對
-     */
     removeManualMatch(matchId) {
         this.manualPairings = this.manualPairings.filter(match => match.id !== matchId);
-        
-        // 重新編號
         this.manualPairings.forEach((match, index) => {
             match.id = index + 1;
         });
@@ -2616,50 +2967,33 @@ class SwissTournamentApp {
         this.displayAvailablePlayers();
     }
 
-    /**
-     * 保存手動配對
-     */
     saveManualPairings() {
-        // 檢查是否所有選手都已配對
-        const availablePlayers = this.tournament.players.filter(p => !p.dropped);
+        const availablePlayers = this.tournament.players.filter(player => !player.dropped);
         const pairedPlayerIds = new Set();
-        
         this.manualPairings.forEach(pair => {
             pairedPlayerIds.add(pair.player1.id);
             if (pair.player2) pairedPlayerIds.add(pair.player2.id);
         });
 
-        const unpairedPlayers = availablePlayers.filter(p => !pairedPlayerIds.has(p.id));
-        
+        const unpairedPlayers = availablePlayers.filter(player => !pairedPlayerIds.has(player.id));
         if (unpairedPlayers.length > 0) {
             this.showNotification(`還有 ${unpairedPlayers.length} 位選手未配對`, 'error');
             return;
         }
 
-        // 應用手動配對到比賽系統
         this.tempPairings = [...this.manualPairings];
         this.displayArrangementPreview();
-        
-        // 退出手動配對模式
         this.toggleManualPairing();
-        
         this.showNotification('手動配對已保存', 'success');
     }
 
-    /**
-     * 取消手動配對
-     */
     cancelManualPairing() {
         this.toggleManualPairing();
         this.showNotification('已取消手動配對', 'info');
     }
 
-    /**
-     * 清空手動配對
-     */
     clearManualPairings() {
         if (!confirm('確定要清空所有手動配對嗎？')) return;
-        
         this.manualPairings = [];
         this.selectedPlayers = [];
         this.displayManualMatches();
@@ -2667,17 +3001,10 @@ class SwissTournamentApp {
         this.showNotification('已清空所有配對', 'info');
     }
 
-    /**
-     * 生成自動配對
-     */
     generateAutoPairings() {
         try {
             this.showLoading(true);
-            
-            // 重新生成瑞士輪配對
-            const newPairings = this.tournament.generateSwissPairings();
-            this.tempPairings = newPairings;
-            
+            this.tempPairings = this.tournament.generateSwissPairings();
             this.displayArrangementPreview();
             this.showNotification('已重新生成自動配對', 'success');
         } catch (error) {
@@ -2687,23 +3014,178 @@ class SwissTournamentApp {
         }
     }
 
-    /**
-     * 確認對局安排
-     */
     confirmPairings() {
         try {
-            // 開始新的輪次，使用臨時配對（如果存在）
-            const customPairings = this.tempPairings;
-            this.tournament.startNewRound(customPairings);
-            
-            // 清除臨時配對
+            this.tournament.startNewRound(this.tempPairings);
             this.tempPairings = null;
-
-            // 跳轉到對局頁面
+            this.updateCurrentTournamentCard();
             this.displayCurrentRound();
             this.showNotification('對局安排已確認，比賽開始！', 'success');
         } catch (error) {
             this.showNotification('確認配對失敗: ' + error.message, 'error');
+        }
+    }
+
+    showPlayoffSetup() {
+        if (!this.tournament.isFinished) {
+            this.showNotification('請先結束瑞士輪預賽', 'error');
+            return;
+        }
+
+        const ranking = this.tournament.getFinalRanking();
+        const advanceSelect = document.getElementById('playoff-advance-count');
+        const preview = document.getElementById('playoff-preview');
+        if (!advanceSelect || !preview) {
+            this.showNotification('複賽頁面尚未準備完成', 'error');
+            return;
+        }
+
+        const maxAdvance = Math.max(2, Math.min(16, ranking.length));
+        const existingValue = this.tournament.playoff?.advanceCount || Math.min(8, maxAdvance);
+
+        advanceSelect.innerHTML = '';
+        for (let count = 2; count <= maxAdvance; count *= 2) {
+            const option = document.createElement('option');
+            option.value = count;
+            option.textContent = `取 ${count} 強`;
+            option.selected = count === existingValue;
+            advanceSelect.appendChild(option);
+        }
+
+        const updatePreview = () => {
+            const advanceCount = parseInt(advanceSelect.value, 10);
+            const qualified = ranking.slice(0, advanceCount);
+            preview.innerHTML = `
+                <div class="playoff-preview-summary">預計晉級 ${advanceCount} 強，採單淘汰制</div>
+                <div class="playoff-preview-list">
+                    ${qualified.map((player, index) => `
+                        <div class="playoff-preview-player">
+                            <span class="seed-badge">#${index + 1}</span>
+                            <span>${this.escapeHtml(player.name)}</span>
+                            <span class="preview-score">${player.score} 分</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        };
+
+        advanceSelect.onchange = updatePreview;
+        updatePreview();
+        this.showPage('playoff-setup');
+    }
+
+    savePlayoffSettings() {
+        try {
+            const advanceCount = parseInt(document.getElementById('playoff-advance-count')?.value || '0', 10);
+            if (!advanceCount) throw new Error('請選擇晉級人數');
+
+            this.tournament.configurePlayoff(advanceCount, 'single_elimination');
+            this.updateCurrentTournamentCard();
+            this.showTournamentHistory();
+            this.showNotification(`已設定複賽：取 ${advanceCount} 強`, 'success');
+        } catch (error) {
+            this.showNotification(error.message, 'error');
+        }
+    }
+
+    showPlayoffBracket() {
+        const bracketBoard = document.getElementById('playoff-bracket-board');
+        const summary = document.getElementById('playoff-summary');
+        if (!bracketBoard || !summary) {
+            this.showNotification('複賽頁面尚未準備完成', 'error');
+            return;
+        }
+
+        const playoff = this.tournament.playoff;
+        if (!playoff) {
+            this.showNotification('尚未設定複賽', 'warning');
+            this.showPlayoffSetup();
+            return;
+        }
+
+        if (!playoff.started) {
+            this.showPlayoffSetup();
+            return;
+        }
+
+        const championText = playoff.champion ? `冠軍：${playoff.champion.name}` : `目前進行到第 ${playoff.currentRound} 輪`;
+        summary.innerHTML = `
+            <div class="playoff-summary-card">
+                <div class="summary-title">${this.escapeHtml(this.tournament.generateTournamentTitle())}</div>
+                <div class="summary-meta">取 ${playoff.advanceCount} 強 · 單淘汰制 · ${championText}</div>
+            </div>
+        `;
+
+        bracketBoard.innerHTML = playoff.rounds.map((round, roundIndex) => `
+            <div class="bracket-round">
+                <div class="bracket-round-title">${roundIndex === playoff.totalRounds - 1 ? '決賽' : `第 ${round.round} 輪`}</div>
+                <div class="bracket-round-matches">
+                    ${round.matches.map(match => this.renderPlayoffMatch(match)).join('')}
+                </div>
+            </div>
+        `).join('');
+
+        this.showPage('playoff-bracket');
+    }
+
+    renderPlayoffMatch(match) {
+        const player1Name = match.player1 ? this.escapeHtml(match.player1.name) : '待定';
+        const player2Name = match.player2 ? this.escapeHtml(match.player2.name) : '待定';
+        const player1Seed = match.player1?.swissRank ? `#${match.player1.swissRank}` : '';
+        const player2Seed = match.player2?.swissRank ? `#${match.player2.swissRank}` : '';
+
+        const actions = (!match.completed && match.player1 && match.player2)
+            ? `
+                <div class="bracket-actions">
+                    <button class="btn btn-sm btn-primary" onclick="app.recordPlayoffWinner(${match.id}, ${match.player1.id})">${player1Name} 勝</button>
+                    <button class="btn btn-sm btn-primary" onclick="app.recordPlayoffWinner(${match.id}, ${match.player2.id})">${player2Name} 勝</button>
+                </div>
+            `
+            : (match.isBye
+                ? '<div class="bracket-status auto">BYE 自動晉級</div>'
+                : match.completed
+                    ? `<div class="bracket-status done">勝者：${this.escapeHtml((match.player1?.id === match.winner ? match.player1?.name : match.player2?.name) || '')}</div>`
+                    : '<div class="bracket-status pending">等待上一場結果</div>');
+
+        return `
+            <div class="bracket-match ${match.completed ? 'completed' : 'pending'} ${match.isBye ? 'bye' : ''}">
+                <div class="bracket-match-header">Match ${match.id}</div>
+                <div class="bracket-player ${match.winner === match.player1?.id ? 'winner' : ''}">
+                    <span class="player-seed">${player1Seed}</span>
+                    <span class="player-name">${player1Name}</span>
+                </div>
+                <div class="bracket-player ${match.winner === match.player2?.id ? 'winner' : ''}">
+                    <span class="player-seed">${player2Seed}</span>
+                    <span class="player-name">${player2Name}</span>
+                </div>
+                ${actions}
+            </div>
+        `;
+    }
+
+    recordPlayoffWinner(matchId, winnerId) {
+        try {
+            const result = this.tournament.recordPlayoffResult(matchId, winnerId);
+            this.showPlayoffBracket();
+            this.updateCurrentTournamentCard();
+            if (result.isChampion) {
+                this.showNotification(`比賽結束，冠軍為 ${result.champion.name}`, 'success');
+            } else {
+                this.showNotification('已記錄複賽結果', 'success');
+            }
+        } catch (error) {
+            this.showNotification(error.message, 'error');
+        }
+    }
+
+    startPlayoff() {
+        try {
+            this.tournament.initializePlayoff();
+            this.showPlayoffBracket();
+            this.updateCurrentTournamentCard();
+            this.showNotification('複賽已開始', 'success');
+        } catch (error) {
+            this.showNotification(error.message, 'error');
         }
     }
 }
@@ -2714,5 +3196,5 @@ let app;
 // 當 DOM 載入完成後初始化應用程式
 document.addEventListener('DOMContentLoaded', () => {
     app = new SwissTournamentApp();
-    console.log('瑞士輪比賽系統已載入完成');
+    console.log('瑞士輪賽事系統已載入完成');
 });

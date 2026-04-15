@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>瑞士輪比賽系統</title>
+    <title>瑞士輪賽事系統</title>
     <meta name="description" content="專業的瑞士輪比賽管理系統，支援選手配對、結果記錄、排名計算等功能">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
@@ -14,7 +14,7 @@
     <div id="app">
         <header class="tournament-header">
             <div class="header-content">
-                <h1>瑞士輪比賽系統</h1>
+                <h1 id="home-title">瑞士輪賽事系統</h1>
                 <nav class="header-nav">
                     <button id="history-btn" class="nav-btn">
                         <span>歷史比賽</span>
@@ -106,6 +106,18 @@
                                         <small class="setting-description">最少3局，若不設定則依瑞士輪規則自動計算</small>
                                     </div>
                                 </div>
+
+                                <div class="setting-item">
+                                    <label class="setting-label">
+                                        <input type="checkbox" id="enable-playoff" class="setting-checkbox">
+                                        <span class="checkmark"></span>
+                                        啟用複賽
+                                    </label>
+                                    <div class="playoff-settings-inline" id="playoff-settings-inline" style="display: none;">
+                                        <select id="playoff-advance-count-setup" class="rounds-input"></select>
+                                        <small class="setting-description">可先設定瑞士輪結束後取前幾名進入單淘汰複賽</small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         
@@ -155,6 +167,11 @@
                     <div class="players-section">
                         <h3>參賽選手</h3>
                         <div id="players-display" class="players-grid"></div>
+                        <p id="tournament-info-playoff-summary" class="info-playoff-summary"></p>
+                        <div class="info-actions" id="tournament-info-actions">
+                            <button id="start-first-round" class="btn btn-primary">開始第 1 輪配對</button>
+                            <button id="edit-tournament-settings" class="btn btn-secondary">編輯賽事設定</button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -241,14 +258,13 @@
             <section id="pairing-section" class="page">
                 <div class="page-header">
                     <h2 id="round-title">Round 1 配對</h2>
-                    <p id="round-description">請記錄每場比賽的結果</p>
                 </div>
                 
                 <div class="pairing-container">
                     <!-- 輪次資訊摘要 -->
                     <div class="round-summary">
                         <div class="summary-stats">
-                            <span id="matches-completed">0</span> / <span id="total-matches">0</span> 場已完成
+                            <span id="matches-completed">0</span> / <span id="total-matches">0</span> 場已完成（<span id="active-players-count"></span>位選手）
                         </div>
                         <div class="round-actions">
                             <button id="recalculate-pairings" class="btn btn-warning" style="display: none;">
@@ -263,7 +279,6 @@
                             <div class="match-col-number">場次</div>
                             <div class="match-col-players">對戰雙方</div>
                             <div class="match-col-result">比賽結果</div>
-                            <div class="match-col-actions">操作</div>
                         </div>
                         <div id="matches-list-content" class="list-content">
                             <!-- 比賽項目將在這裡動態生成 -->
@@ -337,7 +352,7 @@
                         <div id="scoring-details"></div>
                     </div>
                     
-                    <div class="final-actions">
+                    <div class="final-actions" id="final-actions-bar">
                         <button id="new-tournament" class="btn btn-primary">
                             開始新比賽
                         </button>
@@ -350,9 +365,8 @@
 
             <!-- 歷史比賽 -->
             <section id="tournament-history" class="page active">
-                <div class="page-header">
-                    <h2>歷史比賽</h2>
-                    <p>檢視和管理過往的比賽記錄</p>
+                <div class="page-header dashboard-header">
+                    <h2>賽事總覽</h2>
                 </div>
                 
                 <!-- 快速動作區 -->
@@ -368,21 +382,15 @@
                 </div>
                 
                 <div class="history-container">
-                    <!-- 目前比賽狀態 -->
+                    <!-- 進行中賽事 -->
                     <div class="current-tournament-section">
-                        <h3>目前比賽</h3>
-                        <div id="current-tournament-card" class="tournament-card current">
-                            <div class="tournament-info">
-                                <div class="tournament-title">無進行中的比賽</div>
-                                <div class="tournament-details">請開始新比賽</div>
-                            </div>
-                            <div class="tournament-actions">
-                                <button id="continue-current" class="btn btn-primary" style="display: none;">
-                                    繼續比賽
-                                </button>
-                                <button id="reset-current" class="btn btn-warning" style="display: none;">
-                                    重置比賽
-                                </button>
+                        <h3>進行中賽事</h3>
+                        <p class="section-intro">重置只會回到未開賽狀態；若要完全移除，請使用每張卡片右上角的刪除按鈕。</p>
+                        <div id="active-tournaments-grid" class="active-tournaments-grid">
+                            <div class="no-active-tournaments">
+                                <div class="no-tournaments-icon">🏆</div>
+                                <div class="no-tournaments-text">尚無進行中的賽事</div>
+                                <div class="no-tournaments-hint">點擊「開啟新比賽」開始</div>
                             </div>
                         </div>
                     </div>
@@ -402,6 +410,57 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- 複賽設定 -->
+            <section id="playoff-setup" class="page">
+                <div class="page-header">
+                    <h2>複賽設定</h2>
+                    <p>設定瑞士輪預賽結束後的晉級名額與淘汰賽形式</p>
+                </div>
+
+                <div class="playoff-setup-container">
+                    <div class="setup-card playoff-card">
+                        <div class="setting-item">
+                            <label for="playoff-advance-count" class="setting-label-text">預賽晉級名額</label>
+                            <select id="playoff-advance-count" class="rounds-input"></select>
+                            <small class="setting-description">依照瑞士輪最終排名取前 N 名晉級</small>
+                        </div>
+
+                        <div class="setting-item">
+                            <label class="setting-label-text">複賽賽制</label>
+                            <div class="playoff-format-pill">單淘汰</div>
+                            <small class="setting-description">將依預賽排名給予種子，並產生樹狀對陣圖</small>
+                        </div>
+
+                        <div id="playoff-preview" class="playoff-preview"></div>
+
+                        <div class="setup-actions">
+                            <button class="btn btn-primary btn-large" onclick="app.savePlayoffSettings()">儲存複賽設定</button>
+                            <button class="btn btn-secondary" onclick="app.showTournamentHistory()">返回首頁</button>
+                            <button class="btn btn-danger" onclick="app.startPlayoff()">直接開始複賽</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 複賽對陣圖 -->
+            <section id="playoff-bracket" class="page">
+                <div class="page-header">
+                    <h2>複賽對陣圖</h2>
+                    <p>以單淘汰樹狀圖追蹤晉級過程與目前賽次</p>
+                </div>
+
+                <div id="playoff-summary" class="playoff-summary"></div>
+
+                <div class="playoff-bracket-actions">
+                    <button class="btn btn-secondary" onclick="app.showTournamentHistory()">返回首頁</button>
+                    <button class="btn btn-info" onclick="app.displayFinalRanking(); app.showPage('final-ranking');">查看瑞士輪排名</button>
+                </div>
+
+                <div class="playoff-bracket-container">
+                    <div id="playoff-bracket-board" class="playoff-bracket-board"></div>
                 </div>
             </section>
         </main>
@@ -458,6 +517,22 @@
             <div class="modal-footer">
                 <button id="confirm-edit" class="btn btn-primary">確認修改</button>
                 <button class="btn btn-secondary" onclick="app.closeModal('edit-result-modal')">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="quick-result-modal" class="modal">
+        <div class="modal-content quick-result-modal">
+            <div class="modal-header">
+                <h3 id="quick-result-title">記錄比賽結果</h3>
+                <button class="modal-close" onclick="app.closeModal('quick-result-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="quick-result-current" class="quick-result-current"></div>
+                <div id="quick-result-options" class="quick-result-options"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="app.closeModal('quick-result-modal')">取消</button>
             </div>
         </div>
     </div>
