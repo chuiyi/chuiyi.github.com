@@ -1007,6 +1007,10 @@ body {
         width: min(100% - 20px, 1440px);
     }
 
+    .header-nav {
+        display: none;
+    }
+
     .panel {
         padding: 1rem;
         border-radius: 18px;
