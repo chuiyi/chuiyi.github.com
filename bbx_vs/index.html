@@ -31,7 +31,7 @@
                 <div class="header-title-block">
                     <p class="header-kicker">Battle Operations Suite</p>
                     <h1 id="home-title">戰鬥陀螺對戰系統</h1>
-                    <p class="header-subtitle">預賽單淘汰追蹤，著重單場逐分記錄與規則自訂。</p>
+                    <!-- <p class="header-subtitle">預賽單淘汰追蹤，著重單場逐分記錄與規則自訂。</p> -->
                 </div>
 
                 <nav class="header-nav">
@@ -49,6 +49,27 @@
                     </button>
                     <input type="file" id="import-file" accept=".json" hidden>
                 </nav>
+
+                <div class="header-menu">
+                    <button
+                        id="header-menu-btn"
+                        class="menu-btn"
+                        data-action="toggle-header-menu"
+                        aria-label="開啟功能選單"
+                        aria-expanded="false"
+                        aria-controls="header-menu-panel"
+                    >
+                        <span class="menu-btn-line"></span>
+                        <span class="menu-btn-line"></span>
+                        <span class="menu-btn-line"></span>
+                    </button>
+                    <div id="header-menu-panel" class="menu-panel" hidden>
+                        <button class="menu-item" data-action="header-new">建立賽事</button>
+                        <button class="menu-item" data-action="header-history">歷史賽事</button>
+                        <button class="menu-item" data-action="header-export">匯出</button>
+                        <button class="menu-item" data-action="header-import">匯入</button>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -238,14 +259,24 @@
                 <div class="page-header compact-left">
                     <div>
                         <p class="section-kicker">Arena Recorder</p>
-                        <h2 id="arena-title">賽事中控台</h2>
+                        <h2 class="arena-title-heading">
+                            <span id="arena-title">賽事中控台</span>
+                            <span id="arena-round-badge" class="arena-round-badge" hidden>第 1 輪</span>
+                        </h2>
                         <p id="arena-subtitle">選擇對戰並記錄逐分結果。</p>
                     </div>
                 </div>
 
+                <div class="arena-tabs" role="tablist" aria-label="賽事頁籤">
+                    <button class="mobile-tab-btn is-active" data-action="arena-tab" data-tab="recorder" role="tab" aria-selected="true">記錄</button>
+                    <button class="mobile-tab-btn" data-action="arena-tab" data-tab="bracket" role="tab" aria-selected="false">賽程</button>
+                    <button class="mobile-tab-btn" data-action="arena-tab" data-tab="standings" role="tab" aria-selected="false">戰績</button>
+                    <button class="mobile-tab-btn" data-action="arena-tab" data-tab="completed" role="tab" aria-selected="false">完成</button>
+                </div>
+
                 <div class="arena-summary" id="arena-summary"></div>
 
-                <section class="panel standings-panel">
+                <section class="panel standings-panel arena-tab-panel" data-arena-panel="standings">
                     <div class="panel-header">
                         <div>
                             <p class="panel-kicker">Standings Matrix</p>
@@ -262,14 +293,13 @@
                                     <th>勝</th>
                                     <th>敗</th>
                                     <th>輪空</th>
-                                    <th>得分</th>
-                                    <th>失分</th>
-                                    <th>差值</th>
+                                    <th>待賽</th>
+                                    <th>下一場</th>
                                 </tr>
                             </thead>
                             <tbody id="standings-body">
                                 <tr>
-                                    <td colspan="9">建立或載入賽事後，這裡會顯示所有玩家的勝敗狀況與排名。</td>
+                                    <td colspan="8">建立或載入賽事後，這裡會顯示所有玩家的勝敗狀況與排名。</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -278,7 +308,7 @@
                 </section>
 
                 <div class="arena-layout">
-                    <section class="panel bracket-panel">
+                    <section class="panel bracket-panel arena-tab-panel" data-arena-panel="bracket">
                         <div class="panel-header">
                             <div>
                                 <p class="panel-kicker">Elimination Tree</p>
@@ -288,7 +318,7 @@
                         <div id="bracket-rounds" class="bracket-rounds"></div>
                     </section>
 
-                    <section class="panel recorder-panel">
+                    <section class="panel recorder-panel arena-tab-panel" data-arena-panel="recorder">
                         <div class="panel-header recorder-header">
                             <div>
                                 <p class="panel-kicker">Battle Recorder</p>
@@ -306,7 +336,7 @@
                     </section>
                 </div>
 
-                <section class="panel recent-panel">
+                <section class="panel recent-panel arena-tab-panel" data-arena-panel="completed">
                     <div class="panel-header">
                         <div>
                             <p class="panel-kicker">Finished Battles</p>
@@ -317,6 +347,34 @@
                 </section>
             </section>
         </main>
+
+        <div id="match-detail-modal" class="match-detail-modal" hidden>
+            <div class="match-detail-backdrop" data-action="close-match-detail"></div>
+            <div class="match-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="match-detail-title">
+                <div class="match-detail-header">
+                    <div>
+                        <p class="panel-kicker">Match Detail</p>
+                        <h3 id="match-detail-title">對戰詳情</h3>
+                    </div>
+                    <button class="match-detail-close" data-action="close-match-detail" aria-label="關閉對戰詳情">×</button>
+                </div>
+                <div id="match-detail-content" class="match-detail-content"></div>
+            </div>
+        </div>
+
+        <div id="next-match-modal" class="match-detail-modal" hidden>
+            <div class="match-detail-backdrop" data-action="close-next-match-modal"></div>
+            <div class="match-detail-dialog next-match-dialog" role="dialog" aria-modal="true" aria-labelledby="next-match-title">
+                <div class="match-detail-header">
+                    <div>
+                        <p class="panel-kicker">Next Match Prompt</p>
+                        <h3 id="next-match-title">此場對戰已完成</h3>
+                    </div>
+                    <button class="match-detail-close" data-action="close-next-match-modal" aria-label="關閉下一場提示">×</button>
+                </div>
+                <div id="next-match-content" class="match-detail-content"></div>
+            </div>
+        </div>
     </div>
 
     <script src="js/bbx-vs.js"></script>

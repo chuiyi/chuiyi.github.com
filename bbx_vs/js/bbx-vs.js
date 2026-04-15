@@ -6,6 +6,11 @@ class BeybladeTournamentApp {
         this.currentTournamentId = localStorage.getItem(this.currentTournamentKey) || null;
         this.currentPage = 'dashboard-page';
         this.selectedMatchId = null;
+        this.arenaTab = 'recorder';
+        this.isHeaderMenuOpen = false;
+        this.autoSwitchTimer = null;
+        this.recorderFocusTimer = null;
+        this.pendingNextMatchId = null;
         this.scoreTypes = {
             spin: { label: '旋轉勝利', defaultPoints: 1, tone: 'btn-primary' },
             ringOut: { label: '擊飛勝利', defaultPoints: 2, tone: 'secondary-tone' },
@@ -48,18 +53,30 @@ class BeybladeTournamentApp {
             xtreme: document.getElementById('preview-score-xtreme')
         };
         this.arenaTitle = document.getElementById('arena-title');
+        this.arenaRoundBadge = document.getElementById('arena-round-badge');
         this.arenaSubtitle = document.getElementById('arena-subtitle');
         this.arenaSummary = document.getElementById('arena-summary');
         this.standingsTitle = document.getElementById('standings-title');
         this.standingsBody = document.getElementById('standings-body');
         this.standingsNote = document.getElementById('standings-note');
+        this.mobileArenaTabs = document.querySelectorAll('.mobile-tab-btn');
+        this.arenaPanels = document.querySelectorAll('.arena-tab-panel');
         this.bracketRounds = document.getElementById('bracket-rounds');
         this.matchTitle = document.getElementById('match-title');
         this.matchRecorder = document.getElementById('match-recorder');
+        this.recorderPanel = document.querySelector('.recorder-panel');
         this.completedMatches = document.getElementById('completed-matches');
         this.undoScoreBtn = document.getElementById('undo-score-btn');
         this.resetMatchBtn = document.getElementById('reset-match-btn');
         this.importFileInput = document.getElementById('import-file');
+        this.matchDetailModal = document.getElementById('match-detail-modal');
+        this.matchDetailContent = document.getElementById('match-detail-content');
+        this.nextMatchModal = document.getElementById('next-match-modal');
+        this.nextMatchContent = document.getElementById('next-match-content');
+        this.headerRoot = document.querySelector('.vs-header');
+        this.headerNav = document.querySelector('.header-nav');
+        this.headerMenuBtn = document.getElementById('header-menu-btn');
+        this.headerMenuPanel = document.getElementById('header-menu-panel');
     }
 
     bindEvents() {
@@ -81,6 +98,10 @@ class BeybladeTournamentApp {
         });
 
         document.addEventListener('click', (event) => this.handleDocumentClick(event));
+        window.addEventListener('resize', () => {
+            this.updateArenaTabVisibility();
+            this.updateHeaderNavMode();
+        });
     }
 
     handleDocumentClick(event) {
@@ -102,7 +123,42 @@ class BeybladeTournamentApp {
             if (actionName === 'score') {
                 this.applyScore(action.dataset.slot, action.dataset.scoreType);
             }
+            if (actionName === 'arena-tab') {
+                this.setArenaTab(action.dataset.tab);
+            }
+            if (actionName === 'toggle-header-menu') {
+                this.toggleHeaderMenu();
+            }
+            if (actionName === 'header-new') {
+                this.showPage('setup-page');
+                this.closeHeaderMenu();
+            }
+            if (actionName === 'header-history') {
+                this.showPage('dashboard-page');
+                this.closeHeaderMenu();
+            }
+            if (actionName === 'header-export') {
+                this.exportCurrentTournament();
+                this.closeHeaderMenu();
+            }
+            if (actionName === 'header-import') {
+                this.importFileInput.click();
+                this.closeHeaderMenu();
+            }
+            if (actionName === 'close-match-detail') {
+                this.closeMatchDetailModal();
+            }
+            if (actionName === 'close-next-match-modal') {
+                this.closeNextMatchModal();
+            }
+            if (actionName === 'go-next-match') {
+                this.goToPendingNextMatch();
+            }
             return;
+        }
+
+        if (this.isHeaderMenuOpen) {
+            this.closeHeaderMenu();
         }
 
         const completeBtn = event.target.closest('[data-complete-slot]');
@@ -113,15 +169,135 @@ class BeybladeTournamentApp {
 
     showPage(pageId) {
         this.currentPage = pageId;
+        this.closeHeaderMenu();
         this.pages.forEach((page) => {
             page.classList.toggle('active', page.id === pageId);
         });
 
         if (pageId === 'arena-page') {
-            this.ensureSelectedMatch();
+            const tournament = this.getCurrentTournament();
+            if (tournament && !tournament.completed) {
+                this.selectFirstUnfinishedMatch(tournament, false);
+                this.arenaTab = 'recorder';
+            } else {
+                this.ensureSelectedMatch();
+                this.setDefaultArenaTab();
+            }
         }
 
         this.render();
+
+        if (pageId === 'arena-page') {
+            const tournament = this.getCurrentTournament();
+            if (tournament && !tournament.completed) {
+                this.focusRecorderPanel();
+            }
+        }
+    }
+
+    setDefaultArenaTab() {
+        const tournament = this.getCurrentTournament();
+        this.arenaTab = tournament && !tournament.completed ? 'recorder' : 'standings';
+        this.updateArenaTabVisibility();
+    }
+
+    setArenaTab(tabName) {
+        if (!tabName) {
+            return;
+        }
+
+        this.arenaTab = tabName;
+        this.updateArenaTabVisibility();
+    }
+
+    selectFirstUnfinishedMatch(tournament, persist = true) {
+        const nextMatchId = this.findFirstUnfinishedMatchId(tournament) || this.findFirstAvailableMatchId(tournament);
+        if (!nextMatchId) {
+            return;
+        }
+
+        this.selectedMatchId = nextMatchId;
+        tournament.selectedMatchId = nextMatchId;
+        if (persist) {
+            this.updateTournament(tournament);
+        }
+    }
+
+    findFirstUnfinishedMatchId(tournament) {
+        for (const round of tournament.bracket) {
+            for (const match of round.matches) {
+                if (match.status !== 'completed') {
+                    return match.id;
+                }
+            }
+        }
+        return null;
+    }
+
+    updateArenaTabVisibility() {
+        const activeTab = this.arenaTab || 'recorder';
+
+        this.mobileArenaTabs.forEach((button) => {
+            const isActive = button.dataset.tab === activeTab;
+            button.classList.toggle('is-active', isActive);
+            button.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        this.arenaPanels.forEach((panel) => {
+            const matches = panel.dataset.arenaPanel === activeTab;
+            panel.classList.toggle('arena-panel-active', matches);
+            panel.hidden = !matches;
+        });
+    }
+
+    updateHeaderNavMode() {
+        if (!this.headerNav || !this.headerRoot) {
+            return;
+        }
+
+        const wasCollapsed = this.headerRoot.classList.contains('menu-collapsed');
+        if (wasCollapsed) {
+            this.headerRoot.classList.remove('menu-collapsed');
+        }
+
+        const items = Array.from(this.headerNav.children);
+        if (!items.length) {
+            return;
+        }
+
+        const tops = items.map((item) => Math.round(item.getBoundingClientRect().top));
+        const wraps = new Set(tops).size > 1;
+        const isNarrow = window.matchMedia('(max-width: 760px)').matches;
+        const shouldCollapse = wraps || isNarrow;
+
+        this.headerRoot.classList.toggle('menu-collapsed', shouldCollapse);
+        if (!shouldCollapse) {
+            this.closeHeaderMenu();
+        }
+    }
+
+    toggleHeaderMenu() {
+        if (!this.headerRoot.classList.contains('menu-collapsed')) {
+            return;
+        }
+
+        this.isHeaderMenuOpen = !this.isHeaderMenuOpen;
+        this.headerRoot.classList.toggle('menu-open', this.isHeaderMenuOpen);
+        this.headerMenuBtn.setAttribute('aria-expanded', this.isHeaderMenuOpen ? 'true' : 'false');
+        this.headerMenuPanel.hidden = !this.isHeaderMenuOpen;
+    }
+
+    closeHeaderMenu() {
+        this.isHeaderMenuOpen = false;
+        if (this.headerRoot) {
+            this.headerRoot.classList.remove('menu-open');
+        }
+        if (this.headerMenuBtn) {
+            this.headerMenuBtn.setAttribute('aria-expanded', 'false');
+        }
+        if (this.headerMenuPanel) {
+            this.headerMenuPanel.hidden = true;
+        }
     }
 
     loadTournaments() {
@@ -468,7 +644,12 @@ class BeybladeTournamentApp {
         }
 
         const selected = this.findMatch(tournament, matchId);
-        if (!selected || selected.match.status === 'waiting') {
+        if (!selected) {
+            return;
+        }
+
+        if (selected.match.status === 'completed') {
+            this.openMatchDetailModal(tournament, selected.match);
             return;
         }
 
@@ -476,6 +657,17 @@ class BeybladeTournamentApp {
         tournament.selectedMatchId = matchId;
         this.updateTournament(tournament);
         this.render();
+
+        if (this.arenaTab === 'bracket') {
+            if (this.autoSwitchTimer) {
+                window.clearTimeout(this.autoSwitchTimer);
+            }
+            this.autoSwitchTimer = window.setTimeout(() => {
+                this.setArenaTab('recorder');
+                this.focusRecorderPanel();
+                this.autoSwitchTimer = null;
+            }, 500);
+        }
     }
 
     ensureSelectedMatch() {
@@ -588,8 +780,10 @@ class BeybladeTournamentApp {
         this.propagateWinner(tournament, roundIndex, matchIndex, winnerId);
         this.promoteNextAvailableMatch(tournament);
         tournament.currentRound = this.findCurrentRoundNumber(tournament);
-        tournament.selectedMatchId = tournament.activeMatchId || match.id;
-        this.selectedMatchId = tournament.selectedMatchId;
+        this.pendingNextMatchId = tournament.activeMatchId || null;
+        tournament.selectedMatchId = match.id;
+        this.selectedMatchId = match.id;
+        this.openNextMatchModal(tournament, match, this.pendingNextMatchId);
     }
 
     undoLastScore() {
@@ -668,7 +862,164 @@ class BeybladeTournamentApp {
     }
 
     getPlayerName(tournament, playerId) {
-        return this.getPlayerById(tournament, playerId)?.name || '待定';
+        return this.getPlayerById(tournament, playerId)?.name || 'BYE';
+    }
+
+    getMatchParticipantName(tournament, match, slot) {
+        const playerId = slot === 'player1' ? match.player1Id : match.player2Id;
+        const otherPlayerId = slot === 'player1' ? match.player2Id : match.player1Id;
+        const player = playerId ? this.getPlayerById(tournament, playerId) : null;
+        if (player) {
+            return player.name;
+        }
+        if (otherPlayerId) {
+            return 'BYE';
+        }
+        return '待定';
+    }
+
+    focusRecorderPanel() {
+        if (!this.recorderPanel) {
+            return;
+        }
+
+        if (this.recorderFocusTimer) {
+            window.clearTimeout(this.recorderFocusTimer);
+        }
+
+        this.recorderPanel.classList.remove('focus-recorder-panel');
+        this.recorderPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        void this.recorderPanel.offsetWidth;
+        this.recorderPanel.classList.add('focus-recorder-panel');
+        this.recorderFocusTimer = window.setTimeout(() => {
+            this.recorderPanel.classList.remove('focus-recorder-panel');
+            this.recorderFocusTimer = null;
+        }, 650);
+    }
+
+    openMatchDetailModal(tournament, match) {
+        if (!this.matchDetailModal || !this.matchDetailContent) {
+            return;
+        }
+
+        this.matchDetailContent.innerHTML = this.renderMatchDetailContent(tournament, match);
+        this.matchDetailModal.hidden = false;
+    }
+
+    closeMatchDetailModal() {
+        if (!this.matchDetailModal) {
+            return;
+        }
+        this.matchDetailModal.hidden = true;
+    }
+
+    openNextMatchModal(tournament, completedMatch, nextMatchId) {
+        if (!this.nextMatchModal || !this.nextMatchContent) {
+            return;
+        }
+
+        const nextMatch = nextMatchId ? this.findMatch(tournament, nextMatchId)?.match || null : null;
+        this.nextMatchContent.innerHTML = this.renderNextMatchPrompt(tournament, completedMatch, nextMatch);
+        this.nextMatchModal.hidden = false;
+    }
+
+    closeNextMatchModal() {
+        if (!this.nextMatchModal) {
+            return;
+        }
+        this.nextMatchModal.hidden = true;
+        this.pendingNextMatchId = null;
+    }
+
+    goToPendingNextMatch() {
+        const tournament = this.getCurrentTournament();
+        if (!tournament || !this.pendingNextMatchId) {
+            this.closeNextMatchModal();
+            return;
+        }
+
+        const nextMatch = this.findMatch(tournament, this.pendingNextMatchId);
+        if (!nextMatch) {
+            this.closeNextMatchModal();
+            return;
+        }
+
+        this.selectedMatchId = nextMatch.match.id;
+        tournament.selectedMatchId = nextMatch.match.id;
+        this.updateTournament(tournament);
+        this.closeNextMatchModal();
+        this.setArenaTab('recorder');
+        this.render();
+        this.focusRecorderPanel();
+    }
+
+    renderNextMatchPrompt(tournament, completedMatch, nextMatch) {
+        const completedRoundLabel = tournament.bracket[completedMatch.roundNumber - 1]?.roundLabel || `第 ${completedMatch.roundNumber} 輪`;
+        if (!nextMatch) {
+            return `
+                <div class="next-match-summary">
+                    <p class="next-match-copy">${this.escapeHtml(completedRoundLabel)} 已完成，目前沒有下一場可直接記錄。</p>
+                    <div class="history-meta-row">
+                        <span class="history-meta">最終比分 ${completedMatch.score1} : ${completedMatch.score2}</span>
+                    </div>
+                    <div class="next-match-actions">
+                        <button class="btn btn-primary" data-action="close-next-match-modal">知道了</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        const nextRoundLabel = tournament.bracket[nextMatch.roundNumber - 1]?.roundLabel || `第 ${nextMatch.roundNumber} 輪`;
+        return `
+            <div class="next-match-summary">
+                <p class="next-match-copy">此場對戰已完成，是否接著記錄下一場？</p>
+                <div class="match-detail-summary">
+                    <div class="match-detail-scorecard">
+                        <span>${this.escapeHtml(this.getMatchParticipantName(tournament, nextMatch, 'player1'))}</span>
+                        <strong>${nextMatch.score1}</strong>
+                    </div>
+                    <div class="match-detail-score-separator">vs</div>
+                    <div class="match-detail-scorecard">
+                        <span>${this.escapeHtml(this.getMatchParticipantName(tournament, nextMatch, 'player2'))}</span>
+                        <strong>${nextMatch.score2}</strong>
+                    </div>
+                </div>
+                <div class="history-meta-row">
+                    <span class="history-meta">下一場：第 ${nextMatch.roundNumber} 輪（${this.escapeHtml(nextRoundLabel)}）</span>
+                    <span class="history-meta">對戰 ${nextMatch.matchNumber}</span>
+                    <span class="history-meta">先 ${nextMatch.targetPoints} 分</span>
+                </div>
+                <div class="next-match-actions">
+                    <button class="btn btn-secondary" data-action="close-next-match-modal">稍後再記</button>
+                    <button class="btn btn-primary" data-action="go-next-match">前往下一場</button>
+                </div>
+            </div>
+        `;
+    }
+
+    renderMatchDetailContent(tournament, match) {
+        const roundLabel = tournament.bracket[match.roundNumber - 1]?.roundLabel || `第 ${match.roundNumber} 輪`;
+        return `
+            <div class="match-detail-summary">
+                <div class="match-detail-scorecard">
+                    <span>${this.escapeHtml(this.getMatchParticipantName(tournament, match, 'player1'))}</span>
+                    <strong>${match.score1}</strong>
+                </div>
+                <div class="match-detail-score-separator">vs</div>
+                <div class="match-detail-scorecard">
+                    <span>${this.escapeHtml(this.getMatchParticipantName(tournament, match, 'player2'))}</span>
+                    <strong>${match.score2}</strong>
+                </div>
+            </div>
+            <div class="history-meta-row">
+                <span class="history-meta">第 ${match.roundNumber} 輪（${this.escapeHtml(roundLabel)}）</span>
+                <span class="history-meta">先 ${match.targetPoints} 分</span>
+                <span class="history-meta">狀態：${match.status === 'completed' ? '已完成' : '未完成'}</span>
+            </div>
+            <div class="match-log modal-match-log">
+                ${match.log.length ? match.log.map((entry) => this.renderTimelineItem(entry)).join('') : '<div class="empty-note">此對戰尚未有得分紀錄。</div>'}
+            </div>
+        `;
     }
 
     updateSetupPreview() {
@@ -702,6 +1053,7 @@ class BeybladeTournamentApp {
     render() {
         this.renderDashboard();
         this.renderArena();
+        this.updateHeaderNavMode();
     }
 
     renderDashboard() {
@@ -790,24 +1142,33 @@ class BeybladeTournamentApp {
         const tournament = this.getCurrentTournament();
         if (!tournament) {
             this.arenaTitle.textContent = '賽事中控台';
+            if (this.arenaRoundBadge) {
+                this.arenaRoundBadge.hidden = true;
+            }
             this.arenaSubtitle.textContent = '尚未建立賽事。';
             this.arenaSummary.innerHTML = '';
             this.standingsTitle.textContent = '即時戰績表';
-            this.standingsBody.innerHTML = '<tr><td colspan="9">建立賽事後，這裡會顯示所有玩家的勝敗狀況與排名。</td></tr>';
-            this.standingsNote.textContent = '單淘汰賽的排名依晉級輪次、勝場、得失分與種子序排序。';
+            this.standingsBody.innerHTML = '<tr><td colspan="8">建立賽事後，這裡會顯示所有玩家的勝敗狀況與排名。</td></tr>';
+            this.standingsNote.textContent = '即時戰績會顯示每位玩家的勝場、待賽場次與淘汰狀態。';
             this.bracketRounds.innerHTML = '<div class="empty-note">建立賽事後，這裡會顯示單淘汰賽程。</div>';
             this.matchTitle.textContent = '尚未選擇對戰';
             this.matchRecorder.innerHTML = '<p>建立或載入賽事後，請從左側選擇可記錄的對戰。</p>';
             this.completedMatches.innerHTML = '<div class="empty-history">目前沒有已完成對戰。</div>';
+            this.updateArenaTabVisibility();
             return;
         }
 
         this.ensureSelectedMatch();
         const selected = this.findMatch(tournament, this.selectedMatchId);
         this.arenaTitle.textContent = tournament.name;
+        if (this.arenaRoundBadge) {
+            this.arenaRoundBadge.hidden = false;
+            this.arenaRoundBadge.textContent = tournament.completed ? '已完成' : `第 ${tournament.currentRound} 輪`;
+            this.arenaRoundBadge.classList.toggle('is-finished', tournament.completed);
+        }
         this.arenaSubtitle.textContent = tournament.completed
-            ? `賽事已完成，冠軍為 ${this.getPlayerName(tournament, tournament.winnerId)}。`
-            : `目前進行到第 ${tournament.currentRound} 輪，可直接在右側記錄單場得分。`;
+            ? `冠軍：${this.getPlayerName(tournament, tournament.winnerId)}`
+            : '';
         this.arenaSummary.innerHTML = this.renderArenaSummary(tournament);
         this.renderStandings(tournament);
         this.bracketRounds.innerHTML = tournament.bracket.map((round) => this.renderRoundColumn(tournament, round)).join('');
@@ -815,27 +1176,17 @@ class BeybladeTournamentApp {
         this.renderCompletedMatches(tournament);
         this.undoScoreBtn.disabled = !selected?.match || selected.match.status === 'completed' || !selected.match.log.length;
         this.resetMatchBtn.disabled = !selected?.match || selected.match.status === 'completed';
+        this.updateArenaTabVisibility();
     }
 
     renderArenaSummary(tournament) {
-        const activeMatch = tournament.activeMatchId ? this.findMatch(tournament, tournament.activeMatchId)?.match : null;
         const summaryItems = [
-            { label: '參賽人數', value: `${tournament.players.length} 人`, pill: null },
-            { label: '目前輪次', value: `第 ${tournament.currentRound} 輪`, pill: null },
-            { label: '勝利門檻', value: `${tournament.settings.pointsToWin} 分`, pill: 'Rule' },
-            {
-                label: '目前對戰',
-                value: activeMatch ? `${this.getPlayerName(tournament, activeMatch.player1Id)} vs ${this.getPlayerName(tournament, activeMatch.player2Id)}` : '待選擇',
-                pill: tournament.completed ? 'Finished' : 'Active'
-            }
+            { label: '參賽人數', value: `${tournament.players.length} 人`, tone: 'chip-neutral' },
+            { label: '勝利門檻', value: `${tournament.settings.pointsToWin} 分`, tone: 'chip-rule' }
         ];
 
         return summaryItems.map((item) => `
-            <article class="summary-card">
-                <span class="summary-label">${item.label}</span>
-                <strong class="summary-value">${this.escapeHtml(item.value)}</strong>
-                ${item.pill ? `<span class="summary-pill ${item.pill === 'Finished' ? 'pill-completed' : 'pill-active'}">${item.pill}</span>` : ''}
-            </article>
+            <span class="arena-meta-chip ${item.tone}">${item.label}:${this.escapeHtml(item.value)}</span>
         `).join('');
     }
 
@@ -853,9 +1204,8 @@ class BeybladeTournamentApp {
             wins: 0,
             losses: 0,
             byes: 0,
-            pointsFor: 0,
-            pointsAgainst: 0,
-            scoreDiff: 0,
+            pendingMatches: 0,
+            nextMatchText: '待定',
             eliminationRound: null,
             latestRoundSeen: 0,
             placementScore: 0,
@@ -877,6 +1227,14 @@ class BeybladeTournamentApp {
                 }
 
                 if (match.status !== 'completed' || !match.winnerId) {
+                    if (match.player1Id) {
+                        const participant1 = rowMap.get(match.player1Id);
+                        if (participant1) participant1.pendingMatches += 1;
+                    }
+                    if (match.player2Id) {
+                        const participant2 = rowMap.get(match.player2Id);
+                        if (participant2) participant2.pendingMatches += 1;
+                    }
                     return;
                 }
 
@@ -884,6 +1242,7 @@ class BeybladeTournamentApp {
                     const byeRow = rowMap.get(match.winnerId);
                     if (byeRow) {
                         byeRow.byes += 1;
+                        byeRow.wins += 1;
                         byeRow.latestRoundSeen = Math.max(byeRow.latestRoundSeen, round.roundNumber);
                     }
                     return;
@@ -892,11 +1251,6 @@ class BeybladeTournamentApp {
                 if (!row1 || !row2) {
                     return;
                 }
-
-                row1.pointsFor += match.score1;
-                row1.pointsAgainst += match.score2;
-                row2.pointsFor += match.score2;
-                row2.pointsAgainst += match.score1;
 
                 const loserId = match.player1Id === match.winnerId ? match.player2Id : match.player1Id;
                 const winnerRow = rowMap.get(match.winnerId);
@@ -913,12 +1267,23 @@ class BeybladeTournamentApp {
         });
 
         rows.forEach((row) => {
-            row.scoreDiff = row.pointsFor - row.pointsAgainst;
-
             const isChampion = tournament.winnerId === row.id;
             const isRunnerUp = runnerUpId === row.id;
             const isEliminated = row.eliminationRound !== null;
             const progressRound = row.latestRoundSeen || 1;
+            const nextMatch = this.findUpcomingMatchForPlayer(tournament, row.id);
+
+            if (nextMatch) {
+                row.nextMatchText = `${tournament.bracket[nextMatch.roundNumber - 1]?.roundLabel || `第${nextMatch.roundNumber}輪`} / 對戰${nextMatch.matchNumber}`;
+            } else if (isChampion) {
+                row.nextMatchText = '已奪冠';
+            } else if (isEliminated) {
+                row.nextMatchText = '賽程結束';
+            } else if (tournament.completed) {
+                row.nextMatchText = '賽程結束';
+            } else {
+                row.nextMatchText = '等待上一輪結果';
+            }
 
             if (isChampion) {
                 row.statusText = '冠軍';
@@ -928,24 +1293,24 @@ class BeybladeTournamentApp {
                 row.placementScore = 90000;
             } else if (tournament.completed && isEliminated) {
                 row.statusText = `止步${tournament.bracket[row.eliminationRound - 1]?.roundLabel || `第 ${row.eliminationRound} 輪`}`;
-                row.placementScore = (row.eliminationRound * 1000) + (row.wins * 100) + row.scoreDiff;
+                row.placementScore = (row.eliminationRound * 1000) + (row.wins * 100) - row.losses;
             } else if (!tournament.completed && !isEliminated) {
                 row.statusText = progressRound >= tournament.currentRound ? '晉級中' : '待出賽';
-                row.placementScore = 80000 + (row.wins * 100) + row.scoreDiff;
+                row.placementScore = 80000 + (row.wins * 100) - row.losses;
             } else if (!tournament.completed && isEliminated) {
                 row.statusText = `止步${tournament.bracket[row.eliminationRound - 1]?.roundLabel || `第 ${row.eliminationRound} 輪`}`;
-                row.placementScore = (row.eliminationRound * 1000) + (row.wins * 100) + row.scoreDiff;
+                row.placementScore = (row.eliminationRound * 1000) + (row.wins * 100) - row.losses;
             } else {
                 row.statusText = '未出賽';
-                row.placementScore = row.wins * 100 + row.scoreDiff;
+                row.placementScore = row.wins * 100 - row.losses;
             }
         });
 
         rows.sort((left, right) => {
             if (right.placementScore !== left.placementScore) return right.placementScore - left.placementScore;
             if (right.wins !== left.wins) return right.wins - left.wins;
-            if (right.scoreDiff !== left.scoreDiff) return right.scoreDiff - left.scoreDiff;
-            if (right.pointsFor !== left.pointsFor) return right.pointsFor - left.pointsFor;
+            if (left.losses !== right.losses) return left.losses - right.losses;
+            if (left.pendingMatches !== right.pendingMatches) return left.pendingMatches - right.pendingMatches;
             return left.seed - right.seed;
         });
 
@@ -959,8 +1324,8 @@ class BeybladeTournamentApp {
         const standings = this.deriveStandings(tournament);
         this.standingsTitle.textContent = tournament.completed ? '最終排名' : '即時戰績表';
         this.standingsNote.textContent = tournament.completed
-            ? '單淘汰賽最終排名依晉級輪次、勝場、得失分與種子序排序；未設季殿戰時，同輪止步者以統計數據分先後。'
-            : '比賽進行中，排名會依目前晉級輪次、勝場、得失分與種子序即時更新。';
+            ? '最終排名會顯示每位玩家的勝場、尚未進行場次（若有）與淘汰結果。'
+            : '即時戰績會顯示每位玩家目前幾勝、下一場是否待賽與是否淘汰。';
 
         this.standingsBody.innerHTML = standings.map((row) => `
             <tr>
@@ -968,18 +1333,30 @@ class BeybladeTournamentApp {
                 <td>
                     <div class="player-cell">
                         <strong>${this.escapeHtml(row.name)}</strong>
-                        <span>Seed ${row.seed}</span>
+                        <span>選手 ${row.seed}</span>
                     </div>
                 </td>
                 <td><span class="standings-status ${this.getStandingsStatusClass(row.statusText)}">${this.escapeHtml(row.statusText)}</span></td>
                 <td>${row.wins}</td>
                 <td>${row.losses}</td>
                 <td>${row.byes}</td>
-                <td>${row.pointsFor}</td>
-                <td>${row.pointsAgainst}</td>
-                <td>${row.scoreDiff > 0 ? '+' : ''}${row.scoreDiff}</td>
+                <td>${row.pendingMatches}</td>
+                <td>${this.escapeHtml(row.nextMatchText)}</td>
             </tr>
         `).join('');
+    }
+
+    findUpcomingMatchForPlayer(tournament, playerId) {
+        for (const round of tournament.bracket) {
+            const target = round.matches.find((match) => {
+                const isParticipant = match.player1Id === playerId || match.player2Id === playerId;
+                return isParticipant && match.status !== 'completed';
+            });
+            if (target) {
+                return target;
+            }
+        }
+        return null;
     }
 
     getStandingsStatusClass(statusText) {
@@ -1004,7 +1381,7 @@ class BeybladeTournamentApp {
     renderMatchCard(tournament, match) {
         const isSelected = match.id === this.selectedMatchId;
         const classes = ['match-card'];
-        if (match.status !== 'waiting') classes.push('selectable');
+        classes.push('selectable');
         if (isSelected) classes.push('active-match');
         if (match.status === 'completed') classes.push('completed-match');
         if (match.status === 'waiting') classes.push('waiting-match');
@@ -1016,6 +1393,17 @@ class BeybladeTournamentApp {
             waiting: 'pill-waiting'
         };
 
+        const statusTextMap = {
+            active: '進行中',
+            pending: '未對戰',
+            completed: '已完成',
+            waiting: '等待對手'
+        };
+
+        const scoreText = match.player1Id && match.player2Id
+            ? `${match.score1} : ${match.score2}`
+            : '-';
+
         const players = [
             this.renderMatchPlayerLine(tournament, match.player1Id, match.score1, match.winnerId),
             this.renderMatchPlayerLine(tournament, match.player2Id, match.score2, match.winnerId)
@@ -1025,11 +1413,11 @@ class BeybladeTournamentApp {
             <article class="${classes.join(' ')}" data-action="match-select" data-id="${match.id}">
                 <div class="match-card-head">
                     <h5 class="round-match-title">對戰 ${match.matchNumber}</h5>
-                    <span class="match-status-pill ${statusClassMap[match.status]}">${match.status}</span>
+                    <span class="match-status-pill ${statusClassMap[match.status]}">${statusTextMap[match.status]}</span>
                 </div>
                 <div class="round-match-meta">
                     <span class="match-meta">先 ${match.targetPoints} 分</span>
-                    <span class="match-meta">${match.resultType === 'bye' ? '輪空晉級' : '逐分記錄'}</span>
+                    <span class="match-meta">比分 ${scoreText}</span>
                 </div>
                 <div class="round-match-players">
                     ${players}
@@ -1047,7 +1435,7 @@ class BeybladeTournamentApp {
         return `
             <div class="${classes.join(' ')}">
                 <span class="player-name">${this.escapeHtml(player?.name || '待定')}</span>
-                <span class="player-seed">${player ? `Seed ${player.seed} / ${score} 分` : '-'}</span>
+                <span class="player-seed">${player ? `選手 ${player.seed} / ${score} 分` : '-'}</span>
             </div>
         `;
     }
@@ -1060,15 +1448,17 @@ class BeybladeTournamentApp {
             return;
         }
 
-        this.matchTitle.textContent = `${this.getPlayerName(tournament, match.player1Id)} vs ${this.getPlayerName(tournament, match.player2Id)}`;
+        this.matchTitle.textContent = `${this.getMatchParticipantName(tournament, match, 'player1')} vs ${this.getMatchParticipantName(tournament, match, 'player2')}`;
         this.matchRecorder.className = 'match-recorder';
         this.matchRecorder.innerHTML = `
             <div class="recorder-shell">
                 <div class="match-meta">
-                    <span class="match-status-pill ${match.status === 'completed' ? 'pill-completed' : 'pill-active'}">${match.status}</span>
+                    <span class="match-status-pill ${match.status === 'completed' ? 'pill-completed' : 'pill-active'}">${match.status === 'completed' ? '已完成' : (match.status === 'active' ? '進行中' : '未對戰')}</span>
                     <span class="match-meta">${this.escapeHtml(tournament.bracket[match.roundNumber - 1].roundLabel)} / 對戰 ${match.matchNumber}</span>
                     <span class="match-meta">勝利門檻 ${match.targetPoints} 分</span>
                 </div>
+
+                ${match.status === 'completed' ? `<div class="recorder-complete-notice">此對局已完成，最終比分 ${match.score1} : ${match.score2}</div>` : ''}
 
                 <div class="recorder-scoreboard">
                     ${this.renderScorePanel(tournament, match, 'player1')}
@@ -1083,7 +1473,7 @@ class BeybladeTournamentApp {
                         </div>
                     </div>
                     <div class="match-log">
-                        ${match.log.length ? match.log.map((entry) => this.renderTimelineItem(entry)).join('') : '<div class="empty-note">尚未記錄分數。</div>'}
+                        ${match.log.length ? match.log.map((entry) => this.renderTimelineItem(entry)).join('') : '<div class="empty-note">此對戰尚未有得分紀錄。</div>'}
                     </div>
                 </div>
             </div>
@@ -1101,8 +1491,8 @@ class BeybladeTournamentApp {
             <div class="score-panel ${panelClass}">
                 <div class="match-card-head">
                     <div>
-                        <p class="match-player-name">${this.escapeHtml(player?.name || '待定')}</p>
-                        <span class="score-tag">${player ? `Seed ${player.seed}` : '等待對手'}</span>
+                        <p class="match-player-name">${this.escapeHtml(this.getMatchParticipantName(tournament, match, slot))}</p>
+                        <span class="score-tag">${player ? `選手 ${player.seed}` : '等待對手'}</span>
                     </div>
                     <strong class="match-score-value">${scoreValue}</strong>
                 </div>
@@ -1160,6 +1550,7 @@ class BeybladeTournamentApp {
             const winnerName = this.getPlayerName(tournament, match.winnerId);
             const loserId = match.player1Id === match.winnerId ? match.player2Id : match.player1Id;
             const loserName = this.getPlayerName(tournament, loserId);
+            const roundLabel = tournament.bracket[match.roundNumber - 1]?.roundLabel || `第 ${match.roundNumber} 輪`;
             return `
                 <article class="completed-card">
                     <div class="completed-row">
@@ -1167,9 +1558,8 @@ class BeybladeTournamentApp {
                         <span class="history-badge badge-finished">Done</span>
                     </div>
                     <div class="history-meta-row">
-                        <span class="history-meta">${this.escapeHtml(tournament.bracket[match.roundNumber - 1].roundLabel)}</span>
+                        <span class="history-meta">第 ${match.roundNumber} 輪（${this.escapeHtml(roundLabel)}）</span>
                         <span class="history-meta">${match.score1} : ${match.score2}</span>
-                        <span class="history-meta">${match.resultType === 'manual' ? '手動判定' : this.scoreTypes[match.resultType]?.label || '完成對戰'}</span>
                     </div>
                 </article>
             `;

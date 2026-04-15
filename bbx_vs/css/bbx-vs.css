@@ -109,7 +109,7 @@ body {
 
 .vs-header {
     position: relative;
-    z-index: 1;
+    z-index: 120;
     padding: 1rem 0 1.5rem;
     background: linear-gradient(180deg, rgba(4, 10, 19, 0.95), rgba(4, 10, 19, 0.55));
     border-bottom: 1px solid rgba(84, 211, 255, 0.14);
@@ -152,6 +152,7 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     gap: 1.25rem;
+    position: relative;
 }
 
 .header-title-block {
@@ -183,7 +184,7 @@ body {
 
 .header-title-block h1 {
     margin: 0;
-    font-size: clamp(2rem, 3.4vw, 3.4rem);
+    font-size: clamp(1.55rem, 2.45vw, 2.45rem);
     letter-spacing: 0.04em;
     cursor: pointer;
 }
@@ -199,6 +200,91 @@ body {
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: 0.75rem;
+}
+
+.header-menu {
+    position: relative;
+    display: none;
+    margin-left: auto;
+    z-index: 90;
+}
+
+.menu-btn {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 14px;
+    border: 1px solid rgba(115, 198, 255, 0.22);
+    background: rgba(7, 16, 31, 0.92);
+    display: grid;
+    gap: 0.25rem;
+    align-content: center;
+    justify-items: center;
+    cursor: pointer;
+}
+
+.menu-btn-line {
+    width: 1.2rem;
+    height: 2px;
+    background: var(--text-main);
+    border-radius: 999px;
+}
+
+.menu-panel {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    right: 0;
+    min-width: 10.5rem;
+    padding: 0.55rem;
+    border-radius: 14px;
+    background: rgba(7, 16, 31, 0.96);
+    border: 1px solid rgba(84, 211, 255, 0.25);
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    display: grid;
+    gap: 0.45rem;
+}
+
+.menu-panel[hidden] {
+    display: none;
+}
+
+.menu-item {
+    border: 1px solid rgba(115, 198, 255, 0.18);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-main);
+    padding: 0.6rem 0.72rem;
+    text-align: left;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    border-color: rgba(84, 211, 255, 0.48);
+    background: rgba(84, 211, 255, 0.08);
+}
+
+.vs-header.menu-collapsed .header-nav {
+    display: none;
+}
+
+.vs-header.menu-collapsed .header-menu {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.vs-header.menu-collapsed .header-content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    column-gap: 0.9rem;
+}
+
+.vs-header.menu-collapsed .header-title-block {
+    max-width: 100%;
 }
 
 .nav-btn,
@@ -260,7 +346,7 @@ body {
 
 .vs-main {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     padding: 1.75rem 0 3rem;
 }
 
@@ -295,6 +381,33 @@ body {
 .page-header h2 {
     margin: 0;
     font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+}
+
+.arena-title-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+}
+
+.arena-round-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.28rem 0.72rem;
+    border-radius: 999px;
+    background: rgba(84, 211, 255, 0.14);
+    border: 1px solid rgba(84, 211, 255, 0.35);
+    color: var(--cyan);
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.arena-round-badge.is-finished {
+    background: rgba(255, 193, 77, 0.16);
+    border-color: rgba(255, 193, 77, 0.38);
+    color: var(--gold);
 }
 
 .page-header p {
@@ -632,10 +745,72 @@ body {
 }
 
 .arena-summary {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+    margin-bottom: 1.2rem;
+    overflow-x: auto;
+}
+
+.arena-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.34rem 0.76rem;
+    border-radius: 999px;
+    font-size: 0.83rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    border: 1px solid rgba(84, 211, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-main);
+}
+
+.arena-meta-chip.chip-info {
+    background: rgba(84, 211, 255, 0.14);
+    border-color: rgba(84, 211, 255, 0.38);
+    color: var(--cyan);
+}
+
+.arena-meta-chip.chip-neutral {
+    background: rgba(207, 226, 255, 0.12);
+    border-color: rgba(207, 226, 255, 0.3);
+    color: #e4eeff;
+}
+
+.arena-meta-chip.chip-rule {
+    background: rgba(255, 193, 77, 0.14);
+    border-color: rgba(255, 193, 77, 0.35);
+    color: var(--gold);
+}
+
+.arena-tabs {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.9rem;
-    margin-bottom: 1.2rem;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+}
+
+.mobile-tab-btn {
+    border: 1px solid rgba(115, 198, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(7, 16, 31, 0.92);
+    color: var(--text-soft);
+    min-height: 2.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.mobile-tab-btn.is-active {
+    color: #03101e;
+    background: linear-gradient(135deg, rgba(18, 136, 255, 0.95), rgba(84, 211, 255, 0.78));
+    border-color: rgba(84, 211, 255, 0.9);
+}
+
+.arena-tab-panel[hidden] {
+    display: none !important;
 }
 
 .standings-panel {
@@ -731,6 +906,8 @@ body {
 }
 
 .summary-card {
+    flex: 1 1 0;
+    min-width: 0;
     min-height: 6.2rem;
     align-items: flex-start;
     flex-direction: column;
@@ -742,12 +919,12 @@ body {
 }
 
 .arena-layout {
-    grid-template-columns: minmax(18rem, 0.95fr) minmax(0, 1.4fr);
-    align-items: start;
+    grid-template-columns: 1fr;
+    align-items: stretch;
 }
 
 .bracket-rounds {
-    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .round-column {
@@ -793,7 +970,23 @@ body {
 
 .match-card.active-match {
     border-color: rgba(84, 211, 255, 0.72);
-    box-shadow: 0 0 0 2px rgba(84, 211, 255, 0.12);
+    box-shadow: 0 0 0 2px rgba(84, 211, 255, 0.18), 0 0 28px rgba(84, 211, 255, 0.28);
+    animation: matchFocusPulse 0.5s ease;
+}
+
+@keyframes matchFocusPulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(84, 211, 255, 0.5), 0 0 0 2px rgba(84, 211, 255, 0.2);
+    }
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 8px rgba(84, 211, 255, 0.14), 0 0 0 3px rgba(84, 211, 255, 0.35);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 2px rgba(84, 211, 255, 0.18), 0 0 28px rgba(84, 211, 255, 0.28);
+    }
 }
 
 .match-card.completed-match {
@@ -848,10 +1041,39 @@ body {
     gap: 1rem;
 }
 
+.recorder-panel.focus-recorder-panel {
+    animation: recorderPanelFocus 0.65s ease;
+}
+
+@keyframes recorderPanelFocus {
+    0% {
+        transform: translateY(18px);
+        box-shadow: 0 0 0 0 rgba(84, 211, 255, 0.05);
+    }
+    45% {
+        transform: translateY(0);
+        box-shadow: 0 0 0 10px rgba(84, 211, 255, 0.1), 0 18px 42px rgba(0, 0, 0, 0.24);
+    }
+    100% {
+        transform: translateY(0);
+        box-shadow: var(--shadow-lg);
+    }
+}
+
 .match-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+}
+
+.recorder-complete-notice {
+    padding: 0.75rem 0.9rem;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 193, 77, 0.45);
+    background: linear-gradient(135deg, rgba(255, 193, 77, 0.2), rgba(255, 145, 110, 0.12));
+    color: #ffe0a6;
+    font-weight: 800;
+    letter-spacing: 0.02em;
 }
 
 .recorder-scoreboard {
@@ -896,11 +1118,13 @@ body {
 }
 
 .player-score-actions {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
 }
 
 .score-action-btn {
-    flex: 1 1 10rem;
+    width: 100%;
     border-radius: 16px;
     padding: 0.8rem 0.95rem;
     text-align: left;
@@ -931,9 +1155,13 @@ body {
 }
 
 .match-log {
-    max-height: 19rem;
-    overflow: auto;
+    overflow: visible;
     padding-right: 0.25rem;
+}
+
+.modal-match-log {
+    max-height: 24rem;
+    overflow: auto;
 }
 
 .timeline-item {
@@ -981,11 +1209,106 @@ body {
     color: var(--text-soft);
 }
 
+.match-detail-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1300;
+}
+
+.match-detail-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 8, 16, 0.72);
+    backdrop-filter: blur(6px);
+}
+
+.match-detail-dialog {
+    position: relative;
+    width: min(760px, calc(100% - 24px));
+    margin: 6vh auto;
+    padding: 1.2rem;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(10, 20, 38, 0.97), rgba(7, 16, 31, 0.98));
+    border: 1px solid rgba(84, 211, 255, 0.22);
+    box-shadow: var(--shadow-lg);
+    z-index: 1;
+}
+
+.match-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.match-detail-close {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 1px solid rgba(115, 198, 255, 0.22);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.match-detail-content {
+    display: grid;
+    gap: 1rem;
+}
+
+.next-match-summary {
+    display: grid;
+    gap: 1rem;
+}
+
+.next-match-copy {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 1rem;
+}
+
+.next-match-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.match-detail-summary {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0.8rem;
+    align-items: stretch;
+}
+
+.match-detail-scorecard {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.match-detail-scorecard strong {
+    font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
+    font-size: 2rem;
+}
+
+.match-detail-score-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-soft);
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
 @media (max-width: 1120px) {
     .dashboard-grid,
-    .setup-layout,
-    .arena-layout,
-    .arena-summary {
+    .setup-layout {
         grid-template-columns: 1fr;
     }
 
@@ -998,6 +1321,16 @@ body {
     .header-nav {
         justify-content: flex-start;
     }
+
+    .arena-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1280px) {
+    .bracket-rounds {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 760px) {
@@ -1007,8 +1340,210 @@ body {
         width: min(100% - 20px, 1440px);
     }
 
-    .header-nav {
+    .vs-header {
+        padding: 0.5rem 0 0.75rem;
+    }
+
+    .header-system-bar {
         display: none;
+    }
+
+    .header-title-block {
+        max-width: 100%;
+    }
+
+    .vs-header.menu-collapsed .header-content {
+        align-items: start;
+    }
+
+    .header-kicker {
+        margin-bottom: 0.2rem;
+        font-size: 0.72rem;
+    }
+
+    .header-title-block h1 {
+        font-size: clamp(1.9rem, 9vw, 2.6rem);
+        line-height: 1.14;
+        letter-spacing: 0.02em;
+    }
+
+    .header-subtitle {
+        margin-top: 0.45rem;
+        font-size: 0.9rem;
+        line-height: 1.35;
+    }
+
+    .vs-main {
+        padding-top: 1rem;
+    }
+
+    .page-header {
+        margin-bottom: 0.8rem;
+    }
+
+    .page-header h2 {
+        font-size: clamp(1.5rem, 7.2vw, 2rem);
+    }
+
+    .arena-tabs {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.55rem;
+        margin-bottom: 0.95rem;
+        position: sticky;
+        top: 8px;
+        z-index: 5;
+    }
+
+    .arena-summary {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.6rem;
+        margin-bottom: 0.7rem;
+        overflow-x: visible;
+    }
+
+    .arena-meta-chip {
+        justify-content: flex-start;
+        width: 100%;
+        min-width: 0;
+        font-size: 0.74rem;
+        padding: 0.34rem 0.56rem;
+    }
+
+    .summary-card {
+        min-width: 0;
+        min-height: auto;
+        padding: 0.7rem 0.75rem;
+    }
+
+    .summary-label {
+        font-size: 0.76rem;
+    }
+
+    .summary-value {
+        margin-top: 0.3rem;
+        font-size: 1.2rem;
+    }
+
+    .summary-pill {
+        margin-top: 0.32rem;
+        padding: 0.25rem 0.55rem;
+        font-size: 0.68rem;
+    }
+
+    .arena-layout {
+        display: block;
+    }
+
+    .recorder-panel {
+        margin-bottom: 0;
+    }
+
+    .recorder-header {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+
+    .recorder-header .panel-kicker {
+        font-size: 0.68rem;
+    }
+
+    .recorder-header h3 {
+        font-size: 1.02rem;
+    }
+
+    .match-log {
+        overflow: visible;
+    }
+
+    .recorder-scoreboard {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.6rem;
+    }
+
+    .score-panel {
+        padding: 0.75rem;
+        gap: 0.6rem;
+    }
+
+    .match-player-name {
+        font-size: 0.96rem;
+    }
+
+    .match-score-value {
+        font-size: 2rem;
+    }
+
+    .score-pill-row {
+        gap: 0.35rem;
+    }
+
+    .score-pill {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.72rem;
+    }
+
+    .player-score-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.45rem;
+    }
+
+    .score-action-btn {
+        min-height: 2.5rem;
+        padding: 0.55rem 0.5rem;
+        border-radius: 12px;
+        font-size: 0.76rem;
+        line-height: 1.2;
+    }
+
+    .score-action-btn small {
+        display: none;
+    }
+
+    .match-detail-dialog {
+        margin: 3vh auto;
+        padding: 1rem;
+    }
+
+    .next-match-actions {
+        flex-direction: column;
+    }
+
+    .match-detail-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .match-detail-score-separator {
+        min-height: 1.6rem;
+    }
+
+    .score-actions {
+        margin-top: 0.1rem;
+    }
+
+    .score-actions .btn {
+        width: 100%;
+        padding: 0.55rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .recorder-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.35rem;
+        margin-left: auto;
+    }
+
+    .recorder-actions .btn {
+        width: 100%;
+        min-width: 0;
+        padding: 0.45rem 0.4rem;
+        font-size: 0.72rem;
+        line-height: 1.15;
     }
 
     .panel {
@@ -1029,9 +1564,7 @@ body {
 
     .recorder-scoreboard,
     .history-actions,
-    .setup-actions,
-    .player-score-actions,
-    .recorder-actions {
+    .setup-actions {
         flex-direction: column;
     }
 
