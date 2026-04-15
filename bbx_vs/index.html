@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戰鬥陀螺對戰系統</title>
+    <meta name="description" content="戰鬥陀螺賽事建立、單淘汰賽程追蹤與單場逐分記錄系統">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="css/bbx-vs.css">
+</head>
+<body>
+    <div id="app">
+        <div class="arena-ambient" aria-hidden="true">
+            <span class="energy-disc disc-left"></span>
+            <span class="energy-disc disc-right"></span>
+            <span class="energy-grid"></span>
+        </div>
+
+        <header class="vs-header">
+            <div class="header-system-bar" aria-hidden="true">
+                <span class="system-chip">BEY STADIUM CONTROL</span>
+                <span class="system-divider"></span>
+                <span class="system-readout">ELIMINATION MODE</span>
+                <span class="system-divider"></span>
+                <span class="system-readout">MATCH LOGGING ONLINE</span>
+            </div>
+
+            <div class="header-content">
+                <div class="header-title-block">
+                    <p class="header-kicker">Battle Operations Suite</p>
+                    <h1 id="home-title">戰鬥陀螺對戰系統</h1>
+                    <p class="header-subtitle">預賽單淘汰追蹤，著重單場逐分記錄與規則自訂。</p>
+                </div>
+
+                <nav class="header-nav">
+                    <button id="new-tournament-btn" class="nav-btn">
+                        <span>建立賽事</span>
+                    </button>
+                    <button id="history-btn" class="nav-btn">
+                        <span>歷史賽事</span>
+                    </button>
+                    <button id="export-btn" class="nav-btn">
+                        <span>匯出</span>
+                    </button>
+                    <button id="import-btn" class="nav-btn">
+                        <span>匯入</span>
+                    </button>
+                    <input type="file" id="import-file" accept=".json" hidden>
+                </nav>
+            </div>
+        </header>
+
+        <main class="vs-main">
+            <section id="dashboard-page" class="page active">
+                <div class="page-header compact-left">
+                    <div>
+                        <p class="section-kicker">Control Hub</p>
+                        <h2>賽事總覽</h2>
+                        <p>管理目前賽事、查看歷史紀錄，並快速進入記分介面。</p>
+                    </div>
+                    <button id="dashboard-create-btn" class="btn btn-primary btn-large">建立新賽事</button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <section class="panel current-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="panel-kicker">Current Tournament</p>
+                                <h3>目前進行中</h3>
+                            </div>
+                        </div>
+                        <div id="current-tournament-card" class="status-card status-idle">
+                            <div class="status-visual">
+                                <span class="status-orb"></span>
+                            </div>
+                            <div class="status-copy">
+                                <p class="status-title">尚未建立賽事</p>
+                                <p class="status-desc">建立賽事後，系統會自動產生單淘汰賽程並持續保存記錄。</p>
+                            </div>
+                            <div class="status-actions">
+                                <button class="btn btn-primary" data-action="create">建立賽事</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel metrics-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="panel-kicker">Live Metrics</p>
+                                <h3>系統狀態</h3>
+                            </div>
+                        </div>
+                        <div class="metrics-grid">
+                            <article class="metric-card">
+                                <span class="metric-label">賽事數量</span>
+                                <strong id="metric-total" class="metric-value">0</strong>
+                            </article>
+                            <article class="metric-card">
+                                <span class="metric-label">進行中</span>
+                                <strong id="metric-active" class="metric-value">0</strong>
+                            </article>
+                            <article class="metric-card">
+                                <span class="metric-label">已完成</span>
+                                <strong id="metric-completed" class="metric-value">0</strong>
+                            </article>
+                        </div>
+                        <div class="system-note">
+                            <span class="system-dot"></span>
+                            複賽循環對戰模組先保留，這一版集中在預賽與單場計分。
+                        </div>
+                    </section>
+                </div>
+
+                <section class="panel history-panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="panel-kicker">Tournament Archive</p>
+                            <h3>歷史賽事</h3>
+                        </div>
+                    </div>
+                    <div id="history-list" class="history-list"></div>
+                </section>
+            </section>
+
+            <section id="setup-page" class="page">
+                <div class="page-header compact-left">
+                    <div>
+                        <p class="section-kicker">Create Tournament</p>
+                        <h2>賽事建立</h2>
+                        <p>輸入參賽者與得分規則，系統會生成預賽單淘汰賽程。</p>
+                    </div>
+                </div>
+
+                <div class="setup-layout">
+                    <section class="panel setup-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="panel-kicker">Entry Feed</p>
+                                <h3>基本資料</h3>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <label class="field-block field-wide">
+                                <span class="field-label">賽事名稱</span>
+                                <input id="tournament-name" class="field-input" type="text" maxlength="60" placeholder="例如：BBX 春季挑戰賽">
+                            </label>
+
+                            <label class="field-block field-wide">
+                                <span class="field-label">參賽者名單</span>
+                                <textarea id="players-input" class="field-textarea" rows="12" placeholder="每行一位參賽者&#10;赤龍&#10;白狼&#10;黑獅&#10;藍鷹"></textarea>
+                                <span class="field-helper">至少 2 人。名單順序會視為種子排序基準。</span>
+                            </label>
+
+                            <label class="field-block">
+                                <span class="field-label">先取得幾分獲勝</span>
+                                <input id="points-to-win" class="field-input" type="number" min="1" max="15" value="4">
+                            </label>
+
+                            <label class="field-block">
+                                <span class="field-label">旋轉勝利分數</span>
+                                <input id="score-spin" class="field-input" type="number" min="1" max="9" value="1">
+                            </label>
+
+                            <label class="field-block">
+                                <span class="field-label">擊飛勝利分數</span>
+                                <input id="score-ring-out" class="field-input" type="number" min="1" max="9" value="2">
+                            </label>
+
+                            <label class="field-block">
+                                <span class="field-label">爆裂勝利分數</span>
+                                <input id="score-burst" class="field-input" type="number" min="1" max="9" value="2">
+                            </label>
+
+                            <label class="field-block">
+                                <span class="field-label">極限勝利分數</span>
+                                <input id="score-xtreme" class="field-input" type="number" min="1" max="9" value="3">
+                            </label>
+                        </div>
+
+                        <div class="setup-actions">
+                            <button id="create-tournament-btn" class="btn btn-primary btn-large">生成賽程</button>
+                        </div>
+                    </section>
+
+                    <aside class="panel preview-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="panel-kicker">Format Preview</p>
+                                <h3>賽制預覽</h3>
+                            </div>
+                        </div>
+
+                        <div class="preview-stack">
+                            <article class="preview-card accent-cyan">
+                                <span class="preview-label">參賽人數</span>
+                                <strong id="preview-player-count" class="preview-value">0</strong>
+                            </article>
+                            <article class="preview-card accent-red">
+                                <span class="preview-label">預估輪數</span>
+                                <strong id="preview-round-count" class="preview-value">0</strong>
+                            </article>
+                            <article class="preview-card accent-gold">
+                                <span class="preview-label">勝利門檻</span>
+                                <strong id="preview-target-points" class="preview-value">4 分</strong>
+                            </article>
+                        </div>
+
+                        <div class="rule-list">
+                            <div class="rule-item">
+                                <span class="rule-name">旋轉勝利</span>
+                                <strong id="preview-score-spin">1 分</strong>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-name">擊飛勝利</span>
+                                <strong id="preview-score-ring-out">2 分</strong>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-name">爆裂勝利</span>
+                                <strong id="preview-score-burst">2 分</strong>
+                            </div>
+                            <div class="rule-item">
+                                <span class="rule-name">極限勝利</span>
+                                <strong id="preview-score-xtreme">3 分</strong>
+                            </div>
+                        </div>
+
+                        <div class="preview-note">
+                            預賽為單淘汰。複賽循環制先不納入此版本的自動流程，但資料結構保留擴充空間。
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section id="arena-page" class="page">
+                <div class="page-header compact-left">
+                    <div>
+                        <p class="section-kicker">Arena Recorder</p>
+                        <h2 id="arena-title">賽事中控台</h2>
+                        <p id="arena-subtitle">選擇對戰並記錄逐分結果。</p>
+                    </div>
+                </div>
+
+                <div class="arena-summary" id="arena-summary"></div>
+
+                <section class="panel standings-panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="panel-kicker">Standings Matrix</p>
+                            <h3 id="standings-title">即時戰績表</h3>
+                        </div>
+                    </div>
+                    <div class="standings-wrap">
+                        <table class="standings-table">
+                            <thead>
+                                <tr>
+                                    <th>排名</th>
+                                    <th>玩家</th>
+                                    <th>狀態</th>
+                                    <th>勝</th>
+                                    <th>敗</th>
+                                    <th>輪空</th>
+                                    <th>得分</th>
+                                    <th>失分</th>
+                                    <th>差值</th>
+                                </tr>
+                            </thead>
+                            <tbody id="standings-body">
+                                <tr>
+                                    <td colspan="9">建立或載入賽事後，這裡會顯示所有玩家的勝敗狀況與排名。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p id="standings-note" class="standings-note">單淘汰賽的排名依晉級輪次、勝場、得失分與種子序排序。</p>
+                </section>
+
+                <div class="arena-layout">
+                    <section class="panel bracket-panel">
+                        <div class="panel-header">
+                            <div>
+                                <p class="panel-kicker">Elimination Tree</p>
+                                <h3>預賽賽程</h3>
+                            </div>
+                        </div>
+                        <div id="bracket-rounds" class="bracket-rounds"></div>
+                    </section>
+
+                    <section class="panel recorder-panel">
+                        <div class="panel-header recorder-header">
+                            <div>
+                                <p class="panel-kicker">Battle Recorder</p>
+                                <h3 id="match-title">尚未選擇對戰</h3>
+                            </div>
+                            <div class="recorder-actions">
+                                <button id="undo-score-btn" class="btn btn-secondary">撤銷上一分</button>
+                                <button id="reset-match-btn" class="btn btn-secondary">重置本場</button>
+                            </div>
+                        </div>
+
+                        <div id="match-recorder" class="match-recorder empty-state">
+                            <p>建立或載入賽事後，請從左側選擇可記錄的對戰。</p>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="panel recent-panel">
+                    <div class="panel-header">
+                        <div>
+                            <p class="panel-kicker">Finished Battles</p>
+                            <h3>已完成對戰</h3>
+                        </div>
+                    </div>
+                    <div id="completed-matches" class="completed-matches"></div>
+                </section>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/bbx-vs.js"></script>
+</body>
+</html>
