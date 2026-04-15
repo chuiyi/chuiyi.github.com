@@ -7,6 +7,9 @@ class SwissTournamentApp {
     constructor() {
         this.tournament = new SwissTournament(); // 目前進行中的比賽（進入某場賽事後設定）
         this.currentPage = 'tournament-history';
+        this.displayModeStorageKey = 'swiss_display_mode';
+        this.arrangementSwapSelection = null;
+        this.historyPlayoffViewerTournament = null;
         this.init();
     }
 
@@ -16,6 +19,7 @@ class SwissTournamentApp {
     init() {
         console.log('瑞士輪比賽系統啟動');
         this.setupEventListeners();
+        this.applySavedDisplayMode();
         this.migrateOldStorage();       // 從舊的 swiss_tournament_current 遷移
         this.loadAllActiveTournaments(); // 載入所有進行中賽事 ID
         this.showPage('tournament-history');
@@ -118,6 +122,13 @@ class SwissTournamentApp {
         if (historyBtn) {
             historyBtn.addEventListener('click', () => {
                 this.showTournamentHistory();
+            });
+        }
+
+        const projectorModeBtn = document.getElementById('projector-mode-btn');
+        if (projectorModeBtn) {
+            projectorModeBtn.addEventListener('click', () => {
+                this.toggleProjectorMode();
             });
         }
 
@@ -254,6 +265,13 @@ class SwissTournamentApp {
             });
         }
 
+        const addPlayerArrangementBtn = document.getElementById('add-player-arrangement');
+        if (addPlayerArrangementBtn) {
+            addPlayerArrangementBtn.addEventListener('click', () => {
+                this.openAddPlayerModal();
+            });
+        }
+
         const confirmPairingsBtn = document.getElementById('confirm-pairings');
         if (confirmPairingsBtn) {
             confirmPairingsBtn.addEventListener('click', () => {
@@ -280,6 +298,62 @@ class SwissTournamentApp {
             clearManualPairingsBtn.addEventListener('click', () => {
                 this.clearManualPairings();
             });
+        }
+
+        const confirmAddPlayerBtn = document.getElementById('confirm-add-player');
+        if (confirmAddPlayerBtn) {
+            confirmAddPlayerBtn.addEventListener('click', () => {
+                this.confirmAddPlayer();
+            });
+        }
+
+        const addPlayerNameInput = document.getElementById('add-player-name');
+        if (addPlayerNameInput) {
+            addPlayerNameInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    this.confirmAddPlayer();
+                }
+            });
+        }
+    }
+
+    applySavedDisplayMode() {
+        let savedMode = null;
+        try {
+            savedMode = localStorage.getItem(this.displayModeStorageKey);
+        } catch (error) {
+            console.warn('讀取顯示模式設定失敗:', error);
+        }
+
+        this.setProjectorMode(savedMode === 'projector', false);
+    }
+
+    toggleProjectorMode() {
+        const enabled = !document.body.classList.contains('projector-mode');
+        this.setProjectorMode(enabled, true);
+        this.showNotification(enabled ? '已切換為投影模式' : '已切換為一般模式', 'info');
+    }
+
+    setProjectorMode(enabled, persist = true) {
+        document.body.classList.toggle('projector-mode', enabled);
+
+        const projectorModeBtn = document.getElementById('projector-mode-btn');
+        if (projectorModeBtn) {
+            const labelSpan = projectorModeBtn.querySelector('span');
+            if (labelSpan) {
+                labelSpan.textContent = enabled ? '一般模式' : '投影模式';
+            }
+            projectorModeBtn.classList.toggle('active', enabled);
+            projectorModeBtn.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+        }
+
+        if (!persist) return;
+
+        try {
+            localStorage.setItem(this.displayModeStorageKey, enabled ? 'projector' : 'default');
+        } catch (error) {
+            console.warn('儲存顯示模式設定失敗:', error);
         }
     }
 
@@ -598,7 +672,7 @@ class SwissTournamentApp {
         const roundTitle = document.getElementById('round-title');
         
         if (roundTitle) {
-            roundTitle.textContent = `Round ${this.tournament.currentRound} 配對`;
+            roundTitle.textContent = `第 ${this.tournament.currentRound} 輪配對`;
         }
         
         // 更新摘要統計
@@ -653,14 +727,14 @@ class SwissTournamentApp {
         const byeMatches = pairings.filter(p => p.player2 === null);
         
         // 先顯示一般對戰
-        regularMatches.forEach(pairing => {
-            const matchRow = this.createMatchRow(pairing);
+        regularMatches.forEach((pairing, index) => {
+            const matchRow = this.createMatchRow(pairing, index + 1);
             listContent.appendChild(matchRow);
         });
         
         // 再顯示BYE對戰
         byeMatches.forEach(pairing => {
-            const matchRow = this.createMatchRow(pairing);
+            const matchRow = this.createMatchRow(pairing, null);
             listContent.appendChild(matchRow);
         });
     }
@@ -668,10 +742,11 @@ class SwissTournamentApp {
     /**
      * 創建比賽行
      */
-    createMatchRow(pairing) {
+    createMatchRow(pairing, displayNumber = null) {
         const row = document.createElement('div');
         row.className = `match-row ${pairing.completed ? 'completed' : 'pending'} ${pairing.corrected ? 'corrected' : ''}`;
         row.dataset.matchId = pairing.id;
+        const visibleNumber = pairing.player2 === null ? 'BYE' : (displayNumber ?? pairing.id);
 
         const showRecord = this.tournament.currentRound > 1;
 
@@ -680,7 +755,7 @@ class SwissTournamentApp {
             const p1Record = showRecord ? this.getPlayerRecordBadge(pairing.player1.id) : '';
             row.innerHTML = `
                 <div class="match-col-number">
-                    <span class="match-number">${pairing.id}</span>
+                    <span class="match-number">${visibleNumber}</span>
                     ${pairing.corrected ? '<span class="correction-badge">已修正</span>' : ''}
                 </div>
                 <div class="match-col-players">
@@ -699,7 +774,7 @@ class SwissTournamentApp {
             
             row.innerHTML = `
                 <div class="match-col-number">
-                    <span class="match-number">${pairing.id}</span>
+                    <span class="match-number">${visibleNumber}</span>
                     ${pairing.corrected ? '<span class="correction-badge">已修正</span>' : ''}
                 </div>
                 <div class="match-col-players">
@@ -721,8 +796,8 @@ class SwissTournamentApp {
         if (!player || !player.results || player.results.length === 0) return '';
         const wins = player.results.filter(r => r.resultType === 'win' || r.resultType === 'bye').length;
         const losses = player.results.filter(r => r.resultType === 'loss').length;
-        const draws = player.results.filter(r => r.resultType === 'draw').length;
-        const text = draws > 0 ? `${wins}勝${losses}敗${draws}平` : `${wins}勝${losses}敗`;
+        const doubleLosses = player.results.filter(r => r.resultType === 'double_loss').length;
+        const text = `${wins}/${losses}/${doubleLosses}`;
         return ` <span class="player-record-badge">${text}</span>`;
     }
 
@@ -1727,8 +1802,7 @@ class SwissTournamentApp {
                         </span>
                         <span class="players-count">${tournament.players.length} 位選手</span>
                         <span class="rounds-info">${tournament.stats.completedRounds}/${tournament.totalRounds} 輪</span>
-                        ${tournament.champion ? 
-                          `<span class="champion">冠軍: ${this.escapeHtml(tournament.champion.name)}</span>` : ''}
+                        <span class="history-playoff-summary">${this.getTournamentPlayoffSummary(tournament)}</span>
                         <span class="date">${new Date(tournament.endTime || tournament.startTime).toLocaleString('zh-TW')}</span>
                     </div>
                 </div>
@@ -1750,6 +1824,17 @@ class SwissTournamentApp {
         `).join('');
 
         listContainer.innerHTML = historyHtml;
+    }
+
+    getTournamentPlayoffSummary(tournament) {
+        const advanceCount = tournament.playoff?.advanceCount || tournament.settings?.playoffAdvanceCount || null;
+        const enabled = !!(tournament.playoff?.enabled || tournament.settings?.enablePlayoff || advanceCount);
+
+        if (!enabled) {
+            return '無複賽';
+        }
+
+        return advanceCount ? `有複賽 · 取 ${advanceCount} 強` : '有複賽';
     }
 
     /**
@@ -1909,8 +1994,10 @@ class SwissTournamentApp {
             console.log('模態窗口已添加到 body');
             
             // 確保模態窗口立即顯示
+            this.historyPlayoffViewerTournament = tournament;
             setTimeout(() => {
                 modal.classList.add('show');
+                this.renderHistoryPlayoffViewer(tournament);
                 console.log('模態窗口顯示類別已添加');
             }, 10);
             
@@ -2171,39 +2258,278 @@ class SwissTournamentApp {
         }
 
         const playoffTitle = playoff.isFinished ? '複賽結果（已完成）' : '複賽結果（進行中）';
-        const championLine = playoff.champion ? `<p class="playoff-champion-line">冠軍：${this.escapeHtml(playoff.champion.name)}</p>` : '';
+        const playoffSummary = this.getTournamentPlayoffSummary(tournament);
 
         return `
-            <div class="rounds-section playoff-results-section">
-                <h4>${playoffTitle}</h4>
-                ${championLine}
-                <div class="rounds-container">
-                    ${playoff.rounds.map((round, roundIndex) => `
-                        <div class="round-result">
-                            <h5>${roundIndex === playoff.totalRounds - 1 ? '決賽' : `複賽第 ${round.round} 輪`}</h5>
-                            <div class="round-matches">
-                                ${(round.matches || []).map(match => {
-                                    const p1 = match.player1 ? this.escapeHtml(match.player1.name) : '待定';
-                                    const p2 = match.player2 ? this.escapeHtml(match.player2.name) : '待定';
-
-                                    if (match.isBye) {
-                                        const winner = match.player1 ? this.escapeHtml(match.player1.name) : this.escapeHtml(match.player2?.name || '待定');
-                                        return `<div class="match-result bye">${winner} BYE 自動晉級</div>`;
-                                    }
-
-                                    if (match.completed) {
-                                        const winnerName = match.player1?.id === match.winner ? p1 : p2;
-                                        return `<div class="match-result">${winnerName} 勝 ${winnerName === p1 ? p2 : p1}</div>`;
-                                    }
-
-                                    return `<div class="match-result">${p1} vs ${p2} (未完成)</div>`;
-                                }).join('')}
-                            </div>
+            <div class="rounds-section playoff-results-section" data-view="bracket">
+                <div class="playoff-results-header">
+                    <div class="playoff-results-heading">
+                        <h4>${playoffTitle}</h4>
+                        <div class="playoff-results-meta">
+                            <span class="playoff-meta-chip">${playoffSummary}</span>
+                            <span class="playoff-meta-chip">單淘汰</span>
+                            <span class="playoff-meta-chip">${playoff.isFinished ? '已完成' : `進行至第 ${playoff.currentRound || 1} 輪`}</span>
                         </div>
-                    `).join('')}
+                    </div>
+                    <div class="playoff-view-toggle">
+                        <button type="button" class="btn btn-secondary active" data-view="bracket" onclick="app.toggleHistoryPlayoffView('bracket', this)">樹狀圖</button>
+                        <button type="button" class="btn btn-secondary" data-view="list" onclick="app.toggleHistoryPlayoffView('list', this)">列表</button>
+                    </div>
+                </div>
+                <div class="history-playoff-panel history-playoff-bracket" data-view="bracket">
+                    ${this.renderHistoryPlayoffBracket(playoff, tournament)}
+                </div>
+                <div class="history-playoff-panel history-playoff-list" data-view="list" hidden>
+                    <div class="rounds-container playoff-history-rounds">
+                        ${playoff.rounds.map((round, roundIndex) => `
+                            <div class="round-result playoff-round-result compact">
+                                <h5>${this.getPlayoffRoundLabel(round, roundIndex, playoff.totalRounds)}</h5>
+                                <div class="round-matches compact">
+                                    ${(round.matches || []).map(match => `<div class="match-result${match.isBye ? ' bye' : ''}">${this.getHistoryPlayoffMatchText(match)}</div>`).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
                 </div>
             </div>
         `;
+    }
+
+    getPlayoffRoundLabel(round, roundIndex, totalRounds) {
+        return roundIndex === totalRounds - 1 ? '決賽' : `複賽第 ${round.round} 輪`;
+    }
+
+    getHistoryPlayoffMatchText(match) {
+        const player1Name = match.player1 ? this.escapeHtml(match.player1.name) : '待定';
+        const player2Name = match.player2 ? this.escapeHtml(match.player2.name) : '待定';
+
+        if (match.isBye) {
+            const winner = match.player1 ? this.escapeHtml(match.player1.name) : this.escapeHtml(match.player2?.name || '待定');
+            return `${winner} BYE 自動晉級`;
+        }
+
+        if (match.completed) {
+            const winnerName = match.player1?.id === match.winner ? player1Name : player2Name;
+            const loserName = winnerName === player1Name ? player2Name : player1Name;
+            return `${winnerName} 勝 ${loserName}`;
+        }
+
+        return `${player1Name} vs ${player2Name} (未完成)`;
+    }
+
+    getHistoryPlayoffViewerId(tournament) {
+        return `history-playoff-bracket-viewer-${tournament.tournamentId || 'active'}`;
+    }
+
+    renderHistoryPlayoffBracket(playoff, tournament) {
+        return `
+            <div class="history-playoff-bracket-container">
+                <div id="${this.getHistoryPlayoffViewerId(tournament)}" class="brackets-viewer esports-bracket-viewer history-playoff-viewer"></div>
+            </div>
+        `;
+    }
+
+    getPlayoffViewerStatus(match) {
+        if (match.completed) return 4;
+        if (match.player1 && match.player2) return 2;
+        if (match.player1 || match.player2) return 1;
+        return 0;
+    }
+
+    createPlayoffViewerOpponent(player, winnerId = null, fallbackId = null, fallbackName = null, bracketPosition = null) {
+        const participantId = player?.id ?? fallbackId ?? null;
+        if (participantId === null) {
+            return { id: null };
+        }
+
+        const opponent = {
+            id: participantId,
+        };
+
+        if (bracketPosition !== null) {
+            opponent.position = bracketPosition;
+        }
+
+        if (winnerId && participantId === winnerId) {
+            opponent.result = 'win';
+            opponent.score = 1;
+        } else if (winnerId) {
+            opponent.result = 'loss';
+            opponent.score = 0;
+        }
+
+        if (fallbackName) {
+            opponent.name = fallbackName;
+        }
+
+        return opponent;
+    }
+
+    buildPlayoffViewerData(playoff, stageName) {
+        const tournamentId = 1;
+        const stageId = 0;
+        const groupId = 0;
+        const firstRoundNumber = playoff.rounds?.[0]?.round ?? 1;
+        const roundIds = new Map((playoff.rounds || []).map((round, index) => [round.round, index]));
+        const participants = [];
+        const participantIds = new Set();
+        const ensureParticipant = (id, name) => {
+            if (id == null || participantIds.has(id)) return;
+            participantIds.add(id);
+            participants.push({
+                id,
+                tournament_id: tournamentId,
+                name
+            });
+        };
+
+        (playoff.participants || []).forEach(player => {
+            if (!player || participantIds.has(player.id)) return;
+            ensureParticipant(player.id, player.name);
+        });
+
+        (playoff.rounds || []).forEach(round => {
+            (round.matches || []).forEach(match => {
+                [match.player1, match.player2].forEach(player => {
+                    if (!player || participantIds.has(player.id)) return;
+                    ensureParticipant(player.id, player.name);
+                });
+            });
+        });
+
+        const matches = (playoff.rounds || []).flatMap(round =>
+            (round.matches || []).map((match, index) => {
+                const hasOneMissingOpponent = !!((match.player1 && !match.player2) || (!match.player1 && match.player2));
+                const bye1Id = hasOneMissingOpponent && !match.player1 ? -(match.id * 10 + 1) : null;
+                const bye2Id = hasOneMissingOpponent && !match.player2 ? -(match.id * 10 + 2) : null;
+                const isFirstPlayoffRound = round.round === firstRoundNumber;
+                const matchSlotBase = ((match.position ?? index) * 2) + 1;
+
+                if (bye1Id !== null) ensureParticipant(bye1Id, 'BYE');
+                if (bye2Id !== null) ensureParticipant(bye2Id, 'BYE');
+
+                return {
+                    id: match.id,
+                    number: (match.position ?? index) + 1,
+                    stage_id: stageId,
+                    group_id: groupId,
+                    round_id: roundIds.get(round.round) ?? index,
+                    child_count: 0,
+                    status: this.getPlayoffViewerStatus(match),
+                    opponent1: this.createPlayoffViewerOpponent(
+                        match.player1,
+                        match.completed ? match.winner : null,
+                        bye1Id,
+                        bye1Id !== null ? 'BYE' : null,
+                        isFirstPlayoffRound ? matchSlotBase : null
+                    ),
+                    opponent2: this.createPlayoffViewerOpponent(
+                        match.player2,
+                        match.completed ? match.winner : null,
+                        bye2Id,
+                        bye2Id !== null ? 'BYE' : null,
+                        isFirstPlayoffRound ? matchSlotBase + 1 : null
+                    ),
+                };
+            })
+        );
+
+        return {
+            participants,
+            stages: [{
+                id: stageId,
+                tournament_id: tournamentId,
+                name: stageName,
+                type: 'single_elimination',
+                number: 1,
+                settings: {
+                    size: playoff.bracketSize || Math.max(2, (playoff.participants || []).length),
+                    seedOrdering: ['natural'],
+                    matchesChildCount: 0
+                }
+            }],
+            matches,
+            matchGames: []
+        };
+    }
+
+    renderPlayoffViewerToSelector(playoff, selector, options = {}) {
+        if (!window.bracketsViewer) {
+            throw new Error('brackets-viewer 尚未載入');
+        }
+
+        const { readonly = false, title = 'Playoff' } = options;
+        const data = this.buildPlayoffViewerData(playoff, title);
+
+        window.bracketsViewer.render({
+            stages: data.stages,
+            matches: data.matches,
+            matchGames: data.matchGames,
+            participants: data.participants,
+        }, {
+            clear: true,
+            selector,
+            participantOriginPlacement: 'before',
+            separatedChildCountLabel: true,
+            showSlotsOrigin: false,
+            showLowerBracketSlotsOrigin: false,
+            highlightParticipantOnHover: true,
+            showPopoverOnMatchLabelClick: false,
+            onMatchClick: readonly ? undefined : (match) => this.handlePlayoffViewerMatchClick(match.id),
+            customRoundName: ({ roundNumber, roundCount }) => {
+                if (roundNumber === roundCount) return '決賽';
+                if (roundNumber === roundCount - 1) return '四強';
+                return `第 ${roundNumber} 輪`;
+            }
+        });
+    }
+
+    renderHistoryPlayoffViewer(tournament) {
+        if (!tournament?.playoff?.rounds?.length) return;
+        const selector = `#${this.getHistoryPlayoffViewerId(tournament)}`;
+        const target = document.querySelector(selector);
+        if (!target) return;
+        this.renderPlayoffViewerToSelector(tournament.playoff, selector, {
+            readonly: true,
+            title: tournament.title || '歷史複賽'
+        });
+    }
+
+    handlePlayoffViewerMatchClick(matchId) {
+        const playoff = this.tournament.playoff;
+        if (!playoff?.started) return;
+
+        const targetMatch = playoff.rounds.flatMap(round => round.matches).find(match => match.id === matchId);
+        if (!targetMatch || targetMatch.completed || !targetMatch.player1 || !targetMatch.player2) return;
+
+        const choice = prompt(`${targetMatch.player1.name} vs ${targetMatch.player2.name}\n輸入 1 或 2 選擇勝者`, '1');
+        if (choice !== '1' && choice !== '2') return;
+
+        const winnerId = choice === '1' ? targetMatch.player1.id : targetMatch.player2.id;
+        this.recordPlayoffWinner(matchId, winnerId);
+    }
+
+    toggleHistoryPlayoffView(mode, triggerEl = null) {
+        const section = document.querySelector('#history-results-modal .playoff-results-section');
+        if (!section) return;
+
+        section.setAttribute('data-view', mode);
+
+        section.querySelectorAll('.playoff-view-toggle .btn').forEach(button => {
+            button.classList.toggle('active', button.dataset.view === mode);
+        });
+
+        section.querySelectorAll('.history-playoff-panel').forEach(panel => {
+            panel.hidden = panel.dataset.view !== mode;
+        });
+
+        if (mode === 'bracket' && this.historyPlayoffViewerTournament) {
+            setTimeout(() => this.renderHistoryPlayoffViewer(this.historyPlayoffViewerTournament), 0);
+        }
+
+        if (triggerEl instanceof HTMLElement) {
+            triggerEl.blur();
+        }
     }
 
     /**
@@ -2291,6 +2617,7 @@ class SwissTournamentApp {
             
             // 如果是歷史結果模態窗口，則從 DOM 中移除
             if (modalId === 'history-results-modal') {
+                this.historyPlayoffViewerTournament = null;
                 setTimeout(() => {
                     modal.remove();
                 }, 300); // 等待動畫完成
@@ -2710,24 +3037,9 @@ class SwissTournamentApp {
      * 顯示對戰安排頁面
      */
     showPairingArrangement() {
-        const titleElement = document.getElementById('arrangement-title');
-        const descriptionElement = document.getElementById('arrangement-description');
-
-        if (titleElement) {
-            titleElement.textContent = `第 ${this.tournament.currentRound + 1} 輪對戰安排`;
-        }
-
-        if (descriptionElement) {
-            const activePlayers = this.tournament.players.filter(player => !player.dropped).length;
-            descriptionElement.textContent = `${activePlayers} 位選手參與，請確認對戰配對`;
-        }
-
-        const randomPairingBtn = document.getElementById('random-pairing');
-        if (randomPairingBtn) {
-            randomPairingBtn.style.display = this.tournament.currentRound === 0 ? 'inline-block' : 'none';
-        }
-
+        this.updateArrangementHeader();
         this.manualPairingMode = false;
+        this.arrangementSwapSelection = null;
 
         try {
             if (this.tournament.currentRound === 0) {
@@ -2750,6 +3062,120 @@ class SwissTournamentApp {
         this.showPage('pairing-arrangement');
     }
 
+    updateArrangementHeader() {
+        const titleElement = document.getElementById('arrangement-title');
+        const descriptionElement = document.getElementById('arrangement-description');
+        const activePlayers = this.tournament.players.filter(player => !player.dropped).length;
+
+        if (titleElement) {
+            titleElement.textContent = `第 ${this.tournament.currentRound + 1} 輪對戰安排`;
+        }
+
+        if (descriptionElement) {
+            descriptionElement.textContent = `${activePlayers} 位選手參與，請確認對戰配對`;
+        }
+
+        const isInitialArrangement = this.tournament.currentRound === 0;
+        const randomPairingBtn = document.getElementById('random-pairing');
+        const addPlayerBtn = document.getElementById('add-player-arrangement');
+
+        if (randomPairingBtn) {
+            randomPairingBtn.style.display = isInitialArrangement ? 'inline-block' : 'none';
+        }
+
+        if (addPlayerBtn) {
+            addPlayerBtn.style.display = isInitialArrangement ? 'inline-block' : 'none';
+        }
+    }
+
+    createPlayerSnapshot(player) {
+        return {
+            id: player.id,
+            name: player.name,
+            score: player.score,
+            buchholz: player.buchholz || 0,
+            sosBuchholz: player.sosBuchholz || 0,
+            omwPercentage: player.omwPercentage || 0,
+            oomwPercentage: player.oomwPercentage || 0,
+            dropped: !!player.dropped,
+            byeCount: player.byeCount || 0,
+            results: Array.isArray(player.results) ? [...player.results] : []
+        };
+    }
+
+    getOrderedArrangementPlayers() {
+        const activePlayerMap = new Map(
+            this.tournament.players
+                .filter(player => !player.dropped)
+                .map(player => [player.id, this.createPlayerSnapshot(player)])
+        );
+        const orderedPlayers = [];
+
+        const appendPlayer = (playerId) => {
+            if (!activePlayerMap.has(playerId)) return;
+            if (orderedPlayers.some(player => player.id === playerId)) return;
+            orderedPlayers.push(this.createPlayerSnapshot(activePlayerMap.get(playerId)));
+        };
+
+        (this.tempPairings || []).forEach(pairing => {
+            if (pairing.player1) appendPlayer(pairing.player1.id);
+            if (pairing.player2) appendPlayer(pairing.player2.id);
+        });
+
+        this.tournament.players
+            .filter(player => !player.dropped)
+            .forEach(player => appendPlayer(player.id));
+
+        return orderedPlayers;
+    }
+
+    buildOrderedPairings(players) {
+        const pairings = [];
+        let pairingId = 1;
+
+        for (let index = 0; index < players.length - 1; index += 2) {
+            pairings.push({
+                id: pairingId++,
+                player1: this.createPlayerSnapshot(players[index]),
+                player2: this.createPlayerSnapshot(players[index + 1]),
+                result: null,
+                completed: false
+            });
+        }
+
+        if (players.length % 2 === 1) {
+            pairings.push({
+                id: pairingId++,
+                player1: this.createPlayerSnapshot(players[players.length - 1]),
+                player2: null,
+                result: 'bye',
+                completed: true
+            });
+        }
+
+        return pairings;
+    }
+
+    refreshArrangementState() {
+        this.updateArrangementHeader();
+        this.displayArrangementPreview();
+        this.updateCurrentTournamentCard();
+        this.tournament.saveTournament();
+
+        if (this.manualPairingMode) {
+            this.initializeManualPairing();
+        }
+    }
+
+    recalculateTournamentRounds() {
+        if (this.tournament.settings.customRounds && this.tournament.settings.manualRounds) {
+            this.tournament.totalRounds = Math.max(this.tournament.settings.manualRounds, 3);
+            return;
+        }
+
+        this.tournament.totalRounds = Math.max(Math.ceil(Math.log2(this.tournament.players.length)), 3);
+    }
+
     displayArrangementPreview() {
         const pairings = this.tempPairings || this.tournament.getCurrentRoundPairings();
         const matchesContainer = document.getElementById('arrangement-matches');
@@ -2761,38 +3187,135 @@ class SwissTournamentApp {
         const byeMatches = pairings.filter(pairing => pairing.player2 === null);
         const allMatches = [...regularMatches, ...byeMatches];
 
-        allMatches.forEach(pairing => {
-            matchesContainer.appendChild(this.createArrangementMatchRow(pairing));
+        allMatches.forEach((pairing, index) => {
+            matchesContainer.appendChild(this.createArrangementMatchRow(pairing, pairing.player2 === null ? null : index + 1));
         });
     }
 
-    createArrangementMatchRow(pairing) {
+    createArrangementMatchRow(pairing, displayNumber = null) {
         const row = document.createElement('div');
         row.className = `arrangement-match ${pairing.player2 === null ? 'bye' : ''}`;
         row.dataset.matchId = pairing.id;
+        const visibleNumber = pairing.player2 === null ? 'BYE' : (displayNumber ?? pairing.id);
 
         if (pairing.player2 === null) {
             row.innerHTML = `
-                <div class="arrangement-match-number">輪空</div>
+                <div class="arrangement-match-number">${visibleNumber}</div>
                 <div class="arrangement-players">
-                    <div class="arrangement-player">${this.escapeHtml(pairing.player1.name)}</div>
+                    ${this.renderArrangementPlayerControl(pairing, 1, pairing.player1)}
                 </div>
                 <div class="arrangement-score">積分: ${pairing.player1.score}</div>
                 <div class="arrangement-actions"><span class="auto-result">輪空</span></div>
             `;
         } else {
             row.innerHTML = `
-                <div class="arrangement-match-number">${pairing.id}</div>
+                <div class="arrangement-match-number">${visibleNumber}</div>
                 <div class="arrangement-players">
-                    <div class="arrangement-player">${this.escapeHtml(pairing.player1.name)}</div>
+                    ${this.renderArrangementPlayerControl(pairing, 1, pairing.player1)}
                     <div class="arrangement-vs">VS</div>
-                    <div class="arrangement-player">${this.escapeHtml(pairing.player2.name)}</div>
+                    ${this.renderArrangementPlayerControl(pairing, 2, pairing.player2)}
                 </div>
                 <div class="arrangement-score">${pairing.player1.score} : ${pairing.player2.score}</div>
             `;
         }
 
         return row;
+    }
+
+    renderArrangementPlayerControl(pairing, slot, player) {
+        const selection = this.arrangementSwapSelection;
+        const isSelected = selection
+            && selection.pairingId === pairing.id
+            && selection.slot === slot;
+        const selectedClass = isSelected ? ' selected' : '';
+        const canEditInitialArrangement = this.tournament.currentRound === 0;
+
+        return `
+            <div class="arrangement-player-slot${selectedClass}">
+                <button type="button" class="arrangement-player arrangement-player-button${selectedClass}" onclick="app.handleArrangementPlayerSelect(${pairing.id}, ${slot})">
+                    ${this.escapeHtml(player.name)}
+                </button>
+                ${canEditInitialArrangement ? `<button type="button" class="arrangement-player-remove" onclick="event.stopPropagation(); app.confirmRemoveArrangementPlayer(${player.id})" title="取消玩家">×</button>` : ''}
+            </div>
+        `;
+    }
+
+    handleArrangementPlayerSelect(pairingId, slot) {
+        const pairing = (this.tempPairings || []).find(item => item.id === pairingId);
+        if (!pairing) return;
+
+        const key = slot === 1 ? 'player1' : 'player2';
+        const player = pairing[key];
+        if (!player) return;
+
+        if (!this.arrangementSwapSelection) {
+            this.arrangementSwapSelection = { pairingId, slot, playerId: player.id };
+            this.displayArrangementPreview();
+            this.showNotification(`已選取 ${player.name}，請再點另一位選手進行交換`, 'info');
+            return;
+        }
+
+        const sameSelection = this.arrangementSwapSelection.pairingId === pairingId
+            && this.arrangementSwapSelection.slot === slot;
+
+        if (sameSelection) {
+            this.arrangementSwapSelection = null;
+            this.displayArrangementPreview();
+            this.showNotification('已取消交換', 'info');
+            return;
+        }
+
+        this.swapArrangementPlayers(this.arrangementSwapSelection, { pairingId, slot, playerId: player.id });
+    }
+
+    swapArrangementPlayers(firstSelection, secondSelection) {
+        const firstPairing = (this.tempPairings || []).find(pairing => pairing.id === firstSelection.pairingId);
+        const secondPairing = (this.tempPairings || []).find(pairing => pairing.id === secondSelection.pairingId);
+        if (!firstPairing || !secondPairing) return;
+
+        const firstKey = firstSelection.slot === 1 ? 'player1' : 'player2';
+        const secondKey = secondSelection.slot === 1 ? 'player1' : 'player2';
+
+        const tempPlayer = firstPairing[firstKey];
+        firstPairing[firstKey] = secondPairing[secondKey];
+        secondPairing[secondKey] = tempPlayer;
+
+        this.arrangementSwapSelection = null;
+        this.displayArrangementPreview();
+        this.showNotification('已交換兩位選手的位置', 'success');
+    }
+
+    confirmRemoveArrangementPlayer(playerId) {
+        if (this.tournament.currentRound !== 0) {
+            this.showNotification('只有初始對戰安排可以取消玩家', 'warning');
+            return;
+        }
+
+        const player = this.tournament.players.find(item => item.id === playerId);
+        if (!player) return;
+
+        if (this.tournament.players.length <= 2) {
+            this.showNotification('至少需要保留 2 位玩家才能開始比賽', 'error');
+            return;
+        }
+
+        if (!confirm(`確定要取消 ${player.name} 的參賽並從本次對戰安排移除嗎？`)) {
+            return;
+        }
+
+        this.tournament.players = this.tournament.players.filter(item => item.id !== playerId);
+        this.arrangementSwapSelection = null;
+        this.recalculateTournamentRounds();
+
+        const shouldRandomize = confirm(`已移除 ${player.name}。是否要重新隨機配對？`);
+        if (shouldRandomize) {
+            this.tempPairings = this.tournament.generateRandomPairings();
+        } else {
+            this.tempPairings = this.buildOrderedPairings(this.getOrderedArrangementPlayers());
+        }
+
+        this.refreshArrangementState();
+        this.showNotification(`${player.name} 已移出對戰安排`, 'success');
     }
 
     randomizePairings() {
@@ -3004,7 +3527,9 @@ class SwissTournamentApp {
     generateAutoPairings() {
         try {
             this.showLoading(true);
-            this.tempPairings = this.tournament.generateSwissPairings();
+            this.tempPairings = this.tournament.currentRound === 0
+                ? this.tournament.generateRandomPairings()
+                : this.tournament.generateSwissPairings();
             this.displayArrangementPreview();
             this.showNotification('已重新生成自動配對', 'success');
         } catch (error) {
@@ -3012,6 +3537,74 @@ class SwissTournamentApp {
         } finally {
             this.showLoading(false);
         }
+    }
+
+    openAddPlayerModal() {
+        if (this.tournament.currentRound !== 0) {
+            this.showNotification('只有初始對戰安排可以新增玩家', 'warning');
+            return;
+        }
+
+        const input = document.getElementById('add-player-name');
+        if (input) {
+            input.value = '';
+        }
+
+        this.showModal('add-player-modal');
+        setTimeout(() => input?.focus(), 50);
+    }
+
+    confirmAddPlayer() {
+        if (this.tournament.currentRound !== 0) {
+            this.showNotification('只有初始對戰安排可以新增玩家', 'warning');
+            return;
+        }
+
+        const input = document.getElementById('add-player-name');
+        if (!input) return;
+
+        const playerName = input.value.trim();
+        if (!playerName) {
+            this.showNotification('請輸入玩家名稱', 'warning');
+            input.focus();
+            return;
+        }
+
+        const duplicated = this.tournament.players.some(player => player.name === playerName);
+        if (duplicated) {
+            this.showNotification('玩家名稱不可重複', 'error');
+            input.focus();
+            return;
+        }
+
+        const nextPlayerId = this.tournament.players.reduce((maxId, player) => Math.max(maxId, player.id), 0) + 1;
+        this.tournament.players.push({
+            id: nextPlayerId,
+            name: playerName,
+            score: 0,
+            buchholz: 0,
+            sosBuchholz: 0,
+            omwPercentage: 0,
+            oomwPercentage: 0,
+            opponents: [],
+            results: [],
+            dropped: false,
+            byeCount: 0
+        });
+
+        this.arrangementSwapSelection = null;
+        this.recalculateTournamentRounds();
+
+        const shouldRandomize = confirm(`已新增 ${playerName}。是否要重新隨機配對？`);
+        if (shouldRandomize) {
+            this.tempPairings = this.tournament.generateRandomPairings();
+        } else {
+            this.tempPairings = this.buildOrderedPairings(this.getOrderedArrangementPlayers());
+        }
+
+        this.closeModal('add-player-modal');
+        this.refreshArrangementState();
+        this.showNotification(`${playerName} 已加入對戰安排`, 'success');
     }
 
     confirmPairings() {
@@ -3116,46 +3709,47 @@ class SwissTournamentApp {
             </div>
         `;
 
-        bracketBoard.innerHTML = playoff.rounds.map((round, roundIndex) => `
-            <div class="bracket-round">
-                <div class="bracket-round-title">${roundIndex === playoff.totalRounds - 1 ? '決賽' : `第 ${round.round} 輪`}</div>
-                <div class="bracket-round-matches">
-                    ${round.matches.map(match => this.renderPlayoffMatch(match)).join('')}
-                </div>
-            </div>
-        `).join('');
-
         this.showPage('playoff-bracket');
+        this.renderPlayoffViewerToSelector(playoff, '#playoff-bracket-board', {
+            readonly: false,
+            title: this.tournament.generateTournamentTitle()
+        });
     }
 
-    renderPlayoffMatch(match) {
+    renderPlayoffMatch(match, options = {}) {
+        const { readonly = false, headerLabel = `Match ${match.id}` } = options;
         const player1Name = match.player1 ? this.escapeHtml(match.player1.name) : '待定';
         const player2Name = match.player2 ? this.escapeHtml(match.player2.name) : '待定';
         const player1Seed = match.player1?.swissRank ? `#${match.player1.swissRank}` : '';
         const player2Seed = match.player2?.swissRank ? `#${match.player2.swissRank}` : '';
+        const winnerName = match.completed
+            ? this.escapeHtml((match.player1?.id === match.winner ? match.player1?.name : match.player2?.name) || '')
+            : '';
 
-        const actions = (!match.completed && match.player1 && match.player2)
+        const statusContent = match.isBye
+            ? '<div class="bracket-status auto">BYE 自動晉級</div>'
+            : match.completed
+                ? `<div class="bracket-status done">WINNER ${winnerName}</div>`
+                : '<div class="bracket-status pending">等待上一場結果</div>';
+
+        const actions = (!readonly && !match.completed && match.player1 && match.player2)
             ? `
                 <div class="bracket-actions">
                     <button class="btn btn-sm btn-primary" onclick="app.recordPlayoffWinner(${match.id}, ${match.player1.id})">${player1Name} 勝</button>
                     <button class="btn btn-sm btn-primary" onclick="app.recordPlayoffWinner(${match.id}, ${match.player2.id})">${player2Name} 勝</button>
                 </div>
             `
-            : (match.isBye
-                ? '<div class="bracket-status auto">BYE 自動晉級</div>'
-                : match.completed
-                    ? `<div class="bracket-status done">勝者：${this.escapeHtml((match.player1?.id === match.winner ? match.player1?.name : match.player2?.name) || '')}</div>`
-                    : '<div class="bracket-status pending">等待上一場結果</div>');
+            : statusContent;
 
         return `
             <div class="bracket-match ${match.completed ? 'completed' : 'pending'} ${match.isBye ? 'bye' : ''}">
-                <div class="bracket-match-header">Match ${match.id}</div>
+                <div class="bracket-match-header">${headerLabel}</div>
                 <div class="bracket-player ${match.winner === match.player1?.id ? 'winner' : ''}">
-                    <span class="player-seed">${player1Seed}</span>
+                    <span class="player-seed">${player1Seed || '&nbsp;'}</span>
                     <span class="player-name">${player1Name}</span>
                 </div>
                 <div class="bracket-player ${match.winner === match.player2?.id ? 'winner' : ''}">
-                    <span class="player-seed">${player2Seed}</span>
+                    <span class="player-seed">${player2Seed || '&nbsp;'}</span>
                     <span class="player-name">${player2Name}</span>
                 </div>
                 ${actions}

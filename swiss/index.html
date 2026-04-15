@@ -7,15 +7,35 @@
     <meta name="description" content="專業的瑞士輪比賽管理系統，支援選手配對、結果記錄、排名計算等功能">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16x16.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/brackets-viewer@1.9.0/dist/brackets-viewer.min.css">
     <link rel="stylesheet" href="../assets/css/custom.css">
     <link rel="stylesheet" href="css/swiss-tournament.css">
 </head>
 <body>
     <div id="app">
+        <div class="hud-ambient" aria-hidden="true">
+            <span class="ambient-ring ring-left"></span>
+            <span class="ambient-ring ring-right"></span>
+            <span class="ambient-beam beam-top"></span>
+            <span class="ambient-beam beam-bottom"></span>
+        </div>
         <header class="tournament-header">
+            <div class="header-system-bar" aria-hidden="true">
+                <span class="system-chip">SWISS CONTROL</span>
+                <span class="system-divider"></span>
+                <span class="system-readout">PROJECTOR MODE</span>
+                <span class="system-divider"></span>
+                <span class="system-readout">MATCH STATUS</span>
+            </div>
             <div class="header-content">
-                <h1 id="home-title">瑞士輪賽事系統</h1>
+                <div class="header-title-block">
+                    <p class="header-kicker">Tournament Operations</p>
+                    <h1 id="home-title">瑞士輪賽事系統</h1>
+                </div>
                 <nav class="header-nav">
+                    <button id="projector-mode-btn" class="nav-btn" aria-pressed="false">
+                        <span>投影模式</span>
+                    </button>
                     <button id="history-btn" class="nav-btn">
                         <span>歷史比賽</span>
                     </button>
@@ -187,6 +207,10 @@
                     <!-- 配對控制區域 -->
                     <div class="arrangement-controls">
                         <div class="control-group">
+                            <button id="add-player-arrangement" class="btn btn-secondary" style="display: none;">
+                                <span>＋</span>
+                                新增玩家
+                            </button>
                             <button id="random-pairing" class="btn btn-secondary" style="display: none;">
                                 <span>🎲</span>
                                 重新隨機配對
@@ -257,12 +281,8 @@
             <!-- 對戰配對 -->
             <section id="pairing-section" class="page">
                 <div class="page-header">
-                    <h2 id="round-title">Round 1 配對</h2>
-                </div>
-                
-                <div class="pairing-container">
-                    <!-- 輪次資訊摘要 -->
-                    <div class="round-summary">
+                    <h2 id="round-title">第 1 輪配對</h2>
+                    <div class="round-summary round-summary-inline">
                         <div class="summary-stats">
                             <span id="matches-completed">0</span> / <span id="total-matches">0</span> 場已完成（<span id="active-players-count"></span>位選手）
                         </div>
@@ -272,7 +292,9 @@
                             </button>
                         </div>
                     </div>
-
+                </div>
+                
+                <div class="pairing-container">
                     <!-- 比賽列表 -->
                     <div class="matches-list">
                         <div class="list-header">
@@ -375,17 +397,12 @@
                         <span>🏆</span>
                         開啟新比賽
                     </button>
-                    <button id="import-tournament" class="btn btn-secondary">
-                        <span>📁</span>
-                        匯入比賽
-                    </button>
                 </div>
                 
                 <div class="history-container">
                     <!-- 進行中賽事 -->
                     <div class="current-tournament-section">
                         <h3>進行中賽事</h3>
-                        <p class="section-intro">重置只會回到未開賽狀態；若要完全移除，請使用每張卡片右上角的刪除按鈕。</p>
                         <div id="active-tournaments-grid" class="active-tournaments-grid">
                             <div class="no-active-tournaments">
                                 <div class="no-tournaments-icon">🏆</div>
@@ -460,7 +477,7 @@
                 </div>
 
                 <div class="playoff-bracket-container">
-                    <div id="playoff-bracket-board" class="playoff-bracket-board"></div>
+                    <div id="playoff-bracket-board" class="brackets-viewer esports-bracket-viewer playoff-bracket-host"></div>
                 </div>
             </section>
         </main>
@@ -537,7 +554,25 @@
         </div>
     </div>
 
+    <div id="add-player-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>新增玩家</h3>
+                <button class="modal-close" onclick="app.closeModal('add-player-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>請輸入要加入初始對戰安排的玩家名稱。</p>
+                <input type="text" id="add-player-name" class="tournament-name-input" placeholder="輸入玩家名稱" maxlength="50">
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-add-player" class="btn btn-primary">確認新增</button>
+                <button class="btn btn-secondary" onclick="app.closeModal('add-player-modal')">取消</button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript 檔案 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brackets-viewer@1.9.0/dist/brackets-viewer.min.js"></script>
     <script src="js/swiss-tournament.js"></script>
     <script src="js/app.js"></script>
 </body>

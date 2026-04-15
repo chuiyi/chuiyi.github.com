@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap');
+
 /* 瑞士輪賽事系統樣式 */
 
 /* 基礎重置和變數 */
@@ -3014,6 +3016,1394 @@ body {
     background: rgba(40, 167, 69, 0.05);
 }
 
+/* Neon EVA-inspired projector-safe theme override */
+:root {
+    --background-color: #07131d;
+    --surface-color: rgba(9, 22, 34, 0.88);
+    --surface-strong: rgba(8, 18, 28, 0.96);
+    --surface-soft: rgba(14, 31, 46, 0.82);
+    --text-color: #f4fbff;
+    --text-strong: #ffffff;
+    --text-secondary: #8faabf;
+    --text-dim: #678095;
+    --primary-color: #5af2ff;
+    --success-color: #a6ff4d;
+    --warning-color: #ffb347;
+    --danger-color: #ff5f6d;
+    --info-color: #ff62ce;
+    --light-color: rgba(13, 31, 46, 0.92);
+    --dark-color: #f4fbff;
+    --border-color: rgba(90, 242, 255, 0.28);
+    --grid-line: rgba(90, 242, 255, 0.12);
+    --panel-line: rgba(169, 255, 77, 0.18);
+    --shadow: 0 0 0 1px rgba(90, 242, 255, 0.14), 0 14px 34px rgba(0, 0, 0, 0.34);
+    --shadow-lg: 0 0 0 1px rgba(90, 242, 255, 0.22), 0 24px 54px rgba(0, 0, 0, 0.45);
+    --glow-cyan: 0 0 0 1px rgba(90, 242, 255, 0.22), 0 0 24px rgba(90, 242, 255, 0.18);
+    --glow-lime: 0 0 0 1px rgba(166, 255, 77, 0.24), 0 0 22px rgba(166, 255, 77, 0.18);
+    --glow-magenta: 0 0 0 1px rgba(255, 98, 206, 0.22), 0 0 22px rgba(255, 98, 206, 0.16);
+    --border-radius: 14px;
+    --border-radius-lg: 22px;
+    --transition: background-color 0.24s ease, border-color 0.24s ease, color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+}
+
+html {
+    background: #030a12;
+}
+
+body {
+    font-family: 'Oxanium', 'Noto Sans TC', 'Segoe UI', sans-serif;
+    padding-top: 0 !important;
+    min-height: 100vh;
+    color: var(--text-color);
+    background:
+        radial-gradient(circle at top left, rgba(255, 98, 206, 0.14), transparent 28%),
+        radial-gradient(circle at top right, rgba(90, 242, 255, 0.12), transparent 34%),
+        linear-gradient(180deg, #091420 0%, #07111a 48%, #030911 100%) !important;
+    line-height: 1.55;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    background:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    opacity: 0.55;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.48));
+}
+
+body::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 22%, transparent 78%, rgba(90, 242, 255, 0.05));
+    opacity: 0.75;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Oxanium', 'Noto Sans TC', sans-serif;
+    color: var(--text-strong);
+    letter-spacing: 0.04em;
+}
+
+#app {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    padding-bottom: 56px;
+}
+
+#app::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 14%, rgba(90, 242, 255, 0.08), transparent 18%),
+        radial-gradient(circle at 85% 9%, rgba(166, 255, 77, 0.09), transparent 18%),
+        linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.025) 46%, transparent 52%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hud-ambient {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.ambient-ring,
+.ambient-beam {
+    position: absolute;
+    display: block;
+}
+
+.ambient-ring {
+    width: 320px;
+    height: 320px;
+    border: 1px solid rgba(90, 242, 255, 0.14);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(90, 242, 255, 0.08), inset 0 0 30px rgba(90, 242, 255, 0.04);
+}
+
+.ring-left {
+    top: 150px;
+    left: -120px;
+}
+
+.ring-right {
+    top: 380px;
+    right: -140px;
+    border-color: rgba(255, 98, 206, 0.14);
+    box-shadow: 0 0 40px rgba(255, 98, 206, 0.08), inset 0 0 30px rgba(255, 98, 206, 0.04);
+}
+
+.ambient-beam {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(166, 255, 77, 0.52), transparent);
+}
+
+.beam-top {
+    top: 126px;
+    left: 6%;
+    width: 42%;
+}
+
+.beam-bottom {
+    top: 560px;
+    right: 8%;
+    width: 38%;
+    background: linear-gradient(90deg, transparent, rgba(255, 98, 206, 0.48), transparent);
+}
+
+.tournament-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    padding: 0;
+    color: var(--text-strong);
+    background:
+        linear-gradient(90deg, rgba(3, 13, 22, 0.97), rgba(7, 20, 32, 0.9) 48%, rgba(8, 18, 29, 0.97)),
+        linear-gradient(135deg, rgba(90, 242, 255, 0.08), transparent 48%, rgba(166, 255, 77, 0.08));
+    border-bottom: 1px solid rgba(90, 242, 255, 0.28);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(14px);
+}
+
+.tournament-header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), var(--success-color), transparent);
+    opacity: 0.9;
+}
+
+.header-system-bar,
+.header-content {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.header-system-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 38px;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(90, 242, 255, 0.12);
+}
+
+.system-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border: 1px solid rgba(166, 255, 77, 0.38);
+    border-radius: 999px;
+    color: #deffbf;
+    background: rgba(166, 255, 77, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(166, 255, 77, 0.08);
+}
+
+.system-divider {
+    width: 42px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(90, 242, 255, 0.48), transparent);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    padding-top: 18px;
+    padding-bottom: 20px;
+}
+
+.header-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.header-kicker {
+    margin: 0;
+    font-size: 0.82rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--success-color);
+}
+
+.tournament-header h1 {
+    margin: 0;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-shadow: 0 0 16px rgba(90, 242, 255, 0.18);
+}
+
+.tournament-header h1:hover {
+    opacity: 1;
+    color: var(--primary-color);
+}
+
+.header-nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-btn,
+.btn {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid rgba(90, 242, 255, 0.3);
+    font-family: 'Oxanium', 'Noto Sans TC', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.nav-btn::before,
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.14) 50%, transparent 80%);
+    transform: translateX(-120%);
+    transition: transform 0.28s ease;
+}
+
+.nav-btn:hover::before,
+.btn:hover::before {
+    transform: translateX(120%);
+}
+
+.nav-btn {
+    background: rgba(9, 25, 37, 0.86);
+    color: var(--text-strong);
+    box-shadow: var(--glow-cyan);
+}
+
+.nav-btn:hover {
+    background: rgba(14, 34, 48, 0.96);
+    border-color: rgba(166, 255, 77, 0.4);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-lime);
+}
+
+.page {
+    position: relative;
+    max-width: 1520px;
+    padding: 34px 24px 40px;
+}
+
+.page.active {
+    animation: pageEnter 0.38s ease;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-header {
+    position: relative;
+    margin-bottom: 24px;
+    padding: 20px 24px 18px;
+    text-align: left;
+    background: linear-gradient(135deg, rgba(8, 19, 29, 0.86), rgba(11, 28, 42, 0.74));
+    border: 1px solid rgba(90, 242, 255, 0.22);
+    border-left: 5px solid var(--primary-color);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+}
+
+.page-header::before {
+    content: 'MATCH PANEL';
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
+    color: var(--success-color);
+}
+
+.page-header h2 {
+    margin: 0 0 6px;
+    font-size: clamp(1.8rem, 2.6vw, 2.8rem);
+    color: var(--text-strong);
+}
+
+.page-header p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1.08rem;
+}
+
+.dashboard-header h2 {
+    margin-bottom: 0;
+}
+
+.setup-container,
+.info-container,
+.arrangement-container,
+.pairing-container,
+.rounds-history-container,
+.ranking-container,
+.history-container,
+.playoff-setup-container,
+.playoff-summary,
+.playoff-bracket-actions,
+.playoff-bracket-container {
+    position: relative;
+    z-index: 1;
+}
+
+.setup-card,
+.tournament-settings,
+.players-section,
+.round-summary,
+.matches-list,
+.arrangement-preview,
+.manual-pairing,
+.round-content,
+.ranking-summary,
+.ranking-table-container,
+.scoring-details-container,
+.quick-actions,
+.current-tournament-section,
+.history-tournaments-section,
+.playoff-card,
+.playoff-preview,
+.playoff-summary-card,
+.playoff-bracket-board,
+.loading-spinner,
+.results-content,
+.ranking-section,
+.rounds-section,
+.statistics-section,
+.scoring-rules-section,
+.top-players-section,
+.tournament-status-card {
+    background: linear-gradient(180deg, rgba(9, 23, 35, 0.96), rgba(6, 16, 25, 0.94));
+    border: 1px solid rgba(90, 242, 255, 0.22);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.setup-card,
+.players-section,
+.round-content,
+.ranking-table-container,
+.quick-actions,
+.playoff-card,
+.rounds-section,
+.statistics-section,
+.scoring-rules-section,
+.top-players-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.setup-card::before,
+.players-section::before,
+.round-content::before,
+.ranking-table-container::before,
+.quick-actions::before,
+.playoff-card::before,
+.rounds-section::before,
+.statistics-section::before,
+.scoring-rules-section::before,
+.top-players-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(90, 242, 255, 0.05), transparent 40%, rgba(166, 255, 77, 0.04) 80%);
+    pointer-events: none;
+}
+
+.setup-card,
+.round-content,
+.playoff-card,
+.players-section {
+    padding: 28px;
+}
+
+.section-intro,
+.info-playoff-summary,
+.status-card-desc,
+.atc-desc,
+.tournament-details,
+.match-action-hint,
+.historical-match-result,
+.summary-meta,
+.preview-score,
+.setting-description,
+.round-info p,
+.no-tournaments-hint,
+.empty-state small,
+.quick-result-option-desc,
+.auto-result,
+.text-muted {
+    color: var(--text-secondary);
+}
+
+.input-label,
+.players-section h3,
+.manual-pairing-header h3,
+.available-players h4,
+.manual-matches h4,
+.summary-title,
+.playoff-preview-summary,
+.round-info h3,
+.tournament-title,
+.atc-title,
+.status-card-title,
+.selected-round-title {
+    color: var(--text-strong);
+}
+
+.players-input,
+.tournament-name-input,
+.rounds-input,
+select.rounds-input,
+input[type='text'],
+input[type='number'],
+textarea {
+    background: rgba(3, 12, 20, 0.92);
+    color: var(--text-strong);
+    border: 1px solid rgba(90, 242, 255, 0.28);
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(90, 242, 255, 0.06);
+}
+
+.players-input {
+    min-height: 240px;
+    padding: 16px 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+}
+
+.players-input::placeholder,
+.tournament-name-input::placeholder,
+.rounds-input::placeholder {
+    color: #64819a;
+}
+
+.players-input:focus,
+.tournament-name-input:focus,
+.rounds-input:focus,
+select.rounds-input:focus,
+input[type='text']:focus,
+input[type='number']:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(90, 242, 255, 0.16), 0 0 18px rgba(90, 242, 255, 0.14);
+}
+
+.input-info,
+.summary-stats,
+.playoff-format-pill,
+.round-summary {
+    color: var(--text-color);
+}
+
+.tournament-settings {
+    margin-top: 28px;
+    padding: 20px;
+    background: linear-gradient(180deg, rgba(6, 17, 27, 0.98), rgba(9, 24, 37, 0.84));
+}
+
+.settings-title,
+.setting-label,
+.setting-label-text {
+    color: var(--text-strong);
+}
+
+.checkmark {
+    background-color: rgba(3, 12, 20, 0.92);
+    border-color: rgba(90, 242, 255, 0.3);
+    border-radius: 5px;
+}
+
+.setting-checkbox:checked ~ .checkmark {
+    background: linear-gradient(135deg, var(--success-color), #5affc6);
+    border-color: transparent;
+}
+
+.btn {
+    min-height: 48px;
+    padding: 13px 22px;
+    background: rgba(8, 21, 33, 0.92);
+    color: var(--text-strong);
+    box-shadow: var(--glow-cyan);
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #52efff, #1ab8d2);
+    color: #04131d;
+    border-color: rgba(90, 242, 255, 0.7);
+    box-shadow: var(--glow-cyan);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #b9ff5c, #65e949);
+    color: #081405;
+    border-color: rgba(166, 255, 77, 0.75);
+    box-shadow: var(--glow-lime);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffca75, #ff9a3d);
+    color: #231203;
+    border-color: rgba(255, 179, 71, 0.74);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff7d88, #ff5469);
+    color: #25070c;
+    border-color: rgba(255, 95, 109, 0.74);
+}
+
+.btn-secondary,
+.btn-outline-secondary,
+.btn-outline-warning {
+    background: rgba(12, 29, 44, 0.92);
+    color: var(--text-strong);
+    border-color: rgba(143, 170, 191, 0.32);
+    box-shadow: 0 0 0 1px rgba(143, 170, 191, 0.12);
+}
+
+.btn-info {
+    background: linear-gradient(135deg, #ff8ce0, #ec57b9);
+    color: #210312;
+    border-color: rgba(255, 98, 206, 0.72);
+    box-shadow: var(--glow-magenta);
+}
+
+.btn:disabled,
+.btn:disabled:hover {
+    background: rgba(71, 87, 101, 0.72) !important;
+    color: rgba(255, 255, 255, 0.72) !important;
+    border-color: rgba(143, 170, 191, 0.18) !important;
+    box-shadow: none !important;
+}
+
+.btn-large {
+    min-width: 220px;
+    padding: 16px 28px;
+}
+
+.tournament-stats,
+.players-grid,
+.active-tournaments-grid,
+.top-players-grid,
+.rules-grid,
+.stats-grid,
+.playoff-preview-list {
+    gap: 18px;
+}
+
+.stat-card,
+.player-card,
+.playoff-preview-player,
+.player-analysis-card,
+.stat-group,
+.active-tournament-card,
+.tournament-card,
+.historical-match-row,
+.arrangement-match,
+.manual-player,
+.manual-match-item,
+.quick-result-current,
+.quick-result-option,
+.drop-option,
+.result-option,
+.bracket-match,
+.bracket-player,
+.round-result,
+.match-result {
+    background: linear-gradient(180deg, rgba(12, 28, 41, 0.96), rgba(6, 16, 25, 0.92));
+    border: 1px solid rgba(90, 242, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.stat-card {
+    align-items: stretch;
+    gap: 14px;
+}
+
+.stat-icon,
+.player-rank-badge,
+.seed-badge,
+.status-badge,
+.match-number,
+.arrangement-match-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    letter-spacing: 0.08em;
+}
+
+.stat-icon {
+    width: 64px;
+    min-width: 64px;
+    height: 64px;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, rgba(90, 242, 255, 0.18), rgba(90, 242, 255, 0.05));
+    border: 1px solid rgba(90, 242, 255, 0.34);
+    box-shadow: var(--glow-cyan);
+}
+
+.stat-label,
+.rule-label,
+.player-seed,
+.bracket-match-header,
+.match-col-number,
+.result-status,
+.atc-header,
+.history-results-modal .modal-header h3 {
+    color: var(--text-secondary);
+}
+
+.stat-value,
+.rule-points,
+.highlight,
+.player-card .player-score,
+.match-number,
+.vs,
+.vs-bye,
+.arrangement-vs,
+.manual-match-vs,
+.status-win,
+.status-bye,
+.status-draw,
+.status-double-loss {
+    color: var(--primary-color);
+}
+
+.stat-value {
+    font-size: clamp(1.6rem, 2vw, 2.4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    word-break: break-word;
+}
+
+.player-card,
+.manual-player,
+.manual-match-item,
+.arrangement-match,
+.historical-match-row,
+.active-tournament-card,
+.tournament-card {
+    transition: var(--transition);
+}
+
+.player-card:hover,
+.manual-player:hover,
+.manual-match-item:hover,
+.arrangement-match:hover,
+.historical-match-row:hover,
+.active-tournament-card:hover,
+.tournament-card:hover,
+.quick-result-option:hover,
+.drop-option:hover,
+.result-option:hover,
+.bracket-match:hover {
+    transform: translateY(-3px);
+    border-color: rgba(166, 255, 77, 0.36);
+    box-shadow: var(--shadow-lg);
+}
+
+.player-card.dropped {
+    opacity: 0.64;
+    background: linear-gradient(180deg, rgba(24, 27, 33, 0.92), rgba(16, 19, 24, 0.92));
+    color: var(--text-dim);
+}
+
+.player-card .player-name,
+.arrangement-player,
+.manual-player .player-name,
+.manual-match-player,
+.bracket-player .player-name,
+.historical-match-players,
+.tournament-title,
+.atc-title {
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.round-summary,
+.playoff-format-pill,
+.quick-result-current {
+    padding: 16px 18px;
+    background: linear-gradient(90deg, rgba(12, 28, 42, 0.95), rgba(7, 18, 28, 0.95));
+}
+
+.matches-list,
+.ranking-table-container {
+    overflow: hidden;
+}
+
+.list-header,
+.ranking-table th {
+    background: linear-gradient(90deg, rgba(4, 15, 25, 0.98), rgba(11, 30, 44, 0.94));
+    color: var(--text-strong);
+    border-bottom: 1px solid rgba(90, 242, 255, 0.26);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.list-content {
+    max-height: 72vh;
+}
+
+.match-row {
+    background: rgba(5, 14, 22, 0.88);
+    border-bottom: 1px solid rgba(90, 242, 255, 0.1);
+}
+
+.match-row:hover {
+    background: rgba(10, 24, 36, 0.94);
+}
+
+.match-row.completed {
+    background: rgba(87, 255, 166, 0.08);
+}
+
+.match-row.corrected {
+    border-left: 4px solid var(--warning-color);
+    background: rgba(255, 179, 71, 0.1);
+}
+
+.player,
+.player-action-btn,
+.manual-match-player,
+.arrangement-player {
+    background: linear-gradient(180deg, rgba(10, 27, 41, 0.96), rgba(6, 17, 27, 0.96));
+    color: var(--text-strong);
+    border: 1px solid rgba(90, 242, 255, 0.18);
+    border-radius: 14px;
+}
+
+.player-action-btn {
+    min-height: 56px;
+}
+
+.player.winner,
+.player-action-btn.winner,
+.bracket-player.winner {
+    background: linear-gradient(135deg, rgba(166, 255, 77, 0.24), rgba(90, 242, 255, 0.14));
+    color: var(--text-strong);
+    border-color: rgba(166, 255, 77, 0.52);
+    box-shadow: var(--glow-lime);
+}
+
+.player.bye-player,
+.arrangement-match.bye,
+.pairing-item.bye,
+.historical-match-row.bye,
+.bracket-match.bye {
+    border-style: dashed;
+    border-color: rgba(255, 179, 71, 0.48);
+    background: linear-gradient(180deg, rgba(42, 24, 5, 0.76), rgba(24, 15, 5, 0.86));
+}
+
+.correction-badge,
+.status-badge,
+.playoff-format-pill,
+.seed-badge,
+.player-rank-badge,
+.result-text,
+.bracket-status,
+.status,
+.champion,
+.players-count,
+.rounds-info,
+.date,
+.status-pending,
+.status-loss,
+.status-unknown {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.correction-badge,
+.playoff-format-pill,
+.result-text.pending,
+.status-pending,
+.status-unknown {
+    background: rgba(255, 179, 71, 0.14);
+    color: #ffd599;
+}
+
+.result-text.completed,
+.status-win,
+.status.finished,
+.bracket-status.done {
+    background: rgba(166, 255, 77, 0.14);
+    color: #dfffba;
+}
+
+.status.incomplete,
+.status-loss,
+.notification.error {
+    background: rgba(255, 95, 109, 0.14);
+    color: #ffb6bf;
+}
+
+.status-bye,
+.bracket-status.auto,
+.notification.warning {
+    background: rgba(255, 179, 71, 0.16);
+    color: #ffe0ac;
+}
+
+.status-draw,
+.notification.info,
+.badge-playoff,
+.btn-info .status-badge {
+    background: rgba(255, 98, 206, 0.14);
+    color: #ffc7ec;
+}
+
+.status-badge {
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    background: rgba(90, 242, 255, 0.08);
+    color: #c8f9ff;
+}
+
+.badge-idle,
+.badge-setup,
+.badge-warning,
+.badge-finished,
+.badge-success,
+.badge-playing,
+.badge-playoff {
+    background: rgba(90, 242, 255, 0.1);
+}
+
+.badge-success {
+    color: #dfffba;
+    border-color: rgba(166, 255, 77, 0.46);
+    background: rgba(166, 255, 77, 0.1);
+}
+
+.badge-warning {
+    color: #ffe0ac;
+    border-color: rgba(255, 179, 71, 0.46);
+    background: rgba(255, 179, 71, 0.1);
+}
+
+.badge-playoff,
+.badge-finished {
+    color: #ffc7ec;
+    border-color: rgba(255, 98, 206, 0.42);
+    background: rgba(255, 98, 206, 0.1);
+}
+
+.no-active-tournaments,
+.empty-state {
+    padding: 34px 20px;
+    text-align: center;
+    border: 1px dashed rgba(90, 242, 255, 0.28);
+    border-radius: 18px;
+    color: var(--text-secondary);
+    background: rgba(7, 20, 31, 0.82);
+}
+
+.no-tournaments-icon,
+.no-tournaments-text,
+.empty-state p {
+    color: var(--text-strong);
+}
+
+.active-tournament-card,
+.tournament-card {
+    padding: 20px;
+}
+
+.atc-header,
+.atc-actions,
+.tournament-actions,
+.historical-match-actions,
+.playoff-bracket-actions,
+.final-actions,
+.info-actions,
+.status-card-actions,
+.round-controls,
+.manual-pairing-actions,
+.manual-match-actions,
+.arrangement-controls,
+.control-group,
+.confirm-group,
+.bracket-actions,
+.modal-footer {
+    gap: 12px;
+}
+
+.atc-delete-btn,
+.notification-close,
+.modal-close,
+.btn-remove-match {
+    background: rgba(255, 95, 109, 0.12);
+    color: #ffd7dc;
+    border: 1px solid rgba(255, 95, 109, 0.24);
+}
+
+.atc-delete-btn:hover,
+.notification-close:hover,
+.modal-close:hover,
+.btn-remove-match:hover {
+    background: rgba(255, 95, 109, 0.24);
+}
+
+.tournament-details,
+.analysis-row,
+.stat-row,
+.round-result h4,
+.round-result h5,
+.match-result,
+.playoff-champion-line,
+.results-content .error,
+.quick-result-option-title,
+.quick-result-current,
+.modal-body p,
+.modal-header h3 {
+    color: var(--text-color);
+}
+
+.tournament-details span,
+.playoff-champion-line,
+.tiebreak-rules li,
+.analysis-row span,
+.stat-row span {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(90, 242, 255, 0.08);
+    border: 1px solid rgba(90, 242, 255, 0.14);
+}
+
+.tournament-details,
+.analysis-stats,
+.tiebreak-rules ol,
+.stats-grid,
+.rules-grid,
+.top-players-grid,
+.rounds-container,
+.round-matches,
+.quick-result-options,
+.playoff-preview-list,
+.manual-matches-container,
+.players-pool,
+.arrangement-matches {
+    display: grid;
+    gap: 14px;
+}
+
+.analysis-row,
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(90, 242, 255, 0.1);
+}
+
+.analysis-row:last-child,
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.ranking-table {
+    font-size: 15px;
+}
+
+.ranking-table td {
+    color: var(--text-color);
+    border-bottom: 1px solid rgba(90, 242, 255, 0.08);
+}
+
+.ranking-table tr:nth-child(even) {
+    background: rgba(9, 21, 32, 0.74);
+}
+
+.ranking-table tr:hover {
+    background: rgba(13, 30, 44, 0.92);
+}
+
+.ranking-table .rank {
+    color: var(--primary-color);
+}
+
+.ranking-table .rank.first {
+    color: #bfff7a;
+}
+
+.ranking-table .rank.second {
+    color: #79ecff;
+}
+
+.ranking-table .rank.third {
+    color: #ffb675;
+}
+
+.round-tab {
+    background: rgba(8, 20, 31, 0.9);
+    color: var(--text-secondary);
+    border: 1px solid rgba(90, 242, 255, 0.18);
+    border-radius: 12px;
+}
+
+.round-tab:hover,
+.round-tab.active {
+    color: var(--text-strong);
+    border-color: rgba(90, 242, 255, 0.42);
+    box-shadow: var(--glow-cyan);
+}
+
+.round-tab.active {
+    background: linear-gradient(135deg, rgba(90, 242, 255, 0.18), rgba(166, 255, 77, 0.1));
+}
+
+.round-tab.disabled {
+    opacity: 0.4;
+}
+
+.modal {
+    background: rgba(1, 7, 12, 0.72);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content,
+.history-results-modal {
+    background: linear-gradient(180deg, rgba(9, 23, 35, 0.98), rgba(6, 15, 23, 0.98));
+    color: var(--text-color);
+    border: 1px solid rgba(90, 242, 255, 0.24);
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: rgba(90, 242, 255, 0.14);
+}
+
+.drop-option.selected,
+.result-option.selected,
+.manual-player.selected {
+    border-color: rgba(166, 255, 77, 0.5);
+    box-shadow: var(--glow-lime);
+    background: linear-gradient(135deg, rgba(166, 255, 77, 0.16), rgba(90, 242, 255, 0.08));
+}
+
+.notification {
+    top: 18px;
+    right: 18px;
+    background: rgba(8, 25, 38, 0.96);
+    color: var(--text-strong);
+    border: 1px solid rgba(90, 242, 255, 0.28);
+    box-shadow: var(--shadow-lg);
+}
+
+.loading-overlay {
+    background: rgba(3, 12, 20, 0.76);
+}
+
+.spinner {
+    border-color: rgba(90, 242, 255, 0.1);
+    border-top-color: var(--success-color);
+    box-shadow: 0 0 24px rgba(166, 255, 77, 0.16);
+}
+
+.bracket-round-title {
+    background: linear-gradient(90deg, rgba(6, 18, 28, 0.96), rgba(13, 31, 46, 0.96));
+    color: var(--text-strong);
+    border: 1px solid rgba(90, 242, 255, 0.2);
+}
+
+.bracket-round {
+    gap: 18px;
+}
+
+.bracket-player {
+    margin-bottom: 10px;
+}
+
+.history-results-modal .modal-content,
+.history-results-modal {
+    width: min(1100px, 94vw);
+    max-height: 88vh;
+}
+
+.results-content .ranking-section,
+.results-content .rounds-section,
+.results-content .playoff-results-section {
+    margin-top: 18px;
+    padding: 20px;
+}
+
+.match-result {
+    padding: 12px 14px;
+    color: var(--text-color);
+}
+
+.match-result.bye {
+    border-style: dashed;
+    border-color: rgba(255, 179, 71, 0.42);
+}
+
+.scoring-rules-section,
+.statistics-section,
+.top-players-section {
+    padding: 22px;
+}
+
+.rule-item,
+.stat-group,
+.player-analysis-card {
+    padding: 18px;
+}
+
+.rule-points,
+.highlight {
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.player-rank-badge {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, rgba(90, 242, 255, 0.18), rgba(255, 98, 206, 0.16));
+    border: 1px solid rgba(90, 242, 255, 0.28);
+    color: var(--text-strong);
+}
+
+.player-analysis-card.rank-1 {
+    border-color: rgba(166, 255, 77, 0.42);
+    box-shadow: var(--glow-lime);
+}
+
+.player-analysis-card.rank-2 {
+    border-color: rgba(90, 242, 255, 0.42);
+    box-shadow: var(--glow-cyan);
+}
+
+.player-analysis-card.rank-3 {
+    border-color: rgba(255, 179, 71, 0.42);
+}
+
+.arrangement-preview,
+.manual-pairing {
+    padding: 24px;
+}
+
+.arrangement-match {
+    display: grid;
+    grid-template-columns: 96px 1fr auto auto;
+    gap: 14px;
+    align-items: center;
+    padding: 16px;
+}
+
+.arrangement-match-number,
+.match-number,
+.seed-badge,
+.player-rank-badge {
+    min-width: 52px;
+    padding: 10px 12px;
+    background: rgba(90, 242, 255, 0.12);
+    border: 1px solid rgba(90, 242, 255, 0.26);
+}
+
+.arrangement-players,
+.manual-match-players {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.players-pool {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+.manual-player {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+}
+
+.manual-match-item {
+    padding: 16px;
+}
+
+.quick-result-option {
+    min-height: 120px;
+    justify-content: center;
+}
+
+.quick-result-option-title {
+    font-size: 1.04rem;
+}
+
+.btn-sm {
+    min-height: 40px;
+    padding: 9px 12px;
+    font-size: 0.85rem;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(7, 18, 28, 0.92);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(90, 242, 255, 0.46), rgba(166, 255, 77, 0.38));
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(90, 242, 255, 0.7), rgba(166, 255, 77, 0.62));
+}
+
+@media (max-width: 1080px) {
+    .header-content {
+        align-items: flex-start;
+    }
+
+    .arrangement-match {
+        grid-template-columns: 82px 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-system-bar,
+    .header-content,
+    .page {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .header-content {
+        align-items: flex-start;
+        padding-top: 14px;
+        padding-bottom: 16px;
+    }
+
+    .header-nav,
+    .quick-actions,
+    .round-controls,
+    .final-actions,
+    .playoff-bracket-actions,
+    .tournament-actions,
+    .atc-actions,
+    .info-actions,
+    .arrangement-controls,
+    .manual-pairing-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .page-header,
+    .setup-card,
+    .players-section,
+    .manual-pairing,
+    .arrangement-preview,
+    .playoff-card,
+    .round-content,
+    .scoring-rules-section,
+    .statistics-section,
+    .top-players-section {
+        padding: 18px;
+    }
+
+    .tournament-stats,
+    .players-grid,
+    .active-tournaments-grid,
+    .top-players-grid,
+    .rules-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .arrangement-match,
+    .historical-match-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-system-bar {
+        gap: 8px;
+        font-size: 0.66rem;
+        letter-spacing: 0.12em;
+    }
+
+    .system-divider {
+        width: 22px;
+    }
+
+    .header-kicker {
+        font-size: 0.72rem;
+    }
+
+    .tournament-header h1 {
+        letter-spacing: 0.08em;
+    }
+
+    .page {
+        padding-top: 20px;
+    }
+
+    .btn,
+    .nav-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .header-nav {
+        width: 100%;
+    }
+}
+
 /* 響應式設計 */
 @media (max-width: 768px) {
     .arrangement-controls {
@@ -3283,6 +4673,1179 @@ button {
     font: inherit;
 }
 
+/* Final lock: score input modals must stay dark neon */
+#quick-result-modal .modal-content,
+#edit-result-modal .modal-content,
+#drop-modal .modal-content,
+.modal-content.quick-result-modal {
+    width: min(760px, 92vw) !important;
+    max-width: 92vw !important;
+    background: linear-gradient(180deg, rgba(8, 20, 31, 0.985), rgba(4, 11, 18, 0.985)) !important;
+    border: 1px solid rgba(90, 242, 255, 0.3) !important;
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.16), 0 0 14px rgba(90, 242, 255, 0.1), 0 18px 42px rgba(0, 0, 0, 0.48) !important;
+    color: #f3fbff !important;
+}
+
+#quick-result-modal .modal-header,
+#quick-result-modal .modal-body,
+#quick-result-modal .modal-footer,
+#edit-result-modal .modal-header,
+#edit-result-modal .modal-body,
+#edit-result-modal .modal-footer,
+#drop-modal .modal-header,
+#drop-modal .modal-body,
+#drop-modal .modal-footer {
+    background: transparent !important;
+    border-color: rgba(90, 242, 255, 0.14) !important;
+    color: #eef9ff !important;
+}
+
+#quick-result-modal .modal-header,
+#edit-result-modal .modal-header,
+#drop-modal .modal-header {
+    background: linear-gradient(90deg, rgba(5, 16, 25, 0.98), rgba(10, 28, 41, 0.96)) !important;
+}
+
+#quick-result-modal .modal-header h3,
+#edit-result-modal .modal-header h3,
+#drop-modal .modal-header h3,
+#quick-result-modal .modal-body,
+#quick-result-modal .modal-body p,
+#quick-result-modal .modal-body span,
+#quick-result-modal .modal-body div,
+#edit-result-modal .modal-body,
+#edit-result-modal .modal-body p,
+#edit-result-modal .modal-body span,
+#edit-result-modal .modal-body div,
+#drop-modal .modal-body,
+#drop-modal .modal-body p,
+#drop-modal .modal-body span,
+#drop-modal .modal-body div {
+    color: #eef9ff !important;
+}
+
+#quick-result-modal .modal-close,
+#edit-result-modal .modal-close,
+#drop-modal .modal-close {
+    background: rgba(255, 95, 109, 0.1) !important;
+    border: 1px solid rgba(255, 95, 109, 0.24) !important;
+    color: #ffc3cb !important;
+    box-shadow: 0 0 8px rgba(255, 95, 109, 0.12) !important;
+}
+
+#quick-result-modal .quick-result-current {
+    background: linear-gradient(90deg, rgba(7, 18, 28, 0.98), rgba(10, 25, 37, 0.96)) !important;
+    border: 1px solid rgba(90, 242, 255, 0.18) !important;
+    color: #eaf8ff !important;
+    box-shadow: inset 0 0 0 1px rgba(90, 242, 255, 0.04) !important;
+}
+
+#quick-result-modal .quick-result-option,
+#edit-result-modal .result-option,
+#drop-modal .drop-option {
+    background: linear-gradient(180deg, rgba(10, 24, 36, 0.98), rgba(6, 16, 24, 0.98)) !important;
+    border: 1px solid rgba(90, 242, 255, 0.18) !important;
+    color: #eef9ff !important;
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.08), 0 8px 18px rgba(0, 0, 0, 0.28) !important;
+}
+
+#quick-result-modal .quick-result-option-title,
+#edit-result-modal .result-option,
+#drop-modal .drop-option {
+    color: #f6fcff !important;
+}
+
+#quick-result-modal .quick-result-option-desc,
+#edit-result-modal .result-option small,
+#drop-modal .drop-option small {
+    color: #d5e8f5 !important;
+}
+
+#quick-result-modal .quick-result-option:hover,
+#edit-result-modal .result-option:hover,
+#drop-modal .drop-option:hover {
+    background: linear-gradient(180deg, rgba(12, 30, 44, 0.98), rgba(8, 20, 31, 0.98)) !important;
+    border-color: rgba(166, 255, 77, 0.28) !important;
+    box-shadow: 0 0 0 1px rgba(166, 255, 77, 0.14), 0 0 10px rgba(90, 242, 255, 0.08), 0 10px 22px rgba(0, 0, 0, 0.32) !important;
+}
+
+#edit-result-modal .result-option.selected,
+#drop-modal .drop-option.selected {
+    background: linear-gradient(135deg, rgba(166, 255, 77, 0.16), rgba(90, 242, 255, 0.08)) !important;
+    border-color: rgba(166, 255, 77, 0.44) !important;
+    color: #f8fff0 !important;
+}
+
+#quick-result-modal .modal-footer .btn,
+#edit-result-modal .modal-footer .btn,
+#drop-modal .modal-footer .btn {
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.22), 0 0 10px rgba(90, 242, 255, 0.1), 0 8px 16px rgba(0, 0, 0, 0.28) !important;
+}
+
+@media (max-width: 768px) {
+    #quick-result-modal .modal-content,
+    #edit-result-modal .modal-content,
+    #drop-modal .modal-content,
+    .modal-content.quick-result-modal {
+        width: 95vw !important;
+        max-width: 95vw !important;
+    }
+}
+
+/* Final lock: pairing table readability */
+#pairing-section .player-action-btn,
+#pairing-section .player,
+#pairing-section .arrangement-player {
+    font-size: 1.12rem !important;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+#pairing-section .player-record-badge {
+    margin-left: 10px;
+    font-size: 0.92rem !important;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    color: #eef9ff !important;
+    background: rgba(90, 242, 255, 0.12) !important;
+    border: 1px solid rgba(90, 242, 255, 0.18);
+}
+
+#pairing-section .match-number,
+#pairing-section .arrangement-match-number {
+    min-width: 72px;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+#pairing-section .match-col-players {
+    gap: 14px;
+}
+
+#pairing-section .player-action-btn {
+    min-height: 64px;
+    padding: 12px 16px;
+}
+
+@media (max-width: 768px) {
+    #pairing-section .player-action-btn,
+    #pairing-section .player,
+    #pairing-section .arrangement-player {
+        font-size: 1rem !important;
+    }
+
+    #pairing-section .player-record-badge {
+        font-size: 0.82rem !important;
+        margin-left: 8px;
+    }
+}
+
+/* Arrangement interaction controls */
+.arrangement-player-slot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.arrangement-player-button {
+    cursor: pointer;
+    min-height: 58px;
+    font: inherit;
+}
+
+.arrangement-player-slot.selected .arrangement-player-button,
+.arrangement-player-button.selected {
+    border-color: rgba(166, 255, 77, 0.48) !important;
+    box-shadow: 0 0 0 1px rgba(166, 255, 77, 0.18), 0 0 12px rgba(166, 255, 77, 0.12) !important;
+    background: linear-gradient(135deg, rgba(166, 255, 77, 0.18), rgba(90, 242, 255, 0.12)) !important;
+}
+
+.arrangement-player-remove {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255, 95, 109, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 95, 109, 0.12);
+    color: #ffd3d9;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 800;
+    line-height: 1;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(255, 95, 109, 0.12);
+}
+
+.arrangement-player-remove:hover {
+    background: rgba(255, 95, 109, 0.22);
+}
+
+#pairing-arrangement #add-player-name {
+    width: 100%;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .arrangement-player-slot {
+        width: 100%;
+    }
+}
+
+/* Final lock: history results modal must stay in neon dark theme */
+.modal .modal-content.history-results-modal,
+.history-results-modal.modal-content,
+#history-results-modal .modal-content,
+#history-results-modal.history-results-modal,
+.modal .history-results-modal {
+    width: min(1120px, 94vw) !important;
+    max-width: 94vw !important;
+    max-height: 88vh !important;
+    overflow: hidden !important;
+    background: linear-gradient(180deg, rgba(7, 18, 28, 0.985), rgba(3, 10, 17, 0.985)) !important;
+    border: 1px solid rgba(90, 242, 255, 0.32) !important;
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.18), 0 0 16px rgba(90, 242, 255, 0.12), 0 20px 48px rgba(0, 0, 0, 0.48) !important;
+    color: #f3fbff !important;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)) !important;
+    filter: drop-shadow(0 0 4px rgba(90, 242, 255, 0.18));
+}
+
+.modal .modal-content.history-results-modal .modal-header,
+.modal .modal-content.history-results-modal .modal-body,
+.modal .modal-content.history-results-modal .modal-footer,
+.history-results-modal .modal-header,
+.history-results-modal .modal-body,
+.history-results-modal .modal-footer {
+    background: transparent !important;
+    color: #f3fbff !important;
+    border-color: rgba(90, 242, 255, 0.16) !important;
+}
+
+.modal .modal-content.history-results-modal .modal-header,
+.history-results-modal .modal-header {
+    background: linear-gradient(90deg, rgba(6, 19, 30, 0.98), rgba(10, 27, 40, 0.96)) !important;
+}
+
+.modal .modal-content.history-results-modal .modal-header h3,
+.history-results-modal .modal-header h3,
+.modal .modal-content.history-results-modal .modal-body,
+.modal .modal-content.history-results-modal .modal-body p,
+.modal .modal-content.history-results-modal .modal-body span,
+.modal .modal-content.history-results-modal .modal-body div,
+.modal .modal-content.history-results-modal .modal-body td,
+.modal .modal-content.history-results-modal .modal-body th,
+.history-results-modal .modal-body,
+.history-results-modal .modal-body p,
+.history-results-modal .modal-body span,
+.history-results-modal .modal-body div,
+.history-results-modal .modal-body td,
+.history-results-modal .modal-body th {
+    color: #eaf8ff !important;
+}
+
+.modal .modal-content.history-results-modal .modal-close,
+.history-results-modal .modal-close {
+    background: rgba(255, 95, 109, 0.1) !important;
+    color: #ffc4cc !important;
+    border: 1px solid rgba(255, 95, 109, 0.24) !important;
+    box-shadow: 0 0 8px rgba(255, 95, 109, 0.12) !important;
+}
+
+.modal .modal-content.history-results-modal .results-content,
+.history-results-modal .results-content {
+    max-height: 70vh !important;
+    overflow-y: auto !important;
+    background: transparent !important;
+    color: #eaf8ff !important;
+}
+
+.modal .modal-content.history-results-modal .tournament-stats,
+.modal .modal-content.history-results-modal .ranking-section,
+.modal .modal-content.history-results-modal .rounds-section,
+.modal .modal-content.history-results-modal .playoff-results-section,
+.history-results-modal .tournament-stats,
+.history-results-modal .ranking-section,
+.history-results-modal .rounds-section,
+.history-results-modal .playoff-results-section {
+    background: linear-gradient(180deg, rgba(8, 20, 31, 0.96), rgba(4, 12, 20, 0.96)) !important;
+    border: 1px solid rgba(90, 242, 255, 0.18) !important;
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.1), inset 0 0 0 1px rgba(90, 242, 255, 0.04) !important;
+    color: #eef9ff !important;
+}
+
+.modal .modal-content.history-results-modal .stat-card,
+.modal .modal-content.history-results-modal .round-result,
+.modal .modal-content.history-results-modal .match-result,
+.history-results-modal .stat-card,
+.history-results-modal .round-result,
+.history-results-modal .match-result {
+    background: linear-gradient(180deg, rgba(10, 24, 36, 0.98), rgba(6, 16, 25, 0.98)) !important;
+    border: 1px solid rgba(90, 242, 255, 0.16) !important;
+    color: #eef9ff !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table,
+.history-results-modal .ranking-table {
+    background: rgba(6, 17, 26, 0.98) !important;
+    border: 1px solid rgba(90, 242, 255, 0.2) !important;
+    color: #f3fbff !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table thead,
+.history-results-modal .ranking-table thead,
+.modal .modal-content.history-results-modal .ranking-table th,
+.history-results-modal .ranking-table th {
+    background: linear-gradient(90deg, rgba(4, 15, 24, 0.98), rgba(10, 31, 46, 0.98)) !important;
+    color: #f7fdff !important;
+    border-color: rgba(90, 242, 255, 0.16) !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table td,
+.history-results-modal .ranking-table td {
+    background: transparent !important;
+    color: #edf8ff !important;
+    border-color: rgba(90, 242, 255, 0.12) !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table tbody tr,
+.history-results-modal .ranking-table tbody tr {
+    background: rgba(6, 17, 26, 0.94) !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table tbody tr:nth-child(even),
+.history-results-modal .ranking-table tbody tr:nth-child(even) {
+    background: rgba(8, 20, 31, 0.98) !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table tbody tr:hover,
+.history-results-modal .ranking-table tbody tr:hover {
+    background: rgba(11, 28, 42, 0.98) !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table td.rank.first,
+.history-results-modal .ranking-table td.rank.first {
+    color: #d7ff5c !important;
+    background: rgba(166, 255, 77, 0.08) !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table td.rank.second,
+.history-results-modal .ranking-table td.rank.second {
+    color: #79efff !important;
+    background: rgba(121, 239, 255, 0.08) !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-table td.rank.third,
+.history-results-modal .ranking-table td.rank.third {
+    color: #ffb675 !important;
+    background: rgba(255, 182, 117, 0.08) !important;
+}
+
+.modal .modal-content.history-results-modal .ranking-section h4,
+.modal .modal-content.history-results-modal .rounds-section h4,
+.modal .modal-content.history-results-modal .round-result h5,
+.history-results-modal .ranking-section h4,
+.history-results-modal .rounds-section h4,
+.history-results-modal .round-result h5 {
+    color: #8eeeff !important;
+    border-color: rgba(90, 242, 255, 0.26) !important;
+}
+
+@media (max-width: 768px) {
+    .modal .modal-content.history-results-modal,
+    .history-results-modal.modal-content,
+    #history-results-modal .modal-content,
+    #history-results-modal.history-results-modal,
+    .modal .history-results-modal {
+        width: 95vw !important;
+        max-height: 94vh !important;
+        clip-path: none !important;
+    }
+}
+
+/* Final lock: add-player modal, full matches list, history playoff view */
+#pairing-section .matches-list,
+.matches-list {
+    overflow: visible !important;
+}
+
+#pairing-section .matches-list .list-content,
+.matches-list .list-content {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+#add-player-modal .modal-content {
+    width: min(760px, 92vw) !important;
+    max-width: 92vw !important;
+    background: linear-gradient(180deg, rgba(7, 18, 28, 0.985), rgba(3, 10, 17, 0.985)) !important;
+    border: 1px solid rgba(90, 242, 255, 0.32) !important;
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.18), 0 0 18px rgba(90, 242, 255, 0.12), 0 22px 56px rgba(0, 0, 0, 0.46) !important;
+    color: #eef9ff !important;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)) !important;
+}
+
+#add-player-modal .modal-header,
+#add-player-modal .modal-body,
+#add-player-modal .modal-footer {
+    background: transparent !important;
+    color: #eef9ff !important;
+    border-color: rgba(90, 242, 255, 0.16) !important;
+}
+
+#add-player-modal .modal-header {
+    background: linear-gradient(90deg, rgba(6, 19, 30, 0.98), rgba(10, 27, 40, 0.96)) !important;
+}
+
+#add-player-modal .modal-header h3,
+#add-player-modal .modal-body,
+#add-player-modal .modal-body p,
+#add-player-modal .modal-footer,
+#add-player-modal .modal-close {
+    color: #eef9ff !important;
+}
+
+#add-player-modal .modal-close {
+    background: rgba(255, 95, 109, 0.1) !important;
+    border: 1px solid rgba(255, 95, 109, 0.24) !important;
+    box-shadow: 0 0 8px rgba(255, 95, 109, 0.12) !important;
+}
+
+#add-player-modal #add-player-name,
+#add-player-modal .tournament-name-input {
+    background: linear-gradient(180deg, rgba(18, 28, 39, 0.98), rgba(14, 23, 33, 0.98)) !important;
+    border: 1px solid rgba(90, 242, 255, 0.34) !important;
+    color: #f3fbff !important;
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.14), 0 0 14px rgba(90, 242, 255, 0.12) !important;
+}
+
+#add-player-modal #add-player-name::placeholder,
+#add-player-modal .tournament-name-input::placeholder {
+    color: rgba(207, 234, 247, 0.56) !important;
+}
+
+.history-tournaments-section .history-playoff-summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid rgba(90, 242, 255, 0.18);
+    background: linear-gradient(90deg, rgba(12, 30, 43, 0.72), rgba(10, 24, 36, 0.52));
+    color: #8feeff;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.history-results-modal .playoff-results-section {
+    border-radius: 14px !important;
+    padding: 18px 20px !important;
+}
+
+.history-results-modal .playoff-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.history-results-modal .playoff-results-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.history-results-modal .playoff-results-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.history-results-modal .playoff-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid rgba(90, 242, 255, 0.18);
+    background: linear-gradient(90deg, rgba(11, 30, 43, 0.78), rgba(9, 22, 34, 0.58));
+    color: #9af3ff;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+}
+
+.history-results-modal .playoff-view-toggle {
+    display: inline-flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.history-results-modal .playoff-view-toggle .btn {
+    min-width: 96px;
+}
+
+.history-results-modal .playoff-view-toggle .btn.active {
+    border-color: rgba(90, 242, 255, 0.42) !important;
+    background: linear-gradient(135deg, rgba(90, 242, 255, 0.26), rgba(25, 178, 212, 0.2)) !important;
+    color: #f5fdff !important;
+    box-shadow: 0 0 12px rgba(90, 242, 255, 0.14) !important;
+}
+
+.history-results-modal .history-playoff-panel[hidden] {
+    display: none !important;
+}
+
+.history-results-modal .history-playoff-bracket-container {
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-bottom: 8px;
+}
+
+.history-results-modal .history-playoff-bracket-board {
+    min-width: max-content;
+    padding: 6px 2px 10px;
+}
+
+.history-results-modal .bracket-round {
+    min-width: 238px;
+    gap: 12px;
+}
+
+.history-results-modal .bracket-round-title {
+    border-radius: 10px;
+}
+
+.history-results-modal .bracket-match {
+    border-radius: 12px !important;
+    padding: 12px !important;
+}
+
+.history-results-modal .bracket-player {
+    min-height: 0;
+    padding: 9px 10px;
+    margin-bottom: 6px;
+}
+
+.history-results-modal .playoff-history-rounds {
+    gap: 12px;
+}
+
+.history-results-modal .playoff-round-result.compact,
+.history-results-modal .playoff-results-section .round-result {
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+}
+
+.history-results-modal .playoff-results-section .round-matches {
+    min-height: 0 !important;
+    display: grid !important;
+    gap: 10px !important;
+}
+
+.history-results-modal .playoff-results-section .match-result {
+    min-height: 0 !important;
+    padding: 12px 14px !important;
+    border-radius: 10px !important;
+}
+
+@media (max-width: 768px) {
+    #add-player-modal .modal-content {
+        width: 95vw !important;
+        clip-path: none !important;
+    }
+
+    .history-results-modal .playoff-results-header {
+        flex-direction: column;
+    }
+
+    .history-results-modal .playoff-view-toggle {
+        width: 100%;
+    }
+
+    .history-results-modal .playoff-view-toggle .btn {
+        flex: 1;
+    }
+
+    .history-results-modal .bracket-round {
+        min-width: 220px;
+    }
+}
+
+/* Final lock: playoff bracket connectors */
+.playoff-bracket-board,
+.history-playoff-bracket-board {
+    overflow: visible;
+    align-items: flex-start;
+    gap: 34px;
+}
+
+.playoff-bracket-board .bracket-round,
+.history-playoff-bracket-board .bracket-round {
+    position: relative;
+    min-width: 246px;
+}
+
+.playoff-bracket-board .bracket-round-matches,
+.history-playoff-bracket-board .bracket-round-matches {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--round-gap, 14px);
+    padding-top: var(--round-offset, 0px);
+    padding-right: 32px;
+    overflow: visible;
+}
+
+.playoff-bracket-board .bracket-round:not(:last-child) .bracket-round-matches::after,
+.history-playoff-bracket-board .bracket-round:not(:last-child) .bracket-round-matches::after {
+    content: '';
+    position: absolute;
+    top: calc(var(--round-offset, 0px) + (var(--bracket-card-height, 158px) / 2));
+    bottom: calc((var(--bracket-card-height, 158px) / 2));
+    right: 0;
+    width: 24px;
+    border-right: 1px solid rgba(132, 231, 255, 0.76);
+    pointer-events: none;
+}
+
+.playoff-bracket-board .bracket-match,
+.history-playoff-bracket-board .bracket-match {
+    position: relative;
+    overflow: visible !important;
+    min-height: var(--bracket-card-height, 158px);
+    display: grid;
+    grid-template-rows: auto auto auto 1fr;
+}
+
+.playoff-bracket-board .bracket-round:not(:first-child) .bracket-match::before,
+.history-playoff-bracket-board .bracket-round:not(:first-child) .bracket-match::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -34px;
+    width: 34px;
+    border-top: 1px solid rgba(132, 231, 255, 0.76);
+    pointer-events: none;
+}
+
+.playoff-bracket-board .bracket-round:not(:last-child) .bracket-match:nth-child(odd)::after,
+.history-playoff-bracket-board .bracket-round:not(:last-child) .bracket-match:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -32px;
+    width: 32px;
+    height: var(--connector-span, 86px);
+    border-top: 1px solid rgba(132, 231, 255, 0.76);
+    border-right: 1px solid rgba(132, 231, 255, 0.76);
+    pointer-events: none;
+}
+
+.playoff-bracket-board .bracket-round:not(:last-child) .bracket-match:nth-child(even)::after,
+.history-playoff-bracket-board .bracket-round:not(:last-child) .bracket-match:nth-child(even)::after {
+    content: '';
+    position: absolute;
+    bottom: 50%;
+    right: -32px;
+    width: 32px;
+    height: var(--connector-span, 86px);
+    border-bottom: 1px solid rgba(132, 231, 255, 0.76);
+    border-right: 1px solid rgba(132, 231, 255, 0.76);
+    pointer-events: none;
+}
+
+.playoff-bracket-board .bracket-round:last-child .bracket-match::after,
+.history-playoff-bracket-board .bracket-round:last-child .bracket-match::after {
+    display: none;
+}
+
+.playoff-bracket-board .bracket-round:last-child .bracket-match::before,
+.history-playoff-bracket-board .bracket-round:last-child .bracket-match::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -34px;
+    width: 34px;
+    border-top: 1px solid rgba(132, 231, 255, 0.76);
+    pointer-events: none;
+}
+
+.playoff-bracket-board .bracket-status,
+.history-playoff-bracket-board .bracket-status,
+.playoff-bracket-board .bracket-actions,
+.history-playoff-bracket-board .bracket-actions {
+    align-self: end;
+}
+
+.playoff-bracket-board .bracket-round-title,
+.history-playoff-bracket-board .bracket-round-title {
+    box-shadow: none !important;
+}
+
+.playoff-bracket-board .bracket-match,
+.history-playoff-bracket-board .bracket-match {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18) !important;
+}
+
+@media (max-width: 768px) {
+    .playoff-bracket-board .bracket-round-matches,
+    .history-playoff-bracket-board .bracket-round-matches {
+        padding-right: 24px;
+    }
+
+    .playoff-bracket-board .bracket-round:not(:last-child) .bracket-round-matches::after,
+    .history-playoff-bracket-board .bracket-round:not(:last-child) .bracket-round-matches::after {
+        width: 18px;
+    }
+
+    .playoff-bracket-board .bracket-round:not(:first-child) .bracket-match::before,
+    .history-playoff-bracket-board .bracket-round:not(:first-child) .bracket-match::before {
+        left: -24px;
+        width: 24px;
+    }
+
+    .playoff-bracket-board .bracket-round:not(:last-child) .bracket-match:nth-child(odd)::after,
+    .history-playoff-bracket-board .bracket-round:not(:last-child) .bracket-match:nth-child(odd)::after,
+    .playoff-bracket-board .bracket-round:not(:last-child) .bracket-match:nth-child(even)::after,
+    .history-playoff-bracket-board .bracket-round:not(:last-child) .bracket-match:nth-child(even)::after {
+        right: -24px;
+        width: 24px;
+    }
+
+    .playoff-bracket-board .bracket-round:last-child .bracket-match::before,
+    .history-playoff-bracket-board .bracket-round:last-child .bracket-match::before {
+        left: -24px;
+        width: 24px;
+    }
+}
+
+/* Final lock: bracket should look like a clean tournament tree */
+.playoff-bracket-board,
+.history-playoff-bracket-board {
+    gap: 48px !important;
+    padding: 8px 10px 28px !important;
+}
+
+.playoff-bracket-board .bracket-round,
+.history-playoff-bracket-board .bracket-round {
+    min-width: 228px !important;
+}
+
+.playoff-bracket-board .bracket-round-title,
+.history-playoff-bracket-board .bracket-round-title {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 0 10px !important;
+    border-radius: 0 !important;
+    clip-path: none !important;
+    color: #a6f5ff !important;
+    font: 700 0.82rem/1.2 'Orbitron', sans-serif !important;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: left !important;
+}
+
+.playoff-bracket-board .bracket-match,
+.history-playoff-bracket-board .bracket-match {
+    min-height: 102px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    clip-path: none !important;
+}
+
+.playoff-bracket-board .bracket-match-header,
+.history-playoff-bracket-board .bracket-match-header {
+    margin: 0 0 4px !important;
+    padding: 0 !important;
+    color: rgba(185, 236, 247, 0.56) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.playoff-bracket-board .bracket-player,
+.history-playoff-bracket-board .bracket-player {
+    display: grid !important;
+    grid-template-columns: 38px minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-height: 34px !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    background: rgba(9, 20, 30, 0.92) !important;
+    border: 1px solid rgba(110, 198, 220, 0.34) !important;
+    border-radius: 0 !important;
+    clip-path: none !important;
+    box-shadow: none !important;
+}
+
+.playoff-bracket-board .bracket-player.winner,
+.history-playoff-bracket-board .bracket-player.winner {
+    border-color: rgba(171, 255, 89, 0.66) !important;
+    background: rgba(19, 34, 24, 0.96) !important;
+}
+
+.playoff-bracket-board .bracket-player.winner .player-name,
+.history-playoff-bracket-board .bracket-player.winner .player-name {
+    color: #efffd2 !important;
+}
+
+.playoff-bracket-board .player-seed,
+.history-playoff-bracket-board .player-seed {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 22px;
+    color: rgba(190, 231, 239, 0.74) !important;
+    font-size: 0.68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em;
+    border-right: 1px solid rgba(110, 198, 220, 0.24);
+    padding-right: 6px;
+}
+
+.playoff-bracket-board .player-name,
+.history-playoff-bracket-board .player-name {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #f2fbff !important;
+    font-size: 0.92rem !important;
+    font-weight: 700 !important;
+}
+
+.playoff-bracket-board .bracket-status,
+.history-playoff-bracket-board .bracket-status {
+    margin-top: 2px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    color: rgba(197, 234, 243, 0.72) !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.playoff-bracket-board .bracket-status.done,
+.history-playoff-bracket-board .bracket-status.done {
+    color: #dfff97 !important;
+}
+
+.playoff-bracket-board .bracket-status.auto,
+.history-playoff-bracket-board .bracket-status.auto {
+    color: #ffd59a !important;
+}
+
+.playoff-bracket-board .bracket-status.pending,
+.history-playoff-bracket-board .bracket-status.pending {
+    color: rgba(175, 220, 231, 0.52) !important;
+}
+
+.playoff-bracket-board .bracket-actions,
+.history-playoff-bracket-board .bracket-actions {
+    margin-top: 4px !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px !important;
+}
+
+.playoff-bracket-board .bracket-actions .btn,
+.history-playoff-bracket-board .bracket-actions .btn {
+    min-height: 32px !important;
+    padding: 6px 8px !important;
+    font-size: 0.72rem !important;
+}
+
+@media (max-width: 768px) {
+    .playoff-bracket-board,
+    .history-playoff-bracket-board {
+        gap: 32px !important;
+    }
+
+    .playoff-bracket-board .bracket-round,
+    .history-playoff-bracket-board .bracket-round {
+        min-width: 206px !important;
+    }
+
+    .playoff-bracket-board .player-name,
+    .history-playoff-bracket-board .player-name {
+        font-size: 0.84rem !important;
+    }
+}
+
+/* Brackets-viewer esports theme */
+.esports-bracket-viewer {
+    --primary-background: transparent;
+    --secondary-background: rgba(10, 22, 34, 0.92);
+    --match-background: rgba(9, 18, 29, 0.96);
+    --font-color: #ecfbff;
+    --win-color: #d9ff74;
+    --loss-color: #ff8a94;
+    --label-color: rgba(151, 225, 241, 0.72);
+    --hint-color: rgba(163, 209, 223, 0.54);
+    --connector-color: rgba(112, 228, 255, 0.82);
+    --border-color: rgba(90, 242, 255, 0.32);
+    --border-hover-color: rgba(144, 244, 255, 0.56);
+    --border-selected-color: rgba(217, 255, 116, 0.6);
+    --text-size: 13px;
+    --round-margin: 56px;
+    --match-width: 210px;
+    --match-horizontal-padding: 10px;
+    --match-vertical-padding: 7px;
+    --connector-border-width: 1px;
+    --match-border-width: 1px;
+    --match-border-radius: 0px;
+    background: transparent !important;
+    color: var(--font-color) !important;
+    font-family: 'Oxanium', sans-serif !important;
+    padding: 8px 24px 24px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    width: max-content !important;
+    max-width: none !important;
+    min-width: 100%;
+}
+
+.esports-bracket-viewer h1,
+.esports-bracket-viewer h2 {
+    display: none !important;
+}
+
+.esports-bracket-viewer h3 {
+    background: transparent !important;
+    color: #9af3ff !important;
+    border: none !important;
+    padding: 0 0 10px !important;
+    text-align: left !important;
+    font: 700 0.82rem/1.2 'Orbitron', sans-serif !important;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.esports-bracket-viewer .opponents {
+    border-radius: 0 !important;
+    clip-path: none !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+
+.esports-bracket-viewer .participant.win {
+    background: rgba(24, 40, 28, 0.98) !important;
+}
+
+.esports-bracket-viewer .participant.loss {
+    background: rgba(34, 18, 24, 0.92) !important;
+}
+
+.esports-bracket-viewer .participant .name {
+    font-weight: 700;
+}
+
+.esports-bracket-viewer .opponents > span {
+    top: -18px;
+    padding: 0 4px;
+    border-radius: 0;
+    background: rgba(4, 11, 18, 0.96) !important;
+    color: rgba(151, 225, 241, 0.72) !important;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    z-index: 2;
+}
+
+.esports-bracket-viewer .match.connect-next::after,
+.esports-bracket-viewer .opponents.connect-previous::before {
+    box-shadow: none !important;
+}
+
+.esports-bracket-viewer .opponents:hover {
+    border-color: rgba(144, 244, 255, 0.56) !important;
+}
+
+.playoff-bracket-host,
+.history-playoff-viewer {
+    min-height: 220px;
+    overflow-y: visible !important;
+}
+
+.playoff-bracket-container,
+.history-playoff-bracket-container {
+    overflow-x: auto;
+    overflow-y: visible;
+}
+
+.esports-bracket-viewer .bracket,
+.esports-bracket-viewer .rounds,
+.esports-bracket-viewer .round {
+    overflow: visible !important;
+}
+
+.history-results-modal .history-playoff-viewer {
+    --match-width: 192px;
+    --round-margin: 46px;
+    padding-left: 12px !important;
+    padding-right: 18px !important;
+}
+
+@media (max-width: 768px) {
+    .esports-bracket-viewer {
+        --match-width: 182px;
+        --round-margin: 34px;
+        padding: 6px 12px 18px !important;
+    }
+
+    .history-results-modal .history-playoff-viewer {
+        --match-width: 176px;
+        --round-margin: 30px;
+    }
+}
+
+/* Final lock: title system, current section frame, projector button sizing */
+:root {
+    --title-font: 'Orbitron', 'Oxanium', 'Noto Sans TC', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.header-kicker,
+.page-header h2,
+.dashboard-header h2,
+.section-header h3,
+.tournament-title,
+.atc-title,
+.summary-title,
+.playoff-preview-summary,
+.bracket-round-title,
+.ranking-section h4,
+.rounds-section h4,
+.round-result h5,
+.settings-title,
+.status-card-title,
+.manual-pairing-header h3,
+.available-players h4,
+.manual-matches h4,
+.players-section h3,
+.round-info h3 {
+    font-family: var(--title-font) !important;
+    letter-spacing: 0.06em;
+}
+
+.header-kicker {
+    letter-spacing: 0.12em;
+}
+
+.tournament-header h1,
+.page-header h2,
+.dashboard-header h2,
+.current-tournament-section h3,
+.history-tournaments-section h3,
+.section-header h3,
+.tournament-title,
+.atc-title,
+.summary-title,
+.bracket-round-title,
+.ranking-section h4,
+.rounds-section h4,
+.round-result h5 {
+    font-weight: 800 !important;
+    text-shadow: 0 0 10px rgba(90, 242, 255, 0.1), 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.tournament-header h1 {
+    letter-spacing: 0.08em !important;
+}
+
+.page-header h2,
+.dashboard-header h2,
+.current-tournament-section h3,
+.history-tournaments-section h3,
+.section-header h3 {
+    letter-spacing: 0.05em !important;
+}
+
+.current-tournament-section {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    clip-path: none !important;
+    padding: 0 !important;
+    filter: none !important;
+}
+
+.current-tournament-section::before {
+    display: none !important;
+}
+
+#pairing-section .page-header {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 16px 20px 14px;
+}
+
+#pairing-section .page-header::before {
+    margin-bottom: 2px;
+}
+
+#pairing-section .page-header h2 {
+    margin-bottom: 0;
+    font-size: clamp(1.7rem, 2.4vw, 2.5rem);
+}
+
+#pairing-section .round-summary-inline {
+    margin: 0;
+    padding: 10px 14px;
+    border: 1px solid rgba(90, 242, 255, 0.16);
+    background: linear-gradient(90deg, rgba(6, 16, 25, 0.92), rgba(10, 22, 33, 0.9)) !important;
+    box-shadow: inset 0 0 0 1px rgba(90, 242, 255, 0.04);
+}
+
+#pairing-section .round-summary-inline .summary-stats {
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+}
+
+#pairing-section .pairing-container {
+    display: contents;
+}
+
+body.projector-mode .btn.btn-large,
+body.projector-mode .nav-btn.btn-large,
+body.projector-mode #start-new-tournament {
+    font-size: 1.18rem !important;
+    min-width: 240px;
+    min-height: 58px;
+    padding: 18px 30px !important;
+    letter-spacing: 0.05em;
+}
+
+body.projector-mode #start-new-tournament span {
+    font-size: 1.15em;
+}
+
+@media (max-width: 768px) {
+    body.projector-mode .btn.btn-large,
+    body.projector-mode .nav-btn.btn-large,
+    body.projector-mode #start-new-tournament {
+        font-size: 1.08rem !important;
+        min-width: 220px;
+        min-height: 54px;
+    }
+}
+
 .input-label,
 .setting-label,
 .setting-label-text,
@@ -3532,4 +6095,432 @@ button {
 .historical-match-row.bye {
     border-left: 4px solid var(--warning-color);
     background: var(--background-color);
+}
+
+/* Final refinement layer: sharper EVA panel, better contrast, projector mode */
+:root {
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+}
+
+.page-header,
+.setup-card,
+.players-section,
+.round-content,
+.matches-list,
+.arrangement-preview,
+.manual-pairing,
+.playoff-card,
+.playoff-preview,
+.playoff-summary-card,
+.ranking-table-container,
+.quick-actions,
+.tournament-status-card,
+.active-tournament-card,
+.tournament-card,
+.stat-card,
+.player-card,
+.manual-player,
+.manual-match-item,
+.arrangement-match,
+.historical-match-row,
+.quick-result-option,
+.drop-option,
+.result-option,
+.bracket-match,
+.bracket-player,
+.round-result,
+.match-result,
+.modal-content,
+.btn,
+.nav-btn {
+    border-radius: var(--border-radius) !important;
+}
+
+.page-header,
+.setup-card,
+.players-section,
+.round-content,
+.matches-list,
+.arrangement-preview,
+.manual-pairing,
+.playoff-card,
+.playoff-preview,
+.playoff-summary-card,
+.ranking-table-container,
+.quick-actions,
+.tournament-status-card,
+.active-tournament-card,
+.tournament-card,
+.modal-content,
+.btn,
+.nav-btn {
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+}
+
+.page-header::after {
+    display: none;
+}
+
+.page-header,
+.setup-card,
+.players-section,
+.round-content,
+.matches-list,
+.arrangement-preview,
+.manual-pairing,
+.playoff-card,
+.playoff-preview,
+.playoff-summary-card,
+.ranking-table-container,
+.quick-actions,
+.tournament-status-card,
+.active-tournament-card,
+.tournament-card,
+.stat-card,
+.player-card,
+.manual-player,
+.manual-match-item,
+.arrangement-match,
+.historical-match-row,
+.quick-result-option,
+.drop-option,
+.result-option,
+.bracket-match,
+.bracket-player,
+.round-result,
+.match-result,
+.modal-content,
+.results-content,
+.ranking-section,
+.rounds-section,
+.statistics-section,
+.scoring-rules-section,
+.top-players-section,
+.rule-item,
+.stat-group,
+.player-analysis-card {
+    background: linear-gradient(180deg, rgba(8, 20, 31, 0.98), rgba(4, 12, 20, 0.98)) !important;
+    border-color: rgba(90, 242, 255, 0.28) !important;
+}
+
+.tournament-card,
+.active-tournament-card,
+.historical-match-row,
+.manual-match-item,
+.arrangement-match,
+.round-result,
+.match-result,
+.stat-group,
+.rule-item,
+.player-analysis-card {
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.15), inset 0 0 0 1px rgba(90, 242, 255, 0.05), 0 10px 24px rgba(0, 0, 0, 0.36) !important;
+}
+
+.page,
+.page p,
+.page span,
+.page small,
+.page td,
+.page th,
+.page label,
+.page li,
+.page div,
+.modal-body,
+.modal-body p,
+.results-content,
+.results-content p,
+.results-content span,
+.results-content td,
+.results-content th {
+    color: var(--text-color);
+}
+
+.status,
+.champion,
+.players-count,
+.rounds-info,
+.date,
+.tournament-details span,
+.analysis-row span,
+.stat-row span,
+.tiebreak-rules li,
+.result-text,
+.round-tab,
+.match-action-hint,
+.historical-match-result,
+.quick-result-option-desc {
+    color: #e6f5ff !important;
+}
+
+.tournament-details span,
+.analysis-row span,
+.stat-row span,
+.tiebreak-rules li {
+    background: rgba(9, 27, 40, 0.94) !important;
+    border-color: rgba(90, 242, 255, 0.2) !important;
+}
+
+.list-header,
+.ranking-table th,
+.bracket-round-title {
+    background: linear-gradient(90deg, rgba(2, 11, 19, 0.98), rgba(8, 27, 40, 0.95)) !important;
+    color: #f7fdff !important;
+}
+
+.match-row,
+.ranking-table tr,
+.round-tab,
+.quick-result-current,
+.round-summary {
+    background: rgba(5, 16, 26, 0.94) !important;
+}
+
+.ranking-table tr:nth-child(even) {
+    background: rgba(8, 20, 32, 0.94) !important;
+}
+
+.ranking-table tr:hover,
+.match-row:hover,
+.round-tab:hover,
+.round-tab.active {
+    background: rgba(10, 30, 45, 0.96) !important;
+}
+
+.player.bye-player,
+.arrangement-player.bye-player,
+.arrangement-match.bye,
+.historical-match-row.bye,
+.pairing-item.bye,
+.bracket-match.bye,
+.match-result.bye {
+    background: linear-gradient(180deg, rgba(40, 22, 5, 0.94), rgba(24, 14, 4, 0.96)) !important;
+    color: #ffe9c9 !important;
+    border-color: rgba(255, 179, 71, 0.52) !important;
+}
+
+.vs-bye,
+.status-bye {
+    color: #ffd8a0 !important;
+}
+
+.btn,
+.nav-btn {
+    min-height: 46px;
+    border-width: 1px;
+}
+
+#projector-mode-btn.active {
+    border-color: rgba(166, 255, 77, 0.72) !important;
+    box-shadow: 0 0 0 1px rgba(166, 255, 77, 0.42), 0 0 28px rgba(166, 255, 77, 0.22) !important;
+    background: linear-gradient(135deg, rgba(166, 255, 77, 0.26), rgba(90, 242, 255, 0.2)) !important;
+    color: #f5ffe9 !important;
+}
+
+body.projector-mode {
+    --text-color: #ffffff;
+    --text-secondary: #d8ecfa;
+    --border-color: rgba(170, 228, 255, 0.62);
+    --primary-color: #79efff;
+    --success-color: #d7ff5c;
+    --warning-color: #ffc468;
+    --danger-color: #ff8d97;
+    --info-color: #ff87dc;
+    background:
+        radial-gradient(circle at top left, rgba(121, 239, 255, 0.08), transparent 34%),
+        linear-gradient(180deg, #050b12 0%, #04090f 100%) !important;
+}
+
+body.projector-mode::before,
+body.projector-mode::after {
+    opacity: 0.35;
+}
+
+body.projector-mode .page {
+    font-size: 20px;
+}
+
+body.projector-mode .page-header h2 {
+    font-size: clamp(2.2rem, 3.2vw, 3.4rem);
+}
+
+body.projector-mode .page-header p,
+body.projector-mode .section-intro,
+body.projector-mode .status-card-desc,
+body.projector-mode .setting-description,
+body.projector-mode .match-action-hint,
+body.projector-mode .quick-result-option-desc,
+body.projector-mode .historical-match-result,
+body.projector-mode .summary-meta,
+body.projector-mode .input-info,
+body.projector-mode .round-info p {
+    color: #ebf8ff !important;
+    font-size: 1.02em;
+}
+
+body.projector-mode .btn,
+body.projector-mode .nav-btn {
+    font-size: 1rem;
+    font-weight: 800;
+    min-height: 52px;
+    box-shadow: none !important;
+}
+
+body.projector-mode .ranking-table {
+    font-size: 17px;
+}
+
+body.projector-mode .ranking-table th,
+body.projector-mode .ranking-table td,
+body.projector-mode .match-row,
+body.projector-mode .list-header,
+body.projector-mode .arrangement-match,
+body.projector-mode .historical-match-row,
+body.projector-mode .stat-card,
+body.projector-mode .player-card,
+body.projector-mode .active-tournament-card,
+body.projector-mode .tournament-card {
+    border-color: rgba(194, 235, 255, 0.54) !important;
+}
+
+body.projector-mode .players-input,
+body.projector-mode .tournament-name-input,
+body.projector-mode .rounds-input,
+body.projector-mode textarea,
+body.projector-mode input,
+body.projector-mode select {
+    font-size: 1.02rem;
+    border-color: rgba(194, 235, 255, 0.66) !important;
+}
+
+body.projector-mode .tournament-header h1,
+body.projector-mode .status-badge,
+body.projector-mode .stat-value,
+body.projector-mode .match-number,
+body.projector-mode .arrangement-match-number {
+    text-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+    .page-header,
+    .setup-card,
+    .players-section,
+    .manual-pairing,
+    .arrangement-preview,
+    .playoff-card,
+    .round-content,
+    .scoring-rules-section,
+    .statistics-section,
+    .top-players-section,
+    .active-tournament-card,
+    .tournament-card {
+        clip-path: none;
+    }
+
+    body.projector-mode .page {
+        font-size: 18px;
+    }
+}
+
+/* Precision polish: history layout, chip metadata, and edge glow */
+.history-tournaments-section {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    clip-path: none !important;
+}
+
+.history-tournaments-section .section-header {
+    margin-bottom: 0.7rem;
+}
+
+.history-tournaments-section .tournaments-list,
+#history-tournaments-list {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.tournament-details {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px !important;
+}
+
+.tournament-details span,
+.tournament-details .status,
+.tournament-details .players-count,
+.tournament-details .rounds-info,
+.tournament-details .champion,
+.tournament-details .date {
+    display: inline-flex !important;
+    width: auto !important;
+    white-space: nowrap;
+    margin: 0;
+    border-radius: 999px !important;
+    padding: 5px 10px;
+    line-height: 1.25;
+}
+
+.btn,
+.nav-btn,
+.tournament-card,
+.active-tournament-card,
+.quick-result-option,
+.drop-option,
+.result-option,
+.manual-player,
+.manual-match-item,
+.arrangement-match,
+.historical-match-row,
+.bracket-match,
+.modal-content,
+.page-header,
+.setup-card,
+.players-section,
+.round-content,
+.matches-list,
+.arrangement-preview,
+.manual-pairing,
+.playoff-card,
+.playoff-preview,
+.playoff-summary-card,
+.ranking-table-container,
+.quick-actions,
+.tournament-status-card {
+    filter: drop-shadow(0 0 4px rgba(90, 242, 255, 0.2));
+}
+
+.btn,
+.nav-btn {
+    clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px)) !important;
+    box-shadow: 0 0 0 1px rgba(90, 242, 255, 0.26), 0 0 10px rgba(90, 242, 255, 0.14), 0 8px 18px rgba(0, 0, 0, 0.32) !important;
+}
+
+.btn:hover:not(:disabled),
+.nav-btn:hover {
+    box-shadow: 0 0 0 1px rgba(166, 255, 77, 0.34), 0 0 11px rgba(166, 255, 77, 0.16), 0 10px 20px rgba(0, 0, 0, 0.34) !important;
+}
+
+.atc-delete-btn {
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+    box-shadow: 0 0 0 1px rgba(255, 95, 109, 0.34), 0 0 10px rgba(255, 95, 109, 0.16);
+}
+
+@media (max-width: 860px) {
+    .tournament-details {
+        gap: 6px 8px !important;
+    }
+
+    .tournament-details span,
+    .tournament-details .status,
+    .tournament-details .players-count,
+    .tournament-details .rounds-info,
+    .tournament-details .champion,
+    .tournament-details .date {
+        white-space: normal;
+    }
 }
