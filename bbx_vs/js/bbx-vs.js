@@ -121,6 +121,11 @@
         document.getElementById('drive-sync-btn').addEventListener('click', () => this.handleDriveSync());
         document.getElementById('auto-sync-btn').addEventListener('click', () => this.toggleAutoDriveSync());
         this.importFileInput.addEventListener('change', (event) => this.importTournament(event.target.files[0]));
+        this.pointsToWinInput.addEventListener('change', () => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'adjust_points_to_win', { event_category: 'setup', value: Number(this.pointsToWinInput.value) });
+            }
+        });
         this.undoScoreBtn.addEventListener('click', () => this.undoLastScore());
         this.resetMatchBtn.addEventListener('click', () => this.resetSelectedMatch());
 
@@ -652,6 +657,9 @@
             }
         }
 
+        if (typeof gtag === 'function') {
+            gtag('event', 'drive_auto_sync_toggle', { event_category: 'sync', enabled: nextValue });
+        }
         this.driveAutoSyncEnabled = nextValue;
         localStorage.setItem(this.driveAutoSyncKey, this.driveAutoSyncEnabled ? '1' : '0');
         this.updateDriveSyncToggleLabel();
@@ -1050,6 +1058,9 @@
     }
 
     async handleDriveSync() {
+        if (typeof gtag === 'function') {
+            gtag('event', 'drive_sync_manual', { event_category: 'sync' });
+        }
         try {
             const hasConfig = await this.ensureDriveConfig();
             if (!hasConfig) {
@@ -1441,6 +1452,9 @@
             tournament.completed = true;
             tournament.winnerId = winnerId;
             tournament.activeMatchId = null;
+            if (typeof gtag === 'function') {
+                gtag('event', 'complete_tournament', { event_category: 'tournament', tournament_id: tournament.id });
+            }
             return;
         }
 
@@ -1600,6 +1614,9 @@
 
         if (match.score1 >= match.targetPoints || match.score2 >= match.targetPoints) {
             const winnerSlot = match.score1 >= match.targetPoints ? 'player1' : 'player2';
+            if (typeof gtag === 'function') {
+                gtag('event', 'match_win_by_score', { event_category: 'match', score_type: scoreType, label: this.scoreTypes[scoreType].label });
+            }
             this.completeMatch(tournament, selected.roundIndex, selected.matchIndex, winnerSlot, scoreType);
         }
 
@@ -2120,6 +2137,9 @@
         });
 
         this.updateTournament(tournament);
+        if (typeof gtag === 'function') {
+            gtag('event', 'create_tournament', { event_category: 'tournament', players_count: tournament.players.length, points_to_win: tournament.settings.pointsToWin });
+        }
         this.selectedMatchId = tournament.activeMatchId;
         this.arenaTab = 'recorder';
         this.clearPendingPairingDraft();
