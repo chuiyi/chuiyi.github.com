@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800;900&display=swap');
 
 :root {
     --bg-1: #07111f;
@@ -280,7 +280,43 @@ body {
     z-index: 90;
 }
 
-.menu-btn {
+
+.menu-sync-dot {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.4rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 0 2px rgba(7, 16, 31, 0.92);
+    pointer-events: none;
+}
+
+.menu-sync-dot[hidden] {
+    display: none;
+}
+
+.menu-sync-dot.is-warning {
+    background: var(--gold);
+    animation: dotPulse 1.6s ease-in-out infinite;
+}
+
+.menu-sync-dot.is-success {
+    background: var(--green);
+    animation: dotFadeOut 2.5s ease forwards;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.55; transform: scale(0.78); }
+}
+
+@keyframes dotFadeOut {
+    0%   { opacity: 1; transform: scale(1.15); }
+    40%  { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.6); }
+}.menu-btn {
     width: 3rem;
     height: 3rem;
     border-radius: 14px;

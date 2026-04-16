@@ -1,4 +1,4 @@
-class BeybladeTournamentApp {
+﻿class BeybladeTournamentApp {
     constructor() {
         this.storageKey = 'bbx_vs_tournaments';
         this.currentTournamentKey = 'bbx_vs_current_tournament';
@@ -547,6 +547,37 @@ class BeybladeTournamentApp {
         this.syncStatusText.textContent = `同步狀態：${message}`;
         this.syncStatusText.classList.remove('is-idle', 'is-running', 'is-success', 'is-warning', 'is-error');
         this.syncStatusText.classList.add(`is-${tone}`);
+
+        this.updateMenuSyncDot(tone);
+    }
+
+    updateMenuSyncDot(tone) {
+        const dot = document.getElementById('menu-sync-dot');
+        if (!dot) {
+            return;
+        }
+
+        if (this.menuDotTimer) {
+            window.clearTimeout(this.menuDotTimer);
+            this.menuDotTimer = null;
+        }
+
+        dot.classList.remove('is-warning', 'is-success');
+
+        if (tone === 'warning') {
+            dot.hidden = false;
+            dot.classList.add('is-warning');
+        } else if (tone === 'success') {
+            dot.hidden = false;
+            dot.classList.add('is-success');
+            this.menuDotTimer = window.setTimeout(() => {
+                dot.hidden = true;
+                dot.classList.remove('is-success');
+                this.menuDotTimer = null;
+            }, 2500);
+        } else {
+            dot.hidden = true;
+        }
     }
 
     getLastDriveSyncAt() {
