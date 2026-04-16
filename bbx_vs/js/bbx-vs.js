@@ -922,6 +922,7 @@
         this.saveDeletedTournaments();
         this.savePendingPairingDraft();
         this.ensureCurrentTournament();
+        this.ensureSelectedMatch();
     }
 
     navigateAfterSync(payload) {
