@@ -289,6 +289,33 @@ class BeybladeTournamentApp {
         this.syncUrlState();
     }
 
+    showToast(message, { title = '', tone = 'info', duration = 3500 } = {}) {
+        const container = document.getElementById('toast-container');
+        if (!container) {
+            return;
+        }
+
+        const icons = { success: '\u2713', error: '\u2715', warning: '\u26a0', info: '\u2139' };
+        const toast = document.createElement('div');
+        toast.className = `toast is-${tone}`;
+        const titleHtml = title ? '<div class="toast-title">' + title + '</div>' : '';
+        toast.innerHTML =
+            '<span class="toast-icon">' + (icons[tone] || '\u2139') + '</span>' +
+            '<div class="toast-body">' + titleHtml + '<div class="toast-message">' + message + '</div></div>';
+        container.appendChild(toast);
+
+        const dismiss = () => {
+            toast.classList.add('toast-leaving');
+            toast.addEventListener('animationend', () => toast.remove(), { once: true });
+        };
+
+        const timer = window.setTimeout(dismiss, duration);
+        toast.addEventListener('click', () => {
+            window.clearTimeout(timer);
+            dismiss();
+        }, { once: true });
+    }
+
     openSetup() {
         this.clearPendingPairingDraft();
         this.selectedPairingSlotIndex = null;
@@ -958,10 +985,10 @@ class BeybladeTournamentApp {
             if (result.localUpdated) messages.push('本機已更新');
             if (result.remoteUpdated) messages.push('雲端已更新');
             this.setDriveSyncStatus(messages.length ? messages.join('，') : '資料已是最新', 'success');
-            window.alert(messages.length ? `Google Drive 同步完成：${messages.join('，')}` : 'Google Drive 同步完成，資料已是最新。');
+            this.showToast(messages.length ? messages.join('，') : '資料已是最新', { title: 'Google Drive 同步完成', tone: 'success' });
         } catch (error) {
             this.setDriveSyncStatus(`同步失敗：${error.message}`, 'error');
-            window.alert(`Google Drive 同步失敗：${error.message}`);
+            this.showToast(error.message, { title: 'Google Drive 同步失敗', tone: 'error', duration: 5000 });
         }
     }
 
@@ -983,13 +1010,13 @@ class BeybladeTournamentApp {
         try {
             if (action === 'upload') {
                 await this.uploadDriveSyncData();
-                window.alert('Google Drive 同步上傳完成。');
+                this.showToast('上傳完成', { title: 'Google Drive', tone: 'success' });
             } else if (action === 'download') {
                 await this.downloadDriveSyncData();
-                window.alert('Google Drive 同步下載完成。');
+                this.showToast('下載完成', { title: 'Google Drive', tone: 'success' });
             }
         } catch (error) {
-            window.alert(`Google Drive 同步失敗：${error.message}`);
+            this.showToast(error.message, { title: 'Google Drive 同步失敗', tone: 'error', duration: 5000 });
         } finally {
             this.closeDriveSyncChoiceModal();
         }
@@ -1031,12 +1058,12 @@ class BeybladeTournamentApp {
         const uniquePlayers = [...new Set(playerNames)];
 
         if (uniquePlayers.length < 2) {
-            window.alert('至少需要 2 位不重複參賽者。');
+            this.showToast('至少需要 2 位不重複參賽者。', { tone: 'warning' });
             return;
         }
 
         if (uniquePlayers.length !== playerNames.length) {
-            window.alert('參賽者名單不可重複。');
+            this.showToast('參賽者名單中有重複名稱，請確認後再試。', { tone: 'warning' });
             return;
         }
 
@@ -1580,7 +1607,7 @@ class BeybladeTournamentApp {
 
         const { match } = selected;
         if (match.status === 'completed') {
-            window.alert('已完成的對戰無法直接重置。若需要更改，請先告訴我要怎麼處理回溯流程。');
+            this.showToast('已完成的對戰無法直接重置。', { tone: 'warning' });
             return;
         }
 
@@ -2518,7 +2545,7 @@ class BeybladeTournamentApp {
     exportCurrentTournament() {
         const tournament = this.getCurrentTournament();
         if (!tournament) {
-            window.alert('目前沒有可匯出的賽事。');
+            this.showToast('目前沒有可匯出的賽事。', { tone: 'warning' });
             return;
         }
 
@@ -2554,7 +2581,7 @@ class BeybladeTournamentApp {
                 this.selectedMatchId = imported.selectedMatchId || imported.activeMatchId || this.findFirstAvailableMatchId(imported);
                 this.showPage('arena-page');
             } catch (error) {
-                window.alert(`匯入失敗：${error.message}`);
+                this.showToast(error.message, { title: '匯入失敗', tone: 'error', duration: 5000 });
             } finally {
                 this.importFileInput.value = '';
             }
