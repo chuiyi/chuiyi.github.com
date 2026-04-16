@@ -89,7 +89,8 @@ class BeybladeTournamentApp {
         this.importFileInput = document.getElementById('import-file');
         this.driveSyncBtn = document.getElementById('drive-sync-btn');
         this.autoSyncBtn = document.getElementById('auto-sync-btn');
-        this.lastSyncText = document.getElementById('last-sync-text');
+        this.lastSyncTexts = Array.from(document.querySelectorAll('.js-last-sync-text'));
+        this.syncStatusText = document.getElementById('sync-status-text');
         this.matchDetailModal = document.getElementById('match-detail-modal');
         this.matchDetailContent = document.getElementById('match-detail-content');
         this.nextMatchModal = document.getElementById('next-match-modal');
@@ -507,6 +508,16 @@ class BeybladeTournamentApp {
         this.updateLastSyncText();
     }
 
+    setDriveSyncStatus(message, tone = 'idle') {
+        if (!this.syncStatusText) {
+            return;
+        }
+
+        this.syncStatusText.textContent = `同步狀態：${message}`;
+        this.syncStatusText.classList.remove('is-idle', 'is-running', 'is-success', 'is-warning', 'is-error');
+        this.syncStatusText.classList.add(`is-${tone}`);
+    }
+
     getLastDriveSyncAt() {
         return localStorage.getItem(this.driveLastSyncKey) || null;
     }
@@ -546,9 +557,10 @@ class BeybladeTournamentApp {
     }
 
     updateLastSyncText() {
-        if (this.lastSyncText) {
-            this.lastSyncText.textContent = `上次同步：${this.formatRelativeTime(this.getLastDriveSyncAt())}`;
-        }
+        const label = `上次同步：${this.formatRelativeTime(this.getLastDriveSyncAt())}`;
+        this.lastSyncTexts.forEach((element) => {
+            element.textContent = label;
+        });
     }
 
     async toggleAutoDriveSync() {
@@ -564,6 +576,7 @@ class BeybladeTournamentApp {
         this.driveAutoSyncEnabled = nextValue;
         localStorage.setItem(this.driveAutoSyncKey, this.driveAutoSyncEnabled ? '1' : '0');
         this.updateDriveSyncToggleLabel();
+        this.setDriveSyncStatus(this.driveAutoSyncEnabled ? '自動同步已開啟' : '自動同步已關閉', this.driveAutoSyncEnabled ? 'success' : 'idle');
 
         if (this.driveAutoSyncEnabled) {
             this.scheduleAutoDriveSync('toggle-enable');
@@ -582,13 +595,18 @@ class BeybladeTournamentApp {
             window.clearTimeout(this.autoSyncTimer);
         }
 
+        this.setDriveSyncStatus('已排程自動同步', 'running');
+
         this.autoSyncTimer = window.setTimeout(async () => {
             this.autoSyncTimer = null;
             try {
+                this.setDriveSyncStatus('自動同步中', 'running');
                 await this.syncWithDrive({ interactive: false, source: `auto:${reason}` });
+                this.setDriveSyncStatus('自動同步完成', 'success');
             } catch (error) {
                 // 靜默模式若授權失敗，直接略過本次，不打擾使用者。
                 console.warn(`自動同步略過（${reason}）：${error.message}`);
+                this.setDriveSyncStatus('自動同步略過，等待登入', 'warning');
             }
         }, 1200);
     }
@@ -891,12 +909,15 @@ class BeybladeTournamentApp {
                 return;
             }
 
+            this.setDriveSyncStatus('手動同步中', 'running');
             const result = await this.syncWithDrive({ interactive: true, redirectToDashboardOnMobile: true, source: 'manual' });
             const messages = [];
             if (result.localUpdated) messages.push('本機已更新');
             if (result.remoteUpdated) messages.push('雲端已更新');
+            this.setDriveSyncStatus(messages.length ? messages.join('，') : '資料已是最新', 'success');
             window.alert(messages.length ? `Google Drive 同步完成：${messages.join('，')}` : 'Google Drive 同步完成，資料已是最新。');
         } catch (error) {
+            this.setDriveSyncStatus(`同步失敗：${error.message}`, 'error');
             window.alert(`Google Drive 同步失敗：${error.message}`);
         }
     }

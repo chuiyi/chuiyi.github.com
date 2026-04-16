@@ -155,6 +155,26 @@ body {
     position: relative;
 }
 
+.sync-status-menu.is-idle {
+    color: var(--text-soft);
+}
+
+.sync-status-menu.is-running {
+    color: var(--cyan);
+}
+
+.sync-status-menu.is-success {
+    color: var(--green);
+}
+
+.sync-status-menu.is-warning {
+    color: var(--gold);
+}
+
+.sync-status-menu.is-error {
+    color: var(--red);
+}
+
 .header-title-block {
     max-width: 44rem;
 }
@@ -314,6 +334,20 @@ body {
 .menu-item:hover {
     border-color: rgba(84, 211, 255, 0.48);
     background: rgba(84, 211, 255, 0.08);
+}
+
+.menu-sync-meta {
+    display: grid;
+    gap: 0.3rem;
+    margin-top: 0.15rem;
+    padding: 0.55rem 0.2rem 0 0.2rem;
+    border-top: 1px solid rgba(84, 211, 255, 0.14);
+}
+
+.menu-sync-text {
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    line-height: 1.35;
 }
 
 .vs-header.menu-collapsed .header-nav {
