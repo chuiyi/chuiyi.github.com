@@ -184,9 +184,43 @@ body {
 
 .header-title-block h1 {
     margin: 0;
+}
+
+.home-title-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    padding: 0.55rem 0.85rem 0.6rem;
+    border-radius: 18px;
+    border: 1px solid rgba(84, 211, 255, 0.28);
+    background: linear-gradient(135deg, rgba(84, 211, 255, 0.12), rgba(255, 255, 255, 0.03));
+    color: var(--text-main);
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.home-title-btn:hover,
+.home-title-btn:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(84, 211, 255, 0.62);
+    background: linear-gradient(135deg, rgba(84, 211, 255, 0.18), rgba(255, 255, 255, 0.06));
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28), 0 0 0 3px rgba(84, 211, 255, 0.12);
+    outline: none;
+}
+
+.home-title-text {
+    font-family: 'Orbitron', 'Noto Sans TC', sans-serif;
     font-size: clamp(1.55rem, 2.45vw, 2.45rem);
     letter-spacing: 0.04em;
-    cursor: pointer;
+}
+
+.home-title-hint {
+    color: var(--cyan);
+    font-size: 0.74rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .header-subtitle {
@@ -665,6 +699,190 @@ body {
     grid-template-columns: minmax(0, 1.5fr) minmax(20rem, 0.9fr);
 }
 
+.setup-form-compact {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+    gap: 1.4rem;
+    align-items: start;
+}
+
+.setup-col-main {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.setup-col-side {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+}
+
+.setup-side-group {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.setup-side-label {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.score-rule-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.score-rule-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    font-weight: 600;
+}
+
+.setup-side-actions {
+    margin-top: 0.4rem;
+}
+
+.pairing-flow-panel {
+    display: grid;
+    gap: 1rem;
+}
+
+.pairing-review {
+    display: grid;
+    gap: 1rem;
+}
+
+.pairing-review-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.pairing-review-head h3,
+.pairing-card-head h4 {
+    margin: 0;
+}
+
+.pairing-subtitle {
+    margin: 0;
+    color: var(--text-soft);
+}
+
+.pairing-meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding: 0.75rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.pairing-actions,
+.pairing-helper-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.pairing-helper-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(84, 211, 255, 0.12);
+    border: 1px solid rgba(84, 211, 255, 0.26);
+    color: var(--cyan);
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.pairing-helper-pill.subtle {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-soft);
+}
+
+.pairing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.pairing-card {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pairing-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.pairing-slot-list {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.pairing-slot-btn {
+    width: 100%;
+    display: grid;
+    gap: 0.18rem;
+    padding: 0.95rem 1rem;
+    border-radius: 16px;
+    border: 1px solid rgba(115, 198, 255, 0.18);
+    background: linear-gradient(180deg, rgba(15, 32, 58, 0.95), rgba(8, 18, 34, 0.98));
+    color: var(--text-main);
+    text-align: left;
+    cursor: pointer;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.pairing-slot-btn:hover,
+.pairing-slot-btn:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(84, 211, 255, 0.44);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+    outline: none;
+}
+
+.pairing-slot-btn.is-selected {
+    border-color: rgba(255, 193, 77, 0.62);
+    box-shadow: 0 0 0 2px rgba(255, 193, 77, 0.16), 0 0 22px rgba(255, 193, 77, 0.16);
+    background: linear-gradient(180deg, rgba(60, 44, 14, 0.92), rgba(20, 16, 7, 0.98));
+}
+
+.pairing-slot-btn.is-empty {
+    border-style: dashed;
+    border-color: rgba(255, 193, 77, 0.42);
+    background: linear-gradient(180deg, rgba(66, 51, 20, 0.78), rgba(26, 21, 10, 0.9));
+    color: #ffe8b6;
+}
+
+.pairing-slot-top {
+    font-weight: 800;
+    font-size: 1rem;
+}
+
+.pairing-slot-bottom {
+    color: var(--text-soft);
+    font-size: 0.82rem;
+}
+
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -690,12 +908,18 @@ body {
 .field-textarea {
     width: 100%;
     border: 1px solid rgba(115, 198, 255, 0.22);
-    border-radius: 16px;
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.06);
     color: var(--text-main);
-    padding: 0.95rem 1rem;
+    padding: 0.65rem 0.9rem;
     font: inherit;
     transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+}
+
+.field-input-sm {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.95rem;
+    border-radius: 12px;
 }
 
 .field-input:focus,
@@ -783,6 +1007,13 @@ body {
     background: rgba(255, 193, 77, 0.14);
     border-color: rgba(255, 193, 77, 0.35);
     color: var(--gold);
+}
+
+.arena-meta-chip.chip-score {
+    background: rgba(82, 219, 141, 0.1);
+    border-color: rgba(82, 219, 141, 0.25);
+    color: var(--green);
+    font-size: 0.75rem;
 }
 
 .arena-tabs {
@@ -1016,6 +1247,16 @@ body {
 .player-line.winner-line {
     background: rgba(82, 219, 141, 0.12);
     border: 1px solid rgba(82, 219, 141, 0.22);
+}
+
+.player-line.bye-line {
+    background: linear-gradient(180deg, rgba(66, 51, 20, 0.58), rgba(26, 21, 10, 0.7));
+    border: 1px dashed rgba(255, 193, 77, 0.42);
+}
+
+.player-line.bye-line .player-name,
+.player-line.bye-line .player-seed {
+    color: #ffe8b6;
 }
 
 .player-name,
@@ -1362,9 +1603,22 @@ body {
     }
 
     .header-title-block h1 {
+        line-height: 1.14;
+    }
+
+    .home-title-btn {
+        width: 100%;
+        padding: 0.5rem 0.72rem 0.58rem;
+    }
+
+    .home-title-text {
         font-size: clamp(1.9rem, 9vw, 2.6rem);
         line-height: 1.14;
         letter-spacing: 0.02em;
+    }
+
+    .home-title-hint {
+        font-size: 0.68rem;
     }
 
     .header-subtitle {
@@ -1409,6 +1663,20 @@ body {
         min-width: 0;
         font-size: 0.74rem;
         padding: 0.34rem 0.56rem;
+    }
+
+    .pairing-meta-strip {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.45rem;
+    }
+
+    .pairing-meta-strip .arena-meta-chip {
+        width: 100%;
+        min-width: 0;
+        font-size: 0.72rem;
+        padding: 0.32rem 0.5rem;
+        justify-content: flex-start;
     }
 
     .summary-card {
@@ -1549,6 +1817,58 @@ body {
     .panel {
         padding: 1rem;
         border-radius: 18px;
+    }
+
+    .pairing-review-head {
+        flex-direction: column;
+    }
+
+    .pairing-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.55rem;
+        width: 100%;
+    }
+
+    .pairing-actions .btn {
+        width: 100%;
+        min-width: 0;
+        padding: 0.58rem 0.5rem;
+        border-radius: 14px;
+        font-size: 0.86rem;
+        line-height: 1.2;
+    }
+
+    .pairing-actions .btn:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .pairing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* setup 表單手機版：單欄堆疊 */
+    .setup-form-compact {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .setup-col-side {
+        gap: 0.75rem;
+    }
+
+    .setup-side-actions {
+        margin-top: 0;
+    }
+
+    .score-rule-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.4rem;
+    }
+
+    .score-rule-item {
+        font-size: 0.76rem;
+        gap: 0.22rem;
     }
 
     .status-card,

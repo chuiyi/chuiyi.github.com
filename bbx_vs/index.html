@@ -30,7 +30,12 @@
             <div class="header-content">
                 <div class="header-title-block">
                     <p class="header-kicker">Battle Operations Suite</p>
-                    <h1 id="home-title">戰鬥陀螺對戰系統</h1>
+                    <h1>
+                        <button id="home-title" class="home-title-btn" type="button" aria-label="返回賽事總覽">
+                            <span class="home-title-text">戰鬥陀螺對戰系統</span>
+                            <span class="home-title-hint">點我返回賽事總覽</span>
+                        </button>
+                    </h1>
                     <!-- <p class="header-subtitle">預賽單淘汰追蹤，著重單場逐分記錄與規則自訂。</p> -->
                 </div>
 
@@ -46,6 +51,12 @@
                     </button>
                     <button id="import-btn" class="nav-btn">
                         <span>匯入</span>
+                    </button>
+                    <button id="drive-sync-btn" class="nav-btn">
+                        <span>Drive 同步</span>
+                    </button>
+                    <button id="auto-sync-btn" class="nav-btn">
+                        <span>自動同步：關</span>
                     </button>
                     <input type="file" id="import-file" accept=".json" hidden>
                 </nav>
@@ -68,6 +79,8 @@
                         <button class="menu-item" data-action="header-history">歷史賽事</button>
                         <button class="menu-item" data-action="header-export">匯出</button>
                         <button class="menu-item" data-action="header-import">匯入</button>
+                        <button class="menu-item" data-action="header-drive-sync">Drive 同步</button>
+                        <button class="menu-item" data-action="header-auto-sync">自動同步：關</button>
                     </div>
                 </div>
             </div>
@@ -79,9 +92,8 @@
                     <div>
                         <p class="section-kicker">Control Hub</p>
                         <h2>賽事總覽</h2>
-                        <p>管理目前賽事、查看歷史紀錄，並快速進入記分介面。</p>
+                        <!-- <p>管理目前賽事、查看歷史紀錄，並快速進入記分介面。</p> -->
                     </div>
-                    <button id="dashboard-create-btn" class="btn btn-primary btn-large">建立新賽事</button>
                 </div>
 
                 <div class="dashboard-grid">
@@ -127,10 +139,10 @@
                                 <strong id="metric-completed" class="metric-value">0</strong>
                             </article>
                         </div>
-                        <div class="system-note">
+                        <!-- <div class="system-note">
                             <span class="system-dot"></span>
                             複賽循環對戰模組先保留，這一版集中在預賽與單場計分。
-                        </div>
+                        </div> -->
                     </section>
                 </div>
 
@@ -150,109 +162,91 @@
                     <div>
                         <p class="section-kicker">Create Tournament</p>
                         <h2>賽事建立</h2>
-                        <p>輸入參賽者與得分規則，系統會生成預賽單淘汰賽程。</p>
+                        <p>輸入參賽者名單與得分規則，下一步確認配對後即可開賽。</p>
                     </div>
                 </div>
 
-                <div class="setup-layout">
-                    <section class="panel setup-panel">
-                        <div class="panel-header">
-                            <div>
-                                <p class="panel-kicker">Entry Feed</p>
-                                <h3>基本資料</h3>
-                            </div>
-                        </div>
-
-                        <div class="form-grid">
-                            <label class="field-block field-wide">
+                <section class="panel setup-panel">
+                    <div class="setup-form-compact">
+                        <div class="setup-col-main">
+                            <label class="field-block">
                                 <span class="field-label">賽事名稱</span>
                                 <input id="tournament-name" class="field-input" type="text" maxlength="60" placeholder="例如：BBX 春季挑戰賽">
                             </label>
-
-                            <label class="field-block field-wide">
+                            <label class="field-block">
                                 <span class="field-label">參賽者名單</span>
-                                <textarea id="players-input" class="field-textarea" rows="12" placeholder="每行一位參賽者&#10;赤龍&#10;白狼&#10;黑獅&#10;藍鷹"></textarea>
-                                <span class="field-helper">至少 2 人。名單順序會視為種子排序基準。</span>
-                            </label>
-
-                            <label class="field-block">
-                                <span class="field-label">先取得幾分獲勝</span>
-                                <input id="points-to-win" class="field-input" type="number" min="1" max="15" value="4">
-                            </label>
-
-                            <label class="field-block">
-                                <span class="field-label">旋轉勝利分數</span>
-                                <input id="score-spin" class="field-input" type="number" min="1" max="9" value="1">
-                            </label>
-
-                            <label class="field-block">
-                                <span class="field-label">擊飛勝利分數</span>
-                                <input id="score-ring-out" class="field-input" type="number" min="1" max="9" value="2">
-                            </label>
-
-                            <label class="field-block">
-                                <span class="field-label">爆裂勝利分數</span>
-                                <input id="score-burst" class="field-input" type="number" min="1" max="9" value="2">
-                            </label>
-
-                            <label class="field-block">
-                                <span class="field-label">極限勝利分數</span>
-                                <input id="score-xtreme" class="field-input" type="number" min="1" max="9" value="3">
+                                <textarea id="players-input" class="field-textarea" rows="8" placeholder="每行一位參賽者&#10;赤龍&#10;白狼&#10;黑獅&#10;藍鷹"></textarea>
+                                <span class="field-helper">至少 2 人，每行一位。名單順序視為種子排序基準。</span>
                             </label>
                         </div>
-
-                        <div class="setup-actions">
-                            <button id="create-tournament-btn" class="btn btn-primary btn-large">生成賽程</button>
-                        </div>
-                    </section>
-
-                    <aside class="panel preview-panel">
-                        <div class="panel-header">
-                            <div>
-                                <p class="panel-kicker">Format Preview</p>
-                                <h3>賽制預覽</h3>
+                        <div class="setup-col-side">
+                            <div class="setup-side-group">
+                                <p class="setup-side-label">先取得幾分獲勝</p>
+                                <input id="points-to-win" class="field-input field-input-sm" type="number" min="1" max="15" value="4">
+                            </div>
+                            <div class="setup-side-group">
+                                <p class="setup-side-label">得分規則</p>
+                                <div class="score-rule-grid">
+                                    <label class="score-rule-item">
+                                        <span>旋轉勝利</span>
+                                        <input id="score-spin" class="field-input field-input-sm" type="number" min="1" max="9" value="1">
+                                    </label>
+                                    <label class="score-rule-item">
+                                        <span>擊飛勝利</span>
+                                        <input id="score-ring-out" class="field-input field-input-sm" type="number" min="1" max="9" value="2">
+                                    </label>
+                                    <label class="score-rule-item">
+                                        <span>爆裂勝利</span>
+                                        <input id="score-burst" class="field-input field-input-sm" type="number" min="1" max="9" value="2">
+                                    </label>
+                                    <label class="score-rule-item">
+                                        <span>極限勝利</span>
+                                        <input id="score-xtreme" class="field-input field-input-sm" type="number" min="1" max="9" value="3">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="setup-side-actions">
+                                <button id="create-tournament-btn" class="btn btn-primary btn-large">前往配對確認</button>
                             </div>
                         </div>
+                    </div>
+                </section>
+            </section>
 
-                        <div class="preview-stack">
-                            <article class="preview-card accent-cyan">
-                                <span class="preview-label">參賽人數</span>
-                                <strong id="preview-player-count" class="preview-value">0</strong>
-                            </article>
-                            <article class="preview-card accent-red">
-                                <span class="preview-label">預估輪數</span>
-                                <strong id="preview-round-count" class="preview-value">0</strong>
-                            </article>
-                            <article class="preview-card accent-gold">
-                                <span class="preview-label">勝利門檻</span>
-                                <strong id="preview-target-points" class="preview-value">4 分</strong>
-                            </article>
-                        </div>
-
-                        <div class="rule-list">
-                            <div class="rule-item">
-                                <span class="rule-name">旋轉勝利</span>
-                                <strong id="preview-score-spin">1 分</strong>
-                            </div>
-                            <div class="rule-item">
-                                <span class="rule-name">擊飛勝利</span>
-                                <strong id="preview-score-ring-out">2 分</strong>
-                            </div>
-                            <div class="rule-item">
-                                <span class="rule-name">爆裂勝利</span>
-                                <strong id="preview-score-burst">2 分</strong>
-                            </div>
-                            <div class="rule-item">
-                                <span class="rule-name">極限勝利</span>
-                                <strong id="preview-score-xtreme">3 分</strong>
-                            </div>
-                        </div>
-
-                        <div class="preview-note">
-                            預賽為單淘汰。複賽循環制先不納入此版本的自動流程，但資料結構保留擴充空間。
-                        </div>
-                    </aside>
+            <section id="pairing-page" class="page">
+                <div class="page-header compact-left">
+                    <div>
+                        <p class="section-kicker">Tournament &amp; Pairing Review</p>
+                        <h2>賽事與配對預覽</h2>
+                        <p>確認配對無誤後即可開賽。可重新隨機，或點兩位選手互換位置。</p>
+                    </div>
                 </div>
+
+                <section class="panel pairing-flow-panel">
+                    <div id="pairing-review" class="pairing-review">
+                        <div class="pairing-review-head">
+                            <div>
+                                <p class="panel-kicker">Round 1 Pairings</p>
+                                <h3 id="pairing-title">首輪配對表</h3>
+                                <p id="pairing-subtitle" class="pairing-subtitle">確認配對無誤後即可開賽。</p>
+                            </div>
+                            <div class="pairing-actions">
+                                <button id="pairing-back-btn" class="btn btn-secondary" type="button">返回編輯</button>
+                                <button id="pairing-reroll-btn" class="btn btn-secondary" type="button">重新隨機</button>
+                                <button id="pairing-confirm-btn" class="btn btn-primary" type="button">確認並開賽</button>
+                            </div>
+                        </div>
+
+                        <div id="pairing-meta-strip" class="pairing-meta-strip"></div>
+
+                        <div class="pairing-helper-strip">
+                            <span id="pairing-selection-hint" class="pairing-helper-pill">點選任兩位選手即可交換位置</span>
+                            <span id="pairing-bye-hint" class="pairing-helper-pill subtle">若人數為奇數，會自動保留輪空位置</span>
+                        </div>
+
+                        <div id="pairing-grid" class="pairing-grid"></div>
+                    </div>
+                </section>
             </section>
 
             <section id="arena-page" class="page">

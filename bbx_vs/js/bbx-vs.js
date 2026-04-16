@@ -2,6 +2,11 @@ class BeybladeTournamentApp {
     constructor() {
         this.storageKey = 'bbx_vs_tournaments';
         this.currentTournamentKey = 'bbx_vs_current_tournament';
+        this.pendingPairingKey = 'bbx_vs_pending_pairing';
+        this.driveAutoSyncKey = 'bbx_vs_drive_auto_sync_enabled';
+        this.driveClientId = '200098245584-ms1ekqgikfvorm7jh4akcmsc1a6ub3dp.apps.googleusercontent.com';
+        this.driveSyncFileName = 'bbx_vs_sync.json';
+        this.driveScopes = 'https://www.googleapis.com/auth/drive.appdata';
         this.tournaments = this.loadTournaments();
         this.currentTournamentId = localStorage.getItem(this.currentTournamentKey) || null;
         this.currentPage = 'dashboard-page';
@@ -11,6 +16,13 @@ class BeybladeTournamentApp {
         this.autoSwitchTimer = null;
         this.recorderFocusTimer = null;
         this.pendingNextMatchId = null;
+        this.pendingPairing = null;
+        this.selectedPairingSlotIndex = null;
+        this.driveTokenClient = null;
+        this.driveAccessToken = null;
+        this.gisReady = false;
+        this.driveAutoSyncEnabled = localStorage.getItem(this.driveAutoSyncKey) === '1';
+        this.autoSyncTimer = null;
         this.scoreTypes = {
             spin: { label: '旋轉勝利', defaultPoints: 1, tone: 'btn-primary' },
             ringOut: { label: '擊飛勝利', defaultPoints: 2, tone: 'secondary-tone' },
@@ -23,8 +35,12 @@ class BeybladeTournamentApp {
         this.cacheElements();
         this.bindEvents();
         this.ensureCurrentTournament();
-        this.updateSetupPreview();
-        this.render();
+        this.restorePendingPairingDraft();
+        this.restoreStateFromUrl();
+        // 先用 replaceState 寫入初始狀態，作為歷史堆疊的起點
+        const initParams = this.buildUrlParams();
+        window.history.replaceState({ page: this.currentPage }, '', `${window.location.pathname}?${initParams.toString()}`);
+        this.showPageInternal(this.currentPage);
     }
 
     cacheElements() {
@@ -43,15 +59,12 @@ class BeybladeTournamentApp {
             burst: document.getElementById('score-burst'),
             xtreme: document.getElementById('score-xtreme')
         };
-        this.previewPlayerCount = document.getElementById('preview-player-count');
-        this.previewRoundCount = document.getElementById('preview-round-count');
-        this.previewTargetPoints = document.getElementById('preview-target-points');
-        this.previewScoreTargets = {
-            spin: document.getElementById('preview-score-spin'),
-            ringOut: document.getElementById('preview-score-ring-out'),
-            burst: document.getElementById('preview-score-burst'),
-            xtreme: document.getElementById('preview-score-xtreme')
-        };
+        this.pairingMetaStrip = document.getElementById('pairing-meta-strip');
+        this.pairingReview = document.getElementById('pairing-review');
+        this.pairingTitle = document.getElementById('pairing-title');
+        this.pairingSubtitle = document.getElementById('pairing-subtitle');
+        this.pairingGrid = document.getElementById('pairing-grid');
+        this.pairingSelectionHint = document.getElementById('pairing-selection-hint');
         this.arenaTitle = document.getElementById('arena-title');
         this.arenaRoundBadge = document.getElementById('arena-round-badge');
         this.arenaSubtitle = document.getElementById('arena-subtitle');
@@ -69,6 +82,8 @@ class BeybladeTournamentApp {
         this.undoScoreBtn = document.getElementById('undo-score-btn');
         this.resetMatchBtn = document.getElementById('reset-match-btn');
         this.importFileInput = document.getElementById('import-file');
+        this.driveSyncBtn = document.getElementById('drive-sync-btn');
+        this.autoSyncBtn = document.getElementById('auto-sync-btn');
         this.matchDetailModal = document.getElementById('match-detail-modal');
         this.matchDetailContent = document.getElementById('match-detail-content');
         this.nextMatchModal = document.getElementById('next-match-modal');
@@ -81,26 +96,29 @@ class BeybladeTournamentApp {
 
     bindEvents() {
         document.getElementById('home-title').addEventListener('click', () => this.showPage('dashboard-page'));
-        document.getElementById('new-tournament-btn').addEventListener('click', () => this.showPage('setup-page'));
-        document.getElementById('dashboard-create-btn').addEventListener('click', () => this.showPage('setup-page'));
+        document.getElementById('new-tournament-btn').addEventListener('click', () => this.openSetup());
         document.getElementById('history-btn').addEventListener('click', () => this.showPage('dashboard-page'));
         document.getElementById('create-tournament-btn').addEventListener('click', () => this.handleCreateTournament());
+        document.getElementById('pairing-back-btn').addEventListener('click', () => this.returnToSetupFromPairing());
+        document.getElementById('pairing-reroll-btn').addEventListener('click', () => this.rerollPendingPairings());
+        document.getElementById('pairing-confirm-btn').addEventListener('click', () => this.confirmPendingPairings());
         document.getElementById('export-btn').addEventListener('click', () => this.exportCurrentTournament());
         document.getElementById('import-btn').addEventListener('click', () => this.importFileInput.click());
+        document.getElementById('drive-sync-btn').addEventListener('click', () => this.handleDriveSync());
+        document.getElementById('auto-sync-btn').addEventListener('click', () => this.toggleAutoDriveSync());
         this.importFileInput.addEventListener('change', (event) => this.importTournament(event.target.files[0]));
         this.undoScoreBtn.addEventListener('click', () => this.undoLastScore());
         this.resetMatchBtn.addEventListener('click', () => this.resetSelectedMatch());
-
-        this.playersInput.addEventListener('input', () => this.updateSetupPreview());
-        this.pointsToWinInput.addEventListener('input', () => this.updateSetupPreview());
-        Object.values(this.scoreInputs).forEach((input) => {
-            input.addEventListener('input', () => this.updateSetupPreview());
-        });
 
         document.addEventListener('click', (event) => this.handleDocumentClick(event));
         window.addEventListener('resize', () => {
             this.updateArenaTabVisibility();
             this.updateHeaderNavMode();
+        });
+        window.addEventListener('popstate', (event) => {
+            this.restoreStateFromUrl();
+            const pageId = (event.state && event.state.page) || this.currentPage;
+            this.showPageInternal(pageId);
         });
     }
 
@@ -109,7 +127,7 @@ class BeybladeTournamentApp {
         if (action) {
             const { action: actionName, id } = action.dataset;
             if (actionName === 'create') {
-                this.showPage('setup-page');
+                this.openSetup();
             }
             if (actionName === 'resume') {
                 this.openTournament(id);
@@ -130,7 +148,7 @@ class BeybladeTournamentApp {
                 this.toggleHeaderMenu();
             }
             if (actionName === 'header-new') {
-                this.showPage('setup-page');
+                this.openSetup();
                 this.closeHeaderMenu();
             }
             if (actionName === 'header-history') {
@@ -145,6 +163,14 @@ class BeybladeTournamentApp {
                 this.importFileInput.click();
                 this.closeHeaderMenu();
             }
+            if (actionName === 'header-drive-sync') {
+                this.handleDriveSync();
+                this.closeHeaderMenu();
+            }
+            if (actionName === 'header-auto-sync') {
+                this.toggleAutoDriveSync();
+                this.closeHeaderMenu();
+            }
             if (actionName === 'close-match-detail') {
                 this.closeMatchDetailModal();
             }
@@ -153,6 +179,9 @@ class BeybladeTournamentApp {
             }
             if (actionName === 'go-next-match') {
                 this.goToPendingNextMatch();
+            }
+            if (actionName === 'pairing-slot') {
+                this.selectPairingSlot(Number.parseInt(action.dataset.slotIndex, 10));
             }
             return;
         }
@@ -168,6 +197,33 @@ class BeybladeTournamentApp {
     }
 
     showPage(pageId) {
+        if (pageId === 'pairing-page' && !this.pendingPairing) {
+            pageId = 'setup-page';
+        }
+
+        if (pageId === 'arena-page' && !this.getCurrentTournament()) {
+            pageId = this.pendingPairing ? 'pairing-page' : 'dashboard-page';
+        }
+
+        const prevPage = this.currentPage;
+        this.showPageInternal(pageId);
+
+        // 進入不同頁面才 push，同頁面內的狀態更新用 replaceState（由 syncUrlState 處理）
+        if (prevPage !== this.currentPage) {
+            const params = this.buildUrlParams();
+            window.history.pushState({ page: this.currentPage }, '', `${window.location.pathname}?${params.toString()}`);
+        }
+    }
+
+    showPageInternal(pageId) {
+        if (pageId === 'pairing-page' && !this.pendingPairing) {
+            pageId = 'setup-page';
+        }
+
+        if (pageId === 'arena-page' && !this.getCurrentTournament()) {
+            pageId = this.pendingPairing ? 'pairing-page' : 'dashboard-page';
+        }
+
         this.currentPage = pageId;
         this.closeHeaderMenu();
         this.pages.forEach((page) => {
@@ -178,10 +234,11 @@ class BeybladeTournamentApp {
             const tournament = this.getCurrentTournament();
             if (tournament && !tournament.completed) {
                 this.selectFirstUnfinishedMatch(tournament, false);
-                this.arenaTab = 'recorder';
             } else {
                 this.ensureSelectedMatch();
-                this.setDefaultArenaTab();
+                if (!this.arenaTab) {
+                    this.setDefaultArenaTab();
+                }
             }
         }
 
@@ -189,7 +246,7 @@ class BeybladeTournamentApp {
 
         if (pageId === 'arena-page') {
             const tournament = this.getCurrentTournament();
-            if (tournament && !tournament.completed) {
+            if (tournament && !tournament.completed && this.arenaTab === 'recorder') {
                 this.focusRecorderPanel();
             }
         }
@@ -208,6 +265,14 @@ class BeybladeTournamentApp {
 
         this.arenaTab = tabName;
         this.updateArenaTabVisibility();
+        this.syncUrlState();
+    }
+
+    openSetup() {
+        this.clearPendingPairingDraft();
+        this.selectedPairingSlotIndex = null;
+        this.resetSetupForm();
+        this.showPage('setup-page');
     }
 
     selectFirstUnfinishedMatch(tournament, persist = true) {
@@ -300,6 +365,91 @@ class BeybladeTournamentApp {
         }
     }
 
+    restorePendingPairingDraft() {
+        try {
+            const raw = window.sessionStorage.getItem(this.pendingPairingKey);
+            this.pendingPairing = raw ? JSON.parse(raw) : null;
+        } catch (error) {
+            console.warn('讀取配對草稿失敗', error);
+            this.pendingPairing = null;
+        }
+    }
+
+    savePendingPairingDraft() {
+        if (!this.pendingPairing) {
+            window.sessionStorage.removeItem(this.pendingPairingKey);
+            return;
+        }
+
+        window.sessionStorage.setItem(this.pendingPairingKey, JSON.stringify(this.pendingPairing));
+    }
+
+    clearPendingPairingDraft() {
+        this.pendingPairing = null;
+        this.selectedPairingSlotIndex = null;
+        window.sessionStorage.removeItem(this.pendingPairingKey);
+    }
+
+    restoreStateFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const page = params.get('page');
+        const tournamentId = params.get('tournament');
+        const tab = params.get('tab');
+        const matchId = params.get('match');
+        const validPages = new Set(['dashboard-page', 'setup-page', 'pairing-page', 'arena-page']);
+        const validTabs = new Set(['recorder', 'bracket', 'standings', 'completed']);
+
+        if (tournamentId && this.tournaments.some((tournament) => tournament.id === tournamentId)) {
+            this.currentTournamentId = tournamentId;
+        }
+
+        if (validTabs.has(tab)) {
+            this.arenaTab = tab;
+        }
+
+        if (matchId) {
+            this.selectedMatchId = matchId;
+        }
+
+        if (validPages.has(page)) {
+            this.currentPage = page;
+        }
+
+        if (this.currentPage === 'pairing-page' && !this.pendingPairing) {
+            this.currentPage = 'setup-page';
+        }
+
+        if (this.currentPage === 'arena-page' && !this.getCurrentTournament()) {
+            this.currentPage = this.pendingPairing ? 'pairing-page' : 'dashboard-page';
+        }
+    }
+
+    buildUrlParams() {
+        const params = new URLSearchParams();
+        params.set('page', this.currentPage);
+
+        if (this.currentPage === 'arena-page' && this.currentTournamentId) {
+            params.set('tournament', this.currentTournamentId);
+            params.set('tab', this.arenaTab || 'recorder');
+            if (this.selectedMatchId) {
+                params.set('match', this.selectedMatchId);
+            }
+        } else if (this.currentPage === 'dashboard-page' && this.currentTournamentId) {
+            params.set('tournament', this.currentTournamentId);
+        } else if (this.currentPage === 'pairing-page' && this.pendingPairing) {
+            params.set('draft', this.pendingPairing.id);
+        }
+
+        return params;
+    }
+
+    syncUrlState() {
+        const params = this.buildUrlParams();
+        const nextUrl = `${window.location.pathname}?${params.toString()}`;
+        // 同頁面內細節變更（tab、match）用 replaceState，不新增歷史
+        window.history.replaceState({ page: this.currentPage }, '', nextUrl);
+    }
+
     loadTournaments() {
         try {
             const raw = localStorage.getItem(this.storageKey);
@@ -316,6 +466,233 @@ class BeybladeTournamentApp {
             localStorage.setItem(this.currentTournamentKey, this.currentTournamentId);
         } else {
             localStorage.removeItem(this.currentTournamentKey);
+        }
+
+        this.scheduleAutoDriveSync('save-tournaments');
+    }
+
+    updateDriveSyncToggleLabel() {
+        const label = `自動同步：${this.driveAutoSyncEnabled ? '開' : '關'}`;
+        if (this.autoSyncBtn) {
+            this.autoSyncBtn.textContent = label;
+        }
+
+        const menuAutoSyncBtn = document.querySelector('[data-action="header-auto-sync"]');
+        if (menuAutoSyncBtn) {
+            menuAutoSyncBtn.textContent = label;
+        }
+    }
+
+    async toggleAutoDriveSync() {
+        const nextValue = !this.driveAutoSyncEnabled;
+
+        if (nextValue) {
+            const hasConfig = await this.ensureDriveConfig();
+            if (!hasConfig) {
+                return;
+            }
+        }
+
+        this.driveAutoSyncEnabled = nextValue;
+        localStorage.setItem(this.driveAutoSyncKey, this.driveAutoSyncEnabled ? '1' : '0');
+        this.updateDriveSyncToggleLabel();
+
+        if (this.driveAutoSyncEnabled) {
+            this.scheduleAutoDriveSync('toggle-enable');
+        } else if (this.autoSyncTimer) {
+            window.clearTimeout(this.autoSyncTimer);
+            this.autoSyncTimer = null;
+        }
+    }
+
+    scheduleAutoDriveSync(reason) {
+        if (!this.driveAutoSyncEnabled) {
+            return;
+        }
+
+        if (this.autoSyncTimer) {
+            window.clearTimeout(this.autoSyncTimer);
+        }
+
+        this.autoSyncTimer = window.setTimeout(async () => {
+            this.autoSyncTimer = null;
+            try {
+                await this.ensureDriveAccessToken();
+                await this.uploadDriveSyncData();
+            } catch (error) {
+                console.warn(`自動同步失敗（${reason}）`, error);
+            }
+        }, 1200);
+    }
+
+    async loadExternalScript(src) {
+        if (document.querySelector(`script[src="${src}"]`)) {
+            return;
+        }
+
+        await new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.defer = true;
+            script.onload = resolve;
+            script.onerror = () => reject(new Error(`載入腳本失敗：${src}`));
+            document.head.appendChild(script);
+        });
+    }
+
+    async initGoogleClients() {
+        await this.loadExternalScript('https://accounts.google.com/gsi/client');
+
+        if (!this.gisReady) {
+            this.driveTokenClient = window.google.accounts.oauth2.initTokenClient({
+                client_id: this.driveClientId,
+                scope: this.driveScopes,
+                callback: () => {}
+            });
+            this.gisReady = true;
+        }
+    }
+
+    async ensureDriveConfig() {
+        return true;
+    }
+
+    async ensureDriveAccessToken() {
+        await this.initGoogleClients();
+
+        return new Promise((resolve, reject) => {
+            this.driveTokenClient.callback = (response) => {
+                if (response.error) {
+                    reject(new Error(response.error));
+                    return;
+                }
+                this.driveAccessToken = response.access_token;
+                resolve(this.driveAccessToken);
+            };
+
+            this.driveTokenClient.requestAccessToken({ prompt: this.driveAccessToken ? '' : 'consent' });
+        });
+    }
+
+    async driveFetch(url, options = {}) {
+        const headers = {
+            Authorization: `Bearer ${this.driveAccessToken}`,
+            ...(options.headers || {})
+        };
+        return window.fetch(url, { ...options, headers });
+    }
+
+    async findDriveSyncFileId() {
+        const query = `name='${this.driveSyncFileName}' and trashed=false and 'appDataFolder' in parents`;
+        const url = `https://www.googleapis.com/drive/v3/files?spaces=appDataFolder&fields=files(id,name,modifiedTime)&pageSize=1&q=${encodeURIComponent(query)}`;
+        const response = await this.driveFetch(url);
+        if (!response.ok) {
+            throw new Error(`Drive list failed (${response.status})`);
+        }
+        const data = await response.json();
+        return data.files?.[0]?.id || null;
+    }
+
+    async uploadDriveSyncData() {
+        const payload = {
+            version: 1,
+            syncedAt: new Date().toISOString(),
+            currentTournamentId: this.currentTournamentId,
+            pendingPairing: this.pendingPairing,
+            tournaments: this.tournaments
+        };
+
+        const fileId = await this.findDriveSyncFileId();
+        const metadata = fileId
+            ? { name: this.driveSyncFileName }
+            : { name: this.driveSyncFileName, mimeType: 'application/json', parents: ['appDataFolder'] };
+
+        const boundary = 'bbx_sync_boundary';
+        const delimiter = `\r\n--${boundary}\r\n`;
+        const closeDelimiter = `\r\n--${boundary}--`;
+        const multipartBody =
+            delimiter +
+            'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+            JSON.stringify(metadata) +
+            delimiter +
+            'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+            JSON.stringify(payload) +
+            closeDelimiter;
+
+        const uploadUrl = fileId
+            ? `https://www.googleapis.com/upload/drive/v3/files/${fileId}?uploadType=multipart`
+            : 'https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart';
+
+        const response = await this.driveFetch(uploadUrl, {
+            method: fileId ? 'PATCH' : 'POST',
+            headers: {
+                'Content-Type': `multipart/related; boundary=${boundary}`
+            },
+            body: multipartBody
+        });
+
+        if (!response.ok) {
+            throw new Error(`Drive upload failed (${response.status})`);
+        }
+    }
+
+    async downloadDriveSyncData() {
+        const fileId = await this.findDriveSyncFileId();
+        if (!fileId) {
+            throw new Error('Google Drive 尚未有同步檔案。');
+        }
+
+        const response = await window.fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
+            headers: {
+                Authorization: `Bearer ${this.driveAccessToken}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`下載失敗（${response.status}）`);
+        }
+
+        const payload = await response.json();
+        if (!payload || !Array.isArray(payload.tournaments)) {
+            throw new Error('雲端資料格式不正確。');
+        }
+
+        const confirmed = window.confirm('將以 Drive 資料覆蓋目前本機賽事，確定繼續？');
+        if (!confirmed) {
+            return;
+        }
+
+        this.tournaments = payload.tournaments;
+        this.currentTournamentId = payload.currentTournamentId || null;
+        this.pendingPairing = payload.pendingPairing || null;
+        this.selectedMatchId = null;
+        this.selectedPairingSlotIndex = null;
+        this.saveTournaments();
+        this.savePendingPairingDraft();
+        this.ensureCurrentTournament();
+        this.showPage('dashboard-page');
+    }
+
+    async handleDriveSync() {
+        try {
+            const hasConfig = await this.ensureDriveConfig();
+            if (!hasConfig) {
+                return;
+            }
+
+            await this.ensureDriveAccessToken();
+            const upload = window.confirm('按「確定」上傳目前本機資料到 Google Drive；按「取消」改為從 Drive 下載。');
+
+            if (upload) {
+                await this.uploadDriveSyncData();
+                window.alert('Google Drive 同步上傳完成。');
+            } else {
+                await this.downloadDriveSyncData();
+                window.alert('Google Drive 同步下載完成。');
+            }
+        } catch (error) {
+            window.alert(`Google Drive 同步失敗：${error.message}`);
         }
     }
 
@@ -374,27 +751,45 @@ class BeybladeTournamentApp {
             }
         };
 
-        const tournament = this.createTournamentData({
+        this.pendingPairing = this.createPendingPairingDraft({
             name: this.setupName.value.trim() || this.generateDefaultTournamentName(),
             players: uniquePlayers,
             settings
         });
-
-        this.updateTournament(tournament);
-        this.selectedMatchId = tournament.activeMatchId;
-        this.resetSetupForm();
-        this.showPage('arena-page');
+        this.selectedPairingSlotIndex = null;
+        this.savePendingPairingDraft();
+        this.showPage('pairing-page');
     }
 
-    createTournamentData({ name, players, settings }) {
-        const tournamentPlayers = players.map((playerName, index) => ({
-            id: this.generateId('player'),
+    createPendingPairingDraft({ name, players, settings }) {
+        const bracketSize = this.getBracketSize(players.length);
+        const draftPlayers = players.map((playerName, index) => ({
+            id: this.generateId('draft_player'),
             name: playerName,
-            seed: index + 1,
+            seed: index + 1
+        }));
+
+        return {
+            id: this.generateId('pairing'),
+            name,
+            createdAt: new Date().toISOString(),
+            settings,
+            players: draftPlayers,
+            bracketSize,
+            slotPlayerIds: this.buildRandomizedSlots(draftPlayers, bracketSize),
+            stage: 'review'
+        };
+    }
+
+    createTournamentData({ name, players, settings, slotPlayerIds = null }) {
+        const tournamentPlayers = players.map((player, index) => ({
+            id: typeof player === 'string' ? this.generateId('player') : (player.id || this.generateId('player')),
+            name: typeof player === 'string' ? player : player.name,
+            seed: typeof player === 'string' ? index + 1 : (player.seed || index + 1),
             eliminated: false
         }));
 
-        const bracket = this.buildBracket(tournamentPlayers, settings.pointsToWin);
+        const bracket = this.buildBracket(tournamentPlayers, settings.pointsToWin, slotPlayerIds);
         const tournament = {
             id: this.generateId('bbx'),
             name,
@@ -417,11 +812,13 @@ class BeybladeTournamentApp {
         return tournament;
     }
 
-    buildBracket(players, pointsToWin) {
+    buildBracket(players, pointsToWin, slotPlayerIds = null) {
         const totalRounds = Math.ceil(Math.log2(players.length));
         const bracketSize = 2 ** totalRounds;
-        const seedOrder = this.getSeedOrder(bracketSize);
-        const slots = seedOrder.map((seedNumber) => players[seedNumber - 1] || null);
+        const slotMap = new Map(players.map((player) => [player.id, player]));
+        const slots = slotPlayerIds
+            ? slotPlayerIds.map((playerId) => (playerId ? slotMap.get(playerId) || null : null))
+            : this.getSeedOrder(bracketSize).map((seedNumber) => players[seedNumber - 1] || null);
         const bracket = [];
 
         for (let roundNumber = 1; roundNumber <= totalRounds; roundNumber += 1) {
@@ -476,6 +873,55 @@ class BeybladeTournamentApp {
         }
 
         return bracket;
+    }
+
+    getBracketSize(playerCount) {
+        return 2 ** Math.ceil(Math.log2(playerCount));
+    }
+
+    buildRandomizedSlots(players, bracketSize) {
+        const pool = [...players.map((player) => player.id), ...Array.from({ length: bracketSize - players.length }, () => null)];
+        const byes = pool.filter((item) => item === null).length;
+        const participantIds = this.shuffleArray(pool.filter((item) => item !== null));
+        const totalMatches = bracketSize / 2;
+
+        const byeMatchIndices = this.shuffleArray(Array.from({ length: totalMatches }, (_, index) => index)).slice(0, byes);
+        const byeMatchSet = new Set(byeMatchIndices);
+
+        const slots = new Array(bracketSize).fill(null);
+        let participantCursor = 0;
+
+        for (let matchIndex = 0; matchIndex < totalMatches; matchIndex += 1) {
+            const leftSlot = matchIndex * 2;
+            const rightSlot = leftSlot + 1;
+            if (byeMatchSet.has(matchIndex)) {
+                const byeOnLeft = Math.random() < 0.5;
+                if (byeOnLeft) {
+                    slots[leftSlot] = null;
+                    slots[rightSlot] = participantIds[participantCursor] || null;
+                } else {
+                    slots[leftSlot] = participantIds[participantCursor] || null;
+                    slots[rightSlot] = null;
+                }
+                participantCursor += 1;
+                continue;
+            }
+
+            slots[leftSlot] = participantIds[participantCursor] || null;
+            slots[rightSlot] = participantIds[participantCursor + 1] || null;
+            participantCursor += 2;
+        }
+
+        return slots;
+    }
+
+    shuffleArray(items) {
+        const cloned = [...items];
+        for (let index = cloned.length - 1; index > 0; index -= 1) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            [cloned[index], cloned[randomIndex]] = [cloned[randomIndex], cloned[index]];
+        }
+        return cloned;
     }
 
     getSeedOrder(size) {
@@ -611,6 +1057,7 @@ class BeybladeTournamentApp {
         }
 
         this.currentTournamentId = tournamentId;
+        this.arenaTab = tournament.completed ? 'standings' : 'recorder';
         this.selectedMatchId = tournament.selectedMatchId || tournament.activeMatchId || this.findFirstAvailableMatchId(tournament);
         this.saveTournaments();
         this.showPage('arena-page');
@@ -645,6 +1092,10 @@ class BeybladeTournamentApp {
 
         const selected = this.findMatch(tournament, matchId);
         if (!selected) {
+            return;
+        }
+
+        if (selected.match.status === 'waiting') {
             return;
         }
 
@@ -865,17 +1316,70 @@ class BeybladeTournamentApp {
         return this.getPlayerById(tournament, playerId)?.name || 'BYE';
     }
 
-    getMatchParticipantName(tournament, match, slot) {
+    getSourceMatchForSlot(tournament, match, slot) {
+        const roundIndex = (match.roundNumber || 1) - 1;
+        if (roundIndex <= 0) {
+            return null;
+        }
+
+        const currentRound = tournament.bracket[roundIndex];
+        const prevRound = tournament.bracket[roundIndex - 1];
+        if (!currentRound || !prevRound) {
+            return null;
+        }
+
+        const matchIndex = currentRound.matches.findIndex((item) => item.id === match.id);
+        if (matchIndex === -1) {
+            return null;
+        }
+
+        const sourceIndex = slot === 'player1' ? matchIndex * 2 : (matchIndex * 2) + 1;
+        return prevRound.matches[sourceIndex] || null;
+    }
+
+    getMatchSlotDisplay(tournament, match, slot) {
         const playerId = slot === 'player1' ? match.player1Id : match.player2Id;
         const otherPlayerId = slot === 'player1' ? match.player2Id : match.player1Id;
         const player = playerId ? this.getPlayerById(tournament, playerId) : null;
+
         if (player) {
-            return player.name;
+            const score = slot === 'player1' ? match.score1 : match.score2;
+            return {
+                name: player.name,
+                meta: `選手 ${player.seed} / ${score} 分`,
+                isBye: false
+            };
         }
-        if (otherPlayerId) {
-            return 'BYE';
+
+        // 只有首輪且單邊已有選手時，才視為 BYE/輪空。
+        if (match.roundNumber === 1 && otherPlayerId) {
+            return {
+                name: 'BYE/輪空',
+                meta: '自動晉級位',
+                isBye: true
+            };
         }
-        return '待定';
+
+        if (match.roundNumber > 1) {
+            const sourceMatch = this.getSourceMatchForSlot(tournament, match, slot);
+            if (sourceMatch) {
+                return {
+                    name: `第${sourceMatch.roundNumber}輪 對戰${sourceMatch.matchNumber} 勝者`,
+                    meta: '待定',
+                    isBye: false
+                };
+            }
+        }
+
+        return {
+            name: '待定',
+            meta: '-',
+            isBye: false
+        };
+    }
+
+    getMatchParticipantName(tournament, match, slot) {
+        return this.getMatchSlotDisplay(tournament, match, slot).name;
     }
 
     focusRecorderPanel() {
@@ -888,7 +1392,8 @@ class BeybladeTournamentApp {
         }
 
         this.recorderPanel.classList.remove('focus-recorder-panel');
-        this.recorderPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const targetTop = Math.max(window.scrollY + this.recorderPanel.getBoundingClientRect().top, 0);
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
         void this.recorderPanel.offsetWidth;
         this.recorderPanel.classList.add('focus-recorder-panel');
         this.recorderFocusTimer = window.setTimeout(() => {
@@ -1022,23 +1527,6 @@ class BeybladeTournamentApp {
         `;
     }
 
-    updateSetupPreview() {
-        const players = this.parsePlayers(this.playersInput?.value || '');
-        const playerCount = players.length;
-        const roundCount = playerCount > 1 ? Math.ceil(Math.log2(playerCount)) : 0;
-        const pointsToWin = this.normalizeNumber(this.pointsToWinInput?.value, 4, 1, 15);
-
-        this.previewPlayerCount.textContent = String(playerCount);
-        this.previewRoundCount.textContent = String(roundCount);
-        this.previewTargetPoints.textContent = `${pointsToWin} 分`;
-
-        Object.entries(this.previewScoreTargets).forEach(([key, element]) => {
-            const fallback = this.scoreTypes[key].defaultPoints;
-            const value = this.normalizeNumber(this.scoreInputs[key]?.value, fallback, 1, 9);
-            element.textContent = `${value} 分`;
-        });
-    }
-
     resetSetupForm() {
         this.setupName.value = '';
         this.playersInput.value = '';
@@ -1047,13 +1535,15 @@ class BeybladeTournamentApp {
         this.scoreInputs.ringOut.value = '2';
         this.scoreInputs.burst.value = '2';
         this.scoreInputs.xtreme.value = '3';
-        this.updateSetupPreview();
     }
 
     render() {
+        this.updateDriveSyncToggleLabel();
         this.renderDashboard();
+        this.renderPairingPage();
         this.renderArena();
         this.updateHeaderNavMode();
+        this.syncUrlState();
     }
 
     renderDashboard() {
@@ -1076,6 +1566,153 @@ class BeybladeTournamentApp {
         }
 
         this.historyList.innerHTML = tournaments.map((tournament) => this.renderHistoryCard(tournament)).join('');
+    }
+
+    renderPairingPage() {
+        if (!this.pairingReview || !this.pairingGrid || !this.pairingSelectionHint) {
+            return;
+        }
+
+        const draft = this.pendingPairing;
+        if (!draft) {
+            this.pairingGrid.innerHTML = '<div class="empty-history">尚未建立配對草稿，請先回到上一頁建立賽事。</div>';
+            this.pairingSelectionHint.textContent = '請先建立賽事';
+            return;
+        }
+
+        const roundCount = Math.ceil(Math.log2(draft.players.length));
+        const totalMatches = draft.slotPlayerIds.length / 2;
+        const byeCount = draft.slotPlayerIds.filter((id) => !id).length;
+        if (this.pairingMetaStrip) {
+            this.pairingMetaStrip.innerHTML = [
+                { label: '賽事', value: draft.name, tone: 'chip-neutral' },
+                { label: '參賽人數', value: `${draft.players.length} 人`, tone: 'chip-neutral' },
+                { label: '預估輪數', value: `${roundCount} 輪`, tone: 'chip-neutral' },
+                { label: '首輪對戰', value: `${totalMatches - byeCount} 場${byeCount ? ` +${byeCount} 輪空` : ''}`, tone: 'chip-neutral' },
+                { label: '勝利門檻', value: `先取 ${draft.settings.pointsToWin} 分`, tone: 'chip-rule' },
+                { label: '旋轉', value: `${draft.settings.scoreValues.spin} 分`, tone: 'chip-score' },
+                { label: '擊飛', value: `${draft.settings.scoreValues.ringOut} 分`, tone: 'chip-score' },
+                { label: '爆裂', value: `${draft.settings.scoreValues.burst} 分`, tone: 'chip-score' },
+                { label: '極限', value: `${draft.settings.scoreValues.xtreme} 分`, tone: 'chip-score' },
+            ].map(({ label, value, tone }) => `<span class="arena-meta-chip ${tone}">${label}：${this.escapeHtml(value)}</span>`).join('');
+        }
+
+        this.pairingTitle.textContent = `${draft.name} — 首輪配對`;
+        this.pairingSubtitle.textContent = `共 ${draft.players.length} 位參賽者，確認配對後即可開賽。`;
+        this.pairingSelectionHint.textContent = this.selectedPairingSlotIndex === null
+            ? '點選任兩位選手即可交換位置'
+            : '已選定第一位選手，再點另一位即可完成交換';
+        this.pairingGrid.innerHTML = this.renderPairingGrid(draft);
+    }
+
+    renderPairingGrid(draft) {
+        const rounds = [];
+        for (let index = 0; index < draft.slotPlayerIds.length; index += 2) {
+            rounds.push({
+                matchNumber: (index / 2) + 1,
+                slotIndexes: [index, index + 1]
+            });
+        }
+
+        return rounds.map((item) => `
+            <article class="pairing-card">
+                <div class="pairing-card-head">
+                    <h4>首輪對戰 ${item.matchNumber}</h4>
+                    <span class="match-status-pill pill-pending">待確認</span>
+                </div>
+                <div class="pairing-slot-list">
+                    ${item.slotIndexes.map((slotIndex) => this.renderPairingSlot(draft, slotIndex)).join('')}
+                </div>
+            </article>
+        `).join('');
+    }
+
+    renderPairingSlot(draft, slotIndex) {
+        const playerId = draft.slotPlayerIds[slotIndex] || null;
+        const player = playerId ? draft.players.find((entry) => entry.id === playerId) || null : null;
+        const isSelected = this.selectedPairingSlotIndex === slotIndex;
+        const isBye = !player;
+
+        return `
+            <button
+                type="button"
+                class="pairing-slot-btn ${isSelected ? 'is-selected' : ''} ${isBye ? 'is-empty' : ''}"
+                data-action="pairing-slot"
+                data-slot-index="${slotIndex}"
+            >
+                <span class="pairing-slot-top">${player ? this.escapeHtml(player.name) : 'BYE/輪空'}</span>
+                <span class="pairing-slot-bottom">${player ? `選手 ${player.seed}` : '可與任一選手交換'}</span>
+            </button>
+        `;
+    }
+
+    selectPairingSlot(slotIndex) {
+        const draft = this.pendingPairing;
+        if (!draft || Number.isNaN(slotIndex) || slotIndex < 0 || slotIndex >= draft.slotPlayerIds.length) {
+            return;
+        }
+
+        if (this.selectedPairingSlotIndex === null) {
+            this.selectedPairingSlotIndex = slotIndex;
+            this.render();
+            return;
+        }
+
+        if (this.selectedPairingSlotIndex === slotIndex) {
+            this.selectedPairingSlotIndex = null;
+            this.render();
+            return;
+        }
+
+        const firstIndex = this.selectedPairingSlotIndex;
+        [draft.slotPlayerIds[firstIndex], draft.slotPlayerIds[slotIndex]] = [draft.slotPlayerIds[slotIndex], draft.slotPlayerIds[firstIndex]];
+        this.selectedPairingSlotIndex = null;
+        this.savePendingPairingDraft();
+        this.render();
+    }
+
+    rerollPendingPairings() {
+        if (!this.pendingPairing) {
+            return;
+        }
+
+        this.pendingPairing.slotPlayerIds = this.buildRandomizedSlots(this.pendingPairing.players, this.pendingPairing.bracketSize);
+        this.selectedPairingSlotIndex = null;
+        this.savePendingPairingDraft();
+        this.render();
+    }
+
+    returnToSetupFromPairing() {
+        if (this.pendingPairing) {
+            this.setupName.value = this.pendingPairing.name;
+            this.playersInput.value = this.pendingPairing.players.map((player) => player.name).join('\n');
+            this.pointsToWinInput.value = String(this.pendingPairing.settings.pointsToWin);
+            this.scoreInputs.spin.value = String(this.pendingPairing.settings.scoreValues.spin);
+            this.scoreInputs.ringOut.value = String(this.pendingPairing.settings.scoreValues.ringOut);
+            this.scoreInputs.burst.value = String(this.pendingPairing.settings.scoreValues.burst);
+            this.scoreInputs.xtreme.value = String(this.pendingPairing.settings.scoreValues.xtreme);
+        }
+        this.showPage('setup-page');
+    }
+
+    confirmPendingPairings() {
+        if (!this.pendingPairing) {
+            return;
+        }
+
+        const tournament = this.createTournamentData({
+            name: this.pendingPairing.name,
+            players: this.pendingPairing.players,
+            settings: this.pendingPairing.settings,
+            slotPlayerIds: this.pendingPairing.slotPlayerIds
+        });
+
+        this.updateTournament(tournament);
+        this.selectedMatchId = tournament.activeMatchId;
+        this.arenaTab = 'recorder';
+        this.clearPendingPairingDraft();
+        this.resetSetupForm();
+        this.showPage('arena-page');
     }
 
     renderCurrentTournamentMarkup(tournament) {
@@ -1380,8 +2017,11 @@ class BeybladeTournamentApp {
 
     renderMatchCard(tournament, match) {
         const isSelected = match.id === this.selectedMatchId;
+        const isInteractive = match.status !== 'waiting';
         const classes = ['match-card'];
-        classes.push('selectable');
+        if (isInteractive) {
+            classes.push('selectable');
+        }
         if (isSelected) classes.push('active-match');
         if (match.status === 'completed') classes.push('completed-match');
         if (match.status === 'waiting') classes.push('waiting-match');
@@ -1405,12 +2045,16 @@ class BeybladeTournamentApp {
             : '-';
 
         const players = [
-            this.renderMatchPlayerLine(tournament, match.player1Id, match.score1, match.winnerId),
-            this.renderMatchPlayerLine(tournament, match.player2Id, match.score2, match.winnerId)
+            this.renderMatchPlayerLine(tournament, match, 'player1'),
+            this.renderMatchPlayerLine(tournament, match, 'player2')
         ].join('');
 
+        const cardActionAttrs = isInteractive
+            ? `data-action="match-select" data-id="${match.id}"`
+            : '';
+
         return `
-            <article class="${classes.join(' ')}" data-action="match-select" data-id="${match.id}">
+            <article class="${classes.join(' ')}" ${cardActionAttrs}>
                 <div class="match-card-head">
                     <h5 class="round-match-title">對戰 ${match.matchNumber}</h5>
                     <span class="match-status-pill ${statusClassMap[match.status]}">${statusTextMap[match.status]}</span>
@@ -1426,16 +2070,22 @@ class BeybladeTournamentApp {
         `;
     }
 
-    renderMatchPlayerLine(tournament, playerId, score, winnerId) {
-        const player = playerId ? this.getPlayerById(tournament, playerId) : null;
+    renderMatchPlayerLine(tournament, match, slot) {
+        const playerId = slot === 'player1' ? match.player1Id : match.player2Id;
+        const winnerId = match.winnerId;
+        const slotDisplay = this.getMatchSlotDisplay(tournament, match, slot);
         const classes = ['player-line'];
         if (winnerId && playerId === winnerId) {
             classes.push('winner-line');
         }
+        if (slotDisplay.isBye) {
+            classes.push('bye-line');
+        }
+
         return `
             <div class="${classes.join(' ')}">
-                <span class="player-name">${this.escapeHtml(player?.name || '待定')}</span>
-                <span class="player-seed">${player ? `選手 ${player.seed} / ${score} 分` : '-'}</span>
+                <span class="player-name">${this.escapeHtml(slotDisplay.name)}</span>
+                <span class="player-seed">${this.escapeHtml(slotDisplay.meta)}</span>
             </div>
         `;
     }
