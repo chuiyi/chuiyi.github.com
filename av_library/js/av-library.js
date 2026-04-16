@@ -3,6 +3,7 @@
     const VIEW_KEY = "avLibraryViewMode";
     const SORT_KEY = "avLibrarySortMode";
     const AUTO_SYNC_KEY = "avLibraryAutoSync";
+    const LAST_SYNC_KEY = "avLibraryDriveLastSyncAt";
     const PLACEHOLDER_COVER = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23e9ecef'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='%236c757d'%3ENo Cover%3C/text%3E%3C/svg%3E";
     const GOOGLE_CLIENT_ID = "200098245584-ms1ekqgikfvorm7jh4akcmsc1a6ub3dp.apps.googleusercontent.com";
     const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
@@ -11,31 +12,85 @@
     let googleTokenClient = null;
     let googleAccessToken = sessionStorage.getItem("avGoogleAccessToken") || "";
     let googleTokenExpiry = Number(sessionStorage.getItem("avGoogleTokenExpiry") || 0);
-    let pendingSyncAction = null;
     let syncDirty = false;
     let syncTimer = null;
+    let syncInFlight = false;
+    let lastSyncRefreshTimer = null;
 
     const $ = (selector) => document.querySelector(selector);
 
-    const setSyncStatus = (message) => {
+    const setSyncStatus = (message, tone = "idle") => {
         const status = $("#av-sync-status");
-        if (status) status.textContent = message;
+        if (!status) return;
+        status.textContent = `同步狀態：${message}`;
+        status.classList.remove("is-idle", "is-running", "is-success", "is-warning", "is-error");
+        status.classList.add(`is-${tone}`);
+    };
+
+    const getLastSyncAt = () => localStorage.getItem(LAST_SYNC_KEY) || "";
+
+    const formatRelativeTime = (value) => {
+        if (!value) return "尚未同步";
+        const timestamp = new Date(value).getTime();
+        if (Number.isNaN(timestamp)) return "尚未同步";
+
+        const diff = Date.now() - timestamp;
+        if (diff < 60000) return "剛剛";
+        const minutes = Math.floor(diff / 60000);
+        if (minutes < 60) return `${minutes} 分鐘前`;
+        const hours = Math.floor(minutes / 60);
+        if (hours < 24) return `${hours} 小時前`;
+        const days = Math.floor(hours / 24);
+        return `${days} 天前`;
+    };
+
+    const updateLastSyncText = () => {
+        const text = `上次同步：${formatRelativeTime(getLastSyncAt())}`;
+        document.querySelectorAll(".js-last-sync-text").forEach((element) => {
+            element.textContent = text;
+        });
+    };
+
+    const setLastSyncAt = (value) => {
+        localStorage.setItem(LAST_SYNC_KEY, value);
+        updateLastSyncText();
+    };
+
+    const updateAutoSyncButtonLabel = () => {
+        const autoButton = $("#av-sync-auto-btn");
+        if (!autoButton) return;
+        const enabled = getAutoSync();
+        autoButton.textContent = `自動同步：${enabled ? "開" : "關"}`;
+        autoButton.classList.toggle("is-active", enabled);
     };
 
     const isTokenValid = () => googleAccessToken && Date.now() < googleTokenExpiry - 60000;
 
-    const ensureAuth = (action, options = {}) => {
+    const ensureAuth = async ({ interactive = true } = {}) => {
         if (isTokenValid()) {
-            action();
-            return;
+            return googleAccessToken;
         }
         if (!googleTokenClient) {
-            setSyncStatus("Google 驗證尚未就緒");
-            return;
+            throw new Error("Google 驗證尚未就緒");
         }
-        pendingSyncAction = action;
-        const prompt = options.silent ? "none" : "consent";
-        googleTokenClient.requestAccessToken({ prompt });
+
+        return new Promise((resolve, reject) => {
+            googleTokenClient.callback = (tokenResponse) => {
+                if (tokenResponse?.error) {
+                    reject(new Error(tokenResponse.error));
+                    return;
+                }
+                googleAccessToken = tokenResponse.access_token || "";
+                const expiresIn = tokenResponse.expires_in ? tokenResponse.expires_in * 1000 : 3600 * 1000;
+                googleTokenExpiry = Date.now() + expiresIn;
+                sessionStorage.setItem("avGoogleAccessToken", googleAccessToken);
+                sessionStorage.setItem("avGoogleTokenExpiry", String(googleTokenExpiry));
+                resolve(googleAccessToken);
+            };
+
+            const prompt = interactive ? (googleAccessToken ? "" : "consent") : "none";
+            googleTokenClient.requestAccessToken({ prompt });
+        });
     };
 
     const markDirty = () => {
@@ -44,7 +99,9 @@
             if (syncTimer) window.clearTimeout(syncTimer);
             syncTimer = window.setTimeout(() => {
                 if (!syncDirty) return;
-                ensureAuth(() => runPush(true), { silent: true });
+                runDriveSync({ interactive: false, silent: true, reason: "auto-save" }).catch((error) => {
+                    console.warn("[Drive sync] auto-save skipped", error.message);
+                });
             }, 1500);
         }
     };
@@ -110,35 +167,61 @@
         if (!response.ok) throw new Error("Drive create failed");
     };
 
-    const runPull = async () => {
-        const files = await listDriveFiles();
-        if (!files.length) {
-            setSyncStatus("雲端尚無資料");
-            return;
-        }
-        const content = await downloadDriveFile(files[0].id);
-        let remote = JSON.parse(content || "[]");
-        
-        // 检查并迁移远程数据
-        remote = migrateRemoteDataIfNeeded(remote);
-        
-        const merged = mergeDb(getDb(), Array.isArray(remote) ? remote : []);
-        setDb(merged);
-        const listPage = document.body?.dataset?.avList;
-        if (listPage) renderList(listPage);
-        setSyncStatus("同步完成");
+    const normalizeDbForCompare = (items = []) => {
+        return [...items]
+            .map((item) => ({
+                id: item?.id || "",
+                slug: item?.slug || "",
+                code: item?.code || "",
+                url: item?.url || "",
+                title: item?.title || "",
+                cover: item?.cover || "",
+                stream: item?.stream || "",
+                status: item?.status || "later",
+                sourceId: item?.sourceId || "",
+                sourceName: item?.sourceName || "",
+                domain: item?.domain || "",
+                isFavorite: item?.isFavorite === true,
+                addedAt: item?.addedAt || ""
+            }))
+            .sort((a, b) => {
+                const keyA = `${a.slug}|${a.id}`;
+                const keyB = `${b.slug}|${b.id}`;
+                return keyA.localeCompare(keyB);
+            });
     };
 
-    const runPush = async (silent = false) => {
-        const content = JSON.stringify(getDb());
+    const isDbEquivalent = (left, right) => {
+        return JSON.stringify(normalizeDbForCompare(left)) === JSON.stringify(normalizeDbForCompare(right));
+    };
+
+    const fetchRemoteDb = async () => {
+        const files = await listDriveFiles();
+        if (!files.length) {
+            return [];
+        }
+
+        const content = await downloadDriveFile(files[0].id);
+        let remote = [];
+        try {
+            remote = JSON.parse(content || "[]");
+        } catch (error) {
+            throw new Error("雲端資料格式不正確");
+        }
+        if (!Array.isArray(remote)) {
+            throw new Error("雲端資料格式不正確");
+        }
+        return migrateRemoteDataIfNeeded(remote);
+    };
+
+    const saveRemoteDb = async (items) => {
+        const content = JSON.stringify(items);
         const files = await listDriveFiles();
         if (files.length) {
             await uploadDriveFile(files[0].id, content);
         } else {
             await createDriveFile(content);
         }
-        syncDirty = false;
-        setSyncStatus(silent ? "自動同步完成" : "已上傳雲端");
     };
 
     const mergeDb = (local, remote) => {
@@ -166,6 +249,58 @@
         local.forEach(upsert);
         remote.forEach(upsert);
         return Array.from(map.values());
+    };
+
+    const runDriveSync = async ({ interactive = true, silent = false, reason = "manual" } = {}) => {
+        if (syncInFlight) {
+            return { localUpdated: false, remoteUpdated: false, skipped: true };
+        }
+
+        syncInFlight = true;
+        if (!silent) {
+            setSyncStatus("同步中", "running");
+        }
+
+        try {
+            await ensureAuth({ interactive });
+
+            const local = getDb();
+            const remote = await fetchRemoteDb();
+            const merged = mergeDb(local, remote);
+
+            const localNeedsUpdate = !isDbEquivalent(local, merged);
+            const remoteNeedsUpdate = !isDbEquivalent(remote, merged);
+
+            if (localNeedsUpdate) {
+                setDb(merged);
+                const listPage = document.body?.dataset?.avList;
+                if (listPage) renderList(listPage);
+            }
+
+            if (remoteNeedsUpdate) {
+                await saveRemoteDb(merged);
+            }
+
+            syncDirty = false;
+            setLastSyncAt(new Date().toISOString());
+
+            const msg = localNeedsUpdate || remoteNeedsUpdate
+                ? `${localNeedsUpdate ? "本機已更新" : "本機最新"}，${remoteNeedsUpdate ? "雲端已更新" : "雲端最新"}`
+                : "資料已是最新";
+            setSyncStatus(msg, "success");
+            return { localUpdated: localNeedsUpdate, remoteUpdated: remoteNeedsUpdate, skipped: false };
+        } catch (error) {
+            if (!interactive && reason.startsWith("auto")) {
+                setSyncStatus("自動同步略過，等待登入", "warning");
+            } else if (!interactive) {
+                setSyncStatus("啟動同步略過，等待登入", "warning");
+            } else {
+                setSyncStatus(`同步失敗：${error.message}`, "error");
+            }
+            throw error;
+        } finally {
+            syncInFlight = false;
+        }
     };
 
     const parseInput = (raw) => {
@@ -1052,118 +1187,70 @@
     };
 
     const initGoogleSync = () => {
-        const loginButton = $("#av-sync-login");
-        const logoutButton = $("#av-sync-logout");
-        const pullButton = $("#av-sync-pull");
-        const pushButton = $("#av-sync-push");
-        const autoToggle = $("#av-sync-auto");
-        if (!loginButton || !logoutButton || !pullButton || !pushButton || !autoToggle) return;
+        const syncButton = $("#av-sync-run");
+        const autoButton = $("#av-sync-auto-btn");
+        if (!syncButton || !autoButton) return;
 
         const waitForGis = () => {
             if (window.google?.accounts?.oauth2) {
                 googleTokenClient = window.google.accounts.oauth2.initTokenClient({
                     client_id: GOOGLE_CLIENT_ID,
                     scope: DRIVE_SCOPE,
-                    callback: (tokenResponse) => {
-                        if (tokenResponse?.error) {
-                            setSyncStatus("需要重新登入 Google");
-                            pendingSyncAction = null;
-                            return;
-                        }
-                        googleAccessToken = tokenResponse.access_token;
-                        const expiresIn = tokenResponse.expires_in ? tokenResponse.expires_in * 1000 : 3600 * 1000;
-                        googleTokenExpiry = Date.now() + expiresIn;
-                        sessionStorage.setItem("avGoogleAccessToken", googleAccessToken);
-                        sessionStorage.setItem("avGoogleTokenExpiry", String(googleTokenExpiry));
-                        setSyncStatus("已登入 Google Drive");
-                        if (pendingSyncAction) {
-                            const action = pendingSyncAction;
-                            pendingSyncAction = null;
-                            action();
-                        }
-                    }
+                    callback: () => {}
                 });
+
+                updateAutoSyncButtonLabel();
+                updateLastSyncText();
+                setSyncStatus("待命", "idle");
+
+                if (lastSyncRefreshTimer) {
+                    window.clearInterval(lastSyncRefreshTimer);
+                }
+                lastSyncRefreshTimer = window.setInterval(updateLastSyncText, 60000);
+
+                if (getAutoSync()) {
+                    runDriveSync({ interactive: false, silent: true, reason: "auto-startup" })
+                        .catch((error) => {
+                            console.warn("[Drive sync] startup skipped", error.message);
+                        });
+                }
                 return;
             }
             setTimeout(waitForGis, 300);
         };
 
-        setSyncStatus("載入 Google 驗證中...");
+        setSyncStatus("載入 Google 驗證中", "running");
         waitForGis();
 
-        autoToggle.checked = getAutoSync();
-
-        loginButton.addEventListener("click", () => {
-            ensureAuth(() => setSyncStatus("已登入 Google Drive"));
-        });
-
-        logoutButton.addEventListener("click", () => {
-            if (googleAccessToken && window.google?.accounts?.oauth2) {
-                window.google.accounts.oauth2.revoke(googleAccessToken, () => {
-                    googleAccessToken = "";
-                    googleTokenExpiry = 0;
-                    sessionStorage.removeItem("avGoogleAccessToken");
-                    sessionStorage.removeItem("avGoogleTokenExpiry");
-                    setSyncStatus("已登出 Google Drive");
-                });
-            } else {
-                googleAccessToken = "";
-                googleTokenExpiry = 0;
-                sessionStorage.removeItem("avGoogleAccessToken");
-                sessionStorage.removeItem("avGoogleTokenExpiry");
-                setSyncStatus("已登出 Google Drive");
+        syncButton.addEventListener("click", async () => {
+            try {
+                await runDriveSync({ interactive: true, silent: false, reason: "manual" });
+            } catch (error) {
+                console.error("[Drive sync] manual sync failed", error);
             }
         });
 
-        pullButton.addEventListener("click", () => {
-            ensureAuth(async () => {
-                setSyncStatus("同步下載中...");
-                try {
-                    await runPull();
-                } catch (error) {
-                    setSyncStatus("同步失敗");
-                }
-            });
-        });
+        autoButton.addEventListener("click", async () => {
+            const nextValue = !getAutoSync();
+            setAutoSync(nextValue);
+            updateAutoSyncButtonLabel();
 
-        pushButton.addEventListener("click", () => {
-            ensureAuth(async () => {
-                setSyncStatus("同步上傳中...");
-                try {
-                    await runPush();
-                } catch (error) {
-                    setSyncStatus("同步失敗");
+            if (!nextValue) {
+                if (syncTimer) {
+                    window.clearTimeout(syncTimer);
+                    syncTimer = null;
                 }
-            });
-        });
+                setSyncStatus("自動同步已關閉", "idle");
+                return;
+            }
 
-        autoToggle.addEventListener("change", () => {
-            setAutoSync(autoToggle.checked);
-            if (autoToggle.checked) {
-                ensureAuth(async () => {
-                    setSyncStatus("自動同步啟用，進行首次同步...");
-                    try {
-                        await runPull();
-                        if (syncDirty) await runPush(true);
-                    } catch (error) {
-                        setSyncStatus("同步失敗");
-                    }
-                }, { silent: true });
-            } else {
-                setSyncStatus("已關閉自動同步");
+            setSyncStatus("自動同步已開啟", "success");
+            try {
+                await runDriveSync({ interactive: false, silent: true, reason: "auto-toggle" });
+            } catch (error) {
+                console.warn("[Drive sync] auto-toggle initial sync skipped", error.message);
             }
         });
-
-        if (getAutoSync()) {
-            ensureAuth(async () => {
-                setSyncStatus("自動同步啟用，進行首次同步...");
-                try {
-                    await runPull();
-                } catch (error) {
-                    setSyncStatus("同步失敗");
-                }
-            }, { silent: true });
-        }
     };
 
     const deleteItem = (id) => {
@@ -1484,6 +1571,60 @@
         renderList(status);
     };
 
+    const initMobileSwipeNavigation = () => {
+        const pageOrder = ["index.html", "later.html", "watched.html", "favorite.html"];
+        const path = window.location.pathname || "";
+        const currentPage = path.split("/").pop() || "index.html";
+        const currentIndex = pageOrder.indexOf(currentPage);
+
+        if (currentIndex === -1) return;
+        if (!window.matchMedia("(max-width: 900px)").matches) return;
+
+        let startX = 0;
+        let startY = 0;
+        let startTarget = null;
+
+        const isInteractiveTarget = (target) => {
+            if (!(target instanceof Element)) return false;
+            return Boolean(target.closest("a, button, input, textarea, select, label, .btn, .nav-link, [data-action]"));
+        };
+
+        const goToIndex = (targetIndex) => {
+            if (targetIndex < 0 || targetIndex >= pageOrder.length) return;
+            const nextPage = pageOrder[targetIndex];
+            if (nextPage === currentPage) return;
+            window.location.href = nextPage;
+        };
+
+        document.addEventListener("touchstart", (event) => {
+            const touch = event.changedTouches?.[0];
+            if (!touch) return;
+            startX = touch.clientX;
+            startY = touch.clientY;
+            startTarget = event.target;
+        }, { passive: true });
+
+        document.addEventListener("touchend", (event) => {
+            const touch = event.changedTouches?.[0];
+            if (!touch) return;
+            if (isInteractiveTarget(startTarget)) return;
+
+            const deltaX = touch.clientX - startX;
+            const deltaY = touch.clientY - startY;
+            const absX = Math.abs(deltaX);
+            const absY = Math.abs(deltaY);
+
+            if (absX < 70) return;
+            if (absX <= absY * 1.2) return;
+
+            if (deltaX < 0) {
+                goToIndex(currentIndex + 1);
+            } else {
+                goToIndex(currentIndex - 1);
+            }
+        }, { passive: true });
+    };
+
     const initPage = () => {
         // 检测并执行迁移
         if (needsMigration()) {
@@ -1498,6 +1639,7 @@
             initForm();
         }
         initGoogleSync();
+        initMobileSwipeNavigation();
     };
 
     document.addEventListener("DOMContentLoaded", initPage);

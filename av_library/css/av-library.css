@@ -48,6 +48,57 @@ body {
     font-size: 0.9rem;
 }
 
+.sync-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.sync-status-pill {
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.sync-status-pill.is-idle {
+    color: #6c757d;
+    background: rgba(108, 117, 125, 0.08);
+    border-color: rgba(108, 117, 125, 0.2);
+}
+
+.sync-status-pill.is-running {
+    color: #a8672f;
+    background: rgba(176, 122, 74, 0.12);
+    border-color: rgba(176, 122, 74, 0.35);
+}
+
+.sync-status-pill.is-success {
+    color: #1f7a48;
+    background: rgba(25, 135, 84, 0.12);
+    border-color: rgba(25, 135, 84, 0.35);
+}
+
+.sync-status-pill.is-warning {
+    color: #8c6b12;
+    background: rgba(255, 193, 7, 0.16);
+    border-color: rgba(255, 193, 7, 0.38);
+}
+
+.sync-status-pill.is-error {
+    color: #9f2c3a;
+    background: rgba(220, 53, 69, 0.14);
+    border-color: rgba(220, 53, 69, 0.38);
+}
+
+#av-sync-auto-btn.is-active {
+    color: #fff;
+    background: var(--av-accent);
+    border-color: var(--av-accent);
+}
+
 .badge-status {
     background: rgba(176, 122, 74, 0.15);
     color: var(--av-accent);

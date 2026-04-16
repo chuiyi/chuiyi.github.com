@@ -51,24 +51,15 @@
     <main class="container pb-5">
         <div class="sync-bar mb-4">
             <div class="d-flex flex-wrap gap-2 align-items-center">
-                <button type="button" class="btn btn-outline-primary btn-sm" id="av-sync-login">
-                    <i class="bi bi-google me-1"></i>登入 Google
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-run">
+                    <i class="bi bi-cloud-arrow-up me-1"></i>Drive 同步
                 </button>
-                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-logout">
-                    <i class="bi bi-box-arrow-right me-1"></i>登出
-                </button>
-                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-pull">
-                    <i class="bi bi-cloud-download me-1"></i>同步下載
-                </button>
-                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-push">
-                    <i class="bi bi-cloud-upload me-1"></i>同步上傳
-                </button>
-                <div class="form-check form-switch ms-2">
-                    <input class="form-check-input" type="checkbox" id="av-sync-auto">
-                    <label class="form-check-label" for="av-sync-auto">自動同步</label>
-                </div>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-sync-auto-btn">自動同步：關</button>
             </div>
-            <div class="sync-status" id="av-sync-status">尚未登入 Google Drive</div>
+            <div class="sync-meta" aria-live="polite">
+                <span class="sync-status js-last-sync-text">上次同步：尚未同步</span>
+                <span class="sync-status sync-status-pill is-idle" id="av-sync-status">同步狀態：待命</span>
+            </div>
         </div>
         <div class="form-card">
             <form id="av-form" class="row g-3">
