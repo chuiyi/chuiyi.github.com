@@ -4,6 +4,7 @@
     const SORT_KEY = "avLibrarySortMode";
     const AUTO_SYNC_KEY = "avLibraryAutoSync";
     const LAST_SYNC_KEY = "avLibraryDriveLastSyncAt";
+    const SWIPE_TRANSITION_KEY = "avLibrarySwipeTransition";
     const PLACEHOLDER_COVER = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360' viewBox='0 0 640 360'%3E%3Crect width='640' height='360' fill='%23e9ecef'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='%236c757d'%3ENo Cover%3C/text%3E%3C/svg%3E";
     const GOOGLE_CLIENT_ID = "200098245584-ms1ekqgikfvorm7jh4akcmsc1a6ub3dp.apps.googleusercontent.com";
     const DRIVE_SCOPE = "https://www.googleapis.com/auth/drive.appdata";
@@ -62,6 +63,37 @@
         const enabled = getAutoSync();
         autoButton.textContent = `自動同步：${enabled ? "開" : "關"}`;
         autoButton.classList.toggle("is-active", enabled);
+    };
+
+    const consumeSwipeTransitionDirection = () => {
+        try {
+            const direction = sessionStorage.getItem(SWIPE_TRANSITION_KEY) || "";
+            sessionStorage.removeItem(SWIPE_TRANSITION_KEY);
+            return direction;
+        } catch (error) {
+            return "";
+        }
+    };
+
+    const storeSwipeTransitionDirection = (direction) => {
+        try {
+            sessionStorage.setItem(SWIPE_TRANSITION_KEY, direction);
+        } catch (error) {
+            // ignore write errors in private mode
+        }
+    };
+
+    const applySwipeEnterTransition = () => {
+        const direction = consumeSwipeTransitionDirection();
+        if (!direction) return;
+
+        const body = document.body;
+        if (!body) return;
+
+        body.classList.add(`av-swipe-in-${direction}`);
+        window.setTimeout(() => {
+            body.classList.remove(`av-swipe-in-${direction}`);
+        }, 280);
     };
 
     const isTokenValid = () => googleAccessToken && Date.now() < googleTokenExpiry - 60000;
@@ -226,6 +258,11 @@
 
     const mergeDb = (local, remote) => {
         const map = new Map();
+        const getFreshness = (item) => {
+            if (!item) return 0;
+            const timestamp = new Date(item.updatedAt || item.addedAt || 0).getTime();
+            return Number.isNaN(timestamp) ? 0 : timestamp;
+        };
         const upsert = (item) => {
             if (!item) return;
             // 新数据结构：使用 slug 作为唯一键
@@ -235,10 +272,10 @@
                 map.set(key, item);
                 return;
             }
-            // 保留更新时间较新的版本
-            const a = new Date(existing.addedAt || 0).getTime();
-            const b = new Date(item.addedAt || 0).getTime();
-            if (b >= a) {
+            // 保留更新时间较新的版本；时间相同时保留先写入的一方（本機優先）
+            const a = getFreshness(existing);
+            const b = getFreshness(item);
+            if (b > a) {
                 // 保持现有的 isFavorite 状态（如果新项没有明确设置的话）
                 if (item.isFavorite === undefined) {
                     item.isFavorite = existing.isFavorite;
@@ -925,6 +962,7 @@
             // 影片已存在，只更新状态
             exists.status = item.status;
             exists.isFavorite = exists.isFavorite || false;  // 保持现有的喜爱状态
+            exists.updatedAt = new Date().toISOString();
             setDb(db);
             return { saved: false, message: `已将"${exists.title}"更新为"${item.status === 'watched' ? '看過的影片' : '稍後觀看'}"` };
         }
@@ -933,7 +971,8 @@
         const newItem = {
             ...item,
             id: crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`,
-            isFavorite: false
+            isFavorite: false,
+            updatedAt: item.addedAt || new Date().toISOString()
         };
         const next = [newItem, ...db];
         setDb(next);
@@ -946,6 +985,7 @@
         if (!item) return;
         
         item.isFavorite = !item.isFavorite;
+        item.updatedAt = new Date().toISOString();
         setDb(db);
         markDirty();
     };
@@ -962,6 +1002,7 @@
         if (!item || item.status === newStatus) return;
         
         item.status = newStatus;
+        item.updatedAt = new Date().toISOString();
         setDb(db);
         markDirty();
     };
@@ -1316,12 +1357,13 @@
                 });
                 
                 if (canLoad) {
-                    // 圖片能載入，直接保存新的 URL（不需要時間戳）
+                    // 圖片能載入，寫入新封面並更新時間戳供同步判斷
                     const db = getDb();
                     const dbItem = db.find((entry) => entry.id === item.id);
                     if (dbItem) {
                         console.log(`[fixItemCover] 更新封面為: ${meta.cover}`);
                         dbItem.cover = meta.cover;
+                        dbItem.updatedAt = new Date().toISOString();
                         setDb(db);
                         markDirty();
                         return true;
@@ -1593,7 +1635,16 @@
             if (targetIndex < 0 || targetIndex >= pageOrder.length) return;
             const nextPage = pageOrder[targetIndex];
             if (nextPage === currentPage) return;
-            window.location.href = nextPage;
+
+            const body = document.body;
+            const direction = targetIndex > currentIndex ? "left" : "right";
+            if (body) {
+                body.classList.add(`av-swipe-out-${direction}`);
+            }
+            storeSwipeTransitionDirection(direction);
+            window.setTimeout(() => {
+                window.location.href = nextPage;
+            }, 180);
         };
 
         document.addEventListener("touchstart", (event) => {
@@ -1626,6 +1677,8 @@
     };
 
     const initPage = () => {
+        applySwipeEnterTransition();
+
         // 检测并执行迁移
         if (needsMigration()) {
             console.log("[Migration] 检测到旧版数据结构，开始迁移...");

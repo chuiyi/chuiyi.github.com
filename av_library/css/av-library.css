@@ -11,6 +11,75 @@ body {
     color: var(--av-text);
 }
 
+body.av-swipe-out-left {
+    animation: avSwipeOutLeft 0.18s ease forwards;
+}
+
+body.av-swipe-out-right {
+    animation: avSwipeOutRight 0.18s ease forwards;
+}
+
+body.av-swipe-in-left {
+    animation: avSwipeInLeft 0.26s ease both;
+}
+
+body.av-swipe-in-right {
+    animation: avSwipeInRight 0.26s ease both;
+}
+
+@keyframes avSwipeOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-18px);
+        opacity: 0.88;
+    }
+}
+
+@keyframes avSwipeOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(18px);
+        opacity: 0.88;
+    }
+}
+
+@keyframes avSwipeInLeft {
+    from {
+        transform: translateX(22px);
+        opacity: 0.9;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes avSwipeInRight {
+    from {
+        transform: translateX(-22px);
+        opacity: 0.9;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.av-swipe-out-left,
+    body.av-swipe-out-right,
+    body.av-swipe-in-left,
+    body.av-swipe-in-right {
+        animation: none !important;
+    }
+}
+
 .navbar {
     background: #fff;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
