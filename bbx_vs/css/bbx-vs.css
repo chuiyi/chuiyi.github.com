@@ -236,6 +236,23 @@ body {
     gap: 0.75rem;
 }
 
+.nav-sync-group {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.28rem;
+}
+
+.last-sync-text {
+    display: block;
+    padding: 0 0.5rem;
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+}
+
 .header-menu {
     position: relative;
     display: none;
@@ -1517,6 +1534,12 @@ body {
     gap: 0.75rem;
 }
 
+.sync-choice-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
 .match-detail-summary {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -1781,6 +1804,10 @@ body {
         flex-direction: column;
     }
 
+    .sync-choice-actions {
+        grid-template-columns: 1fr;
+    }
+
     .match-detail-summary {
         grid-template-columns: 1fr;
     }
@@ -1892,6 +1919,16 @@ body {
     .btn,
     .score-action-btn {
         width: 100%;
+    }
+
+    .nav-sync-group {
+        width: 100%;
+    }
+
+    .last-sync-text {
+        padding: 0;
+        font-size: 0.68rem;
+        text-align: left;
     }
 
     .match-score-value {

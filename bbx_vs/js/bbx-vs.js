@@ -4,6 +4,7 @@ class BeybladeTournamentApp {
         this.currentTournamentKey = 'bbx_vs_current_tournament';
         this.pendingPairingKey = 'bbx_vs_pending_pairing';
         this.driveAutoSyncKey = 'bbx_vs_drive_auto_sync_enabled';
+        this.driveLastSyncKey = 'bbx_vs_drive_last_sync_at';
         this.driveClientId = '200098245584-ms1ekqgikfvorm7jh4akcmsc1a6ub3dp.apps.googleusercontent.com';
         this.driveSyncFileName = 'bbx_vs_sync.json';
         this.driveScopes = 'https://www.googleapis.com/auth/drive.appdata';
@@ -19,10 +20,12 @@ class BeybladeTournamentApp {
         this.pendingPairing = null;
         this.selectedPairingSlotIndex = null;
         this.driveTokenClient = null;
-        this.driveAccessToken = null;
+        this.driveAccessToken = sessionStorage.getItem('bbx_vs_drive_access_token') || null;
+        this.driveTokenExpiry = Number(sessionStorage.getItem('bbx_vs_drive_token_expiry') || 0);
         this.gisReady = false;
         this.driveAutoSyncEnabled = localStorage.getItem(this.driveAutoSyncKey) === '1';
         this.autoSyncTimer = null;
+        this.lastSyncRefreshTimer = null;
         this.scoreTypes = {
             spin: { label: '旋轉勝利', defaultPoints: 1, tone: 'btn-primary' },
             ringOut: { label: '擊飛勝利', defaultPoints: 2, tone: 'secondary-tone' },
@@ -41,6 +44,8 @@ class BeybladeTournamentApp {
         const initParams = this.buildUrlParams();
         window.history.replaceState({ page: this.currentPage }, '', `${window.location.pathname}?${initParams.toString()}`);
         this.showPageInternal(this.currentPage);
+        this.updateLastSyncText();
+        this.lastSyncRefreshTimer = window.setInterval(() => this.updateLastSyncText(), 60_000);
     }
 
     cacheElements() {
@@ -84,10 +89,12 @@ class BeybladeTournamentApp {
         this.importFileInput = document.getElementById('import-file');
         this.driveSyncBtn = document.getElementById('drive-sync-btn');
         this.autoSyncBtn = document.getElementById('auto-sync-btn');
+        this.lastSyncText = document.getElementById('last-sync-text');
         this.matchDetailModal = document.getElementById('match-detail-modal');
         this.matchDetailContent = document.getElementById('match-detail-content');
         this.nextMatchModal = document.getElementById('next-match-modal');
         this.nextMatchContent = document.getElementById('next-match-content');
+        this.driveSyncChoiceModal = document.getElementById('drive-sync-choice-modal');
         this.headerRoot = document.querySelector('.vs-header');
         this.headerNav = document.querySelector('.header-nav');
         this.headerMenuBtn = document.getElementById('header-menu-btn');
@@ -179,6 +186,15 @@ class BeybladeTournamentApp {
             }
             if (actionName === 'go-next-match') {
                 this.goToPendingNextMatch();
+            }
+            if (actionName === 'close-drive-sync-choice') {
+                this.closeDriveSyncChoiceModal();
+            }
+            if (actionName === 'drive-sync-upload') {
+                this.runDriveSyncAction('upload');
+            }
+            if (actionName === 'drive-sync-download') {
+                this.runDriveSyncAction('download');
             }
             if (actionName === 'pairing-slot') {
                 this.selectPairingSlot(Number.parseInt(action.dataset.slotIndex, 10));
@@ -381,13 +397,19 @@ class BeybladeTournamentApp {
             return;
         }
 
+        this.pendingPairing.updatedAt = new Date().toISOString();
         window.sessionStorage.setItem(this.pendingPairingKey, JSON.stringify(this.pendingPairing));
+        this.scheduleAutoDriveSync('save-pending-pairing');
     }
 
     clearPendingPairingDraft() {
+        const hadDraft = Boolean(this.pendingPairing);
         this.pendingPairing = null;
         this.selectedPairingSlotIndex = null;
         window.sessionStorage.removeItem(this.pendingPairingKey);
+        if (hadDraft) {
+            this.scheduleAutoDriveSync('clear-pending-pairing');
+        }
     }
 
     restoreStateFromUrl() {
@@ -481,6 +503,52 @@ class BeybladeTournamentApp {
         if (menuAutoSyncBtn) {
             menuAutoSyncBtn.textContent = label;
         }
+
+        this.updateLastSyncText();
+    }
+
+    getLastDriveSyncAt() {
+        return localStorage.getItem(this.driveLastSyncKey) || null;
+    }
+
+    setLastDriveSyncAt(value) {
+        localStorage.setItem(this.driveLastSyncKey, value);
+        this.updateLastSyncText();
+    }
+
+    formatRelativeTime(value) {
+        if (!value) {
+            return '尚未同步';
+        }
+
+        const timestamp = new Date(value).getTime();
+        if (Number.isNaN(timestamp)) {
+            return '尚未同步';
+        }
+
+        const diffMs = Date.now() - timestamp;
+        if (diffMs < 60_000) {
+            return '剛剛';
+        }
+
+        const diffMinutes = Math.floor(diffMs / 60_000);
+        if (diffMinutes < 60) {
+            return `${diffMinutes} 分鐘前`;
+        }
+
+        const diffHours = Math.floor(diffMinutes / 60);
+        if (diffHours < 24) {
+            return `${diffHours} 小時前`;
+        }
+
+        const diffDays = Math.floor(diffHours / 24);
+        return `${diffDays} 天前`;
+    }
+
+    updateLastSyncText() {
+        if (this.lastSyncText) {
+            this.lastSyncText.textContent = `上次同步：${this.formatRelativeTime(this.getLastDriveSyncAt())}`;
+        }
     }
 
     async toggleAutoDriveSync() {
@@ -517,10 +585,10 @@ class BeybladeTournamentApp {
         this.autoSyncTimer = window.setTimeout(async () => {
             this.autoSyncTimer = null;
             try {
-                await this.ensureDriveAccessToken();
-                await this.uploadDriveSyncData();
+                await this.syncWithDrive({ interactive: false, source: `auto:${reason}` });
             } catch (error) {
-                console.warn(`自動同步失敗（${reason}）`, error);
+                // 靜默模式若授權失敗，直接略過本次，不打擾使用者。
+                console.warn(`自動同步略過（${reason}）：${error.message}`);
             }
         }, 1200);
     }
@@ -558,7 +626,17 @@ class BeybladeTournamentApp {
         return true;
     }
 
-    async ensureDriveAccessToken() {
+    isDriveTokenValid() {
+        return Boolean(this.driveAccessToken) && Date.now() < (this.driveTokenExpiry - 60_000);
+    }
+
+    async ensureDriveAccessToken(options = {}) {
+        const interactive = options.interactive !== false;
+
+        if (this.isDriveTokenValid()) {
+            return this.driveAccessToken;
+        }
+
         await this.initGoogleClients();
 
         return new Promise((resolve, reject) => {
@@ -568,10 +646,23 @@ class BeybladeTournamentApp {
                     return;
                 }
                 this.driveAccessToken = response.access_token;
+                const expiresInMs = Number(response.expires_in || 3600) * 1000;
+                this.driveTokenExpiry = Date.now() + expiresInMs;
+                sessionStorage.setItem('bbx_vs_drive_access_token', this.driveAccessToken);
+                sessionStorage.setItem('bbx_vs_drive_token_expiry', String(this.driveTokenExpiry));
+
+                if (options.redirectToDashboardOnMobile && window.matchMedia('(max-width: 760px)').matches && this.currentPage !== 'dashboard-page') {
+                    this.showPage('dashboard-page');
+                }
+
                 resolve(this.driveAccessToken);
             };
 
-            this.driveTokenClient.requestAccessToken({ prompt: this.driveAccessToken ? '' : 'consent' });
+            if (interactive) {
+                this.driveTokenClient.requestAccessToken({ prompt: this.driveAccessToken ? '' : 'consent' });
+            } else {
+                this.driveTokenClient.requestAccessToken({ prompt: 'none' });
+            }
         });
     }
 
@@ -594,14 +685,140 @@ class BeybladeTournamentApp {
         return data.files?.[0]?.id || null;
     }
 
-    async uploadDriveSyncData() {
-        const payload = {
+    buildLocalSyncPayload() {
+        return {
             version: 1,
             syncedAt: new Date().toISOString(),
             currentTournamentId: this.currentTournamentId,
             pendingPairing: this.pendingPairing,
             tournaments: this.tournaments
         };
+    }
+
+    getComparableTime(value) {
+        const timestamp = new Date(value || 0).getTime();
+        return Number.isNaN(timestamp) ? 0 : timestamp;
+    }
+
+    getTournamentFreshness(tournament) {
+        return Math.max(
+            this.getComparableTime(tournament?.updatedAt),
+            this.getComparableTime(tournament?.createdAt)
+        );
+    }
+
+    getDraftFreshness(draft) {
+        return Math.max(
+            this.getComparableTime(draft?.updatedAt),
+            this.getComparableTime(draft?.createdAt)
+        );
+    }
+
+    mergeTournamentCollections(localTournaments = [], remoteTournaments = []) {
+        const mergedMap = new Map();
+
+        const upsert = (tournament) => {
+            if (!tournament?.id) {
+                return;
+            }
+
+            const existing = mergedMap.get(tournament.id);
+            if (!existing || this.getTournamentFreshness(tournament) >= this.getTournamentFreshness(existing)) {
+                mergedMap.set(tournament.id, tournament);
+            }
+        };
+
+        localTournaments.forEach(upsert);
+        remoteTournaments.forEach(upsert);
+
+        return Array.from(mergedMap.values());
+    }
+
+    normalizeSyncPayload(payload) {
+        const normalizedTournaments = [...(payload?.tournaments || [])]
+            .map((tournament) => ({ ...tournament }))
+            .sort((left, right) => String(left.id).localeCompare(String(right.id)));
+
+        return {
+            currentTournamentId: payload?.currentTournamentId || null,
+            pendingPairing: payload?.pendingPairing || null,
+            tournaments: normalizedTournaments
+        };
+    }
+
+    isSyncPayloadEquivalent(leftPayload, rightPayload) {
+        return JSON.stringify(this.normalizeSyncPayload(leftPayload)) === JSON.stringify(this.normalizeSyncPayload(rightPayload));
+    }
+
+    mergeSyncPayloads(localPayload, remotePayload) {
+        if (!remotePayload) {
+            return {
+                ...localPayload,
+                tournaments: [...localPayload.tournaments]
+            };
+        }
+
+        const mergedTournaments = this.mergeTournamentCollections(localPayload.tournaments, remotePayload.tournaments);
+        const mergedTournamentIds = new Set(mergedTournaments.map((tournament) => tournament.id));
+
+        const localDraftFreshness = this.getDraftFreshness(localPayload.pendingPairing);
+        const remoteDraftFreshness = this.getDraftFreshness(remotePayload.pendingPairing);
+        const mergedPendingPairing = localDraftFreshness >= remoteDraftFreshness
+            ? (localPayload.pendingPairing || remotePayload.pendingPairing || null)
+            : (remotePayload.pendingPairing || localPayload.pendingPairing || null);
+
+        const localCurrentId = mergedTournamentIds.has(localPayload.currentTournamentId) ? localPayload.currentTournamentId : null;
+        const remoteCurrentId = mergedTournamentIds.has(remotePayload.currentTournamentId) ? remotePayload.currentTournamentId : null;
+
+        let mergedCurrentTournamentId = localCurrentId || remoteCurrentId || null;
+        if (localCurrentId && remoteCurrentId && localCurrentId !== remoteCurrentId) {
+            const localCurrent = mergedTournaments.find((tournament) => tournament.id === localCurrentId);
+            const remoteCurrent = mergedTournaments.find((tournament) => tournament.id === remoteCurrentId);
+            mergedCurrentTournamentId = this.getTournamentFreshness(localCurrent) >= this.getTournamentFreshness(remoteCurrent)
+                ? localCurrentId
+                : remoteCurrentId;
+        }
+
+        return {
+            version: Math.max(Number(localPayload.version || 1), Number(remotePayload.version || 1)),
+            syncedAt: new Date().toISOString(),
+            currentTournamentId: mergedCurrentTournamentId,
+            pendingPairing: mergedPendingPairing,
+            tournaments: mergedTournaments
+        };
+    }
+
+    applyMergedSyncPayload(payload) {
+        this.tournaments = payload.tournaments || [];
+        this.currentTournamentId = payload.currentTournamentId || null;
+        this.pendingPairing = payload.pendingPairing || null;
+        this.selectedMatchId = null;
+        this.selectedPairingSlotIndex = null;
+        this.saveTournaments();
+        this.savePendingPairingDraft();
+        this.ensureCurrentTournament();
+    }
+
+    async fetchDriveSyncPayload() {
+        const fileId = await this.findDriveSyncFileId();
+        if (!fileId) {
+            return null;
+        }
+
+        const response = await this.driveFetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`);
+        if (!response.ok) {
+            throw new Error(`下載失敗（${response.status}）`);
+        }
+
+        const payload = await response.json();
+        if (!payload || !Array.isArray(payload.tournaments)) {
+            throw new Error('雲端資料格式不正確。');
+        }
+
+        return payload;
+    }
+
+    async uploadDriveSyncData(payload = this.buildLocalSyncPayload()) {
 
         const fileId = await this.findDriveSyncFileId();
         const metadata = fileId
@@ -635,43 +852,36 @@ class BeybladeTournamentApp {
         if (!response.ok) {
             throw new Error(`Drive upload failed (${response.status})`);
         }
+
+        this.setLastDriveSyncAt(new Date().toISOString());
     }
 
-    async downloadDriveSyncData() {
-        const fileId = await this.findDriveSyncFileId();
-        if (!fileId) {
-            throw new Error('Google Drive 尚未有同步檔案。');
+    async syncWithDrive(options = {}) {
+        const interactive = options.interactive !== false;
+        await this.ensureDriveAccessToken({ interactive, redirectToDashboardOnMobile: options.redirectToDashboardOnMobile });
+
+        const localPayload = this.buildLocalSyncPayload();
+        const remotePayload = await this.fetchDriveSyncPayload();
+        const mergedPayload = this.mergeSyncPayloads(localPayload, remotePayload);
+
+        const localNeedsUpdate = !this.isSyncPayloadEquivalent(localPayload, mergedPayload);
+        const remoteNeedsUpdate = !remotePayload || !this.isSyncPayloadEquivalent(remotePayload, mergedPayload);
+
+        if (localNeedsUpdate) {
+            this.applyMergedSyncPayload(mergedPayload);
         }
 
-        const response = await window.fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
-            headers: {
-                Authorization: `Bearer ${this.driveAccessToken}`
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(`下載失敗（${response.status}）`);
+        if (remoteNeedsUpdate) {
+            await this.uploadDriveSyncData(mergedPayload);
+        } else {
+            this.setLastDriveSyncAt(new Date().toISOString());
         }
 
-        const payload = await response.json();
-        if (!payload || !Array.isArray(payload.tournaments)) {
-            throw new Error('雲端資料格式不正確。');
-        }
-
-        const confirmed = window.confirm('將以 Drive 資料覆蓋目前本機賽事，確定繼續？');
-        if (!confirmed) {
-            return;
-        }
-
-        this.tournaments = payload.tournaments;
-        this.currentTournamentId = payload.currentTournamentId || null;
-        this.pendingPairing = payload.pendingPairing || null;
-        this.selectedMatchId = null;
-        this.selectedPairingSlotIndex = null;
-        this.saveTournaments();
-        this.savePendingPairingDraft();
-        this.ensureCurrentTournament();
-        this.showPage('dashboard-page');
+        return {
+            localUpdated: localNeedsUpdate,
+            remoteUpdated: remoteNeedsUpdate,
+            mergedPayload
+        };
     }
 
     async handleDriveSync() {
@@ -681,18 +891,43 @@ class BeybladeTournamentApp {
                 return;
             }
 
-            await this.ensureDriveAccessToken();
-            const upload = window.confirm('按「確定」上傳目前本機資料到 Google Drive；按「取消」改為從 Drive 下載。');
+            const result = await this.syncWithDrive({ interactive: true, redirectToDashboardOnMobile: true, source: 'manual' });
+            const messages = [];
+            if (result.localUpdated) messages.push('本機已更新');
+            if (result.remoteUpdated) messages.push('雲端已更新');
+            window.alert(messages.length ? `Google Drive 同步完成：${messages.join('，')}` : 'Google Drive 同步完成，資料已是最新。');
+        } catch (error) {
+            window.alert(`Google Drive 同步失敗：${error.message}`);
+        }
+    }
 
-            if (upload) {
+    openDriveSyncChoiceModal() {
+        if (!this.driveSyncChoiceModal) {
+            return;
+        }
+        this.driveSyncChoiceModal.hidden = false;
+    }
+
+    closeDriveSyncChoiceModal() {
+        if (!this.driveSyncChoiceModal) {
+            return;
+        }
+        this.driveSyncChoiceModal.hidden = true;
+    }
+
+    async runDriveSyncAction(action) {
+        try {
+            if (action === 'upload') {
                 await this.uploadDriveSyncData();
                 window.alert('Google Drive 同步上傳完成。');
-            } else {
+            } else if (action === 'download') {
                 await this.downloadDriveSyncData();
                 window.alert('Google Drive 同步下載完成。');
             }
         } catch (error) {
             window.alert(`Google Drive 同步失敗：${error.message}`);
+        } finally {
+            this.closeDriveSyncChoiceModal();
         }
     }
 

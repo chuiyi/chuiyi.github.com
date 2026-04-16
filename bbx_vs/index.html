@@ -55,9 +55,12 @@
                     <button id="drive-sync-btn" class="nav-btn">
                         <span>Drive 同步</span>
                     </button>
-                    <button id="auto-sync-btn" class="nav-btn">
-                        <span>自動同步：關</span>
-                    </button>
+                    <div class="nav-sync-group">
+                        <button id="auto-sync-btn" class="nav-btn">
+                            <span>自動同步：關</span>
+                        </button>
+                        <span id="last-sync-text" class="last-sync-text">上次同步：尚未同步</span>
+                    </div>
                     <input type="file" id="import-file" accept=".json" hidden>
                 </nav>
 
@@ -367,6 +370,26 @@
                     <button class="match-detail-close" data-action="close-next-match-modal" aria-label="關閉下一場提示">×</button>
                 </div>
                 <div id="next-match-content" class="match-detail-content"></div>
+            </div>
+        </div>
+
+        <div id="drive-sync-choice-modal" class="match-detail-modal" hidden>
+            <div class="match-detail-backdrop" data-action="close-drive-sync-choice"></div>
+            <div class="match-detail-dialog" role="dialog" aria-modal="true" aria-labelledby="drive-sync-choice-title">
+                <div class="match-detail-header">
+                    <div>
+                        <p class="panel-kicker">Google Drive Sync</p>
+                        <h3 id="drive-sync-choice-title">請選擇同步動作</h3>
+                    </div>
+                    <button class="match-detail-close" data-action="close-drive-sync-choice" aria-label="關閉同步動作選擇">×</button>
+                </div>
+                <div class="match-detail-content">
+                    <p class="next-match-copy">請選擇要把本機資料上傳至雲端，或從雲端下載覆蓋本機資料。</p>
+                    <div class="sync-choice-actions">
+                        <button class="btn btn-primary" data-action="drive-sync-upload">上傳到 Google Drive</button>
+                        <button class="btn btn-secondary" data-action="drive-sync-download">從 Google Drive 下載</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
