@@ -1,6 +1,7 @@
 ﻿class BeybladeTournamentApp {
     constructor() {
         this.storageKey = 'bbx_vs_tournaments';
+        this.deletedTournamentsKey = 'bbx_vs_deleted_tournaments';
         this.currentTournamentKey = 'bbx_vs_current_tournament';
         this.pendingPairingKey = 'bbx_vs_pending_pairing';
         this.driveAutoSyncKey = 'bbx_vs_drive_auto_sync_enabled';
@@ -9,6 +10,7 @@
         this.driveSyncFileName = 'bbx_vs_sync.json';
         this.driveScopes = 'https://www.googleapis.com/auth/drive.appdata';
         this.tournaments = this.loadTournaments();
+        this.deletedTournaments = this.loadDeletedTournaments();
         this.currentTournamentId = localStorage.getItem(this.currentTournamentKey) || null;
         this.currentPage = 'dashboard-page';
         this.selectedMatchId = null;
@@ -514,6 +516,21 @@
         }
     }
 
+    loadDeletedTournaments() {
+        try {
+            const raw = localStorage.getItem(this.deletedTournamentsKey);
+            const parsed = raw ? JSON.parse(raw) : {};
+            return parsed && typeof parsed === 'object' ? parsed : {};
+        } catch (error) {
+            console.warn('讀取刪除紀錄失敗', error);
+            return {};
+        }
+    }
+
+    saveDeletedTournaments() {
+        localStorage.setItem(this.deletedTournamentsKey, JSON.stringify(this.deletedTournaments || {}));
+    }
+
     saveTournaments() {
         localStorage.setItem(this.storageKey, JSON.stringify(this.tournaments));
         if (this.currentTournamentId) {
@@ -771,6 +788,7 @@
             syncedAt: new Date().toISOString(),
             currentTournamentId: this.currentTournamentId,
             pendingPairing: this.pendingPairing,
+            deletedTournaments: this.deletedTournaments || {},
             tournaments: this.tournaments
         };
     }
@@ -814,14 +832,31 @@
         return Array.from(mergedMap.values());
     }
 
+    mergeDeletedTournamentMap(localDeleted = {}, remoteDeleted = {}) {
+        const merged = { ...(localDeleted || {}) };
+        Object.entries(remoteDeleted || {}).forEach(([id, deletedAt]) => {
+            const localTime = this.getComparableTime(merged[id]);
+            const remoteTime = this.getComparableTime(deletedAt);
+            if (remoteTime >= localTime) {
+                merged[id] = deletedAt;
+            }
+        });
+        return merged;
+    }
+
     normalizeSyncPayload(payload) {
         const normalizedTournaments = [...(payload?.tournaments || [])]
             .map((tournament) => ({ ...tournament }))
             .sort((left, right) => String(left.id).localeCompare(String(right.id)));
 
+        const normalizedDeleted = Object.fromEntries(
+            Object.entries(payload?.deletedTournaments || {}).sort(([leftId], [rightId]) => String(leftId).localeCompare(String(rightId)))
+        );
+
         return {
             currentTournamentId: payload?.currentTournamentId || null,
             pendingPairing: payload?.pendingPairing || null,
+            deletedTournaments: normalizedDeleted,
             tournaments: normalizedTournaments
         };
     }
@@ -838,7 +873,14 @@
             };
         }
 
-        const mergedTournaments = this.mergeTournamentCollections(localPayload.tournaments, remotePayload.tournaments);
+        const mergedDeletedTournaments = this.mergeDeletedTournamentMap(
+            localPayload.deletedTournaments,
+            remotePayload.deletedTournaments
+        );
+
+        const mergedTournaments = this
+            .mergeTournamentCollections(localPayload.tournaments, remotePayload.tournaments)
+            .filter((tournament) => this.getComparableTime(mergedDeletedTournaments[tournament.id]) < this.getTournamentFreshness(tournament));
         const mergedTournamentIds = new Set(mergedTournaments.map((tournament) => tournament.id));
 
         const localDraftFreshness = this.getDraftFreshness(localPayload.pendingPairing);
@@ -864,17 +906,20 @@
             syncedAt: new Date().toISOString(),
             currentTournamentId: mergedCurrentTournamentId,
             pendingPairing: mergedPendingPairing,
+            deletedTournaments: mergedDeletedTournaments,
             tournaments: mergedTournaments
         };
     }
 
     applyMergedSyncPayload(payload) {
         this.tournaments = payload.tournaments || [];
+        this.deletedTournaments = payload.deletedTournaments || {};
         this.currentTournamentId = payload.currentTournamentId || null;
         this.pendingPairing = payload.pendingPairing || null;
         this.selectedMatchId = null;
         this.selectedPairingSlotIndex = null;
         this.saveTournaments();
+        this.saveDeletedTournaments();
         this.savePendingPairingDraft();
         this.ensureCurrentTournament();
     }
@@ -1079,6 +1124,8 @@
         } else {
             this.tournaments[index] = updatedTournament;
         }
+        delete this.deletedTournaments[updatedTournament.id];
+        this.saveDeletedTournaments();
         this.currentTournamentId = updatedTournament.id;
         updatedTournament.updatedAt = new Date().toISOString();
         this.saveTournaments();
@@ -1431,6 +1478,8 @@
             return;
         }
 
+        this.deletedTournaments[tournamentId] = new Date().toISOString();
+        this.saveDeletedTournaments();
         this.tournaments = this.tournaments.filter((item) => item.id !== tournamentId);
         if (this.currentTournamentId === tournamentId) {
             this.currentTournamentId = null;
@@ -1438,6 +1487,11 @@
             this.ensureCurrentTournament();
         }
         this.saveTournaments();
+        if (this.driveAutoSyncEnabled) {
+            this.showToast('刪除已排入 Google Drive 自動同步。', { tone: 'info' });
+        } else {
+            this.showToast('賽事已刪除。若要同步到 Google Drive，請手動同步一次。', { tone: 'warning' });
+        }
         this.render();
     }
 
