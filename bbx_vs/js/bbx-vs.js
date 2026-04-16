@@ -46,6 +46,10 @@ class BeybladeTournamentApp {
         this.showPageInternal(this.currentPage);
         this.updateLastSyncText();
         this.lastSyncRefreshTimer = window.setInterval(() => this.updateLastSyncText(), 60_000);
+
+        if (this.driveAutoSyncEnabled) {
+            this.startupAutoSync();
+        }
     }
 
     cacheElements() {
@@ -817,6 +821,42 @@ class BeybladeTournamentApp {
         this.ensureCurrentTournament();
     }
 
+    navigateAfterSync(payload) {
+        // 根據同步後的狀態決定要跳到哪一頁
+        let targetPage = 'dashboard-page';
+
+        if (payload.pendingPairing) {
+            targetPage = 'pairing-page';
+        } else if (payload.currentTournamentId) {
+            const tournament = this.tournaments.find((t) => t.id === payload.currentTournamentId);
+            if (tournament && !tournament.completed) {
+                targetPage = 'arena-page';
+            }
+        }
+
+        this.showPageInternal(targetPage);
+        const params = this.buildUrlParams();
+        window.history.replaceState({ page: this.currentPage }, '', `${window.location.pathname}?${params.toString()}`);
+    }
+
+    async startupAutoSync() {
+        this.setDriveSyncStatus('啟動同步中', 'running');
+        try {
+            const result = await this.syncWithDrive({
+                interactive: false,
+                source: 'startup',
+                navigateAfterApply: true
+            });
+            this.setDriveSyncStatus(
+                result.localUpdated ? '啟動同步完成，本機已更新' : '啟動同步完成，資料已是最新',
+                'success'
+            );
+        } catch (error) {
+            console.warn('啟動同步略過：', error.message);
+            this.setDriveSyncStatus('啟動同步略過，等待登入', 'warning');
+        }
+    }
+
     async fetchDriveSyncPayload() {
         const fileId = await this.findDriveSyncFileId();
         if (!fileId) {
@@ -887,6 +927,9 @@ class BeybladeTournamentApp {
 
         if (localNeedsUpdate) {
             this.applyMergedSyncPayload(mergedPayload);
+            if (options.navigateAfterApply) {
+                this.navigateAfterSync(mergedPayload);
+            }
         }
 
         if (remoteNeedsUpdate) {
