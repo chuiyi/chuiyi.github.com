@@ -1,8 +1,8 @@
 {
   "id": "tw19522331",
   "url": "https://asia.pokemon-card.com/tw/users/tw19522331/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-10T08:39:15.514Z",
-  "totalEvents": 166,
+  "fetchedAt": "2026-04-17T10:40:58.200Z",
+  "totalEvents": 168,
   "participatedTournaments": [
     {
       "pageNo": 8,
@@ -23,6 +23,17 @@
       "eventDateTime": "2026-05-30 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 8,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-23-2026 10:30",
+      "eventDateTime": "2026-05-23 10:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -82,6 +93,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 9,
+      "rowIndex": 7,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-12-2026 14:00",
+      "eventDateTime": "2026-04-12 14:00",
+      "location": "卡舖啦啦",
+      "address": "台中市南區復興路二段30-26號2樓",
+      "rank": "14",
+      "lp": "6"
+    },
+    {
       "pageNo": 8,
       "rowIndex": 16,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-2 (大師組)",
@@ -89,7 +111,7 @@
       "eventDateTime": "2026-04-11 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
+      "rank": "416",
       "lp": "-"
     },
     {

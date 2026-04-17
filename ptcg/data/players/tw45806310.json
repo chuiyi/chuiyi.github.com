@@ -1,8 +1,8 @@
 {
   "id": "tw45806310",
   "url": "https://asia.pokemon-card.com/tw/users/tw45806310/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-10T07:29:30.589Z",
-  "totalEvents": 109,
+  "fetchedAt": "2026-04-17T09:27:00.384Z",
+  "totalEvents": 110,
   "participatedTournaments": [
     {
       "pageNo": 5,
@@ -23,6 +23,17 @@
       "eventDateTime": "2026-05-30 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 6,
+      "rowIndex": 10,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-23-2026 10:30",
+      "eventDateTime": "2026-05-23 10:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -67,7 +78,7 @@
       "eventDateTime": "2026-04-12 08:30",
       "location": "桌覓桌遊休閒空間",
       "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
-      "rank": "-",
+      "rank": "32",
       "lp": "-"
     },
     {
@@ -78,7 +89,7 @@
       "eventDateTime": "2026-04-11 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
+      "rank": "462",
       "lp": "-"
     },
     {
@@ -89,7 +100,7 @@
       "eventDateTime": "2026-04-05 13:00",
       "location": "Bruce桌遊空間-三多店",
       "address": "高雄市前鎮區三多三路213號8樓",
-      "rank": "51",
+      "rank": "-",
       "lp": "-"
     },
     {
@@ -100,7 +111,7 @@
       "eventDateTime": "2026-04-04 14:00",
       "location": "Play Lab Game 休閒館 高雄",
       "address": "高雄市三民區建國二路166號",
-      "rank": "34",
+      "rank": "-",
       "lp": "-"
     },
     {
