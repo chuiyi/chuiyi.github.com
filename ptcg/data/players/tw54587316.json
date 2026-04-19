@@ -1,8 +1,8 @@
 {
   "id": "tw54587316",
   "url": "https://asia.pokemon-card.com/tw/users/tw54587316/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-12T03:26:50.606Z",
-  "totalEvents": 203,
+  "fetchedAt": "2026-04-19T03:40:13.362Z",
+  "totalEvents": 204,
   "participatedTournaments": [
     {
       "pageNo": 10,
@@ -39,13 +39,24 @@
     },
     {
       "pageNo": 11,
+      "rowIndex": 4,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-18-2026 14:00",
+      "eventDateTime": "2026-04-18 14:00",
+      "location": "貓腳印士林店",
+      "address": "台北市士林區大西路66號B1",
+      "rank": "59",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
       "rowIndex": 1,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-2 (少年組)",
       "eventTime": "04-11-2026 08:30",
       "eventDateTime": "2026-04-11 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
+      "rank": "96",
       "lp": "-"
     },
     {
