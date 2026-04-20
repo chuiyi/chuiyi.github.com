@@ -1,7 +1,7 @@
 {
   "id": "tw72342436",
   "url": "https://asia.pokemon-card.com/tw/users/tw72342436/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-10T11:43:41.072Z",
+  "fetchedAt": "2026-04-17T13:51:11.630Z",
   "totalEvents": 136,
   "participatedTournaments": [
     {
@@ -28,6 +28,17 @@
     },
     {
       "pageNo": 7,
+      "rowIndex": 16,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-16-2026 09:00",
+      "eventDateTime": "2026-05-16 09:00",
+      "location": "鬥樂一中店",
+      "address": "台中市北區尊賢街9號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 7,
       "rowIndex": 9,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
       "eventTime": "05-09-2026 08:30",
@@ -39,7 +50,7 @@
     },
     {
       "pageNo": 7,
-      "rowIndex": 15,
+      "rowIndex": 14,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "05-02-2026 11:00",
       "eventDateTime": "2026-05-02 11:00",
@@ -50,23 +61,12 @@
     },
     {
       "pageNo": 7,
-      "rowIndex": 16,
+      "rowIndex": 15,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-25-2026 09:00",
       "eventDateTime": "2026-04-25 09:00",
       "location": "Card Master",
       "address": "100台北市中正區南昌路二段47號1樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 7,
-      "rowIndex": 14,
-      "activityName": "2025-26 Taiwan Great Ball League Season 3",
-      "eventTime": "04-18-2026 14:00",
-      "eventDateTime": "2026-04-18 14:00",
-      "location": "貓腳印士林店",
-      "address": "台北市士林區大西路66號B1",
       "rank": "-",
       "lp": "-"
     },

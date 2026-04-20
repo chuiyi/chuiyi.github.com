@@ -1,8 +1,8 @@
 {
   "id": "tw99589299",
   "url": "https://asia.pokemon-card.com/tw/users/tw99589299/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-12T03:44:59.736Z",
-  "totalEvents": 57,
+  "fetchedAt": "2026-04-19T03:58:50.344Z",
+  "totalEvents": 58,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -17,13 +17,24 @@
     },
     {
       "pageNo": 3,
+      "rowIndex": 18,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-18-2026 13:30",
+      "eventDateTime": "2026-04-18 13:30",
+      "location": "漢謚玩具社",
+      "address": "高雄市苓雅區中華四路244號2樓",
+      "rank": "64",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
       "rowIndex": 17,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-04-2026 14:00",
       "eventDateTime": "2026-04-04 14:00",
       "location": "Play Lab Game 休閒館 高雄",
       "address": "高雄市三民區建國二路166號",
-      "rank": "17",
+      "rank": "-",
       "lp": "-"
     },
     {

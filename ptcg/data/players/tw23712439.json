@@ -1,8 +1,8 @@
 {
   "id": "tw23712439",
   "url": "https://asia.pokemon-card.com/tw/users/tw23712439/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-10T09:55:42.636Z",
-  "totalEvents": 96,
+  "fetchedAt": "2026-04-17T11:58:11.829Z",
+  "totalEvents": 97,
   "participatedTournaments": [
     {
       "pageNo": 5,
@@ -61,13 +61,24 @@
     },
     {
       "pageNo": 5,
+      "rowIndex": 17,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-12-2026 14:00",
+      "eventDateTime": "2026-04-12 14:00",
+      "location": "PiggyLand豬豬玩具",
+      "address": "新北市永和區永和路二段203號9樓",
+      "rank": "24",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
       "rowIndex": 11,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-2 (大師組)",
       "eventTime": "04-11-2026 08:30",
       "eventDateTime": "2026-04-11 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
+      "rank": "313",
       "lp": "-"
     },
     {
@@ -155,7 +166,7 @@
       "eventDateTime": "2026-03-21 14:30",
       "location": "暖角落 卡牌遊戲專賣店",
       "address": "台北市松山區八德路四段135號B1",
-      "rank": "-",
+      "rank": "42",
       "lp": "-"
     },
     {

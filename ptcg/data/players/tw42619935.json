@@ -1,8 +1,8 @@
 {
   "id": "tw42619935",
   "url": "https://asia.pokemon-card.com/tw/users/tw42619935/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-10T07:23:09.787Z",
-  "totalEvents": 282,
+  "fetchedAt": "2026-04-17T09:10:49.406Z",
+  "totalEvents": 283,
   "participatedTournaments": [
     {
       "pageNo": 13,
@@ -34,6 +34,17 @@
       "eventDateTime": "2026-05-23 10:30",
       "location": "紙牌屋",
       "address": "台南市東區東門路一段354號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 15,
+      "rowIndex": 3,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-16-2026 09:00",
+      "eventDateTime": "2026-05-16 09:00",
+      "location": "鬥樂一中店",
+      "address": "台中市北區尊賢街9號4樓",
       "rank": "-",
       "lp": "-"
     },
@@ -144,7 +155,7 @@
       "eventDateTime": "2026-04-12 14:00",
       "location": "PiggyLand豬豬玩具",
       "address": "新北市永和區永和路二段203號9樓",
-      "rank": "-",
+      "rank": "27",
       "lp": "-"
     },
     {
@@ -177,7 +188,7 @@
       "eventDateTime": "2026-04-11 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
+      "rank": "27",
       "lp": "-"
     },
     {
@@ -211,7 +222,7 @@
       "location": "Bruce桌遊空間-三多店",
       "address": "高雄市前鎮區三多三路213號8樓",
       "rank": "7",
-      "lp": "-"
+      "lp": "8"
     },
     {
       "pageNo": 14,
@@ -222,7 +233,7 @@
       "location": "Play Lab Game 休閒館 高雄",
       "address": "高雄市三民區建國二路166號",
       "rank": "1",
-      "lp": "-"
+      "lp": "20"
     },
     {
       "pageNo": 14,
@@ -398,7 +409,7 @@
       "location": "玖零玩具",
       "address": "台南市中西區民權路一段1號1樓",
       "rank": "13",
-      "lp": "-"
+      "lp": "6"
     },
     {
       "pageNo": 13,
@@ -485,7 +496,7 @@
       "eventDateTime": "2026-03-07 14:00",
       "location": "卡舖奇麒",
       "address": "臺北市大同區民權西路230號B1",
-      "rank": "42",
+      "rank": "-",
       "lp": "-"
     },
     {
@@ -552,7 +563,7 @@
       "location": "楊梅-說書人桌遊舖",
       "address": "桃園市楊梅區校前路343號",
       "rank": "9",
-      "lp": "-"
+      "lp": "6"
     },
     {
       "pageNo": 12,
