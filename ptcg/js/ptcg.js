@@ -97,6 +97,13 @@ const PTCG = (() => {
         return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
     }
 
+    function showModal(modalEl) {
+        if (!modalEl) return null;
+        const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+        modal.show();
+        return modal;
+    }
+
     function getLatestTimestampFromValues(values) {
         let latestTime = Number.NEGATIVE_INFINITY;
         let latestRaw = '';
@@ -1289,6 +1296,7 @@ const PTCG = (() => {
         const modalEl = _ensurePlayerJourneyModal();
         const titleEl = modalEl.querySelector('#playerJourneyTitle');
         const journeyBodyEl = modalEl.querySelector('#playerJourneyBody');
+        const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
         if (!titleEl || !journeyBodyEl) return;
 
         const openJourney = (playerId) => {
@@ -1300,7 +1308,7 @@ const PTCG = (() => {
             const entries = _buildPlayerJourney(normalizedPlayerId, records);
             titleEl.textContent = `${displayName} · ${tournament.name}`;
             journeyBodyEl.innerHTML = _renderPlayerJourneyBody(entries, lookup);
-            new bootstrap.Modal(modalEl).show();
+            modal.show();
         };
 
         if (!modalEl.dataset.journeyOpponentBound) {
@@ -1618,18 +1626,18 @@ const PTCG = (() => {
 
         if (tournament.showPairing === false) {
             bodyEl.innerHTML = '<p class="text-muted mb-0">此賽事已關閉 Pairing 顯示。</p>';
-            new bootstrap.Modal(modalEl).show();
+            showModal(modalEl);
             return;
         }
 
         if (!tournament.csvFile) {
             bodyEl.innerHTML = '<p class="text-muted mb-0">此賽事尚未建立對應 CSV 檔案。</p>';
-            new bootstrap.Modal(modalEl).show();
+            showModal(modalEl);
             return;
         }
 
         bodyEl.innerHTML = '<div class="text-center py-4"><div class="ptcg-spinner mx-auto"></div><p class="mt-3 text-muted mb-0">載入賽事詳情中...</p></div>';
-        new bootstrap.Modal(modalEl).show();
+        showModal(modalEl);
 
         try {
             const csvText = await fetchText(`tournaments/${tournament.csvFile}`);
@@ -1732,7 +1740,7 @@ const PTCG = (() => {
             tournament_type: String(tournament.type || ''),
         });
         bodyEl.innerHTML = '<div class="text-center py-4"><div class="ptcg-spinner mx-auto"></div><p class="mt-3 text-muted mb-0">載入官方排名中...</p></div>';
-        new bootstrap.Modal(modalEl).show();
+        showModal(modalEl);
 
         try {
             const csvText = await fetchText(`tournaments/${tournament.top128File}`);
@@ -1930,7 +1938,7 @@ const PTCG = (() => {
             ${deck.description ? `<p class="text-muted mb-4" style="font-size:0.9rem">${escapeHtml(deck.description)}</p>` : ''}`;
 
         document.getElementById('deckModalBody').innerHTML = infoHtml + (bodyHtml || '<p class="text-muted">此牌組尚無詳細牌表資料。</p>');
-        new bootstrap.Modal(document.getElementById('deckModal')).show();
+        showModal(document.getElementById('deckModal'));
     }
 
     // ─── 戰隊頁 ───────────────────────────────────────────────
@@ -2148,7 +2156,7 @@ const PTCG = (() => {
 
         if (!rows.length) {
             bodyEl.innerHTML = '<p class="text-muted mb-0">此戰隊尚未設定成員資料。</p>';
-            new bootstrap.Modal(document.getElementById('teamMembersModal')).show();
+            showModal(document.getElementById('teamMembersModal'));
             return;
         }
 
@@ -2179,7 +2187,7 @@ const PTCG = (() => {
             </div>
         `;
 
-        new bootstrap.Modal(document.getElementById('teamMembersModal')).show();
+        showModal(document.getElementById('teamMembersModal'));
     }
 
     // ─── 玩家頁 ───────────────────────────────────────────────
@@ -2615,7 +2623,7 @@ const PTCG = (() => {
             <p class="text-muted mb-0" style="font-size:0.9rem">玩家歷史檔案存在時，顯示自 ${_playersManifest?.season_start_from || '本季'} 起的所有有效賽事紀錄。</p>`;
 
         document.getElementById('playerModalBody').innerHTML = body;
-        new bootstrap.Modal(document.getElementById('playerModal')).show();
+        showModal(document.getElementById('playerModal'));
     }
 
     // ─── 工具：防抖 ───────────────────────────────────────────
