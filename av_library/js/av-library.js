@@ -14,6 +14,7 @@
     let googleTokenClient = null;
     let googleAccessToken = sessionStorage.getItem("avGoogleAccessToken") || "";
     let googleTokenExpiry = Number(sessionStorage.getItem("avGoogleTokenExpiry") || 0);
+    let googleHasAuthenticated = localStorage.getItem("avGoogleHasAuthenticated") === "1";
     let syncDirty = false;
     let syncTimer = null;
     let syncInFlight = false;
@@ -99,6 +100,13 @@
 
     const isTokenValid = () => googleAccessToken && Date.now() < googleTokenExpiry - 60000;
 
+    const clearAuthCache = () => {
+        googleAccessToken = "";
+        googleTokenExpiry = 0;
+        sessionStorage.removeItem("avGoogleAccessToken");
+        sessionStorage.removeItem("avGoogleTokenExpiry");
+    };
+
     const requestAccessTokenWithPrompt = (prompt) => {
         return new Promise((resolve, reject) => {
             googleTokenClient.callback = (tokenResponse) => {
@@ -111,6 +119,8 @@
                 googleTokenExpiry = Date.now() + expiresIn;
                 sessionStorage.setItem("avGoogleAccessToken", googleAccessToken);
                 sessionStorage.setItem("avGoogleTokenExpiry", String(googleTokenExpiry));
+                googleHasAuthenticated = true;
+                localStorage.setItem("avGoogleHasAuthenticated", "1");
                 resolve(googleAccessToken);
             };
             googleTokenClient.requestAccessToken({ prompt });
@@ -125,18 +135,24 @@
             throw new Error("Google 驗證尚未就緒");
         }
 
+        // 未曾登入時，非手動同步直接略過，避免任何授權視窗干擾
+        if (!interactive && !googleHasAuthenticated && !googleAccessToken) {
+            throw new Error("尚未登入 Google");
+        }
+
         // 先嘗試靜默授權，避免每次同步都彈窗
         try {
             return await requestAccessTokenWithPrompt("none");
         } catch (silentError) {
+            // 靜默失敗後清理舊 token，避免後續反覆觸發互動視窗
+            clearAuthCache();
             if (!interactive) {
                 throw silentError;
             }
         }
 
         // 只有在手動同步且靜默失敗時，才改用互動授權
-        const interactivePrompt = googleAccessToken ? "" : "consent";
-        return requestAccessTokenWithPrompt(interactivePrompt);
+        return requestAccessTokenWithPrompt("consent");
     };
 
     const markDirty = () => {
