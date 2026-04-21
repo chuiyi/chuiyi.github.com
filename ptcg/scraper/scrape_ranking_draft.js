@@ -197,16 +197,18 @@ function shouldProcessDraft(manifest, level, date) {
 function updateManifestForLevel(manifest, level, date, outputFileName, totalPlayers) {
   const current = manifest.latest[level] || {};
   const worldPlayers = current.world_players ?? WORLD_PLAYER_LIMITS[level];
+  const updatedAt = new Date().toISOString();
 
   manifest.latest[level] = {
     level,
     label: LEVEL_LABELS[level],
     date,
+    updated_at: updatedAt,
     file: outputFileName,
     total_players: totalPlayers,
     ...(worldPlayers ? { world_players: worldPlayers } : {}),
   };
-  manifest.updated_at = new Date().toISOString();
+  manifest.updated_at = updatedAt;
 }
 
 function listDraftFiles(dirPath) {

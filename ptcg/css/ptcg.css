@@ -804,14 +804,37 @@ main .btn-outline-ptcg:hover {
 
 .data-update-badge {
     display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
+    align-items: flex-start;
+    gap: 0.55rem;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.15);
     color: rgba(255,255,255,0.6);
-    padding: 0.3rem 0.75rem;
-    border-radius: 999px;
+    padding: 0.45rem 0.85rem;
+    border-radius: 18px;
     font-size: 0.78rem;
+}
+
+.data-update-badge i {
+    margin-top: 0.1rem;
+    flex: 0 0 auto;
+}
+
+.data-update-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.05rem;
+    text-align: left;
+}
+
+.data-update-detail {
+    color: rgba(255,255,255,0.74);
+    font-size: 0.72rem;
+    line-height: 1.45;
+}
+
+.data-update-badge-players {
+    min-width: min(100%, 280px);
 }
 
 /* ============================================================

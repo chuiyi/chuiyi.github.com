@@ -146,18 +146,91 @@ const PTCG = (() => {
         return getLatestTimestampFromValues(candidates);
     }
 
-    function getLatestPlayersScrapedAt(playersIndex) {
-        const candidates = [playersIndex?.generated_at];
+    function normalizeRankingDateValue(dateStr) {
+        const raw = String(dateStr || '').trim();
+        const match = raw.match(/^(\d{4})(\d{2})(\d{2})$/);
+        if (!match) return raw;
+        return `${match[1]}-${match[2]}-${match[3]} 00:00:00`;
+    }
+
+    function getLatestPlayersScrapedAt(playersIndex, level = '') {
+        const normalizedLevel = String(level || '').trim().toLowerCase();
+        const historyCandidates = [];
+        const scrapeCandidates = [];
         const players = Array.isArray(playersIndex?.players) ? playersIndex.players : [];
         players.forEach((player) => {
-            candidates.push(player?.last_scraped_at);
+            const playerLevel = String(
+                player?.level
+                || (Array.isArray(player?.levels) ? player.levels[0] : '')
+                || ''
+            ).trim().toLowerCase();
+            if (normalizedLevel && playerLevel !== normalizedLevel) return;
+
+            scrapeCandidates.push(player?.last_scraped_at);
+            if (player?.has_history === true || String(player?.status || '').trim().toLowerCase() === 'ok') {
+                historyCandidates.push(player?.last_scraped_at);
+            }
         });
-        return getLatestTimestampFromValues(candidates);
+
+        return getLatestTimestampFromValues(historyCandidates)
+            || getLatestTimestampFromValues(scrapeCandidates)
+            || getLatestTimestampFromValues([playersIndex?.generated_at]);
+    }
+
+    function getLatestRankingUpdatedAt(manifest, level = '') {
+        const normalizedLevel = String(level || '').trim().toLowerCase();
+        const entry = normalizedLevel ? manifest?.latest?.[normalizedLevel] : null;
+        return getLatestTimestampFromValues([
+            entry?.updated_at,
+            manifest?.updated_at,
+            normalizeRankingDateValue(entry?.date),
+        ]);
+    }
+
+    function getLatestPlayersPageUpdatedAt(manifest, playersIndex, level = '') {
+        return getLatestTimestampFromValues([
+            getLatestPlayersScrapedAt(playersIndex, level),
+            getLatestRankingUpdatedAt(manifest, level),
+        ]);
+    }
+
+    function getPlayersPageUpdateBreakdown(manifest, playersIndex, level = '') {
+        const playerUpdatedAt = getLatestPlayersScrapedAt(playersIndex, level);
+        const rankingUpdatedAt = getLatestRankingUpdatedAt(manifest, level);
+        return {
+            playerUpdatedAt,
+            rankingUpdatedAt,
+            latestUpdatedAt: getLatestTimestampFromValues([playerUpdatedAt, rankingUpdatedAt]),
+        };
     }
 
     function formatAsDataAsOf(dateStr) {
         const dateText = formatDate(dateStr);
         return dateText === '--' ? '資料已載入' : `資料截至 ${dateText}`;
+    }
+
+    function formatPlayerDivisionUpdatedAt(level, dateStr) {
+        const levelLabel = PLAYER_LEVEL_LABELS[String(level || '').trim().toLowerCase()] || '目前組別';
+        if (!dateStr) return `${levelLabel}尚無資料`;
+
+        const raw = String(dateStr || '').trim();
+        const normalized = normalizeRankingDateValue(raw);
+        const hasTime = /[ T]\d{2}:\d{2}/.test(raw);
+        const displayText = hasTime ? formatUpdatedAt(normalized) : formatDate(normalized);
+
+        return displayText === '--'
+            ? `${levelLabel}資料已載入`
+            : `${levelLabel}資料更新：${displayText}`;
+    }
+
+    function formatUpdateSourceLine(prefix, dateStr) {
+        if (!dateStr) return `${prefix}：尚無資料`;
+
+        const raw = String(dateStr || '').trim();
+        const normalized = normalizeRankingDateValue(raw);
+        const hasTime = /[ T]\d{2}:\d{2}/.test(raw);
+        const displayText = hasTime ? formatUpdatedAt(normalized) : formatDate(normalized);
+        return `${prefix}：${displayText === '--' ? '尚無資料' : displayText}`;
     }
 
     function escapeHtml(str) {
@@ -844,6 +917,7 @@ const PTCG = (() => {
 
             // 更新時間
             _setText('tournament-update-time', formatAsDataAsOf(latestTournamentCrawlAt));
+            _setText('tournament-crawl-update-time', formatUpdateSourceLine('最後爬取', latestTournamentCrawlAt));
 
             _bindTournamentFilters();
             _renderTournamentsList();
@@ -1983,11 +2057,17 @@ const PTCG = (() => {
     async function loadTeamsPage() {
         try {
             _bindGlobalAnalyticsInteractions();
-            const teamsData = await fetchJSON('teams/teams.json');
+            const [teamsData, rankingManifest] = await Promise.all([
+                fetchJSON('teams/teams.json'),
+                loadPlayersManifest().catch(() => null),
+            ]);
             const teams = Array.isArray(teamsData?.teams) ? teamsData.teams : [];
             _allTeams = teams.map(_normalizeTeamRecord);
 
+            const rankingUpdatedAt = getLatestRankingUpdatedAt(rankingManifest || {}, '');
             _setText('teams-update-time', formatAsDataAsOf(teamsData?.generated_at || ''));
+            _setText('teams-roster-update-time', formatUpdateSourceLine('戰隊名單更新', teamsData?.generated_at || ''));
+            _setText('teams-ranking-update-time', formatUpdateSourceLine('積分排行更新', rankingUpdatedAt || rankingManifest?.updated_at || ''));
 
             const requiredLevels = new Set();
             _allTeams.forEach((team) => {
@@ -2194,7 +2274,7 @@ const PTCG = (() => {
 
     let _allPlayers = [];
     let _playersManifest = null;
-    let _playersLatestScrapedAt = '';
+    let _playersHistoryIndex = { players: [] };
     let _currentPlayerLevel = 'master';
     let _currentWorldPlayers = 0;
     let _playerPageSize = 200;
@@ -2267,8 +2347,8 @@ const PTCG = (() => {
             _bindGlobalAnalyticsInteractions();
             _playersManifest = await loadPlayersManifest();
             const historyIndex = await loadPlayerHistoryIndex();
+            _playersHistoryIndex = historyIndex;
             _setPlayerHistoryIndex(historyIndex);
-            _playersLatestScrapedAt = getLatestPlayersScrapedAt(historyIndex);
             _initDivisionSwitch(_playersManifest);
             await _loadPlayersForLevel(_currentPlayerLevel);
 
@@ -2406,6 +2486,7 @@ const PTCG = (() => {
 
     async function _loadPlayersForLevel(level) {
         const result = await loadPlayersFromManifest(_playersManifest, level);
+        const updateBreakdown = getPlayersPageUpdateBreakdown(_playersManifest, _playersHistoryIndex, level);
         _allPlayers = result.players;
         _currentWorldPlayers = parseInt(_playersManifest?.latest?.[level]?.world_players, 10) || 0;
 
@@ -2413,9 +2494,11 @@ const PTCG = (() => {
         const topScore = _allPlayers.reduce((max, player) => Math.max(max, player.scoreValue || 0), 0);
         _setText('pstat-top-score', topScore ? `${topScore}pt` : '--');
         _setText('pstat-world-players', _currentWorldPlayers || '--');
-        _setText('players-update-time', _playersLatestScrapedAt
-            ? formatAsDataAsOf(_playersLatestScrapedAt)
-            : (result.date ? formatRankingDate(result.date) : '尚無排行資料'));
+        _setText('players-update-time', updateBreakdown.latestUpdatedAt
+            ? formatPlayerDivisionUpdatedAt(level, updateBreakdown.latestUpdatedAt)
+            : (result.date ? formatPlayerDivisionUpdatedAt(level, result.date) : '尚無排行資料'));
+        _setText('players-history-update-time', formatUpdateSourceLine('玩家資料更新', updateBreakdown.playerUpdatedAt));
+        _setText('players-ranking-update-time', formatUpdateSourceLine('排行資料更新', updateBreakdown.rankingUpdatedAt || result.date));
     }
 
     function _renderPlayersTable() {
