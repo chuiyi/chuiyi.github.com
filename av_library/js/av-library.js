@@ -1,5 +1,6 @@
 (() => {
     const STORAGE_KEY = "avLibraryDB";
+    const ACTRESS_KEY = "avLibraryActresses";
     const VIEW_KEY = "avLibraryViewMode";
     const SORT_KEY = "avLibrarySortMode";
     const AUTO_SYNC_KEY = "avLibraryAutoSync";
@@ -216,7 +217,8 @@
                 isFavorite: item?.isFavorite === true,
                 deleted: item?.deleted === true,
                 deletedAt: item?.deletedAt || "",
-                addedAt: item?.addedAt || ""
+                addedAt: item?.addedAt || "",
+                actresses: (item?.actresses || []).slice().sort()
             }))
             .sort((a, b) => {
                 const keyA = `${a.slug}|${a.id}`;
@@ -232,30 +234,53 @@
     const fetchRemoteDb = async () => {
         const files = await listDriveFiles();
         if (!files.length) {
-            return [];
+            return { items: [], actresses: [] };
         }
 
         const content = await downloadDriveFile(files[0].id);
-        let remote = [];
+        let parsed;
         try {
-            remote = JSON.parse(content || "[]");
+            parsed = JSON.parse(content || "[]");
         } catch (error) {
             throw new Error("雲端資料格式不正確");
         }
-        if (!Array.isArray(remote)) {
+        // 向下相容：舊格式為純陣列
+        if (Array.isArray(parsed)) {
+            return { items: migrateRemoteDataIfNeeded(parsed), actresses: [] };
+        }
+        if (!parsed || typeof parsed !== "object") {
             throw new Error("雲端資料格式不正確");
         }
-        return migrateRemoteDataIfNeeded(remote);
+        return {
+            items: migrateRemoteDataIfNeeded(Array.isArray(parsed.items) ? parsed.items : []),
+            actresses: Array.isArray(parsed.actresses) ? parsed.actresses : []
+        };
     };
 
-    const saveRemoteDb = async (items) => {
-        const content = JSON.stringify(items);
+    const saveRemoteDb = async (items, actresses = []) => {
+        const content = JSON.stringify({ items, actresses });
         const files = await listDriveFiles();
         if (files.length) {
             await uploadDriveFile(files[0].id, content);
         } else {
             await createDriveFile(content);
         }
+    };
+
+    /** 合併兩份演員清單，以 id 為 key，保留較新版本 */
+    const mergeActresses = (local, remote) => {
+        const map = new Map();
+        const upsert = (a) => {
+            if (!a || !a.id) return;
+            const existing = map.get(a.id);
+            if (!existing) { map.set(a.id, a); return; }
+            const ta = new Date(existing.updatedAt || 0).getTime();
+            const tb = new Date(a.updatedAt || 0).getTime();
+            if (tb > ta) map.set(a.id, a);
+        };
+        local.forEach(upsert);
+        remote.forEach(upsert);
+        return Array.from(map.values());
     };
 
     const mergeDb = (local, remote) => {
@@ -304,11 +329,19 @@
             await ensureAuth({ interactive });
 
             const local = getDb();
+            const localActresses = getActresses();
             const remote = await fetchRemoteDb();
-            const merged = mergeDb(local, remote);
+            const merged = mergeDb(local, remote.items);
+            const mergedActresses = mergeActresses(localActresses, remote.actresses);
 
             const localNeedsUpdate = !isDbEquivalent(local, merged);
-            const remoteNeedsUpdate = !isDbEquivalent(remote, merged);
+            const actressesNeedLocalUpdate = JSON.stringify(localActresses.map(a=>a.id).sort()) !== JSON.stringify(mergedActresses.map(a=>a.id).sort()) ||
+                localActresses.some((a, i) => {
+                    const m = mergedActresses.find(x => x.id === a.id);
+                    return !m || m.name !== a.name;
+                });
+            const remoteNeedsUpdate = !isDbEquivalent(remote.items, merged) ||
+                JSON.stringify((remote.actresses||[]).map(a=>a.id).sort()) !== JSON.stringify(mergedActresses.map(a=>a.id).sort());
 
             if (localNeedsUpdate) {
                 setDb(merged);
@@ -316,8 +349,13 @@
                 if (listPage) renderList(listPage);
             }
 
+            if (actressesNeedLocalUpdate) {
+                setActresses(mergedActresses);
+                if (document.body?.dataset?.avPage === "actress") renderActressList();
+            }
+
             if (remoteNeedsUpdate) {
-                await saveRemoteDb(merged);
+                await saveRemoteDb(merged, mergedActresses);
             }
 
             syncDirty = false;
@@ -384,6 +422,92 @@
 
     const setDb = (items) => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    };
+
+    // ============= 演員資料庫 =============
+    const getActresses = () => {
+        try {
+            const raw = localStorage.getItem(ACTRESS_KEY);
+            return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+            return [];
+        }
+    };
+
+    const setActresses = (data) => {
+        localStorage.setItem(ACTRESS_KEY, JSON.stringify(data));
+    };
+
+    /** 新增演員（若已存在同名則回傳現有），回傳演員物件 */
+    const saveActress = (name) => {
+        const trimmed = (name || "").trim();
+        if (!trimmed) return null;
+        const db = getActresses();
+        let existing = db.find((a) => a.name === trimmed);
+        if (existing) return existing;
+        const newActress = {
+            id: (crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`),
+            name: trimmed,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+        db.push(newActress);
+        setActresses(db);
+        return newActress;
+    };
+
+    /** 將演員 id 連結到指定影片 */
+    const linkActressToItem = (itemId, actressId) => {
+        const db = getDb();
+        const item = db.find((e) => e.id === itemId);
+        if (!item) return;
+        if (!item.actresses) item.actresses = [];
+        if (!item.actresses.includes(actressId)) {
+            item.actresses.push(actressId);
+            item.updatedAt = new Date().toISOString();
+            setDb(db);
+            markDirty();
+        }
+    };
+
+    /** 解除指定影片與演員的連結 */
+    const unlinkActressFromItem = (itemId, actressId) => {
+        const db = getDb();
+        const item = db.find((e) => e.id === itemId);
+        if (!item || !item.actresses) return;
+        item.actresses = item.actresses.filter((aid) => aid !== actressId);
+        item.updatedAt = new Date().toISOString();
+        setDb(db);
+        markDirty();
+    };
+
+    /** 掃描已知演員名稱，自動將符合條件的演員連結到指定影片 */
+    const autoTagActresses = (itemId) => {
+        const db = getDb();
+        const item = db.find((e) => e.id === itemId);
+        if (!item || !item.title) return;
+        const actresses = getActresses();
+        if (!actresses.length) return;
+        if (!item.actresses) item.actresses = [];
+        let changed = false;
+        for (const actress of actresses) {
+            if (item.title.includes(actress.name) && !item.actresses.includes(actress.id)) {
+                item.actresses.push(actress.id);
+                changed = true;
+            }
+        }
+        if (changed) {
+            item.updatedAt = new Date().toISOString();
+            setDb(db);
+        }
+    };
+
+    /** 將標題切詞，過濾掉片碼格式與過短的詞 */
+    const tokenizeTitle = (title) => {
+        if (!title) return [];
+        return title.split(/[\s　、。，,・]+/)
+            .map((t) => t.trim())
+            .filter((t) => t.length >= 2 && !/^[A-Z0-9\-]+$/i.test(t));
     };
 
     // ============= 数据迁移相关函数 =============
@@ -1007,6 +1131,8 @@
         };
         const next = [newItem, ...db];
         setDb(next);
+        // 新增後自動比對已知演員名稱
+        autoTagActresses(newItem.id);
         return { saved: true, message: "已新增至清單" };
     };
 
@@ -1072,6 +1198,8 @@
         const viewMode = getViewMode();
         container.classList.toggle("list-grid", viewMode === "list");
         container.classList.toggle("card-grid", viewMode !== "list");
+        // 取得演員對照表，供 token 標記使用
+        const actressNameToId = new Map(getActresses().map((a) => [a.name, a.id]));
         sorted.forEach((item) => {
             const card = document.createElement("div");
             card.className = "av-card";
@@ -1102,6 +1230,18 @@
                 <div class="av-card-body">
                     <div class="av-card-title">${item.title}</div>
                     <div class="av-card-code">${item.code}</div>
+                    ${(() => {
+                        const tokens = tokenizeTitle(item.title);
+                        if (!tokens.length) return "";
+                        const itemActressIds = new Set(item.actresses || []);
+                        const btns = tokens.map((t) => {
+                            const aid = actressNameToId.get(t);
+                            const tagged = aid && itemActressIds.has(aid);
+                            const safeT = t.replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                            return `<button type="button" class="btn-token${tagged ? " is-tagged" : ""}" data-action="tag-actress" data-item-id="${item.id}" data-name="${safeT}" title="${tagged ? "已標記演員" : "新增為演員"}">${safeT}</button>`;
+                        }).join("");
+                        return `<div class="av-title-tokens">${btns}</div>`;
+                    })()}
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="badge rounded-pill badge-status">${item.status === "watched" ? "看過的影片" : item.status === "later" ? "稍後觀看" : "喜愛的影片"}</span>
                         <div class="d-flex gap-2 align-items-center">
@@ -1556,6 +1696,15 @@
                     if (!id || !newStatus) return;
                     moveItem(id, newStatus);
                     renderList(status);
+                } else if (action === "tag-actress") {
+                    const itemId = actionElement.dataset.itemId;
+                    const name = actionElement.dataset.name;
+                    if (!itemId || !name) return;
+                    const actress = saveActress(name);
+                    if (actress) {
+                        linkActressToItem(itemId, actress.id);
+                        renderList(status);
+                    }
                 } else if (action === "fix-cover") {
                     const id = actionElement.dataset.id;
                     if (!id || fixCoverThrottle) return;
@@ -1651,7 +1800,7 @@
     };
 
     const initMobileSwipeNavigation = () => {
-        const pageOrder = ["index.html", "later.html", "watched.html", "favorite.html"];
+        const pageOrder = ["index.html", "later.html", "watched.html", "favorite.html", "actress.html"];
         const path = window.location.pathname || "";
         const currentPage = path.split("/").pop() || "index.html";
         const currentIndex = pageOrder.indexOf(currentPage);
@@ -1713,6 +1862,131 @@
         }, { passive: true });
     };
 
+    // ============= 演員頁面 =============
+    const renderActressList = () => {
+        const container = document.getElementById("av-actress-list");
+        const empty = document.getElementById("av-actress-empty");
+        if (!container) return;
+
+        const actresses = getActresses();
+        const db = getDb().filter((item) => item.deleted !== true);
+
+        if (!actresses.length) {
+            container.innerHTML = "";
+            if (empty) empty.classList.remove("d-none");
+            return;
+        }
+        if (empty) empty.classList.add("d-none");
+
+        // 排序：依片數多到少
+        const sorted = [...actresses].sort((a, b) => {
+            const ca = db.filter((item) => item.actresses?.includes(a.id)).length;
+            const cb = db.filter((item) => item.actresses?.includes(b.id)).length;
+            return cb - ca || a.name.localeCompare(b.name, "zh-Hant");
+        });
+
+        container.innerHTML = sorted.map((actress) => {
+            const films = db.filter((item) => item.actresses?.includes(actress.id));
+            const filmRows = films.length
+                ? films.map((film) => {
+                    const cover = film.cover || PLACEHOLDER_COVER;
+                    const safeTitle = (film.title || film.code).replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    const statusLabel = film.status === "watched" ? "看過" : "稍後";
+                    return `<div class="actress-film-row">
+                        <img src="${cover}" class="actress-film-thumb" alt="" loading="lazy">
+                        <div class="actress-film-info">
+                            <div class="actress-film-title">${safeTitle}</div>
+                            <div class="actress-film-code">${film.code} <span class="badge rounded-pill badge-status ms-1">${statusLabel}</span></div>
+                        </div>
+                        <a href="${film.url}" target="_blank" rel="noopener" class="btn btn-sm btn-icon" title="前往"><i class="bi bi-link-45deg"></i></a>
+                    </div>`;
+                }).join("")
+                : `<div class="text-muted px-3 py-2 small">目前沒有影片</div>`;
+
+            return `<div class="actress-card" id="actress-${actress.id}">
+                <div class="actress-header" data-action="toggle-actress" data-id="${actress.id}" role="button" tabindex="0">
+                    <i class="bi bi-person-circle actress-avatar"></i>
+                    <span class="actress-name">${actress.name}</span>
+                    <span class="actress-count">${films.length} 部</span>
+                    <button type="button" class="btn btn-sm btn-icon actress-delete-btn" data-action="delete-actress" data-id="${actress.id}" title="刪除演員"><i class="bi bi-person-dash"></i></button>
+                    <i class="bi bi-chevron-down actress-chevron"></i>
+                </div>
+                <div class="actress-films" id="actress-panel-${actress.id}" style="display:none;">
+                    ${filmRows}
+                </div>
+            </div>`;
+        }).join("");
+    };
+
+    const initActressPage = () => {
+        renderActressList();
+
+        // 搜尋過濾
+        const searchInput = document.getElementById("av-actress-search");
+        if (searchInput) {
+            searchInput.addEventListener("input", () => {
+                const q = searchInput.value.trim().toLowerCase();
+                document.querySelectorAll(".actress-card").forEach((card) => {
+                    const name = card.querySelector(".actress-name")?.textContent.toLowerCase() || "";
+                    card.style.display = name.includes(q) ? "" : "none";
+                });
+            });
+        }
+
+        const list = document.getElementById("av-actress-list");
+        if (!list) return;
+
+        list.addEventListener("click", (event) => {
+            const target = event.target;
+            if (!(target instanceof Element)) return;
+            const actionEl = target.closest("[data-action]");
+            if (!actionEl) return;
+            const action = actionEl.dataset.action;
+
+            if (action === "toggle-actress") {
+                const id = actionEl.dataset.id;
+                const panel = document.getElementById(`actress-panel-${id}`);
+                if (!panel) return;
+                const isOpen = panel.style.display !== "none";
+                panel.style.display = isOpen ? "none" : "";
+                const chevron = actionEl.querySelector(".actress-chevron");
+                if (chevron) {
+                    chevron.classList.toggle("bi-chevron-down", isOpen);
+                    chevron.classList.toggle("bi-chevron-up", !isOpen);
+                }
+            } else if (action === "delete-actress") {
+                event.stopPropagation();
+                const id = actionEl.dataset.id;
+                if (!id) return;
+                const name = actionEl.closest(".actress-card")?.querySelector(".actress-name")?.textContent || "";
+                if (!window.confirm(`確定要刪除演員「${name}」嗎？（影片不會被刪除）`)) return;
+                // 移除演員記錄
+                setActresses(getActresses().filter((a) => a.id !== id));
+                // 移除影片上的關聯
+                const db = getDb().map((item) => {
+                    if (item.actresses?.includes(id)) {
+                        item.actresses = item.actresses.filter((aid) => aid !== id);
+                        item.updatedAt = new Date().toISOString();
+                    }
+                    return item;
+                });
+                setDb(db);
+                markDirty();
+                renderActressList();
+            }
+        });
+
+        // 鍵盤支援 (Enter/Space on header)
+        list.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter" && event.key !== " ") return;
+            const actionEl = event.target.closest("[data-action='toggle-actress']");
+            if (actionEl) {
+                event.preventDefault();
+                actionEl.click();
+            }
+        });
+    };
+
     const initPage = () => {
         applySwipeEnterTransition();
 
@@ -1723,7 +1997,10 @@
         }
         
         const listPage = document.body?.dataset?.avList;
-        if (listPage) {
+        const avPage = document.body?.dataset?.avPage;
+        if (avPage === "actress") {
+            initActressPage();
+        } else if (listPage) {
             initListPage(listPage);
         } else {
             initForm();
