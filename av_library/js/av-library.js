@@ -99,14 +99,7 @@
 
     const isTokenValid = () => googleAccessToken && Date.now() < googleTokenExpiry - 60000;
 
-    const ensureAuth = async ({ interactive = true } = {}) => {
-        if (isTokenValid()) {
-            return googleAccessToken;
-        }
-        if (!googleTokenClient) {
-            throw new Error("Google 驗證尚未就緒");
-        }
-
+    const requestAccessTokenWithPrompt = (prompt) => {
         return new Promise((resolve, reject) => {
             googleTokenClient.callback = (tokenResponse) => {
                 if (tokenResponse?.error) {
@@ -120,10 +113,30 @@
                 sessionStorage.setItem("avGoogleTokenExpiry", String(googleTokenExpiry));
                 resolve(googleAccessToken);
             };
-
-            const prompt = interactive ? (googleAccessToken ? "" : "consent") : "none";
             googleTokenClient.requestAccessToken({ prompt });
         });
+    };
+
+    const ensureAuth = async ({ interactive = true } = {}) => {
+        if (isTokenValid()) {
+            return googleAccessToken;
+        }
+        if (!googleTokenClient) {
+            throw new Error("Google 驗證尚未就緒");
+        }
+
+        // 先嘗試靜默授權，避免每次同步都彈窗
+        try {
+            return await requestAccessTokenWithPrompt("none");
+        } catch (silentError) {
+            if (!interactive) {
+                throw silentError;
+            }
+        }
+
+        // 只有在手動同步且靜默失敗時，才改用互動授權
+        const interactivePrompt = googleAccessToken ? "" : "consent";
+        return requestAccessTokenWithPrompt(interactivePrompt);
     };
 
     const markDirty = () => {
