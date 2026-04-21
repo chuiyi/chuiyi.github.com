@@ -681,6 +681,48 @@
         return true;
     };
 
+    const splitAliasFromActress = (actressId, aliasName) => {
+        const alias = (aliasName || "").trim();
+        if (!actressId || !alias) return false;
+
+        const actresses = getActresses().map(normalizeActress).filter(Boolean);
+        const actress = actresses.find((a) => a.id === actressId);
+        if (!actress) return false;
+
+        const aliasExists = (actress.aliases || []).some((a) => a.toLowerCase() === alias.toLowerCase());
+        if (!aliasExists) return false;
+
+        // 先從原演員移除 alias
+        actress.aliases = (actress.aliases || []).filter((a) => a.toLowerCase() !== alias.toLowerCase());
+        actress.updatedAt = new Date().toISOString();
+
+        // 若系統已有同名演員，僅移除 alias，不再新增
+        const existing = findActressByName(alias, actresses.filter((a) => a.id !== actressId));
+        if (existing) {
+            setActresses(actresses);
+            markDirty();
+            return true;
+        }
+
+        const newActress = {
+            id: (crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`),
+            name: alias,
+            aliases: [],
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+        };
+        actresses.push(newActress);
+        setActresses(actresses);
+
+        const linked = autoTagLibraryByActress(newActress);
+        if (linked) {
+            markDirty();
+        } else {
+            markDirty();
+        }
+        return true;
+    };
+
     /** 將標題切詞，過濾掉片碼格式與過短的詞 */
     const tokenizeTitle = (title) => {
         if (!title) return [];
@@ -2153,16 +2195,13 @@
             const tabItems = filtered.map((actress) => {
                 const count = db.filter((item) => item.actresses?.includes(actress.id)).length;
                 const isActive = actress.id === activeActress?.id;
-                const aliasText = (actress.aliases || []).length ? `<span class="actress-aliases">${actress.aliases.join(" / ")}</span>` : "";
                 return `<div class="actress-tab-item${isActive ? " is-active" : ""}" data-action="select-actress" data-id="${actress.id}" role="button" tabindex="0">
                     <i class="bi bi-person-circle actress-avatar"></i>
                     <div class="actress-tab-meta">
                         <span class="actress-name">${actress.name}</span>
-                        ${aliasText}
                         <span class="actress-count">${count} 部</span>
                     </div>
-                    <button type="button" class="btn btn-sm btn-icon actress-merge-btn" data-action="merge-actress" data-id="${actress.id}" title="整併演員"><i class="bi bi-intersect"></i></button>
-                    <button type="button" class="btn btn-sm btn-icon actress-display-btn" data-action="set-display-name" data-id="${actress.id}" title="切換顯示名稱"><i class="bi bi-type"></i></button>
+                    <button type="button" class="btn btn-sm btn-icon actress-manage-btn" data-action="manage-actress" data-id="${actress.id}" title="管理演員"><i class="bi bi-sliders2"></i></button>
                     <button type="button" class="btn btn-sm btn-icon actress-delete-btn" data-action="delete-actress" data-id="${actress.id}" title="刪除演員"><i class="bi bi-person-dash"></i></button>
                 </div>`;
             }).join("");
@@ -2192,18 +2231,15 @@
                 const filmRows = films.length
                     ? films.map((film) => renderActressFilmRow(film)).join("")
                     : `<div class="text-muted px-3 py-2 small">目前沒有影片</div>`;
-                const aliasText = (actress.aliases || []).length ? `<span class="actress-aliases">別名：${actress.aliases.join(" / ")}</span>` : "";
 
                 return `<div class="actress-card" id="actress-${actress.id}">
                     <div class="actress-header" data-action="toggle-actress" data-id="${actress.id}" role="button" tabindex="0">
                         <i class="bi bi-person-circle actress-avatar"></i>
                         <div class="actress-name-block">
                             <span class="actress-name">${actress.name}</span>
-                            ${aliasText}
                         </div>
                         <span class="actress-count">${films.length} 部</span>
-                        <button type="button" class="btn btn-sm btn-icon actress-merge-btn" data-action="merge-actress" data-id="${actress.id}" title="整併演員"><i class="bi bi-intersect"></i></button>
-                        <button type="button" class="btn btn-sm btn-icon actress-display-btn" data-action="set-display-name" data-id="${actress.id}" title="切換顯示名稱"><i class="bi bi-type"></i></button>
+                        <button type="button" class="btn btn-sm btn-icon actress-manage-btn" data-action="manage-actress" data-id="${actress.id}" title="管理演員"><i class="bi bi-sliders2"></i></button>
                         <button type="button" class="btn btn-sm btn-icon actress-delete-btn" data-action="delete-actress" data-id="${actress.id}" title="刪除演員"><i class="bi bi-person-dash"></i></button>
                         <i class="bi bi-chevron-down actress-chevron"></i>
                     </div>
@@ -2217,6 +2253,114 @@
 
     const initActressPage = () => {
         renderActressList();
+
+        const modalElement = document.getElementById("av-actress-manage-modal");
+        const modalName = document.getElementById("av-manage-actress-name");
+        const modalAliases = document.getElementById("av-manage-aliases");
+        const displayInput = document.getElementById("av-display-name-input");
+        const saveDisplayBtn = document.getElementById("av-save-display-name-btn");
+        const mergeTargetSelect = document.getElementById("av-merge-target-id");
+        const mergePreferredInput = document.getElementById("av-merge-preferred-name");
+        const mergeBtn = document.getElementById("av-merge-actress-btn");
+
+        let managingActressId = "";
+        let manageModal = null;
+        if (modalElement && window.bootstrap?.Modal) {
+            manageModal = new window.bootstrap.Modal(modalElement);
+        }
+
+        const refreshManageModal = () => {
+            const actresses = getActresses().map(normalizeActress).filter(Boolean);
+            const current = actresses.find((a) => a.id === managingActressId);
+            if (!current) return;
+
+            if (modalName) {
+                modalName.textContent = current.name;
+            }
+            if (displayInput) {
+                displayInput.value = current.name;
+            }
+            if (mergePreferredInput) {
+                mergePreferredInput.value = current.name;
+            }
+
+            if (mergeTargetSelect) {
+                const options = actresses
+                    .filter((a) => a.id !== current.id)
+                    .map((a) => `<option value="${a.id}">${a.name}</option>`)
+                    .join("");
+                mergeTargetSelect.innerHTML = `<option value="">請選擇要合併的演員</option>${options}`;
+            }
+
+            if (modalAliases) {
+                const aliases = current.aliases || [];
+                if (!aliases.length) {
+                    modalAliases.innerHTML = `<div class="text-muted small">目前沒有可解除合併的別名</div>`;
+                } else {
+                    modalAliases.innerHTML = aliases.map((alias) => `
+                        <div class="actress-alias-item">
+                            <span class="actress-alias-text">${alias}</span>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" data-action="split-alias" data-alias="${alias.replace(/"/g, "&quot;")}">解除合併</button>
+                        </div>
+                    `).join("");
+                }
+            }
+        };
+
+        const openManageModal = (actressId) => {
+            managingActressId = actressId;
+            refreshManageModal();
+            if (manageModal) {
+                manageModal.show();
+            }
+        };
+
+        if (saveDisplayBtn) {
+            saveDisplayBtn.addEventListener("click", () => {
+                if (!managingActressId || !displayInput) return;
+                const ok = setActressDisplayName(managingActressId, displayInput.value);
+                if (!ok) return;
+                renderActressList();
+                refreshManageModal();
+            });
+        }
+
+        if (mergeBtn) {
+            mergeBtn.addEventListener("click", () => {
+                if (!managingActressId || !mergeTargetSelect) return;
+                const mergeId = mergeTargetSelect.value;
+                if (!mergeId) return;
+                const preferred = mergePreferredInput?.value || "";
+                const ok = mergeActressInto({
+                    keepId: managingActressId,
+                    mergeId,
+                    preferredName: preferred
+                });
+                if (!ok) return;
+                const target = getActresses().map(normalizeActress).filter(Boolean).find((a) => a.id === managingActressId);
+                if (target) {
+                    const linked = autoTagLibraryByActress(target);
+                    if (linked) markDirty();
+                }
+                renderActressList();
+                refreshManageModal();
+            });
+        }
+
+        if (modalAliases) {
+            modalAliases.addEventListener("click", (event) => {
+                const target = event.target;
+                if (!(target instanceof Element)) return;
+                const actionEl = target.closest("[data-action='split-alias']");
+                if (!actionEl) return;
+                const alias = actionEl.dataset.alias;
+                if (!alias || !managingActressId) return;
+                const ok = splitAliasFromActress(managingActressId, alias);
+                if (!ok) return;
+                renderActressList();
+                refreshManageModal();
+            });
+        }
 
         // --- 手動新增演員表單 ---
         const addForm = document.getElementById("av-actress-add-form");
@@ -2304,67 +2448,11 @@
                 if (!id || !newStatus) return;
                 moveItem(id, newStatus);
                 renderActressList();
-            } else if (action === "set-display-name") {
+            } else if (action === "manage-actress") {
                 event.stopPropagation();
                 const id = actionEl.dataset.id;
                 if (!id) return;
-                const actresses = getActresses().map(normalizeActress).filter(Boolean);
-                const actress = actresses.find((a) => a.id === id);
-                if (!actress) return;
-                const names = getActressAllNames(actress);
-                const input = window.prompt(`請輸入要顯示的名稱：\n可選：${names.join(" / ")}`, actress.name);
-                if (input === null) return;
-                const ok = setActressDisplayName(id, input);
-                if (ok) {
-                    renderActressList();
-                }
-            } else if (action === "merge-actress") {
-                event.stopPropagation();
-                const keepId = actionEl.dataset.id;
-                if (!keepId) return;
-                const actresses = getActresses().map(normalizeActress).filter(Boolean);
-                const keeper = actresses.find((a) => a.id === keepId);
-                if (!keeper) return;
-                const mergeName = window.prompt(`要整併進「${keeper.name}」的另一個名稱是？\n例如：南沢海香`);
-                if (!mergeName) return;
-
-                const other = findActressByName(mergeName, actresses);
-                if (!other) {
-                    // 找不到既有演員時，當作新增別名
-                    const ok = setActressDisplayName(keepId, keeper.name);
-                    if (ok) {
-                        const updated = getActresses().map(normalizeActress).filter(Boolean);
-                        const target = updated.find((a) => a.id === keepId);
-                        if (target) {
-                            target.aliases = dedupeNameList([...(target.aliases || []), mergeName]);
-                            target.updatedAt = new Date().toISOString();
-                            setActresses(updated);
-                            markDirty();
-                            const linked = autoTagLibraryByActress(target);
-                            if (linked) markDirty();
-                            renderActressList();
-                        }
-                    }
-                    return;
-                }
-                if (other.id === keepId) {
-                    return;
-                }
-
-                const preferred = window.prompt(
-                    `整併後顯示名稱（留空使用目前名稱）\n可選：${dedupeNameList([...getActressAllNames(keeper), ...getActressAllNames(other)]).join(" / ")}`,
-                    keeper.name
-                );
-
-                const mergedOk = mergeActressInto({ keepId, mergeId: other.id, preferredName: preferred || keeper.name });
-                if (mergedOk) {
-                    const target = getActresses().map(normalizeActress).filter(Boolean).find((a) => a.id === keepId);
-                    if (target) {
-                        const linked = autoTagLibraryByActress(target);
-                        if (linked) markDirty();
-                    }
-                    renderActressList();
-                }
+                openManageModal(id);
             } else if (action === "delete-actress") {
                 event.stopPropagation();
                 const id = actionEl.dataset.id;

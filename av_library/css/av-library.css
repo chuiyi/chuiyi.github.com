@@ -567,7 +567,8 @@ body.av-swipe-in-right {
     transition: opacity 0.15s;
 }
 .actress-merge-btn,
-.actress-display-btn {
+.actress-display-btn,
+.actress-manage-btn {
     opacity: 0.4;
     transition: opacity 0.15s;
 }
@@ -575,10 +576,33 @@ body.av-swipe-in-right {
 .actress-header:hover .actress-delete-btn,
 .actress-header:hover .actress-merge-btn,
 .actress-header:hover .actress-display-btn,
+.actress-header:hover .actress-manage-btn,
 .actress-tab-item:hover .actress-delete-btn,
 .actress-tab-item:hover .actress-merge-btn,
-.actress-tab-item:hover .actress-display-btn {
+.actress-tab-item:hover .actress-display-btn,
+.actress-tab-item:hover .actress-manage-btn {
     opacity: 1;
+}
+
+.actress-alias-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.actress-alias-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 10px;
+    border: 1px solid var(--av-border, #dee2e6);
+    border-radius: 8px;
+    background: var(--av-card-bg, #fff);
+}
+
+.actress-alias-text {
+    font-weight: 500;
 }
 
 .actress-films {
