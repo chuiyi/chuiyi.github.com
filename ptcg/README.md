@@ -10,6 +10,7 @@
 | [tournaments.html](tournaments.html) | 賽事資訊：UBL / Premiere 賽事彙整 |
 | [decks.html](decks.html) | 牌組資料庫：入賞牌型完整 60 張牌表與統計 |
 | [players.html](players.html) | 玩家排行：積分追蹤、賽事出場紀錄 |
+| [trend.html](trend.html) | 積分趨勢：各組前段玩家分數演變折線圖 |
 | [teams.html](teams.html) | 戰隊介紹：戰隊卡片、成員積分排序、社群連結 |
 
 ## 目錄結構
@@ -30,6 +31,7 @@ ptcg/
 │   ├── tournaments_premiere.json     # Premiere 爬蟲記錄
 │   ├── decks.json        # 牌組資料庫
 │   └── ranking.json      # 玩家排行 manifest
+│   └── ranking_trends.json # 排行趨勢折線圖資料
 │   └── teams/
 │       └── teams.json    # 戰隊與成員資料
 └── scraper/              # 後端爬蟲
@@ -133,6 +135,33 @@ name,name_en,score,tournaments,division,region,top_decks
 }
 ```
 
+### `data/ranking_trends.json`
+
+```json
+{
+  "generated_at": "2026-04-21T06:31:16.925Z",
+  "levels": {
+    "master": {
+      "label": "大師組",
+      "top_limit": 64,
+      "snapshots": [
+        { "date": "20260323", "label": "2026/03/23" }
+      ],
+      "players": [
+        {
+          "ptcg_id": "tw15435377",
+          "name": "Tiger",
+          "latest_points": 224,
+          "series": [
+            { "date": "20260323", "points": 190, "rank": 2 }
+          ]
+        }
+      ]
+    }
+  }
+}
+```
+
 ### `data/teams/teams.json`（戰隊資料）
 
 ```json
@@ -206,5 +235,6 @@ localStorage.setItem('ptcg_ga_measurement_id', 'G-XXXXXXXXXX');
 - `player_pagination_click`
 
 - Node.js 爬蟲會抓取頁面中所有表格並輸出單一 CSV；若遇到網站防護機制，請調整 Header 或加入重試策略。
+- 執行 `scrape_ranking_draft.js` 後，會自動重建 `data/ranking_trends.json`，供 `trend.html` 讀取最新積分曲線。
 - 官方 Pokémon 積分系統若需登入，建議維持手動匯入流程。
 - 所有資料僅供競技研究參考，不得用於商業用途。

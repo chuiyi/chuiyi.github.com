@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>積分趨勢 - PTCG 情報站</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ptcg.css">
+</head>
+<body>
+
+    <nav class="ptcg-navbar navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <span class="ptcg-logo-icon">&#9670;</span>
+                <span>PTCG 情報站</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#ptcgNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="ptcgNav">
+                <ul class="navbar-nav ms-auto gap-1">
+                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house me-1"></i>首頁</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tournaments.html"><i class="bi bi-trophy me-1"></i>賽事資訊</a></li>
+                    <li class="nav-item"><a class="nav-link" href="players.html"><i class="bi bi-people me-1"></i>玩家排行</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="trend.html"><i class="bi bi-graph-up-arrow me-1"></i>積分趨勢</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header trend-page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb" class="mb-2">
+                        <ol class="breadcrumb ptcg-breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">PTCG 情報站</a></li>
+                            <li class="breadcrumb-item active">積分趨勢</li>
+                        </ol>
+                    </nav>
+                    <h1 class="page-title"><i class="bi bi-graph-up-arrow me-2"></i>各組前段玩家積分趨勢</h1>
+                    <p class="page-subtitle">依歷次排行快照，追蹤大師組前 64、少年組前 32、孩童組前 32 的分數演變</p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <span class="data-update-badge data-update-badge-players">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        <span class="data-update-content">
+                            <span id="trend-update-time">資料更新中...</span>
+                            <span class="data-update-detail" id="trend-generated-time">JSON 生成中...</span>
+                            <span class="data-update-detail" id="trend-ranking-time">排行快照整理中...</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container py-4">
+        <div class="row g-3 mb-4" id="trend-stats-row">
+            <div class="col-6 col-md-3">
+                <div class="player-stat-card trend-stat-card">
+                    <div class="player-stat-icon"><i class="bi bi-calendar2-week"></i></div>
+                    <div class="player-stat-value" id="trend-stat-snapshots">--</div>
+                    <div class="player-stat-label">排行快照數</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="player-stat-card trend-stat-card">
+                    <div class="player-stat-icon"><i class="bi bi-people-fill"></i></div>
+                    <div class="player-stat-value" id="trend-stat-players">--</div>
+                    <div class="player-stat-label">追蹤玩家數</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="player-stat-card trend-stat-card">
+                    <div class="player-stat-icon"><i class="bi bi-filter-circle"></i></div>
+                    <div class="player-stat-value" id="trend-stat-cutoff">--</div>
+                    <div class="player-stat-label">納入門檻</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="player-stat-card trend-stat-card">
+                    <div class="player-stat-icon"><i class="bi bi-clock-history"></i></div>
+                    <div class="player-stat-value" id="trend-stat-latest">--</div>
+                    <div class="player-stat-label">最新快照</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-bar mb-4">
+            <div class="row g-2 align-items-center">
+                <div class="col-auto">
+                    <label class="filter-label">組別</label>
+                </div>
+                <div class="col-auto">
+                    <div class="btn-group filter-group" role="group" aria-label="趨勢組別切換">
+                        <input type="radio" class="btn-check" name="trend-level" id="trend-level-master" value="master" data-trend-level="master" checked>
+                        <label class="btn btn-filter" for="trend-level-master">大師組</label>
+
+                        <input type="radio" class="btn-check" name="trend-level" id="trend-level-senior" value="senior" data-trend-level="senior">
+                        <label class="btn btn-filter" for="trend-level-senior">少年組</label>
+
+                        <input type="radio" class="btn-check" name="trend-level" id="trend-level-junior" value="junior" data-trend-level="junior">
+                        <label class="btn btn-filter" for="trend-level-junior">孩童組</label>
+                    </div>
+                </div>
+                <div class="col-md ms-md-auto">
+                    <div class="input-group input-group-sm trend-search-group">
+                        <span class="input-group-text bg-transparent"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control" id="trend-player-search" placeholder="搜尋玩家名稱或 PTCG ID...">
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check form-check-inline mb-0">
+                        <input class="form-check-input" type="checkbox" id="trend-show-all">
+                        <label class="form-check-label small" for="trend-show-all">顯示全部折線</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="trend-overview-grid mb-4">
+            <section class="trend-card trend-chart-card" id="trend-chart-card">
+                <div class="trend-card-header">
+                    <div>
+                        <h2 class="trend-card-title">積分折線圖</h2>
+                        <p class="trend-card-subtitle" id="trend-chart-summary">載入資料中...</p>
+                    </div>
+                    <div class="trend-focus-chip" id="trend-focus-chip">未聚焦玩家</div>
+                </div>
+                <div class="trend-forecast-note" id="trend-forecast-note">區間推移預估載入中...</div>
+                <div class="trend-chart-shell">
+                    <canvas id="trend-chart"></canvas>
+                </div>
+            </section>
+
+            <aside class="trend-card trend-side-card">
+                <div class="trend-card-header">
+                    <div>
+                        <h2 class="trend-card-title">快照摘要</h2>
+                        <p class="trend-card-subtitle">查看目前分組使用的時間軸與最新門檻</p>
+                    </div>
+                </div>
+                <div id="trend-snapshot-list" class="trend-snapshot-list">
+                    <div class="text-muted small">載入資料中...</div>
+                </div>
+            </aside>
+        </div>
+
+        <section class="trend-card">
+            <div class="trend-card-header">
+                <div>
+                    <h2 class="trend-card-title">玩家清單</h2>
+                    <p class="trend-card-subtitle">點擊聚焦可凸顯單一玩家折線；搜尋時下表與圖表會同步過濾</p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="ptcg-table trend-player-table mb-0">
+                    <thead>
+                        <tr>
+                            <th width="68">排名</th>
+                            <th>玩家</th>
+                            <th width="110">
+                                <button class="trend-sort-btn" type="button" data-trend-sort="points">
+                                    目前積分 <span class="trend-sort-indicator" data-sort-indicator="points">-</span>
+                                </button>
+                            </th>
+                            <th width="90">
+                                <button class="trend-sort-btn" type="button" data-trend-sort="appearances">
+                                    入榜次數 <span class="trend-sort-indicator" data-sort-indicator="appearances">-</span>
+                                </button>
+                            </th>
+                            <th width="120">
+                                <button class="trend-sort-btn" type="button" data-trend-sort="delta">
+                                    分數變化 <span class="trend-sort-indicator" data-sort-indicator="delta">-</span>
+                                </button>
+                            </th>
+                            <th width="92">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trend-players-body">
+                        <tr>
+                            <td colspan="6" class="text-center py-5">
+                                <div class="ptcg-spinner mx-auto"></div>
+                                <p class="mt-3 text-muted mb-0">載入趨勢資料中...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="ptcg-footer mt-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">
+                <p class="footer-copy mb-0">&copy; 2026 PTCG 情報站 · <a href="../index.html" class="footer-main-link">回 Chuiyi 的生活札記</a></p>
+                <p class="footer-disclaimer mb-0">Pokémon &amp; PTCG 相關商標歸任天堂/寶可夢公司所有</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script src="js/ptcg.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            PTCG.loadTrendPage();
+        });
+    </script>
+</body>
+</html>

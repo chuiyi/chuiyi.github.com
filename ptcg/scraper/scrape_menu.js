@@ -49,7 +49,7 @@ const MENU_OPTIONS = [
   {
     key: '3',
     label: '更新 ranking draft → result CSV',
-    description: '掃描 ptcg/data 中各組最新 draft.csv 並轉成 result.csv，更新 ranking.json',
+    description: '掃描 ptcg/data 中各組最新 draft.csv 並轉成 result.csv，更新 ranking.json 與 ranking_trends.json',
     command: 'node',
     args: ['./scrape_ranking_draft.js', '--scan', '--latest-only', '--force', '--dir', DATA_DIR],
   },

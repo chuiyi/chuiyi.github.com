@@ -20,6 +20,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { buildRankingTrends } = require('./build_ranking_trends');
 
 const DEFAULT_INPUT = path.join(__dirname, '..', 'data', 'ranking_20260323_master_draft.csv');
 const DATA_DIR = path.join(__dirname, '..', 'data');
@@ -95,6 +96,11 @@ function resolveOutputPath(inputPath, explicitOutputPath, draftMeta) {
   }
 
   const outputFile = `ranking_${draftMeta.date}_${draftMeta.level}_result.csv`;
+  const rankingOldDir = path.join(DATA_DIR, 'ranking_old');
+  if (path.resolve(path.dirname(inputPath)) === path.resolve(rankingOldDir)) {
+    return path.join(DATA_DIR, outputFile);
+  }
+
   return path.join(path.dirname(inputPath), outputFile);
 }
 
@@ -188,6 +194,14 @@ function writePlayersManifest(manifest) {
   fs.writeFileSync(PLAYERS_MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
 }
 
+function rebuildRankingTrends() {
+  buildRankingTrends({
+    dataDir: DATA_DIR,
+    oldDir: path.join(DATA_DIR, 'ranking_old'),
+    output: path.join(DATA_DIR, 'ranking_trends.json'),
+  });
+}
+
 function shouldProcessDraft(manifest, level, date) {
   const currentDate = manifest?.latest?.[level]?.date;
   if (!currentDate) return true;
@@ -211,8 +225,12 @@ function updateManifestForLevel(manifest, level, date, outputFileName, totalPlay
   manifest.updated_at = updatedAt;
 }
 
-function listDraftFiles(dirPath) {
-  const files = fs.readdirSync(dirPath)
+function listDraftFilesInDir(dirPath) {
+  if (!fs.existsSync(dirPath)) {
+    return [];
+  }
+
+  return fs.readdirSync(dirPath)
     .filter((fileName) => DRAFT_FILE_PATTERN.test(fileName))
     .map((fileName) => {
       const match = fileName.match(DRAFT_FILE_PATTERN);
@@ -225,6 +243,21 @@ function listDraftFiles(dirPath) {
         level,
       };
     });
+}
+
+function listDraftFiles(dirPath) {
+  const primaryFiles = listDraftFilesInDir(dirPath);
+  const archivedFiles = listDraftFilesInDir(path.join(dirPath, 'ranking_old'));
+  const filesByKey = new Map();
+
+  archivedFiles.forEach((file) => {
+    filesByKey.set(`${file.level}:${file.date}`, file);
+  });
+  primaryFiles.forEach((file) => {
+    filesByKey.set(`${file.level}:${file.date}`, file);
+  });
+
+  const files = Array.from(filesByKey.values());
 
   // 先依日期再依組別排序，確保流程可預期。
   files.sort((a, b) => {
@@ -293,6 +326,7 @@ function main() {
     const drafts = listDraftFiles(dirPath);
     if (!drafts.length) {
       console.log(`[convert] no draft files found in: ${dirPath}`);
+      console.log(`[convert] checked fallback directory: ${path.join(dirPath, 'ranking_old')}`);
       return;
     }
 
@@ -312,6 +346,7 @@ function main() {
     }
 
     writePlayersManifest(manifest);
+    rebuildRankingTrends();
     console.log(`[convert] scan summary: processed=${processedCount}, skipped=${skippedCount}, total=${targets.length}`);
     console.log(`[convert] players manifest: ${PLAYERS_MANIFEST_PATH}`);
     return;
@@ -324,6 +359,7 @@ function main() {
 
   processSingleDraft({ inputPath, output, manifest, force });
   writePlayersManifest(manifest);
+  rebuildRankingTrends();
   console.log(`[convert] players manifest: ${PLAYERS_MANIFEST_PATH}`);
 }
 
