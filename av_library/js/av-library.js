@@ -1379,7 +1379,9 @@
         container.classList.toggle("card-grid", viewMode !== "list");
         // 取得演員對照表（主名稱 + aliases），供 token 標記使用
         const actressNameToId = new Map();
+        const actressIdToDisplayName = new Map();
         getActresses().map(normalizeActress).filter(Boolean).forEach((a) => {
+            actressIdToDisplayName.set(a.id, a.name);
             getActressAllNames(a).forEach((n) => {
                 actressNameToId.set(n.toLowerCase(), a.id);
             });
@@ -1414,6 +1416,16 @@
                 <div class="av-card-body">
                     <div class="av-card-title">${item.title}</div>
                     <div class="av-card-code">${item.code}</div>
+                    ${(() => {
+                        // 在稍後/看過頁，已標記演員優先顯示於第一列
+                        if (!(item.status === "later" || item.status === "watched")) return "";
+                        const names = (item.actresses || [])
+                            .map((id) => actressIdToDisplayName.get(id))
+                            .filter(Boolean);
+                        if (!names.length) return "";
+                        const tags = names.map((n) => `<span class="btn-token is-tagged actress-known-tag">${n.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</span>`).join("");
+                        return `<div class="av-title-tokens av-known-actress-row">${tags}</div>`;
+                    })()}
                     ${(() => {
                         const tokens = tokenizeTitle(item.title);
                         if (!tokens.length) return "";
@@ -2106,7 +2118,8 @@
 
         const actresses = getActresses();
         const db = getDb().filter((item) => item.deleted !== true);
-        const viewMode = getActressViewMode();
+        const isMobileRwd = window.matchMedia("(max-width: 640px)").matches;
+        const viewMode = isMobileRwd ? "list" : getActressViewMode();
         const sortMode = getActressSortMode();
 
         // 更新工具列按鈕狀態
@@ -2230,6 +2243,12 @@
         document.addEventListener("click", (event) => {
             const viewBtn = event.target.closest("[data-actress-view]");
             if (viewBtn) {
+                const isMobileRwd = window.matchMedia("(max-width: 640px)").matches;
+                if (isMobileRwd) {
+                    setActressViewMode("list");
+                    renderActressList();
+                    return;
+                }
                 setActressViewMode(viewBtn.dataset.actressView);
                 renderActressList();
                 return;

@@ -491,6 +491,15 @@ body.av-swipe-in-right {
     font-weight: 600;
 }
 
+.av-known-actress-row {
+    margin-top: 4px;
+    margin-bottom: 2px;
+}
+
+.actress-known-tag {
+    font-size: 0.7rem;
+}
+
 /* ===== 演員頁面 ===== */
 .actress-card {
     border: 1px solid var(--av-border, #dee2e6);
@@ -640,6 +649,10 @@ body.av-swipe-in-right {
 }
 
 @media (max-width: 640px) {
+    .actress-view-controls {
+        display: none !important;
+    }
+
     .actress-film-thumb {
         width: 110px;
     }
