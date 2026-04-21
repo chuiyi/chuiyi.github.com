@@ -1005,6 +1005,26 @@ main .btn-outline-ptcg:hover {
     white-space: nowrap;
 }
 
+.btn-trend-inline-detail {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.45rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ptcg-primary);
+    font-size: 0.76rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+
+.btn-trend-inline-detail:hover {
+    color: var(--ptcg-primary-dk);
+}
+
 .trend-sort-btn {
     display: inline-flex;
     align-items: center;

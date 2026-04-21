@@ -194,6 +194,21 @@
         </section>
     </main>
 
+    <div class="modal fade" id="playerModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title me-auto" id="playerModalTitle">玩家詳情</h5>
+                    <span id="playerModalFetchedAt" class="me-3" style="font-size:0.8rem; color: rgba(255,255,255,0.6);"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="playerModalBody">
+                    <!-- 動態載入 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="ptcg-footer mt-5">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 py-2">

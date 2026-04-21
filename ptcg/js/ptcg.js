@@ -2797,24 +2797,59 @@ const PTCG = (() => {
             const playerId = String(player?.ptcg_id || '').trim();
             const normalizedId = playerId.toLowerCase();
             const isFocus = normalizedId && normalizedId === focusId;
+            const canViewDetail = _canOpenPlayerDetail(playerId);
+            const detailButton = canViewDetail
+                ? `<button type="button" class="btn-trend-inline-detail" data-player-detail-id="${escapeHtml(playerId)}">[詳情]</button>`
+                : '';
             return `
                 <tr class="${isFocus ? 'trend-player-row-active' : ''}">
                     <td>${getRankBadge(player.latest_rank || '--')}</td>
                     <td class="player-name-cell">
-                        ${escapeHtml(player.name || '--')}
+                        ${escapeHtml(player.name || '--')}${detailButton}
                         <span>${escapeHtml(playerId || '')}</span>
                     </td>
                     <td class="score-cell">${escapeHtml(player.latest_points_text || `${player.latest_points || 0}pt`)}</td>
                     <td>${escapeHtml(String(player.appearances || 0))}</td>
                     <td><span class="trend-delta-pill ${escapeHtml(delta?.className || 'is-flat')}">${escapeHtml(delta?.text || '--')}</span></td>
                     <td>
-                        <button class="btn-view-detail btn-trend-focus ${isFocus ? 'is-active' : ''}" data-player-id="${escapeHtml(playerId)}">
+                        <button class="btn-view-detail btn-trend-focus ${isFocus ? 'is-active' : ''}" data-trend-focus-id="${escapeHtml(playerId)}">
                             ${isFocus ? '取消' : '聚焦'}
                         </button>
                     </td>
                 </tr>
             `;
         }).join('');
+    }
+
+    async function _openTrendPlayerDetail(playerId) {
+        const normalizedId = String(playerId || '').trim().toLowerCase();
+        if (!normalizedId || !_canOpenPlayerDetail(normalizedId)) {
+            return;
+        }
+
+        if (!_playersManifest) {
+            _playersManifest = await loadPlayersManifest().catch(() => null);
+        }
+
+        const levelData = _getTrendLevelData(_currentTrendLevel);
+        const trendPlayer = levelData?.players?.find((item) => String(item?.ptcg_id || '').trim().toLowerCase() === normalizedId) || null;
+        const levelLookup = await loadRankingLookupByPtcgId(_currentTrendLevel).catch(() => new Map());
+        const matched = levelLookup.get(normalizedId) || null;
+
+        const detailPlayer = {
+            name: matched?.name || trendPlayer?.name || normalizedId,
+            ptcg_id: trendPlayer?.ptcg_id || matched?.ptcg_id || normalizedId,
+            score: matched?.score || trendPlayer?.latest_points_text || `${trendPlayer?.latest_points || 0}pt`,
+            division: _currentTrendLevel,
+            divisionLabel: matched?.divisionLabel || mapDivisionLabel(_currentTrendLevel),
+            region: trendPlayer?.region || '--',
+        };
+
+        await _openPlayerModal(detailPlayer);
+        _trackFeatureUsage('trend_player_detail_open', {
+            trend_level: _currentTrendLevel,
+            player_id: normalizedId,
+        });
     }
 
     function _renderTrendLevel(level) {
@@ -2899,11 +2934,19 @@ const PTCG = (() => {
             });
         });
 
-        document.getElementById('trend-players-body')?.addEventListener('click', (event) => {
-            const btn = event.target.closest('button[data-player-id]');
+        document.getElementById('trend-players-body')?.addEventListener('click', async (event) => {
+            const detailBtn = event.target.closest('button[data-player-detail-id]');
+            if (detailBtn) {
+                const detailPlayerId = String(detailBtn.dataset.playerDetailId || '').trim().toLowerCase();
+                if (!detailPlayerId) return;
+                await _openTrendPlayerDetail(detailPlayerId);
+                return;
+            }
+
+            const btn = event.target.closest('button[data-trend-focus-id]');
             if (!btn) return;
 
-            const playerId = String(btn.dataset.playerId || '').trim().toLowerCase();
+            const playerId = String(btn.dataset.trendFocusId || '').trim().toLowerCase();
             if (!playerId) return;
 
             const willFocus = _currentTrendFocusId !== playerId;
@@ -2927,7 +2970,17 @@ const PTCG = (() => {
                 throw new Error('Chart.js 載入失敗');
             }
 
-            _rankingTrends = await fetchJSON('ranking_trends.json');
+            const [rankingTrends, playersManifest, playersHistoryIndex] = await Promise.all([
+                fetchJSON('ranking_trends.json'),
+                loadPlayersManifest().catch(() => null),
+                loadPlayerHistoryIndex(),
+            ]);
+
+            _rankingTrends = rankingTrends;
+            _playersManifest = playersManifest;
+            _playersHistoryIndex = playersHistoryIndex;
+            _setPlayerHistoryIndex(playersHistoryIndex);
+
             if (!_rankingTrends || typeof _rankingTrends !== 'object' || !_rankingTrends.levels) {
                 throw new Error('ranking_trends.json 格式不正確');
             }
