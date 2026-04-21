@@ -962,16 +962,40 @@
         
         if (exists) {
             const now = new Date().toISOString();
+            const wasDeleted = exists.deleted === true;
             // 若影片曾被刪除，重新加入時恢復
-            if (exists.deleted) {
+            if (wasDeleted) {
                 exists.deleted = false;
                 delete exists.deletedAt;
             }
+
+            // 重新新增同片時，更新可變動的中繼資料（包含封面）
+            exists.code = item.code || exists.code;
+            exists.url = item.url || exists.url;
+            exists.title = item.title || exists.title;
+            exists.cover = item.cover || exists.cover;
+            exists.stream = item.stream || exists.stream || "";
+            exists.sourceId = item.sourceId || exists.sourceId;
+            exists.sourceName = item.sourceName || exists.sourceName;
+            exists.domain = item.domain || exists.domain;
+
             exists.status = item.status;
             exists.isFavorite = exists.isFavorite || false;
+            if (wasDeleted) {
+                // 重新加入時視為新資料，便於排序與同步判斷
+                exists.addedAt = item.addedAt || now;
+            }
             exists.updatedAt = now;
+            if (exists.cover) {
+                brokenCoverCache.delete(exists.id);
+            }
             setDb(db);
-            return { saved: false, message: `已将"${exists.title}"更新为"${item.status === 'watched' ? '看過的影片' : '稍後觀看'}"` };
+            return {
+                saved: false,
+                message: wasDeleted
+                    ? `已重新加入「${exists.title}」，並更新最新封面`
+                    : `已更新「${exists.title}」資料與封面`
+            };
         }
         
         // 影片不存在，新增
