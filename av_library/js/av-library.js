@@ -331,7 +331,12 @@
         return JSON.stringify(normalizeActressesForCompare(left)) === JSON.stringify(normalizeActressesForCompare(right));
     };
 
-    /** 合併兩份演員清單，以 id 為 key，保留較新主名稱，並合併 aliases */
+    /**
+     * 合併兩份演員清單，以 id 為 key。
+     * 規則：
+     * 1) 以 updatedAt 較新的版本為主（含 aliases 全量覆蓋），避免舊資料把已移除別名加回來。
+     * 2) 僅在時間戳完全相同時，才做名稱聯集以降低同時編輯遺失風險。
+     */
     const mergeActresses = (local, remote) => {
         const map = new Map();
         const upsert = (raw) => {
@@ -344,15 +349,29 @@
             }
             const ta = new Date(existing.updatedAt || 0).getTime();
             const tb = new Date(a.updatedAt || 0).getTime();
+
+            if (tb > ta) {
+                map.set(a.id, {
+                    ...a,
+                    createdAt: existing.createdAt || a.createdAt
+                });
+                return;
+            }
+
+            if (tb < ta) {
+                return;
+            }
+
+            // 時間相同：保守聯集
             const mergedNames = dedupeNameList([...getActressAllNames(existing), ...getActressAllNames(a)]);
-            const preferredName = tb > ta ? a.name : existing.name;
+            const preferredName = existing.name || a.name;
             const normalizedPreferred = mergedNames.find((n) => n.toLowerCase() === preferredName.toLowerCase()) || mergedNames[0] || preferredName;
             map.set(a.id, {
                 id: a.id,
                 name: normalizedPreferred,
                 aliases: mergedNames.filter((n) => n.toLowerCase() !== normalizedPreferred.toLowerCase()),
                 createdAt: existing.createdAt || a.createdAt,
-                updatedAt: tb > ta ? a.updatedAt : existing.updatedAt
+                updatedAt: existing.updatedAt || a.updatedAt
             });
         };
         local.forEach(upsert);
