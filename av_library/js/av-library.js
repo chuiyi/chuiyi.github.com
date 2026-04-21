@@ -214,6 +214,8 @@
                 sourceName: item?.sourceName || "",
                 domain: item?.domain || "",
                 isFavorite: item?.isFavorite === true,
+                deleted: item?.deleted === true,
+                deletedAt: item?.deletedAt || "",
                 addedAt: item?.addedAt || ""
             }))
             .sort((a, b) => {
@@ -959,10 +961,15 @@
         const exists = db.find((entry) => entry.slug === item.slug);
         
         if (exists) {
-            // 影片已存在，只更新状态
+            const now = new Date().toISOString();
+            // 若影片曾被刪除，重新加入時恢復
+            if (exists.deleted) {
+                exists.deleted = false;
+                delete exists.deletedAt;
+            }
             exists.status = item.status;
-            exists.isFavorite = exists.isFavorite || false;  // 保持现有的喜爱状态
-            exists.updatedAt = new Date().toISOString();
+            exists.isFavorite = exists.isFavorite || false;
+            exists.updatedAt = now;
             setDb(db);
             return { saved: false, message: `已将"${exists.title}"更新为"${item.status === 'watched' ? '看過的影片' : '稍後觀看'}"` };
         }
@@ -1015,11 +1022,11 @@
         
         let filtered;
         if (status === "favorite") {
-            // favorite 页面显示所有 isFavorite=true 的项目
-            filtered = db.filter((item) => item.isFavorite === true);
+            // favorite 页面显示所有 isFavorite=true 且未被刪除的项目
+            filtered = db.filter((item) => item.deleted !== true && item.isFavorite === true);
         } else {
-            // later/watched 页面按 status 过滤
-            filtered = db.filter((item) => item.status === status);
+            // later/watched 页面按 status 过滤，排除已刪除
+            filtered = db.filter((item) => item.deleted !== true && item.status === status);
         }
         
         const sortMode = getSortMode();
@@ -1296,8 +1303,14 @@
 
     const deleteItem = (id) => {
         const db = getDb();
-        const next = db.filter((item) => item.id !== id);
-        setDb(next);
+        const item = db.find((entry) => entry.id === id);
+        if (!item) return;
+        // 使用 tombstone 標記刪除，而非直接移除，確保同步時刪除操作能正確勝過雲端舊資料
+        const now = new Date().toISOString();
+        item.deleted = true;
+        item.deletedAt = now;
+        item.updatedAt = now;
+        setDb(db);
         markDirty();
     };
 
