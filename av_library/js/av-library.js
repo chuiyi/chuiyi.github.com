@@ -451,13 +451,52 @@
         localStorage.setItem(ACTRESS_KEY, JSON.stringify(data));
     };
 
+    const isCodeLikeToken = (token) => {
+        const t = (token || "").trim();
+        if (!t) return false;
+        // 典型片碼格式，例如 SSNI-865 / JUR710
+        return /^[A-Z]{2,10}-?\d{2,6}$/i.test(t);
+    };
+
+    const titleContainsActressName = (title, actressName) => {
+        const source = (title || "").trim();
+        const target = (actressName || "").trim();
+        if (!source || !target) return false;
+        // 英文名稱採不分大小寫；日文/中文維持原樣即可正常比對
+        return source.includes(target) || source.toLowerCase().includes(target.toLowerCase());
+    };
+
+    /** 以單一演員名稱回掃整個片庫，將符合標題者自動關聯 */
+    const autoTagLibraryByActress = (actress) => {
+        if (!actress?.id || !actress?.name) return false;
+        const db = getDb();
+        let changed = false;
+        for (const item of db) {
+            if (item.deleted === true || !item.title) continue;
+            if (!item.actresses) item.actresses = [];
+            if (titleContainsActressName(item.title, actress.name) && !item.actresses.includes(actress.id)) {
+                item.actresses.push(actress.id);
+                item.updatedAt = new Date().toISOString();
+                changed = true;
+            }
+        }
+        if (changed) {
+            setDb(db);
+        }
+        return changed;
+    };
+
     /** 新增演員（若已存在同名則回傳現有），回傳演員物件 */
     const saveActress = (name) => {
         const trimmed = (name || "").trim();
         if (!trimmed) return null;
         const db = getActresses();
-        let existing = db.find((a) => a.name === trimmed);
-        if (existing) return existing;
+        let existing = db.find((a) => a.name.toLowerCase() === trimmed.toLowerCase());
+        if (existing) {
+            const linked = autoTagLibraryByActress(existing);
+            if (linked) markDirty();
+            return existing;
+        }
         const newActress = {
             id: (crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`),
             name: trimmed,
@@ -466,6 +505,8 @@
         };
         db.push(newActress);
         setActresses(db);
+        const linked = autoTagLibraryByActress(newActress);
+        if (linked) markDirty();
         return newActress;
     };
 
@@ -504,7 +545,7 @@
         if (!item.actresses) item.actresses = [];
         let changed = false;
         for (const actress of actresses) {
-            if (item.title.includes(actress.name) && !item.actresses.includes(actress.id)) {
+            if (titleContainsActressName(item.title, actress.name) && !item.actresses.includes(actress.id)) {
                 item.actresses.push(actress.id);
                 changed = true;
             }
@@ -520,7 +561,7 @@
         if (!title) return [];
         return title.split(/[\s　、。，,・]+/)
             .map((t) => t.trim())
-            .filter((t) => t.length >= 2 && !/^[A-Z0-9\-]+$/i.test(t));
+            .filter((t) => t.length >= 2 && !isCodeLikeToken(t));
     };
 
     // ============= 数据迁移相关函数 =============
@@ -1896,6 +1937,38 @@
         });
     };
 
+    const renderActressFilmRow = (film) => {
+        const cover = film.cover || PLACEHOLDER_COVER;
+        const safeTitle = (film.title || film.code).replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        const statusLabel = film.status === "watched" ? "看過" : "稍後";
+        const moveToStatus = film.status === "watched" ? "later" : "watched";
+        const moveLabel = film.status === "watched" ? "改為稍後" : "標記看過";
+        const isFav = film.isFavorite === true;
+
+        return `<div class="actress-film-row">
+            <img src="${cover}" class="actress-film-thumb" alt="${safeTitle}" loading="lazy" data-action="open-film" data-url="${film.url}" title="點擊開啟播放頁">
+            <div class="actress-film-info">
+                <div class="actress-film-title">${safeTitle}</div>
+                <div class="actress-film-meta-row">
+                    <span class="actress-film-code">${film.code}</span>
+                    <span class="badge rounded-pill badge-status">${statusLabel}</span>
+                    ${isFav ? '<span class="actress-fav-indicator" title="已喜愛"><i class="bi bi-heart-fill"></i></span>' : ''}
+                </div>
+            </div>
+            <div class="actress-film-actions">
+                <button type="button" class="btn btn-sm btn-icon" data-action="toggle-film-favorite" data-id="${film.id}" title="${isFav ? "取消喜愛" : "加入喜愛"}">
+                    <i class="bi ${isFav ? "bi-heart-fill" : "bi-heart"}"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-icon" data-action="switch-film-status" data-id="${film.id}" data-new-status="${moveToStatus}" title="${moveLabel}">
+                    <i class="bi bi-arrow-left-right"></i>
+                </button>
+                <a href="${film.url}" target="_blank" rel="noopener" class="btn btn-sm btn-icon" title="前往">
+                    <i class="bi bi-link-45deg"></i>
+                </a>
+            </div>
+        </div>`;
+    };
+
     const renderActressList = () => {
         const container = document.getElementById("av-actress-list");
         const empty = document.getElementById("av-actress-empty");
@@ -1951,19 +2024,7 @@
                 ? db.filter((item) => item.actresses?.includes(activeActress.id))
                 : [];
             const filmRows = panelFilms.length
-                ? panelFilms.map((film) => {
-                    const cover = film.cover || PLACEHOLDER_COVER;
-                    const safeTitle = (film.title || film.code).replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                    const statusLabel = film.status === "watched" ? "看過" : "稍後";
-                    return `<div class="actress-film-row">
-                        <img src="${cover}" class="actress-film-thumb" alt="" loading="lazy">
-                        <div class="actress-film-info">
-                            <div class="actress-film-title">${safeTitle}</div>
-                            <div class="actress-film-code">${film.code} <span class="badge rounded-pill badge-status ms-1">${statusLabel}</span></div>
-                        </div>
-                        <a href="${film.url}" target="_blank" rel="noopener" class="btn btn-sm btn-icon" title="前往"><i class="bi bi-link-45deg"></i></a>
-                    </div>`;
-                }).join("")
+                ? panelFilms.map((film) => renderActressFilmRow(film)).join("")
                 : `<div class="text-muted px-3 py-2 small">目前沒有影片</div>`;
 
             container.innerHTML = `<div class="actress-tab-layout">
@@ -1982,19 +2043,7 @@
             container.innerHTML = filtered.map((actress) => {
                 const films = db.filter((item) => item.actresses?.includes(actress.id));
                 const filmRows = films.length
-                    ? films.map((film) => {
-                        const cover = film.cover || PLACEHOLDER_COVER;
-                        const safeTitle = (film.title || film.code).replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                        const statusLabel = film.status === "watched" ? "看過" : "稍後";
-                        return `<div class="actress-film-row">
-                            <img src="${cover}" class="actress-film-thumb" alt="" loading="lazy">
-                            <div class="actress-film-info">
-                                <div class="actress-film-title">${safeTitle}</div>
-                                <div class="actress-film-code">${film.code} <span class="badge rounded-pill badge-status ms-1">${statusLabel}</span></div>
-                            </div>
-                            <a href="${film.url}" target="_blank" rel="noopener" class="btn btn-sm btn-icon" title="前往"><i class="bi bi-link-45deg"></i></a>
-                        </div>`;
-                    }).join("")
+                    ? films.map((film) => renderActressFilmRow(film)).join("")
                     : `<div class="text-muted px-3 py-2 small">目前沒有影片</div>`;
 
                 return `<div class="actress-card" id="actress-${actress.id}">
@@ -2079,6 +2128,22 @@
                 const id = actionEl.closest("[data-id]")?.dataset.id || actionEl.dataset.id;
                 if (!id) return;
                 list.dataset.activeActress = id;
+                renderActressList();
+            } else if (action === "open-film") {
+                const url = actionEl.dataset.url;
+                if (url) {
+                    window.open(url, "_blank");
+                }
+            } else if (action === "toggle-film-favorite") {
+                const id = actionEl.dataset.id;
+                if (!id) return;
+                toggleFavorite(id);
+                renderActressList();
+            } else if (action === "switch-film-status") {
+                const id = actionEl.dataset.id;
+                const newStatus = actionEl.dataset.newStatus;
+                if (!id || !newStatus) return;
+                moveItem(id, newStatus);
                 renderActressList();
             } else if (action === "delete-actress") {
                 event.stopPropagation();
