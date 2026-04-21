@@ -57,10 +57,43 @@
         </div>
 
         <div class="mb-3">
-            <input type="search" id="av-actress-search" class="form-control" placeholder="搜尋演員名稱…" autocomplete="off">
+            <!-- 新增演員 -->
+            <form id="av-actress-add-form" class="d-flex gap-2 mb-3">
+                <input type="text" id="av-actress-add-input" class="form-control" placeholder="輸入演員名稱手動新增…" autocomplete="off" required>
+                <button type="submit" class="btn btn-primary btn-sm text-nowrap">
+                    <i class="bi bi-person-plus me-1"></i>新增
+                </button>
+            </form>
+
+            <!-- 搜尋 + 工具列 -->
+            <div class="d-flex flex-wrap gap-2 align-items-center justify-content-between mb-3">
+                <input type="search" id="av-actress-search" class="form-control" style="max-width:220px;" placeholder="搜尋演員…" autocomplete="off">
+                <div class="d-flex gap-2 align-items-center flex-wrap">
+                    <!-- 排序 -->
+                    <span class="text-muted small">排序：</span>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button type="button" class="btn btn-outline-secondary" data-actress-sort="count" title="依影片數量排序">
+                            <i class="bi bi-film"></i> 片數
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" data-actress-sort="name" title="依名稱排序">
+                            <i class="bi bi-sort-alpha-down"></i> 名稱
+                        </button>
+                    </div>
+                    <!-- 視圖 -->
+                    <span class="text-muted small">視圖：</span>
+                    <div class="btn-group btn-group-sm" role="group">
+                        <button type="button" class="btn btn-outline-secondary" data-actress-view="list" title="列表模式">
+                            <i class="bi bi-list-ul"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary" data-actress-view="tab" title="頁籤模式">
+                            <i class="bi bi-layout-sidebar"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div id="av-actress-empty" class="empty-state d-none">尚未標記任何演員。<br>請在影片卡片中點擊分詞按鈕來新增演員。</div>
+        <div id="av-actress-empty" class="empty-state d-none">尚未標記任何演員。<br>在影片卡片點擊分詞按鈕，或在上方輸入框手動新增。</div>
         <div id="av-actress-list"></div>
     </main>
 

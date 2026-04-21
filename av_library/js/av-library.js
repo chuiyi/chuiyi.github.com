@@ -1863,6 +1863,26 @@
     };
 
     // ============= 演員頁面 =============
+    const ACTRESS_VIEW_KEY = "avActressViewMode";
+    const ACTRESS_SORT_KEY = "avActressSortMode";
+    const getActressViewMode = () => localStorage.getItem(ACTRESS_VIEW_KEY) || "list";
+    const setActressViewMode = (v) => localStorage.setItem(ACTRESS_VIEW_KEY, v);
+    const getActressSortMode = () => localStorage.getItem(ACTRESS_SORT_KEY) || "count";
+    const setActressSortMode = (v) => localStorage.setItem(ACTRESS_SORT_KEY, v);
+
+    /** 依目前排序模式排列演員陣列（修改原陣列並回傳） */
+    const sortActresses = (actresses, db, sortMode) => {
+        return [...actresses].sort((a, b) => {
+            if (sortMode === "name") {
+                return a.name.localeCompare(b.name, "zh-Hant");
+            }
+            // 預設：依片數降序，同數時依名稱
+            const ca = db.filter((item) => item.actresses?.includes(a.id)).length;
+            const cb = db.filter((item) => item.actresses?.includes(b.id)).length;
+            return cb - ca || a.name.localeCompare(b.name, "zh-Hant");
+        });
+    };
+
     const renderActressList = () => {
         const container = document.getElementById("av-actress-list");
         const empty = document.getElementById("av-actress-empty");
@@ -1870,6 +1890,16 @@
 
         const actresses = getActresses();
         const db = getDb().filter((item) => item.deleted !== true);
+        const viewMode = getActressViewMode();
+        const sortMode = getActressSortMode();
+
+        // 更新工具列按鈕狀態
+        document.querySelectorAll("[data-actress-view]").forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.actressView === viewMode);
+        });
+        document.querySelectorAll("[data-actress-sort]").forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.actressSort === sortMode);
+        });
 
         if (!actresses.length) {
             container.innerHTML = "";
@@ -1878,17 +1908,37 @@
         }
         if (empty) empty.classList.add("d-none");
 
-        // 排序：依片數多到少
-        const sorted = [...actresses].sort((a, b) => {
-            const ca = db.filter((item) => item.actresses?.includes(a.id)).length;
-            const cb = db.filter((item) => item.actresses?.includes(b.id)).length;
-            return cb - ca || a.name.localeCompare(b.name, "zh-Hant");
-        });
+        // 搜尋過濾（保持搜尋框現有輸入）
+        const searchInput = document.getElementById("av-actress-search");
+        const q = (searchInput?.value || "").trim().toLowerCase();
 
-        container.innerHTML = sorted.map((actress) => {
-            const films = db.filter((item) => item.actresses?.includes(actress.id));
-            const filmRows = films.length
-                ? films.map((film) => {
+        const sorted = sortActresses(actresses, db, sortMode);
+        const filtered = q ? sorted.filter((a) => a.name.toLowerCase().includes(q)) : sorted;
+
+        if (viewMode === "tab") {
+            // ===== 頁籤模式 =====
+            // 左側列表 / 右側影片面板
+            const activeId = container.dataset.activeActress || (filtered[0]?.id || "");
+            const activeActress = filtered.find((a) => a.id === activeId) || filtered[0];
+
+            const tabItems = filtered.map((actress) => {
+                const count = db.filter((item) => item.actresses?.includes(actress.id)).length;
+                const isActive = actress.id === activeActress?.id;
+                return `<div class="actress-tab-item${isActive ? " is-active" : ""}" data-action="select-actress" data-id="${actress.id}" role="button" tabindex="0">
+                    <i class="bi bi-person-circle actress-avatar"></i>
+                    <div class="actress-tab-meta">
+                        <span class="actress-name">${actress.name}</span>
+                        <span class="actress-count">${count} 部</span>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-icon actress-delete-btn" data-action="delete-actress" data-id="${actress.id}" title="刪除演員"><i class="bi bi-person-dash"></i></button>
+                </div>`;
+            }).join("");
+
+            const panelFilms = activeActress
+                ? db.filter((item) => item.actresses?.includes(activeActress.id))
+                : [];
+            const filmRows = panelFilms.length
+                ? panelFilms.map((film) => {
                     const cover = film.cover || PLACEHOLDER_COVER;
                     const safeTitle = (film.title || film.code).replace(/</g, "&lt;").replace(/>/g, "&gt;");
                     const statusLabel = film.status === "watched" ? "看過" : "稍後";
@@ -1903,36 +1953,93 @@
                 }).join("")
                 : `<div class="text-muted px-3 py-2 small">目前沒有影片</div>`;
 
-            return `<div class="actress-card" id="actress-${actress.id}">
-                <div class="actress-header" data-action="toggle-actress" data-id="${actress.id}" role="button" tabindex="0">
-                    <i class="bi bi-person-circle actress-avatar"></i>
-                    <span class="actress-name">${actress.name}</span>
-                    <span class="actress-count">${films.length} 部</span>
-                    <button type="button" class="btn btn-sm btn-icon actress-delete-btn" data-action="delete-actress" data-id="${actress.id}" title="刪除演員"><i class="bi bi-person-dash"></i></button>
-                    <i class="bi bi-chevron-down actress-chevron"></i>
-                </div>
-                <div class="actress-films" id="actress-panel-${actress.id}" style="display:none;">
+            container.innerHTML = `<div class="actress-tab-layout">
+                <div class="actress-tab-sidebar">${tabItems}</div>
+                <div class="actress-tab-panel">
+                    <div class="actress-tab-panel-title">
+                        <i class="bi bi-person-circle me-2"></i>${activeActress?.name || ""}
+                        <span class="actress-count ms-2">${panelFilms.length} 部</span>
+                    </div>
                     ${filmRows}
                 </div>
             </div>`;
-        }).join("");
+            container.dataset.activeActress = activeActress?.id || "";
+        } else {
+            // ===== 列表模式 =====
+            container.innerHTML = filtered.map((actress) => {
+                const films = db.filter((item) => item.actresses?.includes(actress.id));
+                const filmRows = films.length
+                    ? films.map((film) => {
+                        const cover = film.cover || PLACEHOLDER_COVER;
+                        const safeTitle = (film.title || film.code).replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                        const statusLabel = film.status === "watched" ? "看過" : "稍後";
+                        return `<div class="actress-film-row">
+                            <img src="${cover}" class="actress-film-thumb" alt="" loading="lazy">
+                            <div class="actress-film-info">
+                                <div class="actress-film-title">${safeTitle}</div>
+                                <div class="actress-film-code">${film.code} <span class="badge rounded-pill badge-status ms-1">${statusLabel}</span></div>
+                            </div>
+                            <a href="${film.url}" target="_blank" rel="noopener" class="btn btn-sm btn-icon" title="前往"><i class="bi bi-link-45deg"></i></a>
+                        </div>`;
+                    }).join("")
+                    : `<div class="text-muted px-3 py-2 small">目前沒有影片</div>`;
+
+                return `<div class="actress-card" id="actress-${actress.id}">
+                    <div class="actress-header" data-action="toggle-actress" data-id="${actress.id}" role="button" tabindex="0">
+                        <i class="bi bi-person-circle actress-avatar"></i>
+                        <span class="actress-name">${actress.name}</span>
+                        <span class="actress-count">${films.length} 部</span>
+                        <button type="button" class="btn btn-sm btn-icon actress-delete-btn" data-action="delete-actress" data-id="${actress.id}" title="刪除演員"><i class="bi bi-person-dash"></i></button>
+                        <i class="bi bi-chevron-down actress-chevron"></i>
+                    </div>
+                    <div class="actress-films" id="actress-panel-${actress.id}" style="display:none;">
+                        ${filmRows}
+                    </div>
+                </div>`;
+            }).join("");
+        }
     };
 
     const initActressPage = () => {
         renderActressList();
 
-        // 搜尋過濾
-        const searchInput = document.getElementById("av-actress-search");
-        if (searchInput) {
-            searchInput.addEventListener("input", () => {
-                const q = searchInput.value.trim().toLowerCase();
-                document.querySelectorAll(".actress-card").forEach((card) => {
-                    const name = card.querySelector(".actress-name")?.textContent.toLowerCase() || "";
-                    card.style.display = name.includes(q) ? "" : "none";
-                });
+        // --- 手動新增演員表單 ---
+        const addForm = document.getElementById("av-actress-add-form");
+        const addInput = document.getElementById("av-actress-add-input");
+        if (addForm && addInput) {
+            addForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const name = addInput.value.trim();
+                if (!name) return;
+                saveActress(name);
+                addInput.value = "";
+                renderActressList();
+                markDirty();
             });
         }
 
+        // --- 搜尋 ---
+        const searchInput = document.getElementById("av-actress-search");
+        if (searchInput) {
+            searchInput.addEventListener("input", () => renderActressList());
+        }
+
+        // --- 視圖 / 排序切換 ---
+        document.addEventListener("click", (event) => {
+            const viewBtn = event.target.closest("[data-actress-view]");
+            if (viewBtn) {
+                setActressViewMode(viewBtn.dataset.actressView);
+                renderActressList();
+                return;
+            }
+            const sortBtn = event.target.closest("[data-actress-sort]");
+            if (sortBtn) {
+                setActressSortMode(sortBtn.dataset.actressSort);
+                renderActressList();
+            }
+        });
+
+        // --- 列表互動 ---
         const list = document.getElementById("av-actress-list");
         if (!list) return;
 
@@ -1954,15 +2061,19 @@
                     chevron.classList.toggle("bi-chevron-down", isOpen);
                     chevron.classList.toggle("bi-chevron-up", !isOpen);
                 }
+            } else if (action === "select-actress") {
+                // 頁籤模式：切換已選演員
+                const id = actionEl.closest("[data-id]")?.dataset.id || actionEl.dataset.id;
+                if (!id) return;
+                list.dataset.activeActress = id;
+                renderActressList();
             } else if (action === "delete-actress") {
                 event.stopPropagation();
                 const id = actionEl.dataset.id;
                 if (!id) return;
-                const name = actionEl.closest(".actress-card")?.querySelector(".actress-name")?.textContent || "";
+                const name = actionEl.closest("[data-id]")?.querySelector(".actress-name")?.textContent || "";
                 if (!window.confirm(`確定要刪除演員「${name}」嗎？（影片不會被刪除）`)) return;
-                // 移除演員記錄
                 setActresses(getActresses().filter((a) => a.id !== id));
-                // 移除影片上的關聯
                 const db = getDb().map((item) => {
                     if (item.actresses?.includes(id)) {
                         item.actresses = item.actresses.filter((aid) => aid !== id);
@@ -1976,10 +2087,10 @@
             }
         });
 
-        // 鍵盤支援 (Enter/Space on header)
+        // 鍵盤支援
         list.addEventListener("keydown", (event) => {
             if (event.key !== "Enter" && event.key !== " ") return;
-            const actionEl = event.target.closest("[data-action='toggle-actress']");
+            const actionEl = event.target.closest("[data-action='toggle-actress'], [data-action='select-actress']");
             if (actionEl) {
                 event.preventDefault();
                 actionEl.click();
