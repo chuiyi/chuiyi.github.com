@@ -526,6 +526,21 @@ body.av-swipe-in-right {
     flex: 1;
 }
 
+.actress-name-block {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.actress-aliases {
+    font-size: 0.72rem;
+    color: var(--av-muted, #6c757d);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .actress-count {
     font-size: 0.8rem;
     color: var(--av-muted, #6c757d);
@@ -542,7 +557,18 @@ body.av-swipe-in-right {
     opacity: 0.4;
     transition: opacity 0.15s;
 }
-.actress-header:hover .actress-delete-btn {
+.actress-merge-btn,
+.actress-display-btn {
+    opacity: 0.4;
+    transition: opacity 0.15s;
+}
+
+.actress-header:hover .actress-delete-btn,
+.actress-header:hover .actress-merge-btn,
+.actress-header:hover .actress-display-btn,
+.actress-tab-item:hover .actress-delete-btn,
+.actress-tab-item:hover .actress-merge-btn,
+.actress-tab-item:hover .actress-display-btn {
     opacity: 1;
 }
 

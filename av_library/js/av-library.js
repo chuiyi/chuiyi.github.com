@@ -280,16 +280,80 @@
         }
     };
 
-    /** 合併兩份演員清單，以 id 為 key，保留較新版本 */
+    const dedupeNameList = (names = []) => {
+        const seen = new Set();
+        const output = [];
+        for (const raw of names) {
+            const value = (raw || "").trim();
+            if (!value) continue;
+            const key = value.toLowerCase();
+            if (seen.has(key)) continue;
+            seen.add(key);
+            output.push(value);
+        }
+        return output;
+    };
+
+    const normalizeActress = (input) => {
+        if (!input || !input.id) return null;
+        const baseName = (input.name || "").trim();
+        const aliasSeed = Array.isArray(input.aliases) ? input.aliases : [];
+        const allNames = dedupeNameList([baseName, ...aliasSeed]);
+        const name = allNames[0] || baseName || "";
+        const aliases = allNames.filter((n) => n.toLowerCase() !== name.toLowerCase());
+        return {
+            id: input.id,
+            name,
+            aliases,
+            createdAt: input.createdAt || new Date().toISOString(),
+            updatedAt: input.updatedAt || input.createdAt || new Date().toISOString()
+        };
+    };
+
+    const getActressAllNames = (actress) => {
+        if (!actress) return [];
+        return dedupeNameList([actress.name, ...(actress.aliases || [])]);
+    };
+
+    const normalizeActressesForCompare = (list = []) => {
+        return list
+            .map(normalizeActress)
+            .filter(Boolean)
+            .map((a) => ({
+                id: a.id,
+                name: a.name,
+                aliases: [...(a.aliases || [])].sort((x, y) => x.localeCompare(y, "zh-Hant"))
+            }))
+            .sort((x, y) => x.id.localeCompare(y.id));
+    };
+
+    const isActressEquivalent = (left, right) => {
+        return JSON.stringify(normalizeActressesForCompare(left)) === JSON.stringify(normalizeActressesForCompare(right));
+    };
+
+    /** 合併兩份演員清單，以 id 為 key，保留較新主名稱，並合併 aliases */
     const mergeActresses = (local, remote) => {
         const map = new Map();
-        const upsert = (a) => {
-            if (!a || !a.id) return;
+        const upsert = (raw) => {
+            const a = normalizeActress(raw);
+            if (!a) return;
             const existing = map.get(a.id);
-            if (!existing) { map.set(a.id, a); return; }
+            if (!existing) {
+                map.set(a.id, a);
+                return;
+            }
             const ta = new Date(existing.updatedAt || 0).getTime();
             const tb = new Date(a.updatedAt || 0).getTime();
-            if (tb > ta) map.set(a.id, a);
+            const mergedNames = dedupeNameList([...getActressAllNames(existing), ...getActressAllNames(a)]);
+            const preferredName = tb > ta ? a.name : existing.name;
+            const normalizedPreferred = mergedNames.find((n) => n.toLowerCase() === preferredName.toLowerCase()) || mergedNames[0] || preferredName;
+            map.set(a.id, {
+                id: a.id,
+                name: normalizedPreferred,
+                aliases: mergedNames.filter((n) => n.toLowerCase() !== normalizedPreferred.toLowerCase()),
+                createdAt: existing.createdAt || a.createdAt,
+                updatedAt: tb > ta ? a.updatedAt : existing.updatedAt
+            });
         };
         local.forEach(upsert);
         remote.forEach(upsert);
@@ -348,13 +412,9 @@
             const mergedActresses = mergeActresses(localActresses, remote.actresses);
 
             const localNeedsUpdate = !isDbEquivalent(local, merged);
-            const actressesNeedLocalUpdate = JSON.stringify(localActresses.map(a=>a.id).sort()) !== JSON.stringify(mergedActresses.map(a=>a.id).sort()) ||
-                localActresses.some((a, i) => {
-                    const m = mergedActresses.find(x => x.id === a.id);
-                    return !m || m.name !== a.name;
-                });
+            const actressesNeedLocalUpdate = !isActressEquivalent(localActresses, mergedActresses);
             const remoteNeedsUpdate = !isDbEquivalent(remote.items, merged) ||
-                JSON.stringify((remote.actresses||[]).map(a=>a.id).sort()) !== JSON.stringify(mergedActresses.map(a=>a.id).sort());
+                !isActressEquivalent(remote.actresses || [], mergedActresses);
 
             if (localNeedsUpdate) {
                 setDb(merged);
@@ -466,16 +526,27 @@
         return source.includes(target) || source.toLowerCase().includes(target.toLowerCase());
     };
 
+    const actressMatchesTitle = (title, actress) => {
+        return getActressAllNames(actress).some((name) => titleContainsActressName(title, name));
+    };
+
+    const findActressByName = (name, actresses = getActresses()) => {
+        const target = (name || "").trim().toLowerCase();
+        if (!target) return null;
+        return actresses.find((a) => getActressAllNames(normalizeActress(a)).some((n) => n.toLowerCase() === target)) || null;
+    };
+
     /** 以單一演員名稱回掃整個片庫，將符合標題者自動關聯 */
     const autoTagLibraryByActress = (actress) => {
-        if (!actress?.id || !actress?.name) return false;
+        const normalized = normalizeActress(actress);
+        if (!normalized?.id || !normalized?.name) return false;
         const db = getDb();
         let changed = false;
         for (const item of db) {
             if (item.deleted === true || !item.title) continue;
             if (!item.actresses) item.actresses = [];
-            if (titleContainsActressName(item.title, actress.name) && !item.actresses.includes(actress.id)) {
-                item.actresses.push(actress.id);
+            if (actressMatchesTitle(item.title, normalized) && !item.actresses.includes(normalized.id)) {
+                item.actresses.push(normalized.id);
                 item.updatedAt = new Date().toISOString();
                 changed = true;
             }
@@ -490,8 +561,8 @@
     const saveActress = (name) => {
         const trimmed = (name || "").trim();
         if (!trimmed) return null;
-        const db = getActresses();
-        let existing = db.find((a) => a.name.toLowerCase() === trimmed.toLowerCase());
+        const db = getActresses().map(normalizeActress).filter(Boolean);
+        let existing = findActressByName(trimmed, db);
         if (existing) {
             const linked = autoTagLibraryByActress(existing);
             if (linked) markDirty();
@@ -500,6 +571,7 @@
         const newActress = {
             id: (crypto.randomUUID?.() || `${Date.now()}-${Math.random()}`),
             name: trimmed,
+            aliases: [],
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
         };
@@ -545,8 +617,10 @@
         if (!item.actresses) item.actresses = [];
         let changed = false;
         for (const actress of actresses) {
-            if (titleContainsActressName(item.title, actress.name) && !item.actresses.includes(actress.id)) {
-                item.actresses.push(actress.id);
+            const normalized = normalizeActress(actress);
+            if (!normalized) continue;
+            if (actressMatchesTitle(item.title, normalized) && !item.actresses.includes(normalized.id)) {
+                item.actresses.push(normalized.id);
                 changed = true;
             }
         }
@@ -554,6 +628,57 @@
             item.updatedAt = new Date().toISOString();
             setDb(db);
         }
+    };
+
+    const setActressDisplayName = (actressId, nextName) => {
+        const desired = (nextName || "").trim();
+        if (!desired) return false;
+        const actresses = getActresses().map(normalizeActress).filter(Boolean);
+        const actress = actresses.find((a) => a.id === actressId);
+        if (!actress) return false;
+
+        const names = dedupeNameList([actress.name, ...(actress.aliases || []), desired]);
+        const selected = names.find((n) => n.toLowerCase() === desired.toLowerCase()) || desired;
+        actress.name = selected;
+        actress.aliases = names.filter((n) => n.toLowerCase() !== selected.toLowerCase());
+        actress.updatedAt = new Date().toISOString();
+        setActresses(actresses);
+        markDirty();
+        return true;
+    };
+
+    const mergeActressInto = ({ keepId, mergeId, preferredName }) => {
+        if (!keepId || !mergeId || keepId === mergeId) return false;
+        const actresses = getActresses().map(normalizeActress).filter(Boolean);
+        const keep = actresses.find((a) => a.id === keepId);
+        const merged = actresses.find((a) => a.id === mergeId);
+        if (!keep || !merged) return false;
+
+        const names = dedupeNameList([...getActressAllNames(keep), ...getActressAllNames(merged)]);
+        const desired = (preferredName || keep.name || "").trim();
+        const selected = names.find((n) => n.toLowerCase() === desired.toLowerCase()) || keep.name || names[0];
+        keep.name = selected;
+        keep.aliases = names.filter((n) => n.toLowerCase() !== selected.toLowerCase());
+        keep.updatedAt = new Date().toISOString();
+
+        const nextActresses = actresses.filter((a) => a.id !== mergeId);
+        setActresses(nextActresses);
+
+        const items = getDb();
+        let itemChanged = false;
+        for (const item of items) {
+            if (!Array.isArray(item.actresses) || item.actresses.length === 0) continue;
+            if (!item.actresses.includes(mergeId)) continue;
+            const replaced = item.actresses.map((id) => (id === mergeId ? keepId : id));
+            item.actresses = [...new Set(replaced)];
+            item.updatedAt = new Date().toISOString();
+            itemChanged = true;
+        }
+        if (itemChanged) {
+            setDb(items);
+        }
+        markDirty();
+        return true;
     };
 
     /** 將標題切詞，過濾掉片碼格式與過短的詞 */
@@ -1252,8 +1377,13 @@
         const viewMode = getViewMode();
         container.classList.toggle("list-grid", viewMode === "list");
         container.classList.toggle("card-grid", viewMode !== "list");
-        // 取得演員對照表，供 token 標記使用
-        const actressNameToId = new Map(getActresses().map((a) => [a.name, a.id]));
+        // 取得演員對照表（主名稱 + aliases），供 token 標記使用
+        const actressNameToId = new Map();
+        getActresses().map(normalizeActress).filter(Boolean).forEach((a) => {
+            getActressAllNames(a).forEach((n) => {
+                actressNameToId.set(n.toLowerCase(), a.id);
+            });
+        });
         sorted.forEach((item) => {
             const card = document.createElement("div");
             card.className = "av-card";
@@ -1289,7 +1419,7 @@
                         if (!tokens.length) return "";
                         const itemActressIds = new Set(item.actresses || []);
                         const btns = tokens.map((t) => {
-                            const aid = actressNameToId.get(t);
+                            const aid = actressNameToId.get(t.toLowerCase());
                             const tagged = aid && itemActressIds.has(aid);
                             const safeT = t.replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
                             return `<button type="button" class="btn-token${tagged ? " is-tagged" : ""}" data-action="tag-actress" data-item-id="${item.id}" data-name="${safeT}" title="${tagged ? "已標記演員" : "新增為演員"}">${safeT}</button>`;
@@ -2010,12 +2140,16 @@
             const tabItems = filtered.map((actress) => {
                 const count = db.filter((item) => item.actresses?.includes(actress.id)).length;
                 const isActive = actress.id === activeActress?.id;
+                const aliasText = (actress.aliases || []).length ? `<span class="actress-aliases">${actress.aliases.join(" / ")}</span>` : "";
                 return `<div class="actress-tab-item${isActive ? " is-active" : ""}" data-action="select-actress" data-id="${actress.id}" role="button" tabindex="0">
                     <i class="bi bi-person-circle actress-avatar"></i>
                     <div class="actress-tab-meta">
                         <span class="actress-name">${actress.name}</span>
+                        ${aliasText}
                         <span class="actress-count">${count} 部</span>
                     </div>
+                    <button type="button" class="btn btn-sm btn-icon actress-merge-btn" data-action="merge-actress" data-id="${actress.id}" title="整併演員"><i class="bi bi-intersect"></i></button>
+                    <button type="button" class="btn btn-sm btn-icon actress-display-btn" data-action="set-display-name" data-id="${actress.id}" title="切換顯示名稱"><i class="bi bi-type"></i></button>
                     <button type="button" class="btn btn-sm btn-icon actress-delete-btn" data-action="delete-actress" data-id="${actress.id}" title="刪除演員"><i class="bi bi-person-dash"></i></button>
                 </div>`;
             }).join("");
@@ -2045,12 +2179,18 @@
                 const filmRows = films.length
                     ? films.map((film) => renderActressFilmRow(film)).join("")
                     : `<div class="text-muted px-3 py-2 small">目前沒有影片</div>`;
+                const aliasText = (actress.aliases || []).length ? `<span class="actress-aliases">別名：${actress.aliases.join(" / ")}</span>` : "";
 
                 return `<div class="actress-card" id="actress-${actress.id}">
                     <div class="actress-header" data-action="toggle-actress" data-id="${actress.id}" role="button" tabindex="0">
                         <i class="bi bi-person-circle actress-avatar"></i>
-                        <span class="actress-name">${actress.name}</span>
+                        <div class="actress-name-block">
+                            <span class="actress-name">${actress.name}</span>
+                            ${aliasText}
+                        </div>
                         <span class="actress-count">${films.length} 部</span>
+                        <button type="button" class="btn btn-sm btn-icon actress-merge-btn" data-action="merge-actress" data-id="${actress.id}" title="整併演員"><i class="bi bi-intersect"></i></button>
+                        <button type="button" class="btn btn-sm btn-icon actress-display-btn" data-action="set-display-name" data-id="${actress.id}" title="切換顯示名稱"><i class="bi bi-type"></i></button>
                         <button type="button" class="btn btn-sm btn-icon actress-delete-btn" data-action="delete-actress" data-id="${actress.id}" title="刪除演員"><i class="bi bi-person-dash"></i></button>
                         <i class="bi bi-chevron-down actress-chevron"></i>
                     </div>
@@ -2145,6 +2285,67 @@
                 if (!id || !newStatus) return;
                 moveItem(id, newStatus);
                 renderActressList();
+            } else if (action === "set-display-name") {
+                event.stopPropagation();
+                const id = actionEl.dataset.id;
+                if (!id) return;
+                const actresses = getActresses().map(normalizeActress).filter(Boolean);
+                const actress = actresses.find((a) => a.id === id);
+                if (!actress) return;
+                const names = getActressAllNames(actress);
+                const input = window.prompt(`請輸入要顯示的名稱：\n可選：${names.join(" / ")}`, actress.name);
+                if (input === null) return;
+                const ok = setActressDisplayName(id, input);
+                if (ok) {
+                    renderActressList();
+                }
+            } else if (action === "merge-actress") {
+                event.stopPropagation();
+                const keepId = actionEl.dataset.id;
+                if (!keepId) return;
+                const actresses = getActresses().map(normalizeActress).filter(Boolean);
+                const keeper = actresses.find((a) => a.id === keepId);
+                if (!keeper) return;
+                const mergeName = window.prompt(`要整併進「${keeper.name}」的另一個名稱是？\n例如：南沢海香`);
+                if (!mergeName) return;
+
+                const other = findActressByName(mergeName, actresses);
+                if (!other) {
+                    // 找不到既有演員時，當作新增別名
+                    const ok = setActressDisplayName(keepId, keeper.name);
+                    if (ok) {
+                        const updated = getActresses().map(normalizeActress).filter(Boolean);
+                        const target = updated.find((a) => a.id === keepId);
+                        if (target) {
+                            target.aliases = dedupeNameList([...(target.aliases || []), mergeName]);
+                            target.updatedAt = new Date().toISOString();
+                            setActresses(updated);
+                            markDirty();
+                            const linked = autoTagLibraryByActress(target);
+                            if (linked) markDirty();
+                            renderActressList();
+                        }
+                    }
+                    return;
+                }
+                if (other.id === keepId) {
+                    return;
+                }
+
+                const preferred = window.prompt(
+                    `整併後顯示名稱（留空使用目前名稱）\n可選：${dedupeNameList([...getActressAllNames(keeper), ...getActressAllNames(other)]).join(" / ")}`,
+                    keeper.name
+                );
+
+                const mergedOk = mergeActressInto({ keepId, mergeId: other.id, preferredName: preferred || keeper.name });
+                if (mergedOk) {
+                    const target = getActresses().map(normalizeActress).filter(Boolean).find((a) => a.id === keepId);
+                    if (target) {
+                        const linked = autoTagLibraryByActress(target);
+                        if (linked) markDirty();
+                    }
+                    renderActressList();
+                }
             } else if (action === "delete-actress") {
                 event.stopPropagation();
                 const id = actionEl.dataset.id;
