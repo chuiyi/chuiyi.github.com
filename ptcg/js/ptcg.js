@@ -630,6 +630,8 @@ const PTCG = (() => {
                     name: player.name,
                     rank: player.rank,
                     score: player.score,
+                    scoreValue: player.scoreValue,
+                    region: player.region,
                     divisionLabel: player.divisionLabel,
                     ptcg_id: player.ptcg_id,
                 });
@@ -2302,8 +2304,8 @@ const PTCG = (() => {
     let _trendChart = null;
     let _currentTrendLevel = 'master';
     let _currentTrendFocusId = '';
-    let _trendSortKey = 'points';
-    let _trendSortOrder = 'desc';
+    let _trendSortKey = 'rank';
+    let _trendSortOrder = 'asc';
 
     function _getAvailableTrendLevels(trendData) {
         return PLAYER_LEVELS.filter(level => Array.isArray(trendData?.levels?.[level]?.players) && trendData.levels[level].players.length > 0);
@@ -2348,9 +2350,26 @@ const PTCG = (() => {
         return document.getElementById('trend-show-all')?.checked === true;
     }
 
-    function _getTrendFilteredPlayers(levelData) {
-        const keyword = _getTrendSearchKeyword();
+    function _getTrendPlayersWithCurrentRanking(levelData, levelLookup = new Map()) {
         const players = Array.isArray(levelData?.players) ? levelData.players : [];
+        return players.map((player) => {
+            const idKey = String(player?.ptcg_id || '').trim().toLowerCase();
+            const matched = idKey ? levelLookup.get(idKey) : null;
+            return {
+                ...player,
+                current_rank: Number.isFinite(matched?.rank) ? matched.rank : null,
+                current_score_text: matched?.score || null,
+                current_score_value: Number.isFinite(matched?.scoreValue)
+                    ? matched.scoreValue
+                    : (matched?.score ? parsePointsValue(matched.score) : null),
+                current_region: matched?.region || player?.region || player?.area || null,
+            };
+        });
+    }
+
+    function _getTrendFilteredPlayers(levelData, levelLookup = new Map()) {
+        const keyword = _getTrendSearchKeyword();
+        const players = _getTrendPlayersWithCurrentRanking(levelData, levelLookup);
         if (!keyword) return players;
 
         return players.filter(player => {
@@ -2360,8 +2379,8 @@ const PTCG = (() => {
         });
     }
 
-    function _getTrendSortedPlayers(levelData) {
-        const players = [..._getTrendFilteredPlayers(levelData)];
+    function _getTrendSortedPlayers(levelData, levelLookup = new Map()) {
+        const players = [..._getTrendFilteredPlayers(levelData, levelLookup)];
         const orderFactor = _trendSortOrder === 'asc' ? 1 : -1;
 
         players.sort((left, right) => {
@@ -2369,16 +2388,24 @@ const PTCG = (() => {
             if (_trendSortKey === 'appearances') {
                 compare = (left?.appearances || 0) - (right?.appearances || 0);
             } else if (_trendSortKey === 'delta') {
-                compare = (_getTrendDelta(left)?.value || 0) - (_getTrendDelta(right)?.value || 0);
+                const leftDelta = _getTrendDelta(left);
+                const rightDelta = _getTrendDelta(right);
+                const leftValue = leftDelta?.recentValue ?? leftDelta?.totalValue ?? 0;
+                const rightValue = rightDelta?.recentValue ?? rightDelta?.totalValue ?? 0;
+                compare = leftValue - rightValue;
+            } else if (_trendSortKey === 'rank') {
+                compare = (left?.current_rank || Number.MAX_SAFE_INTEGER) - (right?.current_rank || Number.MAX_SAFE_INTEGER);
             } else {
-                compare = (left?.latest_points || 0) - (right?.latest_points || 0);
+                const leftScore = Number.isFinite(left?.current_score_value) ? left.current_score_value : (left?.latest_points || 0);
+                const rightScore = Number.isFinite(right?.current_score_value) ? right.current_score_value : (right?.latest_points || 0);
+                compare = leftScore - rightScore;
             }
 
             if (compare !== 0) {
                 return compare * orderFactor;
             }
 
-            const rankDiff = (left?.latest_rank || Number.MAX_SAFE_INTEGER) - (right?.latest_rank || Number.MAX_SAFE_INTEGER);
+            const rankDiff = (left?.current_rank || Number.MAX_SAFE_INTEGER) - (right?.current_rank || Number.MAX_SAFE_INTEGER);
             if (rankDiff !== 0) {
                 return rankDiff;
             }
@@ -2404,43 +2431,67 @@ const PTCG = (() => {
         if (!series.length) return null;
         if (series.length === 1) {
             return {
-                value: 0,
-                text: '初次入榜',
-                className: 'is-flat',
+                totalValue: 0,
+                totalText: '初次入榜',
+                totalClassName: 'is-flat',
+                recentValue: null,
+                recentText: '--',
+                recentClassName: 'is-flat',
             };
         }
 
         const first = series[0]?.points || 0;
         const last = series[series.length - 1]?.points || 0;
-        const value = last - first;
-        const prefix = value > 0 ? '+' : '';
+        const totalValue = last - first;
+        const totalPrefix = totalValue > 0 ? '+' : '';
+
+        // 計算前次變化
+        const secondLast = series.length > 1 ? series[series.length - 2]?.points : null;
+        let recentValue = null;
+        let recentText = '--';
+        let recentClassName = 'is-flat';
+        
+        if (Number.isFinite(secondLast)) {
+            recentValue = last - secondLast;
+            const recentPrefix = recentValue > 0 ? '+' : '';
+            recentText = `${recentPrefix}${recentValue}pt`;
+            recentClassName = recentValue > 0 ? 'is-up' : (recentValue < 0 ? 'is-down' : 'is-flat');
+        }
 
         return {
-            value,
-            text: `${prefix}${value}pt`,
-            className: value > 0 ? 'is-up' : (value < 0 ? 'is-down' : 'is-flat'),
+            totalValue,
+            totalText: `${totalPrefix}${totalValue}pt`,
+            totalClassName: totalValue > 0 ? 'is-up' : (totalValue < 0 ? 'is-down' : 'is-flat'),
+            recentValue,
+            recentText,
+            recentClassName,
         };
     }
 
-    function _selectTrendPlayersForChart(levelData) {
-        const filteredPlayers = _getTrendSortedPlayers(levelData);
+    function _selectTrendPlayersForChart(levelData, levelLookup = new Map()) {
+        const filteredPlayers = _getTrendSortedPlayers(levelData, levelLookup);
         const showAll = _getTrendShowAllEnabled();
         const focusId = String(_currentTrendFocusId || '').trim().toLowerCase();
         const focusPlayer = filteredPlayers.find(player => String(player?.ptcg_id || '').trim().toLowerCase() === focusId) || null;
+        // 預設顯示依最新快照的 band_rank_limit（大師32, 少年16, 孩童16）
+        const snapshots = Array.isArray(levelData?.snapshots) ? levelData.snapshots : [];
+        const latestSnapshot = snapshots.length ? snapshots[snapshots.length - 1] : null;
+        const defaultVisible = latestSnapshot?.band_rank_limit ?? levelData?.top_limit ?? 32;
         let visiblePlayers = filteredPlayers;
 
         if (!showAll && !focusPlayer && !_getTrendSearchKeyword()) {
-            visiblePlayers = filteredPlayers.slice(0, 12);
+            visiblePlayers = filteredPlayers.slice(0, defaultVisible);
         }
 
         if (focusPlayer && !visiblePlayers.some(player => String(player?.ptcg_id || '').trim().toLowerCase() === focusId)) {
-            visiblePlayers = [focusPlayer, ...visiblePlayers.slice(0, showAll ? visiblePlayers.length : 11)];
+            visiblePlayers = [focusPlayer, ...visiblePlayers.slice(0, showAll ? visiblePlayers.length : defaultVisible - 1)];
         }
 
         return {
             filteredPlayers,
             visiblePlayers,
             focusPlayer,
+            defaultVisible,
         };
     }
 
@@ -2449,6 +2500,7 @@ const PTCG = (() => {
             ? levelData.snapshots.map(snapshot => snapshot.date)
             : [];
         const focusId = String(focusPlayer?.ptcg_id || '').trim().toLowerCase();
+        const hasFocus = Boolean(focusId);
 
         return players.map((player, index) => {
             const pointLookup = new Map(snapshotDates.map(date => [date, null]));
@@ -2458,18 +2510,21 @@ const PTCG = (() => {
 
             const isFocus = focusId && String(player?.ptcg_id || '').trim().toLowerCase() === focusId;
             const baseColor = TREND_LINE_COLORS[index % TREND_LINE_COLORS.length];
+            const lineAlpha = isFocus ? 1 : (hasFocus ? 0.2 : 0.42);
+            const fillAlpha = isFocus ? 0.2 : (hasFocus ? 0.03 : 0.08);
+            const pointAlpha = isFocus ? 1 : (hasFocus ? 0.2 : 0.6);
 
             return {
                 label: player.name,
                 data: [...snapshotDates.map(date => pointLookup.get(date)), ...Array(extraTailPoints).fill(null)],
                 spanGaps: false,
-                borderColor: isFocus ? baseColor : toRgba(baseColor, 0.42),
-                backgroundColor: isFocus ? toRgba(baseColor, 0.2) : toRgba(baseColor, 0.08),
+                borderColor: isFocus ? baseColor : toRgba(baseColor, lineAlpha),
+                backgroundColor: isFocus ? toRgba(baseColor, 0.2) : toRgba(baseColor, fillAlpha),
                 borderWidth: isFocus ? 3 : 2,
                 pointRadius: isFocus ? 3 : 0,
                 pointHoverRadius: isFocus ? 5 : 3,
-                pointBackgroundColor: isFocus ? baseColor : toRgba(baseColor, 0.6),
-                tension: 0.28,
+                pointBackgroundColor: isFocus ? baseColor : toRgba(baseColor, pointAlpha),
+                tension: 0,
             };
         });
     }
@@ -2594,7 +2649,7 @@ const PTCG = (() => {
                 pointHoverRadius: 4,
                 pointStyle: 'triangle',
                 fill: false,
-                tension: 0.2,
+                tension: 0,
                 order: 98,
             },
             {
@@ -2607,7 +2662,7 @@ const PTCG = (() => {
                 pointHoverRadius: 4,
                 pointStyle: 'rectRounded',
                 fill: false,
-                tension: 0.2,
+                tension: 0,
                 order: 97,
             },
             {
@@ -2618,7 +2673,7 @@ const PTCG = (() => {
                 borderWidth: 2,
                 pointRadius: 0,
                 fill: false,
-                tension: 0.2,
+                tension: 0,
                 order: 96,
             },
             {
@@ -2629,7 +2684,7 @@ const PTCG = (() => {
                 borderWidth: 2,
                 pointRadius: 0,
                 fill: false,
-                tension: 0.2,
+                tension: 0,
                 order: 95,
             },
         ];
@@ -2671,23 +2726,47 @@ const PTCG = (() => {
             return;
         }
 
-        container.innerHTML = snapshots.map((snapshot, index) => `
-            <div class="trend-snapshot-item ${index === snapshots.length - 1 ? 'is-latest' : ''}">
-                <div>
-                    <div class="trend-snapshot-date">${escapeHtml(snapshot.label || '--')}</div>
-                    <div class="trend-snapshot-meta">Top ${snapshot.cutoff_rank || '--'} 收錄 ${snapshot.included_players || 0} 人 · 區間 ${snapshot.band_max_points ?? '--'} ~ ${snapshot.band_min_points ?? '--'} pt</div>
+        container.innerHTML = [...snapshots].reverse().map((snapshot, index) => {
+            const isLatest = index === 0;
+            const origIndex = snapshots.indexOf(snapshot);
+            const prev = origIndex > 0 ? snapshots[origIndex - 1] : null;
+            const highDelta = prev != null && Number.isFinite(snapshot.band_max_points) && Number.isFinite(prev.band_max_points)
+                ? snapshot.band_max_points - prev.band_max_points : null;
+            const lowDelta = prev != null && Number.isFinite(snapshot.band_min_points) && Number.isFinite(prev.band_min_points)
+                ? snapshot.band_min_points - prev.band_min_points : null;
+            const fmtDelta = (v) => {
+                if (v == null) return '';
+                if (v > 0) return `<span style="color:#16a34a;font-size:0.72rem;font-weight:700">+${v}</span>`;
+                if (v < 0) return `<span style="color:#dc2626;font-size:0.72rem;font-weight:700">${v}</span>`;
+                return `<span style="color:#94a3b8;font-size:0.72rem">—</span>`;
+            };
+            return `
+                <div class="trend-snapshot-item ${isLatest ? 'is-latest' : ''}">
+                    <div style="flex:1;min-width:0">
+                        <div class="trend-snapshot-date">${escapeHtml(snapshot.label || '--')}</div>
+                        <div class="trend-snapshot-meta">Top ${snapshot.cutoff_rank || '--'} 收錄 ${snapshot.included_players || 0} 人</div>
+                        <div class="trend-snapshot-band">
+                            <span class="trend-snapshot-band-label">上緣</span>
+                            <span class="trend-snapshot-band-val">${Number.isFinite(snapshot.band_max_points) ? snapshot.band_max_points : '--'}pt</span>
+                            ${fmtDelta(highDelta)}
+                            <span class="trend-snapshot-band-sep"> / </span>
+                            <span class="trend-snapshot-band-label">下緣</span>
+                            <span class="trend-snapshot-band-val">${Number.isFinite(snapshot.band_min_points) ? snapshot.band_min_points : '--'}pt</span>
+                            ${fmtDelta(lowDelta)}
+                        </div>
+                    </div>
+                    <div class="trend-snapshot-count">${snapshot.included_players || 0} 人</div>
                 </div>
-                <div class="trend-snapshot-count">${snapshot.included_players || 0} 人</div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     }
 
-    function _renderTrendChart(levelData) {
+    function _renderTrendChart(levelData, levelLookup = new Map()) {
         const canvas = document.getElementById('trend-chart');
         if (!canvas) return;
 
         const snapshots = Array.isArray(levelData?.snapshots) ? levelData.snapshots : [];
-        const { filteredPlayers, visiblePlayers, focusPlayer } = _selectTrendPlayersForChart(levelData);
+        const { filteredPlayers, visiblePlayers, focusPlayer, defaultVisible } = _selectTrendPlayersForChart(levelData, levelLookup);
         const bandData = _buildTrendBandData(levelData);
         const labels = snapshots.map(snapshot => snapshot.label);
         const extraTailPoints = bandData.forecastLabel ? 1 : 0;
@@ -2708,10 +2787,21 @@ const PTCG = (() => {
         summaryParts.push(`共 ${filteredPlayers.length} 位符合條件的玩家`);
         summaryParts.push(`目前圖上顯示 ${playerDatasets.length} 條玩家折線`);
         if (!_getTrendShowAllEnabled() && !_getTrendSearchKeyword() && !focusPlayer && filteredPlayers.length > playerDatasets.length) {
-            summaryParts.push('預設顯示最新排名前 12 名');
+            summaryParts.push(`預設顯示最新排名前 ${defaultVisible} 名`);
         }
         _setText('trend-chart-summary', summaryParts.join('，'));
-        _setText('trend-focus-chip', focusPlayer ? `聚焦：${focusPlayer.name}` : '未聚焦玩家');
+        // 更新 chip 文字並控制 x 按鈕顯示
+        const chipEl = document.getElementById('trend-focus-chip');
+        const chipClear = document.getElementById('trend-focus-chip-clear');
+        if (chipEl) {
+            const textNode = chipEl.firstChild;
+            if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+                textNode.textContent = focusPlayer ? `聚焦：${focusPlayer.name}` : '未聚焦玩家';
+            }
+        }
+        if (chipClear) {
+            chipClear.style.display = focusPlayer ? 'inline' : 'none';
+        }
         _renderTrendForecastNote(levelData, bandData);
 
         if (!labels.length || !datasets.length) {
@@ -2781,11 +2871,11 @@ const PTCG = (() => {
         });
     }
 
-    function _renderTrendPlayersTable(levelData) {
+    function _renderTrendPlayersTable(levelData, levelLookup = new Map()) {
         const tbody = document.getElementById('trend-players-body');
         if (!tbody) return;
 
-        const players = _getTrendSortedPlayers(levelData);
+        const players = _getTrendSortedPlayers(levelData, levelLookup);
         if (!players.length) {
             tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-muted">沒有符合條件的玩家</td></tr>';
             return;
@@ -2803,14 +2893,14 @@ const PTCG = (() => {
                 : '';
             return `
                 <tr class="${isFocus ? 'trend-player-row-active' : ''}">
-                    <td>${getRankBadge(player.latest_rank || '--')}</td>
+                    <td>${player.current_rank ? getRankBadge(player.current_rank) : '--'}</td>
                     <td class="player-name-cell">
                         ${escapeHtml(player.name || '--')}${detailButton}
                         <span>${escapeHtml(playerId || '')}</span>
                     </td>
-                    <td class="score-cell">${escapeHtml(player.latest_points_text || `${player.latest_points || 0}pt`)}</td>
+                    <td class="score-cell">${escapeHtml(player.current_score_text || player.latest_points_text || `${player.latest_points || 0}pt`)}</td>
                     <td>${escapeHtml(String(player.appearances || 0))}</td>
-                    <td><span class="trend-delta-pill ${escapeHtml(delta?.className || 'is-flat')}">${escapeHtml(delta?.text || '--')}</span></td>
+                    <td><span class="trend-delta-pill ${escapeHtml(delta?.recentClassName || 'is-flat')}" title="與前次比較">${escapeHtml(delta?.recentText || '--')}</span></td>
                     <td>
                         <button class="btn-view-detail btn-trend-focus ${isFocus ? 'is-active' : ''}" data-trend-focus-id="${escapeHtml(playerId)}">
                             ${isFocus ? '取消' : '聚焦'}
@@ -2842,7 +2932,7 @@ const PTCG = (() => {
             score: matched?.score || trendPlayer?.latest_points_text || `${trendPlayer?.latest_points || 0}pt`,
             division: _currentTrendLevel,
             divisionLabel: matched?.divisionLabel || mapDivisionLabel(_currentTrendLevel),
-            region: trendPlayer?.region || '--',
+            region: matched?.region || trendPlayer?.region || trendPlayer?.area || '--',
         };
 
         await _openPlayerModal(detailPlayer);
@@ -2852,7 +2942,7 @@ const PTCG = (() => {
         });
     }
 
-    function _renderTrendLevel(level) {
+    async function _renderTrendLevel(level) {
         const levelData = _getTrendLevelData(level);
         if (!levelData) {
             const tbody = document.getElementById('trend-players-body');
@@ -2875,9 +2965,11 @@ const PTCG = (() => {
             : '排行快照：尚無資料');
         _updateTrendSortIndicators();
 
+        const levelLookup = await loadRankingLookupByPtcgId(level).catch(() => new Map());
+
         _renderTrendSnapshots(levelData);
-        _renderTrendChart(levelData);
-        _renderTrendPlayersTable(levelData);
+        _renderTrendChart(levelData, levelLookup);
+        _renderTrendPlayersTable(levelData, levelLookup);
     }
 
     function _bindTrendFilters() {
@@ -2932,6 +3024,11 @@ const PTCG = (() => {
                     sort_order: _trendSortOrder,
                 });
             });
+        });
+
+        document.getElementById('trend-focus-chip-clear')?.addEventListener('click', () => {
+            _currentTrendFocusId = '';
+            _renderTrendLevel(_currentTrendLevel);
         });
 
         document.getElementById('trend-players-body')?.addEventListener('click', async (event) => {

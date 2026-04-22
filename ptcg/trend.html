@@ -129,7 +129,7 @@
                         <h2 class="trend-card-title">積分折線圖</h2>
                         <p class="trend-card-subtitle" id="trend-chart-summary">載入資料中...</p>
                     </div>
-                    <div class="trend-focus-chip" id="trend-focus-chip">未聚焦玩家</div>
+                    <div class="trend-focus-chip" id="trend-focus-chip">未聚焦玩家<button type="button" class="trend-focus-chip-clear" id="trend-focus-chip-clear" aria-label="取消聚焦" style="display:none">&times;</button></div>
                 </div>
                 <div class="trend-forecast-note" id="trend-forecast-note">區間推移預估載入中...</div>
                 <div class="trend-chart-shell">
@@ -161,7 +161,11 @@
                 <table class="ptcg-table trend-player-table mb-0">
                     <thead>
                         <tr>
-                            <th width="68">排名</th>
+                            <th width="68">
+                                <button class="trend-sort-btn" type="button" data-trend-sort="rank">
+                                    排名 <span class="trend-sort-indicator" data-sort-indicator="rank">^</span>
+                                </button>
+                            </th>
                             <th>玩家</th>
                             <th width="110">
                                 <button class="trend-sort-btn" type="button" data-trend-sort="points">
@@ -173,9 +177,9 @@
                                     入榜次數 <span class="trend-sort-indicator" data-sort-indicator="appearances">-</span>
                                 </button>
                             </th>
-                            <th width="120">
+                            <th width="120" title="與前一個更新的分數變化">
                                 <button class="trend-sort-btn" type="button" data-trend-sort="delta">
-                                    分數變化 <span class="trend-sort-indicator" data-sort-indicator="delta">-</span>
+                                    前次變化 <span class="trend-sort-indicator" data-sort-indicator="delta">-</span>
                                 </button>
                             </th>
                             <th width="92">操作</th>
@@ -196,7 +200,7 @@
 
     <div class="modal fade" id="playerModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content ptcg-modal">
                 <div class="modal-header">
                     <h5 class="modal-title me-auto" id="playerModalTitle">玩家詳情</h5>
                     <span id="playerModalFetchedAt" class="me-3" style="font-size:0.8rem; color: rgba(255,255,255,0.6);"></span>
