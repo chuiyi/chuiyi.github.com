@@ -1,8 +1,8 @@
 {
   "id": "tw69069593",
   "url": "https://asia.pokemon-card.com/tw/users/tw69069593/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-17T10:12:10.191Z",
-  "totalEvents": 221,
+  "fetchedAt": "2026-04-21T20:31:34.845Z",
+  "totalEvents": 220,
   "participatedTournaments": [
     {
       "pageNo": 11,
@@ -27,8 +27,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 12,
-      "rowIndex": 1,
+      "pageNo": 11,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "05-16-2026 09:00",
       "eventDateTime": "2026-05-16 09:00",
@@ -50,23 +50,12 @@
     },
     {
       "pageNo": 11,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "05-02-2026 11:00",
       "eventDateTime": "2026-05-02 11:00",
       "location": "新世紀遊戲館",
       "address": "新竹市北區平和街7號2樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 11,
-      "rowIndex": 18,
-      "activityName": "2025-26 Taiwan Great Ball League Season 3",
-      "eventTime": "04-25-2026 09:00",
-      "eventDateTime": "2026-04-25 09:00",
-      "location": "Card Master",
-      "address": "100台北市中正區南昌路二段47號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -78,7 +67,7 @@
       "eventDateTime": "2026-04-19 14:00",
       "location": "Play Lab Game 休閒館 台南",
       "address": "台南市中西區民族路二段62號2樓",
-      "rank": "-",
+      "rank": "5",
       "lp": "-"
     },
     {

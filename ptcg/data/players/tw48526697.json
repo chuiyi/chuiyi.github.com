@@ -1,8 +1,8 @@
 {
   "id": "tw48526697",
   "url": "https://asia.pokemon-card.com/tw/users/tw48526697/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-17T10:59:02.259Z",
-  "totalEvents": 66,
+  "fetchedAt": "2026-04-21T20:50:05.836Z",
+  "totalEvents": 67,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -17,6 +17,17 @@
     },
     {
       "pageNo": 4,
+      "rowIndex": 6,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-18-2026 10:00",
+      "eventDateTime": "2026-04-18 10:00",
+      "location": "諾亞方舟益智遊戲",
+      "address": "台中市西屯區台灣大道二段910號5樓之1",
+      "rank": "89",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
       "rowIndex": 3,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-1 (大師組)",
       "eventTime": "03-14-2026 08:30",
@@ -24,7 +35,7 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
       "rank": "115",
-      "lp": "-"
+      "lp": "8"
     },
     {
       "pageNo": 4,
