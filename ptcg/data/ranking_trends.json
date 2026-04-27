@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-22T05:20:05.479Z",
+  "generated_at": "2026-04-27T02:34:53.095Z",
   "source": {
     "data_dir": ".",
     "ranking_old_dir": "ranking_old",
@@ -82,16 +82,28 @@
           "band_players": 33,
           "band_max_points": 224,
           "band_min_points": 139
+        },
+        {
+          "date": "20260427",
+          "label": "2026/04/27",
+          "file": "ranking_20260427_master_result.csv",
+          "total_players": 4717,
+          "included_players": 64,
+          "cutoff_rank": 64,
+          "band_rank_limit": 32,
+          "band_players": 33,
+          "band_max_points": 224,
+          "band_min_points": 141
         }
       ],
-      "latest_date": "20260422",
-      "latest_date_label": "2026/04/22",
+      "latest_date": "20260427",
+      "latest_date_label": "2026/04/27",
       "players": [
         {
           "ptcg_id": "tw15435377",
           "name": "Tiger",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 1,
           "latest_points": 224,
           "latest_points_text": "224pt",
@@ -155,6 +167,16 @@
               "area": "新北市",
               "username": "Tiger",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 1,
+              "points": 224,
+              "points_text": "224pt",
+              "area": "新北市",
+              "username": "Tiger",
+              "in_cutoff": true
             }
           ]
         },
@@ -162,7 +184,7 @@
           "ptcg_id": "tw56336073",
           "name": "NiHao_WoChiYiDian",
           "area": "臺中市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 2,
           "latest_points": 218,
           "latest_points_text": "218pt",
@@ -226,6 +248,16 @@
               "area": "臺中市",
               "username": "NiHao_WoChiYiDian",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 2,
+              "points": 218,
+              "points_text": "218pt",
+              "area": "臺中市",
+              "username": "NiHao_WoChiYiDian",
+              "in_cutoff": true
             }
           ]
         },
@@ -233,7 +265,7 @@
           "ptcg_id": "tw27568465",
           "name": "Galaxy",
           "area": "臺中市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 3,
           "latest_points": 201,
           "latest_points_text": "201pt",
@@ -297,6 +329,16 @@
               "area": "臺中市",
               "username": "Galaxy",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 3,
+              "points": 201,
+              "points_text": "201pt",
+              "area": "臺中市",
+              "username": "Galaxy",
+              "in_cutoff": true
             }
           ]
         },
@@ -304,7 +346,7 @@
           "ptcg_id": "tw48793078",
           "name": "BossTang",
           "area": "基隆市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 4,
           "latest_points": 198,
           "latest_points_text": "198pt",
@@ -368,6 +410,16 @@
               "area": "基隆市",
               "username": "BossTang",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 4,
+              "points": 198,
+              "points_text": "198pt",
+              "area": "基隆市",
+              "username": "BossTang",
+              "in_cutoff": true
             }
           ]
         },
@@ -375,7 +427,7 @@
           "ptcg_id": "tw56605426",
           "name": "LUN",
           "area": "臺南市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 5,
           "latest_points": 193,
           "latest_points_text": "193pt",
@@ -439,6 +491,16 @@
               "area": "臺南市",
               "username": "LUN",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 5,
+              "points": 193,
+              "points_text": "193pt",
+              "area": "臺南市",
+              "username": "LUN",
+              "in_cutoff": true
             }
           ]
         },
@@ -446,7 +508,7 @@
           "ptcg_id": "tw42309306",
           "name": "shawn",
           "area": "臺中市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 6,
           "latest_points": 192,
           "latest_points_text": "192pt",
@@ -510,6 +572,16 @@
               "area": "臺中市",
               "username": "shawn",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 6,
+              "points": 192,
+              "points_text": "192pt",
+              "area": "臺中市",
+              "username": "shawn",
+              "in_cutoff": true
             }
           ]
         },
@@ -517,7 +589,7 @@
           "ptcg_id": "tw79280986",
           "name": "TCGSTORE_阿元",
           "area": "臺北市",
-          "appearances": 2,
+          "appearances": 3,
           "latest_rank": 7,
           "latest_points": 190,
           "latest_points_text": "190pt",
@@ -581,6 +653,16 @@
               "area": "臺北市",
               "username": "TCGSTORE_阿元",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 7,
+              "points": 190,
+              "points_text": "190pt",
+              "area": "臺北市",
+              "username": "TCGSTORE_阿元",
+              "in_cutoff": true
             }
           ]
         },
@@ -588,7 +670,7 @@
           "ptcg_id": "tw73048413",
           "name": "Yeen",
           "area": "臺南市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 8,
           "latest_points": 185,
           "latest_points_text": "185pt",
@@ -652,6 +734,16 @@
               "area": "臺南市",
               "username": "Yeen",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 8,
+              "points": 185,
+              "points_text": "185pt",
+              "area": "臺南市",
+              "username": "Yeen",
+              "in_cutoff": true
             }
           ]
         },
@@ -659,7 +751,7 @@
           "ptcg_id": "tw78403870",
           "name": "Jiao",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 9,
           "latest_points": 182,
           "latest_points_text": "182pt",
@@ -723,76 +815,15 @@
               "area": "新北市",
               "username": "Jiao",
               "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw73106123",
-          "name": "Ray",
-          "area": "高雄市",
-          "appearances": 6,
-          "latest_rank": 10,
-          "latest_points": 180,
-          "latest_points_text": "180pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 8,
-              "points": 172,
-              "points_text": "172pt",
-              "area": "高雄市",
-              "username": "Ray",
-              "in_cutoff": true
             },
             {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 7,
-              "points": 176,
-              "points_text": "176pt",
-              "area": "高雄市",
-              "username": "Ray",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 6,
-              "points": 180,
-              "points_text": "180pt",
-              "area": "高雄市",
-              "username": "Ray",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 6,
-              "points": 180,
-              "points_text": "180pt",
-              "area": "高雄市",
-              "username": "Ray",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 10,
-              "points": 180,
-              "points_text": "180pt",
-              "area": "高雄市",
-              "username": "Ray",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 10,
-              "points": 180,
-              "points_text": "180pt",
-              "area": "高雄市",
-              "username": "Ray",
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 9,
+              "points": 182,
+              "points_text": "182pt",
+              "area": "新北市",
+              "username": "Jiao",
               "in_cutoff": true
             }
           ]
@@ -801,8 +832,8 @@
           "ptcg_id": "tw36759052",
           "name": "aaaa",
           "area": "臺中市",
-          "appearances": 6,
-          "latest_rank": 11,
+          "appearances": 7,
+          "latest_rank": 10,
           "latest_points": 178,
           "latest_points_text": "178pt",
           "series": [
@@ -865,6 +896,97 @@
               "area": "臺中市",
               "username": "aaaa",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 10,
+              "points": 178,
+              "points_text": "178pt",
+              "area": "臺中市",
+              "username": "aaaa",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw73106123",
+          "name": "Ray",
+          "area": "高雄市",
+          "appearances": 7,
+          "latest_rank": 10,
+          "latest_points": 178,
+          "latest_points_text": "178pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 8,
+              "points": 172,
+              "points_text": "172pt",
+              "area": "高雄市",
+              "username": "Ray",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 7,
+              "points": 176,
+              "points_text": "176pt",
+              "area": "高雄市",
+              "username": "Ray",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 6,
+              "points": 180,
+              "points_text": "180pt",
+              "area": "高雄市",
+              "username": "Ray",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 6,
+              "points": 180,
+              "points_text": "180pt",
+              "area": "高雄市",
+              "username": "Ray",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 10,
+              "points": 180,
+              "points_text": "180pt",
+              "area": "高雄市",
+              "username": "Ray",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 10,
+              "points": 180,
+              "points_text": "180pt",
+              "area": "高雄市",
+              "username": "Ray",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 10,
+              "points": 178,
+              "points_text": "178pt",
+              "area": "高雄市",
+              "username": "Ray",
+              "in_cutoff": true
             }
           ]
         },
@@ -872,8 +994,8 @@
           "ptcg_id": "tw77877383",
           "name": "TopCard_Fu",
           "area": "新竹縣",
-          "appearances": 6,
-          "latest_rank": 11,
+          "appearances": 7,
+          "latest_rank": 10,
           "latest_points": 178,
           "latest_points_text": "178pt",
           "series": [
@@ -936,6 +1058,16 @@
               "area": "新竹縣",
               "username": "TopCard_Fu",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 10,
+              "points": 178,
+              "points_text": "178pt",
+              "area": "新竹縣",
+              "username": "TopCard_Fu",
+              "in_cutoff": true
             }
           ]
         },
@@ -943,7 +1075,7 @@
           "ptcg_id": "tw03132048",
           "name": "Danyang",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 13,
           "latest_points": 174,
           "latest_points_text": "174pt",
@@ -1007,6 +1139,16 @@
               "area": "高雄市",
               "username": "Danyang",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 13,
+              "points": 174,
+              "points_text": "174pt",
+              "area": "高雄市",
+              "username": "Danyang",
+              "in_cutoff": true
             }
           ]
         },
@@ -1014,7 +1156,7 @@
           "ptcg_id": "tw24854365",
           "name": "GMS-FangKaiyo",
           "area": "新竹縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 14,
           "latest_points": 165,
           "latest_points_text": "165pt",
@@ -1078,6 +1220,16 @@
               "area": "新竹縣",
               "username": "GMS-FangKaiyo",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 14,
+              "points": 165,
+              "points_text": "165pt",
+              "area": "新竹縣",
+              "username": "GMS-FangKaiyo",
+              "in_cutoff": true
             }
           ]
         },
@@ -1085,7 +1237,7 @@
           "ptcg_id": "tw05925639",
           "name": "Mr.Gengar",
           "area": "臺中市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 15,
           "latest_points": 162,
           "latest_points_text": "162pt",
@@ -1149,6 +1301,16 @@
               "area": "臺中市",
               "username": "Mr.Gengar",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 15,
+              "points": 162,
+              "points_text": "162pt",
+              "area": "臺中市",
+              "username": "Mr.Gengar",
+              "in_cutoff": true
             }
           ]
         },
@@ -1156,7 +1318,7 @@
           "ptcg_id": "tw97931731",
           "name": "Moon",
           "area": "臺北市",
-          "appearances": 2,
+          "appearances": 3,
           "latest_rank": 16,
           "latest_points": 161,
           "latest_points_text": "161pt",
@@ -1220,6 +1382,16 @@
               "area": "臺北市",
               "username": "Moon",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 16,
+              "points": 161,
+              "points_text": "161pt",
+              "area": "臺北市",
+              "username": "Moon",
+              "in_cutoff": true
             }
           ]
         },
@@ -1227,7 +1399,7 @@
           "ptcg_id": "tw23764220",
           "name": "Akashi",
           "area": "彰化縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 17,
           "latest_points": 160,
           "latest_points_text": "160pt",
@@ -1291,6 +1463,16 @@
               "area": "彰化縣",
               "username": "Akashi",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 17,
+              "points": 160,
+              "points_text": "160pt",
+              "area": "彰化縣",
+              "username": "Akashi",
+              "in_cutoff": true
             }
           ]
         },
@@ -1298,7 +1480,7 @@
           "ptcg_id": "tw69848864",
           "name": "ZIYI777",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 17,
           "latest_points": 160,
           "latest_points_text": "160pt",
@@ -1362,6 +1544,16 @@
               "area": "新北市",
               "username": "ZIYI777",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 17,
+              "points": 160,
+              "points_text": "160pt",
+              "area": "新北市",
+              "username": "ZIYI777",
+              "in_cutoff": true
             }
           ]
         },
@@ -1369,7 +1561,7 @@
           "ptcg_id": "tw22529091",
           "name": "Heisenberg",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 19,
           "latest_points": 159,
           "latest_points_text": "159pt",
@@ -1433,6 +1625,16 @@
               "area": "臺北市",
               "username": "Heisenberg",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 19,
+              "points": 159,
+              "points_text": "159pt",
+              "area": "臺北市",
+              "username": "Heisenberg",
+              "in_cutoff": true
             }
           ]
         },
@@ -1440,7 +1642,7 @@
           "ptcg_id": "tw93433450",
           "name": "DKA_PIGRIGHT0",
           "area": "宜蘭縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 20,
           "latest_points": 156,
           "latest_points_text": "156pt",
@@ -1504,6 +1706,16 @@
               "area": "宜蘭縣",
               "username": "DKA_PIGRIGHT0",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 20,
+              "points": 156,
+              "points_text": "156pt",
+              "area": "宜蘭縣",
+              "username": "DKA_PIGRIGHT0",
+              "in_cutoff": true
             }
           ]
         },
@@ -1511,7 +1723,7 @@
           "ptcg_id": "tw29404493",
           "name": "Stanley.LAI",
           "area": "臺中市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 20,
           "latest_points": 156,
           "latest_points_text": "156pt",
@@ -1575,6 +1787,16 @@
               "area": "臺中市",
               "username": "Stanley.LAI",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 20,
+              "points": 156,
+              "points_text": "156pt",
+              "area": "臺中市",
+              "username": "Stanley.LAI",
+              "in_cutoff": true
             }
           ]
         },
@@ -1582,7 +1804,7 @@
           "ptcg_id": "tw15026318",
           "name": "XJH_Fengshen",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 22,
           "latest_points": 154,
           "latest_points_text": "154pt",
@@ -1646,6 +1868,16 @@
               "area": "新北市",
               "username": "XJH_Fengshen",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 22,
+              "points": 154,
+              "points_text": "154pt",
+              "area": "新北市",
+              "username": "XJH_Fengshen",
+              "in_cutoff": true
             }
           ]
         },
@@ -1653,10 +1885,10 @@
           "ptcg_id": "tw94971550",
           "name": "86",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 23,
-          "latest_points": 151,
-          "latest_points_text": "151pt",
+          "latest_points": 153,
+          "latest_points_text": "153pt",
           "series": [
             {
               "date": "20260323",
@@ -1717,6 +1949,97 @@
               "area": "臺北市",
               "username": "86",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 23,
+              "points": 153,
+              "points_text": "153pt",
+              "area": "臺北市",
+              "username": "86",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw78657682",
+          "name": "cian",
+          "area": "高雄市",
+          "appearances": 7,
+          "latest_rank": 24,
+          "latest_points": 149,
+          "latest_points_text": "149pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 31,
+              "points": 127,
+              "points_text": "127pt",
+              "area": "高雄市",
+              "username": "cian",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 34,
+              "points": 127,
+              "points_text": "127pt",
+              "area": "高雄市",
+              "username": "cian",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 37,
+              "points": 127,
+              "points_text": "127pt",
+              "area": "高雄市",
+              "username": "cian",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 20,
+              "points": 139,
+              "points_text": "139pt",
+              "area": "高雄市",
+              "username": "cian",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 29,
+              "points": 139,
+              "points_text": "139pt",
+              "area": "高雄市",
+              "username": "cian",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 31,
+              "points": 139,
+              "points_text": "139pt",
+              "area": "高雄市",
+              "username": "cian",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 24,
+              "points": 149,
+              "points_text": "149pt",
+              "area": "高雄市",
+              "username": "cian",
+              "in_cutoff": true
             }
           ]
         },
@@ -1724,8 +2047,8 @@
           "ptcg_id": "tw02559687",
           "name": "瘋桌遊楠梓店正老闆徵闆娘！",
           "area": "高雄市",
-          "appearances": 6,
-          "latest_rank": 24,
+          "appearances": 7,
+          "latest_rank": 25,
           "latest_points": 147,
           "latest_points_text": "147pt",
           "series": [
@@ -1788,6 +2111,178 @@
               "area": "高雄市",
               "username": "瘋桌遊楠梓店正老闆徵闆娘！",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 25,
+              "points": 147,
+              "points_text": "147pt",
+              "area": "高雄市",
+              "username": "瘋桌遊楠梓店正老闆徵闆娘！",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw76086171",
+          "name": "ClawsTY Martin",
+          "area": "桃園市",
+          "appearances": 7,
+          "latest_rank": 25,
+          "latest_points": 147,
+          "latest_points_text": "147pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 17,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "桃園市",
+              "username": "ClawsTY Martin",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 18,
+              "points": 139,
+              "points_text": "139pt",
+              "area": "桃園市",
+              "username": "ClawsTY Martin",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 18,
+              "points": 139,
+              "points_text": "139pt",
+              "area": "桃園市",
+              "username": "ClawsTY Martin",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 20,
+              "points": 139,
+              "points_text": "139pt",
+              "area": "桃園市",
+              "username": "ClawsTY Martin",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 29,
+              "points": 139,
+              "points_text": "139pt",
+              "area": "桃園市",
+              "username": "ClawsTY Martin",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 31,
+              "points": 139,
+              "points_text": "139pt",
+              "area": "桃園市",
+              "username": "ClawsTY Martin",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 25,
+              "points": 147,
+              "points_text": "147pt",
+              "area": "桃園市",
+              "username": "ClawsTY Martin",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw45485735",
+          "name": "Ianyang",
+          "area": "高雄市",
+          "appearances": 7,
+          "latest_rank": 25,
+          "latest_points": 147,
+          "latest_points_text": "147pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 20,
+              "points": 135,
+              "points_text": "135pt",
+              "area": "高雄市",
+              "username": "Ianyang",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 20,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "高雄市",
+              "username": "Ianyang",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 20,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "高雄市",
+              "username": "Ianyang",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 25,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "高雄市",
+              "username": "Ianyang",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 32,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "高雄市",
+              "username": "Ianyang",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 34,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "高雄市",
+              "username": "Ianyang",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 25,
+              "points": 147,
+              "points_text": "147pt",
+              "area": "高雄市",
+              "username": "Ianyang",
+              "in_cutoff": true
             }
           ]
         },
@@ -1795,8 +2290,8 @@
           "ptcg_id": "tw10141695",
           "name": "PoYangHsu",
           "area": "高雄市",
-          "appearances": 6,
-          "latest_rank": 25,
+          "appearances": 7,
+          "latest_rank": 28,
           "latest_points": 145,
           "latest_points_text": "145pt",
           "series": [
@@ -1859,6 +2354,16 @@
               "area": "高雄市",
               "username": "PoYangHsu",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 28,
+              "points": 145,
+              "points_text": "145pt",
+              "area": "高雄市",
+              "username": "PoYangHsu",
+              "in_cutoff": true
             }
           ]
         },
@@ -1866,8 +2371,8 @@
           "ptcg_id": "tw85147749",
           "name": "TCGSTORE_MASSA",
           "area": "臺北市",
-          "appearances": 6,
-          "latest_rank": 25,
+          "appearances": 7,
+          "latest_rank": 28,
           "latest_points": 145,
           "latest_points_text": "145pt",
           "series": [
@@ -1930,6 +2435,16 @@
               "area": "臺北市",
               "username": "TCGSTORE_MASSA",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 28,
+              "points": 145,
+              "points_text": "145pt",
+              "area": "臺北市",
+              "username": "TCGSTORE_MASSA",
+              "in_cutoff": true
             }
           ]
         },
@@ -1937,8 +2452,8 @@
           "ptcg_id": "tw79188375",
           "name": "will",
           "area": "高雄市",
-          "appearances": 6,
-          "latest_rank": 25,
+          "appearances": 7,
+          "latest_rank": 28,
           "latest_points": 145,
           "latest_points_text": "145pt",
           "series": [
@@ -2001,6 +2516,16 @@
               "area": "高雄市",
               "username": "will",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 28,
+              "points": 145,
+              "points_text": "145pt",
+              "area": "高雄市",
+              "username": "will",
+              "in_cutoff": true
             }
           ]
         },
@@ -2008,8 +2533,8 @@
           "ptcg_id": "tw01909140",
           "name": "海豹姐",
           "area": "彰化縣",
-          "appearances": 6,
-          "latest_rank": 28,
+          "appearances": 7,
+          "latest_rank": 31,
           "latest_points": 143,
           "latest_points_text": "143pt",
           "series": [
@@ -2072,6 +2597,16 @@
               "area": "彰化縣",
               "username": "海豹姐",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 31,
+              "points": 143,
+              "points_text": "143pt",
+              "area": "彰化縣",
+              "username": "海豹姐",
+              "in_cutoff": true
             }
           ]
         },
@@ -2079,8 +2614,8 @@
           "ptcg_id": "tw76470686",
           "name": "BenT",
           "area": "臺南市",
-          "appearances": 6,
-          "latest_rank": 29,
+          "appearances": 7,
+          "latest_rank": 32,
           "latest_points": 141,
           "latest_points_text": "141pt",
           "series": [
@@ -2143,6 +2678,16 @@
               "area": "臺南市",
               "username": "BenT",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 32,
+              "points": 141,
+              "points_text": "141pt",
+              "area": "臺南市",
+              "username": "BenT",
+              "in_cutoff": true
             }
           ]
         },
@@ -2150,8 +2695,8 @@
           "ptcg_id": "tw33544977",
           "name": "JEFF",
           "area": "新北市",
-          "appearances": 6,
-          "latest_rank": 29,
+          "appearances": 7,
+          "latest_rank": 32,
           "latest_points": 141,
           "latest_points_text": "141pt",
           "series": [
@@ -2214,147 +2759,15 @@
               "area": "新北市",
               "username": "JEFF",
               "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw78657682",
-          "name": "cian",
-          "area": "高雄市",
-          "appearances": 6,
-          "latest_rank": 31,
-          "latest_points": 139,
-          "latest_points_text": "139pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 31,
-              "points": 127,
-              "points_text": "127pt",
-              "area": "高雄市",
-              "username": "cian",
-              "in_cutoff": true
             },
             {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 34,
-              "points": 127,
-              "points_text": "127pt",
-              "area": "高雄市",
-              "username": "cian",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 37,
-              "points": 127,
-              "points_text": "127pt",
-              "area": "高雄市",
-              "username": "cian",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 20,
-              "points": 139,
-              "points_text": "139pt",
-              "area": "高雄市",
-              "username": "cian",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 29,
-              "points": 139,
-              "points_text": "139pt",
-              "area": "高雄市",
-              "username": "cian",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 31,
-              "points": 139,
-              "points_text": "139pt",
-              "area": "高雄市",
-              "username": "cian",
-              "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw76086171",
-          "name": "ClawsTY Martin",
-          "area": "桃園市",
-          "appearances": 6,
-          "latest_rank": 31,
-          "latest_points": 139,
-          "latest_points_text": "139pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 17,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "桃園市",
-              "username": "ClawsTY Martin",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 18,
-              "points": 139,
-              "points_text": "139pt",
-              "area": "桃園市",
-              "username": "ClawsTY Martin",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 18,
-              "points": 139,
-              "points_text": "139pt",
-              "area": "桃園市",
-              "username": "ClawsTY Martin",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 20,
-              "points": 139,
-              "points_text": "139pt",
-              "area": "桃園市",
-              "username": "ClawsTY Martin",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 29,
-              "points": 139,
-              "points_text": "139pt",
-              "area": "桃園市",
-              "username": "ClawsTY Martin",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 31,
-              "points": 139,
-              "points_text": "139pt",
-              "area": "桃園市",
-              "username": "ClawsTY Martin",
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 32,
+              "points": 141,
+              "points_text": "141pt",
+              "area": "新北市",
+              "username": "JEFF",
               "in_cutoff": true
             }
           ]
@@ -2363,8 +2776,8 @@
           "ptcg_id": "tw10467123",
           "name": "TEAM_David",
           "area": "臺北市",
-          "appearances": 6,
-          "latest_rank": 31,
+          "appearances": 7,
+          "latest_rank": 34,
           "latest_points": 139,
           "latest_points_text": "139pt",
           "series": [
@@ -2427,76 +2840,15 @@
               "area": "臺北市",
               "username": "TEAM_David",
               "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw45485735",
-          "name": "Ianyang",
-          "area": "高雄市",
-          "appearances": 6,
-          "latest_rank": 34,
-          "latest_points": 137,
-          "latest_points_text": "137pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 20,
-              "points": 135,
-              "points_text": "135pt",
-              "area": "高雄市",
-              "username": "Ianyang",
-              "in_cutoff": true
             },
             {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 20,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "高雄市",
-              "username": "Ianyang",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 20,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "高雄市",
-              "username": "Ianyang",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 25,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "高雄市",
-              "username": "Ianyang",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 32,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "高雄市",
-              "username": "Ianyang",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
+              "date": "20260427",
+              "label": "2026/04/27",
               "rank": 34,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "高雄市",
-              "username": "Ianyang",
+              "points": 139,
+              "points_text": "139pt",
+              "area": "臺北市",
+              "username": "TEAM_David",
               "in_cutoff": true
             }
           ]
@@ -2505,7 +2857,7 @@
           "ptcg_id": "tw23226571",
           "name": "R1n90",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 35,
           "latest_points": 136,
           "latest_points_text": "136pt",
@@ -2569,6 +2921,16 @@
               "area": "新北市",
               "username": "R1n90",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 35,
+              "points": 136,
+              "points_text": "136pt",
+              "area": "新北市",
+              "username": "R1n90",
+              "in_cutoff": true
             }
           ]
         },
@@ -2576,10 +2938,10 @@
           "ptcg_id": "tw44344603",
           "name": "哈力栗",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 36,
-          "latest_points": 132,
-          "latest_points_text": "132pt",
+          "latest_points": 134,
+          "latest_points_text": "134pt",
           "series": [
             {
               "date": "20260323",
@@ -2640,6 +3002,97 @@
               "area": "高雄市",
               "username": "哈力栗",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 36,
+              "points": 134,
+              "points_text": "134pt",
+              "area": "高雄市",
+              "username": "哈力栗",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw16132632",
+          "name": "GHG_PeterWine",
+          "area": "宜蘭縣",
+          "appearances": 7,
+          "latest_rank": 37,
+          "latest_points": 131,
+          "latest_points_text": "131pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 29,
+              "points": 129,
+              "points_text": "129pt",
+              "area": "宜蘭縣",
+              "username": "GHG_PeterWine",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 28,
+              "points": 131,
+              "points_text": "131pt",
+              "area": "宜蘭縣",
+              "username": "GHG_PeterWine",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 36,
+              "points": 129,
+              "points_text": "129pt",
+              "area": "宜蘭縣",
+              "username": "GHG_PeterWine",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 37,
+              "points": 129,
+              "points_text": "129pt",
+              "area": "宜蘭縣",
+              "username": "GHG_PeterWine",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 40,
+              "points": 129,
+              "points_text": "129pt",
+              "area": "宜蘭縣",
+              "username": "GHG_PeterWine",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 40,
+              "points": 129,
+              "points_text": "129pt",
+              "area": "宜蘭縣",
+              "username": "GHG_PeterWine",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 37,
+              "points": 131,
+              "points_text": "131pt",
+              "area": "宜蘭縣",
+              "username": "GHG_PeterWine",
+              "in_cutoff": true
             }
           ]
         },
@@ -2647,7 +3100,7 @@
           "ptcg_id": "tw93955100",
           "name": "GMS-YO",
           "area": "臺南市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 37,
           "latest_points": 131,
           "latest_points_text": "131pt",
@@ -2711,6 +3164,16 @@
               "area": "臺南市",
               "username": "GMS-YO",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 37,
+              "points": 131,
+              "points_text": "131pt",
+              "area": "臺南市",
+              "username": "GMS-YO",
+              "in_cutoff": true
             }
           ]
         },
@@ -2718,8 +3181,8 @@
           "ptcg_id": "tw04461037",
           "name": "kazma",
           "area": "臺北市",
-          "appearances": 6,
-          "latest_rank": 38,
+          "appearances": 7,
+          "latest_rank": 39,
           "latest_points": 130,
           "latest_points_text": "130pt",
           "series": [
@@ -2782,6 +3245,16 @@
               "area": "臺北市",
               "username": "kazma",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 39,
+              "points": 130,
+              "points_text": "130pt",
+              "area": "臺北市",
+              "username": "kazma",
+              "in_cutoff": true
             }
           ]
         },
@@ -2789,8 +3262,8 @@
           "ptcg_id": "tw26175828",
           "name": "QQ",
           "area": "臺中市",
-          "appearances": 6,
-          "latest_rank": 38,
+          "appearances": 7,
+          "latest_rank": 39,
           "latest_points": 130,
           "latest_points_text": "130pt",
           "series": [
@@ -2853,76 +3326,15 @@
               "area": "臺中市",
               "username": "QQ",
               "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw16132632",
-          "name": "GHG_PeterWine",
-          "area": "宜蘭縣",
-          "appearances": 6,
-          "latest_rank": 40,
-          "latest_points": 129,
-          "latest_points_text": "129pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 29,
-              "points": 129,
-              "points_text": "129pt",
-              "area": "宜蘭縣",
-              "username": "GHG_PeterWine",
-              "in_cutoff": true
             },
             {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 28,
-              "points": 131,
-              "points_text": "131pt",
-              "area": "宜蘭縣",
-              "username": "GHG_PeterWine",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 36,
-              "points": 129,
-              "points_text": "129pt",
-              "area": "宜蘭縣",
-              "username": "GHG_PeterWine",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 37,
-              "points": 129,
-              "points_text": "129pt",
-              "area": "宜蘭縣",
-              "username": "GHG_PeterWine",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 40,
-              "points": 129,
-              "points_text": "129pt",
-              "area": "宜蘭縣",
-              "username": "GHG_PeterWine",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 40,
-              "points": 129,
-              "points_text": "129pt",
-              "area": "宜蘭縣",
-              "username": "GHG_PeterWine",
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 39,
+              "points": 130,
+              "points_text": "130pt",
+              "area": "臺中市",
+              "username": "QQ",
               "in_cutoff": true
             }
           ]
@@ -2931,8 +3343,8 @@
           "ptcg_id": "tw28750216",
           "name": "Shanks",
           "area": "新北市",
-          "appearances": 6,
-          "latest_rank": 40,
+          "appearances": 7,
+          "latest_rank": 41,
           "latest_points": 129,
           "latest_points_text": "129pt",
           "series": [
@@ -2990,6 +3402,16 @@
               "date": "20260422",
               "label": "2026/04/22",
               "rank": 40,
+              "points": 129,
+              "points_text": "129pt",
+              "area": "新北市",
+              "username": "Shanks",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 41,
               "points": 129,
               "points_text": "129pt",
               "area": "新北市",
@@ -3002,7 +3424,7 @@
           "ptcg_id": "tw63508480",
           "name": "曉致",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 42,
           "latest_points": 124,
           "latest_points_text": "124pt",
@@ -3066,6 +3488,16 @@
               "area": "高雄市",
               "username": "曉致",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 42,
+              "points": 124,
+              "points_text": "124pt",
+              "area": "高雄市",
+              "username": "曉致",
+              "in_cutoff": true
             }
           ]
         },
@@ -3073,7 +3505,7 @@
           "ptcg_id": "tw46798799",
           "name": "DCG_2330",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 42,
           "latest_points": 124,
           "latest_points_text": "124pt",
@@ -3137,6 +3569,16 @@
               "area": "臺北市",
               "username": "DCG_2330",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 42,
+              "points": 124,
+              "points_text": "124pt",
+              "area": "臺北市",
+              "username": "DCG_2330",
+              "in_cutoff": true
             }
           ]
         },
@@ -3144,7 +3586,7 @@
           "ptcg_id": "tw42619935",
           "name": "ScreamTail",
           "area": "臺南市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 42,
           "latest_points": 124,
           "latest_points_text": "124pt",
@@ -3208,6 +3650,16 @@
               "area": "臺南市",
               "username": "ScreamTail",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 42,
+              "points": 124,
+              "points_text": "124pt",
+              "area": "臺南市",
+              "username": "ScreamTail",
+              "in_cutoff": true
             }
           ]
         },
@@ -3215,7 +3667,7 @@
           "ptcg_id": "tw18638755",
           "name": "Caraa.tsai",
           "area": "彰化縣",
-          "appearances": 2,
+          "appearances": 3,
           "latest_rank": 45,
           "latest_points": 122,
           "latest_points_text": "122pt",
@@ -3279,6 +3731,16 @@
               "area": "彰化縣",
               "username": "Caraa.tsai",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 45,
+              "points": 122,
+              "points_text": "122pt",
+              "area": "彰化縣",
+              "username": "Caraa.tsai",
+              "in_cutoff": true
             }
           ]
         },
@@ -3286,7 +3748,7 @@
           "ptcg_id": "tw06441088",
           "name": "lkkder",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 45,
           "latest_points": 122,
           "latest_points_text": "122pt",
@@ -3350,6 +3812,97 @@
               "area": "高雄市",
               "username": "lkkder",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 45,
+              "points": 122,
+              "points_text": "122pt",
+              "area": "高雄市",
+              "username": "lkkder",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw50567676",
+          "name": "Johnny",
+          "area": "苗栗縣",
+          "appearances": 7,
+          "latest_rank": 47,
+          "latest_points": 121,
+          "latest_points_text": "121pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 53,
+              "points": 107,
+              "points_text": "107pt",
+              "area": "苗栗縣",
+              "username": "Johnny",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 40,
+              "points": 119,
+              "points_text": "119pt",
+              "area": "苗栗縣",
+              "username": "Johnny",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 55,
+              "points": 107,
+              "points_text": "107pt",
+              "area": "苗栗縣",
+              "username": "Johnny",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 55,
+              "points": 107,
+              "points_text": "107pt",
+              "area": "苗栗縣",
+              "username": "Johnny",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 62,
+              "points": 109,
+              "points_text": "109pt",
+              "area": "苗栗縣",
+              "username": "Johnny",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 63,
+              "points": 109,
+              "points_text": "109pt",
+              "area": "苗栗縣",
+              "username": "Johnny",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 47,
+              "points": 121,
+              "points_text": "121pt",
+              "area": "苗栗縣",
+              "username": "Johnny",
+              "in_cutoff": true
             }
           ]
         },
@@ -3357,8 +3910,8 @@
           "ptcg_id": "tw75551324",
           "name": "ChenMinQian",
           "area": "苗栗縣",
-          "appearances": 5,
-          "latest_rank": 47,
+          "appearances": 6,
+          "latest_rank": 48,
           "latest_points": 120,
           "latest_points_text": "120pt",
           "series": [
@@ -3421,6 +3974,16 @@
               "area": "苗栗縣",
               "username": "ChenMinQian",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 48,
+              "points": 120,
+              "points_text": "120pt",
+              "area": "苗栗縣",
+              "username": "ChenMinQian",
+              "in_cutoff": true
             }
           ]
         },
@@ -3428,8 +3991,8 @@
           "ptcg_id": "tw95954871",
           "name": "LINCHEHSUAN",
           "area": "臺北市",
-          "appearances": 6,
-          "latest_rank": 47,
+          "appearances": 7,
+          "latest_rank": 48,
           "latest_points": 120,
           "latest_points_text": "120pt",
           "series": [
@@ -3492,6 +4055,16 @@
               "area": "臺北市",
               "username": "LINCHEHSUAN",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 48,
+              "points": 120,
+              "points_text": "120pt",
+              "area": "臺北市",
+              "username": "LINCHEHSUAN",
+              "in_cutoff": true
             }
           ]
         },
@@ -3499,8 +4072,8 @@
           "ptcg_id": "tw00387540",
           "name": "HiddenSquid",
           "area": "桃園市",
-          "appearances": 6,
-          "latest_rank": 49,
+          "appearances": 7,
+          "latest_rank": 50,
           "latest_points": 119,
           "latest_points_text": "119pt",
           "series": [
@@ -3563,6 +4136,97 @@
               "area": "桃園市",
               "username": "HiddenSquid",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 50,
+              "points": 119,
+              "points_text": "119pt",
+              "area": "桃園市",
+              "username": "HiddenSquid",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw97885633",
+          "name": "StrongOrange",
+          "area": "臺南市",
+          "appearances": 6,
+          "latest_rank": 50,
+          "latest_points": 119,
+          "latest_points_text": "119pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 83,
+              "points": 87,
+              "points_text": "87pt",
+              "area": "臺南市",
+              "username": "StrongOrange",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 53,
+              "points": 109,
+              "points_text": "109pt",
+              "area": "臺南市",
+              "username": "StrongOrange",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 52,
+              "points": 109,
+              "points_text": "109pt",
+              "area": "臺南市",
+              "username": "StrongOrange",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 53,
+              "points": 109,
+              "points_text": "109pt",
+              "area": "臺南市",
+              "username": "StrongOrange",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 62,
+              "points": 109,
+              "points_text": "109pt",
+              "area": "臺南市",
+              "username": "StrongOrange",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 63,
+              "points": 109,
+              "points_text": "109pt",
+              "area": "臺南市",
+              "username": "StrongOrange",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 50,
+              "points": 119,
+              "points_text": "119pt",
+              "area": "臺南市",
+              "username": "StrongOrange",
+              "in_cutoff": true
             }
           ]
         },
@@ -3570,8 +4234,8 @@
           "ptcg_id": "tw32214798",
           "name": "南呱",
           "area": "雲林縣",
-          "appearances": 6,
-          "latest_rank": 50,
+          "appearances": 7,
+          "latest_rank": 52,
           "latest_points": 118,
           "latest_points_text": "118pt",
           "series": [
@@ -3634,6 +4298,16 @@
               "area": "雲林縣",
               "username": "南呱",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 52,
+              "points": 118,
+              "points_text": "118pt",
+              "area": "雲林縣",
+              "username": "南呱",
+              "in_cutoff": true
             }
           ]
         },
@@ -3641,8 +4315,8 @@
           "ptcg_id": "tw13624938",
           "name": "Bob",
           "area": "彰化縣",
-          "appearances": 2,
-          "latest_rank": 51,
+          "appearances": 3,
+          "latest_rank": 53,
           "latest_points": 116,
           "latest_points_text": "116pt",
           "series": [
@@ -3705,6 +4379,16 @@
               "area": "彰化縣",
               "username": "Bob",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 53,
+              "points": 116,
+              "points_text": "116pt",
+              "area": "彰化縣",
+              "username": "Bob",
+              "in_cutoff": true
             }
           ]
         },
@@ -3712,8 +4396,8 @@
           "ptcg_id": "tw01024875",
           "name": "Snake",
           "area": "新北市",
-          "appearances": 2,
-          "latest_rank": 51,
+          "appearances": 3,
+          "latest_rank": 53,
           "latest_points": 116,
           "latest_points_text": "116pt",
           "series": [
@@ -3776,6 +4460,16 @@
               "area": "新北市",
               "username": "Snake",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 53,
+              "points": 116,
+              "points_text": "116pt",
+              "area": "新北市",
+              "username": "Snake",
+              "in_cutoff": true
             }
           ]
         },
@@ -3783,8 +4477,8 @@
           "ptcg_id": "tw20116252",
           "name": "DQ",
           "area": "桃園市",
-          "appearances": 6,
-          "latest_rank": 53,
+          "appearances": 7,
+          "latest_rank": 55,
           "latest_points": 115,
           "latest_points_text": "115pt",
           "series": [
@@ -3847,6 +4541,16 @@
               "area": "桃園市",
               "username": "DQ",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 55,
+              "points": 115,
+              "points_text": "115pt",
+              "area": "桃園市",
+              "username": "DQ",
+              "in_cutoff": true
             }
           ]
         },
@@ -3854,8 +4558,8 @@
           "ptcg_id": "tw46076033",
           "name": "Mark",
           "area": "高雄市",
-          "appearances": 2,
-          "latest_rank": 53,
+          "appearances": 3,
+          "latest_rank": 55,
           "latest_points": 115,
           "latest_points_text": "115pt",
           "series": [
@@ -3918,6 +4622,16 @@
               "area": "高雄市",
               "username": "Mark",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 55,
+              "points": 115,
+              "points_text": "115pt",
+              "area": "高雄市",
+              "username": "Mark",
+              "in_cutoff": true
             }
           ]
         },
@@ -3925,8 +4639,8 @@
           "ptcg_id": "tw55000893",
           "name": "Nick",
           "area": "臺中市",
-          "appearances": 6,
-          "latest_rank": 53,
+          "appearances": 7,
+          "latest_rank": 55,
           "latest_points": 115,
           "latest_points_text": "115pt",
           "series": [
@@ -3989,6 +4703,16 @@
               "area": "臺中市",
               "username": "Nick",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 55,
+              "points": 115,
+              "points_text": "115pt",
+              "area": "臺中市",
+              "username": "Nick",
+              "in_cutoff": true
             }
           ]
         },
@@ -3996,8 +4720,8 @@
           "ptcg_id": "tw53723254",
           "name": "Wei",
           "area": "臺中市",
-          "appearances": 6,
-          "latest_rank": 53,
+          "appearances": 7,
+          "latest_rank": 55,
           "latest_points": 115,
           "latest_points_text": "115pt",
           "series": [
@@ -4060,6 +4784,16 @@
               "area": "臺中市",
               "username": "Wei",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 55,
+              "points": 115,
+              "points_text": "115pt",
+              "area": "臺中市",
+              "username": "Wei",
+              "in_cutoff": true
             }
           ]
         },
@@ -4067,8 +4801,8 @@
           "ptcg_id": "tw44127879",
           "name": "AndyChou",
           "area": "新北市",
-          "appearances": 6,
-          "latest_rank": 57,
+          "appearances": 7,
+          "latest_rank": 59,
           "latest_points": 114,
           "latest_points_text": "114pt",
           "series": [
@@ -4131,6 +4865,16 @@
               "area": "新北市",
               "username": "AndyChou",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 59,
+              "points": 114,
+              "points_text": "114pt",
+              "area": "新北市",
+              "username": "AndyChou",
+              "in_cutoff": true
             }
           ]
         },
@@ -4138,8 +4882,8 @@
           "ptcg_id": "tw93076075",
           "name": "XRY",
           "area": "臺中市",
-          "appearances": 6,
-          "latest_rank": 57,
+          "appearances": 7,
+          "latest_rank": 59,
           "latest_points": 114,
           "latest_points_text": "114pt",
           "series": [
@@ -4202,6 +4946,16 @@
               "area": "臺中市",
               "username": "XRY",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 59,
+              "points": 114,
+              "points_text": "114pt",
+              "area": "臺中市",
+              "username": "XRY",
+              "in_cutoff": true
             }
           ]
         },
@@ -4209,8 +4963,8 @@
           "ptcg_id": "tw42912360",
           "name": "Cookie",
           "area": "高雄市",
-          "appearances": 6,
-          "latest_rank": 59,
+          "appearances": 7,
+          "latest_rank": 61,
           "latest_points": 111,
           "latest_points_text": "111pt",
           "series": [
@@ -4273,6 +5027,16 @@
               "area": "高雄市",
               "username": "Cookie",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 61,
+              "points": 111,
+              "points_text": "111pt",
+              "area": "高雄市",
+              "username": "Cookie",
+              "in_cutoff": true
             }
           ]
         },
@@ -4280,8 +5044,8 @@
           "ptcg_id": "tw24203947",
           "name": "rabbit",
           "area": "新北市",
-          "appearances": 2,
-          "latest_rank": 59,
+          "appearances": 3,
+          "latest_rank": 61,
           "latest_points": 111,
           "latest_points_text": "111pt",
           "series": [
@@ -4344,6 +5108,16 @@
               "area": "新北市",
               "username": "rabbit",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 61,
+              "points": 111,
+              "points_text": "111pt",
+              "area": "新北市",
+              "username": "rabbit",
+              "in_cutoff": true
             }
           ]
         },
@@ -4351,8 +5125,8 @@
           "ptcg_id": "tw23205294",
           "name": "Towasamalike",
           "area": "臺南市",
-          "appearances": 6,
-          "latest_rank": 59,
+          "appearances": 7,
+          "latest_rank": 61,
           "latest_points": 111,
           "latest_points_text": "111pt",
           "series": [
@@ -4415,6 +5189,16 @@
               "area": "臺南市",
               "username": "Towasamalike",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 61,
+              "points": 111,
+              "points_text": "111pt",
+              "area": "臺南市",
+              "username": "Towasamalike",
+              "in_cutoff": true
             }
           ]
         },
@@ -4422,8 +5206,8 @@
           "ptcg_id": "tw11292760",
           "name": "yuyu614",
           "area": "臺北市",
-          "appearances": 5,
-          "latest_rank": 59,
+          "appearances": 6,
+          "latest_rank": 61,
           "latest_points": 111,
           "latest_points_text": "111pt",
           "series": [
@@ -4476,147 +5260,15 @@
               "area": "臺北市",
               "username": "yuyu614",
               "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw50567676",
-          "name": "Johnny",
-          "area": "苗栗縣",
-          "appearances": 6,
-          "latest_rank": 63,
-          "latest_points": 109,
-          "latest_points_text": "109pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 53,
-              "points": 107,
-              "points_text": "107pt",
-              "area": "苗栗縣",
-              "username": "Johnny",
-              "in_cutoff": true
             },
             {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 40,
-              "points": 119,
-              "points_text": "119pt",
-              "area": "苗栗縣",
-              "username": "Johnny",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 55,
-              "points": 107,
-              "points_text": "107pt",
-              "area": "苗栗縣",
-              "username": "Johnny",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 55,
-              "points": 107,
-              "points_text": "107pt",
-              "area": "苗栗縣",
-              "username": "Johnny",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 62,
-              "points": 109,
-              "points_text": "109pt",
-              "area": "苗栗縣",
-              "username": "Johnny",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 63,
-              "points": 109,
-              "points_text": "109pt",
-              "area": "苗栗縣",
-              "username": "Johnny",
-              "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw97885633",
-          "name": "StrongOrange",
-          "area": "臺南市",
-          "appearances": 5,
-          "latest_rank": 63,
-          "latest_points": 109,
-          "latest_points_text": "109pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 83,
-              "points": 87,
-              "points_text": "87pt",
-              "area": "臺南市",
-              "username": "StrongOrange",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 53,
-              "points": 109,
-              "points_text": "109pt",
-              "area": "臺南市",
-              "username": "StrongOrange",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 52,
-              "points": 109,
-              "points_text": "109pt",
-              "area": "臺南市",
-              "username": "StrongOrange",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 53,
-              "points": 109,
-              "points_text": "109pt",
-              "area": "臺南市",
-              "username": "StrongOrange",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 62,
-              "points": 109,
-              "points_text": "109pt",
-              "area": "臺南市",
-              "username": "StrongOrange",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 63,
-              "points": 109,
-              "points_text": "109pt",
-              "area": "臺南市",
-              "username": "StrongOrange",
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 61,
+              "points": 111,
+              "points_text": "111pt",
+              "area": "臺北市",
+              "username": "yuyu614",
               "in_cutoff": true
             }
           ]
@@ -5364,16 +6016,28 @@
           "band_players": 16,
           "band_max_points": 335,
           "band_min_points": 195
+        },
+        {
+          "date": "20260427",
+          "label": "2026/04/27",
+          "file": "ranking_20260427_senior_result.csv",
+          "total_players": 919,
+          "included_players": 32,
+          "cutoff_rank": 32,
+          "band_rank_limit": 16,
+          "band_players": 16,
+          "band_max_points": 335,
+          "band_min_points": 195
         }
       ],
-      "latest_date": "20260422",
-      "latest_date_label": "2026/04/22",
+      "latest_date": "20260427",
+      "latest_date_label": "2026/04/27",
       "players": [
         {
           "ptcg_id": "tw85313935",
           "name": "JayWu100",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 1,
           "latest_points": 335,
           "latest_points_text": "335pt",
@@ -5437,6 +6101,16 @@
               "area": "新北市",
               "username": "JayWu100",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 1,
+              "points": 335,
+              "points_text": "335pt",
+              "area": "新北市",
+              "username": "JayWu100",
+              "in_cutoff": true
             }
           ]
         },
@@ -5444,7 +6118,7 @@
           "ptcg_id": "tw03103631",
           "name": "TCGSTORE_SHAOTONG",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 2,
           "latest_points": 330,
           "latest_points_text": "330pt",
@@ -5508,6 +6182,16 @@
               "area": "臺北市",
               "username": "TCGSTORE_SHAOTONG",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 2,
+              "points": 330,
+              "points_text": "330pt",
+              "area": "臺北市",
+              "username": "TCGSTORE_SHAOTONG",
+              "in_cutoff": true
             }
           ]
         },
@@ -5515,7 +6199,7 @@
           "ptcg_id": "tw00057543",
           "name": "andrew",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 3,
           "latest_points": 263,
           "latest_points_text": "263pt",
@@ -5579,6 +6263,16 @@
               "area": "新北市",
               "username": "andrew",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 3,
+              "points": 263,
+              "points_text": "263pt",
+              "area": "新北市",
+              "username": "andrew",
+              "in_cutoff": true
             }
           ]
         },
@@ -5586,7 +6280,7 @@
           "ptcg_id": "tw34406887",
           "name": "James",
           "area": "新竹縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 4,
           "latest_points": 257,
           "latest_points_text": "257pt",
@@ -5650,6 +6344,16 @@
               "area": "新竹縣",
               "username": "James",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 4,
+              "points": 257,
+              "points_text": "257pt",
+              "area": "新竹縣",
+              "username": "James",
+              "in_cutoff": true
             }
           ]
         },
@@ -5657,7 +6361,7 @@
           "ptcg_id": "tw08069127",
           "name": "TheONE_LINYOUYI",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 5,
           "latest_points": 250,
           "latest_points_text": "250pt",
@@ -5721,6 +6425,16 @@
               "area": "新北市",
               "username": "TheONE_LINYOUYI",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 5,
+              "points": 250,
+              "points_text": "250pt",
+              "area": "新北市",
+              "username": "TheONE_LINYOUYI",
+              "in_cutoff": true
             }
           ]
         },
@@ -5728,7 +6442,7 @@
           "ptcg_id": "tw29265523",
           "name": "Toby",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 6,
           "latest_points": 239,
           "latest_points_text": "239pt",
@@ -5792,6 +6506,16 @@
               "area": "新北市",
               "username": "Toby",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 6,
+              "points": 239,
+              "points_text": "239pt",
+              "area": "新北市",
+              "username": "Toby",
+              "in_cutoff": true
             }
           ]
         },
@@ -5799,7 +6523,7 @@
           "ptcg_id": "tw57615176",
           "name": "Iyiu",
           "area": "彰化縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 7,
           "latest_points": 235,
           "latest_points_text": "235pt",
@@ -5863,6 +6587,16 @@
               "area": "彰化縣",
               "username": "Iyiu",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 7,
+              "points": 235,
+              "points_text": "235pt",
+              "area": "彰化縣",
+              "username": "Iyiu",
+              "in_cutoff": true
             }
           ]
         },
@@ -5870,7 +6604,7 @@
           "ptcg_id": "tw96234784",
           "name": "TheONE_KuoPinYi",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 8,
           "latest_points": 233,
           "latest_points_text": "233pt",
@@ -5934,6 +6668,16 @@
               "area": "臺北市",
               "username": "TheONE_KuoPinYi",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 8,
+              "points": 233,
+              "points_text": "233pt",
+              "area": "臺北市",
+              "username": "TheONE_KuoPinYi",
+              "in_cutoff": true
             }
           ]
         },
@@ -5941,7 +6685,7 @@
           "ptcg_id": "tw91677599",
           "name": "Evan",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 9,
           "latest_points": 225,
           "latest_points_text": "225pt",
@@ -6005,6 +6749,16 @@
               "area": "新北市",
               "username": "Evan",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 9,
+              "points": 225,
+              "points_text": "225pt",
+              "area": "新北市",
+              "username": "Evan",
+              "in_cutoff": true
             }
           ]
         },
@@ -6012,7 +6766,7 @@
           "ptcg_id": "tw48711959",
           "name": "kevin",
           "area": "彰化縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 10,
           "latest_points": 220,
           "latest_points_text": "220pt",
@@ -6076,6 +6830,16 @@
               "area": "彰化縣",
               "username": "kevin",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 10,
+              "points": 220,
+              "points_text": "220pt",
+              "area": "彰化縣",
+              "username": "kevin",
+              "in_cutoff": true
             }
           ]
         },
@@ -6083,7 +6847,7 @@
           "ptcg_id": "tw89368672",
           "name": "Tim",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 11,
           "latest_points": 217,
           "latest_points_text": "217pt",
@@ -6147,6 +6911,16 @@
               "area": "新北市",
               "username": "Tim",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 11,
+              "points": 217,
+              "points_text": "217pt",
+              "area": "新北市",
+              "username": "Tim",
+              "in_cutoff": true
             }
           ]
         },
@@ -6154,7 +6928,7 @@
           "ptcg_id": "tw89973725",
           "name": "AndrewChung",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 12,
           "latest_points": 215,
           "latest_points_text": "215pt",
@@ -6218,6 +6992,16 @@
               "area": "高雄市",
               "username": "AndrewChung",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 12,
+              "points": 215,
+              "points_text": "215pt",
+              "area": "高雄市",
+              "username": "AndrewChung",
+              "in_cutoff": true
             }
           ]
         },
@@ -6225,7 +7009,7 @@
           "ptcg_id": "tw76708967",
           "name": "FanFan",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 13,
           "latest_points": 213,
           "latest_points_text": "213pt",
@@ -6289,6 +7073,16 @@
               "area": "新北市",
               "username": "FanFan",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 13,
+              "points": 213,
+              "points_text": "213pt",
+              "area": "新北市",
+              "username": "FanFan",
+              "in_cutoff": true
             }
           ]
         },
@@ -6296,7 +7090,7 @@
           "ptcg_id": "tw12360786",
           "name": "smallfiredragon",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 13,
           "latest_points": 213,
           "latest_points_text": "213pt",
@@ -6360,6 +7154,16 @@
               "area": "新北市",
               "username": "smallfiredragon",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 13,
+              "points": 213,
+              "points_text": "213pt",
+              "area": "新北市",
+              "username": "smallfiredragon",
+              "in_cutoff": true
             }
           ]
         },
@@ -6367,7 +7171,7 @@
           "ptcg_id": "tw09468385",
           "name": "Jerry",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 15,
           "latest_points": 195,
           "latest_points_text": "195pt",
@@ -6431,6 +7235,16 @@
               "area": "臺北市",
               "username": "Jerry",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 15,
+              "points": 195,
+              "points_text": "195pt",
+              "area": "臺北市",
+              "username": "Jerry",
+              "in_cutoff": true
             }
           ]
         },
@@ -6438,7 +7252,7 @@
           "ptcg_id": "tw12769027",
           "name": "YuAn._84",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 15,
           "latest_points": 195,
           "latest_points_text": "195pt",
@@ -6502,6 +7316,16 @@
               "area": "新北市",
               "username": "YuAn._84",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 15,
+              "points": 195,
+              "points_text": "195pt",
+              "area": "新北市",
+              "username": "YuAn._84",
+              "in_cutoff": true
             }
           ]
         },
@@ -6509,7 +7333,7 @@
           "ptcg_id": "tw37556303",
           "name": "B.N.C 林宇廷",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 17,
           "latest_points": 187,
           "latest_points_text": "187pt",
@@ -6573,6 +7397,16 @@
               "area": "高雄市",
               "username": "B.N.C 林宇廷",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 17,
+              "points": 187,
+              "points_text": "187pt",
+              "area": "高雄市",
+              "username": "B.N.C 林宇廷",
+              "in_cutoff": true
             }
           ]
         },
@@ -6580,7 +7414,7 @@
           "ptcg_id": "tw91466649",
           "name": "LINCHENJUI",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 18,
           "latest_points": 185,
           "latest_points_text": "185pt",
@@ -6644,6 +7478,16 @@
               "area": "新北市",
               "username": "LINCHENJUI",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 18,
+              "points": 185,
+              "points_text": "185pt",
+              "area": "新北市",
+              "username": "LINCHENJUI",
+              "in_cutoff": true
             }
           ]
         },
@@ -6651,7 +7495,7 @@
           "ptcg_id": "tw54587316",
           "name": "Anka",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 19,
           "latest_points": 175,
           "latest_points_text": "175pt",
@@ -6715,6 +7559,16 @@
               "area": "新北市",
               "username": "Anka",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 19,
+              "points": 175,
+              "points_text": "175pt",
+              "area": "新北市",
+              "username": "Anka",
+              "in_cutoff": true
             }
           ]
         },
@@ -6722,7 +7576,7 @@
           "ptcg_id": "tw54462001",
           "name": "Dream-N1ARK",
           "area": "高雄市",
-          "appearances": 2,
+          "appearances": 3,
           "latest_rank": 20,
           "latest_points": 159,
           "latest_points_text": "159pt",
@@ -6786,6 +7640,16 @@
               "area": "高雄市",
               "username": "Dream-N1ARK",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 20,
+              "points": 159,
+              "points_text": "159pt",
+              "area": "高雄市",
+              "username": "Dream-N1ARK",
+              "in_cutoff": true
             }
           ]
         },
@@ -6793,7 +7657,7 @@
           "ptcg_id": "tw55774266",
           "name": "TCGSTORE_Mike",
           "area": "桃園市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 21,
           "latest_points": 153,
           "latest_points_text": "153pt",
@@ -6857,6 +7721,97 @@
               "area": "桃園市",
               "username": "TCGSTORE_Mike",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 21,
+              "points": 153,
+              "points_text": "153pt",
+              "area": "桃園市",
+              "username": "TCGSTORE_Mike",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw36653768",
+          "name": "Rich",
+          "area": "新北市",
+          "appearances": 7,
+          "latest_rank": 22,
+          "latest_points": 152,
+          "latest_points_text": "152pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 25,
+              "points": 131,
+              "points_text": "131pt",
+              "area": "新北市",
+              "username": "Rich",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 23,
+              "points": 135,
+              "points_text": "135pt",
+              "area": "新北市",
+              "username": "Rich",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 23,
+              "points": 135,
+              "points_text": "135pt",
+              "area": "新北市",
+              "username": "Rich",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 21,
+              "points": 141,
+              "points_text": "141pt",
+              "area": "新北市",
+              "username": "Rich",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 23,
+              "points": 148,
+              "points_text": "148pt",
+              "area": "新北市",
+              "username": "Rich",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 23,
+              "points": 148,
+              "points_text": "148pt",
+              "area": "新北市",
+              "username": "Rich",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 22,
+              "points": 152,
+              "points_text": "152pt",
+              "area": "新北市",
+              "username": "Rich",
+              "in_cutoff": true
             }
           ]
         },
@@ -6864,8 +7819,8 @@
           "ptcg_id": "tw40670915",
           "name": "benjamin",
           "area": "桃園市",
-          "appearances": 6,
-          "latest_rank": 22,
+          "appearances": 7,
+          "latest_rank": 23,
           "latest_points": 150,
           "latest_points_text": "150pt",
           "series": [
@@ -6928,76 +7883,15 @@
               "area": "桃園市",
               "username": "benjamin",
               "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw36653768",
-          "name": "Rich",
-          "area": "新北市",
-          "appearances": 6,
-          "latest_rank": 23,
-          "latest_points": 148,
-          "latest_points_text": "148pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 25,
-              "points": 131,
-              "points_text": "131pt",
-              "area": "新北市",
-              "username": "Rich",
-              "in_cutoff": true
             },
             {
-              "date": "20260401",
-              "label": "2026/04/01",
+              "date": "20260427",
+              "label": "2026/04/27",
               "rank": 23,
-              "points": 135,
-              "points_text": "135pt",
-              "area": "新北市",
-              "username": "Rich",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 23,
-              "points": 135,
-              "points_text": "135pt",
-              "area": "新北市",
-              "username": "Rich",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 21,
-              "points": 141,
-              "points_text": "141pt",
-              "area": "新北市",
-              "username": "Rich",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 23,
-              "points": 148,
-              "points_text": "148pt",
-              "area": "新北市",
-              "username": "Rich",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 23,
-              "points": 148,
-              "points_text": "148pt",
-              "area": "新北市",
-              "username": "Rich",
+              "points": 150,
+              "points_text": "150pt",
+              "area": "桃園市",
+              "username": "benjamin",
               "in_cutoff": true
             }
           ]
@@ -7006,10 +7900,10 @@
           "ptcg_id": "tw65972314",
           "name": "HAO-YU",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 24,
-          "latest_points": 144,
-          "latest_points_text": "144pt",
+          "latest_points": 146,
+          "latest_points_text": "146pt",
           "series": [
             {
               "date": "20260323",
@@ -7070,76 +7964,15 @@
               "area": "新北市",
               "username": "HAO-YU",
               "in_cutoff": true
-            }
-          ]
-        },
-        {
-          "ptcg_id": "tw49181959",
-          "name": "Leon",
-          "area": "新北市",
-          "appearances": 6,
-          "latest_rank": 24,
-          "latest_points": 144,
-          "latest_points_text": "144pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 21,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "新北市",
-              "username": "Leon",
-              "in_cutoff": true
             },
             {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 22,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "新北市",
-              "username": "Leon",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 21,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "新北市",
-              "username": "Leon",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 23,
-              "points": 137,
-              "points_text": "137pt",
-              "area": "新北市",
-              "username": "Leon",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
+              "date": "20260427",
+              "label": "2026/04/27",
               "rank": 24,
-              "points": 144,
-              "points_text": "144pt",
+              "points": 146,
+              "points_text": "146pt",
               "area": "新北市",
-              "username": "Leon",
-              "in_cutoff": true
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 24,
-              "points": 144,
-              "points_text": "144pt",
-              "area": "新北市",
-              "username": "Leon",
+              "username": "HAO-YU",
               "in_cutoff": true
             }
           ]
@@ -7148,10 +7981,10 @@
           "ptcg_id": "tw97066779",
           "name": "ED",
           "area": "高雄市",
-          "appearances": 6,
-          "latest_rank": 26,
-          "latest_points": 142,
-          "latest_points_text": "142pt",
+          "appearances": 7,
+          "latest_rank": 25,
+          "latest_points": 144,
+          "latest_points_text": "144pt",
           "series": [
             {
               "date": "20260323",
@@ -7212,6 +8045,97 @@
               "area": "高雄市",
               "username": "ED",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 25,
+              "points": 144,
+              "points_text": "144pt",
+              "area": "高雄市",
+              "username": "ED",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw49181959",
+          "name": "Leon",
+          "area": "新北市",
+          "appearances": 7,
+          "latest_rank": 25,
+          "latest_points": 144,
+          "latest_points_text": "144pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 21,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "新北市",
+              "username": "Leon",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 22,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "新北市",
+              "username": "Leon",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 21,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "新北市",
+              "username": "Leon",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 23,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "新北市",
+              "username": "Leon",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 24,
+              "points": 144,
+              "points_text": "144pt",
+              "area": "新北市",
+              "username": "Leon",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 24,
+              "points": 144,
+              "points_text": "144pt",
+              "area": "新北市",
+              "username": "Leon",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 25,
+              "points": 144,
+              "points_text": "144pt",
+              "area": "新北市",
+              "username": "Leon",
+              "in_cutoff": true
             }
           ]
         },
@@ -7219,7 +8143,7 @@
           "ptcg_id": "tw18142838",
           "name": "PTCG-BOY",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 27,
           "latest_points": 140,
           "latest_points_text": "140pt",
@@ -7283,6 +8207,16 @@
               "area": "臺北市",
               "username": "PTCG-BOY",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 27,
+              "points": 140,
+              "points_text": "140pt",
+              "area": "臺北市",
+              "username": "PTCG-BOY",
+              "in_cutoff": true
             }
           ]
         },
@@ -7290,7 +8224,7 @@
           "ptcg_id": "tw82259698",
           "name": "Henry",
           "area": "新竹市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 28,
           "latest_points": 137,
           "latest_points_text": "137pt",
@@ -7354,6 +8288,16 @@
               "area": "新竹市",
               "username": "Henry",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 28,
+              "points": 137,
+              "points_text": "137pt",
+              "area": "新竹市",
+              "username": "Henry",
+              "in_cutoff": true
             }
           ]
         },
@@ -7361,7 +8305,7 @@
           "ptcg_id": "tw42986392",
           "name": "Wade010926",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 29,
           "latest_points": 133,
           "latest_points_text": "133pt",
@@ -7425,6 +8369,16 @@
               "area": "臺北市",
               "username": "Wade010926",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 29,
+              "points": 133,
+              "points_text": "133pt",
+              "area": "臺北市",
+              "username": "Wade010926",
+              "in_cutoff": true
             }
           ]
         },
@@ -7432,7 +8386,7 @@
           "ptcg_id": "tw42619471",
           "name": "KB_QQQQQQ",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 30,
           "latest_points": 131,
           "latest_points_text": "131pt",
@@ -7496,6 +8450,16 @@
               "area": "新北市",
               "username": "KB_QQQQQQ",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 30,
+              "points": 131,
+              "points_text": "131pt",
+              "area": "新北市",
+              "username": "KB_QQQQQQ",
+              "in_cutoff": true
             }
           ]
         },
@@ -7503,7 +8467,7 @@
           "ptcg_id": "tw81124094",
           "name": "Mew_宥緯wade",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 31,
           "latest_points": 129,
           "latest_points_text": "129pt",
@@ -7567,6 +8531,16 @@
               "area": "新北市",
               "username": "Mew_宥緯wade",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 31,
+              "points": 129,
+              "points_text": "129pt",
+              "area": "新北市",
+              "username": "Mew_宥緯wade",
+              "in_cutoff": true
             }
           ]
         },
@@ -7574,7 +8548,7 @@
           "ptcg_id": "tw22147179",
           "name": "Jimmy",
           "area": "新竹縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 32,
           "latest_points": 128,
           "latest_points_text": "128pt",
@@ -7632,6 +8606,16 @@
             {
               "date": "20260422",
               "label": "2026/04/22",
+              "rank": 32,
+              "points": 128,
+              "points_text": "128pt",
+              "area": "新竹縣",
+              "username": "Jimmy",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
               "rank": 32,
               "points": 128,
               "points_text": "128pt",
@@ -7770,16 +8754,28 @@
           "band_players": 17,
           "band_max_points": 310,
           "band_min_points": 180
+        },
+        {
+          "date": "20260427",
+          "label": "2026/04/27",
+          "file": "ranking_20260427_junior_result.csv",
+          "total_players": 742,
+          "included_players": 32,
+          "cutoff_rank": 32,
+          "band_rank_limit": 16,
+          "band_players": 17,
+          "band_max_points": 310,
+          "band_min_points": 180
         }
       ],
-      "latest_date": "20260422",
-      "latest_date_label": "2026/04/22",
+      "latest_date": "20260427",
+      "latest_date_label": "2026/04/27",
       "players": [
         {
           "ptcg_id": "tw54152249",
           "name": "K.K_Yuhung",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 1,
           "latest_points": 310,
           "latest_points_text": "310pt",
@@ -7843,6 +8839,16 @@
               "area": "高雄市",
               "username": "K.K_Yuhung",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 1,
+              "points": 310,
+              "points_text": "310pt",
+              "area": "高雄市",
+              "username": "K.K_Yuhung",
+              "in_cutoff": true
             }
           ]
         },
@@ -7850,7 +8856,7 @@
           "ptcg_id": "tw98425963",
           "name": "Kenny",
           "area": "新竹縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 2,
           "latest_points": 300,
           "latest_points_text": "300pt",
@@ -7914,6 +8920,16 @@
               "area": "新竹縣",
               "username": "Kenny",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 2,
+              "points": 300,
+              "points_text": "300pt",
+              "area": "新竹縣",
+              "username": "Kenny",
+              "in_cutoff": true
             }
           ]
         },
@@ -7921,7 +8937,7 @@
           "ptcg_id": "tw71161900",
           "name": "Brendan_Chen",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 3,
           "latest_points": 295,
           "latest_points_text": "295pt",
@@ -7985,6 +9001,16 @@
               "area": "臺北市",
               "username": "Brendan_Chen",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 3,
+              "points": 295,
+              "points_text": "295pt",
+              "area": "臺北市",
+              "username": "Brendan_Chen",
+              "in_cutoff": true
             }
           ]
         },
@@ -7992,7 +9018,7 @@
           "ptcg_id": "tw82755386",
           "name": "BensonChang",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 4,
           "latest_points": 293,
           "latest_points_text": "293pt",
@@ -8056,6 +9082,16 @@
               "area": "新北市",
               "username": "BensonChang",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 4,
+              "points": 293,
+              "points_text": "293pt",
+              "area": "新北市",
+              "username": "BensonChang",
+              "in_cutoff": true
             }
           ]
         },
@@ -8063,7 +9099,7 @@
           "ptcg_id": "tw82494238",
           "name": "Giraffe",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 5,
           "latest_points": 287,
           "latest_points_text": "287pt",
@@ -8127,6 +9163,16 @@
               "area": "臺北市",
               "username": "Giraffe",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 5,
+              "points": 287,
+              "points_text": "287pt",
+              "area": "臺北市",
+              "username": "Giraffe",
+              "in_cutoff": true
             }
           ]
         },
@@ -8134,7 +9180,7 @@
           "ptcg_id": "tw46877625",
           "name": "Ashton_Chen",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 6,
           "latest_points": 281,
           "latest_points_text": "281pt",
@@ -8198,6 +9244,16 @@
               "area": "臺北市",
               "username": "Ashton_Chen",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 6,
+              "points": 281,
+              "points_text": "281pt",
+              "area": "臺北市",
+              "username": "Ashton_Chen",
+              "in_cutoff": true
             }
           ]
         },
@@ -8205,7 +9261,7 @@
           "ptcg_id": "tw03538932",
           "name": "Ivan-Shark",
           "area": "臺南市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 7,
           "latest_points": 235,
           "latest_points_text": "235pt",
@@ -8269,6 +9325,16 @@
               "area": "臺南市",
               "username": "Ivan-Shark",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 7,
+              "points": 235,
+              "points_text": "235pt",
+              "area": "臺南市",
+              "username": "Ivan-Shark",
+              "in_cutoff": true
             }
           ]
         },
@@ -8276,7 +9342,7 @@
           "ptcg_id": "tw86591343",
           "name": "Hank",
           "area": "新竹市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 8,
           "latest_points": 226,
           "latest_points_text": "226pt",
@@ -8340,6 +9406,16 @@
               "area": "新竹市",
               "username": "Hank",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 8,
+              "points": 226,
+              "points_text": "226pt",
+              "area": "新竹市",
+              "username": "Hank",
+              "in_cutoff": true
             }
           ]
         },
@@ -8347,7 +9423,7 @@
           "ptcg_id": "tw84778743",
           "name": "Bubbletea",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 9,
           "latest_points": 225,
           "latest_points_text": "225pt",
@@ -8405,6 +9481,16 @@
             {
               "date": "20260422",
               "label": "2026/04/22",
+              "rank": 9,
+              "points": 225,
+              "points_text": "225pt",
+              "area": "臺北市",
+              "username": "Bubbletea",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
               "rank": 9,
               "points": 225,
               "points_text": "225pt",
@@ -8418,7 +9504,7 @@
           "ptcg_id": "tw61881775",
           "name": "fan",
           "area": "彰化縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 9,
           "latest_points": 225,
           "latest_points_text": "225pt",
@@ -8482,6 +9568,16 @@
               "area": "彰化縣",
               "username": "fan",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 9,
+              "points": 225,
+              "points_text": "225pt",
+              "area": "彰化縣",
+              "username": "fan",
+              "in_cutoff": true
             }
           ]
         },
@@ -8489,7 +9585,7 @@
           "ptcg_id": "tw19067728",
           "name": "Haocho",
           "area": "臺南市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 11,
           "latest_points": 202,
           "latest_points_text": "202pt",
@@ -8553,6 +9649,16 @@
               "area": "臺南市",
               "username": "Haocho",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 11,
+              "points": 202,
+              "points_text": "202pt",
+              "area": "臺南市",
+              "username": "Haocho",
+              "in_cutoff": true
             }
           ]
         },
@@ -8560,7 +9666,7 @@
           "ptcg_id": "tw74390718",
           "name": "Dean",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 12,
           "latest_points": 200,
           "latest_points_text": "200pt",
@@ -8624,6 +9730,16 @@
               "area": "新北市",
               "username": "Dean",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 12,
+              "points": 200,
+              "points_text": "200pt",
+              "area": "新北市",
+              "username": "Dean",
+              "in_cutoff": true
             }
           ]
         },
@@ -8631,7 +9747,7 @@
           "ptcg_id": "tw77919530",
           "name": "KoU_Ray",
           "area": "臺中市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 13,
           "latest_points": 190,
           "latest_points_text": "190pt",
@@ -8695,6 +9811,16 @@
               "area": "臺中市",
               "username": "KoU_Ray",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 13,
+              "points": 190,
+              "points_text": "190pt",
+              "area": "臺中市",
+              "username": "KoU_Ray",
+              "in_cutoff": true
             }
           ]
         },
@@ -8702,7 +9828,7 @@
           "ptcg_id": "tw05738879",
           "name": "WEI",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 14,
           "latest_points": 188,
           "latest_points_text": "188pt",
@@ -8766,6 +9892,16 @@
               "area": "新北市",
               "username": "WEI",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 14,
+              "points": 188,
+              "points_text": "188pt",
+              "area": "新北市",
+              "username": "WEI",
+              "in_cutoff": true
             }
           ]
         },
@@ -8773,7 +9909,7 @@
           "ptcg_id": "tw71688252",
           "name": "Leroy",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 15,
           "latest_points": 181,
           "latest_points_text": "181pt",
@@ -8837,6 +9973,16 @@
               "area": "新北市",
               "username": "Leroy",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 15,
+              "points": 181,
+              "points_text": "181pt",
+              "area": "新北市",
+              "username": "Leroy",
+              "in_cutoff": true
             }
           ]
         },
@@ -8844,7 +9990,7 @@
           "ptcg_id": "tw48530621",
           "name": "Tristan",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 16,
           "latest_points": 180,
           "latest_points_text": "180pt",
@@ -8908,6 +10054,16 @@
               "area": "臺北市",
               "username": "Tristan",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 16,
+              "points": 180,
+              "points_text": "180pt",
+              "area": "臺北市",
+              "username": "Tristan",
+              "in_cutoff": true
             }
           ]
         },
@@ -8915,7 +10071,7 @@
           "ptcg_id": "tw64474352",
           "name": "Yule",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 16,
           "latest_points": 180,
           "latest_points_text": "180pt",
@@ -8979,6 +10135,16 @@
               "area": "高雄市",
               "username": "Yule",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 16,
+              "points": 180,
+              "points_text": "180pt",
+              "area": "高雄市",
+              "username": "Yule",
+              "in_cutoff": true
             }
           ]
         },
@@ -8986,7 +10152,7 @@
           "ptcg_id": "tw48375877",
           "name": "KoU.Yiva",
           "area": "臺中市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 18,
           "latest_points": 170,
           "latest_points_text": "170pt",
@@ -9044,6 +10210,16 @@
             {
               "date": "20260422",
               "label": "2026/04/22",
+              "rank": 18,
+              "points": 170,
+              "points_text": "170pt",
+              "area": "臺中市",
+              "username": "KoU.Yiva",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
               "rank": 18,
               "points": 170,
               "points_text": "170pt",
@@ -9057,7 +10233,7 @@
           "ptcg_id": "tw08952821",
           "name": "Tobby",
           "area": "新竹市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 18,
           "latest_points": 170,
           "latest_points_text": "170pt",
@@ -9121,6 +10297,16 @@
               "area": "新竹市",
               "username": "Tobby",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 18,
+              "points": 170,
+              "points_text": "170pt",
+              "area": "新竹市",
+              "username": "Tobby",
+              "in_cutoff": true
             }
           ]
         },
@@ -9128,7 +10314,7 @@
           "ptcg_id": "tw37208259",
           "name": "Hsi",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 20,
           "latest_points": 165,
           "latest_points_text": "165pt",
@@ -9192,6 +10378,16 @@
               "area": "臺北市",
               "username": "Hsi",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 20,
+              "points": 165,
+              "points_text": "165pt",
+              "area": "臺北市",
+              "username": "Hsi",
+              "in_cutoff": true
             }
           ]
         },
@@ -9199,7 +10395,7 @@
           "ptcg_id": "tw06034751",
           "name": "Kaikaiwang",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 20,
           "latest_points": 165,
           "latest_points_text": "165pt",
@@ -9263,6 +10459,16 @@
               "area": "臺北市",
               "username": "Kaikaiwang",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 20,
+              "points": 165,
+              "points_text": "165pt",
+              "area": "臺北市",
+              "username": "Kaikaiwang",
+              "in_cutoff": true
             }
           ]
         },
@@ -9270,7 +10476,7 @@
           "ptcg_id": "tw69121729",
           "name": "Klefki_Alice1023",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 22,
           "latest_points": 152,
           "latest_points_text": "152pt",
@@ -9334,6 +10540,16 @@
               "area": "高雄市",
               "username": "Klefki_Alice1023",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 22,
+              "points": 152,
+              "points_text": "152pt",
+              "area": "高雄市",
+              "username": "Klefki_Alice1023",
+              "in_cutoff": true
             }
           ]
         },
@@ -9341,7 +10557,7 @@
           "ptcg_id": "tw39371632",
           "name": "Andrew",
           "area": "臺南市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 23,
           "latest_points": 151,
           "latest_points_text": "151pt",
@@ -9405,6 +10621,16 @@
               "area": "臺南市",
               "username": "Andrew",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 23,
+              "points": 151,
+              "points_text": "151pt",
+              "area": "臺南市",
+              "username": "Andrew",
+              "in_cutoff": true
             }
           ]
         },
@@ -9412,7 +10638,7 @@
           "ptcg_id": "tw09658991",
           "name": "KoU_CH",
           "area": "臺中市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 24,
           "latest_points": 148,
           "latest_points_text": "148pt",
@@ -9476,6 +10702,16 @@
               "area": "臺中市",
               "username": "KoU_CH",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 24,
+              "points": 148,
+              "points_text": "148pt",
+              "area": "臺中市",
+              "username": "KoU_CH",
+              "in_cutoff": true
             }
           ]
         },
@@ -9483,7 +10719,7 @@
           "ptcg_id": "tw82272345",
           "name": "Wynne",
           "area": "高雄市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 25,
           "latest_points": 141,
           "latest_points_text": "141pt",
@@ -9547,6 +10783,16 @@
               "area": "高雄市",
               "username": "Wynne",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 25,
+              "points": 141,
+              "points_text": "141pt",
+              "area": "高雄市",
+              "username": "Wynne",
+              "in_cutoff": true
             }
           ]
         },
@@ -9554,7 +10800,7 @@
           "ptcg_id": "tw65988397",
           "name": "Tina",
           "area": "臺中市",
-          "appearances": 2,
+          "appearances": 3,
           "latest_rank": 26,
           "latest_points": 125,
           "latest_points_text": "125pt",
@@ -9618,6 +10864,16 @@
               "area": "臺中市",
               "username": "Tina",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 26,
+              "points": 125,
+              "points_text": "125pt",
+              "area": "臺中市",
+              "username": "Tina",
+              "in_cutoff": true
             }
           ]
         },
@@ -9625,7 +10881,7 @@
           "ptcg_id": "tw98358576",
           "name": "Kouichi",
           "area": "彰化縣",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 27,
           "latest_points": 124,
           "latest_points_text": "124pt",
@@ -9689,6 +10945,16 @@
               "area": "彰化縣",
               "username": "Kouichi",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 27,
+              "points": 124,
+              "points_text": "124pt",
+              "area": "彰化縣",
+              "username": "Kouichi",
+              "in_cutoff": true
             }
           ]
         },
@@ -9696,7 +10962,7 @@
           "ptcg_id": "tw13995413",
           "name": "Roy",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 27,
           "latest_points": 124,
           "latest_points_text": "124pt",
@@ -9760,6 +11026,16 @@
               "area": "新北市",
               "username": "Roy",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 27,
+              "points": 124,
+              "points_text": "124pt",
+              "area": "新北市",
+              "username": "Roy",
+              "in_cutoff": true
             }
           ]
         },
@@ -9767,7 +11043,7 @@
           "ptcg_id": "tw06637395",
           "name": "Yuan",
           "area": "新北市",
-          "appearances": 2,
+          "appearances": 3,
           "latest_rank": 29,
           "latest_points": 123,
           "latest_points_text": "123pt",
@@ -9831,6 +11107,16 @@
               "area": "新北市",
               "username": "Yuan",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 29,
+              "points": 123,
+              "points_text": "123pt",
+              "area": "新北市",
+              "username": "Yuan",
+              "in_cutoff": true
             }
           ]
         },
@@ -9838,7 +11124,7 @@
           "ptcg_id": "tw66972389",
           "name": "Owen",
           "area": "新北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 30,
           "latest_points": 120,
           "latest_points_text": "120pt",
@@ -9902,6 +11188,16 @@
               "area": "新北市",
               "username": "Owen",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 30,
+              "points": 120,
+              "points_text": "120pt",
+              "area": "新北市",
+              "username": "Owen",
+              "in_cutoff": true
             }
           ]
         },
@@ -9909,7 +11205,7 @@
           "ptcg_id": "tw69197193",
           "name": "Momotaro",
           "area": "臺北市",
-          "appearances": 6,
+          "appearances": 7,
           "latest_rank": 31,
           "latest_points": 119,
           "latest_points_text": "119pt",
@@ -9973,6 +11269,16 @@
               "area": "臺北市",
               "username": "Momotaro",
               "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 31,
+              "points": 119,
+              "points_text": "119pt",
+              "area": "臺北市",
+              "username": "Momotaro",
+              "in_cutoff": true
             }
           ]
         },
@@ -9980,7 +11286,7 @@
           "ptcg_id": "tw42163963",
           "name": "AlanDuh",
           "area": "臺南市",
-          "appearances": 2,
+          "appearances": 3,
           "latest_rank": 32,
           "latest_points": 118,
           "latest_points_text": "118pt",
@@ -10038,6 +11344,16 @@
             {
               "date": "20260422",
               "label": "2026/04/22",
+              "rank": 32,
+              "points": 118,
+              "points_text": "118pt",
+              "area": "臺南市",
+              "username": "AlanDuh",
+              "in_cutoff": true
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
               "rank": 32,
               "points": 118,
               "points_text": "118pt",

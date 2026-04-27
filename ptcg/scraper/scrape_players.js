@@ -567,6 +567,15 @@ async function main() {
       runResultsById: new Map(),
       existingIndexById,
     });
+    if (args.all) {
+      const nextState = {
+        startedAt: new Date().toISOString(),
+        csvFiles: currentCsvFiles,
+        completed: false,
+      };
+      console.log('[schedule] No players to scrape in this cycle. Resetting state so next run starts a fresh cycle.');
+      saveCountState(nextState);
+    }
     return;
   }
 

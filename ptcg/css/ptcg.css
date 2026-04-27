@@ -972,6 +972,9 @@ main .btn-outline-ptcg:hover {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    max-height: calc(4 * 7.4rem + 3 * 0.7rem);
+    overflow-y: auto;
+    padding-right: 0.2rem;
 }
 
 .trend-snapshot-item {
