@@ -1,8 +1,8 @@
 {
   "id": "tw50453642",
   "url": "https://asia.pokemon-card.com/tw/users/tw50453642/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-22T13:36:38.512Z",
-  "totalEvents": 124,
+  "fetchedAt": "2026-04-27T06:28:06.578Z",
+  "totalEvents": 125,
   "participatedTournaments": [
     {
       "pageNo": 7,
@@ -47,6 +47,17 @@
       "address": "新竹市北區平和街7號2樓",
       "rank": "-",
       "lp": "-"
+    },
+    {
+      "pageNo": 7,
+      "rowIndex": 5,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "04-05-2026 18:00",
+      "eventDateTime": "2026-04-05 18:00",
+      "location": "御三家桌遊共享空間",
+      "address": "台北市松山區光復南路55號3樓",
+      "rank": "15",
+      "lp": "6"
     },
     {
       "pageNo": 6,
