@@ -1,12 +1,12 @@
 {
   "id": "tw89902913",
   "url": "https://asia.pokemon-card.com/tw/users/tw89902913/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-27T07:43:53.170Z",
-  "totalEvents": 25,
+  "fetchedAt": "2026-05-02T19:47:54.416Z",
+  "totalEvents": 26,
   "participatedTournaments": [
     {
-      "pageNo": 1,
-      "rowIndex": 18,
+      "pageNo": 2,
+      "rowIndex": 6,
       "activityName": "2025-26 Taiwan Master Ball League TCG Division Masters Category",
       "eventTime": "06-13-2026 08:00",
       "eventDateTime": "2026-06-13 08:00",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 12,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-4 (大師組)",
       "eventTime": "05-30-2026 08:30",
       "eventDateTime": "2026-05-30 08:30",
@@ -28,8 +28,8 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 16,
-      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
+      "rowIndex": 20,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-3 (大師組)-二次抽選",
       "eventTime": "05-09-2026 08:30",
       "eventDateTime": "2026-05-09 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
@@ -40,6 +40,17 @@
     {
       "pageNo": 2,
       "rowIndex": 5,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
+      "eventTime": "05-09-2026 08:30",
+      "eventDateTime": "2026-05-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-25-2026 09:00",
       "eventDateTime": "2026-04-25 09:00",
@@ -49,8 +60,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 15,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-19-2026 14:00",
       "eventDateTime": "2026-04-19 14:00",
@@ -60,8 +71,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 2,
+      "pageNo": 1,
+      "rowIndex": 16,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-18-2026 14:00",
       "eventDateTime": "2026-04-18 14:00",
@@ -71,8 +82,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 3,
+      "pageNo": 1,
+      "rowIndex": 17,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-12-2026 14:00",
       "eventDateTime": "2026-04-12 14:00",
@@ -82,8 +93,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 15,
+      "pageNo": 2,
+      "rowIndex": 4,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-2 (大師組)",
       "eventTime": "04-11-2026 08:30",
       "eventDateTime": "2026-04-11 08:30",
@@ -93,8 +104,8 @@
       "lp": "6"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 4,
+      "pageNo": 1,
+      "rowIndex": 18,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-05-2026 18:00",
       "eventDateTime": "2026-04-05 18:00",
@@ -105,7 +116,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 20,
+      "rowIndex": 14,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-21-2026 13:30",
       "eventDateTime": "2026-03-21 13:30",
@@ -116,7 +127,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 19,
+      "rowIndex": 13,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-15-2026 10:30",
       "eventDateTime": "2026-03-15 10:30",
@@ -127,7 +138,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 12,
+      "rowIndex": 11,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-01-2026 13:30",
       "eventDateTime": "2026-03-01 13:30",
@@ -138,7 +149,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 11,
+      "rowIndex": 10,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-28-2026 14:00",
       "eventDateTime": "2026-02-28 14:00",
@@ -148,8 +159,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 10,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-4 (大師組)",
       "eventTime": "02-27-2026 08:30",
       "eventDateTime": "2026-02-27 08:30",
@@ -159,8 +170,8 @@
       "lp": "6"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 13,
+      "pageNo": 2,
+      "rowIndex": 2,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-4 (大師組)-二次抽選",
       "eventTime": "02-27-2026 08:30",
       "eventDateTime": "2026-02-27 08:30",
@@ -269,8 +280,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 14,
+      "pageNo": 2,
+      "rowIndex": 3,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-3 (大師組)",
       "eventTime": "01-17-2026 08:30",
       "eventDateTime": "2026-01-17 08:30",

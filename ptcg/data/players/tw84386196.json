@@ -1,8 +1,8 @@
 {
   "id": "tw84386196",
   "url": "https://asia.pokemon-card.com/tw/users/tw84386196/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-04-28T02:13:57.323Z",
-  "totalEvents": 59,
+  "fetchedAt": "2026-05-02T21:03:05.763Z",
+  "totalEvents": 60,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -12,6 +12,17 @@
       "eventDateTime": "2026-06-13 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 20,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-3 (大師組)-二次抽選",
+      "eventTime": "05-09-2026 08:30",
+      "eventDateTime": "2026-05-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
       "rank": "-",
       "lp": "-"
     },
@@ -38,8 +49,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 15,
+      "pageNo": 1,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-28-2026 14:00",
       "eventDateTime": "2026-03-28 14:00",
@@ -49,8 +60,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 14,
+      "pageNo": 1,
+      "rowIndex": 18,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-21-2026 10:30",
       "eventDateTime": "2026-03-21 10:30",
@@ -60,8 +71,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 13,
+      "pageNo": 1,
+      "rowIndex": 17,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-07-2026 13:00",
       "eventDateTime": "2026-03-07 13:00",
@@ -71,8 +82,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 12,
+      "pageNo": 1,
+      "rowIndex": 16,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "03-07-2026 10:00",
       "eventDateTime": "2026-03-07 10:00",
@@ -83,7 +94,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 11,
+      "rowIndex": 16,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-4 (大師組)",
       "eventTime": "02-27-2026 08:30",
       "eventDateTime": "2026-02-27 08:30",
@@ -93,8 +104,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 16,
+      "pageNo": 1,
+      "rowIndex": 20,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-07-2026 10:00",
       "eventDateTime": "2026-02-07 10:00",
@@ -105,7 +116,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 10,
+      "rowIndex": 15,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-3 (大師組)",
       "eventTime": "01-17-2026 08:30",
       "eventDateTime": "2026-01-17 08:30",
@@ -115,8 +126,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 8,
+      "pageNo": 1,
+      "rowIndex": 14,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-20-2025 14:00",
       "eventDateTime": "2025-12-20 14:00",
@@ -126,8 +137,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 9,
+      "pageNo": 1,
+      "rowIndex": 15,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-20-2025 10:30",
       "eventDateTime": "2025-12-20 10:30",
@@ -137,8 +148,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 7,
+      "pageNo": 1,
+      "rowIndex": 13,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-13-2025 09:00",
       "eventDateTime": "2025-12-13 09:00",
@@ -148,8 +159,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 5,
+      "pageNo": 1,
+      "rowIndex": 12,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-07-2025 15:00",
       "eventDateTime": "2025-12-07 15:00",
@@ -159,8 +170,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 4,
+      "pageNo": 1,
+      "rowIndex": 11,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-07-2025 10:00",
       "eventDateTime": "2025-12-07 10:00",
@@ -170,8 +181,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 3,
+      "pageNo": 1,
+      "rowIndex": 10,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-06-2025 14:00",
       "eventDateTime": "2025-12-06 14:00",
@@ -181,8 +192,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 8,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-06-2025 13:00",
       "eventDateTime": "2025-12-06 13:00",
@@ -192,8 +203,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 2,
+      "pageNo": 1,
+      "rowIndex": 9,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-30-2025 14:00",
       "eventDateTime": "2025-11-30 14:00",
@@ -203,8 +214,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 20,
+      "pageNo": 1,
+      "rowIndex": 7,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-30-2025 13:00",
       "eventDateTime": "2025-11-30 13:00",
@@ -214,8 +225,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 19,
+      "pageNo": 1,
+      "rowIndex": 6,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-30-2025 10:30",
       "eventDateTime": "2025-11-30 10:30",
@@ -226,7 +237,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 6,
+      "rowIndex": 14,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-1 (大師組)-二次抽選",
       "eventTime": "11-29-2025 08:30",
       "eventDateTime": "2025-11-29 08:30",
@@ -236,8 +247,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 18,
+      "pageNo": 1,
+      "rowIndex": 5,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-23-2025 18:30",
       "eventDateTime": "2025-11-23 18:30",
@@ -247,8 +258,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 16,
+      "pageNo": 1,
+      "rowIndex": 3,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-22-2025 14:00",
       "eventDateTime": "2025-11-22 14:00",
@@ -258,8 +269,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 17,
+      "pageNo": 1,
+      "rowIndex": 4,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-22-2025 14:00",
       "eventDateTime": "2025-11-22 14:00",
@@ -269,8 +280,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 15,
+      "pageNo": 1,
+      "rowIndex": 2,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-16-2025 14:00",
       "eventDateTime": "2025-11-16 14:00",
@@ -280,8 +291,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 14,
+      "pageNo": 1,
+      "rowIndex": 1,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-15-2025 15:00",
       "eventDateTime": "2025-11-15 15:00",
@@ -292,7 +303,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 13,
+      "rowIndex": 20,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-15-2025 10:30",
       "eventDateTime": "2025-11-15 10:30",
@@ -303,7 +314,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 8,
+      "rowIndex": 15,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "11-08-2025 15:00",
       "eventDateTime": "2025-11-08 15:00",
@@ -314,7 +325,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 9,
+      "rowIndex": 16,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "11-08-2025 10:30",
       "eventDateTime": "2025-11-08 10:30",
@@ -324,7 +335,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 1,
       "activityName": "2025-26 Taiwan Premier Ball League TCG Division Masters Category",
       "eventTime": "11-01-2025 09:00",
@@ -336,7 +347,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 10,
+      "rowIndex": 17,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-25-2025 14:00",
       "eventDateTime": "2025-10-25 14:00",
@@ -347,7 +358,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 11,
+      "rowIndex": 18,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-19-2025 14:00",
       "eventDateTime": "2025-10-19 14:00",
@@ -358,7 +369,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 12,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2025 09:00",
       "eventDateTime": "2025-10-18 09:00",
@@ -369,7 +380,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 7,
+      "rowIndex": 13,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-12-2025 14:00",
       "eventDateTime": "2025-10-12 14:00",
@@ -380,7 +391,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 5,
+      "rowIndex": 11,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-12-2025 10:30",
       "eventDateTime": "2025-10-12 10:30",
@@ -391,7 +402,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 6,
+      "rowIndex": 12,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-12-2025 10:30",
       "eventDateTime": "2025-10-12 10:30",
@@ -402,7 +413,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 4,
+      "rowIndex": 10,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-11-2025 14:00",
       "eventDateTime": "2025-10-11 14:00",
@@ -424,7 +435,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 3,
+      "rowIndex": 9,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2025 14:00",
       "eventDateTime": "2025-10-10 14:00",
@@ -435,7 +446,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 2,
+      "rowIndex": 8,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2025 13:00",
       "eventDateTime": "2025-10-10 13:00",
@@ -445,8 +456,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 19,
+      "pageNo": 3,
+      "rowIndex": 13,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季1-2",
       "eventTime": "10-05-2025 08:00",
       "eventDateTime": "2025-10-05 08:00",
@@ -456,8 +467,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 18,
+      "pageNo": 2,
+      "rowIndex": 7,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2025 15:30",
       "eventDateTime": "2025-10-04 15:30",
@@ -467,8 +478,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 17,
+      "pageNo": 2,
+      "rowIndex": 6,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2025 13:00",
       "eventDateTime": "2025-10-04 13:00",
@@ -478,8 +489,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 14,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2025 10:00",
       "eventDateTime": "2025-10-04 10:00",
@@ -489,8 +500,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 16,
+      "pageNo": 2,
+      "rowIndex": 5,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-29-2025 13:00",
       "eventDateTime": "2025-09-29 13:00",
@@ -500,8 +511,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 15,
+      "pageNo": 2,
+      "rowIndex": 4,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2025 15:30",
       "eventDateTime": "2025-09-28 15:30",
@@ -511,8 +522,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 14,
+      "pageNo": 2,
+      "rowIndex": 3,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2025 10:00",
       "eventDateTime": "2025-09-28 10:00",
@@ -522,8 +533,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 13,
+      "pageNo": 2,
+      "rowIndex": 2,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-27-2025 15:30",
       "eventDateTime": "2025-09-27 15:30",
@@ -533,7 +544,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 9,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-21-2025 14:00",
@@ -544,7 +555,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 8,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-21-2025 13:00",
@@ -555,7 +566,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 7,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-20-2025 14:00",
@@ -566,7 +577,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 6,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-14-2025 13:00",
@@ -577,7 +588,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 10,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-13-2025 14:00",
@@ -588,7 +599,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 11,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-13-2025 10:30",
@@ -599,7 +610,7 @@
       "lp": "4"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 12,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-13-2025 10:30",
@@ -610,7 +621,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 5,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-07-2025 14:00",
@@ -621,7 +632,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 4,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-07-2025 10:00",
@@ -632,7 +643,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 3,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-06-2025 14:00",
@@ -643,7 +654,7 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
+      "pageNo": 3,
       "rowIndex": 2,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-06-2025 10:00",
