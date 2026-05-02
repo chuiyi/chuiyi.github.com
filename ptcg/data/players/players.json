@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T05:22:39.094Z",
+  "generated_at": "2026-05-02T18:13:38.804Z",
   "generated_by": "scrape_players.js",
   "total_players": 6378,
   "players": [
@@ -3075,10 +3075,10 @@
     {
       "ptcg_id": "tw05033566",
       "level": "senior",
-      "status": "not_found",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-04-29T02:34:16.136Z",
-      "source_file": "",
+      "source_file": "tw05033566.json",
       "note": "404 not found"
     },
     {
@@ -12876,10 +12876,10 @@
     {
       "ptcg_id": "tw22214921",
       "level": "master",
-      "status": "not_found",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-04-29T01:25:15.310Z",
-      "source_file": "",
+      "source_file": "tw22214921.json",
       "note": "404 not found"
     },
     {
@@ -33495,10 +33495,10 @@
     {
       "ptcg_id": "tw58055677",
       "level": "master",
-      "status": "not_found",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-04-29T01:18:34.191Z",
-      "source_file": "",
+      "source_file": "tw58055677.json",
       "note": "404 not found"
     },
     {
@@ -34395,10 +34395,10 @@
     {
       "ptcg_id": "tw59699947",
       "level": "junior",
-      "status": "not_found",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-04-29T04:26:06.773Z",
-      "source_file": "",
+      "source_file": "tw59699947.json",
       "note": "404 not found"
     },
     {
