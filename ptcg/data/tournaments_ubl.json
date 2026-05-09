@@ -1078,6 +1078,57 @@
       "history": [],
       "venue": "桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
       "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)"
+    },
+    {
+      "type": "ubl",
+      "id": "8084461",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=8084461",
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
+      "level": "master",
+      "series": "3-3",
+      "createdAt": "2026-05-09T08:22:25.083Z",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56272/",
+      "top128File": "",
+      "top128Count": 0,
+      "officialDate": "2026-05-09",
+      "capacity": "660 人",
+      "venue": "110臺北市信義區信義路五段5號(世貿一館)",
+      "address": "110 110臺北市信義區信義路五段5號(世貿一館)",
+      "history": []
+    },
+    {
+      "type": "ubl",
+      "id": "2036287",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=2036287",
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-3 (少年組)",
+      "level": "senior",
+      "series": "3-3",
+      "createdAt": "2026-05-09T08:22:26.025Z",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56273/",
+      "top128File": "",
+      "top128Count": 0,
+      "officialDate": "2026-05-09",
+      "capacity": "128 人",
+      "venue": "110臺北市信義區信義路五段5號(世貿一館)",
+      "address": "110 110臺北市信義區信義路五段5號(世貿一館)",
+      "history": []
+    },
+    {
+      "type": "ubl",
+      "id": "6539836",
+      "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=6539836",
+      "title": "2025-26 臺灣高級球聯盟賽 賽季3-3 (孩童組)",
+      "level": "junior",
+      "series": "3-3",
+      "createdAt": "2026-05-09T08:22:27.424Z",
+      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56274/",
+      "top128File": "",
+      "top128Count": 0,
+      "officialDate": "2026-05-09",
+      "capacity": "128 人",
+      "venue": "110臺北市信義區信義路五段5號(世貿一館)",
+      "address": "110 110臺北市信義區信義路五段5號(世貿一館)",
+      "history": []
     }
   ]
 }
