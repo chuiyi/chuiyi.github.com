@@ -690,57 +690,6 @@
     },
     {
       "type": "ubl",
-      "id": "official-56272",
-      "url": "",
-      "title": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
-      "level": "master",
-      "series": "3-3",
-      "createdAt": "2026-03-31T13:28:34.881Z",
-      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56272/",
-      "top128File": "",
-      "top128Count": 0,
-      "officialDate": "2026-05-09",
-      "capacity": "660 人",
-      "history": [],
-      "venue": "110臺北市信義區信義路五段5號(世貿一館)",
-      "address": "110 110臺北市信義區信義路五段5號(世貿一館)"
-    },
-    {
-      "type": "ubl",
-      "id": "official-56273",
-      "url": "",
-      "title": "2025-26 臺灣高級球聯盟賽 賽季3-3 (少年組)",
-      "level": "senior",
-      "series": "3-3",
-      "createdAt": "2026-03-31T13:28:35.289Z",
-      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56273/",
-      "top128File": "",
-      "top128Count": 0,
-      "officialDate": "2026-05-09",
-      "capacity": "128 人",
-      "history": [],
-      "venue": "110臺北市信義區信義路五段5號(世貿一館)",
-      "address": "110 110臺北市信義區信義路五段5號(世貿一館)"
-    },
-    {
-      "type": "ubl",
-      "id": "official-56274",
-      "url": "",
-      "title": "2025-26 臺灣高級球聯盟賽 賽季3-3 (孩童組)",
-      "level": "junior",
-      "series": "3-3",
-      "createdAt": "2026-03-31T13:28:35.692Z",
-      "officialUrl": "https://asia.pokemon-card.com/tw/event-search/56274/",
-      "top128File": "",
-      "top128Count": 0,
-      "officialDate": "2026-05-09",
-      "capacity": "128 人",
-      "history": [],
-      "venue": "110臺北市信義區信義路五段5號(世貿一館)",
-      "address": "110 110臺北市信義區信義路五段5號(世貿一館)"
-    },
-    {
-      "type": "ubl",
       "id": "official-56275",
       "url": "",
       "title": "2025-26 臺灣高級球聯盟賽 賽季3-4 (大師組)",
@@ -1094,7 +1043,48 @@
       "capacity": "660 人",
       "venue": "110臺北市信義區信義路五段5號(世貿一館)",
       "address": "110 110臺北市信義區信義路五段5號(世貿一館)",
-      "history": []
+      "history": [
+        {
+          "crawledAt": "2026-05-11T10:05:30.867Z",
+          "level": "master",
+          "series": "3-3",
+          "round1Max": 0,
+          "finalRankCount": 0,
+          "roundCount": 0,
+          "csvFile": "8084461.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-05-11T10:09:58.622Z",
+          "level": "master",
+          "series": "3-3",
+          "round1Max": 25,
+          "finalRankCount": 50,
+          "roundCount": 9,
+          "csvFile": "8084461.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-05-11T10:18:56.362Z",
+          "level": "master",
+          "series": "3-3",
+          "round1Max": 360,
+          "finalRankCount": 50,
+          "roundCount": 9,
+          "csvFile": "8084461.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        }
+      ],
+      "lastCrawledAt": "2026-05-11T10:18:56.362Z",
+      "round1Max": 360,
+      "finalRankCount": 50,
+      "roundCount": 9,
+      "csvFile": "8084461.csv",
+      "csvVersion": "unified_rounds_v2",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -1111,7 +1101,37 @@
       "capacity": "128 人",
       "venue": "110臺北市信義區信義路五段5號(世貿一館)",
       "address": "110 110臺北市信義區信義路五段5號(世貿一館)",
-      "history": []
+      "history": [
+        {
+          "crawledAt": "2026-05-11T10:09:59.329Z",
+          "level": "senior",
+          "series": "3-3",
+          "round1Max": 25,
+          "finalRankCount": 50,
+          "roundCount": 7,
+          "csvFile": "2036287.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-05-11T10:18:59.344Z",
+          "level": "senior",
+          "series": "3-3",
+          "round1Max": 50,
+          "finalRankCount": 50,
+          "roundCount": 7,
+          "csvFile": "2036287.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        }
+      ],
+      "lastCrawledAt": "2026-05-11T10:18:59.344Z",
+      "round1Max": 50,
+      "finalRankCount": 50,
+      "roundCount": 7,
+      "csvFile": "2036287.csv",
+      "csvVersion": "unified_rounds_v2",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -1128,7 +1148,37 @@
       "capacity": "128 人",
       "venue": "110臺北市信義區信義路五段5號(世貿一館)",
       "address": "110 110臺北市信義區信義路五段5號(世貿一館)",
-      "history": []
+      "history": [
+        {
+          "crawledAt": "2026-05-11T10:10:00.027Z",
+          "level": "junior",
+          "series": "3-3",
+          "round1Max": 25,
+          "finalRankCount": 50,
+          "roundCount": 7,
+          "csvFile": "6539836.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-05-11T10:19:02.909Z",
+          "level": "junior",
+          "series": "3-3",
+          "round1Max": 63,
+          "finalRankCount": 50,
+          "roundCount": 7,
+          "csvFile": "6539836.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        }
+      ],
+      "lastCrawledAt": "2026-05-11T10:19:02.909Z",
+      "round1Max": 63,
+      "finalRankCount": 50,
+      "roundCount": 7,
+      "csvFile": "6539836.csv",
+      "csvVersion": "unified_rounds_v2",
+      "finalSourceLabel": "Final rank"
     }
   ]
 }

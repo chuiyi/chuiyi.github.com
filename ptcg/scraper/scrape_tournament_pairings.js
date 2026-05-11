@@ -87,7 +87,9 @@ function buildCsvLine(fields) {
 
 function parseLinkParams(href) {
   try {
-    const full = href.startsWith('http') ? href : `https://tcg.sfc-jpn.jp${href}`;
+    const full = href.startsWith('http')
+      ? href
+      : new URL(String(href || ''), 'https://tcg.sfc-jpn.jp/').toString();
     const url = new URL(full);
     return {
       tid: url.searchParams.get('tid') || '',
@@ -267,6 +269,8 @@ function findRoundAndFinalTargets(html, tid) {
       if (!roundMap.has(roundNo)) {
         roundMap.set(roundNo, {
           kno: params.kno,
+          znt: params.znt,
+          href: params.href,
           // 不信任頁面 anchor 文字（可能包含 NextRnd），以 kno 做唯一 round label。
           label: `Round ${roundNo}`,
         });
@@ -278,6 +282,8 @@ function findRoundAndFinalTargets(html, tid) {
       const interimMatch = text.match(/End of Round\s*(\d+)\s*interim result/i);
       finalCandidates.push({
         kno: params.kno,
+        znt: params.znt,
+        href: params.href,
         text,
         score: /Final\s*rank/i.test(text)
           ? 300
@@ -295,20 +301,44 @@ function findRoundAndFinalTargets(html, tid) {
 function extractCandidatePagesFromHtml(html, tid, kno, znt) {
   const pages = new Set();
   const text = String(html || '');
-  const urlMatches = text.match(/(?:https?:\/\/[^"'\s]+\/tour\.asp\?[^"'\s]+|\/tour\.asp\?[^"'\s]+)/g) || [];
+  const urlMatches = text.match(/(?:https?:\/\/[^"'\s]+\.asp\?[^"'\s]+|\/[A-Za-z0-9_./-]+\.asp\?[^"'\s]+)/g) || [];
+
+  const $ = cheerio.load(text);
+  $('a[href]').each((_, a) => {
+    const href = String($(a).attr('href') || '').trim();
+    if (!href || !href.includes('.asp?')) return;
+    urlMatches.push(href);
+  });
 
   for (const raw of urlMatches) {
     const parsed = parseLinkParams(raw);
     if (!parsed) continue;
     if (String(parsed.tid) !== String(tid)) continue;
     if (String(parsed.kno) !== String(kno)) continue;
-    if (String(parsed.znt) !== String(znt)) continue;
+    // znt 參數在分頁連結中可能遺漏（預設為 0），允許空值或匹配的值
+    const parsedZnt = String(parsed.znt || '0');
+    if (parsedZnt !== String(znt)) continue;
     const page = parsed.page ? parseInt(parsed.page, 10) : 1;
     if (Number.isFinite(page) && page >= 1) pages.add(page);
   }
 
   pages.add(1);
   return Array.from(pages).sort((a, b) => a - b);
+}
+
+function buildTargetUrl(tid, target, page) {
+  const targetHref = String(target?.href || '').trim();
+  if (targetHref) {
+    const url = new URL(targetHref);
+    url.searchParams.set('tid', String(tid));
+    if (target?.kno) url.searchParams.set('kno', String(target.kno));
+    if (target?.znt) url.searchParams.set('znt', String(target.znt));
+    url.searchParams.set('Page', String(page));
+    return url.toString();
+  }
+
+  // 向後相容：若 target 沒有 href，退回舊版路徑。
+  return `https://tcg.sfc-jpn.jp/tour.asp?tid=${tid}&kno=${target.kno}&znt=${target.znt}&MMP=&flu=&Exclusive=0&Sort=Table&Order=&Page=${page}`;
 }
 
 function findDataTable($, mode) {
@@ -467,8 +497,8 @@ function extractFinalRowsFromHtml(html, pageIndex) {
   return rows;
 }
 
-async function scrapePagesByTarget(tid, kno, znt, rowExtractor, label, delayMs) {
-  const firstUrl = `https://tcg.sfc-jpn.jp/tour.asp?tid=${tid}&kno=${kno}&znt=${znt}&MMP=&flu=&Exclusive=0&Sort=Table&Order=&Page=1`;
+async function scrapePagesByTarget(tid, target, rowExtractor, label, delayMs) {
+  const firstUrl = buildTargetUrl(tid, target, 1);
   const allRows = [];
 
   let currentPage = 1;
@@ -477,14 +507,12 @@ async function scrapePagesByTarget(tid, kno, znt, rowExtractor, label, delayMs) 
 
   while (!visitedPages.has(currentPage)) {
     visitedPages.add(currentPage);
-    const url = currentPage === 1
-      ? firstUrl
-      : `https://tcg.sfc-jpn.jp/tour.asp?tid=${tid}&kno=${kno}&znt=${znt}&MMP=&flu=&Exclusive=0&Sort=Table&Order=&Page=${currentPage}`;
+    const url = currentPage === 1 ? firstUrl : buildTargetUrl(tid, target, currentPage);
     const html = await fetchHtml(url);
     const rows = rowExtractor(html, label, currentPage);
     allRows.push(...rows);
 
-    const pages = extractCandidatePagesFromHtml(html, tid, kno, znt);
+    const pages = extractCandidatePagesFromHtml(html, tid, target.kno, target.znt);
     if (pages.length) {
       const candidateMax = pages[pages.length - 1];
       if (Number.isFinite(candidateMax) && candidateMax > maxKnownPage) {
@@ -636,8 +664,7 @@ async function scrapeSingleTid(tid, args) {
   for (const round of rounds) {
     const roundRows = await scrapePagesByTarget(
       tid,
-      round.kno,
-      '0',
+      round,
       (html, label, page) => extractRoundRowsFromHtml(html, label, page),
       round.label,
       args.delayMs,
@@ -650,8 +677,7 @@ async function scrapeSingleTid(tid, args) {
   if (finalTarget) {
     finalRows = await scrapePagesByTarget(
       tid,
-      finalTarget.kno,
-      '1',
+      finalTarget,
       (html, _label, page) => extractFinalRowsFromHtml(html, page),
       '',
       args.delayMs,

@@ -6,6 +6,7 @@ const { spawn } = require('child_process');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const PLAYERS_DIR = path.join(DATA_DIR, 'players');
+const PLAYERS_ARCHIVE_DIR = path.join(PLAYERS_DIR, 'archived');
 const PLAYERS_MANIFEST_PATH = path.join(DATA_DIR, 'ranking.json');
 const PLAYER_HISTORY_INDEX_PATH = path.join(PLAYERS_DIR, 'players.json');
 const COUNT_STATE_PATH = path.join(DATA_DIR, 'scrape_players_count.json');
@@ -280,6 +281,80 @@ function readPlayerFetchedAt(playerId) {
   }
 }
 
+function formatArchiveTimestamp(rawValue) {
+  const value = String(rawValue || '').trim();
+  if (!value) return '';
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const dd = String(date.getDate()).padStart(2, '0');
+  const hh = String(date.getHours()).padStart(2, '0');
+  const min = String(date.getMinutes()).padStart(2, '0');
+  const sec = String(date.getSeconds()).padStart(2, '0');
+  return `${yyyy}${mm}${dd}_${hh}${min}${sec}`;
+}
+
+function resolveArchiveFilePath(playerId, archiveStamp) {
+  const baseName = `${playerId}_${archiveStamp || 'unknown'}`;
+  let candidate = path.join(PLAYERS_ARCHIVE_DIR, `${baseName}.json`);
+  let serial = 1;
+
+  while (fs.existsSync(candidate)) {
+    candidate = path.join(PLAYERS_ARCHIVE_DIR, `${baseName}_${serial}.json`);
+    serial += 1;
+  }
+
+  return candidate;
+}
+
+function archiveAndRemovePlayerFile(playerId, existingEntry) {
+  const id = String(playerId || '').trim().toLowerCase();
+  if (!id) {
+    return { archived: false, hadSourceFile: false, archiveRelativePath: '' };
+  }
+
+  const sourcePath = path.join(PLAYERS_DIR, `${id}.json`);
+  const hadSourceFile = fs.existsSync(sourcePath);
+  if (!hadSourceFile) {
+    return { archived: false, hadSourceFile: false, archiveRelativePath: '' };
+  }
+
+  fs.mkdirSync(PLAYERS_ARCHIVE_DIR, { recursive: true });
+
+  let fetchedAt = '';
+  try {
+    const raw = JSON.parse(fs.readFileSync(sourcePath, 'utf8'));
+    fetchedAt = String(raw?.fetchedAt || '').trim();
+  } catch {
+    fetchedAt = '';
+  }
+
+  const archiveStamp = formatArchiveTimestamp(
+    String(existingEntry?.last_scraped_at || '').trim() || fetchedAt || new Date().toISOString(),
+  );
+  const archivePath = resolveArchiveFilePath(id, archiveStamp);
+
+  try {
+    fs.renameSync(sourcePath, archivePath);
+    return {
+      archived: true,
+      hadSourceFile: true,
+      archiveRelativePath: path.relative(DATA_DIR, archivePath).replace(/\\/g, '/'),
+      error: '',
+    };
+  } catch (err) {
+    return {
+      archived: false,
+      hadSourceFile: true,
+      archiveRelativePath: '',
+      error: err.message,
+    };
+  }
+}
+
 function writePlayerHistoryIndex({ levelById, runResultsById, existingIndexById }) {
   const allIds = new Set([...levelById.keys(), ...existingIndexById.keys()]);
   const players = [];
@@ -528,6 +603,11 @@ async function main() {
       return false;
     }
 
+    if (entry.status === 'profile_closed') {
+      // Previously had data, then became 404. Keep archived and stop updating.
+      return false;
+    }
+
     if (entry.status === 'not_found') {
       // 404 before → only retry when --include-404
       return args.include404;
@@ -548,11 +628,12 @@ async function main() {
 
   const indexOkCount = uniqueIds.filter((id) => existingIndexById.get(id)?.status === 'ok').length;
   const index404Count = uniqueIds.filter((id) => existingIndexById.get(id)?.status === 'not_found').length;
+  const indexProfileClosedCount = uniqueIds.filter((id) => existingIndexById.get(id)?.status === 'profile_closed').length;
 
   console.log('');
   console.log(`[schedule] latest csv count: ${csvFiles.length}`);
   console.log(`[schedule] csv unique ids: ${uniqueIds.length}`);
-  console.log(`[schedule] index ok: ${indexOkCount}  |  index 404: ${index404Count}  |  existing files: ${existingFileIds.size}`);
+  console.log(`[schedule] index ok: ${indexOkCount}  |  index 404: ${index404Count}  |  profile closed: ${indexProfileClosedCount}  |  existing files: ${existingFileIds.size}`);
   console.log(`[schedule] level: ${args.level || 'all'}  |  onlyMissing: ${args.onlyMissing}  |  all: ${args.all}  |  include404: ${args.include404}`);
   if (args.forcedIds.length > 0) {
     console.log(`[schedule] forced ids: ${args.forcedIds.join(', ')}`);
@@ -621,12 +702,34 @@ async function main() {
         note: '',
       });
     } else if (result.is404) {
+      const existingEntry = existingIndexById.get(String(id).toLowerCase()) || null;
+      const archived = archiveAndRemovePlayerFile(id, existingEntry);
+      const hadPreviousHistory = Boolean(
+        archived.hadSourceFile
+        || String(existingEntry?.status || '').trim().toLowerCase() === 'ok'
+        || String(existingEntry?.source_file || '').trim(),
+      );
+
       failed404 += 1;
       runResultsById.set(String(id).toLowerCase(), {
-        status: 'not_found',
+        status: hadPreviousHistory ? 'profile_closed' : 'not_found',
         scrapedAt: new Date().toISOString(),
-        note: '404 not found',
+        note: hadPreviousHistory
+          ? `profile closed (404); ${archived.archived
+            ? `archived previous data: ${archived.archiveRelativePath}`
+            : `failed to archive local data${archived.error ? `: ${archived.error}` : ''}`}`
+          : '404 not found',
       });
+
+      if (hadPreviousHistory) {
+        if (archived.archived) {
+          console.log(`[schedule] profile closed: ${id} -> archived to ${archived.archiveRelativePath}`);
+        } else if (archived.hadSourceFile && archived.error) {
+          console.warn(`[schedule] profile closed: ${id} -> failed to archive local file (${archived.error})`);
+        } else {
+          console.log(`[schedule] profile closed: ${id} (no local history file found)`);
+        }
+      }
     } else {
       failedOther += 1;
       runResultsById.set(String(id).toLowerCase(), {

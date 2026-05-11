@@ -1,31 +1,31 @@
 {
-  "updated_at": "2026-04-27T02:34:52.890Z",
+  "updated_at": "2026-05-11T10:26:37.756Z",
   "season_start_from": "2025-09-01",
   "latest": {
     "master": {
       "level": "master",
       "label": "大師組",
-      "date": "20260427",
-      "updated_at": "2026-04-27T02:34:52.887Z",
-      "file": "ranking_20260427_master_result.csv",
+      "date": "20260511",
+      "updated_at": "2026-05-11T10:26:37.752Z",
+      "file": "ranking_20260511_master_result.csv",
       "total_players": 4717,
       "world_players": 32
     },
     "senior": {
       "level": "senior",
       "label": "少年組",
-      "date": "20260427",
-      "updated_at": "2026-04-27T02:34:52.890Z",
-      "file": "ranking_20260427_senior_result.csv",
-      "total_players": 919,
+      "date": "20260511",
+      "updated_at": "2026-05-11T10:26:37.756Z",
+      "file": "ranking_20260511_senior_result.csv",
+      "total_players": 920,
       "world_players": 16
     },
     "junior": {
       "level": "junior",
       "label": "孩童組",
-      "date": "20260427",
-      "updated_at": "2026-04-27T02:34:52.859Z",
-      "file": "ranking_20260427_junior_result.csv",
+      "date": "20260511",
+      "updated_at": "2026-05-11T10:26:37.721Z",
+      "file": "ranking_20260511_junior_result.csv",
       "total_players": 742,
       "world_players": 16
     }
