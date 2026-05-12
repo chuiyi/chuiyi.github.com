@@ -87,9 +87,13 @@ function buildCsvLine(fields) {
 
 function parseLinkParams(href) {
   try {
-    const full = href.startsWith('http')
-      ? href
-      : new URL(String(href || ''), 'https://tcg.sfc-jpn.jp/').toString();
+    const normalizedHref = String(href || '')
+      .replace(/&amp;/g, '&')
+      .replace(/\\+$/g, '')
+      .trim();
+    const full = normalizedHref.startsWith('http')
+      ? normalizedHref
+      : new URL(normalizedHref, 'https://tcg.sfc-jpn.jp/').toString();
     const url = new URL(full);
     return {
       tid: url.searchParams.get('tid') || '',
@@ -315,9 +319,10 @@ function extractCandidatePagesFromHtml(html, tid, kno, znt) {
     if (!parsed) continue;
     if (String(parsed.tid) !== String(tid)) continue;
     if (String(parsed.kno) !== String(kno)) continue;
-    // znt 參數在分頁連結中可能遺漏（預設為 0），允許空值或匹配的值
-    const parsedZnt = String(parsed.znt || '0');
-    if (parsedZnt !== String(znt)) continue;
+    // znt 參數在分頁連結中可能遺漏或夾帶尾端跳脫字元（例如 1\）
+    const parsedZnt = String(parsed.znt || '').replace(/\\+$/g, '').trim();
+    const targetZnt = String(znt || '').trim();
+    if (parsedZnt && parsedZnt !== targetZnt) continue;
     const page = parsed.page ? parseInt(parsed.page, 10) : 1;
     if (Number.isFinite(page) && page >= 1) pages.add(page);
   }
