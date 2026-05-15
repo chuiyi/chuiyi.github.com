@@ -1,12 +1,12 @@
 {
   "id": "tw88542611",
   "url": "https://asia.pokemon-card.com/tw/users/tw88542611/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-03T01:06:13.737Z",
-  "totalEvents": 21,
+  "fetchedAt": "2026-05-15T01:38:21.358Z",
+  "totalEvents": 22,
   "participatedTournaments": [
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "2025-26 Taiwan Master Ball League TCG Division Senior Category",
       "eventTime": "06-13-2026 11:00",
       "eventDateTime": "2026-06-13 11:00",
@@ -16,8 +16,19 @@
       "lp": "-"
     },
     {
+      "pageNo": 2,
+      "rowIndex": 2,
+      "activityName": "Waiting List Entry : 2025-26 Taiwan Master Ball League TCG Division Senior Category",
+      "eventTime": "06-13-2026 11:00",
+      "eventDateTime": "2026-06-13 11:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
       "pageNo": 1,
-      "rowIndex": 19,
+      "rowIndex": 20,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-08-2026 11:00",
       "eventDateTime": "2026-02-08 11:00",
@@ -28,7 +39,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 18,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季2-3 (少年組)",
       "eventTime": "01-17-2026 08:30",
       "eventDateTime": "2026-01-17 08:30",
@@ -39,7 +50,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 18,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-07-2025 14:30",
       "eventDateTime": "2025-12-07 14:30",
@@ -50,7 +61,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 12,
+      "rowIndex": 13,
       "activityName": "2025-26 Taiwan Premier Ball League TCG Division Senior Category",
       "eventTime": "11-01-2025 11:00",
       "eventDateTime": "2025-11-01 11:00",
@@ -61,7 +72,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 16,
+      "rowIndex": 17,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-12-2025 14:00",
       "eventDateTime": "2025-10-12 14:00",
@@ -72,7 +83,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 15,
+      "rowIndex": 16,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-12-2025 11:30",
       "eventDateTime": "2025-10-12 11:30",
@@ -83,7 +94,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 14,
+      "rowIndex": 15,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "10-11-2025 13:00",
       "eventDateTime": "2025-10-11 13:00",
@@ -94,7 +105,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 13,
+      "rowIndex": 14,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2025 14:30",
       "eventDateTime": "2025-09-28 14:30",
@@ -104,8 +115,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 12,
       "activityName": "Master Ball League 2024-25 Taiwan TCG Division Senior Category",
       "eventTime": "06-07-2025 10:00",
       "eventDateTime": "2025-06-07 10:00",
