@@ -3,6 +3,8 @@
     const ACTRESS_KEY = "avLibraryActresses";
     const VIEW_KEY = "avLibraryViewMode";
     const SORT_KEY = "avLibrarySortMode";
+    const PAGE_SIZE_KEY = "avLibraryPageSize";
+    const PAGE_INDEX_KEY_PREFIX = "avLibraryPageIndex:";
     const AUTO_SYNC_KEY = "avLibraryAutoSync";
     const LAST_SYNC_KEY = "avLibraryDriveLastSyncAt";
     const SWIPE_TRANSITION_KEY = "avLibrarySwipeTransition";
@@ -883,6 +885,92 @@
     const getSortMode = () => localStorage.getItem(SORT_KEY) || "newest";
     const setSortMode = (mode) => localStorage.setItem(SORT_KEY, mode);
 
+    const getPageSize = () => {
+        const raw = Number(localStorage.getItem(PAGE_SIZE_KEY) || 100);
+        const options = [20, 50, 100, 500];
+        return options.includes(raw) ? raw : 100;
+    };
+
+    const setPageSize = (size) => {
+        localStorage.setItem(PAGE_SIZE_KEY, String(size));
+    };
+
+    const getPageIndex = (status) => {
+        const raw = Number(localStorage.getItem(`${PAGE_INDEX_KEY_PREFIX}${status}`) || 1);
+        return Number.isFinite(raw) && raw > 0 ? Math.floor(raw) : 1;
+    };
+
+    const setPageIndex = (status, page) => {
+        localStorage.setItem(`${PAGE_INDEX_KEY_PREFIX}${status}`, String(Math.max(1, Math.floor(page || 1))));
+    };
+
+    const ensurePaginationControls = () => {
+        let bar = document.getElementById("av-pagination-bar");
+        if (bar) return bar;
+
+        const list = document.getElementById("av-card-list");
+        if (!list || !list.parentElement) return null;
+
+        bar = document.createElement("div");
+        bar.id = "av-pagination-bar";
+        bar.className = "av-pagination-bar d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3";
+        bar.innerHTML = `
+            <div class="small text-muted" id="av-list-total">總數 0 部影片</div>
+            <div class="d-flex align-items-center gap-2">
+                <label for="av-page-size" class="small text-muted mb-0">每頁</label>
+                <select id="av-page-size" class="form-select form-select-sm" style="width: 92px;">
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="500">500</option>
+                </select>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-page-prev">上一頁</button>
+                <span id="av-page-info" class="small text-muted">1 / 1</span>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="av-page-next">下一頁</button>
+            </div>
+        `;
+
+        list.parentElement.insertBefore(bar, list);
+        return bar;
+    };
+
+    const updatePaginationControls = ({ total, totalPages, page, pageSize }) => {
+        const totalEl = document.getElementById("av-list-total");
+        const infoEl = document.getElementById("av-page-info");
+        const prevBtn = document.getElementById("av-page-prev");
+        const nextBtn = document.getElementById("av-page-next");
+        const sizeSelect = document.getElementById("av-page-size");
+
+        if (totalEl) {
+            totalEl.textContent = `總數 ${total} 部影片`;
+        }
+        if (infoEl) {
+            infoEl.textContent = `${page} / ${totalPages}`;
+        }
+        if (sizeSelect) {
+            sizeSelect.value = String(pageSize);
+        }
+        if (prevBtn) {
+            prevBtn.disabled = page <= 1 || total === 0;
+        }
+        if (nextBtn) {
+            nextBtn.disabled = page >= totalPages || total === 0;
+        }
+    };
+
+    const paginateItems = (items, status) => {
+        const total = items.length;
+        const pageSize = getPageSize();
+        const totalPages = Math.max(1, Math.ceil(total / pageSize));
+        const currentPage = Math.min(getPageIndex(status), totalPages);
+        if (currentPage !== getPageIndex(status)) {
+            setPageIndex(status, currentPage);
+        }
+        const start = (currentPage - 1) * pageSize;
+        const paged = total > 0 ? items.slice(start, start + pageSize) : [];
+        return { paged, total, totalPages, currentPage, pageSize };
+    };
+
     const getAutoSync = () => localStorage.getItem(AUTO_SYNC_KEY) === "true";
     const setAutoSync = (value) => localStorage.setItem(AUTO_SYNC_KEY, value ? "true" : "false");
 
@@ -1410,6 +1498,7 @@
         const container = $("#av-card-list");
         const empty = $("#av-empty-state");
         if (!container) return;
+        ensurePaginationControls();
         const db = getDb();
         
         let filtered;
@@ -1431,8 +1520,17 @@
             }
             return new Date(b.addedAt || 0) - new Date(a.addedAt || 0);
         });
+
+        const { paged, total, totalPages, currentPage, pageSize } = paginateItems(sorted, status);
+        updatePaginationControls({
+            total,
+            totalPages,
+            page: total === 0 ? 1 : currentPage,
+            pageSize
+        });
+
         container.innerHTML = "";
-        if (sorted.length === 0) {
+        if (total === 0) {
             if (empty) empty.classList.remove("d-none");
             return;
         }
@@ -1449,7 +1547,7 @@
                 actressNameToId.set(n.toLowerCase(), a.id);
             });
         });
-        sorted.forEach((item) => {
+        paged.forEach((item) => {
             const card = document.createElement("div");
             card.className = "av-card";
             const cover = item.cover || PLACEHOLDER_COVER;
@@ -1895,6 +1993,10 @@
         const sortSelect = $("#av-sort");
         const viewButtons = document.querySelectorAll("[data-av-view]");
         const container = $("#av-card-list");
+        ensurePaginationControls();
+        const pageSizeSelect = document.getElementById("av-page-size");
+        const prevPageBtn = document.getElementById("av-page-prev");
+        const nextPageBtn = document.getElementById("av-page-next");
         
         // 初始綁定
         setTimeout(attachImageErrorHandlers, 100);
@@ -1903,6 +2005,30 @@
             sortSelect.value = getSortMode();
             sortSelect.addEventListener("change", () => {
                 setSortMode(sortSelect.value);
+                renderList(status);
+            });
+        }
+
+        if (pageSizeSelect) {
+            pageSizeSelect.value = String(getPageSize());
+            pageSizeSelect.addEventListener("change", () => {
+                const nextSize = Number(pageSizeSelect.value || 100);
+                setPageSize(nextSize);
+                setPageIndex(status, 1);
+                renderList(status);
+            });
+        }
+
+        if (prevPageBtn) {
+            prevPageBtn.addEventListener("click", () => {
+                setPageIndex(status, getPageIndex(status) - 1);
+                renderList(status);
+            });
+        }
+
+        if (nextPageBtn) {
+            nextPageBtn.addEventListener("click", () => {
+                setPageIndex(status, getPageIndex(status) + 1);
                 renderList(status);
             });
         }
@@ -2129,6 +2255,86 @@
     const getActressSortMode = () => localStorage.getItem(ACTRESS_SORT_KEY) || "count";
     const setActressSortMode = (v) => localStorage.setItem(ACTRESS_SORT_KEY, v);
 
+    const escapeHtml = (value = "") => {
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
+    };
+
+    const getVisibleActresses = (actresses = []) => {
+        const normalized = actresses.map(normalizeActress).filter(Boolean);
+        const mergedNameSet = new Set();
+        normalized.forEach((actress) => {
+            (actress.aliases || []).forEach((alias) => {
+                const key = (alias || "").trim().toLowerCase();
+                if (key) mergedNameSet.add(key);
+            });
+        });
+        return normalized.filter((actress) => !mergedNameSet.has((actress.name || "").trim().toLowerCase()));
+    };
+
+    const getLongestCommonSubstringLength = (left, right) => {
+        const a = (left || "").trim().toLowerCase();
+        const b = (right || "").trim().toLowerCase();
+        if (!a || !b) return 0;
+
+        const rows = a.length + 1;
+        const cols = b.length + 1;
+        const dp = Array.from({ length: rows }, () => Array(cols).fill(0));
+        let best = 0;
+
+        for (let i = 1; i < rows; i += 1) {
+            for (let j = 1; j < cols; j += 1) {
+                if (a[i - 1] !== b[j - 1]) continue;
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+                if (dp[i][j] > best) best = dp[i][j];
+            }
+        }
+        return best;
+    };
+
+    const getSharedCharacterCount = (left, right) => {
+        const a = new Set((left || "").trim().toLowerCase().replace(/\s+/g, "").split(""));
+        const b = new Set((right || "").trim().toLowerCase().replace(/\s+/g, "").split(""));
+        let count = 0;
+        a.forEach((ch) => {
+            if (ch && b.has(ch)) count += 1;
+        });
+        return count;
+    };
+
+    const getActressNameSimilarityScore = (baseName, candidateName) => {
+        const lcs = getLongestCommonSubstringLength(baseName, candidateName);
+        const shared = getSharedCharacterCount(baseName, candidateName);
+        return Math.max(lcs, shared);
+    };
+
+    const sortMergeCandidates = (baseActress, candidates = []) => {
+        const decorated = candidates.map((candidate) => {
+            const score = getActressNameSimilarityScore(baseActress?.name, candidate?.name);
+            return {
+                candidate,
+                score,
+                promoted: score >= 2
+            };
+        });
+
+        decorated.sort((left, right) => {
+            if (left.promoted !== right.promoted) {
+                return left.promoted ? -1 : 1;
+            }
+            if (left.promoted && right.promoted && left.score !== right.score) {
+                return right.score - left.score;
+            }
+            return left.candidate.name.localeCompare(right.candidate.name, "zh-Hant");
+        });
+
+        return decorated.map((item) => item.candidate);
+    };
+
     /** 依目前排序模式排列演員陣列（修改原陣列並回傳） */
     const sortActresses = (actresses, db, sortMode) => {
         return [...actresses].sort((a, b) => {
@@ -2179,7 +2385,7 @@
         const empty = document.getElementById("av-actress-empty");
         if (!container) return;
 
-        const actresses = getActresses();
+        const actresses = getVisibleActresses(getActresses());
         const db = getDb().filter((item) => item.deleted !== true);
         const isMobileRwd = window.matchMedia("(max-width: 640px)").matches;
         const viewMode = isMobileRwd ? "list" : getActressViewMode();
@@ -2280,18 +2486,41 @@
         const modalAliases = document.getElementById("av-manage-aliases");
         const displayInput = document.getElementById("av-display-name-input");
         const saveDisplayBtn = document.getElementById("av-save-display-name-btn");
+        const mergeTargetSearch = document.getElementById("av-merge-target-search");
         const mergeTargetSelect = document.getElementById("av-merge-target-id");
         const mergePreferredInput = document.getElementById("av-merge-preferred-name");
         const mergeBtn = document.getElementById("av-merge-actress-btn");
 
         let managingActressId = "";
         let manageModal = null;
+        let mergeCandidates = [];
         if (modalElement && window.bootstrap?.Modal) {
             manageModal = new window.bootstrap.Modal(modalElement);
         }
 
+        const renderMergeTargetOptions = () => {
+            if (!mergeTargetSelect) return;
+
+            const selected = mergeTargetSelect.value;
+            const query = (mergeTargetSearch?.value || "").trim().toLowerCase();
+            const filtered = query
+                ? mergeCandidates.filter((actress) => (actress.name || "").toLowerCase().includes(query))
+                : mergeCandidates;
+
+            const options = filtered
+                .map((actress) => `<option value="${escapeHtml(actress.id)}">${escapeHtml(actress.name)}</option>`)
+                .join("");
+
+            mergeTargetSelect.innerHTML = `<option value="">請選擇要合併的演員</option>${options}`;
+
+            if (selected && filtered.some((actress) => actress.id === selected)) {
+                mergeTargetSelect.value = selected;
+            }
+        };
+
         const refreshManageModal = () => {
             const actresses = getActresses().map(normalizeActress).filter(Boolean);
+            const visibleActresses = getVisibleActresses(actresses);
             const current = actresses.find((a) => a.id === managingActressId);
             if (!current) return;
 
@@ -2305,13 +2534,11 @@
                 mergePreferredInput.value = current.name;
             }
 
-            if (mergeTargetSelect) {
-                const options = actresses
-                    .filter((a) => a.id !== current.id)
-                    .map((a) => `<option value="${a.id}">${a.name}</option>`)
-                    .join("");
-                mergeTargetSelect.innerHTML = `<option value="">請選擇要合併的演員</option>${options}`;
-            }
+            mergeCandidates = sortMergeCandidates(
+                current,
+                visibleActresses.filter((a) => a.id !== current.id)
+            );
+            renderMergeTargetOptions();
 
             if (modalAliases) {
                 const aliases = current.aliases || [];
@@ -2330,11 +2557,20 @@
 
         const openManageModal = (actressId) => {
             managingActressId = actressId;
+            if (mergeTargetSearch) {
+                mergeTargetSearch.value = "";
+            }
             refreshManageModal();
             if (manageModal) {
                 manageModal.show();
             }
         };
+
+        if (mergeTargetSearch) {
+            mergeTargetSearch.addEventListener("input", () => {
+                renderMergeTargetOptions();
+            });
+        }
 
         if (saveDisplayBtn) {
             saveDisplayBtn.addEventListener("click", () => {
