@@ -1,23 +1,23 @@
 {
   "id": "tw30944033",
   "url": "https://asia.pokemon-card.com/tw/users/tw30944033/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-02T22:39:01.141Z",
+  "fetchedAt": "2026-05-14T03:09:40.673Z",
   "totalEvents": 28,
   "participatedTournaments": [
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 8,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "05-02-2026 11:00",
       "eventDateTime": "2026-05-02 11:00",
       "location": "新世紀遊戲館",
       "address": "新竹市北區平和街7號2樓",
-      "rank": "-",
+      "rank": "56",
       "lp": "-"
     },
     {
       "pageNo": 1,
-      "rowIndex": 19,
+      "rowIndex": 20,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-19-2026 14:00",
       "eventDateTime": "2026-04-19 14:00",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 18,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-18-2026 14:00",
       "eventDateTime": "2026-04-18 14:00",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 18,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-12-2026 14:00",
       "eventDateTime": "2026-04-12 14:00",
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 16,
+      "rowIndex": 17,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-05-2026 18:00",
       "eventDateTime": "2026-04-05 18:00",
@@ -61,7 +61,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 14,
+      "rowIndex": 16,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-24-2026 14:30",
       "eventDateTime": "2026-01-24 14:30",
@@ -71,8 +71,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 13,
+      "pageNo": 2,
+      "rowIndex": 6,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-24-2026 10:00",
       "eventDateTime": "2026-01-24 10:00",
@@ -82,8 +82,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 15,
+      "pageNo": 2,
+      "rowIndex": 7,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-24-2026 10:00",
       "eventDateTime": "2026-01-24 10:00",
@@ -93,8 +93,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 8,
+      "pageNo": 1,
+      "rowIndex": 15,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-18-2026 18:30",
       "eventDateTime": "2026-01-18 18:30",
@@ -105,7 +105,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 7,
+      "rowIndex": 5,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-18-2026 14:00",
       "eventDateTime": "2026-01-18 14:00",
@@ -116,7 +116,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 6,
+      "rowIndex": 4,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-11-2026 14:00",
       "eventDateTime": "2026-01-11 14:00",
@@ -127,7 +127,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 5,
+      "rowIndex": 3,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-11-2026 13:00",
       "eventDateTime": "2026-01-11 13:00",
@@ -138,7 +138,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 4,
+      "rowIndex": 2,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-11-2026 10:30",
       "eventDateTime": "2026-01-11 10:30",
@@ -148,14 +148,25 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 3,
+      "pageNo": 1,
+      "rowIndex": 14,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-10-2026 15:00",
       "eventDateTime": "2026-01-10 15:00",
       "location": "兔格樂 桌上休閒館",
       "address": "新北市板橋區南雅南路一段一巷11號1樓",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 13,
+      "activityName": "2025-26 Taiwan Great Ball League Season 2",
+      "eventTime": "01-10-2026 14:00",
+      "eventDateTime": "2026-01-10 14:00",
+      "location": "暖角落 卡牌遊戲專賣店",
+      "address": "台北市松山區八德路四段135號B1",
+      "rank": "60",
       "lp": "-"
     },
     {
@@ -167,17 +178,6 @@
       "location": "卡舖奇麒",
       "address": "臺北市大同區民權西路230號B1",
       "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
-      "rowIndex": 2,
-      "activityName": "2025-26 Taiwan Great Ball League Season 2",
-      "eventTime": "01-10-2026 14:00",
-      "eventDateTime": "2026-01-10 14:00",
-      "location": "暖角落 卡牌遊戲專賣店",
-      "address": "台北市松山區八德路四段135號B1",
-      "rank": "60",
       "lp": "-"
     },
     {

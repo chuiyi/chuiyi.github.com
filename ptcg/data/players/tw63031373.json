@@ -1,8 +1,8 @@
 {
   "id": "tw63031373",
   "url": "https://asia.pokemon-card.com/tw/users/tw63031373/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-11T02:43:42.250Z",
-  "totalEvents": 13,
+  "fetchedAt": "2026-05-13T03:03:17.464Z",
+  "totalEvents": 14,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -13,6 +13,17 @@
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 14,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
+      "eventTime": "05-09-2026 08:30",
+      "eventDateTime": "2026-05-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "295",
       "lp": "-"
     },
     {
