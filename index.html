@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <title>Chuiyi's Github Page - 旅行、電影、拍照</title>
+    <title>Chuiyi's Github Page - 旅行、拍照</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
@@ -49,9 +49,6 @@
                         <a class="nav-link" href="#travel" id="nav-travel"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#movies" id="nav-movies"></a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#photography" id="nav-photography"></a>
                     </li>
                     <li class="nav-item">
@@ -71,15 +68,12 @@
                 <div class="col-lg-8 hero-content">
                     <h1 class="hero-title" id="hero-title">生活，如此平凡</h1>
                     <p class="hero-subtitle" id="hero-subtitle">
-                        旅行了這麼多趟，該是時候好好整理這些回憶了。<br>
-                        而好看的電影跟好看的照片則是不斷的增加，也一起整理在這裡吧。
+                        旅行需要回憶，記憶可以留存。<br>
+                        旅途中拍攝的照片也不斷的增加，希望能一起整理在這裡。
                     </p>
                     <div class="d-flex gap-3 flex-wrap">
                         <a href="#travel" class="btn-literary" id="hero-travel-btn">
                             <i class="bi bi-compass me-2"></i><span id="hero-travel-text"></span>
-                        </a>
-                        <a href="#movies" class="btn-literary" id="hero-movies-btn">
-                            <i class="bi bi-camera-reels me-2"></i><span id="hero-movies-text"></span>
                         </a>
                         <a href="#photography" class="btn-literary" id="hero-photography-btn">
                             <i class="bi bi-camera me-2"></i><span id="hero-photography-text"></span>
@@ -114,13 +108,6 @@
                         </div>
                         <div class="col-md-4">
                             <div class="text-center">
-                                <i class="bi bi-camera-reels" style="font-size: 2.5rem; color: var(--muted-brown);"></i>
-                                <h5 class="mt-3" style="color: var(--deep-brown);">影劇愛好者</h5>
-                                <p style="color: var(--text-light);">影劇即生活，生活也是影劇</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="text-center">
                                 <i class="bi bi-pencil-square" style="font-size: 2.5rem; color: var(--muted-brown);"></i>
                                 <h5 class="mt-3" style="color: var(--deep-brown);">街頭紀錄者</h5>
                                 <p style="color: var(--text-light);">用文字跟影像紀錄我眼中的世界</p>
@@ -149,28 +136,6 @@
                 <!-- 旅行卡片將由 JavaScript 動態載入 -->
                 <div class="loading">
                     載入旅行札記中...
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Movies Section -->
-    <section id="movies" class="section" style="background-color: var(--primary-beige);">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-12 text-center">
-                    <h2 class="section-title" id="movies-title">
-                        <i class="bi bi-camera-reels me-3" style="color: var(--muted-brown);"></i>
-                    </h2>
-                    <p class="section-subtitle" id="movies-subtitle"></p>
-                </div>
-            </div>
-            
-            <!-- Movie Reviews Container -->
-            <div id="movie-reviews">
-                <!-- 電影卡片將由 JavaScript 動態載入 -->
-                <div class="loading">
-                    載入電影評論中...
                 </div>
             </div>
         </div>
@@ -226,27 +191,6 @@
     <!-- Modals -->
     <!-- Travel Detail Modal -->
     <div class="modal fade" id="travelModal1" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- 內容將由 JavaScript 動態載入 -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                    <a href="#" class="btn btn-outline-info" target="_blank">
-                        <i class="bi bi-file-text me-1"></i>查看 Markdown 原文
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Movie Detail Modal -->
-    <div class="modal fade" id="movieModal1" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

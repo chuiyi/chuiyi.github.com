@@ -75,11 +75,6 @@ const SiteConfigManager = {
             this.updateElement('travel-title', travelTitle, true);
             this.updateElement('travel-subtitle', SITE_CONFIG.sections.travel.subtitle);
             
-            // 更新 Movies Section（保留圖標）
-            const moviesTitle = `<i class="bi bi-camera-reels me-3" style="color: var(--muted-brown);"></i>${SITE_CONFIG.sections.movies.title}`;
-            this.updateElement('movies-title', moviesTitle, true);
-            this.updateElement('movies-subtitle', SITE_CONFIG.sections.movies.subtitle);
-            
             // 更新 Photography Section（保留圖標）
             const photographyTitle = `<i class="bi bi-camera me-3" style="color: var(--muted-brown);"></i>${SITE_CONFIG.sections.photography.title}`;
             this.updateElement('photography-title', photographyTitle, true);
@@ -90,12 +85,10 @@ const SiteConfigManager = {
             
             // 更新導航欄連結
             this.updateElement('nav-travel', SITE_CONFIG.sections.travel.title);
-            this.updateElement('nav-movies', SITE_CONFIG.sections.movies.title);
             this.updateElement('nav-photography', SITE_CONFIG.sections.photography.title);
             
             // 更新 Hero 區域的按鈕文字
             this.updateElement('hero-travel-text', SITE_CONFIG.sections.travel.title);
-            this.updateElement('hero-movies-text', SITE_CONFIG.sections.movies.title);
             this.updateElement('hero-photography-text', SITE_CONFIG.sections.photography.title);
             
             // 更新導航欄
@@ -191,9 +184,8 @@ function initializeApp() {
 // 載入所有內容
 async function loadContent() {
     try {
-        // 並行載入電影、旅行和攝影內容
+        // 並行載入旅行和攝影內容
         await Promise.all([
-            loadMovieReviews(),
             loadTravelPosts(),
             loadPhotographyGallery()
         ]);
