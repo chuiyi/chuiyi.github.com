@@ -1,8 +1,8 @@
 {
   "id": "tw65936819",
   "url": "https://asia.pokemon-card.com/tw/users/tw65936819/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-12T02:38:44.028Z",
-  "totalEvents": 152,
+  "fetchedAt": "2026-05-19T02:47:57.962Z",
+  "totalEvents": 154,
   "participatedTournaments": [
     {
       "pageNo": 8,
@@ -12,6 +12,28 @@
       "eventDateTime": "2026-06-13 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 13,
+      "activityName": "Waiting List Entry : 2025-26 Taiwan Master Ball League TCG Division Masters Category",
+      "eventTime": "06-13-2026 08:00",
+      "eventDateTime": "2026-06-13 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 14,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-4 (大師組)-二次抽選",
+      "eventTime": "05-30-2026 08:30",
+      "eventDateTime": "2026-05-30 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
       "rank": "-",
       "lp": "-"
     },
