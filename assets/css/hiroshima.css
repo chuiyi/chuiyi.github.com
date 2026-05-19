@@ -195,6 +195,18 @@
     font-size: 0.78rem;
 }
 
+.hero-tag.has-related-info {
+    background-color: #e67e22;
+    border-color: #d35400;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(230, 126, 34, 0.3);
+}
+
+.hero-tag.has-related-info i {
+    font-size: 0.9rem;
+}
+
 .hero-side {
     border: 1px solid rgba(107, 91, 71, 0.12);
     border-radius: 16px;
@@ -790,6 +802,13 @@
 .transport-card.is-linked {
     border-color: var(--deep-brown);
     box-shadow: 0 12px 24px rgba(107, 91, 71, 0.12);
+}
+
+.transport-card.is-related,
+.list-card.is-related {
+    border-color: #e67e22;
+    border-width: 2px;
+    box-shadow: 0 4px 16px rgba(230, 126, 34, 0.2);
 }
 
 .transport-card.is-active-day {

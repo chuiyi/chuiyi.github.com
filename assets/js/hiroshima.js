@@ -351,7 +351,7 @@ function renderTimelineItem(item, dayId, timelineState) {
             <p class="mb-3">${item.description}</p>
             <div class="timeline-actions">
                 <div class="card-meta-pills">
-                    ${(item.transportIds || []).length > 0 || (item.diningIds || []).length > 0 || (item.souvenirIds || []).length > 0 ? createPillHtml(`有相關資訊`, "bi-link-45deg") : createPillHtml("無相關資訊", "bi-dot")}
+                    ${(item.transportIds || []).length > 0 || (item.diningIds || []).length > 0 || (item.souvenirIds || []).length > 0 ? `<span class="hero-tag has-related-info"><i class="bi bi-link-45deg"></i>有相關資訊</span>` : ""}
                 </div>
                 ${item.mapsUrl ? `<a class="link-btn" href="${item.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>` : ""}
             </div>
@@ -384,7 +384,7 @@ function renderTimelineRelatedInfo() {
     if (transports.length > 0) {
         html += '<div class="related-section"><h4 class="related-section-title"><i class="bi bi-sign-turn-right me-1"></i>交通</h4>';
         html += transports.map((transport) => `
-            <article class="transport-card is-linked mb-2">
+            <article class="transport-card is-linked is-related mb-2">
                 <div class="card-actions mb-2">
                     <span class="transport-type">${transport.type}</span>
                     <span class="status-pill">${transport.status}</span>
@@ -407,7 +407,7 @@ function renderTimelineRelatedInfo() {
     if (dinings.length > 0) {
         html += '<div class="related-section"><h4 class="related-section-title"><i class="bi bi-cup-hot me-1"></i>餐飲</h4>';
         html += dinings.map((dining) => `
-            <article class="list-card mb-2">
+            <article class="list-card is-related mb-2">
                 <div class="card-actions mb-2">
                     <span class="transport-type">${dining.category}</span>
                     <span class="status-pill">${dining.reservationStatus}</span>
@@ -426,7 +426,7 @@ function renderTimelineRelatedInfo() {
     if (souvenirs.length > 0) {
         html += '<div class="related-section"><h4 class="related-section-title"><i class="bi bi-bag-heart me-1"></i>伴手禮</h4>';
         html += souvenirs.map((souvenir) => `
-            <article class="list-card mb-2">
+            <article class="list-card is-related mb-2">
                 <div class="card-actions mb-2">
                     <span class="transport-type">${souvenir.category}</span>
                     <span class="status-pill">${souvenir.buyPlan}</span>
