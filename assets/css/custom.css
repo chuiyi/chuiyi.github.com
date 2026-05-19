@@ -47,6 +47,9 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 85px; /* 進一步微調滾動偏移 */
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 body {
@@ -56,6 +59,9 @@ body {
     line-height: 1.7;
     font-weight: 300;
     padding-top: 80px; /* 為固定 navbar 留出空間 */
+    min-height: 100%;
+    overflow-x: hidden;
+    position: relative;
 }
 
 /* 標題字體使用襯線字體 */
