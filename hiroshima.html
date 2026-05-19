@@ -95,6 +95,10 @@
                             <span class="tab-title">交通資料</span>
                             <small>Transport</small>
                         </button>
+                        <button class="trip-tab" data-tab="sightseeing" type="button">
+                            <span class="tab-title">景點資訊</span>
+                            <small>Sightseeing</small>
+                        </button>
                         <button class="trip-tab" data-tab="dining" type="button">
                             <span class="tab-title">餐飲</span>
                             <small>Dining</small>
@@ -125,7 +129,6 @@
                                 <div class="panel-card" id="flight-card"></div>
                                 <div class="panel-card" id="stay-card"></div>
                             </div>
-                            <div class="panel-card markdown-panel" id="overview-markdown"></div>
                         </section>
 
                         <section class="trip-panel" data-panel="timeline">
@@ -150,11 +153,18 @@
                             <div class="panel-header">
                                 <p class="panel-kicker">TRANSPORT</p>
                                 <h2 class="panel-title">交通資料</h2>
-                                <p class="panel-subtitle">先提供時程表連動版，點時間軸項目時會同步高亮相關交通卡。</p>
+                                <p class="panel-subtitle">點時間軸項目時會同步高亮相關交通卡。</p>
                             </div>
-                            <div class="filter-bar" id="transport-day-filters"></div>
-                            <div id="transport-focus-note"></div>
                             <div class="card-grid" id="transport-list"></div>
+                        </section>
+
+                        <section class="trip-panel" data-panel="sightseeing">
+                            <div class="panel-header">
+                                <p class="panel-kicker">SIGHTSEEING</p>
+                                <h2 class="panel-title">景點資訊</h2>
+                                <p class="panel-subtitle">重點景點資訊整理，包含開放時間、門票與注意事項。</p>
+                            </div>
+                            <div class="card-grid" id="sightseeing-list"></div>
                         </section>
 
                         <section class="trip-panel" data-panel="dining">
@@ -194,9 +204,9 @@
                             <div class="panel-header">
                                 <p class="panel-kicker">OTHERS</p>
                                 <h2 class="panel-title">其他資訊</h2>
-                                <p class="panel-subtitle">整合未歸類但旅途中實用的補充資訊。</p>
+                                <p class="panel-subtitle">租車、權食、攝影、伴手禮等實用攻略資訊。</p>
                             </div>
-                            <div class="panel-card markdown-panel" id="others-markdown"></div>
+                            <div class="card-grid" id="others-info-list"></div>
                         </section>
                     </section>
                 </div>

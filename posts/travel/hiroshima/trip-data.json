@@ -152,7 +152,9 @@
           "description": "在尾道處理午餐，逛一逛周邊景點。",
           "location": "尾道市",
           "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+City",
-          "transportIds": []
+          "transportIds": [],
+          "diningIds": ["パン屋航路", "やまねこ布丁"],
+          "sightseeingIds": ["尾道商店街", "ONOMICHI U2"]
         },
         {
           "id": "ikuchijima-transfer",
@@ -173,10 +175,12 @@
           "timeLabel": "16:30 - 19:30",
           "title": "生口島自由時間",
           "category": "activity",
-          "description": "可租腳踏車環島或自由活動。",
+          "description": "可租腳踏車環島或自由活動。這時也可以使用空拍機。",
           "location": "生口島",
           "mapsUrl": "https://www.google.com/maps/search/?q=Ikuchijima+Island",
-          "transportIds": []
+          "transportIds": [],
+          "sightseeingIds": ["瀨戶田日落海灘"],
+          "otherInfoIds": ["bike-rental-public", "bike-rental-shimarider", "drone-regulations", "drone-spots"]
         },
         {
           "id": "minatoya-dinner",
@@ -201,7 +205,8 @@
           "description": "到附近便利商店採購，回旅館休息。",
           "location": "生口島",
           "mapsUrl": "https://www.google.com/maps/search/?q=Ikuchijima+Island",
-          "transportIds": []
+          "transportIds": [],
+          "otherInfoIds": ["breakfast-prep"]
         }
       ]
     },
@@ -209,78 +214,95 @@
       "id": "day2",
       "label": "D2",
       "dateLabel": "05/29 五",
-      "summary": "生口島清晨散步 + 尾道一日遊 + 廣島市區移動",
+      "summary": "生口島清晨散步 x 尾道一日 x 前往廣島",
       "items": [
         {
-          "id": "ikuchijima-morning-walk",
-          "start": "2026-05-29T06:00:00+09:00",
-          "end": "2026-05-29T08:00:00+09:00",
-          "timeLabel": "06:00 - 08:00",
-          "title": "生口島清晨散步",
+          "id": "ikuchijima-morning-breakfast",
+          "start": "2026-05-29T09:00:00+09:00",
+          "end": "2026-05-29T10:30:00+09:00",
+          "timeLabel": "09:00 - 10:30",
+          "title": "生口島清晨散步 x 早餐",
           "category": "activity",
-          "description": "享受寧靜的鄉村晨景。",
+          "description": "享受寧靜的鄉村晨景，用空拍機遊歷生口島，並在享用早餐。",
           "location": "生口島",
           "mapsUrl": "https://www.google.com/maps/search/?q=Ikuchijima+Island",
-          "transportIds": []
+          "transportIds": [],
+          "sightseeingIds": ["瀨戶田日落海灘", "多多羅大橋眺望點"],
+          "otherInfoIds": ["picnic-spots", "drone-regulations", "drone-spots", "breakfast-prep"]
         },
         {
-          "id": "ikuchijima-breakfast",
-          "start": "2026-05-29T08:00:00+09:00",
-          "end": "2026-05-29T09:00:00+09:00",
-          "timeLabel": "08:00 - 09:00",
-          "title": "早餐",
-          "category": "dining",
-          "description": "在民宿享用早餐。",
+          "id": "bonapool-checkout",
+          "start": "2026-05-29T10:30:00+09:00",
+          "end": "2026-05-29T11:00:00+09:00",
+          "timeLabel": "10:30 - 11:00",
+          "title": "BONAPOOL",
+          "category": "accommodation",
+          "description": "準備退房。",
           "location": "生口島",
-          "mapsUrl": "https://www.google.com/maps/search/?q=Ikuchijima+Island",
+          "mapsUrl": "https://www.google.com/maps/search/?q=BONAPOOL+Ikuchijima",
           "transportIds": []
         },
         {
           "id": "ikuchijima-to-onomichi",
-          "start": "2026-05-29T09:00:00+09:00",
-          "end": "2026-05-29T10:00:00+09:00",
-          "timeLabel": "09:00 - 10:00",
+          "start": "2026-05-29T11:00:00+09:00",
+          "end": "2026-05-29T12:00:00+09:00",
+          "timeLabel": "11:00 - 12:00",
           "title": "生口島 → 尾道",
           "category": "transport",
-          "description": "返回尾道進行全日遊覽。",
+          "description": "返回尾道進行全日遊覽。注意船班資訊。",
           "location": "生口島 -> 尾道市",
           "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+City",
-          "transportIds": []
+          "transportIds": ["ferry-ikuchijima-onomichi"],
+          "otherInfoIds": ["ferry-schedule-info"]
         },
         {
           "id": "onomichi-full-day",
-          "start": "2026-05-29T10:00:00+09:00",
-          "end": "2026-05-29T16:00:00+09:00",
-          "timeLabel": "10:00 - 16:00",
+          "start": "2026-05-29T12:00:00+09:00",
+          "end": "2026-05-29T17:00:00+09:00",
+          "timeLabel": "12:00 - 17:00",
           "title": "尾道全日遊覽",
           "category": "sightseeing",
           "description": "古寺、運河、坂道、咖啡廳等景點巡禮。",
           "location": "尾道市",
           "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+City+Temples",
+          "transportIds": [],
+          "sightseeingIds": ["千光寺山纜車", "文學之道/貓之細道", "尾道商店街", "ONOMICHI U2"],
+          "diningIds": ["パン屋航路", "やまねこ布丁"]
+        },
+        {
+          "id": "onomichi-dinner",
+          "start": "2026-05-29T17:00:00+09:00",
+          "end": "2026-05-29T18:30:00+09:00",
+          "timeLabel": "17:00 - 18:30",
+          "title": "尾道晚餐",
+          "category": "dining",
+          "description": "在尾道用晚餐，可選擇尾道拉麵或其他特色料理。",
+          "location": "尾道市",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+Restaurant",
           "transportIds": []
         },
         {
           "id": "onomichi-to-hiroshima",
-          "start": "2026-05-29T16:00:00+09:00",
-          "end": "2026-05-29T18:00:00+09:00",
-          "timeLabel": "16:00 - 18:00",
+          "start": "2026-05-29T19:00:00+09:00",
+          "end": "2026-05-29T20:30:00+09:00",
+          "timeLabel": "19:00 - 20:30",
           "title": "尾道 → 廣島市區",
           "category": "transport",
           "description": "搭乘 JR 返回廣島市區，前往 Sotetsu Fresa Inn 入住。",
           "location": "尾道站 -> 廣島站",
           "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Station",
-          "transportIds": []
+          "transportIds": ["jr-onomichi-hiroshima"]
         },
         {
-          "id": "hiroshima-dinner-day2",
-          "start": "2026-05-29T18:30:00+09:00",
-          "end": "2026-05-29T20:00:00+09:00",
-          "timeLabel": "18:30 - 20:00",
-          "title": "晚餐（自由安排）",
-          "category": "dining",
-          "description": "在廣島市區用餐與休息。",
-          "location": "廣島市南區",
-          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City+Dining",
+          "id": "hiroshima-resupply",
+          "start": "2026-05-29T20:30:00+09:00",
+          "end": "2026-05-29T22:00:00+09:00",
+          "timeLabel": "20:30 - 22:00",
+          "title": "廣島市區",
+          "category": "shopping",
+          "description": "可稍作補給，準備隔天的大戰。",
+          "location": "廣島市區",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City",
           "transportIds": []
         }
       ]
@@ -325,7 +347,8 @@
           "description": "在吳市集合點與隊伍會合，用餐與裝備檢查。",
           "location": "吳市",
           "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City",
-          "transportIds": []
+          "transportIds": [],
+          "diningIds": ["昔咖啡店", "稻中西餐館（伊勢屋）"]
         },
         {
           "id": "orion-xm-anomaly",
@@ -349,7 +372,8 @@
           "description": "回廣島市區或在吳市用餐恢復體力。",
           "location": "吳市 / 廣島市區",
           "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City",
-          "transportIds": []
+          "transportIds": [],
+          "diningIds": ["多幸膳", "珍來軒"]
         }
       ]
     },
@@ -381,7 +405,9 @@
           "description": "完整的 MD 挑戰日，參考 MD 地圖規劃路線。地圖連結：https://www.google.com/maps/d/edit?mid=1OIhY26LaW0A1fa-XzonCxBMvwKVhCsU&usp=sharing",
           "location": "吳市",
           "mapsUrl": "https://www.google.com/maps/d/edit?mid=1OIhY26LaW0A1fa-XzonCxBMvwKVhCsU&usp=sharing",
-          "transportIds": []
+          "transportIds": [],
+          "sightseeingIds": ["大和博物館"],
+          "diningIds": ["昴咖啡店", "稻中西餐館（伊勢屋）", "多幸膳", "珍來軒"]
         }
       ]
     },
@@ -414,8 +440,10 @@
           "location": "宮島",
           "mapsUrl": "https://www.google.com/maps/search/?q=%E5%9A%B4%E5%B3%B6%E7%A5%9E%E7%A4%BE",
           "transportIds": [],
-          "diningIds": ["Kakiya 牡蠣屋本店"],
-          "souvenirIds": ["揚げもみじ", "宮島束子"]
+          "sightseeingIds": ["嚴島神社", "宮島纜車（彌山）"],
+          "diningIds": ["Kakiya 牡蠣屋本店", "まじたま", "紅葉堂"],
+          "souvenirIds": ["揚げもみじ", "宮島束子"],
+          "otherInfoIds": ["miyajima-souvenirs", "miyajima-shamoji", "tide-weather"]
         },
         {
           "id": "miyajima-ferry-back",
@@ -508,6 +536,34 @@
       "linkedTimelineIds": ["ikuchijima-transfer"]
     },
     {
+      "id": "ferry-ikuchijima-onomichi",
+      "dayId": "day2",
+      "type": "接駁船",
+      "title": "生口島 → 尾道（返程）",
+      "route": "生口島（瀨戶田港）-> 尾道港",
+      "depart": "參考時刻表",
+      "arrive": "約 40 分鐘",
+      "cost": "JPY 1,200（普通客船）",
+      "status": "現場購票",
+      "note": "瀨戶內海汽船運營，建議提前30分鐘抵達港口。末班船約18:30，請務必確認當日時刻表。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Setoda+Port+Onomichi",
+      "linkedTimelineIds": ["ikuchijima-to-onomichi"]
+    },
+    {
+      "id": "jr-onomichi-hiroshima",
+      "dayId": "day2",
+      "type": "JR",
+      "title": "JR 尾道站 → 廣島站",
+      "route": "尾道站 -> 廣島站",
+      "depart": "每小時1-2班",
+      "arrive": "約 80-90 分鐘",
+      "cost": "JPY 1,520（普通車）",
+      "status": "現場購票",
+      "note": "搭乘 JR 山陽本線往廣島方向，部分班次為快速列車（約70分鐘）。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+Station+to+Hiroshima+Station",
+      "linkedTimelineIds": ["onomichi-to-hiroshima"]
+    },
+    {
       "id": "peace-park-walking",
       "dayId": "day2",
       "type": "徒步",
@@ -562,6 +618,48 @@
       "note": "建議提早抵達買伴手禮。",
       "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Airport",
       "linkedTimelineIds": ["airport-bus-return", "ci113"]
+    },
+    {
+      "id": "jr-onomichi-mihara-hiroshima",
+      "dayId": "day2",
+      "type": "JR + 新幹線",
+      "title": "尾道 → 三原 → 廣島（最快路線）",
+      "route": "尾道站 -> 三原站 -> 廣島站",
+      "depart": "建議 21:10 左右",
+      "arrive": "約 22:00 前",
+      "cost": "JR 普通車 + 新幹線車資",
+      "status": "彈性購票",
+      "note": "推薦路線：尾道站搭山陽本線到三原站（約13分鐘），轉山陽新幹線直達廣島站（約23分鐘）。避免純普通車需 1.5 小時。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Station",
+      "linkedTimelineIds": ["onomichi-to-hiroshima"]
+    },
+    {
+      "id": "jr-kure-line-rapid",
+      "dayId": "day3",
+      "type": "JR 快速",
+      "title": "廣島 <-> 吳市（JR 吳線）",
+      "route": "JR 廣島站 <-> JR 吳站",
+      "depart": "班次頻繁",
+      "arrive": "快速 32-40 分鐘 / 普通 50 分鐘",
+      "cost": "JPY 500-800",
+      "status": "現場購票",
+      "note": "務必選擇「快速安藝路ライナー (Akiji Liner)」，車程僅需 32-40 分鐘。避免搭到各站停的普通車。",
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJBW5GTywIUDUR9aAzFSr4atI",
+      "linkedTimelineIds": ["kure-travel-anomaly", "kure-mission-day"]
+    },
+    {
+      "id": "setonaikai-ferry-hiroshima-kure",
+      "dayId": "day3",
+      "type": "高速船",
+      "title": "廣島港 -> 吳港（海路體驗）",
+      "route": "廣島港 -> 吳港（大和博物館旁）",
+      "depart": "依班表",
+      "arrive": "約 23 分鐘",
+      "cost": "JPY 2,500",
+      "status": "選擇性路線",
+      "note": "瀨戶內海汽船 Super Jet 高速船，想走海路體驗瀨戶內海景可選此路線。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Kure+Port",
+      "linkedTimelineIds": []
     }
   ],
   "dining": [
@@ -574,14 +672,6 @@
       "mapsUrl": "https://www.google.com/maps/search/?q=Minatoya+Ikuchijima"
     },
     {
-      "name": "魚寅",
-      "area": "袋町",
-      "category": "海鮮居酒屋",
-      "reservationStatus": "優先候補",
-      "note": "第一晚首選。",
-      "mapsUrl": "https://www.google.com/maps/search/?q=%E9%AD%9A%E5%AF%85+%E5%BB%A3%E5%B3%B6"
-    },
-    {
       "name": "Kakiya 牡蠣屋本店",
       "area": "宮島",
       "category": "牡蠣專門",
@@ -590,20 +680,68 @@
       "mapsUrl": "https://www.google.com/maps/search/?q=Kakiya+Miyajima"
     },
     {
-      "name": "元祖八昌",
-      "area": "胡町",
-      "category": "廣島燒",
-      "reservationStatus": "自由日候補",
-      "note": "排隊名店，需保留等待時間。",
-      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%85%83%E7%A5%96%E5%85%AB%E6%98%8C+%E5%BB%A3%E5%B3%B6"
+      "name": "パン屋航路",
+      "area": "尾道站周邊",
+      "category": "麵包店",
+      "reservationStatus": "推薦購買",
+      "note": "超人氣麵包店，咖哩麵包與可頌適合野餐。建議 D1 在尾道購買作為 D2 早餐。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E3%83%91%E3%83%B3%E5%B1%8B%E8%88%AA%E8%B7%AF+%E5%B0%BE%E9%81%93"
     },
     {
-      "name": "みっちゃん総本店",
-      "area": "八丁堀",
-      "category": "廣島燒",
-      "reservationStatus": "備援候補",
-      "note": "若元祖八昌等候過久可改這間。",
-      "mapsUrl": "https://www.google.com/maps/search/?q=%E3%81%BF%E3%81%A3%E3%81%A1%E3%82%83%E3%82%93%E7%B7%8F%E6%9C%AC%E5%BA%97+%E5%BB%A3%E5%B3%B6"
+      "name": "やまねこ布丁",
+      "area": "尾道本通商店街",
+      "category": "甜點店",
+      "reservationStatus": "推薦造訪",
+      "note": "文青復古布丁專門店，尾道散步必訪。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E3%82%84%E3%81%BE%E3%81%AD%E3%81%93%E5%B8%83%E4%B8%81+%E5%B0%BE%E9%81%93"
+    },
+    {
+      "name": "昴咖啡店",
+      "area": "吳市",
+      "category": "咖啡店",
+      "reservationStatus": "推薦早餐",
+      "note": "老字號咖啡店，重現戰艦大和號「大和咖啡」，搭配吐司輕食，非常有儀式感。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Subaru+Coffee+Kure"
+    },
+    {
+      "name": "稻中西餐館（伊勢屋）",
+      "area": "吳市",
+      "category": "西餐廳",
+      "reservationStatus": "午餐推薦",
+      "note": "重現海上自衛隊咖哩與東鄉平八郎元帥的海軍馬鈴薯燉肉（Nikujaga），完全不加水，鮮味極濃。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E7%94%B0%E8%88%8E%E6%B4%8B%E9%A3%9F+%E4%BC%8A%E5%8B%A2%E5%B1%8B+%E5%91%89"
+    },
+    {
+      "name": "多幸膳",
+      "area": "吳市",
+      "category": "吳燒專門",
+      "reservationStatus": "晚餐推薦",
+      "note": "吳燒是廣島燒變體，麵條與高麗菜對折成半月形，醬汁濃郁。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%A4%9A%E5%B9%B8%E8%86%B3+%E5%91%89"
+    },
+    {
+      "name": "珍來軒",
+      "area": "吳市",
+      "category": "吳冷麵",
+      "reservationStatus": "晚餐推薦",
+      "note": "扁平麵條搭配甜酸辣秘製湯頭，當地人排隊也要吃的靈魂美食。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E7%8F%8D%E4%BE%86%E8%BB%92+%E5%91%89"
+    },
+    {
+      "name": "まじたま",
+      "area": "宮島表參道",
+      "category": "牡蠣/穴子魚",
+      "reservationStatus": "午餐推薦",
+      "note": "現烤牡蠣與烤穴子魚飯（あなごめし），星鰻肉質細緻，醬香入味。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E3%81%BE%E3%81%98%E3%81%9F%E3%81%BE+%E5%AE%AE%E5%B3%B6"
+    },
+    {
+      "name": "紅葉堂",
+      "area": "宮島表參道",
+      "category": "炸紅葉饅頭",
+      "reservationStatus": "必吃點心",
+      "note": "炸紅葉饅頭（揚げもみじ）創始店，外皮酥脆內餡熱呼（紅豆/卡士達/起司口味），宮島第一名點。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E7%B4%85%E8%91%89%E5%A0%82+%E5%AE%AE%E5%B3%B6"
     }
   ],
   "souvenirs": [
@@ -638,6 +776,322 @@
       "buyPlan": "D6 回程前",
       "note": "注意保存時間。",
       "mapsUrl": "https://www.google.com/maps/search/?q=%E5%85%AB%E5%A4%A9%E5%A0%82+%E5%BB%A3%E5%B3%B6%E6%A9%9F%E5%A0%B4"
+    }
+  ],
+  "sightseeing": [
+    {
+      "name": "廣島平和紀念公園",
+      "area": "中區",
+      "category": "歷史遺跡",
+      "visitPlan": "D2 上午",
+      "openingHours": "全天開放",
+      "admission": "免費（紀念館另計）",
+      "note": "參觀原爆圓頂館與紀念資料館，建議預留 2-3 小時。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%BB%A3%E5%B3%B6%E5%B9%B3%E5%92%8C%E7%B4%80%E5%BF%B5%E5%85%AC%E5%9C%92"
+    },
+    {
+      "name": "原爆圓頂館",
+      "area": "中區",
+      "category": "世界遺產",
+      "visitPlan": "D2 上午",
+      "openingHours": "外觀可隨時參觀",
+      "admission": "免費",
+      "note": "世界文化遺產，僅能外觀拍攝，不可入內。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%8E%9F%E7%88%86%E5%9C%93%E9%A0%82%E9%A4%A8"
+    },
+    {
+      "name": "廣島城",
+      "area": "中區",
+      "category": "歷史古蹟",
+      "visitPlan": "D3 彈性參觀",
+      "openingHours": "09:00-18:00",
+      "admission": "JPY 370",
+      "note": "重建的天守閣，可登頂遠眺市區風景。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%BB%A3%E5%B3%B6%E5%9F%8E"
+    },
+    {
+      "name": "大和博物館",
+      "area": "吳市",
+      "category": "博物館",
+      "visitPlan": "D4 主要行程",
+      "openingHours": "09:00-18:00（週二休館）",
+      "admission": "JPY 500",
+      "note": "展示戰艦大和 1/10 模型，軍事迷必訪。建議預留 2 小時。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%A4%A7%E5%92%8C%E5%8D%9A%E7%89%A9%E9%A4%A8"
+    },
+    {
+      "name": "嚴島神社",
+      "area": "宮島",
+      "category": "世界遺產",
+      "visitPlan": "D5 核心景點",
+      "openingHours": "06:30-18:00（季節變動）",
+      "admission": "JPY 300",
+      "note": "海上大鳥居與神社本殿，注意潮汐時間影響景觀。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%9A%B4%E5%B3%B6%E7%A5%9E%E7%A4%BE"
+    },
+    {
+      "name": "宮島纜車（彌山）",
+      "area": "宮島",
+      "category": "自然景觀",
+      "visitPlan": "D5 選擇性登山",
+      "openingHours": "09:00-17:00（天候影響）",
+      "admission": "JPY 1,840（來回）",
+      "note": "可登頂俯瞰瀨戶內海，需額外 1-2 小時，視體力決定。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%AE%AE%E5%B3%B6%E7%BA%9C%E8%BB%8A"
+    },
+    {
+      "name": "尾道商店街",
+      "area": "尾道市",
+      "category": "街區散策",
+      "visitPlan": "D1 下午",
+      "openingHours": "各店不一",
+      "admission": "免費",
+      "note": "古寺、運河、坂道咖啡廳等，適合悠閒散步攝影。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%B0%BE%E9%81%93%E5%95%86%E5%BA%97%E8%A1%97"
+    },
+    {
+      "name": "本通商店街",
+      "area": "中區",
+      "category": "購物娛樂",
+      "visitPlan": "D2/D3 彈性",
+      "openingHours": "各店不一（約 10:00-21:00）",
+      "admission": "免費",
+      "note": "廣島最熱鬧的商店街，藥妝、服飾、美食應有盡有。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E6%9C%AC%E9%80%9A%E5%95%86%E5%BA%97%E8%A1%97"
+    },
+    {
+      "name": "瀨戶田日落海灘",
+      "area": "生口島",
+      "category": "自然景觀",
+      "visitPlan": "D1/D2 清晨或傍晚",
+      "openingHours": "全天開放",
+      "admission": "免費",
+      "note": "清晨非常寧靜，有無邊際的瀨戶內海景與乾淨的沙灘椅，適合野餐和拍照。",
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0x8MUCdOUDUR9PhEd2yUBk0"
+    },
+    {
+      "name": "多多羅大橋眺望點",
+      "area": "生口島",
+      "category": "地標景觀",
+      "visitPlan": "D1/D2 單車路線",
+      "openingHours": "全天開放",
+      "admission": "免費",
+      "note": "壯麗的斜張橋延伸進大三島，沿著藍線騎行，沿途有木椅休憩區，可在此吃早餐看晨光。",
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJDcD-P6xPUDUROTdGHqYwLek"
+    },
+    {
+      "name": "ONOMICHI U2",
+      "area": "尾道站周邊",
+      "category": "複合設施",
+      "visitPlan": "D1 下午",
+      "openingHours": "各店不一（約 09:00-21:00）",
+      "admission": "免費",
+      "note": "單車主題複合式倉庫，有咖啡廳、選物店與自行車租賃，文青必訪。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=ONOMICHI+U2"
+    },
+    {
+      "name": "千光寺山纜車",
+      "area": "尾道市",
+      "category": "觀景纜車",
+      "visitPlan": "D2 中午過後",
+      "openingHours": "09:00-17:30",
+      "admission": "JPY 700（來回）",
+      "note": "搭到山頂展望台，從上往下眺望尾道水道、向島與縱橫交錯民宅，是尾道最經典畫面。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%8D%83%E5%85%89%E5%AF%BA%E5%B1%B1%E7%B8%84%E8%BB%8A"
+    },
+    {
+      "name": "文學之道/貓之細道",
+      "area": "尾道市",
+      "category": "街區散策",
+      "visitPlan": "D2 下山路線",
+      "openingHours": "全天開放",
+      "admission": "免費",
+      "note": "從千光寺山沿著文學之道或貓之細道散步下山，充滿文學碑與可愛貓咪雕像，適合慢慢散步拍照。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E7%8C%AB%E3%81%AE%E7%B4%B0%E9%81%93+%E5%B0%BE%E9%81%93"
+    }
+  ],
+  "otherInfo": [
+    {
+      "id": "bike-rental-public",
+      "category": "租車資訊",
+      "title": "瀨戶田町觀光案內所",
+      "subtitle": "公共租賃單車",
+      "location": "離瀨戶田港步行約 2-3 分鐘",
+      "details": [
+        "一般機械單車：JPY 3,000/日",
+        "電輔車：JPY 4,000/日",
+        "營業時間：09:00 - 17:00"
+      ],
+      "note": "同島或尾道特定公共據點還車不另收費，但電輔車必須原地歸還，不能跨島甲租乙還。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Setoda+Tourist+Information+Center",
+      "relatedDays": ["day1", "day2"]
+    },
+    {
+      "id": "bike-rental-shimarider",
+      "category": "租車資訊",
+      "title": "島ライダー（島Rider）",
+      "subtitle": "高品質電輔車專門店",
+      "location": "511 Setodachō Setoda（港口附近）",
+      "details": [
+        "專門提供高品質 e-BIKE 電輔車",
+        "車況非常好",
+        "營業時間：09:00 - 18:00（較長）"
+      ],
+      "note": "輕鬆爬坡看風景，適合體力較不足或想輕鬆騎行的旅客。建議提前預約。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Island+Rider+Ikuchijima",
+      "relatedDays": ["day1", "day2"]
+    },
+    {
+      "id": "breakfast-prep",
+      "category": "飲食建議",
+      "title": "生口島早餐準備",
+      "subtitle": "清晨野餐採購攻略",
+      "location": "前一天尾道 / 當天瀨戶田港周邊",
+      "details": [
+        "前一天：パン屋航路（尾道站附近麵包店）",
+        "當天：FRESTA 瀨戶田店超市",
+        "當天：7-Eleven 便利商店",
+        "推薦：檸檬飲品（當地盛產）"
+      ],
+      "note": "生口島清晨開門餐廳極少，需要前一天或一早做好準備。咖哩麵包與可頌適合冷食野餐。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=FRESTA+Setoda",
+      "relatedDays": ["day1", "day2"],
+      "relatedDining": ["パン屋航路"]
+    },
+    {
+      "id": "picnic-spots",
+      "category": "景點推薦",
+      "title": "生口島野餐勝地",
+      "subtitle": "清晨海景早餐地點",
+      "location": "生口島海岸線",
+      "details": [
+        "瀨戶田日落海灘：寧靜海景，有沙灘椅",
+        "多多羅大橋引道：木椅展望休憩區",
+        "可邊看壯麗大橋與晨光邊吃早餐"
+      ],
+      "note": "清晨時分最為寧靜，無邊際的瀨戶內海景，體驗非常棒。",
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJ0x8MUCdOUDUR9PhEd2yUBk0",
+      "relatedDays": ["day1", "day2"],
+      "relatedSightseeing": ["瀨戶田日落海灘", "多多羅大橋眺望點"]
+    },
+    {
+      "id": "drone-regulations",
+      "category": "攝影資訊",
+      "title": "空拍機使用規範",
+      "subtitle": "日本法規與安全提醒",
+      "location": "適用全日本",
+      "details": [
+        "超過 100g 須事前在 DIPS 實名註冊",
+        "必須綁定 Remote ID",
+        "橋樑主體及周邊 30 公尺內禁飛",
+        "避開人口密集區，保持目視飛行"
+      ],
+      "note": "島波海道橋樑結構嚴格限制，務必遠離橋樑 30 米以上。違規可能面臨罰款或沒收設備。",
+      "mapsUrl": "",
+      "relatedDays": ["day1", "day2"]
+    },
+    {
+      "id": "drone-spots",
+      "category": "攝影資訊",
+      "title": "生口島空拍推薦地點",
+      "subtitle": "合法且絕美的拍攝點",
+      "location": "生口島海岸線",
+      "details": [
+        "瀨戶田日落海灘周邊：往外海拍攝散落島嶼",
+        "多多羅大橋引道下方：側向拍斜張橋線條",
+        "垂水海岸：單車海邊公路畫面"
+      ],
+      "note": "切勿飛越橋樑上方！站在引道下方潮間帶起飛，往海面延伸拍攝。",
+      "mapsUrl": "https://www.google.com/maps/place/?q=place_id:ChIJDcD-P6xPUDUROTdGHqYwLek",
+      "relatedDays": ["day1", "day2"],
+      "relatedSightseeing": ["瀨戶田日落海灘", "多多羅大橋眺望點"]
+    },
+    {
+      "id": "miyajima-souvenirs",
+      "category": "伴手禮資訊",
+      "title": "宮島伴手禮店家",
+      "subtitle": "紅葉饅頭與特色商品",
+      "location": "宮島表參道商店街",
+      "details": [
+        "藤い屋（Fujiiya）：外包裝精美",
+        "菓子處坂本：傳統老店",
+        "紅葉堂：炸紅葉饅頭創始店",
+        "揚げもみじ必吃"
+      ],
+      "note": "紅葉饅頭適合帶回台灣送人，品質保證。炸紅葉饅頭現場購買趁熱吃最美味。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%AE%AE%E5%B3%B6%E8%A1%A8%E5%8F%83%E9%81%93",
+      "relatedDays": ["day5"],
+      "relatedSouvenirs": ["揚げもみじ", "紅葉饅頭"],
+      "relatedDining": ["紅葉堂"]
+    },
+    {
+      "id": "miyajima-shamoji",
+      "category": "伴手禮資訊",
+      "title": "宮島飯勺（しゃもじ）",
+      "subtitle": "招福幸運的吉祥紀念品",
+      "location": "宮島表參道各商店",
+      "details": [
+        "日本飯勺發源地",
+        "象徵「招福、撈取幸運」",
+        "可客製化刻字或蓋章",
+        "實用且具紀念價值"
+      ],
+      "note": "宮島特有文化象徵，當作旅行紀念品非常推薦。表參道商店街各處都有販售。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%AE%AE%E5%B3%B6%E8%A1%A8%E5%8F%83%E9%81%93",
+      "relatedDays": ["day5"],
+      "relatedSouvenirs": ["宮島束子"]
+    },
+    {
+      "id": "tide-weather",
+      "category": "旅行提醒",
+      "title": "潮汐與天候注意",
+      "subtitle": "宮島行程彈性安排",
+      "location": "宮島",
+      "details": [
+        "前一晚確認潮汐時間",
+        "漲潮：海中鳥居美景",
+        "退潮：可步行接近鳥居",
+        "大雨備案：室內景點與市區採購"
+      ],
+      "note": "嚴島神社大鳥居景觀會因潮汐變化，建議在前一晚再確認潮汐與降雨預報。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%9A%B4%E5%B3%B6%E7%A5%9E%E7%A4%BE",
+      "relatedDays": ["day5"],
+      "relatedSightseeing": ["嚴島神社"]
+    },
+    {
+      "id": "ferry-schedule-info",
+      "category": "交通資訊",
+      "title": "生口島 ↔ 尾道渡輪時刻表",
+      "subtitle": "瀨戶內海汽船運營",
+      "location": "瀨戶田港 ↔ 尾道港",
+      "details": [
+        "營運公司：瀨戶內海汽船（せとうち クルーズ）",
+        "航程時間：約 40 分鐘",
+        "票價：JPY 1,200（單程，普通客船）",
+        "建議提前 30 分鐘抵達港口",
+        "末班船約 18:30（依季節調整）",
+        "官網時刻表：需當日確認"
+      ],
+      "note": "船班受天候影響，強風或大浪時可能停駛。建議前一晚或當日早上確認官網最新時刻表，並預留彈性時間。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Setoda+Port+Ferry",
+      "relatedDays": ["day1", "day2"],
+      "relatedSightseeing": []
+    },
+    {
+      "id": "emergency-info",
+      "category": "緊急資訊",
+      "title": "日本緊急聯絡方式",
+      "subtitle": "警察、救護、火警電話",
+      "location": "全日本適用",
+      "details": [
+        "警察：110",
+        "救護/火警：119",
+        "建議存入手機離線筆記",
+        "同步儲存住宿、保險、緊急聯絡人"
+      ],
+      "note": "出國前務必確認旅遊保險與緊急聯絡資訊，並設定手機離線存取。",
+      "mapsUrl": "",
+      "relatedDays": []
     }
   ],
   "checklist": [

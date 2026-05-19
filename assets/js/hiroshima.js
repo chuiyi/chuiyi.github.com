@@ -56,7 +56,7 @@ async function loadPageData() {
     }
 
     state.tripData = await response.json();
-    state.overviewMarkdown = await getMarkdownContent(state.tripData.markdown.overview);
+    // state.overviewMarkdown = await getMarkdownContent(state.tripData.markdown.overview); // 不再顯示大綱補充，保留 md 檔案供補充
     state.othersMarkdown = await getMarkdownContent(state.tripData.markdown.others);
 }
 
@@ -102,20 +102,13 @@ function handleDocumentClick(event) {
         return;
     }
 
-    const transportDayButton = event.target.closest(".transport-day-btn");
-    if (transportDayButton) {
-        state.transportDayFilter = transportDayButton.dataset.dayId;
-        renderTransportPanel();
-        return;
-    }
+    // transport-day-btn 已移除，不再需要篩選處理
 
     const timelineItem = event.target.closest(".timeline-item");
     if (timelineItem) {
         state.selectedTimelineId = timelineItem.dataset.itemId;
         const selectedItem = getTimelineItemById(state.selectedTimelineId);
-        if (selectedItem?.dayId) {
-            state.transportDayFilter = selectedItem.dayId;
-        }
+        // 不再需要設定 transportDayFilter
         renderTimelinePanel();
         renderTransportPanel();
         updateHeroPhase();
@@ -160,6 +153,7 @@ function renderPage() {
     renderOverviewPanel();
     renderTimelinePanel();
     renderTransportPanel();
+    renderSightseeingPanel();
     renderDiningPanel();
     renderSouvenirPanel();
     renderChecklistPanel();
@@ -293,8 +287,6 @@ function renderOverviewPanel() {
             </div>
         `).join("")}
     `;
-
-    document.getElementById("overview-markdown").innerHTML = marked.parse(state.overviewMarkdown || "");
 }
 
 function renderTimelinePanel() {
@@ -351,7 +343,7 @@ function renderTimelineItem(item, dayId, timelineState) {
             <p class="mb-3">${item.description}</p>
             <div class="timeline-actions">
                 <div class="card-meta-pills">
-                    ${(item.transportIds || []).length > 0 || (item.diningIds || []).length > 0 || (item.souvenirIds || []).length > 0 ? `<span class="hero-tag has-related-info"><i class="bi bi-link-45deg"></i>有相關資訊</span>` : ""}
+                    ${(item.transportIds || []).length > 0 || (item.diningIds || []).length > 0 || (item.souvenirIds || []).length > 0 || (item.sightseeingIds || []).length > 0 || (item.otherInfoIds || []).length > 0 ? `<span class="hero-tag has-related-info"><i class="bi bi-link-45deg"></i>有相關資訊</span>` : ""}
                 </div>
                 ${item.mapsUrl ? `<a class="link-btn" href="${item.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>` : ""}
             </div>
@@ -370,12 +362,14 @@ function renderTimelineRelatedInfo() {
 
     const transports = (item.transportIds || []).map(id => state.tripData.transports.find(t => t.id === id)).filter(Boolean);
     const dinings = (item.diningIds || []).map(id => state.tripData.dining.find(d => d.name === id)).filter(Boolean);
+    const sightseeings = (item.sightseeingIds || []).map(id => state.tripData.sightseeing.find(s => s.name === id)).filter(Boolean);
     const souvenirs = (item.souvenirIds || []).map(id => state.tripData.souvenirs.find(s => s.name === id)).filter(Boolean);
+    const otherInfos = (item.otherInfoIds || []).map(id => state.tripData.otherInfo.find(o => o.id === id)).filter(Boolean);
 
-    const hasAnyInfo = transports.length > 0 || dinings.length > 0 || souvenirs.length > 0;
+    const hasAnyInfo = transports.length > 0 || dinings.length > 0 || sightseeings.length > 0 || souvenirs.length > 0 || otherInfos.length > 0;
 
     if (!hasAnyInfo) {
-        target.innerHTML = `<p class="related-empty mb-0">此時程節點沒有關聯的資訊。</p>`;
+        target.innerHTML = `<p class="related-empty mb-0">選取時程節點後，這裡會顯示相關資訊。</p>`;
         return;
     }
 
@@ -399,6 +393,27 @@ function renderTimelineRelatedInfo() {
                 ` : ""}
                 <p class="card-note mb-3">${transport.note}</p>
                 <a class="link-btn" href="${transport.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>
+            </article>
+        `).join("");
+        html += '</div>';
+    }
+
+    if (sightseeings.length > 0) {
+        html += '<div class="related-section"><h4 class="related-section-title"><i class="bi bi-camera-fill me-1"></i>景點</h4>';
+        html += sightseeings.map((sight) => `
+            <article class="list-card is-related mb-2">
+                <div class="card-actions mb-2">
+                    <span class="transport-type">${sight.category}</span>
+                    <span class="status-pill">${sight.visitPlan}</span>
+                </div>
+                <h3 class="card-title mb-2">${sight.name}</h3>
+                <div class="list-meta mb-2">
+                    ${sight.openingHours ? `<div><strong>開放時間</strong> ${sight.openingHours}</div>` : ""}
+                    ${sight.admission ? `<div><strong>門票</strong> ${sight.admission}</div>` : ""}
+                    <div><strong>地點</strong> ${sight.area}</div>
+                    <div><strong>備註</strong> ${sight.note}</div>
+                </div>
+                <a class="link-btn" href="${sight.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>
             </article>
         `).join("");
         html += '</div>';
@@ -442,38 +457,67 @@ function renderTimelineRelatedInfo() {
         html += '</div>';
     }
 
+    if (otherInfos.length > 0) {
+        html += '<div class="related-section"><h4 class="related-section-title"><i class="bi bi-info-circle-fill me-1"></i>其他資訊</h4>';
+        html += otherInfos.map((info) => {
+            const categoryIcons = {
+                "租車資訊": "bi-bicycle",
+                "飲食建議": "bi-egg-fried",
+                "景點推薦": "bi-geo-alt-fill",
+                "攝影資訊": "bi-camera-fill",
+                "伴手禮資訊": "bi-gift-fill",
+                "旅行提醒": "bi-exclamation-triangle-fill",
+                "緊急資訊": "bi-telephone-fill",
+                "交通資訊": "bi-bus-front-fill"
+            };
+            const iconClass = categoryIcons[info.category] || "bi-info-circle-fill";
+            const hasMap = info.mapsUrl && info.mapsUrl.length > 0;
+            
+            return `
+                <article class="list-card other-info-card is-related mb-2">
+                    <div class="card-actions mb-2">
+                        <span class="transport-type"><i class="bi ${iconClass} me-1"></i>${info.category}</span>
+                    </div>
+                    <h3 class="card-title mb-2">${info.title}</h3>
+                    ${info.subtitle ? `<p class="card-subtitle mb-2">${info.subtitle}</p>` : ""}
+                    ${info.location ? `<p class="location-badge mb-2"><i class="bi bi-pin-map-fill me-1"></i>${info.location}</p>` : ""}
+                    <div class="other-info-details mb-2">
+                        ${info.details.slice(0, 3).map(detail => `<div class="detail-item"><i class="bi bi-check-circle me-1"></i>${detail}</div>`).join("")}
+                        ${info.details.length > 3 ? `<div class="detail-item text-muted">...還有 ${info.details.length - 3} 項</div>` : ""}
+                    </div>
+                    <p class="card-note mb-2">${info.note}</p>
+                    ${hasMap ? `<a class="link-btn" href="${info.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>` : ""}
+                </article>
+            `;
+        }).join("");
+        html += '</div>';
+    }
+
     target.innerHTML = html;
 }
 
 function renderTransportPanel() {
-    const filtersTarget = document.getElementById("transport-day-filters");
-    filtersTarget.innerHTML = [`
-        <button type="button" class="transport-day-btn ${state.transportDayFilter === "all" ? "active" : ""}" data-day-id="all">全部</button>
-    `, ...state.tripData.timelineDays.map((day) => `
-        <button type="button" class="transport-day-btn ${state.transportDayFilter === day.id ? "active" : ""}" data-day-id="${day.id}">${day.label}</button>
-    `)].join("");
+    // 不再需要篩選按鈕和連動提示，已在 HTML 中移除
 
-    const focusNote = document.getElementById("transport-focus-note");
     const selectedItem = getTimelineItemById(state.selectedTimelineId);
     const linkedIds = new Set((selectedItem?.transportIds || []).map((id) => id));
-    focusNote.innerHTML = linkedIds.size > 0
-        ? `<div class="focus-note"><strong>已從時程表連動：</strong>${selectedItem.title} 對應 ${linkedIds.size} 張交通卡，以下已高亮。</div>`
-        : "";
 
-    const transports = getFilteredTransports();
+    const transports = state.tripData.transports; // 顯示所有交通卡片
     const target = document.getElementById("transport-list");
     target.innerHTML = transports.map((transport) => {
         const classes = ["transport-card"];
         if (linkedIds.has(transport.id)) {
             classes.push("is-linked");
         }
-        if (state.transportDayFilter !== "all" && transport.dayId === state.transportDayFilter) {
-            classes.push("is-active-day");
-        }
+
+        // 查找對應的日期標籤
+        const day = state.tripData.timelineDays.find(d => d.id === transport.dayId);
+        const dayLabel = day ? `${day.label} ${day.dateLabel}` : transport.dayId;
 
         return `
             <article class="${classes.join(" ")}">
                 <div class="card-actions mb-3">
+                    <span class="transport-type">${dayLabel}</span>
                     <span class="transport-type">${transport.type}</span>
                     <span class="status-pill">${transport.status}</span>
                 </div>
@@ -510,6 +554,17 @@ function renderDiningPanel() {
     })).join("");
 }
 
+function renderSightseeingPanel() {
+    document.getElementById("sightseeing-list").innerHTML = state.tripData.sightseeing.map((item) => renderListCard(item, {
+        topLabel: item.category,
+        secondaryLabel: item.visitPlan,
+        footerLabel: item.area,
+        note: item.note,
+        openingHours: item.openingHours,
+        admission: item.admission
+    })).join("");
+}
+
 function renderSouvenirPanel() {
     document.getElementById("souvenir-list").innerHTML = state.tripData.souvenirs.map((item) => renderListCard(item, {
         topLabel: item.category,
@@ -528,6 +583,8 @@ function renderListCard(item, options) {
             </div>
             <h3 class="card-title">${item.name}</h3>
             <div class="list-meta">
+                ${options.openingHours ? `<div><strong>開放時間</strong> ${options.openingHours}</div>` : ""}
+                ${options.admission ? `<div><strong>門票</strong> ${options.admission}</div>` : ""}
                 <div><strong>地點</strong> ${options.footerLabel}</div>
                 <div><strong>備註</strong> ${options.note}</div>
             </div>
@@ -568,7 +625,40 @@ function renderChecklistPanel() {
 }
 
 function renderOthersPanel() {
-    document.getElementById("others-markdown").innerHTML = marked.parse(state.othersMarkdown || "");
+    document.getElementById("others-info-list").innerHTML = state.tripData.otherInfo.map((item) => renderOtherInfoCard(item)).join("");
+}
+
+function renderOtherInfoCard(item) {
+    const categoryIcons = {
+        "租車資訊": "bi-bicycle",
+        "飲食建議": "bi-egg-fried",
+        "景點推薦": "bi-geo-alt-fill",
+        "攝影資訊": "bi-camera-fill",
+        "伴手禮資訊": "bi-gift-fill",
+        "旅行提醒": "bi-exclamation-triangle-fill",
+        "緊急資訊": "bi-telephone-fill"
+    };
+    
+    const iconClass = categoryIcons[item.category] || "bi-info-circle-fill";
+    const hasMap = item.mapsUrl && item.mapsUrl.length > 0;
+    
+    return `
+        <article class="list-card other-info-card">
+            <div class="card-actions mb-3">
+                <span class="transport-type"><i class="bi ${iconClass} me-1"></i>${item.category}</span>
+            </div>
+            <h3 class="card-title">${item.title}</h3>
+            ${item.subtitle ? `<p class="card-subtitle mb-2">${item.subtitle}</p>` : ""}
+            ${item.location ? `<p class="location-badge mb-2"><i class="bi bi-pin-map-fill me-1"></i>${item.location}</p>` : ""}
+            <div class="other-info-details mb-3">
+                ${item.details.map(detail => `<div class="detail-item"><i class="bi bi-check-circle me-1"></i>${detail}</div>`).join("")}
+            </div>
+            <p class="card-note mb-3">${item.note}</p>
+            <div class="card-actions">
+                ${hasMap ? `<a class="link-btn" href="${item.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>` : ""}
+            </div>
+        </article>
+    `;
 }
 
 function setActiveTab(tabId) {

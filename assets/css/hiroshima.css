@@ -321,7 +321,7 @@
     border: 1px solid var(--border-light);
     background: var(--hiro-tab-bg);
     color: var(--text-light);
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 999px;
     text-align: center;
     transition: all 0.2s ease;
@@ -334,15 +334,15 @@
     display: inline-block;
     color: var(--deep-brown);
     font-family: 'Noto Serif TC', Georgia, serif;
-    font-size: 0.9rem;
-    margin-right: 0.35rem;
+    font-size: 0.82rem;
+    margin-right: 0.28rem;
 }
 
 .trip-tab small {
     display: inline-block;
     color: var(--text-light);
-    letter-spacing: 0.06em;
-    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    font-size: 0.64rem;
     opacity: 0.8;
 }
 
@@ -805,6 +805,7 @@
 }
 
 .transport-card.is-related,
+.transport-card.is-linked,
 .list-card.is-related {
     border-color: #e67e22;
     border-width: 2px;
@@ -813,6 +814,48 @@
 
 .transport-card.is-active-day {
     background: linear-gradient(180deg, var(--hiro-highlight-bg), var(--hiro-card-bg));
+}
+
+/* Other Info Card Styles */
+.other-info-card .card-subtitle {
+    font-size: 0.9rem;
+    color: var(--muted-brown);
+    font-weight: 400;
+}
+
+.other-info-card .location-badge {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    display: inline-flex;
+    align-items: center;
+}
+
+.other-info-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.detail-item {
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.5;
+}
+
+.detail-item i {
+    color: var(--accent-gold);
+    margin-top: 0.15rem;
+    flex-shrink: 0;
+}
+
+.other-info-card .card-note {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    border-left: 3px solid var(--accent-gold);
+    padding-left: 0.8rem;
+    margin-top: 0.8rem;
 }
 
 .transport-route,
