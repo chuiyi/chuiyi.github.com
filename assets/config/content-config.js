@@ -29,6 +29,15 @@ const MOVIE_FILES = [
 // 旅行筆記檔案列表
 const TRAVEL_FILES = [
     {
+        file: 'posts/travel/hiroshima-trip-2026.md',
+        id: 'hiroshima-trip-2026',
+        featured: true,
+        title: '廣島之旅 2026',
+        location: '日本 | 廣島',
+        date: '2026年5月28日 - 6月2日',
+        description: '以互動式旅遊中樞管理大綱、時程表、交通、餐飲、伴手禮與行前確認。'
+    },
+    {
         file: 'posts/travel/osaka-expo-2025.md',
         id: 'osaka-expo-2025',
         images: 'posts/travel/imgs/GR011874.JPG',
@@ -36,7 +45,7 @@ const TRAVEL_FILES = [
         title: '2025大阪萬博之旅',
         location: '日本 | 大阪',
         date: '2025年6月17日 - 6月22日',
-        description: '從小就心心嚮往的日本萬博，終於在2025年再度舉辦！'
+        description: '嚮往的日本萬博，終於在2025年再度舉辦！'
     },
     {
         file: 'posts/travel/spain-honeymoon-2024.md',

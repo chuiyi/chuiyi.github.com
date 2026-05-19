@@ -1,0 +1,986 @@
+.hiroshima-page {
+    padding-top: 0.6rem;
+    padding-bottom: 4rem;
+}
+
+.hiroshima-page {
+    --hiro-card-bg: var(--warm-white);
+    --hiro-chip-bg: rgba(255, 255, 255, 0.7);
+    --hiro-tech-grid: rgba(111, 90, 61, 0.08);
+    --hiro-tech-line: rgba(111, 90, 61, 0.22);
+    --hiro-tech-edge: rgba(148, 117, 75, 0.42);
+    --hiro-tech-glow: rgba(180, 138, 79, 0.16);
+    --hiro-hero-board-bg:
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.16), transparent 26%),
+        linear-gradient(140deg, var(--primary-beige), var(--soft-gray));
+    --hiro-hero-board-border: var(--border-light);
+    --hiro-hero-side-bg: rgba(255, 252, 246, 0.86);
+    --hiro-countdown-label: #6e5b47;
+    --hiro-countdown-value: #4f3f31;
+    --hiro-tab-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 243, 240, 0.72));
+    --hiro-tab-active-bg: rgba(139, 125, 107, 0.12);
+    --hiro-highlight-bg: rgba(139, 125, 107, 0.12);
+    --hiro-highlight-strong-bg: var(--muted-brown);
+    --hiro-highlight-strong-text: #fefcf9;
+    --hiro-button-bg: transparent;
+    --hiro-button-text: var(--muted-brown);
+    --hiro-button-hover-bg: var(--muted-brown);
+    --hiro-button-hover-text: #fefcf9;
+}
+
+[data-theme="dark"] .hiroshima-page {
+    --hiro-card-bg: #231d17;
+    --hiro-chip-bg: rgba(212, 196, 168, 0.16);
+    --hiro-tech-grid: rgba(231, 203, 153, 0.08);
+    --hiro-tech-line: rgba(231, 203, 153, 0.22);
+    --hiro-tech-edge: rgba(226, 185, 124, 0.46);
+    --hiro-tech-glow: rgba(226, 185, 124, 0.2);
+    --hiro-hero-board-bg:
+        radial-gradient(circle at top right, rgba(201, 166, 105, 0.22), transparent 32%),
+        linear-gradient(145deg, #2f2822, #221c17);
+    --hiro-hero-board-border: rgba(212, 196, 168, 0.22);
+    --hiro-hero-side-bg: rgba(33, 27, 22, 0.88);
+    --hiro-countdown-label: #d8c9ae;
+    --hiro-countdown-value: #f5e8cf;
+    --hiro-tab-bg: linear-gradient(135deg, rgba(58, 52, 44, 0.85), rgba(44, 37, 32, 0.9));
+    --hiro-tab-active-bg: rgba(212, 196, 168, 0.22);
+    --hiro-highlight-bg: rgba(212, 196, 168, 0.18);
+    --hiro-highlight-strong-bg: #d4c4a8;
+    --hiro-highlight-strong-text: #2a241d;
+    --hiro-button-bg: rgba(212, 196, 168, 0.05);
+    --hiro-button-text: #d8c9ae;
+    --hiro-button-hover-bg: #d4c4a8;
+    --hiro-button-hover-text: #2a241d;
+}
+
+.hiroshima-hero {
+    padding: 0.45rem 0 0.45rem;
+}
+
+.hiroshima-page {
+    position: relative;
+    isolation: isolate;
+}
+
+.hiroshima-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 46px,
+            var(--hiro-tech-grid) 47px,
+            transparent 48px
+        ),
+        linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.06) 100%);
+}
+
+.hero-board {
+    background: var(--hiro-hero-board-bg);
+    border: 1px solid var(--hiro-hero-board-border);
+    border-radius: 18px;
+    box-shadow:
+        0 18px 32px var(--shadow-subtle),
+        inset 0 0 0 1px var(--hiro-tech-line),
+        inset 0 0 26px var(--hiro-tech-glow);
+    padding: 0.82rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.9fr) minmax(280px, 0.95fr);
+    gap: 0.78rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-board::before,
+.hero-board::after {
+    content: "";
+    position: absolute;
+    width: 74px;
+    height: 74px;
+    border: 1px solid var(--hiro-tech-edge);
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.hero-board::before {
+    top: 10px;
+    right: 10px;
+    border-left: 0;
+    border-bottom: 0;
+}
+
+.hero-board::after {
+    left: 10px;
+    bottom: 10px;
+    border-right: 0;
+    border-top: 0;
+}
+
+.hero-kicker,
+.panel-kicker,
+.sidebar-card-label {
+    color: var(--muted-brown);
+    letter-spacing: 0.16em;
+    margin-bottom: 0.32rem;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    font-family: "Consolas", "Courier New", monospace;
+    text-shadow: 0 0 10px var(--hiro-tech-glow);
+}
+
+.hero-title {
+    margin-bottom: 0.14rem;
+    font-size: 1.52rem;
+    color: var(--deep-brown);
+}
+
+.hero-subtitle,
+.panel-subtitle,
+.modal-subtitle,
+.hero-side-label,
+.hero-side-text,
+.checklist-hint,
+.timeline-status-copy,
+.sidebar-meta,
+.card-note,
+.inline-hint {
+    color: var(--text-light);
+}
+
+.hero-meta {
+    color: var(--text-light);
+    margin-bottom: 0.35rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.28rem;
+    font-size: 0.78rem;
+}
+
+.hero-meta .dot {
+    opacity: 0.55;
+}
+
+.hero-tags,
+.card-meta-pills,
+.timeline-day-tabs,
+.filter-bar,
+.checklist-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.hero-tag,
+.meta-pill,
+.transport-type,
+.status-pill,
+.mini-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-light);
+    padding: 0.28rem 0.7rem;
+    background-color: var(--hiro-chip-bg);
+    color: var(--deep-brown);
+    font-size: 0.78rem;
+}
+
+.hero-side {
+    border: 1px solid rgba(107, 91, 71, 0.12);
+    border-radius: 16px;
+    padding: 0.58rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.48rem;
+    background: var(--hiro-hero-side-bg);
+    box-shadow: inset 0 0 0 1px var(--hiro-tech-line);
+}
+
+.hero-side-block {
+    padding-bottom: 0.42rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.hero-side-block:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.countdown-label {
+    color: var(--hiro-countdown-label);
+    margin-bottom: 0.1rem;
+    font-size: 0.78rem;
+}
+
+.countdown-value {
+    font-size: 1.08rem;
+    color: var(--hiro-countdown-value);
+    margin-bottom: 0;
+}
+
+.hero-side-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.46rem;
+}
+
+.btn-back-home {
+    width: fit-content;
+}
+
+.trip-shell-section {
+    padding-top: 0.4rem;
+}
+
+.trip-shell {
+    display: grid;
+    grid-template-columns: minmax(250px, 280px) minmax(0, 1fr);
+    gap: 1.1rem;
+    align-items: start;
+}
+
+.trip-sidebar {
+    position: sticky;
+    top: 105px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar-card,
+.trip-panel,
+.panel-card,
+.timeline-item,
+.transport-card,
+.list-card,
+.checklist-branch {
+    background: var(--hiro-card-bg);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.04),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.trip-panel,
+.panel-card,
+.sidebar-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.trip-panel::after,
+.panel-card::after,
+.sidebar-card::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    border-top: 1px solid var(--hiro-tech-edge);
+    border-right: 1px solid var(--hiro-tech-edge);
+    border-top-right-radius: 16px;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.sidebar-card {
+    padding: 1rem;
+}
+
+.trip-tab-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.trip-tab {
+    width: 100%;
+    border: 1px solid var(--border-light);
+    background: var(--hiro-tab-bg);
+    color: var(--text-light);
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    text-align: left;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 0 0 1px transparent;
+}
+
+.trip-tab .tab-title {
+    display: block;
+    color: var(--deep-brown);
+    font-family: 'Noto Serif TC', Georgia, serif;
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+}
+
+.trip-tab small {
+    color: var(--text-light);
+    letter-spacing: 0.08em;
+}
+
+.trip-tab.active,
+.trip-tab:hover {
+    transform: translateY(-1px);
+    background: var(--hiro-tab-active-bg);
+    border-color: var(--muted-brown);
+    color: var(--deep-brown);
+    box-shadow: 0 10px 24px rgba(107, 91, 71, 0.08);
+    box-shadow:
+        0 10px 24px rgba(107, 91, 71, 0.08),
+        inset 0 0 0 1px var(--hiro-tech-edge),
+        inset 0 0 18px var(--hiro-tech-glow);
+}
+
+.trip-tab.active .tab-title,
+.trip-tab:hover .tab-title {
+    color: var(--deep-brown);
+}
+
+.trip-tab.active small,
+.trip-tab:hover small {
+    color: var(--deep-brown);
+}
+
+.trip-stage {
+    min-width: 0;
+}
+
+.trip-panel {
+    display: none;
+    padding: 1.3rem;
+}
+
+.trip-panel.active {
+    display: block;
+}
+
+.panel-header {
+    margin-bottom: 1rem;
+}
+
+.panel-title {
+    margin-bottom: 0.25rem;
+    color: var(--deep-brown);
+}
+
+.panel-card {
+    padding: 1rem;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.35rem;
+    color: var(--deep-brown);
+}
+
+.info-list {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+}
+
+.info-row {
+    display: grid;
+    grid-template-columns: 90px minmax(0, 1fr);
+    gap: 0.5rem;
+    font-size: 0.92rem;
+}
+
+.info-row dt {
+    margin: 0;
+    color: var(--text-light);
+    font-weight: 400;
+}
+
+.info-row dd {
+    margin: 0;
+    color: var(--text-dark);
+}
+
+.inline-tip,
+.stay-details {
+    display: inline-block;
+    position: relative;
+}
+
+.inline-tip .tip-trigger,
+.stay-details .tip-trigger {
+    list-style: none;
+    cursor: pointer;
+    color: var(--muted-brown);
+    font-size: 0.86rem;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 3px;
+}
+
+.inline-tip .tip-trigger::-webkit-details-marker,
+.stay-details .tip-trigger::-webkit-details-marker {
+    display: none;
+}
+
+.inline-tip .tip-content {
+    display: inline-block;
+    margin-top: 0.35rem;
+    padding: 0.34rem 0.56rem;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    background: var(--hiro-chip-bg);
+    color: var(--text-dark);
+    font-size: 0.88rem;
+}
+
+.stay-detail-list {
+    margin: 0.45rem 0 0;
+    display: grid;
+    gap: 0.35rem;
+}
+
+.stay-detail-panel {
+    display: block;
+}
+
+.info-row-detail-toggle {
+    align-items: start;
+}
+
+.stay-detail-toggle-btn {
+    border: 1px dashed var(--muted-brown);
+    background: transparent;
+    color: var(--muted-brown);
+    border-radius: 999px;
+    padding: 0.18rem 0.54rem;
+    font-size: 0.78rem;
+    line-height: 1.25;
+}
+
+.stay-detail-toggle-btn:hover {
+    background: var(--hiro-highlight-bg);
+}
+
+.stay-detail-row {
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 0.45rem;
+    font-size: 0.86rem;
+}
+
+.stay-detail-row dt,
+.stay-detail-row dd {
+    margin: 0;
+}
+
+.stay-detail-row dt {
+    color: var(--text-light);
+}
+
+.stay-detail-row dd {
+    color: var(--text-dark);
+}
+
+.missing-value {
+    color: #b94a48;
+    font-weight: 500;
+}
+
+.markdown-panel h1,
+.markdown-panel h2,
+.markdown-panel h3,
+.markdown-panel h4 {
+    color: var(--deep-brown);
+}
+
+.markdown-panel p,
+.markdown-panel li {
+    color: var(--text-dark);
+}
+
+.markdown-panel ul,
+.markdown-panel ol {
+    padding-left: 1.2rem;
+}
+
+.timeline-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.timeline-day-btn,
+.transport-day-btn {
+    border: 1px solid var(--border-light);
+    background: var(--hiro-card-bg);
+    border-radius: 999px;
+    padding: 0.35rem 0.72rem;
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.timeline-day-btn.active,
+.timeline-day-btn:hover,
+.transport-day-btn.active,
+.transport-day-btn:hover {
+    background: var(--hiro-highlight-strong-bg);
+    border-color: var(--muted-brown);
+    color: var(--hiro-highlight-strong-text);
+}
+
+.timeline-status-card {
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 0.9rem 1rem;
+    background: linear-gradient(135deg, var(--hiro-highlight-bg), var(--hiro-card-bg));
+    box-shadow: inset 0 0 0 1px var(--hiro-tech-line);
+}
+
+.timeline-status-title {
+    color: var(--deep-brown);
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.timeline-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.8fr);
+    gap: 1rem;
+}
+
+.timeline-list {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 1rem 1rem 1rem 4.25rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-2px);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 1.35rem;
+    top: 1.15rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--soft-gray);
+    border: 3px solid var(--warm-white);
+    box-shadow: 0 0 0 1px var(--border-light);
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: calc(1.35rem + 7px - 0.5px);
+    top: calc(1.15rem + 7px);
+    bottom: -1rem;
+    width: 1px;
+    background: var(--border-light);
+}
+
+.timeline-item:last-child::after {
+    display: none;
+}
+
+.timeline-item.is-current {
+    border-color: #2f7d4a;
+    box-shadow: 0 16px 28px rgba(47, 125, 74, 0.12);
+}
+
+.timeline-item.is-current::before {
+    background: #2f7d4a;
+    box-shadow: 0 0 0 4px rgba(47, 125, 74, 0.15);
+}
+
+.timeline-item.is-next {
+    border-color: #c8841a;
+}
+
+.timeline-item.is-next::before {
+    background: #c8841a;
+}
+
+.timeline-item.is-selected {
+    border-color: var(--deep-brown);
+    box-shadow:
+        0 14px 28px rgba(107, 91, 71, 0.12),
+        inset 0 0 0 1px var(--hiro-tech-edge),
+        inset 0 0 18px var(--hiro-tech-glow);
+}
+
+.timeline-item.is-past {
+    opacity: 0.75;
+}
+
+.timeline-time {
+    color: var(--deep-brown);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+}
+
+.timeline-item-title {
+    font-family: 'Noto Serif TC', Georgia, serif;
+    color: var(--deep-brown);
+    margin-bottom: 0.3rem;
+    font-size: 1.06rem;
+}
+
+.timeline-location {
+    color: var(--text-light);
+    font-size: 0.88rem;
+    margin-bottom: 0.45rem;
+}
+
+.timeline-actions,
+.card-actions,
+.vjw-actions,
+.side-section-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.text-btn,
+.ghost-link {
+    border: 0;
+    background: transparent;
+    color: var(--muted-brown);
+    padding: 0;
+    font-size: 0.88rem;
+    text-decoration: none;
+}
+
+.text-btn:hover,
+.ghost-link:hover {
+    color: var(--deep-brown);
+}
+
+.timeline-side h3,
+.side-section-header h3 {
+    margin: 0;
+    color: var(--deep-brown);
+    font-size: 1rem;
+}
+
+.related-empty,
+.empty-state {
+    color: var(--text-light);
+    font-size: 0.92rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.transport-card,
+.list-card,
+.checklist-branch {
+    padding: 1rem;
+}
+
+.transport-card.is-linked {
+    border-color: var(--deep-brown);
+    box-shadow: 0 12px 24px rgba(107, 91, 71, 0.12);
+}
+
+.transport-card.is-active-day {
+    background: linear-gradient(180deg, var(--hiro-highlight-bg), var(--hiro-card-bg));
+}
+
+.transport-route,
+.list-card h3,
+.checklist-branch-title {
+    color: var(--deep-brown);
+    font-family: 'Noto Serif TC', Georgia, serif;
+}
+
+.transport-meta,
+.list-meta {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0.75rem 0;
+}
+
+.filter-bar {
+    margin-bottom: 0.8rem;
+}
+
+.focus-note,
+.overview-warning {
+    border: 1px solid rgba(185, 74, 72, 0.2);
+    background: rgba(185, 74, 72, 0.08);
+    color: #93413f;
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.focus-note strong,
+.overview-warning strong {
+    color: #8f2d2a;
+}
+
+.checklist-toolbar {
+    margin-bottom: 0.8rem;
+}
+
+.checklist-hint {
+    margin-bottom: 1rem;
+}
+
+.checklist-tree {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.checklist-branch-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.8rem;
+}
+
+.checklist-items {
+    display: grid;
+    gap: 0.6rem;
+    padding-left: 2rem;
+}
+
+.checklist-item,
+.checklist-branch-header {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.form-check-input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.sidebar-summary-grid {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.summary-block {
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.summary-block:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.summary-label {
+    color: var(--text-light);
+    font-size: 0.82rem;
+    margin-bottom: 0.2rem;
+}
+
+.summary-value {
+    color: var(--deep-brown);
+    font-size: 1rem;
+    font-family: 'Noto Serif TC', Georgia, serif;
+}
+
+.vjw-block + .vjw-block {
+    margin-top: 1rem;
+}
+
+.vjw-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.55rem;
+}
+
+.vjw-output {
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 0.9rem;
+}
+
+.link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid var(--muted-brown);
+    border-radius: 999px;
+    color: var(--hiro-button-text);
+    background: var(--hiro-button-bg);
+    padding: 0.35rem 0.75rem;
+    text-decoration: none;
+    font-size: 0.82rem;
+}
+
+.link-btn:hover {
+    background: var(--hiro-button-hover-bg);
+    color: var(--hiro-button-hover-text);
+}
+
+.hiroshima-page .btn-literary {
+    padding: 0.48rem 0.92rem;
+    font-size: 0.84rem;
+}
+
+@media (max-width: 1100px) {
+    .trip-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .trip-sidebar {
+        position: static;
+    }
+
+    .trip-tab-stack {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .overview-grid,
+    .timeline-toolbar,
+    .timeline-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-board {
+        grid-template-columns: 1fr;
+        padding: 0.85rem;
+    }
+
+    .hero-title {
+        font-size: 1.3rem;
+    }
+
+    .overview-grid,
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        padding-left: 3.5rem;
+    }
+
+    .timeline-item::before {
+        left: 1rem;
+    }
+
+    .timeline-item::after {
+        left: calc(1rem + 7px - 0.5px);
+        top: calc(1.15rem + 7px);
+    }
+
+    .info-row {
+        grid-template-columns: 1fr;
+        gap: 0.15rem;
+    }
+
+    .trip-tab {
+        padding: 0.72rem 0.8rem;
+    }
+
+    .trip-tab .tab-title {
+        font-size: 0.92rem;
+    }
+
+    .trip-tab small {
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+    }
+
+    .hero-meta {
+        margin-bottom: 0.3rem;
+        font-size: 0.74rem;
+    }
+
+    .timeline-day-btn,
+    .transport-day-btn {
+        padding: 0.3rem 0.62rem;
+        font-size: 0.76rem;
+    }
+
+    .hiroshima-page .btn-literary {
+        padding: 0.5rem 0.82rem;
+        font-size: 0.86rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .trip-panel,
+    .sidebar-card,
+    .panel-card,
+    .transport-card,
+    .list-card,
+    .checklist-branch {
+        padding: 0.9rem;
+    }
+
+    .trip-tab-stack {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.45rem;
+    }
+
+    .countdown-value {
+        font-size: 1.1rem;
+    }
+
+    .timeline-day-btn,
+    .transport-day-btn {
+        padding: 0.26rem 0.56rem;
+        font-size: 0.72rem;
+    }
+
+    .trip-tab {
+        border-radius: 10px;
+        padding: 0.58rem 0.45rem;
+    }
+
+    .trip-tab .tab-title {
+        font-size: 0.84rem;
+        margin-bottom: 0;
+    }
+
+    .trip-tab small {
+        font-size: 0.62rem;
+    }
+
+    .hero-side-actions {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.45rem;
+    }
+
+    .hero-side-actions .btn-literary,
+    .hero-side-actions .btn-back-home {
+        width: auto;
+        padding: 0.42rem 0.62rem;
+        font-size: 0.78rem;
+    }
+}

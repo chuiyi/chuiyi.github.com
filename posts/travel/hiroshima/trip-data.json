@@ -1,0 +1,631 @@
+{
+  "trip": {
+    "title": "廣島之旅",
+    "titleEn": "Hiroshima Trip",
+    "subtitle": "廣島、吳市、宮島 6 天 5 夜",
+    "dateRangeLabel": "2026/05/28 - 2026/06/02",
+    "timezone": "Asia/Tokyo",
+    "countdownTarget": "2026-05-28T07:15:00+09:00",
+    "lastUpdated": "2026-05-18"
+  },
+  "overview": {
+    "travelName": "日本廣島",
+    "outboundFlight": {
+      "airlineCode": "CI",
+      "airlineName": "CHINA AIRLINES (CAL)",
+      "flightNumber": "112",
+      "departureAirport": "TAIPEI",
+      "departureAirportCode": "TPE",
+      "arrivalAirport": "HIROSHIMA",
+      "arrivalAirportCode": "HIJ",
+      "departureTimeLabel": "2026/05/28 07:15",
+      "arrivalTimeLabel": "2026/05/28 10:35",
+      "arrivalDateForVjw": "2026/05/28",
+      "travelMethod": "搭乘航班"
+    },
+    "returnFlight": {
+      "airlineCode": "CI",
+      "airlineName": "CHINA AIRLINES (CAL)",
+      "flightNumber": "113",
+      "departureAirport": "HIROSHIMA",
+      "departureAirportCode": "HIJ",
+      "arrivalAirport": "TAIPEI",
+      "arrivalAirportCode": "TPE",
+      "departureTimeLabel": "2026/06/02 11:35",
+      "arrivalTimeLabel": "2026/06/02 13:15"
+    },
+    "stay": {
+      "name": "BONAPOOL 樂生苑 (ボナプール楽生苑)",
+      "phone": "+81-845-23-7233",
+      "postalCode": "722-2411",
+      "prefecture": "広島県",
+      "cityWard": "尾道市瀬戸田町瀬戸田",
+      "addressLine": "1-1",
+      "vjw": {
+        "postalCode": "7222411",
+        "prefecture": "HIROSHIMA KEN",
+        "cityWard": "ONOMICHI SHI",
+        "addressLine": "SETODACHO SETODA",
+        "name": "BONAPOOL",
+        "phone": "81845237233"
+      },
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E3%83%9C%E3%83%8A%E3%83%97%E3%83%BC%E3%83%AB%E6%A5%BD%E7%94%9F%E8%8B%91",
+      "notes": "第一晚住宿，已作為 VJW 預設聯絡處。"
+    },
+    "stays": [
+      {
+        "id": "stay-bonapool",
+        "label": "5/28 - 5/29",
+        "name": "BONAPOOL 樂生苑 (ボナプール楽生苑)",
+        "phone": "+81-845-23-7233",
+        "postalCode": "722-2411",
+        "prefecture": "広島県",
+        "cityWard": "尾道市瀬戸田町瀬戸田",
+        "addressLine": "1-1",
+        "vjw": {
+          "postalCode": "7222411",
+          "prefecture": "HIROSHIMA KEN",
+          "cityWard": "ONOMICHI SHI",
+          "addressLine": "SETODACHO SETODA",
+          "name": "BONAPOOL",
+          "phone": "81845237233"
+        },
+        "mapsUrl": "https://www.google.com/maps/search/?q=%E3%83%9C%E3%83%8A%E3%83%97%E3%83%BC%E3%83%AB%E6%A5%BD%E7%94%9F%E8%8B%91",
+        "notes": "官方標示：〒722-2411 広島県尾道市瀬戸田町瀬戸田1-1"
+      },
+      {
+        "id": "stay-sotetsu-fresa-hiroshima",
+        "label": "5/29 - 6/2",
+        "name": "Sotetsu Fresa Inn Hiroshima",
+        "phone": "+81-82-262-2031",
+        "postalCode": "732-0823",
+        "prefecture": "広島県",
+        "cityWard": "広島市南区猿猴橋町",
+        "addressLine": "5-2",
+        "mapsUrl": "https://www.google.com/maps/search/?q=Sotetsu+Fresa+Inn+Hiroshima",
+        "notes": "官方資訊：5-2 Enkobashi-cho, Minami-ku, Hiroshima-shi, Hiroshima 732-0823 Japan"
+      }
+    ]
+  },
+  "timelineDays": [
+    {
+      "id": "day1",
+      "label": "D1",
+      "dateLabel": "05/28 四",
+      "summary": "台北出發→機場→三原→尾道→生口島住宿",
+      "items": [
+        {
+          "id": "taipei-departure",
+          "start": "2026-05-28T04:30:00+08:00",
+          "end": "2026-05-28T07:15:00+08:00",
+          "timeLabel": "04:30 - 07:15",
+          "title": "全家英仕店集合 & upandy 前往機場",
+          "description": "從台北集合出發。",
+          "location": "台北 -> 桃園機場",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Taiwan+Taoyuan+International+Airport",
+          "transportIds": []
+        },
+        {
+          "id": "ci112",
+          "start": "2026-05-28T07:15:00+08:00",
+          "end": "2026-05-28T10:35:00+09:00",
+          "timeLabel": "07:15 - 10:35",
+          "title": "CI112 桃園飛廣島",
+          "description": "出發航班，約 3.5 小時。",
+          "location": "TPE -> HIJ",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Airport",
+          "transportIds": []
+        },
+        {
+          "id": "airport-bus-mihara",
+          "start": "2026-05-28T11:45:00+09:00",
+          "end": "2026-05-28T12:23:00+09:00",
+          "timeLabel": "11:45 - 12:23",
+          "title": "中國巴士前往三原車站",
+          "description": "廣島機場 → 三原車站，準備轉乘 JR 尾道線。",
+          "location": "廣島機場 -> 三原車站",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Mihara+Station+Hiroshima",
+          "transportIds": []
+        },
+        {
+          "id": "jr-mihara-onomichi",
+          "start": "2026-05-28T12:30:00+09:00",
+          "end": "2026-05-28T13:20:00+09:00",
+          "timeLabel": "12:30 - 13:20",
+          "title": "JR 三原站 → JR 尾道站",
+          "description": "搭乘 JR 吳線往尾道方向。",
+          "location": "三原站 -> 尾道站",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+Station",
+          "transportIds": []
+        },
+        {
+          "id": "onomichi-lunch-explore",
+          "start": "2026-05-28T13:20:00+09:00",
+          "end": "2026-05-28T15:00:00+09:00",
+          "timeLabel": "13:20 - 15:00",
+          "title": "尾道逛街 & 午餐",
+          "description": "在尾道車站周邊用餐與簡單觀光。",
+          "location": "尾道市",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+City",
+          "transportIds": []
+        },
+        {
+          "id": "ikuchijima-transfer",
+          "start": "2026-05-28T15:00:00+09:00",
+          "end": "2026-05-28T16:30:00+09:00",
+          "timeLabel": "15:00 - 16:30",
+          "title": "前往生口島（接駁或自駕）",
+          "description": "從尾道轉乘至生口島，可搭巴士或當地交通。",
+          "location": "尾道 -> 生口島",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Ikuchijima+Island",
+          "transportIds": []
+        },
+        {
+          "id": "minatoya-dinner",
+          "start": "2026-05-28T19:30:00+09:00",
+          "end": "2026-05-28T21:00:00+09:00",
+          "timeLabel": "19:30 - 21:00",
+          "title": "晚餐：MINATOYA",
+          "description": "生口島民宿預約，預約號碼：3471-2363-0671。",
+          "location": "生口島",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Minatoya+Ikuchijima",
+          "transportIds": []
+        }
+      ]
+    },
+    {
+      "id": "day2",
+      "label": "D2",
+      "dateLabel": "05/29 五",
+      "summary": "生口島清晨散步 + 尾道一日遊 + 廣島市區移動",
+      "items": [
+        {
+          "id": "ikuchijima-morning-walk",
+          "start": "2026-05-29T06:00:00+09:00",
+          "end": "2026-05-29T08:00:00+09:00",
+          "timeLabel": "06:00 - 08:00",
+          "title": "生口島清晨散步",
+          "description": "享受寧靜的鄉村晨景。",
+          "location": "生口島",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Ikuchijima+Island",
+          "transportIds": []
+        },
+        {
+          "id": "ikuchijima-breakfast",
+          "start": "2026-05-29T08:00:00+09:00",
+          "end": "2026-05-29T09:00:00+09:00",
+          "timeLabel": "08:00 - 09:00",
+          "title": "早餐",
+          "description": "在民宿享用早餐。",
+          "location": "生口島",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Ikuchijima+Island",
+          "transportIds": []
+        },
+        {
+          "id": "ikuchijima-to-onomichi",
+          "start": "2026-05-29T09:00:00+09:00",
+          "end": "2026-05-29T10:00:00+09:00",
+          "timeLabel": "09:00 - 10:00",
+          "title": "生口島 → 尾道",
+          "description": "返回尾道進行全日遊覽。",
+          "location": "生口島 -> 尾道市",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+City",
+          "transportIds": []
+        },
+        {
+          "id": "onomichi-full-day",
+          "start": "2026-05-29T10:00:00+09:00",
+          "end": "2026-05-29T16:00:00+09:00",
+          "timeLabel": "10:00 - 16:00",
+          "title": "尾道全日遊覽",
+          "description": "古寺、運河、坂道、咖啡廳等景點巡禮。",
+          "location": "尾道市",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+City+Temples",
+          "transportIds": []
+        },
+        {
+          "id": "onomichi-to-hiroshima",
+          "start": "2026-05-29T16:00:00+09:00",
+          "end": "2026-05-29T18:00:00+09:00",
+          "timeLabel": "16:00 - 18:00",
+          "title": "尾道 → 廣島市區",
+          "description": "搭乘 JR 返回廣島市區，前往 Sotetsu Fresa Inn 入住。",
+          "location": "尾道站 -> 廣島站",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Station",
+          "transportIds": []
+        },
+        {
+          "id": "hiroshima-dinner-day2",
+          "start": "2026-05-29T18:30:00+09:00",
+          "end": "2026-05-29T20:00:00+09:00",
+          "timeLabel": "18:30 - 20:00",
+          "title": "晚餐（自由安排）",
+          "description": "在廣島市區用餐與休息。",
+          "location": "廣島市南區",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City+Dining",
+          "transportIds": []
+        }
+      ]
+    },
+    {
+      "id": "day3",
+      "label": "D3",
+      "dateLabel": "05/30 六",
+      "summary": "Anomaly Day 吳市大戰 - Orion XM Event",
+      "items": [
+        {
+          "id": "anomaly-breakfast",
+          "start": "2026-05-30T09:00:00+09:00",
+          "end": "2026-05-30T10:00:00+09:00",
+          "timeLabel": "09:00 - 10:00",
+          "title": "早餐",
+          "description": "攝取足夠能量準備異常事件。",
+          "location": "廣島市區",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City",
+          "transportIds": []
+        },
+        {
+          "id": "kure-travel-anomaly",
+          "start": "2026-05-30T10:30:00+09:00",
+          "end": "2026-05-30T12:30:00+09:00",
+          "timeLabel": "10:30 - 12:30",
+          "title": "散步 → 前往吳市",
+          "description": "搭乘 JR 吳線前往吳市集合點。",
+          "location": "廣島站 -> 吳市",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City+Hiroshima",
+          "transportIds": []
+        },
+        {
+          "id": "team-assembly",
+          "start": "2026-05-30T12:30:00+09:00",
+          "end": "2026-05-30T14:00:00+09:00",
+          "timeLabel": "12:30 - 14:00",
+          "title": "部隊集合 & 午餐補給",
+          "description": "在吳市集合點與隊伍會合，用餐與裝備檢查。",
+          "location": "吳市",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City",
+          "transportIds": []
+        },
+        {
+          "id": "orion-xm-anomaly",
+          "start": "2026-05-30T14:00:00+09:00",
+          "end": "2026-05-30T17:00:00+09:00",
+          "timeLabel": "14:00 - 17:00",
+          "title": "Orion XM Anomaly Event - Portal Battle",
+          "description": "3 小時密集戰鬥，分 6 個 30 分鐘波段，部署稀有戰鬥信標。",
+          "location": "吳市",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City+Ingress",
+          "transportIds": []
+        },
+        {
+          "id": "after-anomaly-rest",
+          "start": "2026-05-30T17:00:00+09:00",
+          "end": "2026-05-30T19:00:00+09:00",
+          "timeLabel": "17:00 - 19:00",
+          "title": "賽後休整 & 晚餐",
+          "description": "回廣島市區或在吳市用餐恢復體力。",
+          "location": "吳市 / 廣島市區",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City",
+          "transportIds": []
+        }
+      ]
+    },
+    {
+      "id": "day4",
+      "label": "D4",
+      "dateLabel": "05/31 日",
+      "summary": "Mission Day 吳市巡禮 - MD 挑戰",
+      "items": [
+        {
+          "id": "mission-day-breakfast",
+          "start": "2026-05-31T08:00:00+09:00",
+          "end": "2026-05-31T09:00:00+09:00",
+          "timeLabel": "08:00 - 09:00",
+          "title": "早餐",
+          "description": "為 Mission Day 全日行程補充能量。",
+          "location": "廣島市區",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City",
+          "transportIds": []
+        },
+        {
+          "id": "kure-mission-day",
+          "start": "2026-05-31T09:30:00+09:00",
+          "end": "2026-05-31T22:00:00+09:00",
+          "timeLabel": "09:30 - 22:00",
+          "title": "Mission Day 吳市巡禮",
+          "description": "完整的 MD 挑戰日，參考 MD 地圖規劃路線。地圖連結：https://www.google.com/maps/d/edit?mid=1OIhY26LaW0A1fa-XzonCxBMvwKVhCsU&usp=sharing",
+          "location": "吳市",
+          "mapsUrl": "https://www.google.com/maps/d/edit?mid=1OIhY26LaW0A1fa-XzonCxBMvwKVhCsU&usp=sharing",
+          "transportIds": []
+        }
+      ]
+    },
+    {
+      "id": "day5",
+      "label": "D5",
+      "dateLabel": "06/01 一",
+      "summary": "宮島重點日",
+      "items": [
+        {
+          "id": "miyajima-ferry-out",
+          "start": "2026-06-01T08:30:00+09:00",
+          "end": "2026-06-01T09:15:00+09:00",
+          "timeLabel": "08:30 - 09:15",
+          "title": "前往宮島",
+          "description": "世界遺產航路，出發前一晚需確認運航。",
+          "location": "元安棧橋 -> 宮島",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Miyajima+Pier",
+          "transportIds": ["aquanet-miyajima-outbound"]
+        },
+        {
+          "id": "itsukushima",
+          "start": "2026-06-01T09:30:00+09:00",
+          "end": "2026-06-01T16:30:00+09:00",
+          "timeLabel": "09:30 - 16:30",
+          "title": "嚴島神社與表參道",
+          "description": "依潮汐安排拍攝大鳥居、午餐與伴手禮採買。",
+          "location": "宮島",
+          "mapsUrl": "https://www.google.com/maps/search/?q=%E5%9A%B4%E5%B3%B6%E7%A5%9E%E7%A4%BE",
+          "transportIds": []
+        },
+        {
+          "id": "miyajima-ferry-back",
+          "start": "2026-06-01T17:30:00+09:00",
+          "end": "2026-06-01T18:15:00+09:00",
+          "timeLabel": "17:30 - 18:15",
+          "title": "返回市區",
+          "description": "回市區後銜接晚餐或採買。",
+          "location": "宮島 -> 元安棧橋",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Miyajima+Pier",
+          "transportIds": ["aquanet-miyajima-return"]
+        }
+      ]
+    },
+    {
+      "id": "day6",
+      "label": "D6",
+      "dateLabel": "06/02 二",
+      "summary": "回程與機場採買",
+      "items": [
+        {
+          "id": "airport-bus-return",
+          "start": "2026-06-02T08:30:00+09:00",
+          "end": "2026-06-02T09:20:00+09:00",
+          "timeLabel": "08:30 - 09:20",
+          "title": "利木津巴士前往機場",
+          "description": "保留機場購物與報到時間。",
+          "location": "廣島站 -> 廣島機場",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Airport",
+          "transportIds": ["bus-hiroshima-station-hij"]
+        },
+        {
+          "id": "ci113",
+          "start": "2026-06-02T11:35:00+09:00",
+          "end": "2026-06-02T13:15:00+09:00",
+          "timeLabel": "11:35 - 13:15",
+          "title": "CI113 廣島返台",
+          "description": "返程航班。",
+          "location": "HIJ -> TPE",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Airport",
+          "transportIds": ["bus-hiroshima-station-hij"]
+        }
+      ]
+    }
+  ],
+  "transports": [
+    {
+      "id": "bus-hij-hiroshima-station",
+      "dayId": "day1",
+      "type": "巴士",
+      "title": "中國巴士前往三原車站",
+      "route": "廣島機場 -> 三原車站前",
+      "depart": "11:45",
+      "arrive": "12:23",
+      "cost": "JPY 1,000",
+      "status": "現場搭乘",
+      "note": "可刷 IC，建議抵達後直接銜接。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%BB%A3%E5%B3%B6%E6%A9%9F%E5%A0%B4+%E5%88%A9%E6%9C%A8%E6%B4%A5%E5%B7%B4%E5%A3%AB",
+      "linkedTimelineIds": ["ci112", "airport-bus"]
+    },
+    {
+      "id": "tram-station-peacepark",
+      "dayId": "day1",
+      "type": "路面電車",
+      "title": "廣島站前往紙屋町西 / 原爆ドーム前",
+      "route": "廣島站 -> 平和公園周邊",
+      "depart": "13:00",
+      "arrive": "13:15",
+      "cost": "JPY 240",
+      "status": "彈性搭乘",
+      "note": "可依當天步行與採購安排微調。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E7%B4%99%E5%B1%8B%E7%94%BA%E8%A5%BF",
+      "linkedTimelineIds": ["peace-park"]
+    },
+    {
+      "id": "jr-kure-line-outbound",
+      "dayId": "day2",
+      "type": "JR",
+      "title": "JR 吳線去程",
+      "route": "廣島站 -> 吳市",
+      "depart": "10:30",
+      "arrive": "11:00",
+      "cost": "JPY 510",
+      "status": "一般列車",
+      "note": "建議前一晚確認班次是否異動。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Kure+Station",
+      "linkedTimelineIds": ["kure-train-out"]
+    },
+    {
+      "id": "ferry-kure-uina-a",
+      "dayId": "day2",
+      "type": "渡輪",
+      "title": "SEA PASEO 方案 A",
+      "route": "吳港 -> 廣島港宇品",
+      "depart": "17:27",
+      "arrive": "18:12",
+      "cost": "JPY 1,100",
+      "status": "A 案",
+      "note": "看海景較佳，需再確認當日航班。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Kure+Port",
+      "linkedTimelineIds": ["kure-ferry"]
+    },
+    {
+      "id": "ferry-kure-uina-b",
+      "dayId": "day2",
+      "type": "渡輪",
+      "title": "傳統 ferry 方案 B",
+      "route": "吳港 -> 廣島港宇品",
+      "depart": "18:32",
+      "arrive": "19:17",
+      "cost": "JPY 1,100",
+      "status": "B 案",
+      "note": "作為晚一班備援方案。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Kure+Port",
+      "linkedTimelineIds": ["kure-ferry"]
+    },
+    {
+      "id": "aquanet-miyajima-outbound",
+      "dayId": "day5",
+      "type": "觀光船",
+      "title": "Aqua Net 世界遺產航路去程",
+      "route": "元安棧橋 -> 宮島",
+      "depart": "08:30",
+      "arrive": "09:15",
+      "cost": "已付",
+      "status": "需確認",
+      "note": "前一晚再次確認運航。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%85%83%E5%AE%89%E6%A3%A7%E6%A9%8B",
+      "linkedTimelineIds": ["miyajima-ferry-out"]
+    },
+    {
+      "id": "aquanet-miyajima-return",
+      "dayId": "day5",
+      "type": "觀光船",
+      "title": "Aqua Net 世界遺產航路回程",
+      "route": "宮島 -> 元安棧橋",
+      "depart": "17:30",
+      "arrive": "18:15",
+      "cost": "已付",
+      "status": "需確認",
+      "note": "留意返程排隊與天候。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Miyajima+Pier",
+      "linkedTimelineIds": ["miyajima-ferry-back"]
+    },
+    {
+      "id": "bus-hiroshima-station-hij",
+      "dayId": "day6",
+      "type": "巴士",
+      "title": "回程機場巴士",
+      "route": "廣島站新幹線口 -> 廣島機場",
+      "depart": "08:30",
+      "arrive": "09:20",
+      "cost": "JPY 1,500",
+      "status": "已規劃",
+      "note": "建議提早抵達買伴手禮。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Airport",
+      "linkedTimelineIds": ["airport-bus-return", "ci113"]
+    }
+  ],
+  "dining": [
+    {
+      "name": "魚寅",
+      "area": "袋町",
+      "category": "海鮮居酒屋",
+      "reservationStatus": "優先候補",
+      "note": "第一晚首選。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E9%AD%9A%E5%AF%85+%E5%BB%A3%E5%B3%B6"
+    },
+    {
+      "name": "Kakiya 牡蠣屋本店",
+      "area": "宮島",
+      "category": "牡蠣專門",
+      "reservationStatus": "午餐重點",
+      "note": "宮島日優先安排。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Kakiya+Miyajima"
+    },
+    {
+      "name": "元祖八昌",
+      "area": "胡町",
+      "category": "廣島燒",
+      "reservationStatus": "自由日候補",
+      "note": "排隊名店，需保留等待時間。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%85%83%E7%A5%96%E5%85%AB%E6%98%8C+%E5%BB%A3%E5%B3%B6"
+    },
+    {
+      "name": "みっちゃん総本店",
+      "area": "八丁堀",
+      "category": "廣島燒",
+      "reservationStatus": "備援候補",
+      "note": "若元祖八昌等候過久可改這間。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E3%81%BF%E3%81%A3%E3%81%A1%E3%82%83%E3%82%93%E7%B7%8F%E6%9C%AC%E5%BA%97+%E5%BB%A3%E5%B3%B6"
+    }
+  ],
+  "souvenirs": [
+    {
+      "name": "揚げもみじ",
+      "area": "宮島表參道",
+      "category": "即食點心",
+      "buyPlan": "D5 現場吃",
+      "note": "宮島限定體驗。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%AE%AE%E5%B3%B6+%E6%8F%9A%E3%81%92%E3%82%82%E3%81%BF%E3%81%98"
+    },
+    {
+      "name": "宮島杓子",
+      "area": "宮島表參道",
+      "category": "紀念雜貨",
+      "buyPlan": "D5 小件採買",
+      "note": "適合現場挑樣式。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%AE%AE%E5%B3%B6+%E6%9D%93%E5%AD%90"
+    },
+    {
+      "name": "紅葉饅頭",
+      "area": "廣島機場 2F",
+      "category": "盒裝伴手禮",
+      "buyPlan": "D6 機場集中採買",
+      "note": "不想提重物可最後一天再買。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Airport+Souvenir"
+    },
+    {
+      "name": "八天堂奶油麵包",
+      "area": "廣島機場 2F",
+      "category": "冷藏點心",
+      "buyPlan": "D6 回程前",
+      "note": "注意保存時間。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%85%AB%E5%A4%A9%E5%A0%82+%E5%BB%A3%E5%B3%B6%E6%A9%9F%E5%A0%B4"
+    }
+  ],
+  "checklist": [
+    {
+      "id": "documents",
+      "title": "證件與申報",
+      "children": [
+        { "id": "passport", "title": "護照有效期確認" },
+        { "id": "vjw", "title": "VJW 資料檢查" },
+        { "id": "insurance", "title": "旅平險與保險資訊" }
+      ]
+    },
+    {
+      "id": "booking",
+      "title": "預約與票券",
+      "children": [
+        { "id": "flight-booking", "title": "航班訂位資料" },
+        { "id": "hotel-booking", "title": "住宿預約資料" },
+        { "id": "miyajima-transport", "title": "宮島船班與潮汐再確認" }
+      ]
+    },
+    {
+      "id": "packing",
+      "title": "行李與裝備",
+      "children": [
+        { "id": "rain-gear", "title": "雨具" },
+        { "id": "walking-shoes", "title": "止滑好走的鞋" },
+        { "id": "power-bank", "title": "行動電源" },
+        { "id": "offline-map", "title": "離線地圖與聯絡方式" }
+      ]
+    }
+  ],
+  "markdown": {
+    "overview": "posts/travel/hiroshima/overview.md",
+    "others": "posts/travel/hiroshima/other-info.md"
+  }
+}

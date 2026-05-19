@@ -689,6 +689,9 @@ async function createUnifiedMovieCard(movie) {
 // 創建統一的旅行卡片（Flow Layout）
 async function createUnifiedTravelCard(travel) {
     const col = document.createElement('div');
+    const newPageUrl = travel.id === 'hiroshima-trip-2026'
+        ? 'hiroshima.html'
+        : `travel.html?file=${travel.id}`;
     
     // 從日期中提取年月
     const dateMatch = travel.date.match(/(\d{4})年(\d{1,2})月/);
@@ -728,7 +731,7 @@ async function createUnifiedTravelCard(travel) {
                         <button class="read-more-btn" onclick="showTravelDetail('${travel.id}')">
                             閱讀紀錄
                         </button>
-                        <a href="travel.html?file=${travel.id}" target="_blank" class="read-more-btn" style="margin-left: 0.5rem; text-decoration: none;">
+                        <a href="${newPageUrl}" target="_blank" class="read-more-btn" style="margin-left: 0.5rem; text-decoration: none;">
                             <i class="bi bi-box-arrow-up-right me-1"></i>新頁面
                         </a>
                     </div>
