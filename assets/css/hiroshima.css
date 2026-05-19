@@ -151,6 +151,11 @@
     color: var(--text-light);
 }
 
+.card-note {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 .hero-meta {
     color: var(--text-light);
     margin-bottom: 0.35rem;
@@ -217,6 +222,13 @@
     font-size: 0.78rem;
 }
 
+.hero-side-label {
+    color: var(--hiro-countdown-label);
+    margin-bottom: 0.1rem;
+    font-size: 0.78rem;
+    display: block;
+}
+
 .countdown-value {
     font-size: 1.08rem;
     color: var(--hiro-countdown-value);
@@ -238,18 +250,9 @@
 }
 
 .trip-shell {
-    display: grid;
-    grid-template-columns: minmax(250px, 280px) minmax(0, 1fr);
-    gap: 1.1rem;
-    align-items: start;
-}
-
-.trip-sidebar {
-    position: sticky;
-    top: 105px;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .sidebar-card,
@@ -296,33 +299,40 @@
 
 .trip-tab-stack {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: 0.6rem;
+    justify-content: center;
+    overflow-x: auto;
 }
 
 .trip-tab {
-    width: 100%;
     border: 1px solid var(--border-light);
     background: var(--hiro-tab-bg);
     color: var(--text-light);
-    padding: 0.9rem 1rem;
-    border-radius: 14px;
-    text-align: left;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    text-align: center;
     transition: all 0.2s ease;
     box-shadow: inset 0 0 0 1px transparent;
+    white-space: nowrap;
+    flex: 0 0 auto;
 }
 
 .trip-tab .tab-title {
-    display: block;
+    display: inline-block;
     color: var(--deep-brown);
     font-family: 'Noto Serif TC', Georgia, serif;
-    font-size: 1rem;
-    margin-bottom: 0.1rem;
+    font-size: 0.9rem;
+    margin-right: 0.35rem;
 }
 
 .trip-tab small {
+    display: inline-block;
     color: var(--text-light);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
+    font-size: 0.7rem;
+    opacity: 0.8;
 }
 
 .trip-tab.active,
@@ -376,7 +386,7 @@
 
 .overview-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
     margin-bottom: 1rem;
 }
@@ -385,6 +395,8 @@
     font-size: 1.1rem;
     margin-bottom: 0.35rem;
     color: var(--deep-brown);
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .info-list {
@@ -452,9 +464,30 @@
 
 .stay-detail-panel {
     display: block;
+    margin-top: 0.55rem;
+}
+
+.stay-detail-section {
+    margin-top: 0.6rem;
+}
+
+.stay-detail-section .stay-detail-toggle-btn {
+    display: inline-block;
+    width: auto;
+}
+
+.stay-detail-section .vjw-actions {
+    display: inline-block;
+    margin-left: 0.5rem;
+}
+
+.stay-detail-section .vjw-actions .btn-literary {
+    padding: 0.18rem 0.54rem;
+    font-size: 0.78rem;
 }
 
 .info-row-detail-toggle {
+    grid-template-columns: 1fr;
     align-items: start;
 }
 
@@ -466,6 +499,17 @@
     padding: 0.18rem 0.54rem;
     font-size: 0.78rem;
     line-height: 1.25;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.stay-detail-toggle-btn i {
+    transition: transform 0.2s ease;
+}
+
+.stay-detail-toggle-btn.expanded i {
+    transform: rotate(180deg);
 }
 
 .stay-detail-toggle-btn:hover {
@@ -492,6 +536,15 @@
     color: var(--text-dark);
 }
 
+.stay-detail-notes {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border-light);
+    color: var(--text-light);
+    font-size: 0.86rem;
+    margin-bottom: 0;
+}
+
 .missing-value {
     color: #b94a48;
     font-weight: 500;
@@ -514,10 +567,7 @@
     padding-left: 1.2rem;
 }
 
-.timeline-toolbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
-    gap: 1rem;
+.timeline-day-tabs {
     margin-bottom: 1rem;
 }
 
@@ -546,18 +596,53 @@
     padding: 0.9rem 1rem;
     background: linear-gradient(135deg, var(--hiro-highlight-bg), var(--hiro-card-bg));
     box-shadow: inset 0 0 0 1px var(--hiro-tech-line);
+    margin-bottom: 1rem;
 }
 
 .timeline-status-title {
     color: var(--deep-brown);
     margin-bottom: 0.25rem;
     font-size: 1rem;
+    font-weight: 600;
+}
+
+.hero-side-block .timeline-status-title {
+    margin-top: 0.3rem;
+}
+
+.hero-side-block .mini-pill {
+    display: inline-block;
+    width: fit-content;
 }
 
 .timeline-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.8fr);
+    display: flex;
+    flex-direction: row;
     gap: 1rem;
+}
+
+.timeline-list {
+    flex: 1.35;
+    min-width: 0;
+}
+
+.timeline-side {
+    flex: 0.8;
+    min-width: 270px;
+    overflow: hidden;
+}
+
+.timeline-side .transport-card,
+.timeline-side .list-card {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.timeline-side p,
+.timeline-side a,
+.timeline-side div {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .timeline-list {
@@ -719,11 +804,69 @@
     font-family: 'Noto Serif TC', Georgia, serif;
 }
 
+.transport-route {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.transport-card h3 {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 .transport-meta,
 .list-meta {
     display: grid;
     gap: 0.4rem;
     margin: 0.75rem 0;
+}
+
+.transport-meta > div,
+.list-meta > div {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.transport-image-container {
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--warm-white);
+    max-width: 100%;
+}
+
+.transport-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+}
+
+.transport-image-caption {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.86rem;
+    color: var(--text-light);
+    background: var(--hiro-chip-bg);
+    margin: 0;
+    text-align: center;
+}
+
+.related-section {
+    margin-bottom: 1.2rem;
+}
+
+.related-section:last-child {
+    margin-bottom: 0;
+}
+
+.related-section-title {
+    font-size: 0.92rem;
+    color: var(--deep-brown);
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
 }
 
 .filter-bar {
@@ -849,23 +992,32 @@
 }
 
 @media (max-width: 1100px) {
-    .trip-shell {
-        grid-template-columns: 1fr;
-    }
-
-    .trip-sidebar {
-        position: static;
-    }
-
     .trip-tab-stack {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.5rem;
     }
 
-    .overview-grid,
-    .timeline-toolbar,
-    .timeline-layout {
+    .trip-tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .overview-grid {
         grid-template-columns: 1fr;
+    }
+
+    .timeline-layout {
+        flex-direction: column;
+    }
+
+    .timeline-side {
+        order: -1;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .timeline-list {
+        flex: 1;
+        min-width: 0;
     }
 }
 
@@ -943,8 +1095,12 @@
     }
 
     .trip-tab-stack {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.45rem;
+        gap: 0.4rem;
+    }
+
+    .trip-tab {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
     }
 
     .countdown-value {
@@ -959,16 +1115,17 @@
 
     .trip-tab {
         border-radius: 10px;
-        padding: 0.58rem 0.45rem;
+        padding: 0.58rem 0.7rem;
     }
 
     .trip-tab .tab-title {
         font-size: 0.84rem;
         margin-bottom: 0;
+        margin-right: 0;
     }
 
     .trip-tab small {
-        font-size: 0.62rem;
+        display: none;
     }
 
     .hero-side-actions {

@@ -65,14 +65,7 @@
                             <p class="countdown-value" id="countdown-value">載入中...</p>
                         </div>
                         <div class="hero-side-block">
-                            <p class="hero-side-label">目前狀態</p>
-                            <p class="hero-side-text" id="trip-phase-text">載入中...</p>
-                        </div>
-                        <div class="hero-side-actions">
-                            <button type="button" class="btn-literary" data-open-vjw="true">VJW 快速產生</button>
-                            <a href="index.html#travel" class="btn-literary btn-back-home">
-                                <i class="bi bi-arrow-left me-1"></i>回旅行列表
-                            </a>
+                            <div id="hero-status-card"></div>
                         </div>
                     </div>
                 </div>
@@ -82,42 +75,36 @@
         <section class="trip-shell-section">
             <div class="container">
                 <div class="trip-shell">
-                    <aside class="trip-sidebar">
-                        <div class="sidebar-card">
-                            <p class="sidebar-card-label">Trip Console</p>
-                            <div id="sidebar-summary"></div>
-                        </div>
-                        <div class="trip-tab-stack" role="tablist" aria-label="廣島頁籤">
-                            <button class="trip-tab active" data-tab="overview" type="button">
-                                <span class="tab-title">大綱</span>
-                                <small>Overview</small>
-                            </button>
-                            <button class="trip-tab" data-tab="timeline" type="button">
-                                <span class="tab-title">時程表</span>
-                                <small>Timeline</small>
-                            </button>
-                            <button class="trip-tab" data-tab="transport" type="button">
-                                <span class="tab-title">交通資料</span>
-                                <small>Transport</small>
-                            </button>
-                            <button class="trip-tab" data-tab="dining" type="button">
-                                <span class="tab-title">餐飲</span>
-                                <small>Dining</small>
-                            </button>
-                            <button class="trip-tab" data-tab="souvenirs" type="button">
-                                <span class="tab-title">伴手禮</span>
-                                <small>Souvenirs</small>
-                            </button>
-                            <button class="trip-tab" data-tab="checklist" type="button">
-                                <span class="tab-title">行前確認</span>
-                                <small>Checklist</small>
-                            </button>
-                            <button class="trip-tab" data-tab="others" type="button">
-                                <span class="tab-title">其他資訊</span>
-                                <small>Others</small>
-                            </button>
-                        </div>
-                    </aside>
+                    <div class="trip-tab-stack" role="tablist" aria-label="廣島頁籤">
+                        <button class="trip-tab active" data-tab="overview" type="button">
+                            <span class="tab-title">大綱</span>
+                            <small>Overview</small>
+                        </button>
+                        <button class="trip-tab" data-tab="timeline" type="button">
+                            <span class="tab-title">時程表</span>
+                            <small>Timeline</small>
+                        </button>
+                        <button class="trip-tab" data-tab="transport" type="button">
+                            <span class="tab-title">交通資料</span>
+                            <small>Transport</small>
+                        </button>
+                        <button class="trip-tab" data-tab="dining" type="button">
+                            <span class="tab-title">餐飲</span>
+                            <small>Dining</small>
+                        </button>
+                        <button class="trip-tab" data-tab="souvenirs" type="button">
+                            <span class="tab-title">伴手禮</span>
+                            <small>Souvenirs</small>
+                        </button>
+                        <button class="trip-tab" data-tab="checklist" type="button">
+                            <span class="tab-title">行前確認</span>
+                            <small>Checklist</small>
+                        </button>
+                        <button class="trip-tab" data-tab="others" type="button">
+                            <span class="tab-title">其他資訊</span>
+                            <small>Others</small>
+                        </button>
+                    </div>
 
                     <section class="trip-stage">
                         <section class="trip-panel active" data-panel="overview">
@@ -130,7 +117,6 @@
                             <div class="overview-grid">
                                 <div class="panel-card" id="flight-card"></div>
                                 <div class="panel-card" id="stay-card"></div>
-                                <div class="panel-card" id="vjw-card"></div>
                             </div>
                             <div class="panel-card markdown-panel" id="overview-markdown"></div>
                         </section>
@@ -141,18 +127,14 @@
                                 <h2 class="panel-title">時程表</h2>
                                 <p class="panel-subtitle">依日期與時間呈現行程，並自動高亮目前或下一個節點。</p>
                             </div>
-                            <div class="timeline-toolbar">
-                                <div class="timeline-day-tabs" id="timeline-day-tabs"></div>
-                                <div class="timeline-status-card" id="timeline-status-card"></div>
-                            </div>
+                            <div class="timeline-day-tabs" id="timeline-day-tabs"></div>
                             <div class="timeline-layout">
                                 <div class="timeline-list" id="timeline-list"></div>
                                 <aside class="timeline-side panel-card">
                                     <div class="side-section-header">
-                                        <h3>相關交通</h3>
-                                        <button type="button" class="text-btn" id="jump-to-transport-btn">前往交通頁</button>
+                                        <h3>相關資訊</h3>
                                     </div>
-                                    <div id="timeline-related-transport"></div>
+                                    <div id="timeline-related-info"></div>
                                 </aside>
                             </div>
                         </section>

@@ -122,12 +122,6 @@ function handleDocumentClick(event) {
         return;
     }
 
-    const jumpToTransportButton = event.target.closest("#jump-to-transport-btn");
-    if (jumpToTransportButton) {
-        setActiveTab("transport");
-        return;
-    }
-
     const copyButton = event.target.closest("[data-copy-target]");
     if (copyButton) {
         copyTextareaValue(copyButton.dataset.copyTarget);
@@ -162,7 +156,7 @@ function handleDocumentChange(event) {
 
 function renderPage() {
     renderHero();
-    renderSidebar();
+    // renderSidebar();
     renderOverviewPanel();
     renderTimelinePanel();
     renderTransportPanel();
@@ -196,43 +190,62 @@ function renderHero() {
 
 function updateHeroPhase() {
     const timelineState = getTimelineState();
-    const phaseTarget = document.getElementById("trip-phase-text");
-    const sidebarTarget = document.getElementById("trip-phase-text");
-    const text = timelineState.phaseText;
-
-    if (phaseTarget) {
-        phaseTarget.textContent = text;
+    const statusTarget = document.getElementById("hero-status-card");
+    
+    if (!statusTarget) {
+        return;
     }
 
-    if (sidebarTarget) {
-        sidebarTarget.textContent = text;
+    // 判断是否旅程已结束
+    const allItems = getFlattenedTimeline();
+    const now = new Date();
+    const allEnded = allItems.length > 0 && allItems.every(item => new Date(item.end) < now);
+    
+    if (allEnded) {
+        statusTarget.innerHTML = `
+            <p class="hero-side-label">目前狀態</p>
+            <div class="timeline-status-title">旅途完成</div>
+            <div class="hero-side-text">所有行程已完成，感謝同行！</div>
+        `;
+        return;
     }
-}
 
-function renderSidebar() {
-    const timelineState = getTimelineState();
-    const vjwData = buildVjwBlocks();
-    const summaryTarget = document.getElementById("sidebar-summary");
-    const stayComplete = vjwData.missingFields.length === 0 ? "已齊全" : `${vjwData.missingFields.length} 項待補`;
-    const focusItem = getTimelineItemById(state.selectedTimelineId) || timelineState.current || timelineState.next;
-
-    summaryTarget.innerHTML = `
-        <div class="sidebar-summary-grid">
-            <div class="summary-block">
-                <div class="summary-label">目前焦點</div>
-                <div class="summary-value">${focusItem ? focusItem.title : "尚未設定"}</div>
-            </div>
-            <div class="summary-block">
-                <div class="summary-label">VJW 完整度</div>
-                <div class="summary-value">${stayComplete}</div>
-            </div>
-            <div class="summary-block">
-                <div class="summary-label">下一段交通</div>
-                <div class="summary-value">${getNextTransportTitle()}</div>
-            </div>
-        </div>
+    // 永遠顯示目前/下一個行程（不受 selectedTimelineId 影響）
+    const focusItem = timelineState.current || timelineState.next;
+    
+    statusTarget.innerHTML = `
+        <p class="hero-side-label">目前狀態</p>
+        <div class="timeline-status-title">${timelineState.phaseTitle}</div>
+        <div class="hero-side-text">${timelineState.phaseText}</div>
+        ${focusItem ? `<div class="mini-pill mt-2">${focusItem.dayLabel} · ${focusItem.title}</div>` : ""}
     `;
 }
+
+// Trip Console removed - function disabled
+// function renderSidebar() {
+//     const timelineState = getTimelineState();
+//     const vjwData = buildVjwBlocks();
+//     const summaryTarget = document.getElementById("sidebar-summary");
+//     const stayComplete = vjwData.missingFields.length === 0 ? "已齊全" : `${vjwData.missingFields.length} 項待補`;
+//     const focusItem = getTimelineItemById(state.selectedTimelineId) || timelineState.current || timelineState.next;
+//
+//     summaryTarget.innerHTML = `
+//         <div class="sidebar-summary-grid">
+//             <div class="summary-block">
+//                 <div class="summary-label">目前焦點</div>
+//                 <div class="summary-value">${focusItem ? focusItem.title : "尚未設定"}</div>
+//             </div>
+//             <div class="summary-block">
+//                 <div class="summary-label">VJW 完整度</div>
+//                 <div class="summary-value">${stayComplete}</div>
+//             </div>
+//             <div class="summary-block">
+//                 <div class="summary-label">下一段交通</div>
+//                 <div class="summary-value">${getNextTransportTitle()}</div>
+//             </div>
+//         </div>
+//     `;
+// }
 
 function renderOverviewPanel() {
     const overview = state.tripData.overview;
@@ -263,28 +276,22 @@ function renderOverviewPanel() {
             <dl class="info-list ${index > 0 ? "mt-3" : ""}">
                 <div class="info-row"><dt>時段</dt><dd>${formatValue(item.label || "未標註")}${index === 0 ? "（VJW）" : ""}</dd></div>
                 <div class="info-row"><dt>住宿</dt><dd>${formatValue(item.name)}</dd></div>
-                <div class="info-row info-row-detail-toggle">
-                    <dt>
-                        <button type="button" class="stay-detail-toggle-btn" data-stay-detail-toggle="stay-detail-${index}" aria-expanded="false">詳細資訊</button>
-                    </dt>
-                    <dd>${renderStayDetailBlock(item, `stay-detail-${index}`)}</dd>
-                </div>
                 <div class="info-row"><dt>地圖</dt><dd>${item.mapsUrl ? `<a class="link-btn" href="${item.mapsUrl}" target="_blank">Google Map</a>` : ""}</dd></div>
             </dl>
-            <p class="card-note mt-2 mb-0">${item.notes || ""}</p>
+            <div class="stay-detail-section">
+                <button type="button" class="stay-detail-toggle-btn" data-stay-detail-toggle="stay-detail-${index}" aria-expanded="false">
+                    <i class="bi bi-chevron-down me-1"></i>詳細資訊
+                </button>
+                ${index === 0 ? `
+                    <div class="vjw-actions">
+                        <button type="button" class="btn-literary" data-open-vjw="true">
+                            <i class="bi bi-clipboard2-check me-1"></i>開啟 VJW
+                        </button>
+                    </div>
+                ` : ""}
+                ${renderStayDetailBlock(item, `stay-detail-${index}`)}
+            </div>
         `).join("")}
-    `;
-
-    document.getElementById("vjw-card").innerHTML = `
-        <p class="sidebar-card-label">VJW</p>
-        <h3 class="card-title">快速生成</h3>
-        <p class="inline-hint">一鍵彈出可複製貼上的文字塊，適合填 Visit Japan Web。</p>
-        <div class="card-meta-pills mb-3">
-            ${createPillHtml(vjwData.missingFields.length === 0 ? "可直接複製" : `缺少 ${vjwData.missingFields.length} 項`, "bi-clipboard2-check")}
-        </div>
-        <div class="vjw-actions">
-            <button type="button" class="btn-literary" data-open-vjw="true">開啟 VJW 視窗</button>
-        </div>
     `;
 
     document.getElementById("overview-markdown").innerHTML = marked.parse(state.overviewMarkdown || "");
@@ -300,19 +307,11 @@ function renderTimelinePanel() {
     `).join("");
 
     const timelineState = getTimelineState();
-    const statusTarget = document.getElementById("timeline-status-card");
-    const focusItem = getTimelineItemById(state.selectedTimelineId) || timelineState.current || timelineState.next;
-    statusTarget.innerHTML = `
-        <div class="timeline-status-title">${timelineState.phaseTitle}</div>
-        <div class="timeline-status-copy">${timelineState.phaseText}</div>
-        ${focusItem ? `<div class="mini-pill mt-2">焦點：${focusItem.title}</div>` : ""}
-    `;
-
     const selectedDay = days.find((day) => day.id === state.timelineDayId) || days[0];
     const listTarget = document.getElementById("timeline-list");
     listTarget.innerHTML = selectedDay.items.map((item) => renderTimelineItem(item, selectedDay.id, timelineState)).join("");
 
-    renderTimelineRelatedTransport();
+    renderTimelineRelatedInfo();
 }
 
 function renderTimelineItem(item, dayId, timelineState) {
@@ -329,15 +328,30 @@ function renderTimelineItem(item, dayId, timelineState) {
         classes.push("is-past");
     }
 
+    // Category icon mapping
+    const categoryIcons = {
+        "flight": "bi-airplane-fill",
+        "transport": "bi-bus-front-fill",
+        "dining": "bi-cup-hot-fill",
+        "shopping": "bi-bag-fill",
+        "sightseeing": "bi-camera-fill",
+        "accommodation": "bi-house-door-fill",
+        "activity": "bi-calendar-event-fill",
+        "checkin": "bi-key-fill"
+    };
+    
+    const iconClass = item.category ? categoryIcons[item.category] || "bi-circle-fill" : "";
+    const iconHtml = iconClass ? `<i class="${iconClass} me-2"></i>` : "";
+
     return `
         <article class="${classes.join(" ")}" data-item-id="${item.id}">
             <div class="timeline-time">${item.timeLabel}</div>
-            <h3 class="timeline-item-title">${item.title}</h3>
+            <h3 class="timeline-item-title">${iconHtml}${item.title}</h3>
             <div class="timeline-location">${item.location}</div>
             <p class="mb-3">${item.description}</p>
             <div class="timeline-actions">
                 <div class="card-meta-pills">
-                    ${(item.transportIds || []).length > 0 ? createPillHtml(`${item.transportIds.length} 個交通關聯`, "bi-sign-turn-right") : createPillHtml("無交通關聯", "bi-dot")}
+                    ${(item.transportIds || []).length > 0 || (item.diningIds || []).length > 0 || (item.souvenirIds || []).length > 0 ? createPillHtml(`有相關資訊`, "bi-link-45deg") : createPillHtml("無相關資訊", "bi-dot")}
                 </div>
                 ${item.mapsUrl ? `<a class="link-btn" href="${item.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>` : ""}
             </div>
@@ -345,27 +359,90 @@ function renderTimelineItem(item, dayId, timelineState) {
     `;
 }
 
-function renderTimelineRelatedTransport() {
-    const target = document.getElementById("timeline-related-transport");
-    const transports = getLinkedTransportsForSelectedTimeline();
-
-    if (transports.length === 0) {
-        target.innerHTML = `<p class="related-empty mb-0">選取有交通關聯的時程節點後，這裡會顯示對應卡片。</p>`;
+function renderTimelineRelatedInfo() {
+    const target = document.getElementById("timeline-related-info");
+    const item = getTimelineItemById(state.selectedTimelineId);
+    
+    if (!item) {
+        target.innerHTML = `<p class="related-empty mb-0">選取時程節點後，這裡會顯示相關資訊。</p>`;
         return;
     }
 
-    target.innerHTML = transports.map((transport) => `
-        <article class="transport-card is-linked">
-            <div class="card-actions mb-2">
-                <span class="transport-type">${transport.type}</span>
-                <span class="status-pill">${transport.status}</span>
-            </div>
-            <h3 class="card-title mb-2">${transport.title}</h3>
-            <p class="transport-route mb-2">${transport.route}</p>
-            <p class="card-note mb-3">${transport.note}</p>
-            <a class="link-btn" href="${transport.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>
-        </article>
-    `).join("");
+    const transports = (item.transportIds || []).map(id => state.tripData.transports.find(t => t.id === id)).filter(Boolean);
+    const dinings = (item.diningIds || []).map(id => state.tripData.dining.find(d => d.name === id)).filter(Boolean);
+    const souvenirs = (item.souvenirIds || []).map(id => state.tripData.souvenirs.find(s => s.name === id)).filter(Boolean);
+
+    const hasAnyInfo = transports.length > 0 || dinings.length > 0 || souvenirs.length > 0;
+
+    if (!hasAnyInfo) {
+        target.innerHTML = `<p class="related-empty mb-0">此時程節點沒有關聯的資訊。</p>`;
+        return;
+    }
+
+    let html = '';
+
+    if (transports.length > 0) {
+        html += '<div class="related-section"><h4 class="related-section-title"><i class="bi bi-sign-turn-right me-1"></i>交通</h4>';
+        html += transports.map((transport) => `
+            <article class="transport-card is-linked mb-2">
+                <div class="card-actions mb-2">
+                    <span class="transport-type">${transport.type}</span>
+                    <span class="status-pill">${transport.status}</span>
+                </div>
+                <h3 class="card-title mb-2">${transport.title}</h3>
+                <p class="transport-route mb-2">${transport.route}</p>
+                ${transport.image ? `
+                    <div class="transport-image-container mb-3">
+                        <img src="${transport.image}" alt="${transport.imageCaption || transport.title}" class="transport-image" />
+                        ${transport.imageCaption ? `<p class="transport-image-caption">${transport.imageCaption}</p>` : ""}
+                    </div>
+                ` : ""}
+                <p class="card-note mb-3">${transport.note}</p>
+                <a class="link-btn" href="${transport.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>
+            </article>
+        `).join("");
+        html += '</div>';
+    }
+
+    if (dinings.length > 0) {
+        html += '<div class="related-section"><h4 class="related-section-title"><i class="bi bi-cup-hot me-1"></i>餐飲</h4>';
+        html += dinings.map((dining) => `
+            <article class="list-card mb-2">
+                <div class="card-actions mb-2">
+                    <span class="transport-type">${dining.category}</span>
+                    <span class="status-pill">${dining.reservationStatus}</span>
+                </div>
+                <h3 class="card-title mb-2">${dining.name}</h3>
+                <div class="list-meta mb-2">
+                    <div><strong>地點</strong> ${dining.area}</div>
+                    <div><strong>備註</strong> ${dining.note}</div>
+                </div>
+                <a class="link-btn" href="${dining.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>
+            </article>
+        `).join("");
+        html += '</div>';
+    }
+
+    if (souvenirs.length > 0) {
+        html += '<div class="related-section"><h4 class="related-section-title"><i class="bi bi-bag-heart me-1"></i>伴手禮</h4>';
+        html += souvenirs.map((souvenir) => `
+            <article class="list-card mb-2">
+                <div class="card-actions mb-2">
+                    <span class="transport-type">${souvenir.category}</span>
+                    <span class="status-pill">${souvenir.buyPlan}</span>
+                </div>
+                <h3 class="card-title mb-2">${souvenir.name}</h3>
+                <div class="list-meta mb-2">
+                    <div><strong>地點</strong> ${souvenir.area}</div>
+                    <div><strong>備註</strong> ${souvenir.note}</div>
+                </div>
+                <a class="link-btn" href="${souvenir.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>
+            </article>
+        `).join("");
+        html += '</div>';
+    }
+
+    target.innerHTML = html;
 }
 
 function renderTransportPanel() {
@@ -402,6 +479,12 @@ function renderTransportPanel() {
                 </div>
                 <h3 class="card-title">${transport.title}</h3>
                 <p class="transport-route mb-2">${transport.route}</p>
+                ${transport.image ? `
+                    <div class="transport-image-container mb-3">
+                        <img src="${transport.image}" alt="${transport.imageCaption || transport.title}" class="transport-image" />
+                        ${transport.imageCaption ? `<p class="transport-image-caption">${transport.imageCaption}</p>` : ""}
+                    </div>
+                ` : ""}
                 <div class="transport-meta">
                     <div><strong>時間</strong> ${transport.depart} -> ${transport.arrive}</div>
                     <div><strong>費用</strong> ${transport.cost}</div>
@@ -506,16 +589,19 @@ function syncTabUi() {
 function updateTripMetaText() {
     updateCountdown();
     updateHeroPhase();
-    renderSidebar();
+    // renderSidebar();
     renderTimelinePanel();
     renderTransportPanel();
 }
 
 function startRealtimeUpdates() {
     updateCountdown();
+    updateTripMetaText();
     setInterval(() => {
+        updateCountdown();
         updateTripMetaText();
-    }, 60000);
+        // updateTimelineStatus(); // Status now in hero-side, updated by updateHeroPhase()
+    }, 1000);
 }
 
 function updateCountdown() {
@@ -536,11 +622,13 @@ function updateCountdown() {
     const dayMs = 24 * 60 * 60 * 1000;
     const hourMs = 60 * 60 * 1000;
     const minuteMs = 60 * 1000;
+    const secondMs = 1000;
 
     const days = Math.floor(diffMs / dayMs);
     const hours = Math.floor((diffMs % dayMs) / hourMs);
     const minutes = Math.floor((diffMs % hourMs) / minuteMs);
-    element.textContent = `${days} 天 ${hours} 小時 ${minutes} 分`;
+    const seconds = Math.floor((diffMs % minuteMs) / secondMs);
+    element.textContent = `${days} 天 ${hours} 小時 ${minutes} 分 ${seconds} 秒`;
 }
 
 function getFlattenedTimeline() {
@@ -582,6 +670,24 @@ function getTimelineState() {
         phaseText: previous ? `最後一段：${previous.dayLabel} ${previous.title}` : "尚無時程資料"
     };
 }
+
+// Timeline status moved to hero-side, no longer needed here
+// function updateTimelineStatus() {
+//     if (state.activeTab !== "timeline") {
+//         return;
+//     }
+//     const timelineState = getTimelineState();
+//     const statusTarget = document.getElementById("timeline-status-card");
+//     if (!statusTarget) {
+//         return;
+//     }
+//     const focusItem = getTimelineItemById(state.selectedTimelineId) || timelineState.current || timelineState.next;
+//     statusTarget.innerHTML = `
+//         <div class="timeline-status-title">${timelineState.phaseTitle}</div>
+//         <div class="timeline-status-copy">${timelineState.phaseText}</div>
+//         ${focusItem ? `<div class="mini-pill mt-2">焦點：${focusItem.title}</div>` : ""}
+//     `;
+// }
 
 function getRecommendedTimelineItem() {
     const timelineState = getTimelineState();
@@ -801,7 +907,7 @@ function renderStayDetailBlock(stay, detailId) {
     ];
 
     const hasDetail = detailRows.some(([, value]) => value && String(value).trim() !== "");
-    if (!hasDetail) {
+    if (!hasDetail && !stay.notes) {
         return '<span class="missing-value">待補資料</span>';
     }
 
@@ -815,6 +921,7 @@ function renderStayDetailBlock(stay, detailId) {
                     </div>
                 `).join("")}
             </dl>
+            ${stay.notes ? `<p class="stay-detail-notes">${stay.notes}</p>` : ""}
         </div>
     `;
 }
@@ -830,6 +937,7 @@ function toggleStayDetail(button) {
     const nextExpanded = detailPanel.hidden;
     detailPanel.hidden = !nextExpanded;
     button.setAttribute("aria-expanded", String(nextExpanded));
+    button.classList.toggle("expanded", nextExpanded);
 }
 
 function withPlaceholder(value, required = true) {
