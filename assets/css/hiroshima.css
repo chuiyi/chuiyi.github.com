@@ -300,10 +300,9 @@
 .trip-tab-stack {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 0.6rem;
-    justify-content: center;
-    overflow-x: auto;
+    justify-content: flex-start;
 }
 
 .trip-tab {
