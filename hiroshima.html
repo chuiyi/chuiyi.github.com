@@ -15,6 +15,13 @@
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
     <link rel="stylesheet" type="text/css" href="assets/css/hiroshima.css">
 
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="assets/config/hiroshima-manifest.json">
+    <meta name="theme-color" content="#8b4513">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="廣島之旅">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
@@ -229,5 +236,88 @@
     </div>
 
     <script src="assets/js/hiroshima.js"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        // Service Worker Registration and Update Check
+        if ('serviceWorker' in navigator) {
+            let refreshing = false;
+            
+            // Reload when new service worker takes control
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (refreshing) return;
+                refreshing = true;
+                console.log('[PWA] New version available, reloading...');
+                window.location.reload();
+            });
+
+            // Register service worker
+            navigator.serviceWorker.register('/hiroshima-sw.js')
+                .then((registration) => {
+                    console.log('[PWA] Service Worker registered:', registration.scope);
+                    
+                    // Check for updates every 5 minutes
+                    setInterval(() => {
+                        registration.update();
+                    }, 5 * 60 * 1000);
+                    
+                    // Check for updates when page becomes visible
+                    document.addEventListener('visibilitychange', () => {
+                        if (!document.hidden) {
+                            registration.update();
+                        }
+                    });
+                    
+                    // Handle waiting service worker
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                // New version available
+                                console.log('[PWA] New version detected');
+                                showUpdateNotification(registration);
+                            }
+                        });
+                    });
+                })
+                .catch((error) => {
+                    console.error('[PWA] Service Worker registration failed:', error);
+                });
+        }
+
+        // Show update notification
+        function showUpdateNotification(registration) {
+            const notification = document.createElement('div');
+            notification.className = 'pwa-update-notification';
+            notification.innerHTML = `
+                <div class="pwa-update-content">
+                    <i class="bi bi-cloud-download me-2"></i>
+                    <span>發現新版本！</span>
+                    <button class="btn btn-sm btn-light ms-3" onclick="updatePWA()">立即更新</button>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Store registration for update function
+            window.pendingRegistration = registration;
+        }
+
+        // Update PWA
+        function updatePWA() {
+            const notification = document.querySelector('.pwa-update-notification');
+            if (notification) {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }
+            
+            if (window.pendingRegistration && window.pendingRegistration.waiting) {
+                window.pendingRegistration.waiting.postMessage({ type: 'SKIP_WAITING' });
+            }
+        }
+    </script>
 </body>
 </html>

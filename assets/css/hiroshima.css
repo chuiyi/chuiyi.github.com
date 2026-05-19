@@ -1141,3 +1141,64 @@
         font-size: 0.78rem;
     }
 }
+
+/* ========================================
+   PWA Update Notification
+   ======================================== */
+.pwa-update-notification {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--deep-brown);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(139, 69, 19, 0.3);
+    z-index: 9999;
+    transition: bottom 0.3s ease;
+    max-width: 90%;
+}
+
+.pwa-update-notification.show {
+    bottom: 30px;
+}
+
+.pwa-update-content {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.pwa-update-content i {
+    font-size: 1.2rem;
+}
+
+.pwa-update-content button {
+    white-space: nowrap;
+    background: white;
+    color: var(--deep-brown);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.pwa-update-content button:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 576px) {
+    .pwa-update-notification {
+        padding: 0.8rem 1rem;
+        font-size: 0.9rem;
+    }
+    
+    .pwa-update-content button {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.85rem;
+    }
+}
