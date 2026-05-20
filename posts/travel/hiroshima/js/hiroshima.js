@@ -1,4 +1,4 @@
-const DATA_FILE = "posts/travel/hiroshima/trip-data.json";
+const DATA_FILE = "trip-data.json";
 const CHECKLIST_STORAGE_KEY = "hiroshima-trip-checklist-v2";
 
 // ===== 測試用時間覆蓋變數 =====

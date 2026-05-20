@@ -690,7 +690,7 @@ async function createUnifiedMovieCard(movie) {
 async function createUnifiedTravelCard(travel) {
     const col = document.createElement('div');
     const newPageUrl = travel.id === 'hiroshima-trip-2026'
-        ? 'hiroshima.html'
+        ? 'posts/travel/hiroshima/'
         : `travel.html?file=${travel.id}`;
     
     // 從日期中提取年月

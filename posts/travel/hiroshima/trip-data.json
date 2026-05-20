@@ -128,7 +128,7 @@
           "description": "在公車 3 號等候區搭乘中國巴士前往三原車站，記得先儲值交通卡。",
           "location": "廣島機場 -> 三原車站",
           "mapsUrl": "https://www.google.com/maps/search/?q=Mihara+Station+Hiroshima",
-          "transportIds": []
+          "transportIds": ["bus-airport-mihara"]
         },
         {
           "id": "jr-mihara-onomichi",
@@ -507,7 +507,22 @@
       "linkedTimelineIds": ["taipei-departure"]
     },
     {
-
+      "id": "bus-airport-mihara",
+      "dayId": "day1",
+      "type": "機場巴士",
+      "title": "廣島機場 → 三原車站",
+      "route": "廣島機場 -> 三原車站",
+      "depart": "11:45",
+      "arrive": "12:23",
+      "cost": "JPY 1,000",
+      "status": "現場購票",
+      "note": "在公車 3 號等候區搭乘機場巴士（中國巴士營運）前往三原車站，車程約 38 分鐘。記得先儲值交通卡（ICOCA 或 PASPY）。",
+      "image": "images/hiroshima-airport-bus-map.jpg",
+      "imageCaption": "廣島機場 1F 巴士候車區位置圖（3號為前往三原方向）",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Mihara+Station+Hiroshima",
+      "linkedTimelineIds": ["airport-bus-mihara"]
+    },
+    {
       "id": "jr-mihara-onomichi",
       "dayId": "day1",
       "type": "JR",
@@ -1096,85 +1111,126 @@
   ],
   "checklist": [
     {
-      "id": "documents-money",
-      "title": "證件與金錢",
-      "children": [
-        { "id": "wallet-short", "title": "短夾" },
-        { "id": "passport-plus", "title": "護照+" },
-        { "id": "jpy-cash", "title": "日幣（帶?萬）" },
-        { "id": "credit-cards", "title": "信用卡（兩張以上保險）" },
-        { "id": "suica", "title": "交通卡（Suica）" },
-        { "id": "health-insurance-card", "title": "健保卡" },
-        { "id": "id-card", "title": "身分證" },
-        { "id": "wallet-long", "title": "長夾" },
-        { "id": "credit-card-backup", "title": "備用信用卡" },
-        { "id": "cash-backup", "title": "備用金錢" },
-        { "id": "photos-2inch", "title": "2吋照片x2" }
-      ]
-    },
-    {
-      "id": "electronics",
-      "title": "電子設備與3C用品",
-      "children": [
-        { "id": "sim-card", "title": "網卡" },
-        { "id": "3c-portable", "title": "隨身3C用品" },
-        { "id": "power-bank-10000", "title": "行動電源（10000）" },
-        { "id": "go-3s", "title": "Go 3S" },
-        { "id": "camera", "title": "相機" },
-        { "id": "3c-bag-m", "title": "3C用品（M包）" },
-        { "id": "usb-hub", "title": "USB排插（或多孔插頭）" },
-        { "id": "camera-charger", "title": "相機電池充電器" }
+      "title":"隨身物品",
+      "id":"personal-items",
+      "children":[
+        {
+          "id": "documents-money",
+          "title": "證件與金錢",
+          "children": [
+            {
+              "id": "wallet-short",
+              "title": "短夾",
+              "children": [
+                { "id": "id-card", "title": "身分證" },
+                { "id": "health-insurance-card", "title": "健保卡" },
+                { "id": "passport-plus", "title": "護照" },
+                { "id": "credit-cards", "title": "信用卡（兩張以上保險）" },
+                { "id": "jpy-cash", "title": "日幣（帶?萬）" },
+                { "id": "suica", "title": "交通卡（Suica）" }
+              ]
+            },
+            {
+              "id": "wallet-long",
+              "title": "長夾",
+              "children": [
+                { "id": "credit-card-backup", "title": "備用信用卡" },
+                { "id": "cash-backup", "title": "備用金錢" },
+                { "id": "photos-2inch", "title": "2吋照片x2" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "electronics",
+          "title": "電子設備與3C用品",
+          "children": [
+            { "id": "sim-card", "title": "網卡或eSim" },
+            {
+              "id": "3c-portable",
+              "title": "隨身3C用品",
+              "children": [
+                { "id": "power-bank-10000", "title": "行動電源（10000）" },
+                { "id": "dji-pocket-3", "title": "隨身錄影機(DJI pocket 3)" },
+                { "id": "go-3s", "title": "運動相機(Go 3S)" },
+                { "id": "camera", "title": "相機(A7C2/GR3x/GR4等等)" },
+                { "id": "camera-battery", "title": "相機對應電池" },
+                { "id": "drone-battery", "title": "空拍機電池" },
+                { "id": "camera-memory-card", "title": "相機記憶卡" }
+              ]
+            }
+          ]
+        }
       ]
     },
     {
       "id": "luggage",
       "title": "行李箱與配件",
       "children": [
-        { "id": "suitcase", "title": "行李箱" },
-        { "id": "umbrella", "title": "雨傘" },
-        { "id": "luggage-scale", "title": "行李秤" },
-        { "id": "safety-pins", "title": "安全別針" },
-        { "id": "weight-check", "title": "檢查重量上限（23KG內）" }
-      ]
-    },
-    {
-      "id": "hygiene-medicine",
-      "title": "個人衛生用品與藥品",
-      "children": [
-        { "id": "hygiene-bag-s", "title": "個人衛生用品（S包）" },
-        { "id": "medicine-cold-stomach", "title": "個人藥品（感冒藥/胃藥）" },
-        { "id": "medicine-refresh", "title": "提神藥品（萬金油/綠油精/白花油）" },
-        { "id": "tissue", "title": "面紙" },
-        { "id": "sanitary-pads", "title": "棉棉" }
-      ]
-    },
-    {
-      "id": "clothing",
-      "title": "衣物用品（L包）",
-      "children": [
-        { "id": "clothes-sets", "title": "對應天數的衣物（2套短袖+2套長袖+外套+2內褲+2襪子）" },
-        { "id": "sleepwear", "title": "睡衣睡褲" },
-        { "id": "laundry-bag", "title": "可摺疊衣物袋（髒衣服）" },
-        { "id": "toiletries-simple", "title": "簡易梳洗用品（盥洗用品袋）" },
-        { "id": "toothbrush", "title": "牙刷" },
-        { "id": "towel", "title": "毛巾" },
-        { "id": "facial-cleanser", "title": "盥洗用品（洗面乳）" }
-      ]
-    },
-    {
-      "id": "cosmetics",
-      "title": "化妝保養品",
-      "children": [
-        { "id": "makeup-bag", "title": "化妝包" },
-        { "id": "skincare", "title": "保養" },
-        { "id": "face-mask", "title": "面膜" },
-        { "id": "contact-lenses", "title": "隱形眼鏡" },
-        { "id": "contact-solution", "title": "隱形眼鏡藥水" },
-        { "id": "contact-case", "title": "隱形眼鏡盒" },
-        { "id": "foundation", "title": "粉底" },
-        { "id": "powder", "title": "粉餅" },
-        { "id": "makeup-remover", "title": "卸粧" },
-        { "id": "moisturizer", "title": "保濕" }
+        { 
+          "id": "suitcase", 
+          "title": "行李箱",
+          "children":[
+            {
+              "id": "3c-bag-m",
+              "title": "3C用品（M包）",
+              "children": [
+                { "id": "usb-hub", "title": "USB排插（或多孔插頭）" },
+                { "id": "charging-cables", "title": "充電線" },
+                { "id": "camera-charger", "title": "相機電池充電器" },
+                { "id": "drone", "title": "空拍機" }
+              ]
+            },
+            {
+              "id": "hygiene-medicine",
+              "title": "個人衛生用品與藥品",
+              "children": [
+                { 
+                  "id": "hygiene-bag-s", 
+                  "title": "個人衛生用品（S包）",
+                  "children":[
+                    { "id": "medicine-cold-stomach", "title": "個人藥品（感冒藥/胃藥）" },
+                    { "id": "medicine-refresh", "title": "提神藥品（萬金油/綠油精/白花油）" },
+                    { "id": "tissue", "title": "面紙" },
+                    { "id": "sanitary-pads", "title": "棉棉" }
+                  ] 
+                },
+                {
+                  "id": "clothing",
+                  "title": "衣物用品（L包）",
+                  "children": [
+                    { "id": "clothes-sets", "title": "對應天數的衣物（5套短袖+薄外套+5內褲+5襪子）" },
+                    { "id": "sleepwear", "title": "睡衣睡褲" },
+                    { "id": "laundry-bag", "title": "可摺疊衣物袋（髒衣服）" },
+                    { "id": "toiletries-simple", "title": "簡易梳洗用品（盥洗用品袋）" },
+                    { "id": "toothbrush", "title": "牙刷" },
+                    { "id": "towel", "title": "毛巾" },
+                    { "id": "facial-cleanser", "title": "盥洗用品（洗面乳）" }
+                  ]
+                },
+                {
+                  "id": "cosmetics",
+                  "title": "化妝保養品",
+                  "children": [
+                    { "id": "makeup-bag", "title": "化妝包" },
+                    { "id": "skincare", "title": "保養品" },
+                    { "id": "face-mask", "title": "面膜" },
+                    { "id": "contact-lenses", "title": "隱形眼鏡" },
+                    { "id": "contact-solution", "title": "隱形眼鏡藥水" },
+                    { "id": "contact-case", "title": "隱形眼鏡盒" },
+                    { "id": "foundation", "title": "粉底" },
+                    { "id": "powder", "title": "粉餅" },
+                    { "id": "makeup-remover", "title": "卸粧用品" },
+                    { "id": "moisturizer", "title": "保濕乳液" }
+                  ]
+                }
+              ]
+            },
+            { "id": "umbrella", "title": "雨傘" },
+            { "id": "luggage-scale", "title": "行李秤" },
+            { "id": "weight-check", "title": "檢查重量上限（23KG內）" }
+          ]
+        }
       ]
     },
     {
