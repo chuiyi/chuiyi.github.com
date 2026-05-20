@@ -1,6 +1,13 @@
 const DATA_FILE = "posts/travel/hiroshima/trip-data.json";
 const CHECKLIST_STORAGE_KEY = "hiroshima-trip-checklist-v2";
 
+// ===== 測試用時間覆蓋變數 =====
+// 設為 null 表示使用真實系統時間
+// 設為日期字串可模擬特定時間點，例如："2026-05-30T00:00:00+09:00" 或 "2026-05-30"
+// const TEST_CURRENT_TIME_OVERRIDE = "2026-06-03T00:00:00+08:00"; // 行程結束後
+// const TEST_CURRENT_TIME_OVERRIDE = "2026-05-28T04:29:00+08:00"; // 行程進行中
+const TEST_CURRENT_TIME_OVERRIDE = null; // 使用真實時間
+
 const ThemeManager = {
     init() {
         const savedTheme = localStorage.getItem("chuiy-theme") || "light";
@@ -37,7 +44,8 @@ const state = {
     timelineDayId: null,
     transportDayFilter: "all",
     selectedTimelineId: null,
-    checklistState: {}
+    checklistState: {},
+    previousCountdown: { days: -1, hours: -1, minutes: -1, seconds: -1 }
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -111,6 +119,10 @@ function handleDocumentClick(event) {
         // 不再需要設定 transportDayFilter
         renderTimelinePanel();
         renderTransportPanel();
+        renderSightseeingPanel();
+        renderDiningPanel();
+        renderSouvenirPanel();
+        renderOthersPanel();
         updateHeroPhase();
         return;
     }
@@ -546,37 +558,54 @@ function renderTransportPanel() {
 }
 
 function renderDiningPanel() {
+    const selectedItem = getTimelineItemById(state.selectedTimelineId);
+    const linkedIds = new Set(selectedItem?.diningIds || []);
+    
     document.getElementById("dining-list").innerHTML = state.tripData.dining.map((item) => renderListCard(item, {
         topLabel: item.category,
         secondaryLabel: item.reservationStatus,
         footerLabel: item.area,
-        note: item.note
+        note: item.note,
+        isLinked: linkedIds.has(item.name)
     })).join("");
 }
 
 function renderSightseeingPanel() {
+    const selectedItem = getTimelineItemById(state.selectedTimelineId);
+    const linkedIds = new Set(selectedItem?.sightseeingIds || []);
+    
     document.getElementById("sightseeing-list").innerHTML = state.tripData.sightseeing.map((item) => renderListCard(item, {
         topLabel: item.category,
         secondaryLabel: item.visitPlan,
         footerLabel: item.area,
         note: item.note,
         openingHours: item.openingHours,
-        admission: item.admission
+        admission: item.admission,
+        isLinked: linkedIds.has(item.name)
     })).join("");
 }
 
 function renderSouvenirPanel() {
+    const selectedItem = getTimelineItemById(state.selectedTimelineId);
+    const linkedIds = new Set(selectedItem?.souvenirIds || []);
+    
     document.getElementById("souvenir-list").innerHTML = state.tripData.souvenirs.map((item) => renderListCard(item, {
         topLabel: item.category,
         secondaryLabel: item.buyPlan,
         footerLabel: item.area,
-        note: item.note
+        note: item.note,
+        isLinked: linkedIds.has(item.name)
     })).join("");
 }
 
 function renderListCard(item, options) {
+    const classes = ["list-card"];
+    if (options.isLinked) {
+        classes.push("is-linked");
+    }
+    
     return `
-        <article class="list-card">
+        <article class="${classes.join(" ")}">
             <div class="card-actions mb-3">
                 <span class="transport-type">${options.topLabel}</span>
                 <span class="status-pill">${options.secondaryLabel}</span>
@@ -625,10 +654,13 @@ function renderChecklistPanel() {
 }
 
 function renderOthersPanel() {
-    document.getElementById("others-info-list").innerHTML = state.tripData.otherInfo.map((item) => renderOtherInfoCard(item)).join("");
+    const selectedItem = getTimelineItemById(state.selectedTimelineId);
+    const linkedIds = new Set(selectedItem?.otherInfoIds || []);
+    
+    document.getElementById("others-info-list").innerHTML = state.tripData.otherInfo.map((item) => renderOtherInfoCard(item, linkedIds.has(item.id))).join("");
 }
 
-function renderOtherInfoCard(item) {
+function renderOtherInfoCard(item, isLinked = false) {
     const categoryIcons = {
         "租車資訊": "bi-bicycle",
         "飲食建議": "bi-egg-fried",
@@ -641,9 +673,13 @@ function renderOtherInfoCard(item) {
     
     const iconClass = categoryIcons[item.category] || "bi-info-circle-fill";
     const hasMap = item.mapsUrl && item.mapsUrl.length > 0;
+    const classes = ["list-card", "other-info-card"];
+    if (isLinked) {
+        classes.push("is-linked");
+    }
     
     return `
-        <article class="list-card other-info-card">
+        <article class="${classes.join(" ")}">
             <div class="card-actions mb-3">
                 <span class="transport-type"><i class="bi ${iconClass} me-1"></i>${item.category}</span>
             </div>
@@ -684,6 +720,30 @@ function updateTripMetaText() {
     renderTransportPanel();
 }
 
+function getTripEndTime() {
+    if (!state.tripData || !state.tripData.timelineDays) {
+        return null;
+    }
+    
+    let lastEndTime = null;
+    
+    // 遍歷所有天數和所有項目，找出最後的結束時間
+    state.tripData.timelineDays.forEach(day => {
+        if (day.items && day.items.length > 0) {
+            day.items.forEach(item => {
+                if (item.end) {
+                    const endTime = new Date(item.end);
+                    if (!lastEndTime || endTime > lastEndTime) {
+                        lastEndTime = endTime;
+                    }
+                }
+            });
+        }
+    });
+    
+    return lastEndTime;
+}
+
 function startRealtimeUpdates() {
     updateCountdown();
     updateTripMetaText();
@@ -696,16 +756,27 @@ function startRealtimeUpdates() {
 
 function updateCountdown() {
     const countdownTarget = new Date(state.tripData.trip.countdownTarget);
-    const element = document.getElementById("countdown-value");
-    if (!element || Number.isNaN(countdownTarget.getTime())) {
+    const container = document.getElementById("countdown-container");
+    if (!container || Number.isNaN(countdownTarget.getTime())) {
         return;
     }
 
-    const now = new Date();
+    // 使用測試時間或真實時間
+    const now = TEST_CURRENT_TIME_OVERRIDE ? new Date(TEST_CURRENT_TIME_OVERRIDE) : new Date();
+    
+    // 找出行程最後一個項目的結束時間
+    const tripEndTime = getTripEndTime();
+    
+    // 判斷旅程狀態
+    if (tripEndTime && now >= tripEndTime) {
+        container.innerHTML = '<div class="countdown-finished">旅程已結束</div>';
+        return;
+    }
+    
     const diffMs = countdownTarget - now;
 
     if (diffMs <= 0) {
-        element.textContent = "旅程已開始";
+        container.innerHTML = '<div class="countdown-finished">旅程已開始 🎉</div>';
         return;
     }
 
@@ -718,7 +789,93 @@ function updateCountdown() {
     const hours = Math.floor((diffMs % dayMs) / hourMs);
     const minutes = Math.floor((diffMs % hourMs) / minuteMs);
     const seconds = Math.floor((diffMs % minuteMs) / secondMs);
-    element.textContent = `${days} 天 ${hours} 小時 ${minutes} 分 ${seconds} 秒`;
+    
+    // 更新各個時間單位的翻板
+    updateFlipUnit('days', days);
+    updateFlipUnit('hours', hours);
+    updateFlipUnit('minutes', minutes);
+    updateFlipUnit('seconds', seconds);
+}
+
+function updateFlipUnit(unit, newValue) {
+    const previous = state.previousCountdown[unit];
+    
+    // 如果值沒有改變，不需要動畫
+    if (previous === newValue) {
+        return;
+    }
+    
+    const flipElement = document.querySelector(`[data-unit="${unit}"]`);
+    if (!flipElement) {
+        return;
+    }
+    
+    const topStatic = flipElement.previousElementSibling;
+    const bottomStatic = flipElement.nextElementSibling;
+    const flipFront = flipElement.querySelector('.flip-front');
+    const flipBack = flipElement.querySelector('.flip-back');
+    
+    if (!topStatic || !bottomStatic || !flipFront || !flipBack) {
+        return;
+    }
+    
+    // 如果是第一次運行（previous === -1），直接設置不動畫
+    if (previous === -1) {
+        topStatic.querySelector('span').textContent = newValue;
+        bottomStatic.querySelector('span').textContent = newValue;
+        flipFront.textContent = newValue;
+        flipBack.textContent = newValue;
+        // 【新增這行】初始化時同步寫入屬性
+        flipBack.setAttribute('data-number', newValue);
+
+        topStatic.dataset.value = newValue;
+        bottomStatic.dataset.value = newValue;
+        state.previousCountdown[unit] = newValue;
+        return;
+    }
+    
+    // !! 關鍵修正：動畫前的狀態設置
+    // 上半部固定背景：立即更新為新數字（會被翻板正面的舊數字遮住）
+    topStatic.querySelector('span').textContent = newValue;
+    topStatic.dataset.value = newValue;
+    
+    // 下半部固定背景：保持舊數字（會被翻板背面的新數字逐漸覆蓋）
+    // 不要在這裡更新！要等動畫結束後再更新
+    
+    // 翻板正面：舊數字的上半部
+    flipFront.textContent = previous;
+    
+    // 翻板背面：新數字的下半部（需要設置 data-number 給 CSS ::before 使用）
+    flipBack.textContent = '';  // 清空直接文字
+    flipBack.setAttribute('data-number', newValue);  // 設置給偽元素用
+
+    // 移除之前的動畫
+    flipElement.classList.remove('flipping');
+    
+    // 短暫延遲後開始翻轉動畫
+    setTimeout(() => {
+        flipElement.classList.add('flipping');
+        
+        // 在動畫中期（約250ms，翻到90度時）更新 flip-front 為新數字
+        // 此時 flip-front 已經垂直看不見，更新後為下次動畫做準備
+        setTimeout(() => {
+            flipFront.textContent = newValue;
+        }, 250);
+        
+        // 動畫結束後（0.5秒），清理並更新狀態
+        setTimeout(() => {
+            flipElement.classList.remove('flipping');
+            
+            // 動畫結束後才更新底部固定背景為新數字
+            bottomStatic.querySelector('span').textContent = newValue;
+            bottomStatic.dataset.value = newValue;
+            
+            // 更新翻板正面為新數字（為下次翻動準備）
+            flipFront.textContent = newValue;
+            
+            state.previousCountdown[unit] = newValue;
+        }, 500); // 與 CSS 動畫時長一致
+    }, 10);
 }
 
 function getFlattenedTimeline() {
