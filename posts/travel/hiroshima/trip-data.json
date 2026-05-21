@@ -4,9 +4,9 @@
     "titleEn": "Hiroshima Trip",
     "subtitle": "廣島、吳市、尾道、宮島 6 天 5 夜",
     "dateRangeLabel": "2026/05/28 - 2026/06/02",
-    "timezone": "Asia/Tokyo",
+    "timezone": "亞洲/東京時間",
     "countdownTarget": "2026-05-28T04:30:00+08:00",
-    "lastUpdated": "2026-05-18"
+    "lastUpdated": "2026-05-21"
   },
   "overview": {
     "travelName": "日本廣島",
@@ -154,7 +154,8 @@
           "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+City",
           "transportIds": [],
           "diningIds": ["パン屋航路", "やまねこ布丁"],
-          "sightseeingIds": ["尾道本通り商店街", "ONOMICHI U2"]
+          "sightseeingIds": ["尾道本通り商店街", "ONOMICHI U2"],
+          "otherInfoIds": ["yakuza6-onomichi"]
         },
         {
           "id": "ikuchijima-transfer",
@@ -267,7 +268,8 @@
           "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+City+Temples",
           "transportIds": [],
           "sightseeingIds": ["千光寺山纜車", "文學之道/貓之細道", "尾道商店街", "ONOMICHI U2"],
-          "diningIds": ["パン屋航路", "やまねこ布丁"]
+          "diningIds": ["パン屋航路", "やまねこ布丁", "朱華園"],
+          "otherInfoIds": ["yakuza6-onomichi"]
         },
         {
           "id": "onomichi-dinner",
@@ -279,7 +281,8 @@
           "description": "在尾道用晚餐，可選擇尾道拉麵或其他特色料理。",
           "location": "尾道市",
           "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+Restaurant",
-          "transportIds": []
+          "transportIds": [],
+          "diningIds": ["朱華園"]
         },
         {
           "id": "onomichi-to-hiroshima",
@@ -303,7 +306,9 @@
           "description": "可稍作補給，準備隔天的大戰。",
           "location": "廣島市區",
           "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City",
-          "transportIds": []
+          "transportIds": [],
+          "diningIds": ["麗ちゃん"],
+          "otherInfoIds": ["yakuza-hiroshima"]
         }
       ]
     },
@@ -546,7 +551,7 @@
       "arrive": "約 20 分鐘",
       "cost": "JPY 200-300",
       "status": "交通卡",
-      "note": "搭乘 JR 吳線往尾道方向，班次频繁。",
+      "note": "搭乘 JR 吳線往尾道方向，班次頻繁。",
       "mapsUrl": "https://www.google.com/maps/search/?q=Onomichi+Station",
       "linkedTimelineIds": ["jr-mihara-onomichi"]
     },
@@ -693,7 +698,7 @@
     {
       "id": "setonaikai-ferry-hiroshima-kure",
       "dayId": "day3",
-      "type": "高速船",
+      "type": "觀光船",
       "title": "廣島港 → 吳港（海路體驗）",
       "route": "廣島港 → 吳港（大和博物館旁）",
       "depart": "依班表",
@@ -734,8 +739,18 @@
       "name": "やまねこ布丁",
       "area": "尾道本通り商店街",
       "category": "甜點店",
+      "images": [
+        {
+          "image": "https://img06.shop-pro.jp/PA01178/275/product/182823484.jpg?cmsp_timestamp=20260114164822",
+          "imageCaption": "やまねこ布丁（小野貓布丁）人氣甜點店，招牌布丁口感綿密，濃郁蛋香與焦糖完美平衡。"
+        },
+        {
+          "image":"https://cdn.likejapan.com/wp-content/uploads/2017/01/editors/2798/20170102110334_Ecz9JzDG.png",
+          "imageCaption": "人中之龍6中小野貓布丁的場景。"
+        }
+      ],
       "reservationStatus": "推薦造訪",
-      "note": "文青復古布丁專門店，尾道散步必訪。",
+      "note": "小野貓點心鋪 （人中之龍6布丁），文青復古布丁專門店，尾道散步必訪。",
       "mapsUrl": "https://www.google.com/maps/search/?q=%E3%82%84%E3%81%BE%E3%81%AD%E3%81%93%E5%B8%83%E4%B8%81+%E5%B0%BE%E9%81%93"
     },
     {
@@ -785,6 +800,24 @@
       "reservationStatus": "必吃點心",
       "note": "炸紅葉饅頭（揚げもみじ）創始店，外皮酥脆內餡熱呼（紅豆/卡士達/起司口味），宮島第一名點。",
       "mapsUrl": "https://www.google.com/maps/search/?q=%E7%B4%85%E8%91%89%E5%A0%82+%E5%AE%AE%E5%B3%B6"
+    },
+    {
+      "name": "朱華園",
+      "area": "尾道本通り商店街",
+      "category": "尾道拉麵",
+      "reservationStatus": "推薦造訪",
+      "note": "尾道拉麵老舖，清爽鰹魚高湯搭配背脂浮油，麵條平坦Q彈。《人中之龍6》遊戲中的經典場景之一。",
+      "websiteUrl": "http://shukaen.com/",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E6%9C%B1%E8%8F%AF%E5%9C%92+%E5%B0%BE%E9%81%93"
+    },
+    {
+      "name": "麗ちゃん",
+      "area": "廣島本通商店街",
+      "category": "廣島燒",
+      "reservationStatus": "推薦造訪",
+      "note": "廣島燒名店，鐵板現煮大量高麗菜與麵條的豐厚口感。《人中之龍》系列中廣島的經典美食。",
+      "websiteUrl": "https://www.okonomi-rei.com/",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E9%BA%97%E3%81%A1%E3%82%83%E3%82%93+%E5%BA%83%E5%B3%B6"
     }
   ],
   "souvenirs": [
@@ -930,7 +963,13 @@
       "openingHours": "各店不一（約 09:00-21:00）",
       "admission": "免費",
       "note": "單車主題複合式倉庫，有咖啡廳、選物店與自行車租賃，文青必訪。",
-      "mapsUrl": "https://www.google.com/maps/search/?q=ONOMICHI+U2"
+      "images": [
+        {
+          "image": "https://assets.everydayobject.us/wp-content/uploads/2021/01/EVERYDAY-OBJECT-%EF%BC%BFONOMICHI-U21.jpg",
+          "imageCaption": "U2 外觀，工業風設計與單車元素結合，充滿文青氛圍。"
+        }
+      ],
+      "mapsUrl": "https://www.google.com/maps/search/?q=尾道U2"
     },
     {
       "name": "千光寺山纜車",
@@ -1107,6 +1146,45 @@
       "relatedSightseeing": ["嚴島神社"]
     },
     {
+      "id": "yakuza6-onomichi",
+      "category": "聖地資訊",
+      "title": "《人中之龍6 命の詩。》尾道聖地巡禮",
+      "subtitle": "桐生一馬的尾道旅程",
+      "location": "尾道本通り商店街、千光寺山、尾道水道",
+      "details": [
+        "《人中之龍6》以尾道為主要舞台，是系列作中首次大規模重現尾道街景",
+        "遊戲中的尾道本通り商店街、千光寺山纜車、港口區域都忠實重現",
+        "朱華園：遊戲中桐生一馬常到訪的尾道拉麵店，現實中也是老舖名店",
+        "ONOMICHI U2：遊戲中的複合式倉庫，現實中也是單車主題文青聖地",
+        "尾道水道與向島的景色，是遊戲中多個重要劇情發生地"
+      ],
+      "note": "尾道因為《人中之龍6》而成為遊戲迷的聖地。遊戲中的場景還原度非常高，散步時會有種「這裡我在遊戲中來過」的既視感。",
+      "websiteUrl": "https://ryu-ga-gotoku.com/six/",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%B0%BE%E9%81%93%E6%9C%AC%E9%80%9A%E3%82%8A%E5%95%86%E5%BA%97%E8%A1%97",
+      "relatedDays": ["day1", "day2"],
+      "relatedDining": ["朱華園"],
+      "relatedSightseeing": ["尾道本通り商店街", "ONOMICHI U2", "千光寺山纜車"]
+    },
+    {
+      "id": "yakuza-hiroshima",
+      "category": "聖地資訊",
+      "title": "《人中之龍》系列中的廣島",
+      "subtitle": "廣島燒與風土民情",
+      "location": "廣島市中區",
+      "details": [
+        "廣島燒（お好み焼き）：《人中之龍》系列中經常出現的廣島名物",
+        "遊戲中可以在街頭小吃攤與餐廳品嚐正宗廣島燒",
+        "麗ちゃん：廣島本通商店街人氣廣島燒名店",
+        "遊戲忠實重現了廣島的街頭風情與飲食文化"
+      ],
+      "note": "《人中之龍》系列中，廣島雖然不是主要舞台，但廣島燒等當地美食在遊戲中經常登場。品嚐正宗廣島燒是來廣島的必須體驗。",
+      "websiteUrl": "https://ryu-ga-gotoku.com/",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E5%BA%83%E5%B3%B6%E6%9C%AC%E9%80%9A%E5%95%86%E5%BA%97%E8%A1%97",
+      "relatedDays": ["day2", "day3"],
+      "relatedDining": ["麗ちゃん"],
+      "relatedSightseeing": ["本通商店街"]
+    },
+    {
       "id": "ferry-schedule-info",
       "category": "交通資訊",
       "title": "生口島 ↔ 尾道渡輪時刻表",
@@ -1140,6 +1218,42 @@
       "note": "出國前務必確認旅遊保險與緊急聯絡資訊，並設定手機離線存取。",
       "mapsUrl": "",
       "relatedDays": []
+    },
+    {
+      "id": "stay-bonapool",
+      "category": "住宿資訊",
+      "title": "BONAPOOL 樂生苑",
+      "subtitle": "生口島特色民宿・5/28-5/29",
+      "location": "〒722-2411 広島県尾道市瀬戸田町瀬戸田1-1",
+      "details": [
+        "電話：+81-845-23-7233",
+        "Check-in：15:00 / Check-out：10:00",
+        "已作為 VJW 預設聯絡處",
+        "瀨戶內海島嶼上的寧靜民宿",
+        "適合體驗離島慢活氛圍"
+      ],
+      "note": "第一晚住宿，位於生口島瀨戶田港附近。VJW 入境表格已填寫此處聯絡資訊。",
+      "websiteUrl": "",
+      "mapsUrl": "https://www.google.com/maps/search/?q=%E3%83%9C%E3%83%8A%E3%83%97%E3%83%BC%E3%83%AB%E6%A5%BD%E7%94%9F%E8%8B%91",
+      "relatedDays": ["day1", "day2"]
+    },
+    {
+      "id": "stay-sotetsu-fresa-hiroshima",
+      "category": "住宿資訊",
+      "title": "Sotetsu Fresa Inn Hiroshima",
+      "subtitle": "廣島市區商務飯店・5/29-6/2",
+      "location": "〒732-0823 広島県広島市南区猿猴橋町5-2",
+      "details": [
+        "電話：+81-82-262-2031",
+        "Check-in：15:00 / Check-out：11:00",
+        "近廣島站徒步約 7 分鐘",
+        "交通便利，適合作為廣島市區行程據點",
+        "連住 4 晚（5/29, 5/30, 5/31, 6/1）"
+      ],
+      "note": "第二至第六晚住宿，位於廣島市區。飯店位置方便前往吳市、宮島、和平公園等景點。",
+      "websiteUrl": "",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Sotetsu+Fresa+Inn+Hiroshima",
+      "relatedDays": ["day2", "day3", "day4", "day5", "day6"]
     }
   ],
   "checklist": [

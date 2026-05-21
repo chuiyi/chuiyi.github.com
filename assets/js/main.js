@@ -18,7 +18,10 @@ const ThemeManager = {
         // 綁定主題切換按鈕事件
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
-            themeToggle.addEventListener('click', () => this.toggleTheme());
+            themeToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.toggleTheme();
+            });
         }
     },
     

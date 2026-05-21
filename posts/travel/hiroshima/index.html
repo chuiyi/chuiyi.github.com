@@ -26,11 +26,6 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div class="theme-toggle" id="themeToggle" title="切換主題">
-        <i class="bi bi-sun-fill sun-icon"></i>
-        <i class="bi bi-moon-fill moon-icon"></i>
-    </div>
-
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="../../../index.html">
@@ -40,6 +35,14 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link theme-toggle-link" id="themeToggle" href="#" title="切換主題">
+                            <i class="bi bi-sun-fill sun-icon"></i>
+                            <i class="bi bi-moon-fill moon-icon"></i>
+                        </a>
+                    </li>
+                </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../../../index.html#home">首頁</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../index.html#travel">旅行札記</a></li>
@@ -65,6 +68,11 @@
                             <span id="hiroshima-updated">更新：2026-05-18</span>
                         </p>
                         <div class="hero-tags" id="hero-tags"></div>
+                        <div class="hero-actions mt-3">
+                            <button type="button" class="btn-literary" data-open-completed-list="true">
+                                <i class="bi bi-check2-circle me-1"></i>已完成清單
+                            </button>
+                        </div>
                     </div>
                     <div class="hero-side">
                         <div class="hero-side-block">
@@ -144,16 +152,12 @@
             <div class="container">
                 <div class="trip-shell">
                     <div class="trip-tab-stack" role="tablist" aria-label="廣島頁籤">
-                        <button class="trip-tab active" data-tab="overview" type="button">
-                            <span class="tab-title">大綱</span>
-                            <small>Overview</small>
-                        </button>
-                        <button class="trip-tab" data-tab="timeline" type="button">
+                        <button class="trip-tab active" data-tab="timeline" type="button">
                             <span class="tab-title">時程表</span>
                             <small>Timeline</small>
                         </button>
                         <button class="trip-tab" data-tab="transport" type="button">
-                            <span class="tab-title">交通資料</span>
+                            <span class="tab-title">交通資訊</span>
                             <small>Transport</small>
                         </button>
                         <button class="trip-tab" data-tab="sightseeing" type="button">
@@ -168,31 +172,18 @@
                             <span class="tab-title">伴手禮</span>
                             <small>Souvenirs</small>
                         </button>
-                        <button class="trip-tab" data-tab="checklist" type="button">
-                            <span class="tab-title">行前確認</span>
-                            <small>Checklist</small>
-                        </button>
                         <button class="trip-tab" data-tab="others" type="button">
                             <span class="tab-title">其他資訊</span>
                             <small>Others</small>
                         </button>
+                        <button class="trip-tab" data-tab="checklist" type="button">
+                            <span class="tab-title">行前確認</span>
+                            <small>Checklist</small>
+                        </button>
                     </div>
 
                     <section class="trip-stage">
-                        <section class="trip-panel active" data-panel="overview">
-                            <div class="panel-header">
-                                <p class="panel-kicker">OVERVIEW</p>
-                                <h2 class="panel-title">大綱</h2>
-                                <p class="panel-subtitle">航班、住宿與 VJW 快速複製入口。</p>
-                            </div>
-                            <div id="overview-alerts"></div>
-                            <div class="overview-grid">
-                                <div class="panel-card" id="flight-card"></div>
-                                <div class="panel-card" id="stay-card"></div>
-                            </div>
-                        </section>
-
-                        <section class="trip-panel" data-panel="timeline">
+                        <section class="trip-panel active" data-panel="timeline">
                             <div class="panel-header">
                                 <p class="panel-kicker">TIMELINE</p>
                                 <h2 class="panel-title">時程表</h2>
@@ -204,9 +195,14 @@
 
                         <section class="trip-panel" data-panel="transport">
                             <div class="panel-header">
-                                <p class="panel-kicker">TRANSPORT</p>
-                                <h2 class="panel-title">交通資料</h2>
-                                <p class="panel-subtitle">點時間軸項目時會同步高亮相關交通卡。</p>
+                                <div class="panel-header-main">
+                                    <div>
+                                        <p class="panel-kicker">TRANSPORT</p>
+                                        <h2 class="panel-title">交通資訊</h2>
+                                        <p class="panel-subtitle">點時間軸項目時會同步高亮相關交通卡。</p>
+                                    </div>
+                                    <div id="transport-type-filters" class="transport-filters-inline"></div>
+                                </div>
                             </div>
                             <div class="card-grid" id="transport-list"></div>
                         </section>
@@ -293,6 +289,23 @@
                         </div>
                         <textarea id="vjw-contact-output" class="form-control vjw-output" rows="10" readonly></textarea>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="completedListModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title mb-1">已完成清單</h5>
+                        <p class="modal-subtitle mb-0">依照時間軸順序顯示已完成的項目。</p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="completed-list-content">
+                    <!-- 內容將由 JS 動態生成 -->
                 </div>
             </div>
         </div>

@@ -190,6 +190,7 @@ h1, h2, h3, h4, h5, h6 {
         width: 200px;
         height: 200px;
         border-width: 2px;
+        margin-top: 3rem;
     }
 }
 
@@ -197,6 +198,7 @@ h1, h2, h3, h4, h5, h6 {
     .profile-image-container {
         width: 150px;
         height: 150px;
+        margin-top: 2.5rem;
     }
 }
 
@@ -1108,50 +1110,46 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 主題切換按鈕樣式 */
-.theme-toggle {
-    position: fixed;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    z-index: 1000;
-    background: var(--warm-white);
-    border: 1px solid var(--border-light);
-    border-radius: 50px;
-    width: 50px;
-    height: 50px;
-    display: flex;
+.theme-toggle-link {
+    display: flex !important;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px var(--shadow-subtle);
+    padding: var(--spacing-xs) var(--spacing-md) !important;
 }
 
-.theme-toggle:hover {
-    background: var(--primary-beige);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 6px 20px rgba(139, 125, 107, 0.2);
+.theme-toggle-link:hover {
+    text-decoration: none;
 }
 
-.theme-toggle i {
+.theme-toggle-link::after {
+    display: none !important;
+}
+
+.theme-toggle-link i {
     font-size: 1.2rem;
     color: var(--muted-brown);
     transition: all 0.3s ease;
 }
 
-.theme-toggle .sun-icon {
+.theme-toggle-link:hover i {
+    color: var(--accent-gold);
+    transform: scale(1.1);
+}
+
+.theme-toggle-link .sun-icon {
     display: none;
 }
 
-.theme-toggle .moon-icon {
+.theme-toggle-link .moon-icon {
     display: block;
 }
 
-[data-theme="dark"] .theme-toggle .sun-icon {
+[data-theme="dark"] .theme-toggle-link .sun-icon {
     display: block;
 }
 
-[data-theme="dark"] .theme-toggle .moon-icon {
+[data-theme="dark"] .theme-toggle-link .moon-icon {
     display: none;
 }
 
@@ -1162,13 +1160,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 響應式主題切換按鈕 */
 @media (max-width: 768px) {
-    .theme-toggle {
-        right: 15px;
-        width: 45px;
-        height: 45px;
-    }
-    
-    .theme-toggle i {
+    .theme-toggle-link i {
         font-size: 1.1rem;
     }
 }

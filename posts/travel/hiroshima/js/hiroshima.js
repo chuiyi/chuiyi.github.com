@@ -1,12 +1,20 @@
 const DATA_FILE = "trip-data.json";
 const CHECKLIST_STORAGE_KEY = "hiroshima-trip-checklist-v2";
+const CARD_COMPLETION_KEY = "hiroshima-cards-completion-v1";
 
 // ===== 測試用時間覆蓋變數 =====
 // 設為 null 表示使用真實系統時間
 // 設為日期字串可模擬特定時間點，例如："2026-05-30T00:00:00+09:00" 或 "2026-05-30"
 // const TEST_CURRENT_TIME_OVERRIDE = "2026-06-03T00:00:00+08:00"; // 行程結束後
-// const TEST_CURRENT_TIME_OVERRIDE = "2026-05-28T04:29:00+08:00"; // 行程進行中
+// const TEST_CURRENT_TIME_OVERRIDE = "2026-05-29T09:29:00+08:00"; // 行程進行中
 const TEST_CURRENT_TIME_OVERRIDE = null; // 使用真實時間
+
+/**
+ * 統一取得當前時間（支援測試時間覆寫）
+ */
+function getCurrentTime() {
+    return TEST_CURRENT_TIME_OVERRIDE ? new Date(TEST_CURRENT_TIME_OVERRIDE) : new Date();
+}
 
 const ThemeManager = {
     init() {
@@ -15,7 +23,10 @@ const ThemeManager = {
 
         const themeToggle = document.getElementById("themeToggle");
         if (themeToggle) {
-            themeToggle.addEventListener("click", () => this.toggleTheme());
+            themeToggle.addEventListener("click", (e) => {
+                e.preventDefault();
+                this.toggleTheme();
+            });
         }
     },
 
@@ -40,13 +51,16 @@ const state = {
     tripData: null,
     overviewMarkdown: "",
     othersMarkdown: "",
-    activeTab: "overview",
+    activeTab: "timeline",
     timelineDayId: null,
     transportDayFilter: "all",
+    transportTypeFilter: "all",
     selectedTimelineId: null,
     expandedTimelineId: null,
     checklistState: {},
-    previousCountdown: { days: -1, hours: -1, minutes: -1, seconds: -1 }
+    cardCompletionState: {},
+    previousCountdown: { days: -1, hours: -1, minutes: -1, seconds: -1 },
+    previousTimelineState: { currentId: null, nextId: null } // 記錄上次的行程狀態
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -82,6 +96,7 @@ function initializeState() {
     state.timelineDayId = state.tripData.timelineDays[0]?.id || null;
     state.selectedTimelineId = getRecommendedTimelineItem()?.id || null;
     state.checklistState = loadChecklistState();
+    state.cardCompletionState = loadCardCompletionState();
 }
 
 function bindEvents() {
@@ -100,6 +115,14 @@ function handleDocumentClick(event) {
     if (openVjwButton) {
         updateVjwModal();
         const modalElement = document.getElementById("vjwModal");
+        bootstrap.Modal.getOrCreateInstance(modalElement).show();
+        return;
+    }
+
+    const openCompletedListButton = event.target.closest("[data-open-completed-list]");
+    if (openCompletedListButton) {
+        renderCompletedListModal();
+        const modalElement = document.getElementById("completedListModal");
         bootstrap.Modal.getOrCreateInstance(modalElement).show();
         return;
     }
@@ -145,7 +168,28 @@ function handleDocumentClick(event) {
         }
         
         if (compactCard && relatedArea) {
-            // 點擊緊湊卡片，切換該卡片的展開/收合
+            // 如果用戶正在選取文字，不觸發收合
+            const selection = window.getSelection();
+            if (selection && selection.toString().length > 0) {
+                return;
+            }
+            
+            // 如果點擊的是圖片或圖片導航按鈕，不觸發收合
+            const isImageElement = event.target.closest(".compact-detail-image, .compact-detail-gallery, .gallery-btn, .gallery-indicator, .carousel-control-prev, .carousel-control-next");
+            if (isImageElement) {
+                return;
+            }
+            
+            // 如果點擊的是卡片詳細內容區域（非標題和摘要），不觸發收合
+            const isDetailsArea = event.target.closest(".compact-card-details");
+            const isHeaderOrSummary = event.target.closest(".compact-card-header, .compact-card-summary");
+            
+            // 只有點擊標題或摘要區域才觸發收合，點擊詳細區域不觸發
+            if (isDetailsArea && !isHeaderOrSummary) {
+                return;
+            }
+            
+            // 點擊緊湊卡片的標題或摘要，切換該卡片的展開/收合
             toggleCompactCard(compactCard);
             return;
         }
@@ -164,11 +208,14 @@ function handleDocumentClick(event) {
         // 點擊行程卡片主體，切換展開/收合
         const itemId = timelineItem.dataset.itemId;
         if (state.expandedTimelineId === itemId) {
+            // 收合時取消選取
             state.expandedTimelineId = null;
+            state.selectedTimelineId = null;
         } else {
+            // 展開時選取
             state.expandedTimelineId = itemId;
+            state.selectedTimelineId = itemId;
         }
-        state.selectedTimelineId = itemId;
         renderTimelinePanel();
         renderTransportPanel();
         renderSightseeingPanel();
@@ -200,6 +247,7 @@ function handleDocumentClick(event) {
     const stayDetailToggleButton = event.target.closest("[data-stay-detail-toggle]");
     if (stayDetailToggleButton) {
         toggleStayDetail(stayDetailToggleButton);
+        return;
     }
 }
 
@@ -220,13 +268,44 @@ function handleDocumentChange(event) {
         state.checklistState[event.target.dataset.itemId] = event.target.checked;
         persistChecklistState();
         renderChecklistPanel();
+        return;
+    }
+
+    // 已完成清單的 checkbox
+    if (event.target.matches(".completed-item-checkbox input[type='checkbox']")) {
+        const checkbox = event.target;
+        const cardType = checkbox.dataset.cardType;
+        const cardId = checkbox.dataset.cardId;
+        const isNowChecked = checkbox.checked;
+        
+        // 如果是取消勾選（checked = false），觸發垃圾桶動畫
+        if (!isNowChecked) {
+            // 阻止預設行為，保持 checkbox 為 checked 狀態，等動畫完成再更新
+            checkbox.checked = true;
+            
+            const completedItem = checkbox.closest('.completed-item');
+            if (completedItem) {
+                playTrashAnimation(completedItem, cardType, cardId);
+                return;
+            }
+        }
+        
+        // 如果是重新勾選（不應該發生，但保留處理邏輯）
+        toggleCardCompletion(cardType, cardId);
+        renderTimelinePanel();
+        renderTransportPanel();
+        renderSightseeingPanel();
+        renderDiningPanel();
+        renderSouvenirPanel();
+        renderOthersPanel();
+        renderCompletedListModal();
     }
 }
 
 function renderPage() {
     renderHero();
     // renderSidebar();
-    renderOverviewPanel();
+    // renderOverviewPanel(); // 大綱功能已移除，保留 VJW 功能
     renderTimelinePanel();
     renderTransportPanel();
     renderSightseeingPanel();
@@ -237,6 +316,11 @@ function renderPage() {
     updateTripMetaText();
     updateVjwModal();
     syncTabUi();
+    
+    // 初始化時程表狀態記錄
+    const initialTimelineState = getTimelineState();
+    state.previousTimelineState.currentId = initialTimelineState.current?.id || null;
+    state.previousTimelineState.nextId = initialTimelineState.next?.id || null;
 }
 
 function renderHero() {
@@ -268,7 +352,7 @@ function updateHeroPhase() {
 
     // 判断是否旅程已结束
     const allItems = getFlattenedTimeline();
-    const now = new Date();
+    const now = getCurrentTime();
     const allEnded = allItems.length > 0 && allItems.every(item => new Date(item.end) < now);
     
     if (allEnded) {
@@ -288,6 +372,7 @@ function updateHeroPhase() {
         <div class="timeline-status-title">${timelineState.phaseTitle}</div>
         <div class="hero-side-text">${timelineState.phaseText}</div>
         ${focusItem ? `<div class="mini-pill mt-2">${focusItem.dayLabel} · ${focusItem.title}</div>` : ""}
+        ${focusItem ? `<button type="button" class="btn-literary btn-sm mt-2" onclick="jumpToCurrentTimeline()" style="width: 100%; font-size: 0.82rem; padding: 0.4rem 0.5rem; border-radius: 8px;"><i class="bi bi-arrow-down-circle me-1"></i>跳轉到該行程</button>` : ""}
     `;
 }
 
@@ -394,7 +479,7 @@ function renderTimelineItem(item, dayId, timelineState) {
         classes.push("is-current");
     } else if (timelineState.next?.id === item.id) {
         classes.push("is-next");
-    } else if (new Date(item.end) < new Date()) {
+    } else if (new Date(item.end) < getCurrentTime()) {
         classes.push("is-past");
     }
 
@@ -458,7 +543,7 @@ function renderCompactRelatedInfo(item) {
     if (transports.length > 0) {
         html += `<div class="related-info-section"><h4 class="related-info-title"><i class="bi bi-sign-turn-right me-1"></i>交通 (${transports.length})</h4>`;
         transports.forEach(transport => {
-            html += renderCompactTransportCard(transport);
+            html += renderCompactTransportCard(transport, true);
         });
         html += '</div>';
     }
@@ -467,7 +552,7 @@ function renderCompactRelatedInfo(item) {
     if (sightseeings.length > 0) {
         html += `<div class="related-info-section"><h4 class="related-info-title"><i class="bi bi-camera-fill me-1"></i>景點 (${sightseeings.length})</h4>`;
         sightseeings.forEach(sight => {
-            html += renderCompactSightseeingCard(sight);
+            html += renderCompactSightseeingCard(sight, true);
         });
         html += '</div>';
     }
@@ -476,7 +561,7 @@ function renderCompactRelatedInfo(item) {
     if (dinings.length > 0) {
         html += `<div class="related-info-section"><h4 class="related-info-title"><i class="bi bi-cup-hot me-1"></i>餐飲 (${dinings.length})</h4>`;
         dinings.forEach(dining => {
-            html += renderCompactDiningCard(dining);
+            html += renderCompactDiningCard(dining, true);
         });
         html += '</div>';
     }
@@ -485,7 +570,7 @@ function renderCompactRelatedInfo(item) {
     if (souvenirs.length > 0) {
         html += `<div class="related-info-section"><h4 class="related-info-title"><i class="bi bi-bag-heart me-1"></i>伴手禮 (${souvenirs.length})</h4>`;
         souvenirs.forEach(souvenir => {
-            html += renderCompactSouvenirCard(souvenir);
+            html += renderCompactSouvenirCard(souvenir, true);
         });
         html += '</div>';
     }
@@ -494,7 +579,7 @@ function renderCompactRelatedInfo(item) {
     if (otherInfos.length > 0) {
         html += `<div class="related-info-section"><h4 class="related-info-title"><i class="bi bi-info-circle-fill me-1"></i>其他資訊 (${otherInfos.length})</h4>`;
         otherInfos.forEach(info => {
-            html += renderCompactOtherInfoCard(info);
+            html += renderCompactOtherInfoCard(info, true);
         });
         html += '</div>';
     }
@@ -505,25 +590,59 @@ function renderCompactRelatedInfo(item) {
 
 /**
  * 渲染緊湊版交通卡片
+ * @param {Object} transport - 交通資料
+ * @param {boolean} collapseByDefault - 是否預設收合詳細資訊（預設 false）
  */
-function renderCompactTransportCard(transport) {
+function renderCompactTransportCard(transport, collapseByDefault = false) {
+    const cardId = transport.id;
+    const isCompleted = isCardCompleted('transport', cardId);
+    
+    // 交通工具圖標映射
+    const typeIcons = {
+        "航班": "bi-airplane-fill",
+        "接駁車": "bi-car-front-fill",
+        "機場巴士": "bi-bus-front-fill",
+        "巴士": "bi-bus-front-fill",
+        "JR": "bi-train-front-fill",
+        "JR 快速": "bi-train-front-fill",
+        "JR + 新幹線": "bi-train-front-fill",
+        "接駁船": "bi-water",
+        "觀光船": "bi-water",
+        "徒步": "bi-person-walking"
+    };
+    const iconClass = typeIcons[transport.type] || "bi-geo-alt-fill";
+    
+    // 處理圖片：支援單張 image 或多張 images
+    let imageHtml = '';
+    if (transport.images && transport.images.length > 0) {
+        imageHtml = renderImageGallery(transport.images, transport.title);
+    } else if (transport.image) {
+        imageHtml = `<div class="compact-detail-image"><img src="${transport.image}" alt="${transport.imageCaption || transport.title}" />${transport.imageCaption ? `<p class="compact-image-caption">${autoLinkify(transport.imageCaption)}</p>` : ''}</div>`;
+    }
+    
     return `
-        <div class="compact-card">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}" data-transport-type="${transport.type}">
             <div class="compact-card-header">
-                <h5 class="compact-card-title">${transport.title}</h5>
                 <div class="compact-card-tags">
                     <span class="compact-tag">${transport.type}</span>
                     <span class="compact-tag status">${transport.status}</span>
                     ${transport.websiteUrl ? `<a href="${transport.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
-                    ${transport.mapsUrl ? `<a href="${transport.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
+                </div>
+                <div class="compact-card-title-wrapper">
+                    <label class="card-completion-checkbox" onclick="event.stopPropagation()">
+                        <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleCardCompletion('transport', '${cardId}'); event.target.closest('.compact-card').classList.toggle('card-completed'); renderRelatedInfoPanel();" />
+                        <span class="checkbox-custom"></span>
+                    </label>
+                    <i class="bi ${iconClass} me-2" style="color: var(--muted-brown);"></i>
+                    <h5 class="compact-card-title">${transport.title}</h5>
                 </div>
             </div>
             <div class="compact-card-summary">${autoLinkify(transport.route)}</div>
-            <div class="compact-card-details" hidden>
+            <div class="compact-card-details"${collapseByDefault ? ' hidden' : ''}>
                 <div class="compact-detail-row"><strong>時間</strong> ${autoLinkify(transport.depart)} → ${autoLinkify(transport.arrive)}</div>
                 <div class="compact-detail-row"><strong>費用</strong> ${autoLinkify(transport.cost)}</div>
                 ${transport.note ? `<div class="compact-detail-row"><strong>備註</strong> ${autoLinkify(transport.note)}</div>` : ''}
-                ${transport.image ? `<div class="compact-detail-image"><img src="${transport.image}" alt="${transport.imageCaption || transport.title}" />${transport.imageCaption ? `<p class="compact-image-caption">${autoLinkify(transport.imageCaption)}</p>` : ''}</div>` : ''}
+                ${imageHtml}
             </div>
         </div>
     `;
@@ -531,24 +650,43 @@ function renderCompactTransportCard(transport) {
 
 /**
  * 渲染緊湊版景點卡片
+ * @param {Object} sight - 景點資料
+ * @param {boolean} collapseByDefault - 是否預設收合詳細資訊（預設 false）
  */
-function renderCompactSightseeingCard(sight) {
+function renderCompactSightseeingCard(sight, collapseByDefault = false) {
+    const cardId = sight.name;
+    const isCompleted = isCardCompleted('sightseeing', cardId);
+    
+    let imageHtml = '';
+    if (sight.images && sight.images.length > 0) {
+        imageHtml = renderImageGallery(sight.images, sight.name);
+    } else if (sight.image) {
+        imageHtml = `<div class="compact-detail-image"><img src="${sight.image}" alt="${sight.imageCaption || sight.name}" />${sight.imageCaption ? `<p class="compact-image-caption">${autoLinkify(sight.imageCaption)}</p>` : ''}</div>`;
+    }
+    
     return `
-        <div class="compact-card">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}">
             <div class="compact-card-header">
-                <h5 class="compact-card-title">${sight.name}</h5>
                 <div class="compact-card-tags">
                     <span class="compact-tag">${sight.category}</span>
                     <span class="compact-tag status">${sight.visitPlan}</span>
                     ${sight.websiteUrl ? `<a href="${sight.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${sight.mapsUrl ? `<a href="${sight.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
+                <div class="compact-card-title-wrapper">
+                    <label class="card-completion-checkbox" onclick="event.stopPropagation()">
+                        <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleCardCompletion('sightseeing', '${cardId}'); event.target.closest('.compact-card').classList.toggle('card-completed'); renderRelatedInfoPanel();" />
+                        <span class="checkbox-custom"></span>
+                    </label>
+                    <h5 class="compact-card-title">${sight.name}</h5>
+                </div>
             </div>
             <div class="compact-card-summary">${autoLinkify(sight.area)}</div>
-            <div class="compact-card-details" hidden>
+            <div class="compact-card-details"${collapseByDefault ? ' hidden' : ''}>
                 ${sight.openingHours ? `<div class="compact-detail-row"><strong>開放時間</strong> ${autoLinkify(sight.openingHours)}</div>` : ''}
                 ${sight.admission ? `<div class="compact-detail-row"><strong>門票</strong> ${autoLinkify(sight.admission)}</div>` : ''}
                 ${sight.note ? `<div class="compact-detail-row"><strong>備註</strong> ${autoLinkify(sight.note)}</div>` : ''}
+                ${imageHtml}
             </div>
         </div>
     `;
@@ -556,22 +694,41 @@ function renderCompactSightseeingCard(sight) {
 
 /**
  * 渲染緊湊版餐飲卡片
+ * @param {Object} dining - 餐飲資料
+ * @param {boolean} collapseByDefault - 是否預設收合詳細資訊（預設 false）
  */
-function renderCompactDiningCard(dining) {
+function renderCompactDiningCard(dining, collapseByDefault = false) {
+    const cardId = dining.name;
+    const isCompleted = isCardCompleted('dining', cardId);
+    
+    let imageHtml = '';
+    if (dining.images && dining.images.length > 0) {
+        imageHtml = renderImageGallery(dining.images, dining.name);
+    } else if (dining.image) {
+        imageHtml = `<div class="compact-detail-image"><img src="${dining.image}" alt="${dining.imageCaption || dining.name}" />${dining.imageCaption ? `<p class="compact-image-caption">${autoLinkify(dining.imageCaption)}</p>` : ''}</div>`;
+    }
+    
     return `
-        <div class="compact-card">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}">
             <div class="compact-card-header">
-                <h5 class="compact-card-title">${dining.name}</h5>
                 <div class="compact-card-tags">
                     <span class="compact-tag">${dining.category}</span>
                     <span class="compact-tag status">${dining.reservationStatus}</span>
                     ${dining.websiteUrl ? `<a href="${dining.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${dining.mapsUrl ? `<a href="${dining.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
+                <div class="compact-card-title-wrapper">
+                    <label class="card-completion-checkbox" onclick="event.stopPropagation()">
+                        <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleCardCompletion('dining', '${cardId}'); event.target.closest('.compact-card').classList.toggle('card-completed'); renderRelatedInfoPanel();" />
+                        <span class="checkbox-custom"></span>
+                    </label>
+                    <h5 class="compact-card-title">${dining.name}</h5>
+                </div>
             </div>
             <div class="compact-card-summary">${autoLinkify(dining.area)}</div>
-            <div class="compact-card-details" hidden>
+            <div class="compact-card-details"${collapseByDefault ? ' hidden' : ''}>
                 ${dining.note ? `<div class="compact-detail-row"><strong>備註</strong> ${autoLinkify(dining.note)}</div>` : ''}
+                ${imageHtml}
             </div>
         </div>
     `;
@@ -579,22 +736,41 @@ function renderCompactDiningCard(dining) {
 
 /**
  * 渲染緊湊版伴手禮卡片
+ * @param {Object} souvenir - 伴手禮資料
+ * @param {boolean} collapseByDefault - 是否預設收合詳細資訊（預設 false）
  */
-function renderCompactSouvenirCard(souvenir) {
+function renderCompactSouvenirCard(souvenir, collapseByDefault = false) {
+    const cardId = souvenir.name;
+    const isCompleted = isCardCompleted('souvenir', cardId);
+    
+    let imageHtml = '';
+    if (souvenir.images && souvenir.images.length > 0) {
+        imageHtml = renderImageGallery(souvenir.images, souvenir.name);
+    } else if (souvenir.image) {
+        imageHtml = `<div class="compact-detail-image"><img src="${souvenir.image}" alt="${souvenir.imageCaption || souvenir.name}" />${souvenir.imageCaption ? `<p class="compact-image-caption">${autoLinkify(souvenir.imageCaption)}</p>` : ''}</div>`;
+    }
+    
     return `
-        <div class="compact-card">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}">
             <div class="compact-card-header">
-                <h5 class="compact-card-title">${souvenir.name}</h5>
                 <div class="compact-card-tags">
                     <span class="compact-tag">${souvenir.category}</span>
                     <span class="compact-tag status">${souvenir.buyPlan}</span>
                     ${souvenir.websiteUrl ? `<a href="${souvenir.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${souvenir.mapsUrl ? `<a href="${souvenir.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
+                <div class="compact-card-title-wrapper">
+                    <label class="card-completion-checkbox" onclick="event.stopPropagation()">
+                        <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleCardCompletion('souvenir', '${cardId}'); event.target.closest('.compact-card').classList.toggle('card-completed'); renderRelatedInfoPanel();" />
+                        <span class="checkbox-custom"></span>
+                    </label>
+                    <h5 class="compact-card-title">${souvenir.name}</h5>
+                </div>
             </div>
             <div class="compact-card-summary">${autoLinkify(souvenir.area)}</div>
-            <div class="compact-card-details" hidden>
+            <div class="compact-card-details"${collapseByDefault ? ' hidden' : ''}>
                 ${souvenir.note ? `<div class="compact-detail-row"><strong>備註</strong> ${autoLinkify(souvenir.note)}</div>` : ''}
+                ${imageHtml}
             </div>
         </div>
     `;
@@ -602,8 +778,10 @@ function renderCompactSouvenirCard(souvenir) {
 
 /**
  * 渲染緊湊版其他資訊卡片
+ * @param {Object} info - 其他資訊資料
+ * @param {boolean} collapseByDefault - 是否預設收合詳細資訊（預設 false）
  */
-function renderCompactOtherInfoCard(info) {
+function renderCompactOtherInfoCard(info, collapseByDefault = false) {
     const categoryIcons = {
         "租車資訊": "bi-bicycle",
         "飲食建議": "bi-egg-fried",
@@ -612,116 +790,155 @@ function renderCompactOtherInfoCard(info) {
         "伴手禮資訊": "bi-gift-fill",
         "旅行提醒": "bi-exclamation-triangle-fill",
         "緊急資訊": "bi-telephone-fill",
-        "交通資訊": "bi-bus-front-fill"
+        "交通資訊": "bi-bus-front-fill",
+        "聖地資訊": "bi-star-fill",
+        "住宿資訊": "bi-house-fill"
     };
     const iconClass = categoryIcons[info.category] || "bi-info-circle-fill";
+    const cardId = info.id;
+    const isCompleted = isCardCompleted('otherInfo', cardId);
+    
+    let imageHtml = '';
+    if (info.images && info.images.length > 0) {
+        imageHtml = renderImageGallery(info.images, info.title);
+    } else if (info.image) {
+        imageHtml = `<div class="compact-detail-image"><img src="${info.image}" alt="${info.imageCaption || info.title}" />${info.imageCaption ? `<p class="compact-image-caption">${autoLinkify(info.imageCaption)}</p>` : ''}</div>`;
+    }
+    
+    // 對於第一晚住宿（VJW 聯絡處），添加 VJW 按鈕
+    const vjwButton = (info.category === "住宿資訊" && info.id === "stay-bonapool") ? `
+        <div class="compact-vjw-actions mt-2">
+            <button type="button" class="btn-literary btn-sm" data-open-vjw="true">
+                <i class="bi bi-clipboard2-check me-1"></i>開啟 VJW
+            </button>
+        </div>
+    ` : '';
     
     return `
-        <div class="compact-card">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}">
             <div class="compact-card-header">
-                <h5 class="compact-card-title">${info.title}</h5>
                 <div class="compact-card-tags">
                     <span class="compact-tag"><i class="bi ${iconClass} me-1"></i>${info.category}</span>
                     ${info.websiteUrl ? `<a href="${info.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${info.mapsUrl ? `<a href="${info.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
+                <div class="compact-card-title-wrapper">
+                    <label class="card-completion-checkbox" onclick="event.stopPropagation()">
+                        <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleCardCompletion('otherInfo', '${cardId}'); event.target.closest('.compact-card').classList.toggle('card-completed'); renderRelatedInfoPanel();" />
+                        <span class="checkbox-custom"></span>
+                    </label>
+                    <h5 class="compact-card-title">${info.title}</h5>
+                </div>
             </div>
             ${info.subtitle ? `<div class="compact-card-summary">${autoLinkify(info.subtitle)}</div>` : ''}
             ${info.location ? `<div class="compact-card-summary"><i class="bi bi-pin-map-fill me-1"></i>${autoLinkify(info.location)}</div>` : ''}
-            <div class="compact-card-details" hidden>
+            <div class="compact-card-details"${collapseByDefault ? ' hidden' : ''}>
                 ${info.details.map(detail => `<div class="compact-detail-item"><i class="bi bi-check-circle me-1"></i>${autoLinkify(detail)}</div>`).join('')}
                 ${info.note ? `<div class="compact-detail-row mt-2"><strong>備註</strong> ${autoLinkify(info.note)}</div>` : ''}
+                ${imageHtml}
+                ${vjwButton}
             </div>
         </div>
     `;
 }
 
 function renderTransportPanel() {
-    const selectedItem = getTimelineItemById(state.selectedTimelineId);
-    const linkedIds = new Set((selectedItem?.transportIds || []).map((id) => id));
-
     const transports = state.tripData.transports;
-    const target = document.getElementById("transport-list");
-    target.innerHTML = transports.map((transport) => {
-        const classes = ["transport-card"];
-        if (linkedIds.has(transport.id)) {
-            classes.push("is-linked");
+    
+    // 收集所有交通工具類型
+    const allTypes = [...new Set(transports.map(t => t.type))];
+    
+    // 類型圖標映射
+    const typeIcons = {
+        "航班": "bi-airplane-fill",
+        "接駁車": "bi-car-front-fill",
+        "機場巴士": "bi-bus-front-fill",
+        "巴士": "bi-bus-front-fill",
+        "JR": "bi-train-front-fill",
+        "JR 快速": "bi-train-front-fill",
+        "JR + 新幹線": "bi-train-front-fill",
+        "接駁船": "bi-water",
+        "觀光船": "bi-water",
+        "徒步": "bi-person-walking"
+    };
+    
+    // 圖標到類型組的映射
+    const iconToTypes = {};
+    allTypes.forEach(type => {
+        const icon = typeIcons[type] || "bi-geo-alt-fill";
+        if (!iconToTypes[icon]) {
+            iconToTypes[icon] = [];
         }
+        iconToTypes[icon].push(type);
+    });
+    
+    // 生成篩選按鈕（放在標題右側）
+    const filterButtonsHtml = `
+        <button class="transport-filter-btn ${state.transportTypeFilter === 'all' ? 'active' : ''}" 
+                data-filter-type="all" 
+                onclick="setTransportTypeFilter('all')" 
+                title="全部">
+            <i class="bi bi-grid-fill"></i>
+        </button>
+        ${Object.entries(iconToTypes).map(([icon, types]) => {
+            const isActive = types.includes(state.transportTypeFilter);
+            const typesStr = types.join(',');
+            const title = types.join('/');
+            return `
+                <button class="transport-filter-btn ${isActive ? 'active' : ''}" 
+                        data-filter-types="${typesStr}" 
+                        onclick="setTransportTypeFilter('${types[0]}', '${typesStr}')" 
+                        title="${title}">
+                    <i class="bi ${icon}"></i>
+                </button>
+            `;
+        }).join('')}
+    `;
+    
+    // 更新篩選按鈕
+    const filterContainer = document.getElementById('transport-type-filters');
+    if (filterContainer) {
+        filterContainer.innerHTML = filterButtonsHtml;
+    }
+    
+    // 篩選交通卡片（支援多類型）
+    const filterTypes = state.transportTypeFilter === 'all' 
+        ? null 
+        : state.transportTypeFilterTypes ? state.transportTypeFilterTypes.split(',') : [state.transportTypeFilter];
+    
+    const filteredTransports = !filterTypes
+        ? transports 
+        : transports.filter(t => filterTypes.includes(t.type));
+    
+    // 渲染卡片（使用 compact 格式）
+    const cardsHtml = filteredTransports.map(transport => renderCompactTransportCard(transport)).join('');
+    
+    const target = document.getElementById("transport-list");
+    target.innerHTML = cardsHtml || '<div class="text-center text-muted py-5">無符合條件的交通資訊</div>';
+}
 
-        // 查找對應的日期標籤
-        const day = state.tripData.timelineDays.find(d => d.id === transport.dayId);
-        const dayLabel = day ? `${day.label} ${day.dateLabel}` : transport.dayId;
-
-        return `
-            <article class="${classes.join(" ")}">
-                <div class="card-actions mb-3">
-                    <span class="transport-type">${dayLabel}</span>
-                    <span class="transport-type">${transport.type}</span>
-                    <span class="status-pill">${transport.status}</span>
-                </div>
-                <h3 class="card-title">${transport.title}</h3>
-                <p class="transport-route mb-2">${transport.route}</p>
-                ${transport.image ? `
-                    <div class="transport-image-container mb-3">
-                        <img src="${transport.image}" alt="${transport.imageCaption || transport.title}" class="transport-image" />
-                        ${transport.imageCaption ? `<p class="transport-image-caption">${transport.imageCaption}</p>` : ""}
-                    </div>
-                ` : ""}
-                <div class="transport-meta">
-                    <div><strong>時間</strong> ${transport.depart} -> ${transport.arrive}</div>
-                    <div><strong>費用</strong> ${transport.cost}</div>
-                    <div><strong>備註</strong> ${transport.note}</div>
-                </div>
-                <div class="card-actions mt-3">
-                    <div class="card-meta-pills">
-                        ${(transport.linkedTimelineIds || []).map((id) => createPillHtml(getTimelineItemById(id)?.title || id, "bi-clock-history")).join("")}
-                    </div>
-                    <a class="link-btn" href="${transport.mapsUrl}" target="_blank"><i class="bi bi-geo-alt"></i>Google Map</a>
-                </div>
-            </article>
-        `;
-    }).join("");
+function setTransportTypeFilter(type, typesStr) {
+    state.transportTypeFilter = type;
+    state.transportTypeFilterTypes = typesStr || type;
+    renderTransportPanel();
 }
 
 function renderDiningPanel() {
-    const selectedItem = getTimelineItemById(state.selectedTimelineId);
-    const linkedIds = new Set(selectedItem?.diningIds || []);
-    
-    document.getElementById("dining-list").innerHTML = state.tripData.dining.map((item) => renderListCard(item, {
-        topLabel: item.category,
-        secondaryLabel: item.reservationStatus,
-        footerLabel: item.area,
-        note: item.note,
-        isLinked: linkedIds.has(item.name)
-    })).join("");
+    const dining = state.tripData.dining;
+    const target = document.getElementById("dining-list");
+    target.innerHTML = dining.map(item => renderCompactDiningCard(item)).join("");
 }
 
 function renderSightseeingPanel() {
-    const selectedItem = getTimelineItemById(state.selectedTimelineId);
-    const linkedIds = new Set(selectedItem?.sightseeingIds || []);
-    
-    document.getElementById("sightseeing-list").innerHTML = state.tripData.sightseeing.map((item) => renderListCard(item, {
-        topLabel: item.category,
-        secondaryLabel: item.visitPlan,
-        footerLabel: item.area,
-        note: item.note,
-        openingHours: item.openingHours,
-        admission: item.admission,
-        isLinked: linkedIds.has(item.name)
-    })).join("");
+    const sightseeing = state.tripData.sightseeing;
+    const target = document.getElementById("sightseeing-list");
+    target.innerHTML = sightseeing.map(item => renderCompactSightseeingCard(item)).join("");
 }
 
 function renderSouvenirPanel() {
-    const selectedItem = getTimelineItemById(state.selectedTimelineId);
-    const linkedIds = new Set(selectedItem?.souvenirIds || []);
-    
-    document.getElementById("souvenir-list").innerHTML = state.tripData.souvenirs.map((item) => renderListCard(item, {
-        topLabel: item.category,
-        secondaryLabel: item.buyPlan,
-        footerLabel: item.area,
-        note: item.note,
-        isLinked: linkedIds.has(item.name)
-    })).join("");
+    const souvenirs = state.tripData.souvenirs;
+    const target = document.getElementById("souvenir-list");
+    target.innerHTML = souvenirs.map(item => renderCompactSouvenirCard(item)).join("");
 }
 
 function renderListCard(item, options) {
@@ -829,10 +1046,9 @@ function renderChecklistItems(items, level = 1) {
 }
 
 function renderOthersPanel() {
-    const selectedItem = getTimelineItemById(state.selectedTimelineId);
-    const linkedIds = new Set(selectedItem?.otherInfoIds || []);
-    
-    document.getElementById("others-info-list").innerHTML = state.tripData.otherInfo.map((item) => renderOtherInfoCard(item, linkedIds.has(item.id))).join("");
+    const otherInfo = state.tripData.otherInfo;
+    const target = document.getElementById("others-info-list");
+    target.innerHTML = otherInfo.map(item => renderCompactOtherInfoCard(item)).join("");
 }
 
 function renderOtherInfoCard(item, isLinked = false) {
@@ -875,6 +1091,11 @@ function renderOtherInfoCard(item, isLinked = false) {
 function setActiveTab(tabId) {
     state.activeTab = tabId;
     syncTabUi();
+    
+    // 切換到時程表分頁時，立即檢查並更新狀態
+    if (tabId === 'timeline') {
+        updateTimelineIfNeeded();
+    }
 }
 
 function syncTabUi() {
@@ -890,9 +1111,44 @@ function syncTabUi() {
 function updateTripMetaText() {
     updateCountdown();
     updateHeroPhase();
-    // 移除這兩行，避免每秒重新渲染整個頁面導致展開的卡片被重置
-    // renderTimelinePanel();
-    // renderTransportPanel();
+    
+    // 智能更新：只在行程狀態改變時才更新時程表
+    updateTimelineIfNeeded();
+}
+
+/**
+ * 智能更新時程表（只在狀態改變時更新）
+ */
+function updateTimelineIfNeeded() {
+    // 只在時程表分頁時才檢查更新
+    if (state.activeTab !== 'timeline') {
+        return;
+    }
+    
+    const timelineState = getTimelineState();
+    const currentId = timelineState.current?.id || null;
+    const nextId = timelineState.next?.id || null;
+    
+    // 檢查是否狀態有改變
+    const hasChanged = 
+        currentId !== state.previousTimelineState.currentId ||
+        nextId !== state.previousTimelineState.nextId;
+    
+    if (hasChanged) {
+        // 狀態有改變，保留使用者操作狀態並更新
+        const scrollPosition = window.scrollY;
+        const expandedId = state.expandedTimelineId;
+        
+        // 更新時程表（會自動讀取並保留 state.expandedTimelineId）
+        renderTimelinePanel();
+        
+        // 恢復捲動位置，避免頁面跳動
+        window.scrollTo(0, scrollPosition);
+        
+        // 更新記錄
+        state.previousTimelineState.currentId = currentId;
+        state.previousTimelineState.nextId = nextId;
+    }
 }
 
 function getTripEndTime() {
@@ -937,7 +1193,7 @@ function updateCountdown() {
     }
 
     // 使用測試時間或真實時間
-    const now = TEST_CURRENT_TIME_OVERRIDE ? new Date(TEST_CURRENT_TIME_OVERRIDE) : new Date();
+    const now = getCurrentTime();
     
     // 找出行程最後一個項目的結束時間
     const tripEndTime = getTripEndTime();
@@ -1059,7 +1315,7 @@ function getFlattenedTimeline() {
 
 function getTimelineState() {
     const items = getFlattenedTimeline().sort((left, right) => new Date(left.start) - new Date(right.start));
-    const now = new Date();
+    const now = getCurrentTime();
     const current = items.find((item) => now >= new Date(item.start) && now <= new Date(item.end)) || null;
     const next = items.find((item) => new Date(item.start) > now) || null;
     const previous = [...items].reverse().find((item) => new Date(item.end) < now) || null;
@@ -1254,6 +1510,379 @@ function loadChecklistState() {
 
 function persistChecklistState() {
     localStorage.setItem(CHECKLIST_STORAGE_KEY, JSON.stringify(state.checklistState));
+}
+
+/**
+ * 載入卡片完成狀態（支援舊格式相容性）
+ */
+function loadCardCompletionState() {
+    try {
+        const raw = localStorage.getItem(CARD_COMPLETION_KEY);
+        if (!raw) return {};
+        
+        const data = JSON.parse(raw);
+        const result = {};
+        
+        // 檢查並轉換舊格式（boolean）為新格式（{completed: boolean, timestamp: string}）
+        Object.keys(data).forEach(key => {
+            if (typeof data[key] === 'boolean') {
+                // 舊格式：直接是 boolean
+                result[key] = {
+                    completed: data[key],
+                    timestamp: new Date().toISOString() // 給舊資料一個時間戳
+                };
+            } else if (typeof data[key] === 'object' && data[key] !== null) {
+                // 新格式：已經是物件
+                result[key] = data[key];
+            }
+        });
+        
+        return result;
+    } catch (error) {
+        return {};
+    }
+}
+
+/**
+ * 儲存卡片完成狀態
+ */
+function persistCardCompletionState() {
+    localStorage.setItem(CARD_COMPLETION_KEY, JSON.stringify(state.cardCompletionState));
+}
+
+/**
+ * 切換卡片完成狀態（記錄時間戳）
+ */
+function toggleCardCompletion(cardType, cardId) {
+    const key = `${cardType}-${cardId}`;
+    const currentData = state.cardCompletionState[key];
+    const currentState = currentData?.completed || false;
+    
+    if (currentState) {
+        // 取消勾選：直接刪除該筆資料
+        delete state.cardCompletionState[key];
+    } else {
+        // 勾選：記錄完成狀態和時間戳
+        state.cardCompletionState[key] = {
+            completed: true,
+            timestamp: new Date().toISOString()
+        };
+        // 顯示慶祝動畫
+        showCompletionAnimation();
+    }
+    
+    persistCardCompletionState();
+}
+
+/**
+ * 檢查卡片是否已完成
+ */
+function isCardCompleted(cardType, cardId) {
+    const key = `${cardType}-${cardId}`;
+    const data = state.cardCompletionState[key];
+    return data?.completed || false;
+}
+
+/**
+ * 顯示完成動畫
+ */
+/**
+ * 播放垃圾桶動畫（取消完成時）
+ */
+function playTrashAnimation(completedItem, cardType, cardId) {
+    // 添加動畫 class
+    completedItem.classList.add('trashing');
+    
+    // 等待動畫完成後再更新狀態
+    setTimeout(() => {
+        // 更新完成狀態
+        toggleCardCompletion(cardType, cardId);
+        
+        // 重新渲染所有相關面板
+        renderTimelinePanel();
+        renderTransportPanel();
+        renderSightseeingPanel();
+        renderDiningPanel();
+        renderSouvenirPanel();
+        renderOthersPanel();
+        
+        // 檢查是否需要移除整個分類
+        const group = completedItem.closest('.completed-day-group');
+        const itemsList = group?.querySelector('.completed-items-list');
+        
+        if (itemsList && itemsList.children.length === 0) {
+            // 如果該分類沒有項目了，縮小整個分類
+            group.style.maxHeight = group.offsetHeight + 'px';
+            setTimeout(() => {
+                group.classList.add('group-collapsing');
+            }, 10);
+            
+            setTimeout(() => {
+                renderCompletedListModal();
+            }, 400);
+        } else {
+            // 只是移除單一項目
+            renderCompletedListModal();
+        }
+    }, 800); // 與 CSS 動畫時長一致
+}
+
+function showCompletionAnimation() {
+    // 創建慶祝動畫元素
+    const celebration = document.createElement('div');
+    celebration.className = 'completion-celebration';
+    celebration.innerHTML = `
+        <div class="celebration-content">
+            <div class="celebration-icon">✓</div>
+            <div class="celebration-text">完成了！</div>
+        </div>
+    `;
+    document.body.appendChild(celebration);
+    
+    // 動畫結束後移除元素
+    setTimeout(() => {
+        celebration.remove();
+    }, 1500);
+}
+
+/**
+ * 渲染圖片區塊（支援單張或多張）
+ */
+function renderImageGallery(images, altText) {
+    if (!images || images.length === 0) return '';
+    
+    // 單張圖片
+    if (images.length === 1) {
+        const img = images[0];
+        return `
+            <div class="compact-detail-image">
+                <img src="${img.image}" alt="${img.imageCaption || altText}" />
+                ${img.imageCaption ? `<p class="compact-image-caption">${autoLinkify(img.imageCaption)}</p>` : ''}
+            </div>
+        `;
+    }
+    
+    // 多張圖片 - 輪播
+    const galleryId = 'gallery-' + Math.random().toString(36).substr(2, 9);
+    return `
+        <div class="compact-detail-gallery" id="${galleryId}">
+            <div class="gallery-images">
+                ${images.map((img, index) => `
+                    <div class="gallery-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
+                        <img src="${img.image}" alt="${img.imageCaption || altText}" />
+                        ${img.imageCaption ? `<p class="compact-image-caption">${autoLinkify(img.imageCaption)}</p>` : ''}
+                    </div>
+                `).join('')}
+            </div>
+            <button class="gallery-btn gallery-prev" onclick="navigateGallery('${galleryId}', -1)">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <button class="gallery-btn gallery-next" onclick="navigateGallery('${galleryId}', 1)">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+            <div class="gallery-indicators">
+                ${images.map((_, index) => `
+                    <span class="gallery-indicator ${index === 0 ? 'active' : ''}" onclick="goToSlide('${galleryId}', ${index})"></span>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+/**
+ * 導航圖片輪播
+ */
+function navigateGallery(galleryId, direction) {
+    const gallery = document.getElementById(galleryId);
+    if (!gallery) return;
+    
+    const slides = gallery.querySelectorAll('.gallery-slide');
+    const indicators = gallery.querySelectorAll('.gallery-indicator');
+    const currentSlide = gallery.querySelector('.gallery-slide.active');
+    const currentIndex = parseInt(currentSlide.dataset.index);
+    let newIndex = currentIndex + direction;
+    
+    // 循環
+    if (newIndex < 0) newIndex = slides.length - 1;
+    if (newIndex >= slides.length) newIndex = 0;
+    
+    // 更新活動狀態
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    slides[newIndex].classList.add('active');
+    indicators[newIndex].classList.add('active');
+}
+
+/**
+ * 跳轉到特定圖片
+ */
+/**
+ * 跳轉到當前時間對應的行程卡片
+ */
+function jumpToCurrentTimeline() {
+    const timelineState = getTimelineState();
+    const targetItem = timelineState.current || timelineState.next;
+    
+    if (!targetItem) {
+        return;
+    }
+    
+    // 切換到時程表分頁
+    setActiveTab('timeline');
+    
+    // 切換到對應的天數
+    state.timelineDayId = targetItem.dayId;
+    
+    // 設定選中的行程
+    state.selectedTimelineId = targetItem.id;
+    state.expandedTimelineId = targetItem.id;
+    
+    // 重新渲染
+    renderTimelinePanel();
+    
+    // 捲動到該卡片
+    setTimeout(() => {
+        const targetElement = document.querySelector(`[data-item-id="${targetItem.id}"]`);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, 100);
+}
+
+function goToSlide(galleryId, index) {
+    const gallery = document.getElementById(galleryId);
+    if (!gallery) return;
+    
+    const slides = gallery.querySelectorAll('.gallery-slide');
+    const indicators = gallery.querySelectorAll('.gallery-indicator');
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    slides[index].classList.add('active');
+    indicators[index].classList.add('active');
+}
+
+/**
+ * 渲染已完成清單 Modal
+ */
+function renderCompletedListModal() {
+    const completedItems = [];
+    
+    // 收集所有已完成的卡片
+    Object.keys(state.cardCompletionState).forEach(key => {
+        const data = state.cardCompletionState[key];
+        if (!data?.completed) return; // 跳過未完成的
+        
+        // 解析 key 格式：type-id
+        const parts = key.split('-');
+        if (parts.length < 2) return;
+        
+        const type = parts[0];
+        const cardId = parts.slice(1).join('-'); // 支援 id 中包含橫線的情況
+        
+        // 找到對應的卡片資料
+        let cardData = null;
+        let typeName = '';
+        let icon = '';
+        
+        switch(type) {
+            case 'transport':
+                cardData = state.tripData.transports.find(t => t.id === cardId);
+                typeName = '交通';
+                icon = 'bi-geo-alt-fill';
+                break;
+            case 'sightseeing':
+                cardData = state.tripData.sightseeing.find(s => s.name === cardId);
+                typeName = '景點';
+                icon = 'bi-camera-fill';
+                break;
+            case 'dining':
+                cardData = state.tripData.dining.find(d => d.name === cardId);
+                typeName = '餐飲';
+                icon = 'bi-cup-hot-fill';
+                break;
+            case 'souvenir':
+                cardData = state.tripData.souvenirs.find(s => s.name === cardId);
+                typeName = '伴手禮';
+                icon = 'bi-gift-fill';
+                break;
+            case 'otherInfo':
+                cardData = state.tripData.otherInfo.find(o => o.id === cardId);
+                typeName = '其他資訊';
+                icon = 'bi-info-circle-fill';
+                break;
+        }
+        
+        if (cardData) {
+            completedItems.push({
+                type: type,
+                typeName: typeName,
+                icon: icon,
+                title: cardData.name || cardData.title,
+                cardId: cardId,
+                data: cardData
+            });
+        }
+    });
+    
+    // 生成 HTML
+    const contentEl = document.getElementById('completed-list-content');
+    
+    if (completedItems.length === 0) {
+        contentEl.innerHTML = `
+            <div class="text-center text-muted py-5">
+                <i class="bi bi-inbox" style="font-size: 3rem; opacity: 0.3;"></i>
+                <p class="mt-3">尚無已完成項目</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // 按類型分組
+    const groupedByType = {};
+    completedItems.forEach(item => {
+        if (!groupedByType[item.typeName]) {
+            groupedByType[item.typeName] = {
+                icon: item.icon,
+                items: []
+            };
+        }
+        groupedByType[item.typeName].items.push(item);
+    });
+    
+    // 生成 HTML
+    let html = '';
+    const typeOrder = ['交通', '景點', '餐飲', '伴手禮', '其他資訊'];
+    typeOrder.forEach(typeName => {
+        const group = groupedByType[typeName];
+        if (!group) return;
+        
+        html += `
+            <div class="completed-day-group mb-3">
+                <h6 class="completed-day-title mb-2">
+                    <i class="bi ${group.icon} me-2"></i>${typeName}
+                </h6>
+                <div class="completed-items-list">
+                    ${group.items.map(item => `
+                        <div class="completed-item">
+                            <label class="completed-item-checkbox" onclick="event.stopPropagation()">
+                                <input type="checkbox" 
+                                       checked 
+                                       data-card-type="${item.type}" 
+                                       data-card-id="${item.cardId}" />
+                                <span class="checkbox-custom"></span>
+                            </label>
+                            <div class="completed-item-content">
+                                <div class="completed-item-title">${item.title}</div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    });
+    
+    contentEl.innerHTML = html;
 }
 
 function toggleChecklistBranch(branchId, isChecked) {
