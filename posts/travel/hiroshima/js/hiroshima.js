@@ -429,7 +429,6 @@ function renderTimelineItem(item, dayId, timelineState) {
                     <div class="card-meta-pills">
                         ${hasRelatedInfo ? `<span class="hero-tag has-related-info"><i class="bi bi-link-45deg"></i>有相關資訊 ${isExpanded ? '·已展開' : ''}</span>` : ""}
                     </div>
-                    ${item.mapsUrl ? `<a class="link-btn" href="${item.mapsUrl}" target="_blank" onclick="event.stopPropagation()"><i class="bi bi-geo-alt"></i>Google Map</a>` : ""}
                 </div>
             </div>
             ${relatedInfoHtml}
@@ -515,6 +514,7 @@ function renderCompactTransportCard(transport) {
                 <div class="compact-card-tags">
                     <span class="compact-tag">${transport.type}</span>
                     <span class="compact-tag status">${transport.status}</span>
+                    ${transport.websiteUrl ? `<a href="${transport.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${transport.mapsUrl ? `<a href="${transport.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
             </div>
@@ -540,6 +540,7 @@ function renderCompactSightseeingCard(sight) {
                 <div class="compact-card-tags">
                     <span class="compact-tag">${sight.category}</span>
                     <span class="compact-tag status">${sight.visitPlan}</span>
+                    ${sight.websiteUrl ? `<a href="${sight.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${sight.mapsUrl ? `<a href="${sight.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
             </div>
@@ -564,6 +565,7 @@ function renderCompactDiningCard(dining) {
                 <div class="compact-card-tags">
                     <span class="compact-tag">${dining.category}</span>
                     <span class="compact-tag status">${dining.reservationStatus}</span>
+                    ${dining.websiteUrl ? `<a href="${dining.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${dining.mapsUrl ? `<a href="${dining.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
             </div>
@@ -586,6 +588,7 @@ function renderCompactSouvenirCard(souvenir) {
                 <div class="compact-card-tags">
                     <span class="compact-tag">${souvenir.category}</span>
                     <span class="compact-tag status">${souvenir.buyPlan}</span>
+                    ${souvenir.websiteUrl ? `<a href="${souvenir.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${souvenir.mapsUrl ? `<a href="${souvenir.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
             </div>
@@ -619,6 +622,7 @@ function renderCompactOtherInfoCard(info) {
                 <h5 class="compact-card-title">${info.title}</h5>
                 <div class="compact-card-tags">
                     <span class="compact-tag"><i class="bi ${iconClass} me-1"></i>${info.category}</span>
+                    ${info.websiteUrl ? `<a href="${info.websiteUrl}" target="_blank" class="compact-map-link" title="官方網站" onclick="event.stopPropagation()"><i class="bi bi-globe"></i></a>` : ''}
                     ${info.mapsUrl ? `<a href="${info.mapsUrl}" target="_blank" class="compact-map-link" title="Google Map" onclick="event.stopPropagation()"><i class="bi bi-geo-alt-fill"></i></a>` : ''}
                 </div>
             </div>

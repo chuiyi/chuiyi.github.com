@@ -883,6 +883,8 @@
     border-left: 2px solid var(--hiro-tech-edge);
     max-height: 600px;
     overflow-y: auto;
+    position: relative;
+    z-index: 2;
 }
 
 .timeline-item[data-has-related="true"]:hover {
@@ -1849,6 +1851,7 @@
     .timeline-item.is-expanded {
         grid-template-columns: 1fr;
         gap: 0;
+        overflow: hidden;
     }
     
     .timeline-item-related {
@@ -1872,9 +1875,10 @@
     
     .timeline-item-related {
         max-height: 500px;
-        padding: 0.8rem 0.9rem;
-        margin-left: -3.5rem;
-        margin-right: -0.8rem;
+        padding: 1rem 1.2rem;
+        margin-left: calc(-3.5rem - 1px);
+        /* margin-right: calc(-0.8rem - 1px); */
+        border-radius: 0 0 16px 16px;
     }
     
     .related-info-section {
@@ -1930,10 +1934,11 @@
     }
     
     .timeline-item-related {
-        padding: 0.9rem;
+        padding: 1rem 1.1rem;
         max-height: none;
-        margin-left: -2.8rem;
-        margin-right: -0.7rem;
+        /* margin-left: calc(-2.8rem - 1px); */
+        /* margin-right: calc(-0.7rem - 1px); */
+        border-radius: 0 0 16px 16px;
     }
     
     .related-info-section {
