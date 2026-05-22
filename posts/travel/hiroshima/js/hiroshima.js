@@ -1,6 +1,8 @@
 const DATA_FILE = "trip-data.json";
 const CHECKLIST_STORAGE_KEY = "hiroshima-trip-checklist-v2";
 const CARD_COMPLETION_KEY = "hiroshima-cards-completion-v1";
+const MAP_GEOCODE_CACHE_KEY = "hiroshima-area-map-geocode-cache-v1";
+const GOOGLE_MAPS_API_KEY = "AIzaSyAK0en_h_LMU53zCJ27q25zymAnzJ4RT6A";
 
 // ===== 測試用時間覆蓋變數 =====
 // 設為 null 表示使用真實系統時間
@@ -59,6 +61,16 @@ const state = {
     expandedTimelineId: null,
     checklistState: {},
     cardCompletionState: {},
+    mapPoints: [],
+    mapAreaFilter: "all",
+    mapSelectionId: null,
+    mapGeocodeCache: {},
+    mapObject: null,
+    mapMarkers: new Map(),
+    mapInfoWindow: null,
+    mapInitTried: false,
+    mapApiReady: false,
+    mapGeocodeJobId: 0,
     previousCountdown: { days: -1, hours: -1, minutes: -1, seconds: -1 },
     previousTimelineState: { currentId: null, nextId: null } // 記錄上次的行程狀態
 };
@@ -69,6 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     initializeState();
     renderPage();
     bindEvents();
+    setupMasonryResizeListener();
     startRealtimeUpdates();
 });
 
@@ -97,6 +110,30 @@ function initializeState() {
     state.selectedTimelineId = getRecommendedTimelineItem()?.id || null;
     state.checklistState = loadChecklistState();
     state.cardCompletionState = loadCardCompletionState();
+    state.mapGeocodeCache = loadMapGeocodeCache();
+    state.mapPoints = buildMapPointsFromTripData();
+}
+
+/**
+ * 渲染相關資訊面板（在卡片完成狀態變更時調用）
+ * 重新計算瀑布流布局以適應卡片高度變化
+ */
+function renderRelatedInfoPanel() {
+    // 保留函式供卡片勾選事件呼叫，時程表相關資訊不使用瀑布流
+}
+
+/**
+ * 目前改為純 CSS 瀑布流（columns），此函式保留為相容介面
+ */
+function initMasonryLayout() {
+    return;
+}
+
+/**
+ * 監聽窗口 resize 事件，重新計算瀑布流布局
+ */
+function setupMasonryResizeListener() {
+    return;
 }
 
 function bindEvents() {
@@ -124,6 +161,20 @@ function handleDocumentClick(event) {
         renderCompletedListModal();
         const modalElement = document.getElementById("completedListModal");
         bootstrap.Modal.getOrCreateInstance(modalElement).show();
+        return;
+    }
+
+    const mapFilterButton = event.target.closest("[data-area-filter]");
+    if (mapFilterButton) {
+        setAreaMapFilter(mapFilterButton.dataset.areaFilter);
+        return;
+    }
+
+    const mapListItem = event.target.closest("[data-map-point-id]");
+    if (mapListItem) {
+        const pointId = mapListItem.dataset.mapPointId;
+        focusMapPointById(pointId, true);
+        openMapPointLinkedCard(pointId);
         return;
     }
 
@@ -311,6 +362,7 @@ function renderPage() {
     renderSightseeingPanel();
     renderDiningPanel();
     renderSouvenirPanel();
+    renderAreaMapPanel();
     renderChecklistPanel();
     renderOthersPanel();
     updateTripMetaText();
@@ -621,7 +673,7 @@ function renderCompactTransportCard(transport, collapseByDefault = false) {
     }
     
     return `
-        <div class="compact-card ${isCompleted ? 'card-completed' : ''}" data-transport-type="${transport.type}">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}" data-transport-type="${transport.type}" data-entity-type="transport" data-entity-key="${encodeEntityKey(cardId)}">
             <div class="compact-card-header">
                 <div class="compact-card-tags">
                     <span class="compact-tag">${transport.type}</span>
@@ -665,7 +717,7 @@ function renderCompactSightseeingCard(sight, collapseByDefault = false) {
     }
     
     return `
-        <div class="compact-card ${isCompleted ? 'card-completed' : ''}">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}" data-entity-type="sightseeing" data-entity-key="${encodeEntityKey(cardId)}">
             <div class="compact-card-header">
                 <div class="compact-card-tags">
                     <span class="compact-tag">${sight.category}</span>
@@ -709,7 +761,7 @@ function renderCompactDiningCard(dining, collapseByDefault = false) {
     }
     
     return `
-        <div class="compact-card ${isCompleted ? 'card-completed' : ''}">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}" data-entity-type="dining" data-entity-key="${encodeEntityKey(cardId)}">
             <div class="compact-card-header">
                 <div class="compact-card-tags">
                     <span class="compact-tag">${dining.category}</span>
@@ -751,7 +803,7 @@ function renderCompactSouvenirCard(souvenir, collapseByDefault = false) {
     }
     
     return `
-        <div class="compact-card ${isCompleted ? 'card-completed' : ''}">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}" data-entity-type="souvenir" data-entity-key="${encodeEntityKey(cardId)}">
             <div class="compact-card-header">
                 <div class="compact-card-tags">
                     <span class="compact-tag">${souvenir.category}</span>
@@ -815,7 +867,7 @@ function renderCompactOtherInfoCard(info, collapseByDefault = false) {
     ` : '';
     
     return `
-        <div class="compact-card ${isCompleted ? 'card-completed' : ''}">
+        <div class="compact-card ${isCompleted ? 'card-completed' : ''}" data-entity-type="otherInfo" data-entity-key="${encodeEntityKey(cardId)}">
             <div class="compact-card-header">
                 <div class="compact-card-tags">
                     <span class="compact-tag"><i class="bi ${iconClass} me-1"></i>${info.category}</span>
@@ -910,10 +962,12 @@ function renderTransportPanel() {
         ? transports 
         : transports.filter(t => filterTypes.includes(t.type));
     
-    // 渲染卡片（使用 compact 格式）
+    // 渲染卡片（使用 compact 格式並使用瀑布流容器）
     const cardsHtml = filteredTransports.map(transport => renderCompactTransportCard(transport)).join('');
     
     const target = document.getElementById("transport-list");
+    target.classList.remove("card-grid");
+    target.classList.add("panel-masonry");
     target.innerHTML = cardsHtml || '<div class="text-center text-muted py-5">無符合條件的交通資訊</div>';
 }
 
@@ -926,19 +980,680 @@ function setTransportTypeFilter(type, typesStr) {
 function renderDiningPanel() {
     const dining = state.tripData.dining;
     const target = document.getElementById("dining-list");
-    target.innerHTML = dining.map(item => renderCompactDiningCard(item)).join("");
+    const cardsHtml = dining.map(item => renderCompactDiningCard(item)).join("");
+    target.classList.remove("card-grid");
+    target.classList.add("panel-masonry");
+    target.innerHTML = cardsHtml;
 }
 
 function renderSightseeingPanel() {
     const sightseeing = state.tripData.sightseeing;
     const target = document.getElementById("sightseeing-list");
-    target.innerHTML = sightseeing.map(item => renderCompactSightseeingCard(item)).join("");
+    const cardsHtml = sightseeing.map(item => renderCompactSightseeingCard(item)).join("");
+    target.classList.remove("card-grid");
+    target.classList.add("panel-masonry");
+    target.innerHTML = cardsHtml;
 }
 
 function renderSouvenirPanel() {
     const souvenirs = state.tripData.souvenirs;
     const target = document.getElementById("souvenir-list");
-    target.innerHTML = souvenirs.map(item => renderCompactSouvenirCard(item)).join("");
+    const cardsHtml = souvenirs.map(item => renderCompactSouvenirCard(item)).join("");
+    target.classList.remove("card-grid");
+    target.classList.add("panel-masonry");
+    target.innerHTML = cardsHtml;
+}
+
+function renderAreaMapPanel() {
+    const filterTarget = document.getElementById("area-map-filters");
+    const listTarget = document.getElementById("area-map-list");
+    const countTarget = document.getElementById("area-map-count");
+
+    if (!filterTarget || !listTarget || !countTarget) {
+        return;
+    }
+
+    const filters = getAreaMapFilters();
+    filterTarget.innerHTML = filters.map((filter) => `
+        <button type="button" class="area-filter-btn ${state.mapAreaFilter === filter.id ? "active" : ""}" data-area-filter="${filter.id}">
+            ${filter.label}
+        </button>
+    `).join("");
+
+    const points = getFilteredMapPoints();
+    countTarget.textContent = `${points.length} 筆`;
+
+    listTarget.innerHTML = points.map((point, index) => {
+        const sourceLabel = getMapPointSourceLabel(point);
+        const iconClass = getMapPointIconClass(point.category);
+        return `
+        <button type="button" class="area-map-row ${state.mapSelectionId === point.id ? "is-active" : ""}" data-map-point-id="${point.id}">
+            <div class="area-map-row-title-wrap">
+                <span class="area-map-row-index">${index + 1}</span>
+                <div class="area-map-row-title-main">
+                    <div class="area-map-row-title"><i class="bi ${iconClass} me-1"></i>${point.name}</div>
+                    <div class="area-map-row-meta">${point.area} · ${point.category || "未分類"}</div>
+                </div>
+            </div>
+            ${sourceLabel ? `<div class="area-map-row-source">${sourceLabel}</div>` : ""}
+            ${point.note ? `<div class="area-map-row-note">${point.note}</div>` : ""}
+        </button>
+    `;
+    }).join("");
+
+    if (state.activeTab === "area-map") {
+        if (state.mapApiReady) {
+            updateAreaMapMarkers();
+        } else if (state.mapInitTried) {
+            renderAreaMapFallbackLinks();
+        } else {
+            ensureAreaMapInitialized();
+        }
+    }
+}
+
+function getAreaMapFilters() {
+    return [
+        { id: "all", label: "全部", matcher: () => true },
+        { id: "hiroshima", label: "廣島市區", matcher: (area) => area.includes("廣島市區") || area.includes("廣島府中町") },
+        { id: "kure", label: "吳市", matcher: (area) => area.includes("吳市") || area.includes("呉") },
+        { id: "miyajima", label: "宮島", matcher: (area) => area.includes("宮島") },
+        { id: "onomichi", label: "尾道", matcher: (area) => area.includes("尾道") },
+        { id: "ikuchijima", label: "生口島", matcher: (area) => area.includes("生口島") || area.includes("瀨戶田") || area.includes("瀬戸田") },
+        { id: "other", label: "其他", matcher: (area) => area === "其他" || !area || area.includes("其他") }
+    ];
+}
+
+function getFilteredMapPoints() {
+    const filters = getAreaMapFilters();
+    const current = filters.find((item) => item.id === state.mapAreaFilter) || filters[0];
+    return state.mapPoints
+        .filter((point) => current.matcher(point.area || "其他"))
+        .sort((a, b) => a.name.localeCompare(b.name, "zh-Hant"));
+}
+
+function setAreaMapFilter(filterId) {
+    state.mapAreaFilter = filterId;
+    state.mapSelectionId = null;
+    renderAreaMapPanel();
+    if (state.mapApiReady) {
+        updateAreaMapMarkers();
+    }
+}
+
+function buildMapPointsFromTripData() {
+    if (!state.tripData) return [];
+
+    const explicitPoints = Array.isArray(state.tripData.areaMapPoints) ? state.tripData.areaMapPoints : [];
+    if (explicitPoints.length > 0) {
+        return explicitPoints.map((item, index) => {
+            const sourceMeta = resolveMapPointSourceMeta(item.name) || {};
+            return {
+            id: item.id || `trip-point-${index + 1}`,
+            name: item.name || "未命名點位",
+            area: item.area || "其他",
+            category: item.category || "未分類",
+            rating: item.rating || "",
+            reviewCount: item.reviewCount || "",
+            priceRange: item.priceRange || "",
+            note: item.note || "",
+            mapsUrl: item.mapsUrl || buildPointMapLink({ name: item.name || "", area: item.area || "其他" }),
+            lat: Number.isFinite(item.lat) ? item.lat : null,
+            lng: Number.isFinite(item.lng) ? item.lng : null,
+            coordSource: item.coordSource || "",
+            sourceType: sourceMeta.sourceType || item.sourceType || "csv",
+            sourceTab: sourceMeta.sourceTab || item.sourceTab || "",
+            sourceKey: sourceMeta.sourceKey || item.sourceKey || "",
+            sourceTitle: sourceMeta.sourceTitle || item.sourceTitle || ""
+            };
+        });
+    }
+
+    // fallback: 若未配置 areaMapPoints，從 trip-data 既有餐飲/景點自動提取
+    const fromDining = (state.tripData.dining || []).map((item, idx) => ({
+        id: `dining-${idx + 1}`,
+        name: item.name,
+        area: inferSpotArea(item.name || "", item.category || "", item.note || ""),
+        category: item.category || "餐飲",
+        note: item.note || "",
+        mapsUrl: item.mapsUrl || buildPointMapLink({ name: item.name, area: "其他" })
+    }));
+
+    const fromSightseeing = (state.tripData.sightseeing || []).map((item, idx) => ({
+        id: `sight-${idx + 1}`,
+        name: item.name,
+        area: inferSpotArea(item.name || "", item.category || "", item.note || ""),
+        category: item.category || "景點",
+        note: item.note || "",
+        mapsUrl: item.mapsUrl || buildPointMapLink({ name: item.name, area: "其他" })
+    }));
+
+    const combined = [...fromDining, ...fromSightseeing].filter((p) => ["尾道市區", "生口島・瀨戶田", "尾道", "生口島"].includes(p.area));
+    const seen = new Set();
+    return combined.filter((p) => {
+        const key = normalizeSpotName(p.name);
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    });
+}
+
+function parseSpotPoints(rawText) {
+    if (!rawText) return [];
+    const blocks = rawText
+        .split(/\r?\n\s*\r?\n+/)
+        .map((chunk) => chunk.split(/\r?\n/).map((line) => line.trim()).filter(Boolean))
+        .filter((lines) => lines.length > 0);
+
+    const points = [];
+    const seen = new Set();
+    blocks.forEach((lines, idx) => {
+        const point = {
+            id: `spot-${idx + 1}`,
+            name: lines[0],
+            rating: "",
+            reviewCount: "",
+            price: "",
+            type: "",
+            note: "",
+            area: "其他"
+        };
+
+        let cursor = 1;
+
+        if (cursor < lines.length) {
+            const match = lines[cursor].match(/^([0-9]+\.[0-9])\(([0-9,]+)\)$/);
+            if (match) {
+                point.rating = match[1];
+                point.reviewCount = match[2].replace(/,/g, "");
+                cursor += 1;
+            }
+        }
+
+        if (cursor < lines.length && /^(¥|￥|\$\$|超過\s*¥)/.test(lines[cursor])) {
+            point.price = lines[cursor].replace(/,/g, "");
+            cursor += 1;
+        }
+
+        if (cursor < lines.length) {
+            if (lines[cursor].startsWith("·")) {
+                point.type = lines[cursor].replace(/^·\s*/, "").trim();
+                cursor += 1;
+            } else if (/(店|舖|餐廳|景點|商場|神社|中心|館|市場|戲院|博物館|紀念館|觀景台|飯店|服裝|雜貨|模型|商店街|糖果|地標|雕塑|圖書館|批發商|旅客|社區)/.test(lines[cursor])) {
+                point.type = lines[cursor];
+                cursor += 1;
+            }
+        }
+
+        point.note = lines.slice(cursor).join("；");
+        point.area = inferSpotArea(point.name, point.type, point.note);
+
+        const normalizedName = normalizeSpotName(point.name);
+
+        if (seen.has(normalizedName)) {
+            return;
+        }
+
+        seen.add(normalizedName);
+        points.push(point);
+    });
+
+    return points;
+}
+
+function normalizeSpotName(name) {
+    return (name || "")
+        .toLowerCase()
+        .replace(/[\u200B-\u200D\uFEFF]/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function encodeEntityKey(value) {
+    return encodeURIComponent(String(value || "").trim());
+}
+
+function getMapPointIconClass(category) {
+    const text = String(category || "");
+    if (/咖啡|茶|飲品/.test(text)) return "bi-cup-hot-fill";
+    if (/餐|居酒|拉麵|燒|甜|餅|麵包|海鮮/.test(text)) return "bi-fork-knife";
+    if (/景點|神社|公園|博物館|世界遺產|展望|地標/.test(text)) return "bi-camera-fill";
+    if (/住宿|飯店|旅館|Guest House/.test(text)) return "bi-house-door-fill";
+    if (/商店|購物|市集|雜貨/.test(text)) return "bi-bag-fill";
+    if (/車站|交通|港口|渡輪/.test(text)) return "bi-sign-turn-right-fill";
+    return "bi-geo-alt-fill";
+}
+
+function resolveMapPointSourceMeta(name) {
+    if (!state.tripData || !name) return null;
+
+    const target = normalizeSpotName(name);
+    const matchBy = (value) => normalizeSpotName(value) === target;
+
+    const dining = (state.tripData.dining || []).find((item) => matchBy(item.name));
+    if (dining) {
+        return { sourceType: "dining", sourceTab: "dining", sourceKey: dining.name, sourceTitle: dining.name };
+    }
+
+    const sightseeing = (state.tripData.sightseeing || []).find((item) => matchBy(item.name));
+    if (sightseeing) {
+        return { sourceType: "sightseeing", sourceTab: "sightseeing", sourceKey: sightseeing.name, sourceTitle: sightseeing.name };
+    }
+
+    const souvenir = (state.tripData.souvenirs || []).find((item) => matchBy(item.name));
+    if (souvenir) {
+        return { sourceType: "souvenir", sourceTab: "souvenirs", sourceKey: souvenir.name, sourceTitle: souvenir.name };
+    }
+
+    const otherInfo = (state.tripData.otherInfo || []).find((item) => matchBy(item.title));
+    if (otherInfo) {
+        return { sourceType: "otherInfo", sourceTab: "others", sourceKey: otherInfo.id, sourceTitle: otherInfo.title };
+    }
+
+    const transport = (state.tripData.transports || []).find((item) => matchBy(item.title));
+    if (transport) {
+        return { sourceType: "transport", sourceTab: "transport", sourceKey: transport.id, sourceTitle: transport.title };
+    }
+
+    return { sourceType: "csv", sourceTab: "", sourceKey: "", sourceTitle: "" };
+}
+
+function getMapPointSourceLabel(point) {
+    const typeMap = {
+        dining: "餐飲",
+        sightseeing: "景點",
+        souvenir: "伴手禮",
+        otherInfo: "其他資訊",
+        transport: "交通",
+        csv: "CSV"
+    };
+
+    const typeLabel = typeMap[point.sourceType] || "CSV";
+    if (point.sourceTitle) {
+        return `來源：${typeLabel} / ${point.sourceTitle}`;
+    }
+    return point.sourceType ? `來源：${typeLabel}` : "";
+}
+
+function inferSpotArea(name, type, note) {
+    const text = `${name} ${type} ${note}`;
+    if (/Gold Tower|Sorakin|丸亀|香川/.test(text)) return "其他";
+    if (/宮島|Miyajima|彌山|伊都岐|山田屋\s*宮島|etto宮島|Sarasvati|Yakigaki|Anago\s*Meshi|Mametanuki|Nisikido|Rokaku|宮島小道|宮島の大杓子|遊鹿里茶屋/.test(text)) return "宮島";
+    if (/呉|吳市|Kure|大和ミュージアム|海のYeah|Udon-bo|くわだ笑店|coppe|KUU\s*re:BAGEL|鳥八茶屋|萬吉|Edel Weiss|Itsuka/.test(text)) return "吳市";
+    if (/Saijo|西条|西條/.test(text)) return "東廣島（西條）";
+    if (/府中/.test(text)) return "廣島府中町";
+    if (/瀬戸田|Setoda|SETODA|生口島|しおまち|檸檬|Lemon|Remon|名荷神社|島ごころ|未來心之丘|ベルベデール|Setodachō|Kaneyoshi|MINATOYA|HYAKKOYA|SOIL\s*Setoda|Chidori|Wakaba|尾道柑橘工房/.test(text)) return "生口島・瀨戶田";
+    if (/尾道|Onomichi|千光寺|Anago-no-Nedoko|見晴亭|Takahara|Yard Cafe|やまねこ|魚春|Toto-an|POUR|尾道浪漫|山海豆花|笑空|Bunki|さくらCafe|Koro Bakery|Nekonotepan|SEN COFFEE/.test(text)) return "尾道市區";
+    if (/廣島|Hiroshima|八丁堀|本通|PARCO|minamoa|HiroPa|紙鶴|平和|原子彈|Pokémon\s*Center|Pokemon\s*Center|Mitchan|Denkosekka|goji-goji|Bagtown|shimaji|Ristorante Mario|Teranishi Coffee Shop|Furu Furu|Gulamour pain/.test(text)) return "廣島市區";
+    return "其他";
+}
+
+async function ensureAreaMapInitialized() {
+    if (state.mapApiReady) {
+        updateAreaMapMarkers();
+        return;
+    }
+
+    if (state.mapInitTried) {
+        return;
+    }
+
+    state.mapInitTried = true;
+    try {
+        await loadGoogleMapsApi();
+        initAreaMap();
+        state.mapApiReady = true;
+        showAreaMapNotice("");
+        updateAreaMapMarkers();
+    } catch (error) {
+        showAreaMapNotice("尚未設定 Google Maps API Key，暫時無法顯示可互動地圖。請在 js/hiroshima.js 設定 GOOGLE_MAPS_API_KEY。", true);
+        renderAreaMapFallbackLinks();
+    }
+}
+
+let googleMapsLoaderPromise = null;
+function loadGoogleMapsApi() {
+    if (window.google && window.google.maps) {
+        return Promise.resolve();
+    }
+
+    if (googleMapsLoaderPromise) {
+        return googleMapsLoaderPromise;
+    }
+
+    const apiKey = (window.HIROSHIMA_GOOGLE_MAPS_API_KEY || GOOGLE_MAPS_API_KEY || "").trim();
+    if (!apiKey) {
+        return Promise.reject(new Error("Google Maps API key missing"));
+    }
+
+    googleMapsLoaderPromise = new Promise((resolve, reject) => {
+        const callbackName = "__hiroshimaMapApiReady";
+        window[callbackName] = () => {
+            delete window[callbackName];
+            resolve();
+        };
+
+        const script = document.createElement("script");
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}&libraries=places&callback=${callbackName}`;
+        script.async = true;
+        script.onerror = () => reject(new Error("Google Maps API load failed"));
+        document.head.appendChild(script);
+    });
+
+    return googleMapsLoaderPromise;
+}
+
+function initAreaMap() {
+    const mapCanvas = document.getElementById("area-map-canvas");
+    if (!mapCanvas) return;
+
+    // Remove fallback iframe content before mounting Google Map.
+    mapCanvas.innerHTML = "";
+
+    state.mapObject = new google.maps.Map(mapCanvas, {
+        center: { lat: 34.3853, lng: 132.4553 },
+        zoom: 9,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true
+    });
+
+    state.mapInfoWindow = new google.maps.InfoWindow();
+}
+
+function renderAreaMapFallbackLinks() {
+    const mapCanvas = document.getElementById("area-map-canvas");
+    const points = getFilteredMapPoints();
+    if (!mapCanvas) return;
+
+    const first = points[0];
+    const query = first ? `${first.name} ${first.area}` : "Hiroshima";
+    const embedUrl = `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+    mapCanvas.innerHTML = `<iframe class="area-map-iframe" title="Google Map" src="${embedUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+}
+
+async function updateAreaMapMarkers() {
+    if (!state.mapObject || !state.mapApiReady) {
+        return;
+    }
+
+    const points = getFilteredMapPoints();
+    const pointSequence = new Map(points.map((point, index) => [point.id, index + 1]));
+    clearAreaMapMarkers();
+    renderAreaMapPanelSelectionOnly();
+
+    const bounds = new google.maps.LatLngBounds();
+    const unresolved = [];
+
+    points.forEach((point) => {
+        const sequence = pointSequence.get(point.id) || 0;
+        if (Number.isFinite(point.lat) && Number.isFinite(point.lng)) {
+            addMapMarker(point, { lat: point.lat, lng: point.lng }, bounds, sequence);
+            return;
+        }
+
+        const cache = state.mapGeocodeCache[point.id];
+        if (cache && Number.isFinite(cache.lat) && Number.isFinite(cache.lng)) {
+            addMapMarker(point, { lat: cache.lat, lng: cache.lng }, bounds, sequence);
+        } else {
+            unresolved.push(point);
+        }
+    });
+
+    fitMapBoundsIfReady(bounds, points.length);
+
+    if (unresolved.length === 0) {
+        showAreaMapNotice("");
+        return;
+    }
+
+    const jobId = ++state.mapGeocodeJobId;
+    showAreaMapNotice(`地圖定位中：${points.length - unresolved.length}/${points.length}`);
+
+    for (let index = 0; index < unresolved.length; index += 1) {
+        if (jobId !== state.mapGeocodeJobId) {
+            return;
+        }
+
+        const point = unresolved[index];
+        const sequence = pointSequence.get(point.id) || 0;
+        const position = await geocodePoint(point);
+        if (position) {
+            addMapMarker(point, position, bounds, sequence);
+            state.mapGeocodeCache[point.id] = position;
+            persistMapGeocodeCache();
+            fitMapBoundsIfReady(bounds, points.length);
+        }
+
+        const done = points.length - (unresolved.length - (index + 1));
+        showAreaMapNotice(`地圖定位中：${done}/${points.length}`);
+    }
+
+    showAreaMapNotice("");
+}
+
+function fitMapBoundsIfReady(bounds, pointCount) {
+    if (!state.mapObject) return;
+    if (pointCount === 0) {
+        state.mapObject.setCenter({ lat: 34.3853, lng: 132.4553 });
+        state.mapObject.setZoom(9);
+        return;
+    }
+
+    if (!bounds.isEmpty()) {
+        state.mapObject.fitBounds(bounds, 48);
+    }
+}
+
+function clearAreaMapMarkers() {
+    state.mapMarkers.forEach((marker) => marker.setMap(null));
+    state.mapMarkers.clear();
+}
+
+function getMarkerColorByArea(area) {
+    const text = String(area || "");
+    if (text.includes("廣島")) return "#1f6f8b";
+    if (text.includes("吳") || text.includes("呉")) return "#9a3412";
+    if (text.includes("宮島")) return "#7c3aed";
+    if (text.includes("尾道")) return "#166534";
+    if (text.includes("生口") || text.includes("瀨戶田") || text.includes("瀬戸田")) return "#b45309";
+    return "#4b5563";
+}
+
+function renderMapInfoWindowContent(point, sequence) {
+    const mapLink = buildPointMapLink(point);
+    const sourceLabel = getMapPointSourceLabel(point);
+    return `<div class="map-infowindow"><strong>#${sequence} ${point.name}</strong><br><small>${point.area} · ${point.category || "未分類"}</small>${sourceLabel ? `<br><span class="map-source">${sourceLabel}</span>` : ""}<br><a href="${mapLink}" target="_blank" rel="noopener noreferrer">Google Maps</a></div>`;
+}
+
+function addMapMarker(point, position, bounds, sequence = 0) {
+    const markerColor = getMarkerColorByArea(point.area);
+    const marker = new google.maps.Marker({
+        map: state.mapObject,
+        position,
+        title: point.name,
+        label: {
+            text: String(sequence),
+            color: "#ffffff",
+            fontSize: "11px",
+            fontWeight: "700"
+        },
+        icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 11,
+            fillColor: markerColor,
+            fillOpacity: 0.98,
+            strokeColor: "#ffffff",
+            strokeWeight: 1.8
+        }
+    });
+
+    marker.addListener("click", () => {
+        if (state.mapInfoWindow) {
+            state.mapInfoWindow.setContent(renderMapInfoWindowContent(point, sequence));
+            state.mapInfoWindow.open({ anchor: marker, map: state.mapObject });
+        }
+
+        state.mapSelectionId = point.id;
+        highlightMapListSelection(point.id, true);
+    });
+
+    state.mapMarkers.set(point.id, marker);
+    bounds.extend(position);
+}
+
+async function focusMapPointById(pointId, shouldScrollMap = false) {
+    state.mapSelectionId = pointId;
+    const point = state.mapPoints.find((item) => item.id === pointId);
+    if (!point) return;
+
+    if (!state.mapApiReady) {
+        window.open(buildPointMapLink(point), "_blank", "noopener,noreferrer");
+        return;
+    }
+
+    let marker = state.mapMarkers.get(pointId);
+    if (!marker) {
+        let position = null;
+        if (Number.isFinite(point.lat) && Number.isFinite(point.lng)) {
+            position = { lat: point.lat, lng: point.lng };
+        } else {
+            position = await geocodePoint(point);
+        }
+
+        if (!position) {
+            window.open(buildPointMapLink(point), "_blank", "noopener,noreferrer");
+            return;
+        }
+
+        state.mapGeocodeCache[point.id] = position;
+        persistMapGeocodeCache();
+        const bounds = new google.maps.LatLngBounds();
+        addMapMarker(point, position, bounds, getFilteredMapPoints().findIndex((item) => item.id === point.id) + 1);
+        marker = state.mapMarkers.get(pointId);
+    }
+
+    if (state.mapObject && marker) {
+        const position = marker.getPosition();
+        state.mapObject.panTo(position);
+        state.mapObject.setZoom(Math.max(state.mapObject.getZoom() || 13, 14));
+
+        if (state.mapInfoWindow) {
+            const sequence = getFilteredMapPoints().findIndex((item) => item.id === point.id) + 1;
+            state.mapInfoWindow.setContent(renderMapInfoWindowContent(point, sequence));
+            state.mapInfoWindow.open({ anchor: marker, map: state.mapObject });
+        }
+    }
+
+    highlightMapListSelection(pointId, false);
+
+    if (shouldScrollMap) {
+        document.getElementById("area-map-canvas")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+}
+
+function highlightMapListSelection(pointId, scrollRow) {
+    document.querySelectorAll(".area-map-row").forEach((row) => {
+        row.classList.toggle("is-active", row.dataset.mapPointId === pointId);
+    });
+
+    if (scrollRow) {
+        const target = document.querySelector(`.area-map-row[data-map-point-id="${pointId}"]`);
+        target?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        target?.focus({ preventScroll: true });
+    }
+}
+
+function renderAreaMapPanelSelectionOnly() {
+    const listTarget = document.getElementById("area-map-list");
+    if (!listTarget) return;
+    listTarget.querySelectorAll(".area-map-row").forEach((row) => {
+        row.classList.toggle("is-active", row.dataset.mapPointId === state.mapSelectionId);
+    });
+}
+
+function openMapPointLinkedCard(pointId) {
+    const point = state.mapPoints.find((item) => item.id === pointId);
+    if (!point || !point.sourceTab || !point.sourceType || !point.sourceKey) {
+        return;
+    }
+
+    setActiveTab(point.sourceTab);
+
+    const selector = `.trip-panel[data-panel="${point.sourceTab}"] .compact-card[data-entity-type="${point.sourceType}"][data-entity-key="${encodeEntityKey(point.sourceKey)}"]`;
+    const card = document.querySelector(selector);
+    if (!card) {
+        return;
+    }
+
+    card.classList.add("map-linked-pulse");
+    card.scrollIntoView({ behavior: "smooth", block: "center" });
+    setTimeout(() => {
+        card.classList.remove("map-linked-pulse");
+    }, 1800);
+}
+
+function buildPointMapLink(point) {
+    const query = `${point.name} ${point.area} 廣島`;
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+function geocodePoint(point) {
+    return new Promise((resolve) => {
+        if (!window.google || !google.maps) {
+            resolve(null);
+            return;
+        }
+
+        const geocoder = new google.maps.Geocoder();
+        const query = buildGeocodeQuery(point);
+        geocoder.geocode({ address: query }, (results, status) => {
+            if (status === "OK" && results && results[0]) {
+                const loc = results[0].geometry.location;
+                resolve({ lat: loc.lat(), lng: loc.lng() });
+                return;
+            }
+            resolve(null);
+        });
+    });
+}
+
+function buildGeocodeQuery(point) {
+    const areaAliasMap = {
+        "尾道市區": "Onomichi, Hiroshima",
+        "廣島市區": "Hiroshima City",
+        "吳市": "Kure, Hiroshima",
+        "宮島": "Miyajima, Hatsukaichi, Hiroshima",
+        "生口島・瀨戶田": "Setoda, Onomichi, Hiroshima",
+        "東廣島（西條）": "Saijo, Higashihiroshima",
+        "廣島府中町": "Fuchu, Hiroshima"
+    };
+
+    const areaHint = areaAliasMap[point.area] || point.area || "Hiroshima";
+    return `${point.name}, ${areaHint}, Japan`;
+}
+
+function showAreaMapNotice(message, isWarn = false) {
+    const notice = document.getElementById("area-map-notice");
+    if (!notice) return;
+    notice.textContent = message;
+    notice.classList.toggle("is-visible", Boolean(message));
+    notice.classList.toggle("is-warning", Boolean(message) && isWarn);
+}
+
+function loadMapGeocodeCache() {
+    try {
+        const raw = localStorage.getItem(MAP_GEOCODE_CACHE_KEY);
+        if (!raw) return {};
+        const parsed = JSON.parse(raw);
+        return parsed && typeof parsed === "object" ? parsed : {};
+    } catch {
+        return {};
+    }
+}
+
+function persistMapGeocodeCache() {
+    localStorage.setItem(MAP_GEOCODE_CACHE_KEY, JSON.stringify(state.mapGeocodeCache));
 }
 
 function renderListCard(item, options) {
@@ -975,11 +1690,24 @@ function renderChecklistPanel() {
         const branchState = getChecklistBranchState(branch);
         return `
             <section class="checklist-branch">
-                <label class="checklist-branch-header">
-                    <input type="checkbox" class="form-check-input checklist-parent-input" data-branch-id="${branch.id}" ${branchState.checked ? "checked" : ""} ${branchState.indeterminate ? 'data-indeterminate="true"' : ""}>
-                    <span class="checklist-branch-title">${branch.title}</span>
-                </label>
-                <div class="checklist-items">
+                <div class="checklist-branch-header" data-level="1">
+                    <label class="checklist-nested-checkbox" onclick="event.stopPropagation()">
+                        <input type="checkbox" class="form-check-input checklist-parent-input" data-branch-id="${branch.id}" ${branchState.checked ? "checked" : ""} ${branchState.indeterminate ? 'data-indeterminate="true"' : ""}>
+                    </label>
+                    <button type="button"
+                            class="checklist-branch-title-btn"
+                            data-toggle-group="${branch.id}"
+                            aria-expanded="true">
+                        <span class="checklist-branch-title">${branch.title}</span>
+                    </button>
+                    <button type="button"
+                            class="checklist-toggle-btn"
+                            data-toggle-group="${branch.id}"
+                            aria-expanded="true">
+                        <i class="bi bi-chevron-up"></i>
+                    </button>
+                </div>
+                <div class="checklist-items" data-group="${branch.id}">
                     ${renderChecklistItems(branch.children, 1)}
                 </div>
             </section>
@@ -1011,20 +1739,27 @@ function renderChecklistItems(items, level = 1) {
             const itemState = getChecklistItemState(item);
             return `
                 <div class="checklist-nested-group" data-level="${level}">
-                    <label class="checklist-nested-header">
-                        <input type="checkbox" 
-                               class="form-check-input checklist-nested-parent me-2" 
-                               data-item-id="${item.id}" 
-                               ${itemState.checked ? "checked" : ""} 
-                               ${itemState.indeterminate ? 'data-indeterminate="true"' : ""}>
-                        <span class="checklist-nested-title">${item.title}</span>
+                    <div class="checklist-nested-header">
+                        <label class="checklist-nested-checkbox" onclick="event.stopPropagation()">
+                            <input type="checkbox" 
+                                   class="form-check-input checklist-nested-parent" 
+                                   data-item-id="${item.id}" 
+                                   ${itemState.checked ? "checked" : ""} 
+                                   ${itemState.indeterminate ? 'data-indeterminate="true"' : ""}>
+                        </label>
+                        <button type="button"
+                                class="checklist-nested-title-btn"
+                                data-toggle-group="${item.id}"
+                                aria-expanded="true">
+                            <span class="checklist-nested-title">${item.title}</span>
+                        </button>
                         <button type="button" 
                                 class="checklist-toggle-btn" 
                                 data-toggle-group="${item.id}"
                                 aria-expanded="true">
                             <i class="bi bi-chevron-up"></i>
                         </button>
-                    </label>
+                    </div>
                     <div class="checklist-nested-items" data-group="${item.id}">
                         ${renderChecklistItems(item.children, level + 1)}
                     </div>
@@ -1035,7 +1770,7 @@ function renderChecklistItems(items, level = 1) {
             return `
                 <label class="checklist-item" data-level="${level}">
                     <input type="checkbox" 
-                           class="form-check-input checklist-child-input me-2" 
+                           class="form-check-input checklist-child-input" 
                            data-item-id="${item.id}" 
                            ${state.checklistState[item.id] ? "checked" : ""}>
                     <span>${item.title}</span>
@@ -1048,7 +1783,10 @@ function renderChecklistItems(items, level = 1) {
 function renderOthersPanel() {
     const otherInfo = state.tripData.otherInfo;
     const target = document.getElementById("others-info-list");
-    target.innerHTML = otherInfo.map(item => renderCompactOtherInfoCard(item)).join("");
+    const cardsHtml = otherInfo.map(item => renderCompactOtherInfoCard(item)).join("");
+    target.classList.remove("card-grid");
+    target.classList.add("panel-masonry");
+    target.innerHTML = cardsHtml;
 }
 
 function renderOtherInfoCard(item, isLinked = false) {
@@ -1095,6 +1833,10 @@ function setActiveTab(tabId) {
     // 切換到時程表分頁時，立即檢查並更新狀態
     if (tabId === 'timeline') {
         updateTimelineIfNeeded();
+    }
+
+    if (tabId === "area-map") {
+        ensureAreaMapInitialized();
     }
 }
 

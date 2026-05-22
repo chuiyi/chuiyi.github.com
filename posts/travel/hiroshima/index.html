@@ -176,6 +176,10 @@
                             <span class="tab-title">其他資訊</span>
                             <small>Others</small>
                         </button>
+                        <button class="trip-tab" data-tab="area-map" type="button">
+                            <span class="tab-title">區域地圖</span>
+                            <small>Area Map</small>
+                        </button>
                         <button class="trip-tab" data-tab="checklist" type="button">
                             <span class="tab-title">行前確認</span>
                             <small>Checklist</small>
@@ -232,6 +236,24 @@
                                 <p class="panel-subtitle">依採買地點與時機整理，方便最後一天快速掃貨。</p>
                             </div>
                             <div class="card-grid" id="souvenir-list"></div>
+                        </section>
+
+                        <section class="trip-panel" data-panel="area-map">
+                            <div class="panel-header">
+                                <p class="panel-kicker">AREA MAP</p>
+                                <h2 class="panel-title">區域地圖</h2>
+                                <p class="panel-subtitle">可切換區域查看 Google Maps 點位，並與下方清單雙向連動。</p>
+                            </div>
+                            <div class="area-map-toolbar" id="area-map-filters"></div>
+                            <div class="area-map-notice" id="area-map-notice"></div>
+                            <div class="area-map-frame" id="area-map-canvas" aria-label="廣島區域地圖"></div>
+                            <div class="area-map-list-wrap">
+                                <div class="area-map-list-header">
+                                    <h3 class="area-map-list-title">區域點位清單</h3>
+                                    <span class="area-map-count" id="area-map-count">0 筆</span>
+                                </div>
+                                <div class="area-map-list" id="area-map-list"></div>
+                            </div>
                         </section>
 
                         <section class="trip-panel" data-panel="checklist">
@@ -332,10 +354,13 @@
                 .then((registration) => {
                     console.log('[PWA] Service Worker registered:', registration.scope);
                     
-                    // Check for updates every 5 minutes
+                    // Immediately check for updates on load
+                    registration.update();
+                    
+                    // Check for updates every 1 minute (more aggressive for iOS)
                     setInterval(() => {
                         registration.update();
-                    }, 5 * 60 * 1000);
+                    }, 1 * 60 * 1000);
                     
                     // Check for updates when page becomes visible
                     document.addEventListener('visibilitychange', () => {
@@ -394,6 +419,45 @@
                 window.pendingRegistration.waiting.postMessage({ type: 'SKIP_WAITING' });
             }
         }
+        
+        // Force clear all caches and reload (for iOS PWA issues)
+        // Can be called from console: clearPWACache()
+        window.clearPWACache = async function() {
+            console.log('[PWA] Clearing all caches...');
+            
+            try {
+                // Unregister all service workers
+                if ('serviceWorker' in navigator) {
+                    const registrations = await navigator.serviceWorker.getRegistrations();
+                    for (let registration of registrations) {
+                        await registration.unregister();
+                        console.log('[PWA] Service worker unregistered');
+                    }
+                }
+                
+                // Clear all caches
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                    console.log('[PWA] All caches cleared:', cacheNames);
+                }
+                
+                // Clear localStorage (optional, commented out to preserve user data)
+                // localStorage.clear();
+                
+                console.log('[PWA] Cache cleared! Reloading page...');
+                alert('緩存已清除！頁面即將重新載入。');
+                
+                // Force reload from server
+                window.location.reload(true);
+            } catch (error) {
+                console.error('[PWA] Error clearing cache:', error);
+                alert('清除緩存時發生錯誤，請手動刷新頁面。');
+            }
+        };
+        
+        console.log('%c💡 提示：如果 PWA 無法更新，請在 Console 中執行：clearPWACache()', 
+                   'color: #8b4513; font-size: 14px; font-weight: bold;');
     </script>
 </body>
 </html>

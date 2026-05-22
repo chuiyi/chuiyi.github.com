@@ -1,6 +1,6 @@
 // Hiroshima Trip PWA Service Worker
 // Version control for cache busting
-const VERSION = '2026.05.20.020';
+const VERSION = '2026.05.21.001';
 const CACHE_NAME = `hiroshima-trip-${VERSION}`;
 
 // Resources to cache for offline use
