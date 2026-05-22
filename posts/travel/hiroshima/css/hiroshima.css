@@ -2287,9 +2287,11 @@
 
 .compact-detail-image img {
     width: 100%;
+    height: auto;
+    display: block;
     border-radius: 6px;
-    max-height: 220px;
-    object-fit: cover;
+    max-height: none;
+    object-fit: contain;
 }
 
 .compact-image-caption {
@@ -2384,9 +2386,11 @@
 
 .gallery-slide img {
     width: 100%;
+    height: auto;
+    display: block;
     border-radius: 6px;
-    max-height: 300px;
-    object-fit: cover;
+    max-height: none;
+    object-fit: contain;
 }
 
 .gallery-btn {
@@ -2809,7 +2813,7 @@
     }
     
     .compact-detail-image img {
-        max-height: 180px;
+        max-height: none;
     }
     
     /* 時程表標題和位置資訊 */

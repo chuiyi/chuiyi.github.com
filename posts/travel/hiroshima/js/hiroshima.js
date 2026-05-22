@@ -174,7 +174,6 @@ function handleDocumentClick(event) {
     if (mapListItem) {
         const pointId = mapListItem.dataset.mapPointId;
         focusMapPointById(pointId, true);
-        openMapPointLinkedCard(pointId);
         return;
     }
 
@@ -967,6 +966,7 @@ function renderTransportPanel() {
     
     const target = document.getElementById("transport-list");
     target.classList.remove("card-grid");
+    target.classList.remove("souvenir-masonry");
     target.classList.add("panel-masonry");
     target.innerHTML = cardsHtml || '<div class="text-center text-muted py-5">無符合條件的交通資訊</div>';
 }
@@ -982,6 +982,7 @@ function renderDiningPanel() {
     const target = document.getElementById("dining-list");
     const cardsHtml = dining.map(item => renderCompactDiningCard(item)).join("");
     target.classList.remove("card-grid");
+    target.classList.remove("souvenir-masonry");
     target.classList.add("panel-masonry");
     target.innerHTML = cardsHtml;
 }
@@ -991,6 +992,7 @@ function renderSightseeingPanel() {
     const target = document.getElementById("sightseeing-list");
     const cardsHtml = sightseeing.map(item => renderCompactSightseeingCard(item)).join("");
     target.classList.remove("card-grid");
+    target.classList.remove("souvenir-masonry");
     target.classList.add("panel-masonry");
     target.innerHTML = cardsHtml;
 }
@@ -1000,6 +1002,7 @@ function renderSouvenirPanel() {
     const target = document.getElementById("souvenir-list");
     const cardsHtml = souvenirs.map(item => renderCompactSouvenirCard(item)).join("");
     target.classList.remove("card-grid");
+    target.classList.remove("souvenir-masonry");
     target.classList.add("panel-masonry");
     target.innerHTML = cardsHtml;
 }
@@ -1548,7 +1551,12 @@ async function focusMapPointById(pointId, shouldScrollMap = false) {
     highlightMapListSelection(pointId, false);
 
     if (shouldScrollMap) {
-        document.getElementById("area-map-canvas")?.scrollIntoView({ behavior: "smooth", block: "center" });
+        const mapCanvas = document.getElementById("area-map-canvas");
+        if (mapCanvas) {
+            const top = mapCanvas.getBoundingClientRect().top + window.scrollY;
+            const topSafeOffset = getTopOverlayOffset();
+            window.scrollTo({ behavior: "smooth", top: Math.max(0, top - topSafeOffset) });
+        }
     }
 }
 
@@ -1570,6 +1578,25 @@ function renderAreaMapPanelSelectionOnly() {
     listTarget.querySelectorAll(".area-map-row").forEach((row) => {
         row.classList.toggle("is-active", row.dataset.mapPointId === state.mapSelectionId);
     });
+}
+
+function getTopOverlayOffset() {
+    const fixedElements = document.querySelectorAll(".fixed-top");
+    let maxBottom = 0;
+
+    fixedElements.forEach((el) => {
+        const style = window.getComputedStyle(el);
+        if (style.display === "none" || style.visibility === "hidden") return;
+
+        const rect = el.getBoundingClientRect();
+        if (rect.height <= 0) return;
+
+        if (rect.top <= 0 && rect.bottom > 0) {
+            maxBottom = Math.max(maxBottom, rect.bottom);
+        }
+    });
+
+    return Math.ceil(maxBottom) + 8;
 }
 
 function openMapPointLinkedCard(pointId) {
@@ -1785,6 +1812,7 @@ function renderOthersPanel() {
     const target = document.getElementById("others-info-list");
     const cardsHtml = otherInfo.map(item => renderCompactOtherInfoCard(item)).join("");
     target.classList.remove("card-grid");
+    target.classList.remove("souvenir-masonry");
     target.classList.add("panel-masonry");
     target.innerHTML = cardsHtml;
 }

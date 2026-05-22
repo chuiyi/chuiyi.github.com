@@ -244,16 +244,16 @@
       "id": "day2",
       "label": "D2",
       "dateLabel": "05/29 五",
-      "summary": "生口島清晨散步 x 尾道一日 x 前往廣島",
+      "summary": "生口島晨間散步與早餐、尾道全日、晚間移動回廣島",
       "items": [
         {
           "id": "ikuchijima-morning-breakfast",
           "start": "2026-05-29T09:00:00+09:00",
-          "end": "2026-05-29T10:30:00+09:00",
-          "timeLabel": "09:00 - 10:30",
+          "end": "2026-05-29T10:00:00+09:00",
+          "timeLabel": "09:00 - 10:00",
           "title": "生口島清晨散步 x 早餐",
           "category": "activity",
-          "description": "享受寧靜的鄉村晨景，用空拍機遊歷生口島，並在享用早餐。",
+          "description": "享受寧靜的鄉村晨景，並在享用早餐。",
           "location": "生口島",
           "mapsUrl": "https://www.google.com/maps/search/?q=Ikuchijima+Island",
           "transportIds": [],
@@ -263,28 +263,31 @@
           ],
           "otherInfoIds": [
             "picnic-spots",
+            "breakfast-prep",
             "drone-regulations",
-            "drone-spots",
-            "breakfast-prep"
+            "drone-spots"
           ]
         },
         {
           "id": "bonapool-checkout",
-          "start": "2026-05-29T10:30:00+09:00",
-          "end": "2026-05-29T11:00:00+09:00",
-          "timeLabel": "10:30 - 11:00",
+          "start": "2026-05-29T10:00:00+09:00",
+          "end": "2026-05-29T10:30:00+09:00",
+          "timeLabel": "10:00 - 10:30",
           "title": "BONAPOOL",
           "category": "accommodation",
           "description": "準備退房。",
           "location": "生口島",
           "mapsUrl": "https://www.google.com/maps/search/?q=BONAPOOL+Ikuchijima",
-          "transportIds": []
+          "transportIds": [],
+          "otherInfoIds": [
+            "stay-bonapool"
+          ]
         },
         {
           "id": "ikuchijima-to-onomichi",
-          "start": "2026-05-29T11:00:00+09:00",
+          "start": "2026-05-29T10:30:00+09:00",
           "end": "2026-05-29T12:00:00+09:00",
-          "timeLabel": "11:00 - 12:00",
+          "timeLabel": "10:30 - 12:00",
           "title": "生口島 → 尾道",
           "category": "transport",
           "description": "返回尾道進行全日遊覽。注意船班資訊。",
@@ -300,8 +303,8 @@
         {
           "id": "onomichi-full-day",
           "start": "2026-05-29T12:00:00+09:00",
-          "end": "2026-05-29T17:00:00+09:00",
-          "timeLabel": "12:00 - 17:00",
+          "end": "2026-05-29T18:00:00+09:00",
+          "timeLabel": "12:00 - 18:00",
           "title": "尾道全日遊覽",
           "category": "sightseeing",
           "description": "古寺、運河、坂道、咖啡廳等景點巡禮。",
@@ -311,7 +314,7 @@
           "sightseeingIds": [
             "千光寺山纜車",
             "文學之道/貓之細道",
-            "尾道商店街",
+            "尾道本通り商店街",
             "ONOMICHI U2"
           ],
           "diningIds": [
@@ -325,9 +328,9 @@
         },
         {
           "id": "onomichi-dinner",
-          "start": "2026-05-29T17:00:00+09:00",
-          "end": "2026-05-29T18:30:00+09:00",
-          "timeLabel": "17:00 - 18:30",
+          "start": "2026-05-29T18:00:00+09:00",
+          "end": "2026-05-29T19:30:00+09:00",
+          "timeLabel": "18:00 - 19:30",
           "title": "尾道晚餐",
           "category": "dining",
           "description": "在尾道用晚餐，可選擇尾道拉麵或其他特色料理。",
@@ -340,9 +343,9 @@
         },
         {
           "id": "onomichi-to-hiroshima",
-          "start": "2026-05-29T19:00:00+09:00",
-          "end": "2026-05-29T20:30:00+09:00",
-          "timeLabel": "19:00 - 20:30",
+          "start": "2026-05-29T20:00:00+09:00",
+          "end": "2026-05-29T21:30:00+09:00",
+          "timeLabel": "20:00 - 21:30",
           "title": "尾道 → 廣島市區",
           "category": "transport",
           "description": "搭乘 JR 返回廣島市區，前往 Sotetsu Fresa Inn 入住。",
@@ -350,19 +353,25 @@
           "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Station",
           "transportIds": [
             "jr-onomichi-hiroshima"
+          ],
+          "otherInfoIds": [
+            "stay-sotetsu-fresa-hiroshima"
           ]
         },
         {
           "id": "hiroshima-resupply",
-          "start": "2026-05-29T20:30:00+09:00",
+          "start": "2026-05-29T21:30:00+09:00",
           "end": "2026-05-29T22:00:00+09:00",
-          "timeLabel": "20:30 - 22:00",
+          "timeLabel": "21:30 - 22:00",
           "title": "廣島市區",
           "category": "shopping",
           "description": "可稍作補給，準備隔天的大戰。",
           "location": "廣島市區",
           "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City",
           "transportIds": [],
+          "sightseeingIds": [
+            "本通商店街"
+          ],
           "diningIds": [
             "麗ちゃん"
           ],
@@ -376,45 +385,67 @@
       "id": "day3",
       "label": "D3",
       "dateLabel": "05/30 六",
-      "summary": "Anomaly Day 吳市大戰 - Orion XM Event",
+      "summary": "廣島名勝觀光、吳市 Orion XM Anomaly、大戰後回廣島夜間行程",
       "items": [
         {
           "id": "anomaly-breakfast",
-          "start": "2026-05-30T09:00:00+09:00",
-          "end": "2026-05-30T10:00:00+09:00",
-          "timeLabel": "09:00 - 10:00",
+          "start": "2026-05-30T08:30:00+09:00",
+          "end": "2026-05-30T09:00:00+09:00",
+          "timeLabel": "08:30 - 09:00",
           "title": "早餐",
           "category": "dining",
-          "description": "攝取足夠能量準備異常事件。",
+          "description": "攝取足夠能量準備一整天行程。",
           "location": "廣島市區",
           "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City",
-          "transportIds": []
+          "transportIds": [],
+          "otherInfoIds": [
+            "stay-sotetsu-fresa-hiroshima"
+          ]
+        },
+        {
+          "id": "hiroshima-morning-sightseeing",
+          "start": "2026-05-30T09:00:00+09:00",
+          "end": "2026-05-30T12:00:00+09:00",
+          "timeLabel": "09:00 - 12:00",
+          "title": "廣島名勝觀光",
+          "category": "sightseeing",
+          "description": "前往原爆紀念館、平和公園等重點地點。",
+          "location": "廣島市區",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+Peace+Memorial+Park",
+          "transportIds": [],
+          "sightseeingIds": [
+            "廣島平和紀念公園",
+            "原爆圓頂館",
+            "廣島城"
+          ]
         },
         {
           "id": "kure-travel-anomaly",
-          "start": "2026-05-30T10:30:00+09:00",
-          "end": "2026-05-30T12:30:00+09:00",
-          "timeLabel": "10:30 - 12:30",
-          "title": "散步 → 前往吳市",
+          "start": "2026-05-30T12:00:00+09:00",
+          "end": "2026-05-30T13:00:00+09:00",
+          "timeLabel": "12:00 - 13:00",
+          "title": "前往吳市",
           "category": "transport",
-          "description": "搭乘 JR 吳線前往吳市集合點。",
+          "description": "搭乘 JR 吳線前往吳市，銜接集合時程。",
           "location": "廣島站 → 吳市",
           "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City+Hiroshima",
-          "transportIds": []
+          "transportIds": [
+            "jr-kure-line-rapid"
+          ]
         },
         {
           "id": "team-assembly",
           "start": "2026-05-30T13:10:00+09:00",
           "end": "2026-05-30T14:00:00+09:00",
           "timeLabel": "13:10 - 14:00",
-          "title": "寺西公園集合 & 午餐補給",
+          "title": "寺西公園部隊集合 & 午餐補給",
           "category": "dining",
           "description": "在吳市集合點與隊伍會合，用餐與裝備檢查。",
           "location": "吳市",
           "mapsUrl": "https://www.google.com/maps/search/?q=寺西公園",
           "transportIds": [],
           "diningIds": [
-            "昔咖啡店",
+            "昴咖啡店",
             "稻中西餐館（伊勢屋）"
           ]
         },
@@ -425,10 +456,13 @@
           "timeLabel": "14:00 - 17:00",
           "title": "Orion XM Anomaly 大戰",
           "category": "activity",
-          "description": "活動日為 2026/05/30，主要 Portal Battle 於 14:00-17:00（JST）進行，3 小時分成 6 個 30 分鐘波段，會部署 Rare Battle Beacons。",
+          "description": "活動主戰時段，依現場任務與通訊調整行進路線。",
           "location": "吳市",
           "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City+Ingress",
-          "transportIds": []
+          "transportIds": [],
+          "otherInfoIds": [
+            "orion-xm-anomaly-2026"
+          ]
         },
         {
           "id": "after-anomaly-rest",
@@ -449,7 +483,7 @@
           "start": "2026-05-30T19:00:00+09:00",
           "end": "2026-05-30T21:00:00+09:00",
           "timeLabel": "19:00 - 21:00",
-          "title": "燒肉吃到飽：Kuikiri Jiro Nagarekawa",
+          "title": "燒肉吃到飽 Yakiniku restaurant Kuikiri Jiro Nagarekawa",
           "category": "dining",
           "description": "晚餐安排燒肉吃到飽。",
           "location": "廣島市區（流川）",
@@ -484,7 +518,10 @@
           "description": "返回飯店休息，準備隔日行程。",
           "location": "廣島市區",
           "mapsUrl": "https://www.google.com/maps/search/?q=Sotetsu+Fresa+Inn+Hiroshima",
-          "transportIds": []
+          "transportIds": [],
+          "otherInfoIds": [
+            "stay-sotetsu-fresa-hiroshima"
+          ]
         }
       ]
     },
@@ -492,7 +529,7 @@
       "id": "day4",
       "label": "D4",
       "dateLabel": "05/31 日",
-      "summary": "Mission Day 吳市巡禮 - MD 挑戰",
+      "summary": "廣島上午自由行、Mission Day 吳市任務、晚間回廣島繼續導覽",
       "items": [
         {
           "id": "hiroshima-free-morning-day4",
@@ -547,7 +584,7 @@
           "timeLabel": "14:10 - 15:00",
           "title": "開始解 Mission Day",
           "category": "activity",
-          "description": "依 Mission Day 路線開始解任務。連結：https://www.google.com/maps/d/edit?mid=1OIhY26LaW0A1fa-XzonCxBMvwKVhCsU&usp=sharing",
+          "description": "依 Mission Day 路線開始解任務。",
           "location": "吳市",
           "mapsUrl": "https://www.google.com/maps/d/edit?mid=1OIhY26LaW0A1fa-XzonCxBMvwKVhCsU&usp=sharing",
           "transportIds": [],
@@ -558,11 +595,11 @@
         {
           "id": "kure-mission-day-free-explore",
           "start": "2026-05-31T15:00:00+09:00",
-          "end": "2026-05-31T22:00:00+09:00",
-          "timeLabel": "15:00 - 22:00",
+          "end": "2026-05-31T17:00:00+09:00",
+          "timeLabel": "15:00 - 17:00",
           "title": "自由探索吳市",
           "category": "activity",
-          "description": "Mission Day 後續自由探索與補完任務，可彈性安排景點與餐飲。",
+          "description": "Mission Day 後續自由探索與補完任務。",
           "location": "吳市",
           "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City",
           "transportIds": [],
@@ -578,6 +615,26 @@
           "otherInfoIds": [
             "mission-day-kure-2026"
           ]
+        },
+        {
+          "id": "day4-return-hiroshima-guided",
+          "start": "2026-05-31T17:00:00+09:00",
+          "end": "2026-05-31T22:00:00+09:00",
+          "timeLabel": "17:00 - 22:00",
+          "title": "回廣島並繼續導覽",
+          "category": "transport",
+          "description": "返回廣島後安排晚間市區導覽與補給。",
+          "location": "吳市 → 廣島市區",
+          "mapsUrl": "https://www.google.com/maps/search/?q=Hiroshima+City",
+          "transportIds": [
+            "jr-kure-line-rapid"
+          ],
+          "sightseeingIds": [
+            "本通商店街"
+          ],
+          "otherInfoIds": [
+            "yakuza-hiroshima"
+          ]
         }
       ]
     },
@@ -585,7 +642,7 @@
       "id": "day5",
       "label": "D5",
       "dateLabel": "06/01 一",
-      "summary": "宮島重點日",
+      "summary": "宮島航路與神社巡禮、晚間返回廣島採買",
       "items": [
         {
           "id": "miyajima-ferry-out",
@@ -604,8 +661,8 @@
         {
           "id": "itsukushima",
           "start": "2026-06-01T10:30:00+09:00",
-          "end": "2026-06-01T16:30:00+09:00",
-          "timeLabel": "10:30 - 16:30",
+          "end": "2026-06-01T17:00:00+09:00",
+          "timeLabel": "10:30 - 17:00",
           "title": "嚴島神社與表參道",
           "category": "sightseeing",
           "description": "依潮汐安排拍攝大鳥居、午餐與伴手禮採買。",
@@ -623,7 +680,7 @@
           ],
           "souvenirIds": [
             "揚げもみじ",
-            "宮島束子"
+            "宮島杓子"
           ],
           "otherInfoIds": [
             "miyajima-souvenirs",
@@ -651,11 +708,14 @@
           "end": "2026-06-01T19:10:00+09:00",
           "timeLabel": "18:30 - 19:10",
           "title": "廣島寶可夢中心",
-          "category": "shopping",
-          "description": "前往寶可夢中心採買限定周邊。",
+          "category": "sightseeing",
+          "description": "前往寶可夢中心採買限定周邊，建議預留排隊時間。",
           "location": "廣島市區",
           "mapsUrl": "https://www.google.com/maps/search/?q=Pokemon+Center+Hiroshima",
-          "transportIds": []
+          "transportIds": [],
+          "sightseeingIds": [
+            "Pokémon Center Hiroshima"
+          ]
         },
         {
           "id": "hiroshima-shopping-day5-night",
@@ -670,6 +730,10 @@
           "transportIds": [],
           "sightseeingIds": [
             "本通商店街"
+          ],
+          "souvenirIds": [
+            "紅葉饅頭",
+            "八天堂奶油麵包"
           ]
         }
       ]
@@ -1042,7 +1106,7 @@
       "area": "尾道本通り商店街",
       "category": "尾道拉麵",
       "reservationStatus": "推薦造訪",
-      "note": "尾道拉麵老舖，清爽鰹魚高湯搭配背脂浮油，麵條平坦Q彈。《人中之龍6》遊戲中的經典場景之一。",
+      "note": "[已停業] 尾道拉麵老舖，清爽鰹魚高湯搭配背脂浮油，麵條平坦Q彈。《人中之龍6》遊戲中的經典場景之一。",
       "websiteUrl": "http://shukaen.com/",
       "mapsUrl": "https://www.google.com/maps/search/?q=%E6%9C%B1%E8%8F%AF%E5%9C%92+%E5%B0%BE%E9%81%93"
     },
@@ -1096,6 +1160,13 @@
       "buyPlan": "D6 回程前",
       "note": "注意保存時間。",
       "mapsUrl": "https://www.google.com/maps/search/?q=%E5%85%AB%E5%A4%A9%E5%A0%82+%E5%BB%A3%E5%B3%B6%E6%A9%9F%E5%A0%B4"
+    },
+    {
+      "name": "8bit皮卡丘",
+      "area": "寶可夢中心",
+      "category": "玩具",
+      "buyPlan": "D4 D5",
+      "note": "限量商品經常搶光。"
     }
   ],
   "sightseeing": [
@@ -1234,6 +1305,16 @@
       "admission": "免費",
       "note": "從千光寺山沿著文學之道或貓之細道散步下山，充滿文學碑與可愛貓咪雕像，適合慢慢散步拍照。",
       "mapsUrl": "https://www.google.com/maps/search/?q=%E7%8C%AB%E3%81%AE%E7%B4%B0%E9%81%93+%E5%B0%BE%E9%81%93"
+    },
+    {
+      "name": "Pokémon Center Hiroshima",
+      "area": "廣島市區",
+      "category": "購物景點",
+      "visitPlan": "D5 晚上",
+      "openingHours": "10:00 - 20:00（依館方公告為準）",
+      "admission": "免費入場",
+      "note": "位於廣島站周邊商業設施，常有地區限定商品，熱門時段可能需排隊。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Pokemon+Center+Hiroshima"
     }
   ],
   "otherInfo": [
@@ -1550,8 +1631,8 @@
       "details": [
         "Mission Day 路線圖連結已提供，建議先分配任務路線與集合點",
         "14:10-15:00：優先解主線任務與打卡點",
-        "15:00-22:00：自由探索吳市並補完剩餘任務",
-        "可搭配大和博物館與周邊商圈安排休息與用餐",
+        "15:00-17:00：自由探索吳市並補完剩餘任務",
+        "17:00 後可回廣島市區銜接晚間導覽與補給",
         "建議保持手機電量、網路與移動電源充足"
       ],
       "note": "Mission Day 地圖： https://www.google.com/maps/d/edit?mid=1OIhY26LaW0A1fa-XzonCxBMvwKVhCsU&usp=sharing",
@@ -1620,6 +1701,24 @@
         "day4",
         "day5",
         "day6"
+      ]
+    },
+    {
+      "id": "orion-xm-anomaly-2026",
+      "category": "活動資訊",
+      "title": "Orion XM Anomaly 2026 吳市作戰資訊",
+      "subtitle": "主戰時段 14:00-17:00（JST）與隊伍協同重點",
+      "location": "吳市（Kure City）",
+      "details": [
+        "主戰時段：14:00-17:00（JST），通常分為多個波段進行",
+        "建議預先分配小隊任務：打點、支援、補給與通訊",
+        "活動中需留意手機電量、網路穩定與移動路線安全",
+        "戰後可接續吳市自由活動，再轉乘 JR 回廣島市區"
+      ],
+      "note": "建議活動前 30 分鐘完成集合與裝備檢查。",
+      "mapsUrl": "https://www.google.com/maps/search/?q=Kure+City+Ingress",
+      "relatedDays": [
+        "day3"
       ]
     }
   ],
