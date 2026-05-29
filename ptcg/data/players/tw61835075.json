@@ -1,13 +1,24 @@
 {
   "id": "tw61835075",
   "url": "https://asia.pokemon-card.com/tw/users/tw61835075/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-21T05:29:25.124Z",
-  "totalEvents": 42,
+  "fetchedAt": "2026-05-29T05:48:36.172Z",
+  "totalEvents": 43,
   "participatedTournaments": [
     {
       "pageNo": 3,
       "rowIndex": 2,
       "activityName": "2025-26 Taiwan Master Ball League TCG Division Senior Category",
+      "eventTime": "06-13-2026 11:00",
+      "eventDateTime": "2026-06-13 11:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 3,
+      "activityName": "Waiting List Entry : 2025-26 Taiwan Master Ball League TCG Division Senior Category",
       "eventTime": "06-13-2026 11:00",
       "eventDateTime": "2026-06-13 11:00",
       "location": "The Pokémon Company",
