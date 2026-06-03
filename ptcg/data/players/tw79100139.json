@@ -1,12 +1,12 @@
 {
   "id": "tw79100139",
   "url": "https://asia.pokemon-card.com/tw/users/tw79100139/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-27T05:13:10.972Z",
-  "totalEvents": 48,
+  "fetchedAt": "2026-06-03T05:16:02.951Z",
+  "totalEvents": 49,
   "participatedTournaments": [
     {
       "pageNo": 3,
-      "rowIndex": 7,
+      "rowIndex": 8,
       "activityName": "2025-26 Taiwan Master Ball League TCG Division Masters Category",
       "eventTime": "06-13-2026 08:00",
       "eventDateTime": "2026-06-13 08:00",
@@ -16,8 +16,19 @@
       "lp": "-"
     },
     {
+      "pageNo": 2,
+      "rowIndex": 20,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-4 (大師組)",
+      "eventTime": "05-30-2026 08:30",
+      "eventDateTime": "2026-05-30 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "489",
+      "lp": "-"
+    },
+    {
       "pageNo": 3,
-      "rowIndex": 8,
+      "rowIndex": 9,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-4 (大師組)-二次抽選",
       "eventTime": "05-30-2026 08:30",
       "eventDateTime": "2026-05-30 08:30",
@@ -28,24 +39,13 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
       "eventTime": "05-09-2026 08:30",
       "eventDateTime": "2026-05-09 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
       "rank": "507",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
-      "rowIndex": 19,
-      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-2 (大師組)",
-      "eventTime": "04-11-2026 08:30",
-      "eventDateTime": "2026-04-11 08:30",
-      "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "443",
       "lp": "-"
     },
     {
@@ -57,6 +57,17 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 7,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-2 (大師組)",
+      "eventTime": "04-11-2026 08:30",
+      "eventDateTime": "2026-04-11 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "443",
       "lp": "-"
     },
     {
