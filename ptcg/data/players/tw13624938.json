@@ -1,8 +1,8 @@
 {
   "id": "tw13624938",
   "url": "https://asia.pokemon-card.com/tw/users/tw13624938/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-06-03T01:44:16.971Z",
-  "totalEvents": 61,
+  "fetchedAt": "2026-06-05T01:41:10.300Z",
+  "totalEvents": 62,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -14,6 +14,17 @@
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 20,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-4 (大師組)",
+      "eventTime": "05-30-2026 08:30",
+      "eventDateTime": "2026-05-30 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "81",
+      "lp": "8"
     },
     {
       "pageNo": 3,
@@ -29,17 +40,6 @@
     {
       "pageNo": 3,
       "rowIndex": 19,
-      "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-3 (大師組)-二次抽選",
-      "eventTime": "05-09-2026 08:30",
-      "eventDateTime": "2026-05-09 08:30",
-      "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 3,
-      "rowIndex": 20,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-3 (大師組)",
       "eventTime": "05-09-2026 08:30",
       "eventDateTime": "2026-05-09 08:30",
@@ -47,6 +47,17 @@
       "address": "台北市中山區林森北路372號6樓之一",
       "rank": "182",
       "lp": "6"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 2,
+      "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-3 (大師組)-二次抽選",
+      "eventTime": "05-09-2026 08:30",
+      "eventDateTime": "2026-05-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
     },
     {
       "pageNo": 2,
