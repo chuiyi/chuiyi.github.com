@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-18T01:39:13.889Z",
+  "updatedAt": "2026-06-19T01:45:38.391Z",
   "TOP128": [
     {
       "id": "masterball-54377-junior",
@@ -12,13 +12,13 @@
       "officialUrl": "https://asia.pokemon-card.com/tw/event-search/54377/",
       "sourceUrl": "",
       "officialId": "54377",
-      "top128File": "",
-      "top128Count": 0,
+      "top128File": "top128_masterball_54377.csv",
+      "top128Count": 128,
       "title": "2025-26 Taiwan Master Ball League TCG Division Junior Category",
       "capacity": "612 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-18T01:39:08.927Z"
+      "updatedAt": "2026-06-19T01:45:27.387Z"
     },
     {
       "id": "masterball-54378-senior",
@@ -31,13 +31,13 @@
       "officialUrl": "https://asia.pokemon-card.com/tw/event-search/54378/",
       "sourceUrl": "",
       "officialId": "54378",
-      "top128File": "",
-      "top128Count": 0,
+      "top128File": "top128_masterball_54378.csv",
+      "top128Count": 128,
       "title": "2025-26 Taiwan Master Ball League TCG Division Senior Category",
       "capacity": "630 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-18T01:39:09.858Z"
+      "updatedAt": "2026-06-19T01:45:33.930Z"
     },
     {
       "id": "masterball-54379-master",
@@ -56,7 +56,7 @@
       "capacity": "3036 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-18T01:39:10.773Z"
+      "updatedAt": "2026-06-19T01:45:35.439Z"
     },
     {
       "id": "masterball-57445-junior",
@@ -75,7 +75,7 @@
       "capacity": "612 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-18T01:39:12.007Z"
+      "updatedAt": "2026-06-19T01:45:36.361Z"
     },
     {
       "id": "masterball-57448-senior",
@@ -94,7 +94,7 @@
       "capacity": "612 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-18T01:39:12.916Z"
+      "updatedAt": "2026-06-19T01:45:37.358Z"
     },
     {
       "id": "masterball-57452-master",
@@ -113,7 +113,7 @@
       "capacity": "3036 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-18T01:39:13.889Z"
+      "updatedAt": "2026-06-19T01:45:38.391Z"
     }
   ]
 }
