@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-24T01:28:15.108Z",
+  "updatedAt": "2026-06-25T01:31:57.834Z",
   "TOP128": [
     {
       "id": "masterball-54377-junior",
@@ -18,7 +18,7 @@
       "capacity": "612 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-24T01:28:03.991Z"
+      "updatedAt": "2026-06-25T01:31:42.128Z"
     },
     {
       "id": "masterball-54378-senior",
@@ -37,7 +37,7 @@
       "capacity": "630 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-24T01:28:10.550Z"
+      "updatedAt": "2026-06-25T01:31:48.405Z"
     },
     {
       "id": "masterball-54379-master",
@@ -50,13 +50,13 @@
       "officialUrl": "https://asia.pokemon-card.com/tw/event-search/54379/",
       "sourceUrl": "",
       "officialId": "54379",
-      "top128File": "",
-      "top128Count": 0,
+      "top128File": "top128_masterball_54379.csv",
+      "top128Count": 128,
       "title": "2025-26 Taiwan Master Ball League TCG Division Masters Category",
       "capacity": "3036 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-24T01:28:11.611Z"
+      "updatedAt": "2026-06-25T01:31:54.039Z"
     },
     {
       "id": "masterball-57445-junior",
@@ -75,7 +75,7 @@
       "capacity": "612 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-24T01:28:13.049Z"
+      "updatedAt": "2026-06-25T01:31:55.879Z"
     },
     {
       "id": "masterball-57448-senior",
@@ -94,7 +94,7 @@
       "capacity": "612 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-24T01:28:14.128Z"
+      "updatedAt": "2026-06-25T01:31:56.822Z"
     },
     {
       "id": "masterball-57452-master",
@@ -113,7 +113,7 @@
       "capacity": "3036 人",
       "venue": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
       "address": "臺中國際會展中心 1樓 臺中市西屯區黎明路三段1000號",
-      "updatedAt": "2026-06-24T01:28:15.108Z"
+      "updatedAt": "2026-06-25T01:31:57.834Z"
     }
   ]
 }
