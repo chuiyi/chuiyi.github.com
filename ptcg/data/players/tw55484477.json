@@ -1,7 +1,7 @@
 {
   "id": "tw55484477",
   "url": "https://asia.pokemon-card.com/tw/users/tw55484477/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-06-19T04:25:00.905Z",
+  "fetchedAt": "2026-06-27T04:34:03.049Z",
   "totalEvents": 40,
   "participatedTournaments": [
     {
@@ -214,8 +214,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 20,
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "02-16-2025 14:00",
       "eventDateTime": "2025-02-16 14:00",
@@ -226,7 +226,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "12-01-2024 14:00",
       "eventDateTime": "2024-12-01 14:00",
@@ -236,8 +236,8 @@
       "lp": "8"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 19,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-17-2024 14:00",
       "eventDateTime": "2024-11-17 14:00",
