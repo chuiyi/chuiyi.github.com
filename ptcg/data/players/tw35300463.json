@@ -1,12 +1,12 @@
 {
   "id": "tw35300463",
   "url": "https://asia.pokemon-card.com/tw/users/tw35300463/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-06-20T02:37:23.479Z",
+  "fetchedAt": "2026-06-28T03:18:36.507Z",
   "totalEvents": 24,
   "participatedTournaments": [
     {
       "pageNo": 2,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "2025-26 Taiwan Master Ball League TCG Division Masters Category",
       "eventTime": "06-13-2026 08:00",
       "eventDateTime": "2026-06-13 08:00",
@@ -38,8 +38,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 2,
+      "pageNo": 1,
+      "rowIndex": 20,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-19-2026 14:00",
       "eventDateTime": "2026-04-19 14:00",
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-14-2026 11:00",
       "eventDateTime": "2026-02-14 11:00",
@@ -60,8 +60,8 @@
       "lp": "8"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 19,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-13-2025 13:30",
       "eventDateTime": "2025-12-13 13:30",
