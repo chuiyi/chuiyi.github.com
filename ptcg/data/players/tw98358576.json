@@ -1,7 +1,7 @@
 {
   "id": "tw98358576",
   "url": "https://asia.pokemon-card.com/tw/users/tw98358576/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-06-22T01:15:18.487Z",
+  "fetchedAt": "2026-06-30T02:25:44.557Z",
   "totalEvents": 42,
   "participatedTournaments": [
     {
@@ -192,8 +192,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "2025-26 Taiwan Premier Ball League TCG Division Junior Category",
       "eventTime": "11-01-2025 11:00",
       "eventDateTime": "2025-11-01 11:00",
@@ -225,8 +225,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 3,
+      "pageNo": 1,
+      "rowIndex": 20,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-27-2025 11:00",
       "eventDateTime": "2025-09-27 11:00",
@@ -237,7 +237,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "2025-26 Taiwan Ultra Ball League Season 1-1 Junior Category",
       "eventTime": "09-20-2025 08:30",
       "eventDateTime": "2025-09-20 08:30",
@@ -248,7 +248,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 2,
+      "rowIndex": 3,
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-14-2025 11:00",
       "eventDateTime": "2025-09-14 11:00",
