@@ -1,0 +1,1091 @@
+{
+  "trip": {
+    "title": "東京之旅",
+    "titleEn": "Tokyo Trip",
+    "subtitle": "東京 6 天 5 夜",
+    "dateRangeLabel": "2026/09/17 - 2026/09/22",
+    "timezone": "亞洲/東京時間",
+    "countdownTarget": "2026-09-17T06:45:00+08:00",
+    "lastUpdated": "2026-07-07"
+  },
+  "overview": {
+    "travelName": "日本東京",
+    "outboundFlight": {
+      "airlineCode": "TR",
+      "airlineName": "SCOOT",
+      "flightNumber": "866",
+      "departureAirport": "台北桃園國際機場 第一航廈",
+      "departureAirportCode": "TPE",
+      "arrivalAirport": "東京成田機場 第一航廈",
+      "arrivalAirportCode": "NRT",
+      "departureTimeLabel": "2026/09/17 06:45",
+      "arrivalTimeLabel": "2026/09/17 11:15",
+      "arrivalDateForVjw": "2026/09/17",
+      "travelMethod": "搭乘航班"
+    },
+    "returnFlight": {
+      "airlineCode": "TR",
+      "airlineName": "SCOOT",
+      "flightNumber": "875",
+      "departureAirport": "東京成田機場 第一航廈",
+      "departureAirportCode": "NRT",
+      "arrivalAirport": "台北桃園國際機場 第一航廈",
+      "arrivalAirportCode": "TPE",
+      "departureTimeLabel": "2026/09/22 21:15",
+      "arrivalTimeLabel": "2026/09/22 23:55"
+    },
+    "stay": {
+      "name": "上野雷索爾酒店 Hotel Resol Ueno",
+      "phone": "+81-3-3844-9269",
+      "postalCode": "110-0005",
+      "prefecture": "東京都",
+      "cityWard": "台東区",
+      "addressLine": "上野7-2-9",
+      "vjw": {
+        "postalCode": "1100005",
+        "prefecture": "TOKYO TO",
+        "cityWard": "TAITO KU",
+        "addressLine": "UENO 7-2-9",
+        "name": "HOTEL RESOL UENO",
+        "phone": "81338449269"
+      },
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel+Resol+Ueno+Tokyo",
+      "notes": "9/17(四)入住 - 9/22(二)退房，共5晚。入住時間15:00-24:00，退房時間11:00前。JR上野駅入谷口徒步1分。已作為 VJW 預設聯絡處。"
+    },
+    "stays": [
+      {
+        "id": "stay-resol-ueno",
+        "label": "9/17 - 9/22（5晚）",
+        "name": "上野雷索爾酒店 Hotel Resol Ueno",
+        "phone": "+81-3-3844-9269",
+        "postalCode": "110-0005",
+        "prefecture": "東京都",
+        "cityWard": "台東区",
+        "addressLine": "上野7-2-9",
+        "vjw": {
+          "postalCode": "1100005",
+          "prefecture": "TOKYO TO",
+          "cityWard": "TAITO KU",
+          "addressLine": "UENO 7-2-9",
+          "name": "HOTEL RESOL UENO",
+          "phone": "81338449269"
+        },
+        "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel+Resol+Ueno+Tokyo",
+        "notes": "9/17(四)入住 - 9/22(二)退房，共5晚。入住時間15:00-24:00，退房時間11:00前。JR上野駅入谷口徒步1分。"
+      }
+    ]
+  },
+  "timelineDays": [
+    {
+      "id": "day1",
+      "label": "D1",
+      "dateLabel": "09/17 四",
+      "summary": "抵達日本 → 龜有雙卡大滿貫 → 新宿購物拿卡",
+      "items": [
+        {
+          "id": "d1-flight-outbound",
+          "start": "2026-09-17T06:45:00+08:00",
+          "end": "2026-09-17T11:15:00+09:00",
+          "timeLabel": "06:45 - 11:15",
+          "title": "TR866 桃園飛東京成田",
+          "category": "flight",
+          "description": "酷航 Scoot 經濟艙，航程約3小時30分。",
+          "location": "TPE → NRT",
+          "transportIds": ["tr866-outbound"]
+        },
+        {
+          "id": "d1-arrival",
+          "start": "2026-09-17T12:00:00+09:00",
+          "end": "2026-09-17T13:30:00+09:00",
+          "timeLabel": "12:00 - 13:30",
+          "title": "入境後前往上野雷索爾酒店",
+          "category": "transport",
+          "description": "落地後入境、領行李，搭 Skyliner 前往上野雷索爾酒店（Hotel Resol Ueno）辦理入住／寄放行李。",
+          "location": "成田機場 → 上野",
+          "otherInfoIds": ["stay-resol-ueno"]
+        },
+        {
+          "id": "d1-kameari-cards",
+          "start": "2026-09-17T14:00:00+09:00",
+          "end": "2026-09-17T15:30:00+09:00",
+          "timeLabel": "14:00 - 15:30",
+          "title": "龜有雙卡大滿貫",
+          "category": "activity",
+          "description": "搭常磐線衝龜有，一次拿齊龜有觀光案內所與ハンドメイドファクトリー マカロン兩張人孔蓋卡（烏龍派出所主題）。",
+          "location": "龜有",
+          "manholeCardIds": ["龜有観光案内所（ゆうろーどサービスカウンター）", "ハンドメイドファクトリー マカロン"]
+        },
+        {
+          "id": "d1-shinjuku",
+          "start": "2026-09-17T16:00:00+09:00",
+          "end": "2026-09-17T18:00:00+09:00",
+          "timeLabel": "16:00 - 18:00",
+          "title": "新宿購物兼拿卡",
+          "category": "shopping",
+          "description": "前往 Lumine Est B2F 的 Canal Jean 幫老婆買包包，買完在車站東南口順路拿新宿觀光案內所的人孔蓋卡。",
+          "location": "新宿",
+          "souvenirIds": ["Canal Jean（Lumine Est新宿店）"],
+          "manholeCardIds": ["新宿観光案内所"]
+        }
+      ]
+    },
+    {
+      "id": "day2",
+      "label": "D2",
+      "dateLabel": "09/18 五",
+      "summary": "上野看展 → 藏前・合羽橋 → 千代田延長夜展",
+      "items": [
+        {
+          "id": "d2-ueno-exhibit",
+          "start": "2026-09-18T09:30:00+09:00",
+          "end": "2026-09-18T11:30:00+09:00",
+          "timeLabel": "09:30 - 11:30",
+          "title": "東京都美術館「百花繚乱」看展 + 拿卡",
+          "category": "sightseeing",
+          "description": "看展前後順路拿東京觀光情報中心（京成上野）的人孔蓋卡。",
+          "location": "上野",
+          "sightseeingIds": ["東京都美術館－百花繚乱～海を越えた江戸絵画"],
+          "manholeCardIds": ["東京観光情報センター 京成上野"]
+        },
+        {
+          "id": "d2-kuramae",
+          "start": "2026-09-18T12:00:00+09:00",
+          "end": "2026-09-18T15:30:00+09:00",
+          "timeLabel": "12:00 - 15:30",
+          "title": "藏前散策 → 合羽橋道具街",
+          "category": "sightseeing",
+          "description": "逛藏前文青店與合羽橋道具街找抹茶碗、刷子，順路拿台東区生涯学習センター的人孔蓋卡。",
+          "location": "藏前 → 淺草合羽橋",
+          "sightseeingIds": ["合羽橋道具街"],
+          "diningIds": ["BARK BAKE & ROAST（藏前）", "FUTO（藏前）", "chigaya kuramae（藏前）", "McLEAN（藏前）", "KURAMAE CANNELE（藏前）"],
+          "manholeCardIds": ["台東区生涯学習センター"]
+        },
+        {
+          "id": "d2-chiyoda-exhibit",
+          "start": "2026-09-18T16:30:00+09:00",
+          "end": "2026-09-18T19:30:00+09:00",
+          "timeLabel": "16:30 - 19:30",
+          "title": "千代田 杉本博司「消亡的攝影」延長夜展",
+          "category": "sightseeing",
+          "description": "東京國立近代美術館，週五延長開放至20:00。若時間充裕可繞去千代田區觀光案內所拿卡（位置較偏，可拿可不拿）。",
+          "location": "千代田",
+          "sightseeingIds": ["東京國立近代美術館－杉本博司「消亡的攝影」"],
+          "manholeCardIds": ["千代田区観光案内所"]
+        }
+      ]
+    },
+    {
+      "id": "day3",
+      "label": "D3",
+      "dateLabel": "09/19 六",
+      "summary": "岡本太郎紀念館 → 澀谷JOJO → 港區拿卡 → 東京鐵塔",
+      "items": [
+        {
+          "id": "d3-okamoto-taro",
+          "start": "2026-09-19T10:00:00+09:00",
+          "end": "2026-09-19T11:30:00+09:00",
+          "timeLabel": "10:00 - 11:30",
+          "title": "岡本太郎紀念館",
+          "category": "sightseeing",
+          "description": "10:00開館，最終入館17:30。",
+          "location": "表參道",
+          "sightseeingIds": ["岡本太郎紀念館"]
+        },
+        {
+          "id": "d3-jojo-world",
+          "start": "2026-09-19T12:30:00+09:00",
+          "end": "2026-09-19T14:30:00+09:00",
+          "timeLabel": "12:30 - 14:30",
+          "title": "THE★JOJO WORLD",
+          "category": "sightseeing",
+          "description": "《JoJo的奇妙冒險》首家常態店。",
+          "location": "澀谷",
+          "sightseeingIds": ["THE★JOJO WORLD"]
+        },
+        {
+          "id": "d3-minato-card",
+          "start": "2026-09-19T15:30:00+09:00",
+          "end": "2026-09-19T17:00:00+09:00",
+          "timeLabel": "15:30 - 17:00",
+          "title": "港區拿美少女戰士卡",
+          "category": "activity",
+          "description": "搭車至田町/三田站，前往札の辻スクエア拿港區觀光資訊中心的人孔蓋卡。",
+          "location": "港區",
+          "manholeCardIds": ["港区観光インフォメーションセンター（札の辻スクエア）"]
+        },
+        {
+          "id": "d3-tokyo-tower",
+          "start": "2026-09-19T18:00:00+09:00",
+          "end": "2026-09-19T20:00:00+09:00",
+          "timeLabel": "18:00 - 20:00",
+          "title": "東京鐵塔",
+          "category": "sightseeing",
+          "description": "週六日開放徒步爬600階，可買鐵塔神射御守，象徵步步高升。",
+          "location": "東京鐵塔",
+          "sightseeingIds": ["東京鐵塔"]
+        }
+      ]
+    },
+    {
+      "id": "day4",
+      "label": "D4",
+      "dateLabel": "09/20 日",
+      "summary": "三軒茶屋拿卡 → 中目黑手帳收集 → 中野JOJO酒吧",
+      "items": [
+        {
+          "id": "d4-sangenjaya",
+          "start": "2026-09-20T10:00:00+09:00",
+          "end": "2026-09-20T12:30:00+09:00",
+          "timeLabel": "10:00 - 12:30",
+          "title": "三軒茶屋拿卡 + 散步午餐",
+          "category": "activity",
+          "description": "東急世田谷線三軒茶屋駅改札前的觀光案內所，拿完卡可順道散步、吃午餐，剛好順路豪德寺。",
+          "location": "三軒茶屋",
+          "sightseeingIds": ["三軒茶屋・豪德寺散策"],
+          "manholeCardIds": ["三軒茶屋観光案内所（SANCHA3「サンチャキューブ」）"]
+        },
+        {
+          "id": "d4-nakameguro",
+          "start": "2026-09-20T13:30:00+09:00",
+          "end": "2026-09-20T16:00:00+09:00",
+          "timeLabel": "13:30 - 16:00",
+          "title": "中目黑 Traveler's Factory + 星巴克",
+          "category": "shopping",
+          "description": "逛文具旗艦店 Traveler's Factory，再到星巴克喝咖啡、看特色人孔蓋。",
+          "location": "中目黑",
+          "souvenirIds": ["Traveler's Factory（中目黑）"],
+          "diningIds": ["中目黑星巴克"]
+        },
+        {
+          "id": "d4-nakano-jojo-bar",
+          "start": "2026-09-20T19:00:00+09:00",
+          "end": "2026-09-20T21:30:00+09:00",
+          "timeLabel": "19:00 - 21:30",
+          "title": "中野 JOJO 酒吧",
+          "category": "dining",
+          "description": "JOJO主題酒吧暢飲。",
+          "location": "中野",
+          "sightseeingIds": ["JOJO酒吧（中野）"]
+        }
+      ]
+    },
+    {
+      "id": "day5",
+      "label": "D5",
+      "dateLabel": "09/21 一",
+      "summary": "東京電玩展（核心行程）→ 下北澤戰鬥陀螺酒吧",
+      "items": [
+        {
+          "id": "d5-makuhari-card",
+          "start": "2026-09-21T09:30:00+09:00",
+          "end": "2026-09-21T10:00:00+09:00",
+          "timeLabel": "09:30 - 10:00",
+          "title": "海濱幕張站出站拿卡",
+          "category": "activity",
+          "description": "出站第一件事先在車站構內拿千葉市幕張觀光情報中心的人孔蓋卡，再進展場。",
+          "location": "海濱幕張",
+          "manholeCardIds": ["千葉市幕張観光情報センター"]
+        },
+        {
+          "id": "d5-tgs",
+          "start": "2026-09-21T10:00:00+09:00",
+          "end": "2026-09-21T17:00:00+09:00",
+          "timeLabel": "10:00 - 17:00",
+          "title": "東京電玩展",
+          "category": "sightseeing",
+          "description": "本次行程的核心行程。",
+          "location": "幕張展覽館",
+          "sightseeingIds": ["東京電玩展"]
+        },
+        {
+          "id": "d5-shimokitazawa",
+          "start": "2026-09-21T19:30:00+09:00",
+          "end": "2026-09-21T22:00:00+09:00",
+          "timeLabel": "19:30 - 22:00",
+          "title": "下北澤戰鬥陀螺酒吧",
+          "category": "dining",
+          "description": "電玩展結束返回市區後前往，需先預約！",
+          "location": "下北澤",
+          "sightseeingIds": ["戰鬥陀螺酒吧（下北澤）"]
+        }
+      ]
+    },
+    {
+      "id": "day6",
+      "label": "D6",
+      "dateLabel": "09/22 二",
+      "summary": "吉祥寺雙卡橫掃 → 上野最後補貨 → 回程",
+      "items": [
+        {
+          "id": "d6-checkout",
+          "start": "2026-09-22T09:00:00+09:00",
+          "end": "2026-09-22T10:30:00+09:00",
+          "timeLabel": "09:00 - 10:30",
+          "title": "退房寄放行李，前往吉祥寺",
+          "category": "transport",
+          "description": "最後一天上午退房，行李寄放飯店後前往吉祥寺。",
+          "location": "上野 → 吉祥寺",
+          "otherInfoIds": ["stay-resol-ueno"]
+        },
+        {
+          "id": "d6-kichijoji-cards",
+          "start": "2026-09-22T11:00:00+09:00",
+          "end": "2026-09-22T13:30:00+09:00",
+          "timeLabel": "11:00 - 13:30",
+          "title": "吉祥寺雙卡大進擊 + 午餐",
+          "category": "activity",
+          "description": "サンロード吉祥寺まち案内所（注意備註提到暫時沒發卡，現場需確認）與武蔵野市観光機構同站一次拿齊兩張卡，並在當地吃午餐。",
+          "location": "吉祥寺",
+          "manholeCardIds": ["サンロード吉祥寺まち案内所", "一般社団法人武蔵野市観光機構"]
+        },
+        {
+          "id": "d6-ueno-toys",
+          "start": "2026-09-22T14:30:00+09:00",
+          "end": "2026-09-22T16:00:00+09:00",
+          "timeLabel": "14:30 - 16:00",
+          "title": "上野 Yamashiro 百年玩具店補貨",
+          "category": "shopping",
+          "description": "回到上野站旁的百年玩具店進行最後免稅補貨。",
+          "location": "上野",
+          "sightseeingIds": ["Yamashiro 百年玩具店"]
+        },
+        {
+          "id": "d6-to-narita",
+          "start": "2026-09-22T17:00:00+09:00",
+          "end": "2026-09-22T19:30:00+09:00",
+          "timeLabel": "17:00 - 19:30",
+          "title": "回飯店拉行李，搭 Skyliner 前往成田機場",
+          "category": "transport",
+          "description": "新小岩第一書林書店的人孔蓋卡因時間較緊湊，本次未排入行程。",
+          "location": "上野 → 成田機場"
+        },
+        {
+          "id": "d6-flight-return",
+          "start": "2026-09-22T21:15:00+09:00",
+          "end": "2026-09-22T23:55:00+08:00",
+          "timeLabel": "21:15 - 23:55",
+          "title": "TR875 東京成田飛桃園",
+          "category": "flight",
+          "description": "酷航 ScootPlus 艙等，航程約3小時40分。",
+          "location": "NRT → TPE",
+          "transportIds": ["tr875-return"]
+        }
+      ]
+    }
+  ],
+  "transports": [
+    {
+      "id": "tr866-outbound",
+      "type": "航班",
+      "status": "已訂票",
+      "title": "TR866 桃園飛東京成田",
+      "route": "台北桃園國際機場(TPE) 第一航廈 → 東京成田機場(NRT) 第一航廈",
+      "depart": "2026/09/17 06:45",
+      "arrive": "2026/09/17 11:15（航程約3小時30分）",
+      "cost": "已包含在機票內",
+      "note": "酷航 Scoot，經濟艙（艙等代號 H），機型 B787-9。"
+    },
+    {
+      "id": "tr875-return",
+      "type": "航班",
+      "status": "已訂票",
+      "title": "TR875 東京成田飛桃園",
+      "route": "東京成田機場(NRT) 第一航廈 → 台北桃園國際機場(TPE) 第一航廈",
+      "depart": "2026/09/22 21:15",
+      "arrive": "2026/09/22 23:55（航程約3小時40分）",
+      "cost": "已包含在機票內",
+      "note": "酷航 ScootPlus（艙等代號 D），機型 B787-9。"
+    }
+  ],
+  "dining": [
+    {
+      "name": "MI CAFETO",
+      "category": "咖啡",
+      "area": "待確認",
+      "reservationStatus": "無需預約",
+      "note": "日本知名精品咖啡品牌，以獨特香檳瓶保存咖啡豆，木村拓哉是忠實顧客並曾在店內專屬咖啡窖存放自己的專屬豆。"
+    },
+    {
+      "name": "Nexpect Coffee（万文堂）",
+      "category": "咖啡",
+      "area": "神田",
+      "reservationStatus": "無需預約",
+      "note": "極簡風格文青咖啡店，木村拓哉曾在個人頻道介紹，手沖與拿鐵皆十分受歡迎。"
+    },
+    {
+      "name": "豆虎咖啡（Mametora）",
+      "category": "咖啡",
+      "area": "中目黑",
+      "reservationStatus": "無需預約",
+      "note": "街邊咖啡店，因木村拓哉的推薦與造訪成為粉絲朝聖熱門打卡點。"
+    },
+    {
+      "name": "TRUFFLE Bakery",
+      "category": "麵包",
+      "area": "待確認",
+      "reservationStatus": "無需預約",
+      "note": "木村拓哉推薦必吃白松露鹽可頌。"
+    },
+    {
+      "name": "BARK BAKE & ROAST（藏前）",
+      "category": "咖啡",
+      "area": "藏前",
+      "reservationStatus": "無需預約",
+      "note": "對面景色佳，大片落地窗，咖啡師Malu推薦，堅持自家烘焙甜點與咖啡豆，毛孩友善。"
+    },
+    {
+      "name": "FUTO（藏前）",
+      "category": "咖啡",
+      "area": "藏前",
+      "reservationStatus": "無需預約",
+      "note": "可以寫信給未來的自己，寫完蓋火漆章。"
+    },
+    {
+      "name": "chigaya kuramae（藏前）",
+      "category": "咖啡/甜點",
+      "area": "藏前",
+      "reservationStatus": "無需預約",
+      "note": "蝴蝶結甜甜圈與咖啡。"
+    },
+    {
+      "name": "McLEAN（藏前）",
+      "category": "漢堡",
+      "area": "藏前",
+      "reservationStatus": "無需預約",
+      "note": "復古文青漢堡店，咖啡師Malu推薦，很多復古角落好拍。"
+    },
+    {
+      "name": "KURAMAE CANNELE（藏前）",
+      "category": "甜點",
+      "area": "藏前",
+      "reservationStatus": "無需預約",
+      "note": "最強可麗露，很適合當精緻伴手禮。"
+    },
+    {
+      "name": "中目黑星巴克",
+      "category": "咖啡",
+      "area": "中目黑",
+      "reservationStatus": "無需預約",
+      "note": "逛完 Traveler's Factory 後可順路喝咖啡、看特色人孔蓋。"
+    }
+  ],
+  "souvenirs": [
+    {
+      "name": "一保堂茶舖（丸之內店）",
+      "category": "抹茶粉",
+      "area": "丸之內",
+      "buyPlan": "待買",
+      "note": "300年歷史京都老茶舖，抹茶粉分級清楚（如「嘉辰之昔」、「青雲」），也能買到茶筅與茶碗配件。"
+    },
+    {
+      "name": "中村藤吉本店（銀座GINZA SIX店）",
+      "category": "抹茶粉",
+      "area": "銀座",
+      "buyPlan": "待買",
+      "note": "知名宇治抹茶品牌，伴手禮區販售高品質罐裝抹茶粉、即溶抹茶及相關茶具。"
+    },
+    {
+      "name": "AKOMEYA TOKYO／茅乃舍",
+      "category": "抹茶組",
+      "area": "銀座・新宿等",
+      "buyPlan": "待買",
+      "note": "質感選物店，常推出「野點抹茶組」（小茶碗、茶筅、抹茶粉組合包），適合新手整套購入。"
+    },
+    {
+      "name": "Canal Jean（Lumine Est新宿店）",
+      "category": "服飾/包包",
+      "area": "新宿",
+      "buyPlan": "待買",
+      "note": "地址：東京都新宿區新宿3-38-1 Lumine Est B2F。Ken老婆Ivy推薦的包包。"
+    },
+    {
+      "name": "Traveler's Factory（中目黑）",
+      "category": "文具",
+      "area": "中目黑",
+      "buyPlan": "待買",
+      "note": "人氣手帳品牌旗艦店。"
+    }
+  ],
+  "sightseeing": [
+    {
+      "name": "東京國立近代美術館－杉本博司「消亡的攝影」",
+      "category": "展覽",
+      "area": "千代田",
+      "visitPlan": "已排入 Day2",
+      "openingHours": "10:00-17:00（週五、週六延長至20:00，週一休館）",
+      "note": "地址：東京都千代田區北之丸公園3-1。週五週六可看到20:00。",
+      "websiteUrl": "https://www.momat.go.jp/exhibitions/569"
+    },
+    {
+      "name": "東京都美術館－百花繚乱～海を越えた江戸絵画",
+      "category": "展覽",
+      "area": "上野",
+      "visitPlan": "已排入 Day2",
+      "openingHours": "週五 9:30-20:00（其他日開放時間待確認）",
+      "admission": "一般2,300日圓（2,100日圓）／大學生·專門學校生1,300日圓（1,100日圓）",
+      "note": "地址：東京都台東區上野公園8-36。東京都美術館開館100周年紀念展。",
+      "websiteUrl": "https://www.tobikan.jp/tw/exhibition/2026_britishmuseum.html"
+    },
+    {
+      "name": "森美術館－Ron Mueck 100顆骷顱展",
+      "category": "展覽",
+      "area": "六本木",
+      "visitPlan": "未排入行程，可視情況安排",
+      "openingHours": "除週二外開到22:00",
+      "note": "地址：東京都港區六本木6-10-1 六本木新城森大廈53F。",
+      "websiteUrl": "https://art-view.roppongihills.com/tw/"
+    },
+    {
+      "name": "岡本太郎紀念館",
+      "category": "紀念館",
+      "area": "表參道",
+      "visitPlan": "已排入 Day3",
+      "openingHours": "10:00-18:00（最終入館17:30），週二休（國定假日照常營業），另休正月12/28-1/4及檢查日",
+      "admission": "一般900日圓、大學生·高中生700日圓、中學生以下免費",
+      "note": "地址：東京都港區南青山6-1-19。"
+    },
+    {
+      "name": "東京鐵塔",
+      "category": "景點",
+      "area": "東京鐵塔周邊",
+      "visitPlan": "已排入 Day3",
+      "note": "週六日開放徒步爬600階，可買鐵塔神射御守，象徵步步高升。"
+    },
+    {
+      "name": "THE★JOJO WORLD",
+      "category": "主題店",
+      "area": "澀谷",
+      "visitPlan": "已排入 Day3",
+      "note": "《JoJo的奇妙冒險》首家常態店。"
+    },
+    {
+      "name": "JOJO酒吧（中野）",
+      "category": "主題酒吧",
+      "area": "中野",
+      "visitPlan": "已排入 Day4"
+    },
+    {
+      "name": "秋葉原神社",
+      "category": "神社",
+      "area": "秋葉原",
+      "visitPlan": "未排入行程，可視情況安排",
+      "note": "可求電子御守。"
+    },
+    {
+      "name": "合羽橋道具街",
+      "category": "商店街",
+      "area": "淺草/藏前",
+      "visitPlan": "已排入 Day2",
+      "note": "想找抹茶碗跟刷子。附近有淺草アトム堂本舗 TEZUKA OSAMU SHOP & CAFE（7/5開幕，無店休日，地址：東京都台東区浅草2丁目7-13 淺草西參道商店街）。"
+    },
+    {
+      "name": "東京電玩展",
+      "category": "展覽活動",
+      "area": "幕張",
+      "visitPlan": "已排入 Day5",
+      "note": "本次行程的核心行程。"
+    },
+    {
+      "name": "戰鬥陀螺酒吧（下北澤）",
+      "category": "主題酒吧",
+      "area": "下北澤",
+      "visitPlan": "已排入 Day5",
+      "note": "需先預約！"
+    },
+    {
+      "name": "三軒茶屋・豪德寺散策",
+      "category": "散策",
+      "area": "三軒茶屋",
+      "visitPlan": "已排入 Day4",
+      "note": "三軒茶屋和豪德寺路線剛好順路。"
+    },
+    {
+      "name": "Yamashiro 百年玩具店",
+      "category": "景點/購物",
+      "area": "上野",
+      "visitPlan": "已排入 Day6",
+      "note": "可退稅。",
+      "mapsUrl": "https://maps.app.goo.gl/SmLEBn4bQaYJ8Cy1A?g_st=ac"
+    }
+  ],
+  "manholeCards": [
+    {
+      "name": "龜有観光案内所（ゆうろーどサービスカウンター）",
+      "category": "常設限定",
+      "area": "龜有",
+      "collectStatus": "待收集（卡片1）",
+      "distributionPlace": "東京都葛飾区亀有3-21-6",
+      "distributionHours": "11:00～19:00（每月第3個週二休，遇假日順延翌平日）",
+      "manholeLocation": "《烏龍派出所》兩津勘吉設計（葛飾區 X001）",
+      "note": "Day1下午前往，與隔壁マカロン店為同一張卡的兩個發放點，可視為備援不是兩種設計。",
+      "websiteUrl": "http://www.youroad.com/index.html",
+      "image": "images/manhole-cards/kochikame.png",
+      "imageCaption": "葛飾區官方卡面（來源：葛飾區公式網站）"
+    },
+    {
+      "name": "ハンドメイドファクトリー マカロン",
+      "category": "常設限定",
+      "area": "龜有",
+      "collectStatus": "待收集（卡片2）",
+      "distributionPlace": "東京都葛飾区亀有3-35-3",
+      "distributionHours": "9:45～17:45（每月第3個週二休；週日不開）",
+      "manholeLocation": "《烏龍派出所》兩津勘吉設計（葛飾區 X001，與龜有觀光案內所同款）",
+      "note": "查證後這裡發的其實是跟龜有觀光案內所「同一張卡」，週日不開，去之前請再次確認是否還有配發。",
+      "image": "images/manhole-cards/kochikame.png",
+      "imageCaption": "葛飾區官方卡面（來源：葛飾區公式網站）"
+    },
+    {
+      "name": "新宿観光案内所",
+      "category": "常設限定",
+      "area": "新宿",
+      "collectStatus": "待收集（卡片3）",
+      "distributionPlace": "東京都新宿区新宿3-37-2",
+      "distributionHours": "10:00～19:00",
+      "manholeLocation": "新宿限定「シン・ゴジラ」設計（新宿區 O001）",
+      "note": "Day1傍晚買完 Canal Jean 包包後順路拿。",
+      "websiteUrl": "https://www.kanko-shinjuku.jp/office/-/index.html",
+      "image": "images/manhole-cards/shin-godzilla.jpg",
+      "imageCaption": "卡面圖片來源：anythingsearch.info 人孔蓋卡資料庫"
+    },
+    {
+      "name": "東京観光情報センター 京成上野",
+      "category": "常設限定",
+      "area": "上野",
+      "collectStatus": "待收集（卡片4）",
+      "distributionPlace": "東京都台東区上野公園1-60（京成上野駅改札口前）",
+      "distributionHours": "9:30～18:30",
+      "manholeLocation": "「東京23區」共通紀念設計（C001，非台東區單一設計）",
+      "note": "Day2上午看展前後順路拿；這張是23區共通款，不是台東區的《さらざんまい》款（那張在卡片5）。",
+      "image": "images/manhole-cards/tokyo23.jpg",
+      "imageCaption": "卡面圖片來源：anythingsearch.info 人孔蓋卡資料庫"
+    },
+    {
+      "name": "台東区生涯学習センター",
+      "category": "常設限定（特別版已配布終了）",
+      "area": "淺草",
+      "collectStatus": "待收集（卡片5）",
+      "distributionPlace": "東京都台東区西浅草3-25-16",
+      "distributionHours": "9:00～20:00（每月第1、3、5週一休，遇假日順延；年末年始12/29～1/3休）",
+      "manholeLocation": "《皿三昧》設計（台東區 Q001）",
+      "note": "就在合羽橋道具街附近；特別版（金色）已配布終了，僅剩一般版（藍色）。",
+      "image": "images/manhole-cards/sarazanmai.jpg",
+      "imageCaption": "卡面圖片來源：anythingsearch.info 人孔蓋卡資料庫"
+    },
+    {
+      "name": "千代田区観光案内所",
+      "category": "常設限定",
+      "area": "千代田",
+      "collectStatus": "待收集（卡片6，彈性）",
+      "distributionPlace": "東京都千代田区九段南1-6-17 千代田会館1階",
+      "distributionHours": "10:00～18:00（第4個週日、年末年始休）",
+      "manholeLocation": "《原子小金剛》設計（千代田區 F001，與秋葉原アキバインフォ同款）",
+      "note": "位置較偏且關得早，看杉本博司展前若時間充裕再繞去拿；與卡片12（秋葉原）是同一張卡，二選一拿即可。",
+      "websiteUrl": "https://visit-chiyoda.tokyo/",
+      "image": "images/manhole-cards/astroboy.jpg",
+      "imageCaption": "卡面圖片來源：anythingsearch.info 人孔蓋卡資料庫"
+    },
+    {
+      "name": "港区観光インフォメーションセンター（札の辻スクエア）",
+      "category": "常設限定",
+      "area": "港區",
+      "collectStatus": "待收集（卡片7，建議現場確認庫存）",
+      "distributionPlace": "東京都港区芝五丁目36番4号 札の辻スクエア1階",
+      "distributionHours": "9:00～17:00",
+      "manholeLocation": "《美少女戰士》& 燕尾服蒙面俠設計（日本全國首發美少女戰士主題人孔蓋）",
+      "note": "查證發現這張卡2024年上市後曾一度配布數量用罄，是否已補貨、行程當下庫存都建議先電話或官網確認。",
+      "websiteUrl": "https://visit-minato-city.tokyo/ja-jp/places/2774",
+      "image": "images/manhole-cards/sailormoon.jpg",
+      "imageCaption": "卡面圖片來源：美少女戰士30周年官方網站"
+    },
+    {
+      "name": "三軒茶屋観光案内所（SANCHA3「サンチャキューブ」）",
+      "category": "常設限定",
+      "area": "三軒茶屋",
+      "collectStatus": "待收集（卡片8）",
+      "distributionPlace": "東京都世田谷区太子堂4-1-1（東急世田谷線三軒茶屋駅改札前）",
+      "distributionHours": "10:00～18:00（年末年始12/29～1/3休）",
+      "manholeLocation": "超人力霸王（Ultraman）剪影設計（世田谷區 G001）",
+      "note": "Day4上午拿，拿完可在三軒茶屋悠閒散步午餐。",
+      "websiteUrl": "https://www.kanko-setagaya.jp/?p=we-page-entry&spot=265539&nav=none",
+      "image": "images/manhole-cards/ultraman.jpg",
+      "imageCaption": "卡面圖片來源：anythingsearch.info 人孔蓋卡資料庫"
+    },
+    {
+      "name": "千葉市幕張観光情報センター",
+      "category": "常設限定",
+      "area": "幕張",
+      "collectStatus": "待收集（卡片9）",
+      "distributionPlace": "千葉市美浜区ひび野2-1（JR海浜幕張駅構内）",
+      "distributionHours": "平日10:00～18:00／假日10:00～17:00（年末年始12/28～1/3休）",
+      "manholeLocation": "初音未來（初音ミク）× 千葉市100周年紀念設計（千葉市 B001）",
+      "note": "Day5東京電玩展當天，出站第一件事先拿卡再進展場。",
+      "image": "images/manhole-cards/hatsune-miku.jpg",
+      "imageCaption": "卡面圖片來源：anythingsearch.info 人孔蓋卡資料庫"
+    },
+    {
+      "name": "サンロード吉祥寺まち案内所",
+      "category": "常設限定",
+      "area": "吉祥寺",
+      "collectStatus": "備選（查證已確認缺貨，需現場再問）",
+      "distributionPlace": "武蔵野市吉祥寺本町1-15-2",
+      "distributionHours": "平日8:30～17:00／假日11:00～18:00（年末年始12/31～1/3除外）",
+      "manholeLocation": "「ムーバス」（Mubus社區巴士）設計（武蔵野市 C001，2026/4/1才新推出）",
+      "note": "查證確認：這張2026/4/1才開始配布的新卡，截至2026/4/5官方資料庫已顯示「在庫なし」（缺貨），與你原筆記「暫時沒發了」吻合，Day6現場請務必先確認是否已補貨。",
+      "image": "images/manhole-cards/mubus.jpg",
+      "imageCaption": "卡面圖片來源：武藏野市公式網站"
+    },
+    {
+      "name": "一般社団法人武蔵野市観光機構",
+      "category": "常設限定",
+      "area": "吉祥寺",
+      "collectStatus": "待收集（卡片11）",
+      "distributionPlace": "東京都武蔵野市吉祥寺本町1-10-7（武蔵野商工会館1階）",
+      "distributionHours": "9:30～17:30（年末年始休；配布開始時間可能因人潮提早）",
+      "manholeLocation": "《城市獵人》冴羽獠×槇村香設計（武蔵野市 A001）",
+      "note": "與サンロード吉祥寺まち案内所是不同兩張卡（這張是城市獵人，那張是ムーバス），Day6可一次拿齊。",
+      "websiteUrl": "https://musashino-kanko.com/",
+      "image": "images/manhole-cards/cityhunter.jpg",
+      "imageCaption": "卡面圖片來源：anythingsearch.info 人孔蓋卡資料庫"
+    },
+    {
+      "name": "アキバインフォ（秋葉原UDX2階）",
+      "category": "常設限定",
+      "area": "秋葉原",
+      "collectStatus": "備選（未排入行程）",
+      "distributionPlace": "東京都千代田区外神田4-14-1",
+      "distributionHours": "11:00～17:30（每週一休，遇假日順延翌平日）",
+      "manholeLocation": "《原子小金剛》設計（千代田區 F001，與千代田區觀光案內所同款）",
+      "note": "與卡片6（千代田區觀光案內所）是同一張卡，目前6天行程未安排時間去拿，可視情況二選一彈性加入。",
+      "image": "images/manhole-cards/astroboy.jpg",
+      "imageCaption": "卡面圖片來源：anythingsearch.info 人孔蓋卡資料庫"
+    },
+    {
+      "name": "第一書林（新小岩北口店）",
+      "category": "常設限定",
+      "area": "新小岩",
+      "collectStatus": "備選（未排入行程）",
+      "distributionPlace": "東京都葛飾区西新小岩1-2-11 喜久屋ビル1F",
+      "distributionHours": "平日・週六10:00～21:00／週日・假日10:00～20:00",
+      "manholeLocation": "Monchhichi 設計（葛飾區，2026/4/1才從柴又観光案内所改到這裡發放）",
+      "note": "需在書店購物結帳後於收銀台領取；因本次行程時間較緊湊，暫不排入。",
+      "image": "images/manhole-cards/monchhichi.png",
+      "imageCaption": "葛飾區官方卡面（來源：葛飾區公式網站）"
+    }
+  ],
+  "otherInfo": [
+    {
+      "id": "stay-resol-ueno",
+      "category": "住宿資訊",
+      "title": "上野雷索爾酒店 Hotel Resol Ueno",
+      "subtitle": "上野商務飯店・9/17-9/22（5晚）",
+      "location": "〒110-0005 東京都台東区上野7-2-9",
+      "details": [
+        "電話：+81-3-3844-9269",
+        "Check-in：15:00-24:00 / Check-out：11:00前",
+        "已作為 VJW 預設聯絡處",
+        "JR上野駅入谷口徒步約1分鐘",
+        "全程6天5夜都住這裡，不用換飯店"
+      ],
+      "note": "整趟行程唯一住宿地點，位於上野車站旁，方便每日往返各區域景點。VJW 入境表格已填寫此處聯絡資訊。",
+      "isVjwContact": true,
+      "websiteUrl": "https://en.www.resol-hotel.jp/ueno/",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel+Resol+Ueno+Tokyo",
+      "relatedDays": ["day1", "day2", "day3", "day4", "day5", "day6"]
+    }
+  ],
+  "areaMapPoints": [],
+  "checklist": [
+    {
+      "title": "隨身物品",
+      "id": "personal-items",
+      "children": [
+        {
+          "id": "documents-money",
+          "title": "證件與金錢",
+          "children": [
+            {
+              "id": "wallet-short",
+              "title": "短夾",
+              "children": [
+                {
+                  "id": "id-card",
+                  "title": "身分證"
+                },
+                {
+                  "id": "health-insurance-card",
+                  "title": "健保卡"
+                },
+                {
+                  "id": "passport-plus",
+                  "title": "護照"
+                },
+                {
+                  "id": "credit-cards",
+                  "title": "信用卡（兩張以上保險）"
+                },
+                {
+                  "id": "jpy-cash",
+                  "title": "日幣（帶?萬）"
+                },
+                {
+                  "id": "suica",
+                  "title": "交通卡（Suica）"
+                }
+              ]
+            },
+            {
+              "id": "wallet-long",
+              "title": "長夾",
+              "children": [
+                {
+                  "id": "credit-card-backup",
+                  "title": "備用信用卡"
+                },
+                {
+                  "id": "cash-backup",
+                  "title": "備用金錢"
+                },
+                {
+                  "id": "photos-2inch",
+                  "title": "2吋照片x2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "electronics",
+          "title": "電子設備與3C用品",
+          "children": [
+            {
+              "id": "sim-card",
+              "title": "網卡或eSim"
+            },
+            {
+              "id": "3c-portable",
+              "title": "隨身3C用品",
+              "children": [
+                {
+                  "id": "power-bank-10000",
+                  "title": "行動電源（10000）"
+                },
+                {
+                  "id": "dji-pocket-3",
+                  "title": "隨身錄影機（DJI pocket 3）"
+                },
+                {
+                  "id": "go-3s",
+                  "title": "運動相機（Go 3S）"
+                },
+                {
+                  "id": "camera",
+                  "title": "相機（A7C2/GR3x/GR4等等）"
+                },
+                {
+                  "id": "camera-battery",
+                  "title": "相機對應電池"
+                },
+                {
+                  "id": "drone-battery",
+                  "title": "空拍機電池"
+                },
+                {
+                  "id": "camera-memory-card",
+                  "title": "相機記憶卡"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "luggage",
+      "title": "行李箱與配件",
+      "children": [
+        {
+          "id": "suitcase",
+          "title": "行李箱",
+          "children": [
+            {
+              "id": "3c-bag-m",
+              "title": "3C用品（M包）",
+              "children": [
+                {
+                  "id": "usb-hub",
+                  "title": "USB排插（或多孔插頭）"
+                },
+                {
+                  "id": "charging-cables",
+                  "title": "充電線"
+                },
+                {
+                  "id": "camera-charger",
+                  "title": "相機電池充電器"
+                },
+                {
+                  "id": "drone",
+                  "title": "空拍機"
+                }
+              ]
+            },
+            {
+              "id": "pokemon-card",
+              "title": "寶可夢卡牌一副"
+            },
+            {
+              "id": "hygiene-medicine",
+              "title": "個人衛生用品與藥品",
+              "children": [
+                {
+                  "id": "hygiene-bag-s",
+                  "title": "個人衛生用品（S包）",
+                  "children": [
+                    {
+                      "id": "medicine-cold-stomach",
+                      "title": "個人藥品（感冒藥/胃藥）"
+                    },
+                    {
+                      "id": "medicine-refresh",
+                      "title": "提神藥品（萬金油/綠油精/白花油）"
+                    },
+                    {
+                      "id": "tissue",
+                      "title": "面紙"
+                    },
+                    {
+                      "id": "sanitary-pads",
+                      "title": "棉棉"
+                    }
+                  ]
+                },
+                {
+                  "id": "clothing",
+                  "title": "衣物用品（L包）",
+                  "children": [
+                    {
+                      "id": "clothes-sets",
+                      "title": "對應天數的衣物（5套短袖+薄外套+5內褲+5襪子）"
+                    },
+                    {
+                      "id": "sleepwear",
+                      "title": "睡衣睡褲"
+                    },
+                    {
+                      "id": "laundry-bag",
+                      "title": "可摺疊衣物袋（髒衣服）"
+                    },
+                    {
+                      "id": "toiletries-simple",
+                      "title": "簡易梳洗用品（盥洗用品袋）"
+                    },
+                    {
+                      "id": "toothbrush",
+                      "title": "牙刷"
+                    },
+                    {
+                      "id": "towel",
+                      "title": "毛巾"
+                    },
+                    {
+                      "id": "facial-cleanser",
+                      "title": "盥洗用品（洗面乳）"
+                    }
+                  ]
+                },
+                {
+                  "id": "cosmetics",
+                  "title": "化妝保養品",
+                  "children": [
+                    {
+                      "id": "makeup-bag",
+                      "title": "化妝包"
+                    },
+                    {
+                      "id": "skincare",
+                      "title": "保養品"
+                    },
+                    {
+                      "id": "face-mask",
+                      "title": "面膜"
+                    },
+                    {
+                      "id": "contact-lenses",
+                      "title": "隱形眼鏡"
+                    },
+                    {
+                      "id": "contact-solution",
+                      "title": "隱形眼鏡藥水"
+                    },
+                    {
+                      "id": "contact-case",
+                      "title": "隱形眼鏡盒"
+                    },
+                    {
+                      "id": "foundation",
+                      "title": "粉底"
+                    },
+                    {
+                      "id": "powder",
+                      "title": "粉餅"
+                    },
+                    {
+                      "id": "makeup-remover",
+                      "title": "卸粧用品"
+                    },
+                    {
+                      "id": "moisturizer",
+                      "title": "保濕乳液"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "umbrella",
+              "title": "雨傘"
+            },
+            {
+              "id": "luggage-scale",
+              "title": "行李秤"
+            },
+            {
+              "id": "weight-check",
+              "title": "檢查重量上限（23KG內）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "booking-confirmation",
+      "title": "預約與確認事項",
+      "children": [
+        {
+          "id": "passport-valid",
+          "title": "護照有效期確認"
+        },
+        {
+          "id": "vjw-check",
+          "title": "VJW 資料檢查"
+        },
+        {
+          "id": "insurance-info",
+          "title": "旅平險與保險資訊"
+        },
+        {
+          "id": "flight-booking",
+          "title": "航班訂位資料"
+        },
+        {
+          "id": "hotel-booking",
+          "title": "住宿預約資料"
+        }
+      ]
+    }
+  ],
+  "markdown": {
+    "overview": "posts/travel/tokyo/overview.md",
+    "others": "posts/travel/tokyo/other-info.md"
+  }
+}

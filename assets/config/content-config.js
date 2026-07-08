@@ -29,6 +29,15 @@ const MOVIE_FILES = [
 // 旅行筆記檔案列表
 const TRAVEL_FILES = [
     {
+        file: 'posts/travel/tokyo-trip-2026.md',
+        id: 'tokyo-trip-2026',
+        featured: true,
+        title: '東京之旅 2026',
+        location: '日本 | 東京',
+        date: '2026年9月17日 - 9月22日',
+        description: '以互動式旅遊中樞管理大綱、時程表、交通、餐飲、伴手禮與行前確認。'
+    },
+    {
         file: 'posts/travel/hiroshima-trip-2026.md',
         id: 'hiroshima-trip-2026',
         featured: true,

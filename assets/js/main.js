@@ -689,12 +689,15 @@ async function createUnifiedMovieCard(movie) {
     return col;
 }
 
+const TRAVEL_HUB_URLS = {
+    'hiroshima-trip-2026': 'posts/travel/hiroshima/',
+    'tokyo-trip-2026': 'posts/travel/tokyo/'
+};
+
 // 創建統一的旅行卡片（Flow Layout）
 async function createUnifiedTravelCard(travel) {
     const col = document.createElement('div');
-    const newPageUrl = travel.id === 'hiroshima-trip-2026'
-        ? 'posts/travel/hiroshima/'
-        : `travel.html?file=${travel.id}`;
+    const newPageUrl = TRAVEL_HUB_URLS[travel.id] || `travel.html?file=${travel.id}`;
     
     // 從日期中提取年月
     const dateMatch = travel.date.match(/(\d{4})年(\d{1,2})月/);
