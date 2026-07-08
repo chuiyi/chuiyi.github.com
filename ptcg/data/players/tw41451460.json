@@ -1,9 +1,20 @@
 {
   "id": "tw41451460",
   "url": "https://asia.pokemon-card.com/tw/users/tw41451460/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-29T02:30:18.461Z",
-  "totalEvents": 35,
+  "fetchedAt": "2026-07-07T03:28:40.677Z",
+  "totalEvents": 36,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 16,
+      "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Masters Category",
+      "eventTime": "06-14-2026 08:00",
+      "eventDateTime": "2026-06-14 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 14,
@@ -12,8 +23,8 @@
       "eventDateTime": "2026-06-13 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
-      "lp": "-"
+      "rank": "39",
+      "lp": "15"
     },
     {
       "pageNo": 2,

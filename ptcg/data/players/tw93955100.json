@@ -1,9 +1,20 @@
 {
   "id": "tw93955100",
   "url": "https://asia.pokemon-card.com/tw/users/tw93955100/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-06-03T01:35:49.247Z",
-  "totalEvents": 105,
+  "fetchedAt": "2026-07-05T01:22:55.335Z",
+  "totalEvents": 106,
   "participatedTournaments": [
+    {
+      "pageNo": 6,
+      "rowIndex": 6,
+      "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Masters Category",
+      "eventTime": "06-14-2026 08:00",
+      "eventDateTime": "2026-06-14 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 6,
       "rowIndex": 5,
@@ -12,8 +23,8 @@
       "eventDateTime": "2026-06-13 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
-      "lp": "-"
+      "rank": "13",
+      "lp": "50"
     },
     {
       "pageNo": 5,
@@ -23,8 +34,8 @@
       "eventDateTime": "2026-05-30 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
-      "lp": "-"
+      "rank": "48",
+      "lp": "10"
     },
     {
       "pageNo": 6,
@@ -715,7 +726,7 @@
       "eventTime": "04-13-2025 14:00",
       "eventDateTime": "2025-04-13 14:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "58",
       "lp": "-"
     },
@@ -770,7 +781,7 @@
       "eventTime": "03-23-2025 14:00",
       "eventDateTime": "2025-03-23 14:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "-",
       "lp": "-"
     },
@@ -847,7 +858,7 @@
       "eventTime": "02-09-2025 15:00",
       "eventDateTime": "2025-02-09 15:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "4",
       "lp": "12"
     },

@@ -1,15 +1,15 @@
 {
   "id": "tw63041398",
   "url": "https://asia.pokemon-card.com/tw/users/tw63041398/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-30T02:39:11.054Z",
-  "totalEvents": 46,
+  "fetchedAt": "2026-07-08T03:47:08.534Z",
+  "totalEvents": 47,
   "participatedTournaments": [
     {
       "pageNo": 3,
-      "rowIndex": 3,
-      "activityName": "2025-26 Taiwan Master Ball League TCG Division Junior Category",
-      "eventTime": "06-13-2026 11:00",
-      "eventDateTime": "2026-06-13 11:00",
+      "rowIndex": 6,
+      "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Junior Category",
+      "eventTime": "06-14-2026 09:30",
+      "eventDateTime": "2026-06-14 09:30",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
@@ -17,18 +17,29 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 6,
+      "rowIndex": 7,
+      "activityName": "2025-26 Taiwan Master Ball League TCG Division Junior Category",
+      "eventTime": "06-13-2026 11:00",
+      "eventDateTime": "2026-06-13 11:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "17",
+      "lp": "25"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 5,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-4 (孩童組)",
       "eventTime": "05-30-2026 08:30",
       "eventDateTime": "2026-05-30 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
-      "lp": "-"
+      "rank": "23",
+      "lp": "15"
     },
     {
       "pageNo": 3,
-      "rowIndex": 5,
+      "rowIndex": 4,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季 3-3 (孩童組)",
       "eventTime": "05-09-2026 08:30",
       "eventDateTime": "2026-05-09 08:30",
@@ -39,7 +50,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 4,
+      "rowIndex": 3,
       "activityName": "2025-26 臺灣高級球聯盟賽 賽季3-2 (孩童組)",
       "eventTime": "04-11-2026 08:30",
       "eventDateTime": "2026-04-11 08:30",

@@ -1,13 +1,35 @@
 {
   "id": "tw56036096",
   "url": "https://asia.pokemon-card.com/tw/users/tw56036096/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-29T06:01:12.909Z",
-  "totalEvents": 39,
+  "fetchedAt": "2026-07-08T01:42:35.212Z",
+  "totalEvents": 41,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 20,
+      "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Senior Category",
+      "eventTime": "06-14-2026 09:30",
+      "eventDateTime": "2026-06-14 09:30",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 17,
       "activityName": "2025-26 Taiwan Master Ball League TCG Division Senior Category",
+      "eventTime": "06-13-2026 11:00",
+      "eventDateTime": "2026-06-13 11:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "33",
+      "lp": "15"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 1,
+      "activityName": "Waiting List Entry : 2025-26 Taiwan Master Ball League TCG Division Senior Category",
       "eventTime": "06-13-2026 11:00",
       "eventDateTime": "2026-06-13 11:00",
       "location": "The Pokémon Company",
@@ -18,13 +40,13 @@
     {
       "pageNo": 2,
       "rowIndex": 19,
-      "activityName": "Waiting List Entry : 2025-26 Taiwan Master Ball League TCG Division Senior Category",
-      "eventTime": "06-13-2026 11:00",
-      "eventDateTime": "2026-06-13 11:00",
-      "location": "The Pokémon Company",
-      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
-      "lp": "-"
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-23-2026 10:30",
+      "eventDateTime": "2026-05-23 10:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
+      "rank": "62",
+      "lp": "3"
     },
     {
       "pageNo": 2,
@@ -99,7 +121,7 @@
       "eventTime": "02-15-2026 14:00",
       "eventDateTime": "2026-02-15 14:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "-",
       "lp": "-"
     },

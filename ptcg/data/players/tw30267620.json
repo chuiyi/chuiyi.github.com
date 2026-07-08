@@ -1,9 +1,20 @@
 {
   "id": "tw30267620",
   "url": "https://asia.pokemon-card.com/tw/users/tw30267620/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-29T05:32:11.708Z",
-  "totalEvents": 77,
+  "fetchedAt": "2026-07-08T00:57:28.040Z",
+  "totalEvents": 79,
   "participatedTournaments": [
+    {
+      "pageNo": 4,
+      "rowIndex": 19,
+      "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Senior Category",
+      "eventTime": "06-14-2026 09:30",
+      "eventDateTime": "2026-06-14 09:30",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 4,
       "rowIndex": 14,
@@ -12,8 +23,8 @@
       "eventDateTime": "2026-06-13 11:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
-      "lp": "-"
+      "rank": "9",
+      "lp": "50"
     },
     {
       "pageNo": 4,
@@ -23,8 +34,19 @@
       "eventDateTime": "2026-05-30 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
+      "rank": "39",
       "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 18,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "05-23-2026 10:30",
+      "eventDateTime": "2026-05-23 10:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
+      "rank": "2",
+      "lp": "12"
     },
     {
       "pageNo": 4,

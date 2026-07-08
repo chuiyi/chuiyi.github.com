@@ -1,9 +1,20 @@
 {
   "id": "tw16992270",
   "url": "https://asia.pokemon-card.com/tw/users/tw16992270/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-05-30T01:34:50.125Z",
-  "totalEvents": 31,
+  "fetchedAt": "2026-07-08T02:47:26.259Z",
+  "totalEvents": 32,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 12,
+      "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Senior Category",
+      "eventTime": "06-14-2026 09:30",
+      "eventDateTime": "2026-06-14 09:30",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 11,
@@ -12,8 +23,8 @@
       "eventDateTime": "2026-06-13 11:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
-      "lp": "-"
+      "rank": "33",
+      "lp": "15"
     },
     {
       "pageNo": 2,
@@ -44,7 +55,7 @@
       "eventTime": "09-21-2025 14:00",
       "eventDateTime": "2025-09-21 14:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "-",
       "lp": "-"
     },
@@ -154,7 +165,7 @@
       "eventTime": "02-16-2025 14:00",
       "eventDateTime": "2025-02-16 14:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "-",
       "lp": "-"
     },
@@ -209,7 +220,7 @@
       "eventTime": "01-19-2025 15:00",
       "eventDateTime": "2025-01-19 15:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "-",
       "lp": "-"
     },

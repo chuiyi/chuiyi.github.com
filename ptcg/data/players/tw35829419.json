@@ -1,8 +1,8 @@
 {
   "id": "tw35829419",
   "url": "https://asia.pokemon-card.com/tw/users/tw35829419/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-06-03T06:20:27.853Z",
-  "totalEvents": 29,
+  "fetchedAt": "2026-07-06T01:23:01.404Z",
+  "totalEvents": 30,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -16,12 +16,23 @@
       "lp": "-"
     },
     {
+      "pageNo": 2,
+      "rowIndex": 10,
+      "activityName": "2025-26 Taiwan Master Ball League TCG Division Masters Category",
+      "eventTime": "06-13-2026 08:00",
+      "eventDateTime": "2026-06-13 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "2408",
+      "lp": "-"
+    },
+    {
       "pageNo": 1,
       "rowIndex": 20,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-19-2026 13:30",
       "eventDateTime": "2026-04-19 13:30",
-      "location": "雙子星高雄鹽埕店",
+      "location": "雙子-高雄鹽埕店",
       "address": "高雄市鹽埕區田單街17號",
       "rank": "13",
       "lp": "6"
@@ -35,7 +46,7 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區林森北路372號6樓之一",
       "rank": "219",
-      "lp": "6"
+      "lp": "-"
     },
     {
       "pageNo": 1,
@@ -43,7 +54,7 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "01-18-2026 13:30",
       "eventDateTime": "2026-01-18 13:30",
-      "location": "雙子星高雄鹽埕店",
+      "location": "雙子-高雄鹽埕店",
       "address": "高雄市鹽埕區田單街17號",
       "rank": "15",
       "lp": "6"
@@ -98,7 +109,7 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "11-23-2025 13:30",
       "eventDateTime": "2025-11-23 13:30",
-      "location": "雙子星高雄鹽埕店",
+      "location": "雙子-高雄鹽埕店",
       "address": "高雄市鹽埕區田單街17號",
       "rank": "18",
       "lp": "-"
@@ -154,7 +165,7 @@
       "eventTime": "11-09-2025 14:00",
       "eventDateTime": "2025-11-09 14:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "-",
       "lp": "-"
     },
@@ -263,7 +274,7 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2025 13:00",
       "eventDateTime": "2025-09-28 13:00",
-      "location": "雙子星高雄鹽埕店",
+      "location": "雙子-高雄鹽埕店",
       "address": "高雄市鹽埕區田單街17號",
       "rank": "23",
       "lp": "-"
@@ -275,7 +286,7 @@
       "eventTime": "09-21-2025 14:00",
       "eventDateTime": "2025-09-21 14:00",
       "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區忠孝二路2-2號",
+      "address": "高雄市苓雅區中山二路461號10樓之15",
       "rank": "-",
       "lp": "-"
     },
