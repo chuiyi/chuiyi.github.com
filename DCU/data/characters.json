@@ -1,6 +1,7 @@
 [
   {
     "name": "Rick Flag Sr.",
+    "dual": true,
     "avatar": "assets/characters/rick-flag-sr.jpg",
     "avatarAlt": "Rick Flag Sr.",
     "actorName": "Frank Grillo",
@@ -11,6 +12,7 @@
   },
   {
     "name": "Amanda Waller",
+    "dual": true,
     "avatar": "assets/characters/amanda-waller.jpg",
     "avatarAlt": "Amanda Waller",
     "actorName": "Viola Davis",
@@ -21,21 +23,44 @@
   },
   {
     "name": "Weasel",
+    "dual": true,
     "avatar": "assets/characters/weasel.jpg",
     "avatarAlt": "Weasel",
     "actorName": "Sean Gunn",
     "actorPhoto": "https://image.tmdb.org/t/p/w185/tiolBlPytndQVGHO9vLnBKWWenq.jpg",
     "actorPhotoAlt": "Sean Gunn",
     "role": "配音 / 真人演出",
-    "firstAppearanceHtml": "首次登場：《自殺突擊隊》（2021，真人）→ 配音回歸《Creature Commandos》（2024，動畫）"
+    "firstAppearanceHtml": "首次登場：《自殺突擊隊：集結》（2021，真人）→ 配音回歸《Creature Commandos》（2024，動畫）"
   },
   {
     "name": "John Economos",
-    "pending": true,
+    "dual": true,
+    "avatar": "https://image.tmdb.org/t/p/w185/sbMpatWydjTl2cTcDXFMTgCkEBO.jpg",
+    "avatarAlt": "Steve Agee",
     "actorName": "Steve Agee",
-    "actorPhoto": "https://image.tmdb.org/t/p/w185/sbMpatWydjTl2cTcDXFMTgCkEBO.jpg",
-    "actorPhotoAlt": "Steve Agee",
+    "actorPhotoPending": true,
     "role": "配音 / 真人演出",
-    "firstAppearanceHtml": "官方單人動畫劇照尚未尋獲，待補。首次登場：《和平使者》第一季（2022，真人）"
+    "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022，真人）→ 配音回歸《Creature Commandos》（2024，動畫）；官方單人動畫劇照尚未釋出，此處暫以真人劇照呈現。"
+  },
+  {
+    "name": "Clark Kent / Superman",
+    "pending": true,
+    "actorName": "David Corenswet",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Superman》（2025，真人），DCU 真人電影正式起點"
+  },
+  {
+    "name": "Kara Zor-El / Supergirl",
+    "pending": true,
+    "actorName": "Milly Alcock",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026，真人），改編自《Supergirl: Woman of Tomorrow》漫畫"
+  },
+  {
+    "name": "Christopher Smith / Peacemaker",
+    "pending": true,
+    "actorName": "John Cena",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022，真人）；第二季（2025）正式併入 DCU 正史"
   }
 ]

@@ -531,6 +531,19 @@ body {
     box-shadow: -2px -2px 0 var(--ink);
 }
 
+.badge-pending {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bangers', cursive;
+    color: var(--dc-gold);
+    background: radial-gradient(circle at 35% 30%, var(--dc-blue) 0%, var(--dc-blue-dark) 75%);
+}
+
+.char-actor-badge.badge-pending {
+    font-size: 1.3rem;
+}
+
 .char-card h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.4rem;
@@ -754,6 +767,10 @@ body.modal-open {
     border: 3px solid var(--dc-gold);
     border-radius: 50%;
     box-shadow: -2px -2px 0 var(--ink);
+}
+
+.char-modal-actor-photo.badge-pending {
+    font-size: 1.6rem;
 }
 
 .char-modal h3 {

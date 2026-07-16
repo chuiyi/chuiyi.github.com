@@ -25,11 +25,14 @@ const DCU = (() => {
         const avatarHtml = c.pending
             ? `<div class="char-avatar char-avatar-placeholder">?</div>`
             : `<img class="char-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`;
+        const badgeHtml = !c.dual ? '' : c.actorPhotoPending
+            ? `<div class="char-actor-badge badge-pending">?</div>`
+            : `<img class="char-actor-badge" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
         return `
             <div class="char-card${c.pending ? ' pending' : ''}" data-index="${index}" role="button" tabindex="0">
                 <div class="char-avatar-wrap">
                     ${avatarHtml}
-                    <img class="char-actor-badge" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">
+                    ${badgeHtml}
                 </div>
                 <h3>${c.name}</h3>
                 <p class="char-actor">${c.actorName} <span class="char-role">${c.role}</span></p>
@@ -89,11 +92,14 @@ const DCU = (() => {
         const avatarHtml = c.pending
             ? `<div class="char-modal-avatar char-avatar-placeholder">?</div>`
             : `<img class="char-modal-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`;
+        const badgeHtml = !c.dual ? '' : c.actorPhotoPending
+            ? `<div class="char-modal-actor-photo badge-pending">?</div>`
+            : `<img class="char-modal-actor-photo" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
 
         body.innerHTML = `
             <div class="char-modal-media">
                 ${avatarHtml}
-                <img class="char-modal-actor-photo" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">
+                ${badgeHtml}
             </div>
             <h3>${c.name}</h3>
             <p class="char-actor">${c.actorName} <span class="char-role">${c.role}</span></p>
