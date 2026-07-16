@@ -34,6 +34,7 @@ body {
 }
 
 .dcu-header-inner {
+    position: relative;
     max-width: 1100px;
     margin: 0 auto;
     padding: 14px 20px;
@@ -74,6 +75,18 @@ body {
 
 .dcu-nav a:hover {
     color: var(--dc-gold);
+}
+
+.dcu-nav-toggle {
+    display: none;
+    background: none;
+    border: 2px solid var(--paper);
+    color: var(--paper);
+    font-size: 1.3rem;
+    line-height: 1;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
 /* Hero */
@@ -223,6 +236,17 @@ body {
     border-radius: 6px;
     box-shadow: 4px 4px 0 var(--ink);
     background: var(--ink);
+}
+
+.timeline-poster-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    color: var(--paper);
+    opacity: 0.5;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 10px, transparent 10px, transparent 20px), var(--dc-blue-dark);
 }
 
 .timeline-body {
@@ -399,9 +423,39 @@ body {
     color: var(--dc-gold);
 }
 
-@media (max-width: 600px) {
-    .dcu-nav { gap: 14px; font-size: 0.9rem; }
+@media (max-width: 700px) {
     .burst { display: none; }
+
+    .dcu-nav-toggle {
+        display: inline-block;
+    }
+
+    .dcu-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background: var(--ink);
+        border-top: 3px solid var(--dc-red);
+        padding: 6px 20px 12px;
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    .dcu-nav.open {
+        display: flex;
+    }
+
+    .dcu-nav a {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .dcu-nav a:last-child {
+        border-bottom: none;
+    }
 }
 
 /* Character first-appearance cards */
@@ -496,6 +550,74 @@ body {
 
 .char-card.pending .char-avatar-wrap {
     background: repeating-linear-gradient(45deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 10px, transparent 10px, transparent 20px), var(--dc-blue-dark);
+}
+
+/* News list */
+.news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-card {
+    background: var(--paper);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    padding: 18px 22px;
+    box-shadow: 5px 5px 0 var(--ink);
+}
+
+.news-date {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    color: var(--dc-blue);
+    font-size: 0.95rem;
+    margin-right: 10px;
+}
+
+.news-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--dc-red);
+    color: var(--paper);
+    padding: 1px 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.news-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin: 8px 0 6px;
+    color: var(--ink);
+}
+
+.news-card p {
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.news-source {
+    margin: 0;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.news-source a {
+    color: var(--dc-blue);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.news-source a:hover {
+    text-decoration: underline;
 }
 
 /* Elseworlds theme override */

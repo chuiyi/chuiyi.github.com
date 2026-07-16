@@ -19,8 +19,10 @@
             <a href="index.html" class="dcu-logo">
                 <span class="dcu-logo-dc">DC</span><span class="dcu-logo-u">ELSEWORLDS</span>
             </a>
+            <button class="dcu-nav-toggle" aria-label="開啟選單" aria-expanded="false">☰</button>
             <nav class="dcu-nav">
                 <a href="index.html">回到 DCU 首頁</a>
+                <a href="news.html">新聞</a>
                 <a href="#batman">蝙蝠俠系列</a>
                 <a href="#joker">小丑系列</a>
             </nav>
@@ -41,66 +43,14 @@
         <section id="batman" class="dcu-section">
             <h2 class="section-title" data-text="THE BATMAN">蝙蝠俠系列</h2>
             <p class="section-lead">Matt Reeves 執導，Robert Pattinson 主演的獨立高譚罪案史詩（"Batman Epic Crime Saga"），與 James Gunn 的 DCU 各自獨立。</p>
-            <ol class="timeline">
-                <li class="timeline-item released">
-                    <img class="timeline-poster" src="https://image.tmdb.org/t/p/w300/74xTEgt7R36Fpooo50r9T25onhq.jpg" alt="The Batman 海報" loading="lazy">
-                    <div class="timeline-body">
-                        <span class="timeline-date">2022.03.04</span>
-                        <span class="timeline-type">電影</span>
-                        <span class="timeline-status status-released">已上映</span>
-                        <h3>The Batman</h3>
-                        <p>年輕的布魯斯・韋恩偵辦「謎語人」連環殺人案，重新定義高譚市偵探式蝙蝠俠。</p>
-                    </div>
-                </li>
-                <li class="timeline-item released">
-                    <img class="timeline-poster" src="https://image.tmdb.org/t/p/w300/vOWcqC4oDQws1doDWLO7d3dh5qc.jpg" alt="The Penguin 海報" loading="lazy">
-                    <div class="timeline-body">
-                        <span class="timeline-date">2024.09.19</span>
-                        <span class="timeline-type">影集</span>
-                        <span class="timeline-status status-released">已上映</span>
-                        <h3>The Penguin <small>迷你影集</small></h3>
-                        <p>《The Batman》劇情之後，Oz Cobb 在洪水後的高譚市黑幫權力真空中奪權崛起。Colin Farrell 憑此角奪下金球獎。第二季仍在洽談中。</p>
-                    </div>
-                </li>
-                <li class="timeline-item upcoming">
-                    <img class="timeline-poster" src="https://image.tmdb.org/t/p/w300/r5fl4aMsmTjgc8DdDqQaM84roWp.jpg" alt="The Batman Part II 海報" loading="lazy">
-                    <div class="timeline-body">
-                        <span class="timeline-date">2028.02.18</span>
-                        <span class="timeline-type">電影</span>
-                        <span class="timeline-status status-upcoming">製作中</span>
-                        <h3>The Batman: Part II</h3>
-                        <p>歷經多次延期，劇本由 Matt Reeves 耗時近三年完成，2025 年 8 月開始前期製作。</p>
-                    </div>
-                </li>
-            </ol>
-            <p class="dev-note">《The Batman: Part III》已在早期開發階段，細節尚未公開。</p>
+            <ol class="timeline" id="batman-timeline"></ol>
+            <p class="dev-note" id="batman-dev-note"></p>
         </section>
 
         <section id="joker" class="dcu-section alt">
             <h2 class="section-title" data-text="JOKER">小丑系列</h2>
             <p class="section-lead">Todd Phillips 執導，Joaquin Phoenix 主演的獨立小丑起源故事。</p>
-            <ol class="timeline">
-                <li class="timeline-item released">
-                    <img class="timeline-poster" src="https://image.tmdb.org/t/p/w300/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg" alt="Joker 海報" loading="lazy">
-                    <div class="timeline-body">
-                        <span class="timeline-date">2019.10.04</span>
-                        <span class="timeline-type">電影</span>
-                        <span class="timeline-status status-released">已上映</span>
-                        <h3>Joker</h3>
-                        <p>失業喜劇演員 Arthur Fleck 一步步墮落成高譚市的犯罪符號小丑，奪下奧斯卡最佳男主角。</p>
-                    </div>
-                </li>
-                <li class="timeline-item released">
-                    <img class="timeline-poster" src="https://image.tmdb.org/t/p/w300/aciP8Km0waTLXEYf5ybFK5CSUxl.jpg" alt="Joker: Folie à Deux 海報" loading="lazy">
-                    <div class="timeline-body">
-                        <span class="timeline-date">2024.10.04</span>
-                        <span class="timeline-type">電影</span>
-                        <span class="timeline-status status-released">已上映</span>
-                        <h3>Joker: Folie à Deux</h3>
-                        <p>加入 Lady Gaga 飾演的 Harley Quinn 與音樂劇元素，但票房與口碑雙雙受挫，Todd Phillips 已證實不會有第三部。</p>
-                    </div>
-                </li>
-            </ol>
+            <ol class="timeline" id="joker-timeline"></ol>
         </section>
     </main>
 
@@ -108,5 +58,11 @@
         <p>&copy; 2026 Chuiyi's DC Comics 資料庫 · <a href="index.html">回到 DCU 首頁</a> · <a href="../index.html">回到主站</a></p>
         <p class="tmdb-attribution">海報圖片來源：<a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a>（The Movie Database），本站未經 TMDB 認證或背書。</p>
     </footer>
+
+    <script src="js/nav.js"></script>
+    <script src="js/dcu.js"></script>
+    <script>
+        DCU.renderElseworlds('elseworlds.json');
+    </script>
 </body>
 </html>

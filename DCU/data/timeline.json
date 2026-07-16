@@ -1,0 +1,84 @@
+[
+  {
+    "date": "2023.08.18",
+    "type": "電影",
+    "phase": "released",
+    "statusLabel": "已上映・回溯併入",
+    "posterPending": true,
+    "title": "Blue Beetle",
+    "descriptionHtml": "上映時原屬舊 DCEU 收尾之作，2026 年 7 月 James Gunn 證實 Xolo Maridueña 飾演的 Jaime Reyes 將回歸並延續至《Man of Tomorrow》（2027），使藍甲蟲正式併入新 DCU 正史。"
+  },
+  {
+    "date": "2024.12.05",
+    "type": "影集",
+    "phase": "released",
+    "statusLabel": "已上映",
+    "poster": "https://image.tmdb.org/t/p/w300/bB3G6Ug1jfsOUptb0RJsqrgMVta.jpg",
+    "posterAlt": "Creature Commandos 海報",
+    "title": "Creature Commandos",
+    "subtitle": "第一季",
+    "descriptionHtml": "由伍勒博士召集的重刑監獄怪物特遣隊，DCU 開幕作，同時是一部限制級成人動畫影集。"
+  },
+  {
+    "date": "2025.07.11",
+    "type": "電影",
+    "phase": "released",
+    "statusLabel": "已上映",
+    "poster": "https://image.tmdb.org/t/p/w300/ldyfo0BKmz5rWtJJKCvwaNS4cJT.jpg",
+    "posterAlt": "Superman 海報",
+    "title": "Superman",
+    "descriptionHtml": "DCU 真人電影正式起點，克拉克・肯特在調和氪星血統與人類成長背景間，重新定義超人。"
+  },
+  {
+    "date": "2025.08.21",
+    "type": "影集",
+    "phase": "released",
+    "statusLabel": "已上映",
+    "poster": "https://image.tmdb.org/t/p/w300/2Wv0Zinc9nQ6ktL10Z9ckk2wjyZ.jpg",
+    "posterAlt": "Peacemaker 第二季 海報",
+    "title": "Peacemaker",
+    "subtitle": "第二季",
+    "descriptionHtml": "正式並入 DCU 正史的續集季，和平使者面對跨維度的自己與 A.R.G.U.S. 新局長瑞克・弗萊格。"
+  },
+  {
+    "date": "2026.06.26",
+    "type": "電影",
+    "phase": "released",
+    "statusLabel": "已上映",
+    "poster": "https://image.tmdb.org/t/p/w300/moejGxR2haap29d9NQ7qe8x4eGj.jpg",
+    "posterAlt": "Supergirl 海報",
+    "title": "Supergirl",
+    "descriptionHtml": "改編自《Supergirl: Woman of Tomorrow》漫畫，Kara Zor-El 首部真人電影，與夥伴踏上復仇的星際旅程。"
+  },
+  {
+    "date": "2026.08.16",
+    "type": "影集",
+    "phase": "upcoming",
+    "statusLabel": "即將上映",
+    "poster": "https://image.tmdb.org/t/p/w300/rb94rKVIzLyfWufIN7WqLvadBDH.jpg",
+    "posterAlt": "Lanterns 海報",
+    "title": "Lanterns",
+    "subtitle": "第一季",
+    "descriptionHtml": "菜鳥約翰・史都華與資深綠燈俠哈爾・喬丹調查一樁美國中西部的命案，揭開綠燈軍團背後的黑暗秘密。"
+  },
+  {
+    "date": "2026.10.23",
+    "type": "電影",
+    "phase": "upcoming",
+    "statusLabel": "後期製作",
+    "poster": "https://image.tmdb.org/t/p/w300/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
+    "posterAlt": "Clayface 海報",
+    "title": "Clayface",
+    "descriptionHtml": "以恐怖片手法詮釋的反派起源故事，一位過氣演員在復仇之路上逐漸失去人性。"
+  },
+  {
+    "date": "2027.07.09",
+    "type": "電影",
+    "phase": "upcoming",
+    "statusLabel": "製作中",
+    "poster": "https://image.tmdb.org/t/p/w300/tYLgfKk3cEk7LskgxWyW37Nty01.jpg",
+    "posterAlt": "Man of Tomorrow 海報",
+    "title": "Man of Tomorrow",
+    "descriptionHtml": "《Superman》續集，克拉克與雷克斯・魯瑟聯手對抗更龐大的威脅。"
+  }
+]
