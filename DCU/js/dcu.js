@@ -28,6 +28,8 @@ const DCU = (() => {
         const badgeHtml = !c.dual ? '' : c.actorPhotoPending
             ? `<div class="char-actor-badge badge-pending">?</div>`
             : `<img class="char-actor-badge" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
+        const nameZhHtml = c.nameZh ? `<p class="name-zh">${c.nameZh}</p>` : '';
+        const actorNameZhHtml = c.actorNameZh ? `<span class="actor-zh">（${c.actorNameZh}）</span>` : '';
         return `
             <div class="char-card${c.pending ? ' pending' : ''}" data-index="${index}" role="button" tabindex="0">
                 <div class="char-avatar-wrap">
@@ -35,13 +37,15 @@ const DCU = (() => {
                     ${badgeHtml}
                 </div>
                 <h3>${c.name}</h3>
-                <p class="char-actor">${c.actorName} <span class="char-role">${c.role}</span></p>
+                ${nameZhHtml}
+                <p class="char-actor">${c.actorName}${actorNameZhHtml} <span class="char-role">${c.role}</span></p>
                 <p class="char-first">${c.firstAppearanceHtml}</p>
             </div>`;
     }
 
     function renderTimelineItem(t) {
         const subtitle = t.subtitle ? ` <small>${t.subtitle}</small>` : '';
+        const titleZhHtml = t.titleZh ? `<p class="title-zh">${t.titleZh}</p>` : '';
         const posterHtml = t.posterPending
             ? `<div class="timeline-poster timeline-poster-placeholder">?</div>`
             : `<img class="timeline-poster" src="${t.poster}" alt="${t.posterAlt}" loading="lazy">`;
@@ -53,6 +57,7 @@ const DCU = (() => {
                     <span class="timeline-type">${t.type}</span>
                     <span class="timeline-status status-${t.phase}">${t.statusLabel}</span>
                     <h3>${t.title}${subtitle}</h3>
+                    ${titleZhHtml}
                     <p>${t.descriptionHtml}</p>
                 </div>
             </li>`;
@@ -60,6 +65,14 @@ const DCU = (() => {
 
     function renderDevItem(d) {
         return `<li><strong>${d.name}</strong>（${d.type}）— ${d.statusHtml}</li>`;
+    }
+
+    function renderGlossaryItem(g) {
+        return `
+            <li class="glossary-card">
+                <h3>${g.term}<span class="term-zh">${g.termZh}</span></h3>
+                <p>${g.definitionHtml}</p>
+            </li>`;
     }
 
     function renderNewsCard(n) {
@@ -96,13 +109,17 @@ const DCU = (() => {
             ? `<div class="char-modal-actor-photo badge-pending">?</div>`
             : `<img class="char-modal-actor-photo" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
 
+        const nameZhHtml = c.nameZh ? `<p class="name-zh">${c.nameZh}</p>` : '';
+        const actorNameZhHtml = c.actorNameZh ? `<span class="actor-zh">（${c.actorNameZh}）</span>` : '';
+
         body.innerHTML = `
             <div class="char-modal-media">
                 ${avatarHtml}
                 ${badgeHtml}
             </div>
             <h3>${c.name}</h3>
-            <p class="char-actor">${c.actorName} <span class="char-role">${c.role}</span></p>
+            ${nameZhHtml}
+            <p class="char-actor">${c.actorName}${actorNameZhHtml} <span class="char-role">${c.role}</span></p>
             <p class="char-first">${c.firstAppearanceHtml}</p>`;
 
         overlay.hidden = false;
@@ -180,6 +197,17 @@ const DCU = (() => {
         }
     }
 
+    async function renderGlossary(containerId, file) {
+        const el = document.getElementById(containerId);
+        if (!el) return;
+        try {
+            const items = await fetchJSON(file);
+            el.innerHTML = items.map(renderGlossaryItem).join('');
+        } catch (err) {
+            console.error('[DCU] 名詞解釋載入失敗', err);
+        }
+    }
+
     async function renderNews(containerId, file, paginationId) {
         const listEl = document.getElementById(containerId);
         const pagerEl = paginationId ? document.getElementById(paginationId) : null;
@@ -237,5 +265,5 @@ const DCU = (() => {
         }
     }
 
-    return { renderCharacters, renderTimeline, renderDevList, renderNews, renderElseworlds };
+    return { renderCharacters, renderTimeline, renderDevList, renderGlossary, renderNews, renderElseworlds };
 })();

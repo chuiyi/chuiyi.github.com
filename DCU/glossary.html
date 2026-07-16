@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DCU 新聞 | 蝙蝠洞資料庫</title>
-    <meta name="description" content="DC Comics 電影宇宙（DCU）與 James Gunn 相關最新消息整理">
+    <title>名詞解釋 | 蝙蝠洞資料庫</title>
+    <meta name="description" content="DCU 世界觀常見名詞解釋，如氪星、口袋宇宙、Checkmate 等設定">
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,29 +23,28 @@
             <nav class="dcu-nav">
                 <a href="index.html">回到 DCU 首頁</a>
                 <a href="characters.html">角色</a>
-                <a href="glossary.html">名詞解釋</a>
+                <a href="news.html">新聞</a>
                 <a href="elseworlds.html">Elseworlds</a>
             </nav>
         </div>
     </header>
 
     <section class="dcu-hero">
-        <div class="burst burst-1" aria-hidden="true">NEWS!</div>
-        <div class="burst burst-2" aria-hidden="true">FLASH!</div>
+        <div class="burst burst-1" aria-hidden="true">ZAP!</div>
+        <div class="burst burst-2" aria-hidden="true">WHAM!</div>
         <h1 class="dcu-hero-title">
-            <span class="line-1">LATEST</span>
-            <span class="line-2">INTEL</span>
+            <span class="line-1">GLOSSARY</span>
+            <span class="line-2">OF DCU</span>
         </h1>
-        <p class="dcu-hero-sub">整理近期 DCU 相關的消息，含選角、票房與製作進度更新。</p>
+        <p class="dcu-hero-sub">整理 DCU 世界觀中常見的名詞與設定，方便查閱背景知識。</p>
     </section>
 
     <main>
-        <section id="news" class="dcu-section">
-            <h2 class="section-title" data-text="NEWS">最新消息</h2>
-            <p class="section-lead">內容彙整自各媒體報導，附上原文連結供查證；日後有新消息會持續更新於此。</p>
+        <section id="glossary" class="dcu-section">
+            <h2 class="section-title" data-text="GLOSSARY">名詞解釋</h2>
+            <p class="section-lead">僅收錄詹姆斯・岡恩重啟版 DCU 中出現或提及的設定，不含舊 DCEU 或漫畫原作的完整考據。</p>
 
-            <ul class="news-list" id="news-list"></ul>
-            <div class="news-pagination" id="news-pagination"></div>
+            <ul class="glossary-list" id="glossary-list"></ul>
         </section>
     </main>
 
@@ -56,7 +55,7 @@
     <script src="js/nav.js"></script>
     <script src="js/dcu.js"></script>
     <script>
-        DCU.renderNews('news-list', 'news.json', 'news-pagination');
+        DCU.renderGlossary('glossary-list', 'glossary.json');
     </script>
 </body>
 </html>

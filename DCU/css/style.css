@@ -319,6 +319,13 @@ body {
     font-weight: 400;
 }
 
+.title-zh {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+    color: var(--dc-blue);
+    opacity: 0.85;
+}
+
 .timeline-body p {
     margin: 0;
     font-size: 0.9rem;
@@ -550,6 +557,18 @@ body {
     letter-spacing: 1px;
     margin: 4px 0 4px;
     color: var(--dc-blue);
+}
+
+.name-zh {
+    margin: 0 0 4px;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.actor-zh {
+    font-weight: 400;
+    opacity: 0.75;
+    font-size: 0.9em;
 }
 
 .char-actor {
@@ -793,6 +812,47 @@ body.modal-open {
     line-height: 1.7;
     opacity: 0.9;
     text-align: left;
+}
+
+/* Glossary */
+.glossary-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.glossary-card {
+    background: var(--paper);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    padding: 18px 22px;
+    box-shadow: 5px 5px 0 var(--ink);
+}
+
+.glossary-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin: 0 0 10px;
+    color: var(--dc-blue);
+}
+
+.term-zh {
+    display: inline-block;
+    margin-left: 8px;
+    font-size: 0.85rem;
+    font-weight: 400;
+    opacity: 0.7;
+}
+
+.glossary-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.7;
 }
 
 /* Elseworlds theme override */

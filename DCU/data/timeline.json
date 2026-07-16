@@ -7,7 +7,7 @@
     "unconfirmed": true,
     "posterPending": true,
     "title": "The Suicide Squad",
-    "subtitle": "自殺突擊隊：集結",
+    "titleZh": "自殺突擊隊：集結",
     "descriptionHtml": "James Gunn 執導的舊 DCEU 電影，Weasel（Sean Gunn 飾）於此首次登場，後於《Creature Commandos》（2024）動畫版回歸；本片是否正式併入新 DCU 正史，官方目前尚未明確定調，暫列為未確認項目。"
   },
   {
@@ -18,6 +18,7 @@
     "unconfirmed": true,
     "posterPending": true,
     "title": "Peacemaker",
+    "titleZh": "和平使者",
     "subtitle": "第一季",
     "descriptionHtml": "John Cena 主演的第一季，是已確認併入 DCU 正史的《Peacemaker》第二季的前作；第一季本身是否算新 DCU 正史，官方尚未明確定調，暫列為未確認項目。"
   },
@@ -28,6 +29,7 @@
     "statusLabel": "已上映・回溯併入",
     "posterPending": true,
     "title": "Blue Beetle",
+    "titleZh": "藍甲蟲",
     "descriptionHtml": "上映時原屬舊 DCEU 收尾之作，2026 年 7 月 James Gunn 證實 Xolo Maridueña 飾演的 Jaime Reyes 將回歸並延續至《Man of Tomorrow》（2027），使藍甲蟲正式併入新 DCU 正史。"
   },
   {
@@ -38,6 +40,7 @@
     "poster": "https://image.tmdb.org/t/p/w300/bB3G6Ug1jfsOUptb0RJsqrgMVta.jpg",
     "posterAlt": "Creature Commandos 海報",
     "title": "Creature Commandos",
+    "titleZh": "生物突擊隊",
     "subtitle": "第一季",
     "descriptionHtml": "由伍勒博士召集的重刑監獄怪物特遣隊，DCU 開幕作，同時是一部限制級成人動畫影集。"
   },
@@ -49,6 +52,7 @@
     "poster": "https://image.tmdb.org/t/p/w300/ldyfo0BKmz5rWtJJKCvwaNS4cJT.jpg",
     "posterAlt": "Superman 海報",
     "title": "Superman",
+    "titleZh": "超人",
     "descriptionHtml": "DCU 真人電影正式起點，克拉克・肯特在調和氪星血統與人類成長背景間，重新定義超人。"
   },
   {
@@ -59,6 +63,7 @@
     "poster": "https://image.tmdb.org/t/p/w300/2Wv0Zinc9nQ6ktL10Z9ckk2wjyZ.jpg",
     "posterAlt": "Peacemaker 第二季 海報",
     "title": "Peacemaker",
+    "titleZh": "和平使者",
     "subtitle": "第二季",
     "descriptionHtml": "正式並入 DCU 正史的續集季，和平使者面對跨維度的自己與 A.R.G.U.S. 新局長瑞克・佛萊格。"
   },
@@ -70,6 +75,7 @@
     "poster": "https://image.tmdb.org/t/p/w300/moejGxR2haap29d9NQ7qe8x4eGj.jpg",
     "posterAlt": "Supergirl 海報",
     "title": "Supergirl",
+    "titleZh": "超少女",
     "descriptionHtml": "改編自《Supergirl: Woman of Tomorrow》漫畫，Kara Zor-El 首部真人電影，與夥伴踏上復仇的星際旅程。"
   },
   {
@@ -80,6 +86,7 @@
     "poster": "https://image.tmdb.org/t/p/w300/rb94rKVIzLyfWufIN7WqLvadBDH.jpg",
     "posterAlt": "Lanterns 海報",
     "title": "Lanterns",
+    "titleZh": "綠燈軍團",
     "subtitle": "第一季",
     "descriptionHtml": "菜鳥約翰・史都華與資深綠燈俠哈爾・喬丹調查一樁美國中西部的命案，揭開綠燈軍團背後的黑暗秘密。"
   },
@@ -91,6 +98,7 @@
     "poster": "https://image.tmdb.org/t/p/w300/5jCpQnWPikggmQZoDp1eAi6BI6w.jpg",
     "posterAlt": "Clayface 海報",
     "title": "Clayface",
+    "titleZh": "泥面人",
     "descriptionHtml": "以恐怖片手法詮釋的反派起源故事，一位過氣演員在復仇之路上逐漸失去人性。"
   },
   {
