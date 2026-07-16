@@ -1,10 +1,12 @@
 [
   {
     "name": "Rick Flag Sr.",
+    "nameZh": "老瑞克・佛萊格",
     "dual": true,
     "avatar": "assets/characters/rick-flag-sr.jpg",
     "avatarAlt": "Rick Flag Sr.",
     "actorName": "Frank Grillo",
+    "actorNameZh": "法蘭克・葛里洛",
     "actorPhoto": "https://image.tmdb.org/t/p/w185/kuEco4vo1xrsM8DyrNSZUEi593P.jpg",
     "actorPhotoAlt": "Frank Grillo",
     "role": "配音 / 真人演出",
@@ -12,10 +14,12 @@
   },
   {
     "name": "Amanda Waller",
+    "nameZh": "阿曼達・沃勒",
     "dual": true,
     "avatar": "assets/characters/amanda-waller.jpg",
     "avatarAlt": "Amanda Waller",
     "actorName": "Viola Davis",
+    "actorNameZh": "薇拉・戴維絲",
     "actorPhoto": "https://image.tmdb.org/t/p/w185/xDssw6vpYNRjsybvMPRE30e0dPN.jpg",
     "actorPhotoAlt": "Viola Davis",
     "role": "配音 / 真人演出",
@@ -23,10 +27,12 @@
   },
   {
     "name": "Weasel",
+    "nameZh": "黃鼠狼",
     "dual": true,
     "avatar": "assets/characters/weasel.jpg",
     "avatarAlt": "Weasel",
     "actorName": "Sean Gunn",
+    "actorNameZh": "西恩・岡恩",
     "actorPhoto": "https://image.tmdb.org/t/p/w185/tiolBlPytndQVGHO9vLnBKWWenq.jpg",
     "actorPhotoAlt": "Sean Gunn",
     "role": "配音 / 真人演出",
@@ -34,35 +40,43 @@
   },
   {
     "name": "John Economos",
+    "nameZh": "約翰・伊克諾莫斯",
     "dual": true,
     "avatar": "https://image.tmdb.org/t/p/w185/sbMpatWydjTl2cTcDXFMTgCkEBO.jpg",
     "avatarAlt": "Steve Agee",
     "actorName": "Steve Agee",
+    "actorNameZh": "史蒂夫・阿吉",
     "actorPhotoPending": true,
     "role": "配音 / 真人演出",
     "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022，真人）→ 配音回歸《Creature Commandos》（2024，動畫）；官方單人動畫劇照尚未釋出，此處暫以真人劇照呈現。"
   },
   {
     "name": "Clark Kent / Superman",
+    "nameZh": "克拉克・肯特 / 超人",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/yoQxpUPt3le9zY4Sab3g2ANy4CE.jpg",
     "avatarAlt": "David Corenswet",
     "actorName": "David Corenswet",
+    "actorNameZh": "大衛・科倫斯韋",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《Superman》（2025，真人），DCU 真人電影正式起點"
   },
   {
     "name": "Kara Zor-El / Supergirl",
+    "nameZh": "超少女",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/rO6gAoxgsKttOGd6qdnjpf02guh.jpg",
     "avatarAlt": "Milly Alcock",
     "actorName": "Milly Alcock",
+    "actorNameZh": "米莉・愛考克",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《Supergirl》（2026，真人），改編自《Supergirl: Woman of Tomorrow》漫畫"
   },
   {
     "name": "Christopher Smith / Peacemaker",
+    "nameZh": "克里斯多福・史密斯 / 和平使者",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/rgB2eIOt7WyQjdgJCOuESdDlrjg.jpg",
     "avatarAlt": "John Cena",
     "actorName": "John Cena",
+    "actorNameZh": "約翰・希南",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022，真人）；第二季（2025）正式併入 DCU 正史"
   }
