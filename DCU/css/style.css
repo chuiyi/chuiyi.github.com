@@ -1,0 +1,511 @@
+:root {
+    --dc-blue: #0a3d91;
+    --dc-blue-dark: #041c42;
+    --dc-red: #e8121a;
+    --dc-gold: #f2c811;
+    --ink: #101010;
+    --paper: #f4f1e8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--dc-blue-dark);
+    color: var(--paper);
+}
+
+.halftone-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1.5px, transparent 1.5px);
+    background-size: 14px 14px;
+}
+
+/* Header */
+.dcu-header {
+    background: var(--ink);
+    border-bottom: 5px solid var(--dc-red);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.dcu-header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dcu-logo {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.dcu-logo-dc {
+    color: var(--dc-gold);
+    -webkit-text-stroke: 1px var(--ink);
+}
+
+.dcu-logo-u {
+    color: var(--paper);
+    margin-left: 4px;
+}
+
+.dcu-nav {
+    display: flex;
+    gap: 24px;
+}
+
+.dcu-nav a {
+    color: var(--paper);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.dcu-nav a:hover {
+    color: var(--dc-gold);
+}
+
+/* Hero */
+.dcu-hero {
+    position: relative;
+    text-align: center;
+    padding: 100px 20px 90px;
+    background: radial-gradient(ellipse at center, var(--dc-blue) 0%, var(--dc-blue-dark) 75%);
+    overflow: hidden;
+    border-bottom: 6px solid var(--ink);
+}
+
+.dcu-hero-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height: 1;
+    margin: 0 0 20px;
+    color: var(--dc-gold);
+    -webkit-text-stroke: 2px var(--ink);
+    text-shadow: 5px 5px 0 var(--dc-red), 8px 8px 0 var(--ink);
+    transform: rotate(-2deg);
+}
+
+.dcu-hero-title .line-1,
+.dcu-hero-title .line-2 {
+    display: block;
+}
+
+.dcu-hero-sub {
+    max-width: 560px;
+    margin: 0 auto 30px;
+    font-size: 1.05rem;
+    color: var(--paper);
+    opacity: 0.9;
+}
+
+.comic-btn {
+    display: inline-block;
+    font-family: 'Bangers', cursive;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: var(--ink);
+    background: var(--dc-gold);
+    padding: 12px 34px;
+    border: 3px solid var(--ink);
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 5px 5px 0 var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.comic-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+}
+
+.burst {
+    position: absolute;
+    font-family: 'Bangers', cursive;
+    font-size: 2.2rem;
+    color: var(--dc-red);
+    -webkit-text-stroke: 1.5px var(--ink);
+    opacity: 0.85;
+}
+
+.burst-1 { top: 20px; left: 8%; transform: rotate(-15deg); }
+.burst-2 { bottom: 24px; right: 10%; transform: rotate(12deg); }
+
+/* Sections */
+.dcu-section {
+    padding: 70px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.dcu-section.alt {
+    background: rgba(0, 0, 0, 0.18);
+    max-width: 100%;
+}
+
+.dcu-section.alt > * {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    letter-spacing: 2px;
+    color: var(--paper);
+    text-shadow: 3px 3px 0 var(--dc-red);
+    margin: 0 0 34px;
+    transform: rotate(-1deg);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.section-lead {
+    margin: -18px 0 34px;
+    max-width: 640px;
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+/* Timeline */
+.timeline {
+    list-style: none;
+    margin: 0 0 40px;
+    padding: 0;
+    border-left: 4px dashed var(--dc-gold);
+}
+
+.timeline-item {
+    display: flex;
+    gap: 18px;
+    padding: 0 0 32px 26px;
+    position: relative;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--dc-red);
+    border: 3px solid var(--ink);
+}
+
+.timeline-item.released::before {
+    background: var(--dc-gold);
+}
+
+.timeline-poster {
+    flex: none;
+    width: 90px;
+    height: 135px;
+    object-fit: cover;
+    border: 3px solid var(--ink);
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 var(--ink);
+    background: var(--ink);
+}
+
+.timeline-body {
+    background: var(--paper);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    padding: 14px 18px;
+    box-shadow: 5px 5px 0 var(--ink);
+    flex: 1;
+    min-width: 0;
+}
+
+.timeline-date {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    color: var(--dc-blue);
+    font-size: 0.95rem;
+    margin-right: 10px;
+}
+
+.timeline-type {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--dc-blue);
+    color: var(--paper);
+    padding: 1px 8px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+.timeline-status {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 1px 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.status-released {
+    background: #2f9e44;
+    color: var(--paper);
+}
+
+.status-upcoming {
+    background: var(--dc-red);
+    color: var(--paper);
+}
+
+.timeline-body h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin: 8px 0 6px;
+    color: var(--ink);
+}
+
+.timeline-body h3 small {
+    font-size: 0.9rem;
+    color: var(--dc-blue);
+    font-weight: 400;
+}
+
+.timeline-body p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.timeline-dev {
+    background: rgba(0, 0, 0, 0.25);
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    padding: 22px 26px;
+}
+
+.dev-title {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    margin: 0 0 12px;
+    color: var(--dc-gold);
+}
+
+.dev-list {
+    margin: 0 0 12px;
+    padding-left: 20px;
+    line-height: 1.9;
+}
+
+.dev-note {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.75;
+}
+
+.tmdb-attribution {
+    margin: 18px 0 0;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.tmdb-attribution a {
+    color: var(--dc-gold);
+}
+
+@media (max-width: 500px) {
+    .timeline-item {
+        flex-direction: column;
+    }
+    .timeline-poster {
+        width: 100px;
+        height: 150px;
+    }
+}
+
+.comic-card {
+    position: relative;
+    background: var(--paper);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    padding: 26px 22px;
+    box-shadow: 6px 6px 0 var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.comic-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--ink);
+}
+
+.comic-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin: 6px 0 10px;
+    color: var(--dc-blue);
+}
+
+.comic-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.card-badge {
+    display: inline-block;
+    font-family: 'Bangers', cursive;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: var(--paper);
+    background: var(--dc-red);
+    padding: 3px 10px;
+    border-radius: 3px;
+    transform: rotate(-3deg);
+}
+
+/* Footer */
+.dcu-footer {
+    text-align: center;
+    padding: 28px 20px;
+    background: var(--ink);
+    border-top: 5px solid var(--dc-blue);
+    font-size: 0.9rem;
+    color: var(--paper);
+    opacity: 0.85;
+}
+
+.dcu-footer a {
+    color: var(--dc-gold);
+}
+
+@media (max-width: 600px) {
+    .dcu-nav { gap: 14px; font-size: 0.9rem; }
+    .burst { display: none; }
+}
+
+/* Character first-appearance cards */
+.char-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 26px;
+}
+
+.char-card {
+    background: var(--paper);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 6px 6px 0 var(--ink);
+    text-align: center;
+}
+
+.char-avatar-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    margin: 0 0 14px;
+    border: 3px solid var(--ink);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--dc-blue-dark);
+}
+
+.char-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.char-avatar-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bangers', cursive;
+    font-size: 3rem;
+    color: var(--paper);
+    opacity: 0.5;
+}
+
+.char-actor-badge {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 38%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 3px solid var(--dc-gold);
+    border-radius: 50% 0 0 0;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    box-shadow: -2px -2px 0 var(--ink);
+}
+
+.char-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    margin: 4px 0 4px;
+    color: var(--dc-blue);
+}
+
+.char-actor {
+    margin: 0 0 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.char-role {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: var(--dc-blue);
+    color: var(--paper);
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 4px;
+}
+
+.char-first {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    opacity: 0.85;
+}
+
+.char-card.pending .char-avatar-wrap {
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 10px, transparent 10px, transparent 20px), var(--dc-blue-dark);
+}
+
+/* Elseworlds theme override */
+body.theme-elseworlds {
+    --dc-blue: #5b2a86;
+    --dc-blue-dark: #170821;
+    --dc-red: #2f9e44;
+    --dc-gold: #c9a3ff;
+}
+
+body.theme-elseworlds .dcu-header {
+    border-bottom-color: var(--dc-blue);
+}

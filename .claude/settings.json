@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:dcuniverse.fandom.com)",
+      "WebFetch(domain:thedirect.com)",
+      "WebFetch(domain:www.themoviedb.org)",
+      "WebFetch(domain:press.wbd.com)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" -o /tmp/wbd_test.html -w \"%{http_code}\\\\n\" \"https://press.wbd.com/na/image/ccom153still11\")",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" -o wbd_151.html \"https://press.wbd.com/us/image/ccom151option2\")",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" -o wbd_154.html \"https://press.wbd.com/us/ca/image/ccom154option4\")",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" -o wbd_gallery.html \"https://press.wbd.com/us/property/creature-commandos/images\")",
+      "Bash(curl -sL -o 'C:\\\\Users\\\\chuiyi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Project-chuiyi-github-com\\\\46e8dcc8-66fa-4f5e-aaf0-caab5421a6c9\\\\scratchpad/weasel.jpg' https://static.cdn.turner.com/styles/scale_792/s3/images/2024-12/weasel.jpg)",
+      "Bash(curl -sL -o 'C:\\\\Users\\\\chuiyi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Project-chuiyi-github-com\\\\46e8dcc8-66fa-4f5e-aaf0-caab5421a6c9\\\\scratchpad/flag-waller.jpg' https://static.cdn.turner.com/styles/scale_792/s3/images/2024-11/rick-flag-sr-amanda-waller.jpg)",
+      "Bash(curl -sL -o 'C:\\\\Users\\\\chuiyi\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Project-chuiyi-github-com\\\\46e8dcc8-66fa-4f5e-aaf0-caab5421a6c9\\\\scratchpad/flag-circe-waller-economos.jpg' https://static.cdn.turner.com/styles/scale_792/s3/images/2024-12/rick-flag-sr-circe-amanda-waller-economos.jpg)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" \"https://dcuniverse.fandom.com/wiki/John_Economos/Gallery\" -o /tmp/economos_gallery.html -w \"%{http_code}\\\\n\")",
+      "Bash(node -e ' *)",
+      "Bash(magick -version)",
+      "Bash(magick identify *)",
+      "Bash(magick flag-waller.jpg -crop 620x820+150+0 +repage -resize 400x rick-flag-sr-crop.jpg)",
+      "Bash(magick flag-waller.jpg -crop 620x820+790+0 +repage -resize 400x amanda-waller-crop.jpg)",
+      "Bash(magick weasel.jpg -crop 750x891+417+0 +repage -resize 400x weasel-crop.jpg)",
+      "Bash(cp __TRACKED_VAR__/rick-flag-sr-crop.jpg d:/Project/chuiyi.github.com/DCU/assets/characters/rick-flag-sr.jpg)",
+      "Bash(cp __TRACKED_VAR__/amanda-waller-crop.jpg d:/Project/chuiyi.github.com/DCU/assets/characters/amanda-waller.jpg)",
+      "Bash(cp __TRACKED_VAR__/weasel-crop.jpg d:/Project/chuiyi.github.com/DCU/assets/characters/weasel.jpg)"
+    ]
+  }
+}
