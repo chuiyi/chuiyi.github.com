@@ -260,6 +260,12 @@ body {
     min-width: 0;
 }
 
+.timeline-item.unconfirmed .timeline-body,
+.timeline-item.unconfirmed .timeline-poster,
+.timeline-item.unconfirmed .timeline-poster-placeholder {
+    border-style: dashed;
+}
+
 .timeline-date {
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 1px;
@@ -423,7 +429,7 @@ body {
     color: var(--dc-gold);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 620px) {
     .burst { display: none; }
 
     .dcu-nav-toggle {

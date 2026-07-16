@@ -43,7 +43,7 @@ const DCU = (() => {
             ? `<div class="timeline-poster timeline-poster-placeholder">?</div>`
             : `<img class="timeline-poster" src="${t.poster}" alt="${t.posterAlt}" loading="lazy">`;
         return `
-            <li class="timeline-item ${t.phase}">
+            <li class="timeline-item ${t.phase}${t.unconfirmed ? ' unconfirmed' : ''}">
                 ${posterHtml}
                 <div class="timeline-body">
                     <span class="timeline-date">${t.date}</span>

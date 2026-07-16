@@ -1,5 +1,27 @@
 [
   {
+    "date": "2021.08.05",
+    "type": "電影",
+    "phase": "released",
+    "statusLabel": "已上映・未確認",
+    "unconfirmed": true,
+    "posterPending": true,
+    "title": "The Suicide Squad",
+    "subtitle": "自殺突擊隊",
+    "descriptionHtml": "James Gunn 執導的舊 DCEU 電影，Weasel（Sean Gunn 飾）於此首次登場，後於《Creature Commandos》（2024）動畫版回歸；本片是否正式併入新 DCU 正史，官方目前尚未明確定調，暫列為未確認項目。"
+  },
+  {
+    "date": "2022.01.13",
+    "type": "影集",
+    "phase": "released",
+    "statusLabel": "已上映・未確認",
+    "unconfirmed": true,
+    "posterPending": true,
+    "title": "Peacemaker",
+    "subtitle": "第一季",
+    "descriptionHtml": "John Cena 主演的第一季，是已確認併入 DCU 正史的《Peacemaker》第二季的前作；第一季本身是否算新 DCU 正史，官方尚未明確定調，暫列為未確認項目。"
+  },
+  {
     "date": "2023.08.18",
     "type": "電影",
     "phase": "released",
