@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DCU 新聞 | 蝙蝠洞資料庫</title>
+    <meta name="description" content="DC Comics 電影宇宙（DCU）與 James Gunn 相關最新消息整理">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="halftone-bg" aria-hidden="true"></div>
+
+    <header class="dcu-header">
+        <div class="dcu-header-inner">
+            <a href="index.html" class="dcu-logo">
+                <span class="dcu-logo-dc">DC</span><span class="dcu-logo-u">UNIVERSE</span>
+            </a>
+            <button class="dcu-nav-toggle" aria-label="開啟選單" aria-expanded="false">☰</button>
+            <nav class="dcu-nav">
+                <a href="index.html">回到 DCU 首頁</a>
+                <a href="index.html#timeline">時間軸</a>
+                <a href="elseworlds.html">Elseworlds</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dcu-hero">
+        <div class="burst burst-1" aria-hidden="true">NEWS!</div>
+        <div class="burst burst-2" aria-hidden="true">FLASH!</div>
+        <h1 class="dcu-hero-title">
+            <span class="line-1">LATEST</span>
+            <span class="line-2">INTEL</span>
+        </h1>
+        <p class="dcu-hero-sub">整理近期 DCU 與 James Gunn 相關的消息，含選角、票房與製作進度更新。</p>
+    </section>
+
+    <main>
+        <section id="news" class="dcu-section">
+            <h2 class="section-title" data-text="NEWS">最新消息</h2>
+            <p class="section-lead">內容彙整自各媒體報導，附上原文連結供查證；日後有新消息會持續更新於此。</p>
+
+            <ul class="news-list" id="news-list"></ul>
+        </section>
+    </main>
+
+    <footer class="dcu-footer">
+        <p>&copy; 2026 Chuiyi's DC Comics 資料庫 · <a href="index.html">回到 DCU 首頁</a> · <a href="../index.html">回到主站</a></p>
+    </footer>
+
+    <script src="js/nav.js"></script>
+    <script src="js/dcu.js"></script>
+    <script>
+        DCU.renderNews('news-list', 'news.json');
+    </script>
+</body>
+</html>

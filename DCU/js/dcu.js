@@ -32,9 +32,12 @@ const DCU = (() => {
 
     function renderTimelineItem(t) {
         const subtitle = t.subtitle ? ` <small>${t.subtitle}</small>` : '';
+        const posterHtml = t.posterPending
+            ? `<div class="timeline-poster timeline-poster-placeholder">?</div>`
+            : `<img class="timeline-poster" src="${t.poster}" alt="${t.posterAlt}" loading="lazy">`;
         return `
             <li class="timeline-item ${t.phase}">
-                <img class="timeline-poster" src="${t.poster}" alt="${t.posterAlt}" loading="lazy">
+                ${posterHtml}
                 <div class="timeline-body">
                     <span class="timeline-date">${t.date}</span>
                     <span class="timeline-type">${t.type}</span>
@@ -47,6 +50,17 @@ const DCU = (() => {
 
     function renderDevItem(d) {
         return `<li><strong>${d.name}</strong>（${d.type}）— ${d.statusHtml}</li>`;
+    }
+
+    function renderNewsCard(n) {
+        return `
+            <li class="news-card">
+                <span class="news-date">${n.date}</span>
+                <span class="news-tag">${n.tag}</span>
+                <h3>${n.title}</h3>
+                <p>${n.summaryHtml}</p>
+                <p class="news-source">資料來源：<a href="${n.sourceUrl}" target="_blank" rel="noopener">${n.sourceName}</a></p>
+            </li>`;
     }
 
     async function renderCharacters(containerId, file) {
@@ -82,6 +96,17 @@ const DCU = (() => {
         }
     }
 
+    async function renderNews(containerId, file) {
+        const el = document.getElementById(containerId);
+        if (!el) return;
+        try {
+            const items = await fetchJSON(file);
+            el.innerHTML = items.map(renderNewsCard).join('');
+        } catch (err) {
+            console.error('[DCU] 新聞資料載入失敗', err);
+        }
+    }
+
     async function renderElseworlds(file) {
         try {
             const data = await fetchJSON(file);
@@ -104,5 +129,5 @@ const DCU = (() => {
         }
     }
 
-    return { renderCharacters, renderTimeline, renderDevList, renderElseworlds };
+    return { renderCharacters, renderTimeline, renderDevList, renderNews, renderElseworlds };
 })();
