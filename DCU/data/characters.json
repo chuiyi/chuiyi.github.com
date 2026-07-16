@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Rick Flag Sr.",
+    "avatar": "assets/characters/rick-flag-sr.jpg",
+    "avatarAlt": "Rick Flag Sr.",
+    "actorName": "Frank Grillo",
+    "actorPhoto": "https://image.tmdb.org/t/p/w185/kuEco4vo1xrsM8DyrNSZUEi593P.jpg",
+    "actorPhotoAlt": "Frank Grillo",
+    "role": "配音 / 真人演出",
+    "firstAppearanceHtml": "首次登場：<em>Creature Commandos</em>（2024，動畫）→ 真人版於《Peacemaker》第二季登場"
+  },
+  {
+    "name": "Amanda Waller",
+    "avatar": "assets/characters/amanda-waller.jpg",
+    "avatarAlt": "Amanda Waller",
+    "actorName": "Viola Davis",
+    "actorPhoto": "https://image.tmdb.org/t/p/w185/xDssw6vpYNRjsybvMPRE30e0dPN.jpg",
+    "actorPhotoAlt": "Viola Davis",
+    "role": "配音 / 真人演出",
+    "firstAppearanceHtml": "首次登場：<em>Creature Commandos</em>（2024，動畫）；同一演員亦於《Peacemaker》第二季真人演出"
+  },
+  {
+    "name": "Weasel",
+    "avatar": "assets/characters/weasel.jpg",
+    "avatarAlt": "Weasel",
+    "actorName": "Sean Gunn",
+    "actorPhoto": "https://image.tmdb.org/t/p/w185/tiolBlPytndQVGHO9vLnBKWWenq.jpg",
+    "actorPhotoAlt": "Sean Gunn",
+    "role": "配音 / 真人演出",
+    "firstAppearanceHtml": "首次登場：《自殺突擊隊》（2021，真人）→ 配音回歸《Creature Commandos》（2024，動畫）"
+  },
+  {
+    "name": "John Economos",
+    "pending": true,
+    "actorName": "Steve Agee",
+    "actorPhoto": "https://image.tmdb.org/t/p/w185/sbMpatWydjTl2cTcDXFMTgCkEBO.jpg",
+    "actorPhotoAlt": "Steve Agee",
+    "role": "配音 / 真人演出",
+    "firstAppearanceHtml": "官方單人動畫劇照尚未尋獲，待補。首次登場：《和平使者》第一季（2022，真人）"
+  }
+]
