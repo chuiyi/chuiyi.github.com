@@ -451,14 +451,14 @@ body {
 
 .char-actor-badge {
     position: absolute;
-    right: -3px;
-    bottom: -3px;
-    width: 38%;
+    right: 8px;
+    bottom: 8px;
+    width: 34%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    object-position: top center;
     border: 3px solid var(--dc-gold);
-    border-radius: 50% 0 0 0;
-    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    border-radius: 50%;
     box-shadow: -2px -2px 0 var(--ink);
 }
 
