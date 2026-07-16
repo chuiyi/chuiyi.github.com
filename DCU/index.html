@@ -23,7 +23,7 @@
             <nav class="dcu-nav">
                 <a href="#movies">電影</a>
                 <a href="#series">影集</a>
-                <a href="#characters">角色</a>
+                <a href="characters.html">角色</a>
                 <a href="#timeline">時間軸</a>
                 <a href="news.html">新聞</a>
                 <a href="elseworlds.html">Elseworlds</a>
@@ -75,14 +75,6 @@
             </div>
         </section>
 
-        <section id="characters" class="dcu-section">
-            <h2 class="section-title" data-text="CHARACTERS">角色首次登場</h2>
-            <p class="section-lead">DCU 角色常跨足動畫與真人兩種形式，且多由同一位演員身兼配音與真人演出。頭像右下角徽章標示該角色的配音 / 真人演員。</p>
-
-            <div class="char-grid" id="char-grid"></div>
-            <p class="tmdb-attribution">動畫角色劇照來源：<a href="https://press.wbd.com/" target="_blank" rel="noopener">Warner Bros. Discovery Pressroom</a> 官方新聞資料庫；演員頭像來源：<a href="https://www.themoviedb.org/" target="_blank" rel="noopener">TMDB</a>。</p>
-        </section>
-
         <section id="timeline" class="dcu-section alt">
             <h2 class="section-title" data-text="TIMELINE">時間軸</h2>
             <p class="section-lead">DC Studios「第一章：諸神與怪物」(Chapter One: Gods and Monsters) 依上映順序整理，由 <em>Creature Commandos</em> 揭開序幕。</p>
@@ -106,7 +98,6 @@
     <script src="js/nav.js"></script>
     <script src="js/dcu.js"></script>
     <script>
-        DCU.renderCharacters('char-grid', 'characters.json');
         DCU.renderTimeline('timeline-list', 'timeline.json');
         DCU.renderDevList('dev-list', 'dev-timeline.json');
     </script>
