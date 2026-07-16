@@ -27,7 +27,8 @@
     "type": "電影",
     "phase": "released",
     "statusLabel": "已上映・回溯併入",
-    "posterPending": true,
+    "poster": "https://media.themoviedb.org/t/p/w600_and_h900_face/lS3c1zfa1gI7FirJ68TWdFWOThz.jpg",
+    "posterAlt": "Blue Beetle 海報",
     "title": "Blue Beetle",
     "titleZh": "藍甲蟲",
     "descriptionHtml": "上映時原屬舊 DCEU 收尾之作，2026 年 7 月 James Gunn 證實 Xolo Maridueña 飾演的 Jaime Reyes 將回歸並延續至《Man of Tomorrow》（2027），使藍甲蟲正式併入新 DCU 正史。"
