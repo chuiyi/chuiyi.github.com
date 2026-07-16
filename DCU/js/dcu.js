@@ -7,6 +7,7 @@
 const DCU = (() => {
 
     const DATA_BASE = './data/';
+    const NEWS_PAGE_SIZE = 6;
 
     async function fetchJSON(file) {
         const resp = await fetch(DATA_BASE + file);
@@ -14,12 +15,18 @@ const DCU = (() => {
         return resp.json();
     }
 
-    function renderCharacterCard(c) {
+    function dateSortKey(dateStr) {
+        const parts = String(dateStr).split('.');
+        while (parts.length < 3) parts.push('00');
+        return parts.map(p => p.padStart(2, '0')).join('.');
+    }
+
+    function renderCharacterCard(c, index) {
         const avatarHtml = c.pending
             ? `<div class="char-avatar char-avatar-placeholder">?</div>`
             : `<img class="char-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`;
         return `
-            <div class="char-card${c.pending ? ' pending' : ''}">
+            <div class="char-card${c.pending ? ' pending' : ''}" data-index="${index}" role="button" tabindex="0">
                 <div class="char-avatar-wrap">
                     ${avatarHtml}
                     <img class="char-actor-badge" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">
@@ -53,14 +60,73 @@ const DCU = (() => {
     }
 
     function renderNewsCard(n) {
+        const tagClass = n.tag === 'Elseworlds' ? ' news-tag-elseworlds' : '';
         return `
             <li class="news-card">
                 <span class="news-date">${n.date}</span>
-                <span class="news-tag">${n.tag}</span>
+                <span class="news-tag${tagClass}">${n.tag}</span>
                 <h3>${n.title}</h3>
                 <p>${n.summaryHtml}</p>
                 <p class="news-source">資料來源：<a href="${n.sourceUrl}" target="_blank" rel="noopener">${n.sourceName}</a></p>
             </li>`;
+    }
+
+    function renderPaginationControls(page, totalPages) {
+        if (totalPages <= 1) return '';
+        let buttons = `<button class="page-btn" data-page="${page - 1}"${page === 1 ? ' disabled' : ''}>← 上一頁</button>`;
+        for (let i = 1; i <= totalPages; i++) {
+            buttons += `<button class="page-btn${i === page ? ' active' : ''}" data-page="${i}">${i}</button>`;
+        }
+        buttons += `<button class="page-btn" data-page="${page + 1}"${page === totalPages ? ' disabled' : ''}>下一頁 →</button>`;
+        return buttons;
+    }
+
+    function openCharacterModal(c) {
+        const overlay = document.getElementById('char-modal-overlay');
+        const body = document.getElementById('char-modal-body');
+        if (!overlay || !body) return;
+
+        const avatarHtml = c.pending
+            ? `<div class="char-modal-avatar char-avatar-placeholder">?</div>`
+            : `<img class="char-modal-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`;
+
+        body.innerHTML = `
+            <div class="char-modal-media">
+                ${avatarHtml}
+                <img class="char-modal-actor-photo" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">
+            </div>
+            <h3>${c.name}</h3>
+            <p class="char-actor">${c.actorName} <span class="char-role">${c.role}</span></p>
+            <p class="char-first">${c.firstAppearanceHtml}</p>`;
+
+        overlay.hidden = false;
+        document.body.classList.add('modal-open');
+    }
+
+    function closeCharacterModal() {
+        const overlay = document.getElementById('char-modal-overlay');
+        if (!overlay) return;
+        overlay.hidden = true;
+        document.body.classList.remove('modal-open');
+    }
+
+    function initCharacterModal() {
+        const overlay = document.getElementById('char-modal-overlay');
+        if (!overlay) return;
+        const closeBtn = overlay.querySelector('.char-modal-close');
+        if (closeBtn) closeBtn.addEventListener('click', closeCharacterModal);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeCharacterModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeCharacterModal();
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCharacterModal);
+    } else {
+        initCharacterModal();
     }
 
     async function renderCharacters(containerId, file) {
@@ -69,6 +135,18 @@ const DCU = (() => {
         try {
             const characters = await fetchJSON(file);
             el.innerHTML = characters.map(renderCharacterCard).join('');
+            el.addEventListener('click', (e) => {
+                const card = e.target.closest('.char-card');
+                if (!card) return;
+                openCharacterModal(characters[Number(card.dataset.index)]);
+            });
+            el.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                const card = e.target.closest('.char-card');
+                if (!card) return;
+                e.preventDefault();
+                openCharacterModal(characters[Number(card.dataset.index)]);
+            });
         } catch (err) {
             console.error('[DCU] 角色資料載入失敗', err);
         }
@@ -96,12 +174,36 @@ const DCU = (() => {
         }
     }
 
-    async function renderNews(containerId, file) {
-        const el = document.getElementById(containerId);
-        if (!el) return;
+    async function renderNews(containerId, file, paginationId) {
+        const listEl = document.getElementById(containerId);
+        const pagerEl = paginationId ? document.getElementById(paginationId) : null;
+        if (!listEl) return;
         try {
             const items = await fetchJSON(file);
-            el.innerHTML = items.map(renderNewsCard).join('');
+            items.sort((a, b) => dateSortKey(b.date).localeCompare(dateSortKey(a.date)));
+
+            const totalPages = Math.max(1, Math.ceil(items.length / NEWS_PAGE_SIZE));
+            let page = 1;
+
+            function paint() {
+                const start = (page - 1) * NEWS_PAGE_SIZE;
+                listEl.innerHTML = items.slice(start, start + NEWS_PAGE_SIZE).map(renderNewsCard).join('');
+                if (pagerEl) pagerEl.innerHTML = renderPaginationControls(page, totalPages);
+            }
+
+            if (pagerEl) {
+                pagerEl.addEventListener('click', (e) => {
+                    const btn = e.target.closest('[data-page]');
+                    if (!btn || btn.disabled) return;
+                    const target = Number(btn.dataset.page);
+                    if (target < 1 || target > totalPages) return;
+                    page = target;
+                    paint();
+                    listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            }
+
+            paint();
         } catch (err) {
             console.error('[DCU] 新聞資料載入失敗', err);
         }
