@@ -77,6 +77,15 @@ body {
     color: var(--dc-gold);
 }
 
+.dcu-nav .nav-current {
+    color: var(--dc-gold);
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    cursor: default;
+    position: relative;
+}
+
 .dcu-nav-toggle {
     display: none;
     background: none;
@@ -587,7 +596,7 @@ body {
     object-position: top center;
     border: 3px solid var(--dc-gold);
     border-radius: 50%;
-    box-shadow: -2px -2px 0 var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
 }
 
 .badge-pending {
@@ -841,7 +850,7 @@ body.modal-open {
     object-position: top center;
     border: 3px solid var(--dc-gold);
     border-radius: 50%;
-    box-shadow: -2px -2px 0 var(--ink);
+    box-shadow: 2px 2px 0 var(--ink);
 }
 
 .char-modal-actor-photo.badge-pending {
