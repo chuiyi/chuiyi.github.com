@@ -159,14 +159,14 @@ const DCU = (() => {
             <p class="char-first">${c.firstAppearanceHtml}</p>`;
 
         overlay.hidden = false;
-        document.body.classList.add('modal-open');
+        refreshBodyScrollLock();
     }
 
     function closeCharacterModal() {
         const overlay = document.getElementById('char-modal-overlay');
         if (!overlay) return;
         overlay.hidden = true;
-        document.body.classList.remove('modal-open');
+        refreshBodyScrollLock();
     }
 
     function openWorkModal(t) {
@@ -190,14 +190,40 @@ const DCU = (() => {
             ${renderWorkFields(t)}`;
 
         overlay.hidden = false;
-        document.body.classList.add('modal-open');
+        refreshBodyScrollLock();
     }
 
     function closeWorkModal() {
         const overlay = document.getElementById('work-modal-overlay');
         if (!overlay) return;
         overlay.hidden = true;
-        document.body.classList.remove('modal-open');
+        refreshBodyScrollLock();
+    }
+
+    function refreshBodyScrollLock() {
+        const anyOpen = ['char-modal-overlay', 'work-modal-overlay', 'image-lightbox-overlay']
+            .some(id => {
+                const el = document.getElementById(id);
+                return el && !el.hidden;
+            });
+        document.body.classList.toggle('modal-open', anyOpen);
+    }
+
+    function openImageLightbox(src, alt) {
+        const overlay = document.getElementById('image-lightbox-overlay');
+        const img = document.getElementById('image-lightbox-img');
+        if (!overlay || !img) return;
+        img.src = src;
+        img.alt = alt || '';
+        overlay.hidden = false;
+        refreshBodyScrollLock();
+    }
+
+    function closeImageLightbox() {
+        const overlay = document.getElementById('image-lightbox-overlay');
+        if (!overlay) return;
+        overlay.hidden = true;
+        refreshBodyScrollLock();
     }
 
     function attachTimelineModalHandlers(el, items) {
@@ -221,6 +247,11 @@ const DCU = (() => {
             const closeBtn = charOverlay.querySelector('.char-modal-close');
             if (closeBtn) closeBtn.addEventListener('click', closeCharacterModal);
             charOverlay.addEventListener('click', (e) => {
+                const badge = e.target.closest('.char-modal-actor-photo');
+                if (badge && badge.tagName === 'IMG') {
+                    openImageLightbox(badge.src, badge.alt);
+                    return;
+                }
                 if (e.target === charOverlay) closeCharacterModal();
             });
         }
@@ -234,8 +265,18 @@ const DCU = (() => {
             });
         }
 
+        const lightboxOverlay = document.getElementById('image-lightbox-overlay');
+        if (lightboxOverlay) {
+            const closeBtn = lightboxOverlay.querySelector('.image-lightbox-close');
+            if (closeBtn) closeBtn.addEventListener('click', closeImageLightbox);
+            lightboxOverlay.addEventListener('click', (e) => {
+                if (e.target === lightboxOverlay) closeImageLightbox();
+            });
+        }
+
         document.addEventListener('keydown', (e) => {
             if (e.key !== 'Escape') return;
+            closeImageLightbox();
             closeCharacterModal();
             closeWorkModal();
         });
@@ -254,6 +295,12 @@ const DCU = (() => {
             const characters = await fetchJSON(file);
             el.innerHTML = characters.map(renderCharacterCard).join('');
             el.addEventListener('click', (e) => {
+                const badge = e.target.closest('.char-actor-badge');
+                if (badge && badge.tagName === 'IMG') {
+                    e.stopPropagation();
+                    openImageLightbox(badge.src, badge.alt);
+                    return;
+                }
                 const card = e.target.closest('.char-card');
                 if (!card) return;
                 openCharacterModal(characters[Number(card.dataset.index)]);
