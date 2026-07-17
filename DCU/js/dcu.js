@@ -29,7 +29,7 @@ const DCU = (() => {
             ? `<div class="char-actor-badge badge-pending">?</div>`
             : `<img class="char-actor-badge" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
         const nameZhHtml = c.nameZh ? `<p class="name-zh">${c.nameZh}</p>` : '';
-        const actorNameZhHtml = c.actorNameZh ? `<span class="actor-zh">（${c.actorNameZh}）</span>` : '';
+        // 卡片只留頭像與名稱，演員/首次登場等細節收進點開的角色詳細頁（openCharacterModal）
         return `
             <div class="char-card${c.pending ? ' pending' : ''}" data-index="${index}" role="button" tabindex="0">
                 <div class="char-avatar-wrap">
@@ -38,8 +38,6 @@ const DCU = (() => {
                 </div>
                 <h3>${c.name}</h3>
                 ${nameZhHtml}
-                <p class="char-actor">${c.actorName}${actorNameZhHtml} <span class="char-role">${c.role}</span></p>
-                <p class="char-first">${c.firstAppearanceHtml}</p>
             </div>`;
     }
 
@@ -76,9 +74,20 @@ const DCU = (() => {
         return `<li><strong>${d.name}</strong>（${d.type}）— ${d.statusHtml}</li>`;
     }
 
+    const GLOSSARY_CATEGORY_LABELS = {
+        location: '地點',
+        organization: '組織/機構',
+        concept: '世界觀設定/概念'
+    };
+
     function renderGlossaryItem(g) {
+        const categoryLabel = GLOSSARY_CATEGORY_LABELS[g.category] || g.category;
+        const categoryHtml = g.category
+            ? `<span class="glossary-tag glossary-tag-${g.category}">${categoryLabel}</span>`
+            : '';
         return `
             <li class="glossary-card">
+                ${categoryHtml}
                 <h3>${g.term}<span class="term-zh">${g.termZh}</span></h3>
                 <p>${g.definitionHtml}</p>
             </li>`;
@@ -132,7 +141,7 @@ const DCU = (() => {
                 </div>
             </div>`
             : `
-            <div class="char-modal-media">
+            <div class="char-modal-media${c.pending ? ' pending' : ''}">
                 ${c.pending
                     ? `<div class="char-modal-avatar char-avatar-placeholder">?</div>`
                     : `<img class="char-modal-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`}
