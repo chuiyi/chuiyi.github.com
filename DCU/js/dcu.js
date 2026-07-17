@@ -111,21 +111,39 @@ const DCU = (() => {
         const body = document.getElementById('char-modal-body');
         if (!overlay || !body) return;
 
-        const avatarHtml = c.pending
-            ? `<div class="char-modal-avatar char-avatar-placeholder">?</div>`
-            : `<img class="char-modal-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`;
         const badgeHtml = !c.dual ? '' : c.actorPhotoPending
             ? `<div class="char-modal-actor-photo badge-pending">?</div>`
             : `<img class="char-modal-actor-photo" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
+
+        // 角色同時跨足動畫與真人版本時，並排顯示兩張腳色劇照，並在右下角疊上演員（配音/真人）本人照片
+        const mediaHtml = (c.avatarAnimated && c.avatarLive)
+            ? `
+            <div class="char-modal-media char-modal-media-dual">
+                <div class="char-modal-dual-avatars">
+                    <div class="char-modal-dual-item">
+                        <img class="char-modal-avatar" src="${c.avatarAnimated}" alt="${c.avatarAnimatedAlt || c.name}">
+                        <span class="char-modal-dual-label">動畫版</span>
+                    </div>
+                    <div class="char-modal-dual-item">
+                        <img class="char-modal-avatar" src="${c.avatarLive}" alt="${c.avatarLiveAlt || c.name}">
+                        <span class="char-modal-dual-label">真人版</span>
+                    </div>
+                    ${badgeHtml}
+                </div>
+            </div>`
+            : `
+            <div class="char-modal-media">
+                ${c.pending
+                    ? `<div class="char-modal-avatar char-avatar-placeholder">?</div>`
+                    : `<img class="char-modal-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`}
+                ${badgeHtml}
+            </div>`;
 
         const nameZhHtml = c.nameZh ? `<p class="name-zh">${c.nameZh}</p>` : '';
         const actorNameZhHtml = c.actorNameZh ? `<span class="actor-zh">（${c.actorNameZh}）</span>` : '';
 
         body.innerHTML = `
-            <div class="char-modal-media">
-                ${avatarHtml}
-                ${badgeHtml}
-            </div>
+            ${mediaHtml}
             <h3>${c.name}</h3>
             ${nameZhHtml}
             <p class="char-actor">${c.actorName}${actorNameZhHtml} <span class="char-role">${c.role}</span></p>
