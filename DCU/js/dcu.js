@@ -74,9 +74,20 @@ const DCU = (() => {
         return `<li><strong>${d.name}</strong>（${d.type}）— ${d.statusHtml}</li>`;
     }
 
+    const GLOSSARY_CATEGORY_LABELS = {
+        location: '地點',
+        organization: '組織/機構',
+        concept: '世界觀設定/概念'
+    };
+
     function renderGlossaryItem(g) {
+        const categoryLabel = GLOSSARY_CATEGORY_LABELS[g.category] || g.category;
+        const categoryHtml = g.category
+            ? `<span class="glossary-tag glossary-tag-${g.category}">${categoryLabel}</span>`
+            : '';
         return `
             <li class="glossary-card">
+                ${categoryHtml}
                 <h3>${g.term}<span class="term-zh">${g.termZh}</span></h3>
                 <p>${g.definitionHtml}</p>
             </li>`;
@@ -130,7 +141,7 @@ const DCU = (() => {
                 </div>
             </div>`
             : `
-            <div class="char-modal-media">
+            <div class="char-modal-media${c.pending ? ' pending' : ''}">
                 ${c.pending
                     ? `<div class="char-modal-avatar char-avatar-placeholder">?</div>`
                     : `<img class="char-modal-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`}
