@@ -29,7 +29,7 @@ const DCU = (() => {
             ? `<div class="char-actor-badge badge-pending">?</div>`
             : `<img class="char-actor-badge" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
         const nameZhHtml = c.nameZh ? `<p class="name-zh">${c.nameZh}</p>` : '';
-        const actorNameZhHtml = c.actorNameZh ? `<span class="actor-zh">（${c.actorNameZh}）</span>` : '';
+        // 卡片只留頭像與名稱，演員/首次登場等細節收進點開的角色詳細頁（openCharacterModal）
         return `
             <div class="char-card${c.pending ? ' pending' : ''}" data-index="${index}" role="button" tabindex="0">
                 <div class="char-avatar-wrap">
@@ -38,8 +38,6 @@ const DCU = (() => {
                 </div>
                 <h3>${c.name}</h3>
                 ${nameZhHtml}
-                <p class="char-actor">${c.actorName}${actorNameZhHtml} <span class="char-role">${c.role}</span></p>
-                <p class="char-first">${c.firstAppearanceHtml}</p>
             </div>`;
     }
 
