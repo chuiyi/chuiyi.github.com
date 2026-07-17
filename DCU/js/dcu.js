@@ -43,10 +43,18 @@ const DCU = (() => {
             </div>`;
     }
 
+    function renderWorkFields(t) {
+        const synopsisHtml = t.synopsisHtml
+            ? `<p class="field-block"><span class="field-label">劇情簡介</span>${t.synopsisHtml}</p>` : '';
+        const historyHtml = t.historyHtml
+            ? `<p class="field-block"><span class="field-label">作品歷程</span>${t.historyHtml}</p>` : '';
+        const noteHtml = t.noteHtml ? `<blockquote class="timeline-note">${t.noteHtml}</blockquote>` : '';
+        return synopsisHtml + historyHtml + noteHtml;
+    }
+
     function renderTimelineItem(t, index) {
         const subtitle = t.subtitle ? ` <small>${t.subtitle}</small>` : '';
         const titleZhHtml = t.titleZh ? `<p class="title-zh">${t.titleZh}</p>` : '';
-        const noteHtml = t.noteHtml ? `<blockquote class="timeline-note">${t.noteHtml}</blockquote>` : '';
         const posterHtml = t.posterPending
             ? `<div class="timeline-poster timeline-poster-placeholder">?</div>`
             : `<img class="timeline-poster" src="${t.poster}" alt="${t.posterAlt}" loading="lazy">`;
@@ -59,8 +67,7 @@ const DCU = (() => {
                     <span class="timeline-status status-${t.phase}">${t.statusLabel}</span>
                     <h3>${t.title}${subtitle}</h3>
                     ${titleZhHtml}
-                    <p>${t.descriptionHtml}</p>
-                    ${noteHtml}
+                    ${renderWorkFields(t)}
                 </div>
             </li>`;
     }
@@ -142,7 +149,6 @@ const DCU = (() => {
 
         const subtitle = t.subtitle ? ` <small>${t.subtitle}</small>` : '';
         const titleZhHtml = t.titleZh ? `<p class="title-zh">${t.titleZh}</p>` : '';
-        const noteHtml = t.noteHtml ? `<blockquote class="timeline-note">${t.noteHtml}</blockquote>` : '';
         const posterHtml = t.posterPending
             ? `<div class="work-modal-poster timeline-poster-placeholder">?</div>`
             : `<img class="work-modal-poster" src="${t.poster}" alt="${t.posterAlt}">`;
@@ -154,8 +160,7 @@ const DCU = (() => {
             <span class="timeline-status status-${t.phase}">${t.statusLabel}</span>
             <h3>${t.title}${subtitle}</h3>
             ${titleZhHtml}
-            <p>${t.descriptionHtml}</p>
-            ${noteHtml}`;
+            ${renderWorkFields(t)}`;
 
         overlay.hidden = false;
         document.body.classList.add('modal-open');
@@ -297,7 +302,8 @@ const DCU = (() => {
                     if (target < 1 || target > totalPages) return;
                     page = target;
                     paint();
-                    listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const section = listEl.closest('section') || listEl;
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
             }
 
