@@ -143,6 +143,18 @@ body {
     box-shadow: 7px 7px 0 var(--ink);
 }
 
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.hero-actions .comic-btn {
+    font-size: 1.2rem;
+    padding: 10px 22px;
+}
+
 .burst {
     position: absolute;
     font-family: 'Bangers', cursive;
@@ -340,6 +352,25 @@ body {
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.6;
+}
+
+.field-block {
+    margin: 0 0 6px !important;
+}
+
+.field-block:last-of-type {
+    margin-bottom: 0 !important;
+}
+
+.field-label {
+    display: inline-block;
+    font-weight: 700;
+    color: var(--dc-blue);
+    margin-right: 4px;
+}
+
+.field-label::after {
+    content: '：';
 }
 
 .timeline-note {

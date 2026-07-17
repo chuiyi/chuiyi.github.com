@@ -9,7 +9,8 @@
     "posterAlt": "The Suicide Squad 海報",
     "title": "The Suicide Squad",
     "titleZh": "自殺突擊隊：集結",
-    "descriptionHtml": "James Gunn 執導的舊 DCEU 電影，Weasel（Sean Gunn 飾）於此首次登場，後於《Creature Commandos》（2024）動畫版回歸。",
+    "synopsisHtml": "天眼局招募一批重刑犯組成敢死隊，潛入南美小國科多共和國，摧毀外星生物「海星」的秘密實驗。",
+    "historyHtml": "由 James Gunn 執導的舊 DCEU 電影，Weasel（Sean Gunn 飾）於此首次登場，後於《Creature Commandos》（2024）動畫版回歸。",
     "noteHtml": "James Gunn 於 2025 年 1 月在 Bluesky 說明：本片如同一段「不完美的記憶」——只有《Creature Commandos》之後才算「純正史」，本片畫面本身不算數，但只要事件被後續作品引用（例如和平使者殺死瑞克・佛萊格 Jr. 一事在《Creature Commandos》中被提及），該事件就成立於正史之中。"
   },
   {
@@ -23,7 +24,8 @@
     "title": "Peacemaker",
     "titleZh": "和平使者",
     "subtitle": "第一季",
-    "descriptionHtml": "John Cena 主演的第一季，是已確認併入 DCU 正史的《Peacemaker》第二季的前作。",
+    "synopsisHtml": "和平使者從突擊隊死裡逃生後，捲入一場外星生物「蝴蝶」滲透人類高層的陰謀行動。",
+    "historyHtml": "John Cena 主演的第一季，是已確認併入 DCU 正史的《Peacemaker》第二季的前作。",
     "noteHtml": "James Gunn 於 2025 年 1 月證實：第一季幾乎全數併入 DCU 正史，唯獨正義聯盟客串片段除外，該橋段將於後續季別另作處理。"
   },
   {
@@ -35,7 +37,8 @@
     "posterAlt": "Blue Beetle 海報",
     "title": "Blue Beetle",
     "titleZh": "藍甲蟲",
-    "descriptionHtml": "上映時原屬舊 DCEU 收尾之作，2026 年 7 月 James Gunn 證實 Xolo Maridueña 飾演的 Jaime Reyes 將回歸並延續至《Man of Tomorrow》（2027），使藍甲蟲正式併入新 DCU 正史。"
+    "synopsisHtml": "大學畢業生 Jaime Reyes 意外與外星聖甲蟲共生，獲得強大裝甲力量，成為藍甲蟲，捲入企業陰謀。",
+    "historyHtml": "上映時原屬舊 DCEU 收尾之作，2026 年 7 月 James Gunn 證實 Xolo Maridueña 飾演的 Jaime Reyes 將回歸並延續至《Man of Tomorrow》（2027），使藍甲蟲正式併入新 DCU 正史。"
   },
   {
     "date": "2024.12.05",
@@ -47,7 +50,8 @@
     "title": "Creature Commandos",
     "titleZh": "生物突擊隊",
     "subtitle": "第一季",
-    "descriptionHtml": "由阿曼達・沃勒召集的重刑監獄怪物特遣隊，DCU 開幕作，同時是一部限制級成人動畫影集。"
+    "synopsisHtml": "由阿曼達・沃勒召集的重刑監獄怪物特遣隊，執行政府不便出面的骯髒任務。",
+    "historyHtml": "DCU 開幕作，同時是一部限制級成人動畫影集。"
   },
   {
     "date": "2025.07.11",
@@ -58,7 +62,8 @@
     "posterAlt": "Superman 海報",
     "title": "Superman",
     "titleZh": "超人",
-    "descriptionHtml": "DCU 真人電影正式起點，克拉克・肯特在調和氪星血統與人類成長背景間，重新定義超人。"
+    "synopsisHtml": "克拉克・肯特在調和氪星血統與人類成長背景之間，對抗雷克斯・路瑟精心策劃的陰謀，向世人證明自己是守護者而非威脅。",
+    "historyHtml": "DCU 真人電影正式起點，重新定義超人。"
   },
   {
     "date": "2025.08.21",
@@ -70,7 +75,8 @@
     "title": "Peacemaker",
     "titleZh": "和平使者",
     "subtitle": "第二季",
-    "descriptionHtml": "正式並入 DCU 正史的續集季，和平使者面對跨維度的自己與 A.R.G.U.S. 新局長瑞克・佛萊格。"
+    "synopsisHtml": "和平使者意外啟動已故父親留下的量子裝置，進入價值觀截然不同的平行宇宙，同時面對 A.R.G.U.S. 新局長瑞克・佛萊格的追殺。",
+    "historyHtml": "正式並入 DCU 正史的續集季。"
   },
   {
     "date": "2026.06.26",
@@ -81,7 +87,8 @@
     "posterAlt": "Supergirl 海報",
     "title": "Supergirl",
     "titleZh": "超少女",
-    "descriptionHtml": "改編自《Supergirl: Woman of Tomorrow》漫畫，Kara Zor-El（卡拉・佐艾爾）首部真人電影，與夥伴踏上復仇的星際旅程。"
+    "synopsisHtml": "Kara Zor-El（卡拉・佐艾爾）為了拯救身中毒箭的愛犬克利普托，被迫與意外夥伴一同踏上復仇的星際旅程。",
+    "historyHtml": "改編自《Supergirl: Woman of Tomorrow》漫畫，首部真人電影。"
   },
   {
     "date": "2026.08.16",
@@ -93,7 +100,8 @@
     "title": "Lanterns",
     "titleZh": "綠燈軍團",
     "subtitle": "第一季",
-    "descriptionHtml": "菜鳥約翰・史都華與資深綠燈俠哈爾・喬丹調查一樁美國中西部的命案，揭開綠燈軍團背後的黑暗秘密。"
+    "synopsisHtml": "菜鳥綠燈俠約翰・史都華與資深綠燈俠哈爾・喬丹調查一樁美國中西部的命案，揭開綠燈軍團背後的黑暗秘密。",
+    "historyHtml": "HBO Max 影集第一季，故事橫跨 2016 年與現今雙時間線。"
   },
   {
     "date": "2026.10.23",
@@ -104,7 +112,8 @@
     "posterAlt": "Clayface 海報",
     "title": "Clayface",
     "titleZh": "泥面人",
-    "descriptionHtml": "以恐怖片手法詮釋的反派起源故事，一位過氣演員在復仇之路上逐漸失去人性。"
+    "synopsisHtml": "過氣演員 Matt Hagen 遭黑幫毀容後，向邊緣科學家 Dr. Caitlin Corr 求助，接受把身體轉化為黏土的實驗性療程；一開始成功，卻逐漸失控，讓他能任意變換外貌，也一步步失去人性。",
+    "historyHtml": "以恐怖片手法詮釋的反派起源故事，劇情設定甚至早於現有 DCU 作品。"
   },
   {
     "date": "2027.07.09",
@@ -114,6 +123,7 @@
     "poster": "https://image.tmdb.org/t/p/w300/tYLgfKk3cEk7LskgxWyW37Nty01.jpg",
     "posterAlt": "Man of Tomorrow 海報",
     "title": "Man of Tomorrow",
-    "descriptionHtml": "《Superman》續集，克拉克與雷克斯・路瑟聯手對抗更龐大的威脅。"
+    "synopsisHtml": "設定於《Superman》兩年後，超人與雷克斯・路瑟被迫聯手，對抗威脅摧毀大都會的超智能生物布萊尼亞克。",
+    "historyHtml": "《Superman》續集，James Gunn 續任編導，David Corenswet、Nicholas Hoult、Isabela Merced 回歸原班人馬。"
   }
 ]

@@ -10,7 +10,8 @@
         "posterAlt": "The Batman 海報",
         "title": "The Batman",
         "titleZh": "蝙蝠俠",
-        "descriptionHtml": "年輕的布魯斯・韋恩偵辦「謎語人」連環殺人案，重新定義高譚市偵探式蝙蝠俠。"
+        "synopsisHtml": "年輕的布魯斯・韋恩偵辦「謎語人」策劃的連環殺人案，逐步揭發高譚市權貴階層的腐敗黑幕。",
+        "historyHtml": "重新定義高譚市偵探式蝙蝠俠。"
       },
       {
         "date": "2024.09.19",
@@ -22,7 +23,8 @@
         "title": "The Penguin",
         "titleZh": "企鵝人",
         "subtitle": "迷你影集",
-        "descriptionHtml": "《The Batman》劇情之後，Oz Cobb 在洪水後的高譚市黑幫權力真空中奪權崛起。Colin Farrell 憑此角奪下金球獎；2026 年 6 月確認 HBO 與 DC Studios 不再繼續發展第二季，本劇維持限定影集。"
+        "synopsisHtml": "《The Batman》劇情之後，Oz Cobb 趁著洪水侵襲高譚市造成的黑幫權力真空，一步步奪權崛起。",
+        "historyHtml": "Colin Farrell 憑此角奪下金球獎；2026 年 6 月確認 HBO 與 DC Studios 不再繼續發展第二季，本劇維持限定影集。"
       },
       {
         "date": "2028.02.18",
@@ -33,7 +35,8 @@
         "posterAlt": "The Batman Part II 海報",
         "title": "The Batman: Part II",
         "titleZh": "蝙蝠俠2",
-        "descriptionHtml": "歷經多次延期，劇本由 Matt Reeves 耗時近三年完成，2025 年 8 月開始前期製作。"
+        "synopsisHtml": "劇情細節尚未公開。",
+        "historyHtml": "歷經多次延期，劇本由 Matt Reeves 耗時近三年完成，2025 年 8 月開始前期製作。"
       }
     ],
     "devNoteHtml": "《The Batman: Part III》已在早期開發階段，細節尚未公開。此外，Matt Reeves 原本還企劃兩部衍生影集：2020 年公布、聚焦高譚市警局的《Gotham P.D.》（Terence Winter 操刀後由 Joe Barton 接手），以及後續轉向的《Arkham Asylum》（Antonio Campos 擔任編劇／統籌）；但兩案最終都在 2024 年 7 月由 Reeves 證實不會繼續開發，《Gotham P.D.》部分設定元素後來被整合進《The Penguin》。"
@@ -49,7 +52,8 @@
         "posterAlt": "Joker 海報",
         "title": "Joker",
         "titleZh": "小丑",
-        "descriptionHtml": "失業喜劇演員 Arthur Fleck 一步步墮落成高譚市的犯罪符號小丑，奪下奧斯卡最佳男主角。"
+        "synopsisHtml": "失業喜劇演員 Arthur Fleck 在社會冷漠與精神疾病的夾擊下，一步步墮落成高譚市的犯罪符號小丑。",
+        "historyHtml": "奪下奧斯卡最佳男主角。"
       },
       {
         "date": "2024.10.04",
@@ -60,7 +64,8 @@
         "posterAlt": "Joker: Folie à Deux 海報",
         "title": "Joker: Folie à Deux",
         "titleZh": "小丑：雙重瘋狂",
-        "descriptionHtml": "加入 Lady Gaga 飾演的 Harley Quinn 與音樂劇元素，但票房與口碑雙雙受挫，Todd Phillips 已證實不會有第三部。"
+        "synopsisHtml": "身陷囹圄的 Arthur Fleck 與同樣渴望被關注的 Lee Quinzel（Lady Gaga 飾）相戀，兩人的瘋狂在音樂劇般的幻想中愈演愈烈。",
+        "historyHtml": "但票房與口碑雙雙受挫，Todd Phillips 已證實不會有第三部。"
       }
     ]
   }
