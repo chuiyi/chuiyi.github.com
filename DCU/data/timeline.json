@@ -3,20 +3,20 @@
     "date": "2021.08.05",
     "type": "電影",
     "phase": "released",
-    "statusLabel": "已上映・未確認",
+    "statusLabel": "已上映・部分正史",
     "unconfirmed": true,
     "poster": "https://image.tmdb.org/t/p/original/q61qEyssk2ku3okWICKArlAdhBn.jpg",
     "posterAlt": "The Suicide Squad 海報",
     "title": "The Suicide Squad",
     "titleZh": "自殺突擊隊：集結",
     "descriptionHtml": "James Gunn 執導的舊 DCEU 電影，Weasel（Sean Gunn 飾）於此首次登場，後於《Creature Commandos》（2024）動畫版回歸。",
-    "noteHtml": "本片是否正式併入新 DCU 正史，官方目前尚未明確定調，暫列為未確認項目。"
+    "noteHtml": "James Gunn 於 2025 年 1 月在 Bluesky 說明：本片如同一段「不完美的記憶」——只有《Creature Commandos》之後才算「純正史」，本片畫面本身不算數，但只要事件被後續作品引用（例如和平使者殺死瑞克・佛萊格 Jr. 一事在《Creature Commandos》中被提及），該事件就成立於正史之中。"
   },
   {
     "date": "2022.01.13",
     "type": "影集",
     "phase": "released",
-    "statusLabel": "已上映・未確認",
+    "statusLabel": "已上映・大致正史",
     "unconfirmed": true,
     "poster": "https://image.tmdb.org/t/p/original/63eZXysmOcP3yk8MiBipiMWp2Rs.jpg",
     "posterAlt": "Peacemaker 第一季 海報",
@@ -24,7 +24,7 @@
     "titleZh": "和平使者",
     "subtitle": "第一季",
     "descriptionHtml": "John Cena 主演的第一季，是已確認併入 DCU 正史的《Peacemaker》第二季的前作。",
-    "noteHtml": "第一季本身是否算新 DCU 正史，官方尚未明確定調，暫列為未確認項目。"
+    "noteHtml": "James Gunn 於 2025 年 1 月證實：第一季幾乎全數併入 DCU 正史，唯獨正義聯盟客串片段除外，該橋段將於後續季別另作處理。"
   },
   {
     "date": "2023.08.18",

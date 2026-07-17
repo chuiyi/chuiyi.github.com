@@ -297,7 +297,8 @@ const DCU = (() => {
                     if (target < 1 || target > totalPages) return;
                     page = target;
                     paint();
-                    listEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const section = listEl.closest('section') || listEl;
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
             }
 
