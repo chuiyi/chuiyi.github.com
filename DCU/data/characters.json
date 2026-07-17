@@ -63,7 +63,8 @@
   {
     "name": "Lois Lane",
     "nameZh": "露薏絲・蓮恩",
-    "pending": true,
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/piB7t3ykZaylYTRoyK46FknyF2p.jpg",
+    "avatarAlt": "Rachel Brosnahan",
     "actorName": "Rachel Brosnahan",
     "actorNameZh": "瑞秋・布羅斯納安",
     "role": "真人演出",
@@ -72,7 +73,8 @@
   {
     "name": "Lex Luthor",
     "nameZh": "雷克斯・路瑟",
-    "pending": true,
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/aKWTEoujxOB2a5ZqUfaPtUuQoH6.jpg",
+    "avatarAlt": "Nicholas Hoult",
     "actorName": "Nicholas Hoult",
     "actorNameZh": "尼可拉斯・霍特",
     "role": "真人演出",
@@ -81,16 +83,38 @@
   {
     "name": "Michael Holt / Mister Terrific",
     "nameZh": "麥可・霍特 / 卓越先生",
-    "pending": true,
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/dt8yMyycDlzxkjhmuuJJ4tXDbp4.jpg",
+    "avatarAlt": "Edi Gathegi",
     "actorName": "Edi Gathegi",
     "actorNameZh": "艾迪・蓋瑟吉",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《Superman》（2025，真人），正義天團（Justice Gang）成員"
   },
   {
+    "name": "Kendra Saunders / Hawkgirl",
+    "nameZh": "鷹女孩",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/4SolFI9dwyPm6BXcb3PDcOYzSEl.jpg",
+    "avatarAlt": "Isabela Merced",
+    "actorName": "Isabela Merced",
+    "actorNameZh": "伊莎貝拉・莫塞德",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Superman》（2025，真人），正義天團（Justice Gang）成員"
+  },
+  {
+    "name": "Guy Gardner / Green Lantern",
+    "nameZh": "蓋・加德納 / 綠燈俠",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/aW6vCxkUZtwb6iH2Wf88Uq0XNVv.jpg",
+    "avatarAlt": "Nathan Fillion",
+    "actorName": "Nathan Fillion",
+    "actorNameZh": "奈森・菲利安",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Superman》（2025，真人），正義天團（Justice Gang）領隊"
+  },
+  {
     "name": "Jimmy Olsen",
     "nameZh": "吉米・歐森",
-    "pending": true,
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/vyalCuJUUP7Ht1vMWZQzhOrscXV.jpg",
+    "avatarAlt": "Skyler Gisondo",
     "actorName": "Skyler Gisondo",
     "actorNameZh": "斯凱勒・吉桑多",
     "role": "真人演出",
@@ -104,6 +128,16 @@
     "actorNameZh": "喬琳（真狗演出）",
     "role": "真狗演出",
     "firstAppearanceHtml": "首次登場：《Superman》（2025，真人），超人的愛犬，角色設計參考導演 James Gunn 的愛犬 Ozu"
+  },
+  {
+    "name": "Jor-El",
+    "nameZh": "喬・艾爾",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/sQq0nft6YZmJ7EMQwPcbaxym3AL.jpg",
+    "avatarAlt": "Bradley Cooper",
+    "actorName": "Bradley Cooper",
+    "actorNameZh": "布萊德利・庫柏",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Superman》（2025，真人），超人的氪星生父，與蘿拉・洛爾馮共同透過氪星訊息影像登場"
   },
   {
     "name": "Lara Lor-Van",
@@ -132,6 +166,16 @@
     "actorNameZh": "米莉・愛考克",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《Supergirl》（2026，真人），改編自《Supergirl: Woman of Tomorrow》漫畫"
+  },
+  {
+    "name": "Lobo",
+    "nameZh": "暴狼",
+    "avatar": "https://static.wikia.nocookie.net/dcstudios/images/c/c5/Lobo_%28SG%29.jpg/revision/latest/scale-to-width-down/1000?cb=20260602184020",
+    "avatarAlt": "Jason Momoa",
+    "actorName": "Jason Momoa",
+    "actorNameZh": "傑森・摩莫亞",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026，真人），來自扎尼亞星（Czarnia）的星際傭兵與賞金獵人"
   },
   {
     "name": "Christopher Smith / Peacemaker",
