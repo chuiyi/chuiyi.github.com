@@ -209,6 +209,14 @@ body {
     gap: 18px;
     padding: 0 0 32px 26px;
     position: relative;
+    cursor: pointer;
+}
+
+.timeline-item:hover .timeline-body,
+.timeline-item:focus-visible .timeline-body {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+    outline: none;
 }
 
 .timeline-item::before {
@@ -258,6 +266,7 @@ body {
     box-shadow: 5px 5px 0 var(--ink);
     flex: 1;
     min-width: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .timeline-item.unconfirmed .timeline-body,
@@ -330,6 +339,17 @@ body {
     margin: 0;
     font-size: 0.9rem;
     line-height: 1.6;
+}
+
+.timeline-note {
+    margin: 10px 0 0;
+    padding: 8px 12px;
+    border-left: 3px solid var(--dc-blue);
+    background: rgba(0, 0, 0, 0.05);
+    font-size: 0.82rem;
+    font-style: italic;
+    line-height: 1.6;
+    opacity: 0.8;
 }
 
 .timeline-dev {
@@ -811,6 +831,87 @@ body.modal-open {
     font-size: 0.9rem;
     line-height: 1.7;
     opacity: 0.9;
+    text-align: left;
+}
+
+/* Work (movie/show) detail modal */
+.work-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.work-modal-overlay[hidden] {
+    display: none;
+}
+
+.work-modal {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: var(--paper);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 10px;
+    padding: 26px 24px;
+    box-shadow: 8px 8px 0 var(--ink);
+    text-align: center;
+}
+
+.work-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.work-modal-poster {
+    width: 55%;
+    margin: 0 auto 16px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--ink);
+    border-radius: 6px;
+    box-shadow: 4px 4px 0 var(--ink);
+    background: var(--ink);
+}
+
+#work-modal-body h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    margin: 10px 0 4px;
+    color: var(--ink);
+}
+
+#work-modal-body .title-zh {
+    text-align: center;
+}
+
+#work-modal-body p {
+    margin: 8px 0 0;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    text-align: left;
+}
+
+#work-modal-body .timeline-note {
     text-align: left;
 }
 

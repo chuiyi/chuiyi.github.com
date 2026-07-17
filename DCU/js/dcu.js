@@ -43,14 +43,15 @@ const DCU = (() => {
             </div>`;
     }
 
-    function renderTimelineItem(t) {
+    function renderTimelineItem(t, index) {
         const subtitle = t.subtitle ? ` <small>${t.subtitle}</small>` : '';
         const titleZhHtml = t.titleZh ? `<p class="title-zh">${t.titleZh}</p>` : '';
+        const noteHtml = t.noteHtml ? `<blockquote class="timeline-note">${t.noteHtml}</blockquote>` : '';
         const posterHtml = t.posterPending
             ? `<div class="timeline-poster timeline-poster-placeholder">?</div>`
             : `<img class="timeline-poster" src="${t.poster}" alt="${t.posterAlt}" loading="lazy">`;
         return `
-            <li class="timeline-item ${t.phase}${t.unconfirmed ? ' unconfirmed' : ''}">
+            <li class="timeline-item ${t.phase}${t.unconfirmed ? ' unconfirmed' : ''}" data-index="${index}" role="button" tabindex="0">
                 ${posterHtml}
                 <div class="timeline-body">
                     <span class="timeline-date">${t.date}</span>
@@ -59,6 +60,7 @@ const DCU = (() => {
                     <h3>${t.title}${subtitle}</h3>
                     ${titleZhHtml}
                     <p>${t.descriptionHtml}</p>
+                    ${noteHtml}
                 </div>
             </li>`;
     }
@@ -133,23 +135,84 @@ const DCU = (() => {
         document.body.classList.remove('modal-open');
     }
 
-    function initCharacterModal() {
-        const overlay = document.getElementById('char-modal-overlay');
+    function openWorkModal(t) {
+        const overlay = document.getElementById('work-modal-overlay');
+        const body = document.getElementById('work-modal-body');
+        if (!overlay || !body) return;
+
+        const subtitle = t.subtitle ? ` <small>${t.subtitle}</small>` : '';
+        const titleZhHtml = t.titleZh ? `<p class="title-zh">${t.titleZh}</p>` : '';
+        const noteHtml = t.noteHtml ? `<blockquote class="timeline-note">${t.noteHtml}</blockquote>` : '';
+        const posterHtml = t.posterPending
+            ? `<div class="work-modal-poster timeline-poster-placeholder">?</div>`
+            : `<img class="work-modal-poster" src="${t.poster}" alt="${t.posterAlt}">`;
+
+        body.innerHTML = `
+            ${posterHtml}
+            <span class="timeline-date">${t.date}</span>
+            <span class="timeline-type">${t.type}</span>
+            <span class="timeline-status status-${t.phase}">${t.statusLabel}</span>
+            <h3>${t.title}${subtitle}</h3>
+            ${titleZhHtml}
+            <p>${t.descriptionHtml}</p>
+            ${noteHtml}`;
+
+        overlay.hidden = false;
+        document.body.classList.add('modal-open');
+    }
+
+    function closeWorkModal() {
+        const overlay = document.getElementById('work-modal-overlay');
         if (!overlay) return;
-        const closeBtn = overlay.querySelector('.char-modal-close');
-        if (closeBtn) closeBtn.addEventListener('click', closeCharacterModal);
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) closeCharacterModal();
+        overlay.hidden = true;
+        document.body.classList.remove('modal-open');
+    }
+
+    function attachTimelineModalHandlers(el, items) {
+        el.addEventListener('click', (e) => {
+            const item = e.target.closest('.timeline-item');
+            if (!item) return;
+            openWorkModal(items[Number(item.dataset.index)]);
         });
+        el.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const item = e.target.closest('.timeline-item');
+            if (!item) return;
+            e.preventDefault();
+            openWorkModal(items[Number(item.dataset.index)]);
+        });
+    }
+
+    function initModals() {
+        const charOverlay = document.getElementById('char-modal-overlay');
+        if (charOverlay) {
+            const closeBtn = charOverlay.querySelector('.char-modal-close');
+            if (closeBtn) closeBtn.addEventListener('click', closeCharacterModal);
+            charOverlay.addEventListener('click', (e) => {
+                if (e.target === charOverlay) closeCharacterModal();
+            });
+        }
+
+        const workOverlay = document.getElementById('work-modal-overlay');
+        if (workOverlay) {
+            const closeBtn = workOverlay.querySelector('.work-modal-close');
+            if (closeBtn) closeBtn.addEventListener('click', closeWorkModal);
+            workOverlay.addEventListener('click', (e) => {
+                if (e.target === workOverlay) closeWorkModal();
+            });
+        }
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeCharacterModal();
+            if (e.key !== 'Escape') return;
+            closeCharacterModal();
+            closeWorkModal();
         });
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initCharacterModal);
+        document.addEventListener('DOMContentLoaded', initModals);
     } else {
-        initCharacterModal();
+        initModals();
     }
 
     async function renderCharacters(containerId, file) {
@@ -181,6 +244,7 @@ const DCU = (() => {
         try {
             const items = await fetchJSON(file);
             el.innerHTML = items.map(renderTimelineItem).join('');
+            attachTimelineModalHandlers(el, items);
         } catch (err) {
             console.error('[DCU] 時間軸資料載入失敗', err);
         }
@@ -250,6 +314,7 @@ const DCU = (() => {
             const batmanEl = document.getElementById('batman-timeline');
             if (batmanEl && data.batman) {
                 batmanEl.innerHTML = data.batman.timeline.map(renderTimelineItem).join('');
+                attachTimelineModalHandlers(batmanEl, data.batman.timeline);
             }
             const batmanNoteEl = document.getElementById('batman-dev-note');
             if (batmanNoteEl && data.batman && data.batman.devNoteHtml) {
@@ -259,6 +324,7 @@ const DCU = (() => {
             const jokerEl = document.getElementById('joker-timeline');
             if (jokerEl && data.joker) {
                 jokerEl.innerHTML = data.joker.timeline.map(renderTimelineItem).join('');
+                attachTimelineModalHandlers(jokerEl, data.joker.timeline);
             }
         } catch (err) {
             console.error('[DCU] Elseworlds 資料載入失敗', err);
