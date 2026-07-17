@@ -5,10 +5,12 @@
     "phase": "released",
     "statusLabel": "已上映・未確認",
     "unconfirmed": true,
-    "posterPending": true,
+    "poster": "https://image.tmdb.org/t/p/original/q61qEyssk2ku3okWICKArlAdhBn.jpg",
+    "posterAlt": "The Suicide Squad 海報",
     "title": "The Suicide Squad",
     "titleZh": "自殺突擊隊：集結",
-    "descriptionHtml": "James Gunn 執導的舊 DCEU 電影，Weasel（Sean Gunn 飾）於此首次登場，後於《Creature Commandos》（2024）動畫版回歸；本片是否正式併入新 DCU 正史，官方目前尚未明確定調，暫列為未確認項目。"
+    "descriptionHtml": "James Gunn 執導的舊 DCEU 電影，Weasel（Sean Gunn 飾）於此首次登場，後於《Creature Commandos》（2024）動畫版回歸。",
+    "noteHtml": "本片是否正式併入新 DCU 正史，官方目前尚未明確定調，暫列為未確認項目。"
   },
   {
     "date": "2022.01.13",
@@ -16,18 +18,20 @@
     "phase": "released",
     "statusLabel": "已上映・未確認",
     "unconfirmed": true,
-    "posterPending": true,
+    "poster": "https://image.tmdb.org/t/p/original/63eZXysmOcP3yk8MiBipiMWp2Rs.jpg",
+    "posterAlt": "Peacemaker 第一季 海報",
     "title": "Peacemaker",
     "titleZh": "和平使者",
     "subtitle": "第一季",
-    "descriptionHtml": "John Cena 主演的第一季，是已確認併入 DCU 正史的《Peacemaker》第二季的前作；第一季本身是否算新 DCU 正史，官方尚未明確定調，暫列為未確認項目。"
+    "descriptionHtml": "John Cena 主演的第一季，是已確認併入 DCU 正史的《Peacemaker》第二季的前作。",
+    "noteHtml": "第一季本身是否算新 DCU 正史，官方尚未明確定調，暫列為未確認項目。"
   },
   {
     "date": "2023.08.18",
     "type": "電影",
     "phase": "released",
     "statusLabel": "已上映・回溯併入",
-    "poster": "https://media.themoviedb.org/t/p/w600_and_h900_face/lS3c1zfa1gI7FirJ68TWdFWOThz.jpg",
+    "poster": "https://image.tmdb.org/t/p/original/qlUOZvoi2KJ5bPAORfm4qfsieWa.jpg",
     "posterAlt": "Blue Beetle 海報",
     "title": "Blue Beetle",
     "titleZh": "藍甲蟲",
@@ -77,7 +81,7 @@
     "posterAlt": "Supergirl 海報",
     "title": "Supergirl",
     "titleZh": "超少女",
-    "descriptionHtml": "改編自《Supergirl: Woman of Tomorrow》漫畫，Kara Zor-El 首部真人電影，與夥伴踏上復仇的星際旅程。"
+    "descriptionHtml": "改編自《Supergirl: Woman of Tomorrow》漫畫，Kara Zor-El（卡拉・佐艾爾）首部真人電影，與夥伴踏上復仇的星際旅程。"
   },
   {
     "date": "2026.08.16",
