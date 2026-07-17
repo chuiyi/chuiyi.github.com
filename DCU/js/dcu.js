@@ -25,7 +25,7 @@ const DCU = (() => {
         const avatarHtml = c.pending
             ? `<div class="char-avatar char-avatar-placeholder">?</div>`
             : `<img class="char-avatar" src="${c.avatar}" alt="${c.avatarAlt}">`;
-        const badgeHtml = !c.dual ? '' : c.actorPhotoPending
+        const badgeHtml = (!c.actorPhoto && !c.actorPhotoPending) ? '' : c.actorPhotoPending
             ? `<div class="char-actor-badge badge-pending">?</div>`
             : `<img class="char-actor-badge" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
         const nameZhHtml = c.nameZh ? `<p class="name-zh">${c.nameZh}</p>` : '';
@@ -120,7 +120,7 @@ const DCU = (() => {
         const body = document.getElementById('char-modal-body');
         if (!overlay || !body) return;
 
-        const badgeHtml = !c.dual ? '' : c.actorPhotoPending
+        const badgeHtml = (!c.actorPhoto && !c.actorPhotoPending) ? '' : c.actorPhotoPending
             ? `<div class="char-modal-actor-photo badge-pending">?</div>`
             : `<img class="char-modal-actor-photo" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
 
