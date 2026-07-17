@@ -960,6 +960,60 @@ body.modal-open {
     text-align: left;
 }
 
+/* Image lightbox (click avatar/actor badge to view enlarged) */
+.image-lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.image-lightbox-overlay[hidden] {
+    display: none;
+}
+
+.image-lightbox {
+    position: relative;
+    max-width: min(90vw, 600px);
+    max-height: 90vh;
+}
+
+.image-lightbox-img {
+    display: block;
+    max-width: 100%;
+    max-height: 90vh;
+    min-width: 220px;
+    min-height: 260px;
+    background: var(--dc-blue-dark);
+    border: 4px solid var(--dc-gold);
+    border-radius: 10px;
+    box-shadow: 8px 8px 0 var(--ink);
+}
+
+.image-lightbox-close {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 32px;
+    height: 32px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+img.char-actor-badge,
+img.char-modal-actor-photo {
+    cursor: zoom-in;
+}
+
 /* Work (movie/show) detail modal */
 .work-modal-overlay {
     position: fixed;
