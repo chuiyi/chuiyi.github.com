@@ -1,0 +1,49 @@
+{
+  "_note": "官方角色海報（Deadline Instavert 系列 / imgbox）備份，因海報樣式暫不適合目前角色卡版面而移除，保留供日後復用。key 為 characters.json 對應的 id。",
+  "rick-flag-sr": {
+    "avatarLive": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_Rick_Instavert_1638x2048_DOM_REV.jpg?w=1280",
+    "avatarLiveAlt": "Rick Flag Sr.（真人版角色海報）"
+  },
+  "clark-kent-superman": {
+    "avatar": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_Superman_Instavert_1638x2048_DOM.jpg?w=1280",
+    "avatarAlt": "Clark Kent / Superman"
+  },
+  "lex-luthor": {
+    "avatar": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_Lex_Instavert_1638x2048_DOM.jpg?w=1280",
+    "avatarAlt": "Lex Luthor"
+  },
+  "rex-mason-metamorpho": {
+    "avatar": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_Metamorpho_Instavert_1638x2048_DOM.jpg?w=1280",
+    "avatarAlt": "Rex Mason / Metamorpho"
+  },
+  "angela-spica-the-engineer": {
+    "avatar": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_The_Engineer_Instavert_1638x2048_DOM.jpg?w=1280",
+    "avatarAlt": "Angela Spica / The Engineer"
+  },
+  "michael-holt-mister-terrific": {
+    "avatar": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_Mr_Terrific_Instavert_1638x2048_DOM.jpg?w=1280",
+    "avatarAlt": "Michael Holt / Mister Terrific"
+  },
+  "kendra-saunders-hawkgirl": {
+    "avatar": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_Hawkgirl_Instavert_1638x2048_DOM.jpg?w=1280",
+    "avatarAlt": "Kendra Saunders / Hawkgirl"
+  },
+  "guy-gardner-green-lantern": {
+    "avatar": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_Guy_Instavert_1638x2048_DOM.jpg?w=1280",
+    "avatarAlt": "Guy Gardner / Green Lantern"
+  },
+  "krypto": {
+    "avatar": "https://deadline.com/wp-content/uploads/2025/06/SPRMAN_Character_Art_Krypto_Instavert_1638x2048_DOM.jpg?w=1280",
+    "avatarAlt": "Krypto",
+    "note": "《Superman》版本；另有《Supergirl》版本 https://images2.imgbox.com/78/0a/dw2vAAfV_o.jpeg 未採用"
+  },
+  "kara-zor-el-supergirl": {
+    "avatar": "https://images2.imgbox.com/09/28/6igBDIoA_o.jpeg",
+    "avatarAlt": "Kara Zor-El / Supergirl",
+    "note": "戲中劇照版本；目前 characters.json 改為只顯示演員 Milly Alcock 照片（TMDB w600_and_h900_face/rO6gAoxgsKttOGd6qdnjpf02guh.jpg）"
+  },
+  "lobo": {
+    "avatar": "https://images2.imgbox.com/14/a7/Wz1OuaHM_o.jpeg",
+    "avatarAlt": "Lobo"
+  }
+}
