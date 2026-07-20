@@ -39,7 +39,8 @@
   },
   "kara-zor-el-supergirl": {
     "avatar": "https://images2.imgbox.com/09/28/6igBDIoA_o.jpeg",
-    "avatarAlt": "Kara Zor-El / Supergirl"
+    "avatarAlt": "Kara Zor-El / Supergirl",
+    "note": "戲中劇照版本；目前 characters.json 改為只顯示演員 Milly Alcock 照片（TMDB w600_and_h900_face/rO6gAoxgsKttOGd6qdnjpf02guh.jpg）"
   },
   "lobo": {
     "avatar": "https://images2.imgbox.com/14/a7/Wz1OuaHM_o.jpeg",
