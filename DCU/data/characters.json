@@ -73,10 +73,12 @@
   {
     "name": "Lex Luthor",
     "nameZh": "雷克斯・路瑟",
-    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/aKWTEoujxOB2a5ZqUfaPtUuQoH6.jpg",
-    "avatarAlt": "Nicholas Hoult",
+    "avatar": "https://static.wikia.nocookie.net/dcstudios/images/3/30/Lex_Luthor_watching_the_fight_2.jpeg/revision/latest/scale-to-width-down/1000?cb=20250612033223",
+    "avatarAlt": "Lex Luthor",
     "actorName": "Nicholas Hoult",
     "actorNameZh": "尼可拉斯・霍特",
+    "actorPhoto": "https://media.themoviedb.org/t/p/w600_and_h900_face/aKWTEoujxOB2a5ZqUfaPtUuQoH6.jpg",
+    "actorPhotoAlt": "Nicholas Hoult",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《Superman》（2025），DCU 真人電影首位反派"
   },
@@ -123,7 +125,8 @@
   {
     "name": "Krypto",
     "nameZh": "氪普托",
-    "pending": true,
+    "avatar": "https://static.wikia.nocookie.net/dcstudios/images/f/f8/Krypto_growling_at_Engineer.jpeg/revision/latest/scale-to-width-down/1000?cb=20250514183443",
+    "avatarAlt": "Krypto",
     "actorName": "Jolene",
     "actorNameZh": "喬琳（真狗演出）",
     "role": "真狗演出",
@@ -132,9 +135,12 @@
   {
     "name": "Ultraman",
     "nameZh": "超人複製人（Ultraman）",
-    "pending": true,
+    "avatar": "https://static.wikia.nocookie.net/dcstudios/images/2/29/Ultraman_unmasked.jpg/revision/latest/scale-to-width-down/1000?cb=20250816164855",
+    "avatarAlt": "Ultraman",
     "actorName": "David Corenswet",
     "actorNameZh": "大衛・科倫斯韋（一人分飾二角）",
+    "actorPhoto": "https://media.themoviedb.org/t/p/w600_and_h900_face/yoQxpUPt3le9zY4Sab3g2ANy4CE.jpg",
+    "actorPhotoAlt": "David Corenswet",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《Superman》（2025），雷克斯・路瑟利用超人 DNA 複製打造的武器化複製人"
   },
