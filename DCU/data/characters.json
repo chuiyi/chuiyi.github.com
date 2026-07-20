@@ -159,9 +159,12 @@
   {
     "name": "Lobo",
     "nameZh": "暴狼",
-    "pending": true,
+    "avatar": "https://static.wikia.nocookie.net/dcstudios/images/9/97/Lobo_smoking_BTS.webp/revision/latest?cb=20260630164922",
+    "avatarAlt": "Lobo",
     "actorName": "Jason Momoa",
     "actorNameZh": "傑森・摩莫亞",
+    "actorPhoto": "https://static.wikia.nocookie.net/dcstudios/images/8/8d/Jason_Momoa.jpg/revision/latest/scale-to-width-down/1000?cb=20260623011927",
+    "actorPhotoAlt": "Jason Momoa",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《Supergirl》（2026），來自匝尼亞星（Czarnia）的星際傭兵與賞金獵人"
   },
