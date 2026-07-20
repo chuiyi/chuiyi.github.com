@@ -15,6 +15,10 @@ const DCU = (() => {
         return resp.json();
     }
 
+    function track(eventName, params) {
+        if (typeof window.trackEvent === 'function') window.trackEvent(eventName, params);
+    }
+
     function dateSortKey(dateStr) {
         const parts = String(dateStr).split('.');
         while (parts.length < 3) parts.push('00');
@@ -120,6 +124,8 @@ const DCU = (() => {
         const body = document.getElementById('char-modal-body');
         if (!overlay || !body) return;
 
+        track('view_character', { character_name: c.name });
+
         const badgeHtml = (!c.actorPhoto && !c.actorPhotoPending) ? '' : c.actorPhotoPending
             ? `<div class="char-modal-actor-photo badge-pending">?</div>`
             : `<img class="char-modal-actor-photo" src="${c.actorPhoto}" alt="${c.actorPhotoAlt}">`;
@@ -173,6 +179,8 @@ const DCU = (() => {
         const overlay = document.getElementById('work-modal-overlay');
         const body = document.getElementById('work-modal-body');
         if (!overlay || !body) return;
+
+        track('view_work', { work_title: t.title });
 
         const subtitle = t.subtitle ? ` <small>${t.subtitle}</small>` : '';
         const titleZhHtml = t.titleZh ? `<p class="title-zh">${t.titleZh}</p>` : '';
