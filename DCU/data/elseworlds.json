@@ -2,6 +2,7 @@
   "batman": {
     "timeline": [
       {
+        "id": "the-batman-2022",
         "date": "2022.03.04",
         "type": "電影",
         "phase": "released",
@@ -14,6 +15,7 @@
         "historyHtml": "重新定義高譚市偵探式蝙蝠俠。"
       },
       {
+        "id": "the-penguin-2024",
         "date": "2024.09.19",
         "type": "影集",
         "phase": "released",
@@ -27,6 +29,7 @@
         "historyHtml": "Colin Farrell 憑此角奪下金球獎；2026 年 6 月確認 HBO 與 DC Studios 不再繼續發展第二季，本劇維持限定影集。"
       },
       {
+        "id": "the-batman-part-2-2028",
         "date": "2028.02.18",
         "type": "電影",
         "phase": "upcoming",
@@ -44,6 +47,7 @@
   "joker": {
     "timeline": [
       {
+        "id": "joker-2019",
         "date": "2019.10.04",
         "type": "電影",
         "phase": "released",
@@ -56,6 +60,7 @@
         "historyHtml": "奪下奧斯卡最佳男主角。"
       },
       {
+        "id": "joker-folie-a-deux-2024",
         "date": "2024.10.04",
         "type": "電影",
         "phase": "released",

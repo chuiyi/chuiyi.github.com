@@ -1,5 +1,6 @@
 [
   {
+    "id": "suicide-squad-2021",
     "date": "2021.08.05",
     "type": "電影",
     "phase": "released",
@@ -14,6 +15,7 @@
     "noteHtml": "James Gunn 於 2025 年 1 月在 Bluesky 說明：本片如同一段「不完美的記憶」——只有《Creature Commandos》之後才算「純正史」，本片畫面本身不算數，但只要事件被後續作品引用（例如和平使者殺死瑞克・佛萊格 Jr. 一事在《Creature Commandos》中被提及），該事件就成立於正史之中。"
   },
   {
+    "id": "peacemaker-s1-2022",
     "date": "2022.01.13",
     "type": "影集",
     "phase": "released",
@@ -28,6 +30,7 @@
     "noteHtml": "James Gunn 於 2025 年 1 月證實：第一季幾乎全數併入 DCU 正史，唯獨正義聯盟客串片段除外，該橋段將於後續季別另作處理。"
   },
   {
+    "id": "blue-beetle-2023",
     "date": "2023.08.18",
     "type": "電影",
     "phase": "released",
@@ -40,6 +43,7 @@
     "noteHtml": "上映時官方未定位其所在宇宙，2026 年 7 月 James Gunn 證實 Xolo Maridueña 飾演的 Jaime Reyes 將回歸並延續至《Man of Tomorrow》（2027），使藍甲蟲正式併入新 DCU 正史。"
   },
   {
+    "id": "creature-commandos-2024",
     "date": "2024.12.05",
     "type": "影集",
     "phase": "released",
@@ -53,6 +57,7 @@
     "historyHtml": "DCU「第一章：諸神與怪物」開幕作，同時是一部限制級成人動畫影集。"
   },
   {
+    "id": "superman-2025",
     "date": "2025.07.11",
     "type": "電影",
     "phase": "released",
@@ -65,6 +70,7 @@
     "historyHtml": "DCU 真人電影正式起點，重新定義超人。"
   },
   {
+    "id": "peacemaker-s2-2025",
     "date": "2025.08.21",
     "type": "影集",
     "phase": "released",
@@ -78,6 +84,7 @@
     "historyHtml": "正式並入 DCU 正史的續集季。"
   },
   {
+    "id": "supergirl-2026",
     "date": "2026.06.26",
     "type": "電影",
     "phase": "released",
@@ -90,6 +97,7 @@
     "historyHtml": "改編自《Supergirl: Woman of Tomorrow》漫畫，首部真人電影。"
   },
   {
+    "id": "lanterns-2026",
     "date": "2026.08.16",
     "type": "影集",
     "phase": "upcoming",
@@ -103,6 +111,7 @@
     "historyHtml": "HBO Max 影集第一季，故事橫跨 2016 年與現今雙時間線。"
   },
   {
+    "id": "clayface-2026",
     "date": "2026.10.23",
     "type": "電影",
     "phase": "upcoming",
@@ -115,6 +124,7 @@
     "historyHtml": "以恐怖片手法詮釋的反派起源故事，劇情設定甚至早於現有 DCU 作品。"
   },
   {
+    "id": "man-of-tomorrow-2027",
     "date": "2027.07.09",
     "type": "電影",
     "phase": "upcoming",

@@ -1,5 +1,6 @@
 [
   {
+    "id": "rick-flag-sr",
     "name": "Rick Flag Sr.",
     "nameZh": "老瑞克・佛萊格",
     "dual": true,
@@ -13,6 +14,7 @@
     "firstAppearanceHtml": "首次登場：<em>Creature Commandos</em>（2024，動畫）→ 真人版於《Peacemaker》第二季登場"
   },
   {
+    "id": "amanda-waller",
     "name": "Amanda Waller",
     "nameZh": "阿曼達・沃勒",
     "dual": true,
@@ -26,6 +28,7 @@
     "firstAppearanceHtml": "首次登場：<em>Creature Commandos</em>（2024，動畫）；同一演員亦於《Peacemaker》第二季真人演出"
   },
   {
+    "id": "weasel",
     "name": "Weasel",
     "nameZh": "黃鼠狼",
     "dual": true,
@@ -39,6 +42,7 @@
     "firstAppearanceHtml": "首次登場：《自殺突擊隊：集結》（2021）→ 配音回歸《Creature Commandos》（2024，動畫）"
   },
   {
+    "id": "john-economos",
     "name": "John Economos",
     "nameZh": "約翰・伊克諾莫斯",
     "dual": true,
@@ -51,6 +55,7 @@
     "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022）→ 配音回歸《Creature Commandos》（2024，動畫）；官方單人動畫劇照尚未釋出，此處暫以真人劇照呈現。"
   },
   {
+    "id": "clark-kent-superman",
     "name": "Clark Kent / Superman",
     "nameZh": "克拉克・肯特 / 超人",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/yoQxpUPt3le9zY4Sab3g2ANy4CE.jpg",
@@ -61,6 +66,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），DCU 真人電影正式起點"
   },
   {
+    "id": "lois-lane",
     "name": "Lois Lane",
     "nameZh": "露薏絲・蓮恩",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/piB7t3ykZaylYTRoyK46FknyF2p.jpg",
@@ -71,6 +77,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），《星球日報》記者，克拉克・肯特的女友"
   },
   {
+    "id": "lex-luthor",
     "name": "Lex Luthor",
     "nameZh": "雷克斯・路瑟",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/aKWTEoujxOB2a5ZqUfaPtUuQoH6.jpg",
@@ -81,6 +88,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），DCU 真人電影首位反派"
   },
   {
+    "id": "michael-holt-mister-terrific",
     "name": "Michael Holt / Mister Terrific",
     "nameZh": "麥可・霍特 / 卓越先生",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/dt8yMyycDlzxkjhmuuJJ4tXDbp4.jpg",
@@ -91,6 +99,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），正義幫（Justice Gang）成員"
   },
   {
+    "id": "kendra-saunders-hawkgirl",
     "name": "Kendra Saunders / Hawkgirl",
     "nameZh": "鷹女孩",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/4SolFI9dwyPm6BXcb3PDcOYzSEl.jpg",
@@ -101,6 +110,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），正義幫（Justice Gang）成員"
   },
   {
+    "id": "guy-gardner-green-lantern",
     "name": "Guy Gardner / Green Lantern",
     "nameZh": "蓋・加德納 / 綠燈俠",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/aW6vCxkUZtwb6iH2Wf88Uq0XNVv.jpg",
@@ -111,6 +121,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），正義幫（Justice Gang）領隊"
   },
   {
+    "id": "jimmy-olsen",
     "name": "Jimmy Olsen",
     "nameZh": "吉米・歐森",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/vyalCuJUUP7Ht1vMWZQzhOrscXV.jpg",
@@ -121,6 +132,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），《星球日報》年輕攝影記者"
   },
   {
+    "id": "krypto",
     "name": "Krypto",
     "nameZh": "氪普托",
     "pending": true,
@@ -130,6 +142,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），超人的愛犬，角色設計參考導演 James Gunn 的愛犬 Ozu"
   },
   {
+    "id": "ultraman",
     "name": "Ultraman",
     "nameZh": "超人複製人（Ultraman）",
     "pending": true,
@@ -141,6 +154,7 @@
     "firstAppearanceHtml": "首次登場：《Superman》（2025），雷克斯・路瑟利用超人 DNA 複製打造的武器化複製人"
   },
   {
+    "id": "kara-zor-el-supergirl",
     "name": "Kara Zor-El / Supergirl",
     "nameZh": "卡拉・佐艾爾 / 超少女",
     "avatar": "https://image.tmdb.org/t/p/original/wQuK3B2lqsHStmI7VEacqYq55oh.jpg",
@@ -153,6 +167,7 @@
     "firstAppearanceHtml": "首次登場：《Supergirl》（2026），改編自《Supergirl: Woman of Tomorrow》漫畫"
   },
   {
+    "id": "lobo",
     "name": "Lobo",
     "nameZh": "暴狼",
     "pending": true,
@@ -162,6 +177,7 @@
     "firstAppearanceHtml": "首次登場：《Supergirl》（2026），來自匝尼亞星（Czarnia）的星際傭兵與賞金獵人"
   },
   {
+    "id": "christopher-smith-peacemaker",
     "name": "Christopher Smith / Peacemaker",
     "nameZh": "克里斯多福・史密斯 / 和平使者",
     "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/rgB2eIOt7WyQjdgJCOuESdDlrjg.jpg",
