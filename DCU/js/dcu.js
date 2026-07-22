@@ -361,6 +361,26 @@ const DCU = (() => {
         }
     }
 
+    async function renderBreakingNews(containerId, file) {
+        const el = document.getElementById(containerId);
+        if (!el) return;
+        try {
+            const items = await fetchJSON(file);
+            items.sort((a, b) => dateSortKey(b.date).localeCompare(dateSortKey(a.date)));
+            const latest = items[0];
+            if (!latest) return;
+            el.innerHTML = `
+                <div class="breaking-news-masthead">
+                    <span class="breaking-news-label">BREAKING NEWS</span>
+                    <span class="breaking-news-paper">DCU DAILY PLANET</span>
+                </div>
+                <h3 class="breaking-news-headline">${latest.title}</h3>
+                <a class="breaking-news-more" href="news.html">更多新聞 →</a>`;
+        } catch (err) {
+            console.error('[DCU] 頭條新聞載入失敗', err);
+        }
+    }
+
     async function renderNews(containerId, file, paginationId) {
         const listEl = document.getElementById(containerId);
         const pagerEl = paginationId ? document.getElementById(paginationId) : null;
@@ -421,5 +441,5 @@ const DCU = (() => {
         }
     }
 
-    return { renderCharacters, renderTimeline, renderDevList, renderGlossary, renderNews, renderElseworlds };
+    return { renderCharacters, renderTimeline, renderDevList, renderGlossary, renderNews, renderElseworlds, renderBreakingNews };
 })();
