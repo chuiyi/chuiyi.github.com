@@ -18,6 +18,7 @@
  */
 
 const TELEGRAM_API = (token, method) => `https://api.telegram.org/bot${token}/${method}`;
+const KNOWN_ACTIONS = new Set(['dcu_approve', 'dcu_discard']);
 
 async function answerCallback(env, callbackQueryId, text) {
   await fetch(TELEGRAM_API(env.TELEGRAM_BOT_TOKEN, 'answerCallbackQuery'), {
@@ -25,6 +26,22 @@ async function answerCallback(env, callbackQueryId, text) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ callback_query_id: callbackQueryId, text }),
   });
+}
+
+async function collapseButtons(env, chatId, messageId, label) {
+  // Replace the button row with a single disabled-looking status label so a
+  // second tap can't re-fire the routine. If a near-simultaneous tap already
+  // collapsed the buttons, Telegram returns a harmless "message is not
+  // modified" error here - swallow it.
+  await fetch(TELEGRAM_API(env.TELEGRAM_BOT_TOKEN, 'editMessageReplyMarkup'), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId,
+      message_id: messageId,
+      reply_markup: { inline_keyboard: [[{ text: label, callback_data: 'dcu_noop' }]] },
+    }),
+  }).catch(() => {});
 }
 
 async function sendMessage(env, text) {
@@ -77,7 +94,21 @@ export default {
 
     if (update.callback_query) {
       const cq = update.callback_query;
-      const action = cq.data; // "dcu_approve" | "dcu_discard"
+      const action = cq.data; // "dcu_approve" | "dcu_discard" | "dcu_noop"
+
+      if (!KNOWN_ACTIONS.has(action)) {
+        // Buttons were already collapsed to a "dcu_noop" status label by an
+        // earlier tap - a repeat tap lands here and does nothing.
+        await answerCallback(env, cq.id, '這則已經處理過了');
+        return new Response('ignored');
+      }
+
+      const messageId = cq.message?.message_id;
+      if (messageId !== undefined) {
+        const label = action === 'dcu_approve' ? '✅ 已確認上稿，處理中…' : '❌ 已放棄';
+        await collapseButtons(env, chatId, messageId, label);
+      }
+
       fireText = `[Telegram Bot] action=${action}`;
       await answerCallback(env, cq.id, action === 'dcu_approve' ? '已送出，處理中…' : '已取消');
     } else if (update.message?.text) {

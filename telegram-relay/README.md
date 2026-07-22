@@ -81,9 +81,13 @@ curl "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/getWebhookInfo"
 ## What it does
 
 - Verifies `X-Telegram-Bot-Api-Secret-Token` and the sender's chat id.
-- Button press (`callback_query`) -> fires the routine with
+- Button press (`callback_query`) -> immediately collapses the message's
+  buttons to a status label (`editMessageReplyMarkup`) so a repeat tap can't
+  re-fire the routine, then fires the routine with
   `[Telegram Bot] action=dcu_approve` or `dcu_discard`, and acknowledges the
-  tap so Telegram clears the loading spinner.
+  tap so Telegram clears the loading spinner. A tap that lands after the
+  buttons already collapsed (race on a fast double-tap) is answered with
+  "這則已經處理過了" and dropped.
 - Free-text reply (`message`) -> fires the routine with
   `[Telegram Bot] instruction=<your text>`, so you can ask for edits
   ("拿掉第二則", "標題改短一點") without pressing a button.
