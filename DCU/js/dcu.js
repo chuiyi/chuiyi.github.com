@@ -10,7 +10,9 @@ const DCU = (() => {
     const NEWS_PAGE_SIZE = 6;
 
     async function fetchJSON(file) {
-        const resp = await fetch(DATA_BASE + file);
+        // GitHub Pages 為靜態主機，無法自訂 Cache-Control；用 no-store 強制略過瀏覽器快取，
+        // 確保資料更新後使用者不需手動清快取就能看到最新內容。
+        const resp = await fetch(DATA_BASE + file, { cache: 'no-store' });
         if (!resp.ok) throw new Error(`無法載入 ${file} (HTTP ${resp.status})`);
         return resp.json();
     }
