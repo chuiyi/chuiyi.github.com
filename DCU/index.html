@@ -38,6 +38,7 @@
             <span class="line-2">IS COMING</span>
         </h1>
         <p class="dcu-hero-sub">整理 DC 電影、影集與角色的個人資料庫 — 高譚市之外，還有更多故事等著被記錄。</p>
+        <div class="breaking-news" id="breaking-news"></div>
         <div class="hero-actions">
             <a href="#timeline" class="comic-btn">🗓️ DCU 時間軸</a>
             <a href="news.html" class="comic-btn">📰 新聞</a>
@@ -78,6 +79,7 @@
     <script>
         DCU.renderTimeline('timeline-list', 'timeline.json');
         DCU.renderDevList('dev-list', 'dev-timeline.json');
+        DCU.renderBreakingNews('breaking-news', 'news.json');
     </script>
 </body>
 </html>
