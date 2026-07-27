@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T05:25:49.926Z",
+  "generated_at": "2026-07-27T06:14:05.098Z",
   "generated_by": "scrape_players.js",
   "total_players": 6612,
   "players": [
@@ -224,7 +224,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:36:52.447Z",
+      "last_scraped_at": "2026-07-27T02:33:33.690Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -233,7 +233,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:36:07.431Z",
+      "last_scraped_at": "2026-07-27T01:34:13.185Z",
       "source_file": "tw00387540.json",
       "note": ""
     },
@@ -314,7 +314,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:23:38.375Z",
+      "last_scraped_at": "2026-07-27T05:24:58.988Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -611,7 +611,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:46:43.642Z",
+      "last_scraped_at": "2026-07-27T03:43:15.040Z",
       "source_file": "tw01012666.json",
       "note": ""
     },
@@ -638,7 +638,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:37:49.184Z",
+      "last_scraped_at": "2026-07-27T01:35:49.675Z",
       "source_file": "tw01024875.json",
       "note": ""
     },
@@ -683,7 +683,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:38:57.687Z",
+      "last_scraped_at": "2026-07-27T04:37:28.189Z",
       "source_file": "tw01124210.json",
       "note": ""
     },
@@ -1104,11 +1104,11 @@
     {
       "ptcg_id": "tw01909140",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T01:09:37.170Z",
-      "source_file": "tw01909140.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T01:12:37.333Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw01919513",
@@ -1268,7 +1268,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:59:34.741Z",
+      "last_scraped_at": "2026-07-27T06:03:15.650Z",
       "source_file": "tw02172047.json",
       "note": ""
     },
@@ -1277,7 +1277,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:47:08.202Z",
+      "last_scraped_at": "2026-07-27T05:50:10.885Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -1367,7 +1367,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:39:25.854Z",
+      "last_scraped_at": "2026-07-27T02:36:07.709Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -1475,9 +1475,9 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:12:23.835Z",
+      "last_scraped_at": "2026-07-27T01:15:33.091Z",
       "source_file": "tw02559687.json",
-      "note": "exit code 1"
+      "note": ""
     },
     {
       "ptcg_id": "tw02568150",
@@ -1673,7 +1673,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:11:46.659Z",
+      "last_scraped_at": "2026-07-27T02:08:26.365Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -1691,7 +1691,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:41:07.448Z",
+      "last_scraped_at": "2026-07-27T02:37:49.575Z",
       "source_file": "tw02856732.json",
       "note": ""
     },
@@ -1736,7 +1736,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:03:42.027Z",
+      "last_scraped_at": "2026-07-27T02:58:31.447Z",
       "source_file": "tw02991787.json",
       "note": ""
     },
@@ -1853,7 +1853,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:56:49.419Z",
+      "last_scraped_at": "2026-07-27T00:59:26.902Z",
       "source_file": "tw03132048.json",
       "note": ""
     },
@@ -1880,7 +1880,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:17:41.759Z",
+      "last_scraped_at": "2026-07-27T05:18:28.410Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2087,7 +2087,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:28:49.394Z",
+      "last_scraped_at": "2026-07-27T05:30:53.742Z",
       "source_file": "tw03459753.json",
       "note": ""
     },
@@ -2096,7 +2096,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:26:43.279Z",
+      "last_scraped_at": "2026-07-27T05:28:45.528Z",
       "source_file": "tw03478711.json",
       "note": ""
     },
@@ -2429,7 +2429,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:09:35.561Z",
+      "last_scraped_at": "2026-07-27T06:14:04.202Z",
       "source_file": "tw04012120.json",
       "note": ""
     },
@@ -2447,7 +2447,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:15:59.042Z",
+      "last_scraped_at": "2026-07-27T05:16:38.199Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2456,7 +2456,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:35:32.340Z",
+      "last_scraped_at": "2026-07-27T05:37:50.400Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2501,7 +2501,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:01:24.949Z",
+      "last_scraped_at": "2026-07-27T05:01:21.883Z",
       "source_file": "tw04119157.json",
       "note": ""
     },
@@ -2708,7 +2708,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:18:58.603Z",
+      "last_scraped_at": "2026-07-27T01:19:41.563Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -2825,7 +2825,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:27:16.012Z",
+      "last_scraped_at": "2026-07-27T05:29:18.745Z",
       "source_file": "tw04564553.json",
       "note": ""
     },
@@ -2924,7 +2924,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:36:03.942Z",
+      "last_scraped_at": "2026-07-27T02:32:43.286Z",
       "source_file": "tw04722294.json",
       "note": ""
     },
@@ -3050,7 +3050,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:16:11.795Z",
+      "last_scraped_at": "2026-07-27T04:13:46.311Z",
       "source_file": "tw04870134.json",
       "note": ""
     },
@@ -3122,7 +3122,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:41:16.603Z",
+      "last_scraped_at": "2026-07-27T03:37:21.789Z",
       "source_file": "tw04959593.json",
       "note": ""
     },
@@ -3212,7 +3212,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:06:00.866Z",
+      "last_scraped_at": "2026-07-27T05:06:12.328Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -3257,7 +3257,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:14:29.342Z",
+      "last_scraped_at": "2026-07-27T05:15:02.396Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -3329,7 +3329,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:11:46.568Z",
+      "last_scraped_at": "2026-07-27T05:12:10.963Z",
       "source_file": "tw05346170.json",
       "note": ""
     },
@@ -3365,7 +3365,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:53:36.646Z",
+      "last_scraped_at": "2026-07-27T04:53:11.920Z",
       "source_file": "tw05433925.json",
       "note": ""
     },
@@ -3500,7 +3500,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:36:50.259Z",
+      "last_scraped_at": "2026-07-27T03:32:44.752Z",
       "source_file": "tw05715928.json",
       "note": ""
     },
@@ -3608,7 +3608,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:58:04.242Z",
+      "last_scraped_at": "2026-07-27T01:00:43.438Z",
       "source_file": "tw05925639.json",
       "note": ""
     },
@@ -3716,7 +3716,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:33:29.554Z",
+      "last_scraped_at": "2026-07-27T03:29:19.954Z",
       "source_file": "tw06072288.json",
       "note": ""
     },
@@ -3824,7 +3824,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:49:08.648Z",
+      "last_scraped_at": "2026-07-27T04:47:57.282Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -3932,7 +3932,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:21:35.312Z",
+      "last_scraped_at": "2026-07-27T05:22:38.793Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -3950,7 +3950,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:34:14.585Z",
+      "last_scraped_at": "2026-07-27T01:32:25.739Z",
       "source_file": "tw06441088.json",
       "note": ""
     },
@@ -4328,7 +4328,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:26:27.108Z",
+      "last_scraped_at": "2026-07-27T04:24:26.407Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -4481,7 +4481,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:08:42.290Z",
+      "last_scraped_at": "2026-07-27T04:06:07.945Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -4553,7 +4553,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:42:36.799Z",
+      "last_scraped_at": "2026-07-27T02:39:19.516Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -4643,7 +4643,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:12:35.611Z",
+      "last_scraped_at": "2026-07-27T03:07:48.052Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -4742,7 +4742,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:05:46.600Z",
+      "last_scraped_at": "2026-07-27T05:05:57.165Z",
       "source_file": "tw07615948.json",
       "note": ""
     },
@@ -5021,7 +5021,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:58:04.023Z",
+      "last_scraped_at": "2026-07-27T06:01:37.470Z",
       "source_file": "tw08055670.json",
       "note": ""
     },
@@ -5201,7 +5201,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:44:15.271Z",
+      "last_scraped_at": "2026-07-27T04:42:52.669Z",
       "source_file": "tw08457807.json",
       "note": ""
     },
@@ -5345,7 +5345,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:06:41.041Z",
+      "last_scraped_at": "2026-07-27T02:03:20.457Z",
       "source_file": "tw08814300.json",
       "note": ""
     },
@@ -5370,11 +5370,11 @@
     {
       "ptcg_id": "tw08856107",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:50:12.625Z",
-      "source_file": "tw08856107.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:53:05.293Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw08869700",
@@ -5525,7 +5525,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:56:47.562Z",
+      "last_scraped_at": "2026-07-27T04:56:27.600Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -5588,7 +5588,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:09:24.988Z",
+      "last_scraped_at": "2026-07-27T05:09:48.209Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -5633,7 +5633,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:01:33.697Z",
+      "last_scraped_at": "2026-07-27T06:05:17.819Z",
       "source_file": "tw09188186.json",
       "note": ""
     },
@@ -5678,7 +5678,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:00:25.717Z",
+      "last_scraped_at": "2026-07-27T03:57:39.424Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -5696,7 +5696,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:36:30.511Z",
+      "last_scraped_at": "2026-07-27T05:38:50.138Z",
       "source_file": "tw09261132.json",
       "note": ""
     },
@@ -5705,7 +5705,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:51:33.751Z",
+      "last_scraped_at": "2026-07-27T02:47:59.782Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -5795,7 +5795,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:56:46.224Z",
+      "last_scraped_at": "2026-07-27T04:56:25.837Z",
       "source_file": "tw09432546.json",
       "note": ""
     },
@@ -5894,7 +5894,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:55:19.514Z",
+      "last_scraped_at": "2026-07-27T01:52:09.014Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -5975,7 +5975,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:16:30.865Z",
+      "last_scraped_at": "2026-07-27T05:17:13.704Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6119,7 +6119,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:36:34.734Z",
+      "last_scraped_at": "2026-07-27T04:34:59.077Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6173,7 +6173,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:39:22.830Z",
+      "last_scraped_at": "2026-07-27T05:41:51.670Z",
       "source_file": "tw09982553.json",
       "note": ""
     },
@@ -6254,7 +6254,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:56:39.352Z",
+      "last_scraped_at": "2026-07-27T06:00:07.477Z",
       "source_file": "tw10136616.json",
       "note": ""
     },
@@ -6263,7 +6263,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:08:40.220Z",
+      "last_scraped_at": "2026-07-27T01:12:06.488Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6434,7 +6434,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:55:08.202Z",
+      "last_scraped_at": "2026-07-27T03:52:04.183Z",
       "source_file": "tw10410998.json",
       "note": ""
     },
@@ -6470,7 +6470,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:41:08.047Z",
+      "last_scraped_at": "2026-07-27T05:43:43.109Z",
       "source_file": "tw10449295.json",
       "note": ""
     },
@@ -6497,7 +6497,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:17:24.685Z",
+      "last_scraped_at": "2026-07-27T01:18:35.452Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6695,7 +6695,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:04:21.327Z",
+      "last_scraped_at": "2026-07-27T02:59:11.075Z",
       "source_file": "tw10864190.json",
       "note": ""
     },
@@ -6767,7 +6767,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:11:03.009Z",
+      "last_scraped_at": "2026-07-27T04:08:27.263Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6857,7 +6857,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:26:28.374Z",
+      "last_scraped_at": "2026-07-27T04:24:28.132Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6947,7 +6947,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:07:15.948Z",
+      "last_scraped_at": "2026-07-27T03:02:03.580Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -6974,7 +6974,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:37:08.214Z",
+      "last_scraped_at": "2026-07-27T01:35:13.669Z",
       "source_file": "tw11292760.json",
       "note": ""
     },
@@ -7073,7 +7073,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:30:12.622Z",
+      "last_scraped_at": "2026-07-27T03:25:55.806Z",
       "source_file": "tw11512917.json",
       "note": ""
     },
@@ -7136,7 +7136,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:54:23.461Z",
+      "last_scraped_at": "2026-07-27T03:51:16.136Z",
       "source_file": "tw11642031.json",
       "note": ""
     },
@@ -7422,11 +7422,11 @@
     {
       "ptcg_id": "tw12134806",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:23:34.084Z",
-      "source_file": "tw12134806.json",
-      "note": ""
+      "status": "profile_closed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:24:31.572Z",
+      "source_file": "",
+      "note": "profile closed (404); archived previous data: players/archived/tw12134806_20260720_052334.json"
     },
     {
       "ptcg_id": "tw12139732",
@@ -7622,7 +7622,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:39:24.299Z",
+      "last_scraped_at": "2026-07-27T02:36:06.026Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -7694,7 +7694,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:46:22.761Z",
+      "last_scraped_at": "2026-07-27T04:45:04.268Z",
       "source_file": "tw12494287.json",
       "note": ""
     },
@@ -7802,7 +7802,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:20:41.844Z",
+      "last_scraped_at": "2026-07-27T05:21:39.945Z",
       "source_file": "tw12619457.json",
       "note": ""
     },
@@ -8099,7 +8099,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:17:43.514Z",
+      "last_scraped_at": "2026-07-27T03:13:06.900Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8198,7 +8198,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:30:58.443Z",
+      "last_scraped_at": "2026-07-27T03:26:43.251Z",
       "source_file": "tw13224458.json",
       "note": ""
     },
@@ -8252,7 +8252,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:08:48.894Z",
+      "last_scraped_at": "2026-07-27T05:09:10.309Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8288,7 +8288,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:11:26.366Z",
+      "last_scraped_at": "2026-07-27T04:08:51.557Z",
       "source_file": "tw13366339.json",
       "note": ""
     },
@@ -8423,7 +8423,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:21:55.026Z",
+      "last_scraped_at": "2026-07-27T03:17:30.473Z",
       "source_file": "tw13569448.json",
       "note": ""
     },
@@ -8459,7 +8459,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:40:16.992Z",
+      "last_scraped_at": "2026-07-27T01:38:13.514Z",
       "source_file": "tw13624938.json",
       "note": ""
     },
@@ -8540,7 +8540,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:41:55.283Z",
+      "last_scraped_at": "2026-07-27T03:38:02.780Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8657,7 +8657,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:58:15.615Z",
+      "last_scraped_at": "2026-07-27T02:53:44.263Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -8909,7 +8909,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:36:14.278Z",
+      "last_scraped_at": "2026-07-27T05:38:33.693Z",
       "source_file": "tw14327392.json",
       "note": ""
     },
@@ -9026,7 +9026,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:56:06.592Z",
+      "last_scraped_at": "2026-07-27T04:55:47.723Z",
       "source_file": "tw14505717.json",
       "note": ""
     },
@@ -9242,7 +9242,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:49:18.245Z",
+      "last_scraped_at": "2026-07-27T03:46:00.715Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9384,11 +9384,11 @@
     {
       "ptcg_id": "tw15026318",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T01:07:10.840Z",
-      "source_file": "tw15026318.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T01:10:52.874Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw15028008",
@@ -9476,7 +9476,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:58:17.597Z",
+      "last_scraped_at": "2026-07-27T03:55:25.425Z",
       "source_file": "tw15171356.json",
       "note": ""
     },
@@ -9503,7 +9503,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:57:00.939Z",
+      "last_scraped_at": "2026-07-27T02:52:34.555Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9593,7 +9593,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:49:56.134Z",
+      "last_scraped_at": "2026-07-27T05:52:34.461Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9620,7 +9620,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:41:26.926Z",
+      "last_scraped_at": "2026-07-27T00:44:07.074Z",
       "source_file": "tw15435377.json",
       "note": ""
     },
@@ -9638,7 +9638,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:40:09.511Z",
+      "last_scraped_at": "2026-07-27T04:38:39.945Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -9674,7 +9674,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:13:18.110Z",
+      "last_scraped_at": "2026-07-27T04:10:43.334Z",
       "source_file": "tw15533641.json",
       "note": ""
     },
@@ -9764,7 +9764,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:56:24.012Z",
+      "last_scraped_at": "2026-07-27T05:59:51.412Z",
       "source_file": "tw15667547.json",
       "note": ""
     },
@@ -9791,7 +9791,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:59:37.626Z",
+      "last_scraped_at": "2026-07-27T02:55:02.480Z",
       "source_file": "tw15701546.json",
       "note": ""
     },
@@ -9836,7 +9836,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:14:19.466Z",
+      "last_scraped_at": "2026-07-27T05:14:52.132Z",
       "source_file": "tw15800518.json",
       "note": ""
     },
@@ -10034,7 +10034,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:21:15.548Z",
+      "last_scraped_at": "2026-07-27T01:21:31.700Z",
       "source_file": "tw16132632.json",
       "note": ""
     },
@@ -10052,7 +10052,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:52:24.983Z",
+      "last_scraped_at": "2026-07-27T01:49:21.763Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -10178,7 +10178,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:00:22.711Z",
+      "last_scraped_at": "2026-07-27T03:57:35.926Z",
       "source_file": "tw16280450.json",
       "note": ""
     },
@@ -10295,7 +10295,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:28:33.333Z",
+      "last_scraped_at": "2026-07-27T05:30:37.599Z",
       "source_file": "tw16526802.json",
       "note": ""
     },
@@ -10403,7 +10403,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:33:05.809Z",
+      "last_scraped_at": "2026-07-27T03:28:55.998Z",
       "source_file": "tw16728082.json",
       "note": ""
     },
@@ -10538,7 +10538,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:25:34.270Z",
+      "last_scraped_at": "2026-07-27T02:22:31.442Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -10700,7 +10700,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:56:09.268Z",
+      "last_scraped_at": "2026-07-27T01:52:57.590Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -10709,7 +10709,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:49:06.806Z",
+      "last_scraped_at": "2026-07-27T02:45:41.979Z",
       "source_file": "tw17213475.json",
       "note": ""
     },
@@ -10736,7 +10736,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:31:28.171Z",
+      "last_scraped_at": "2026-07-27T05:33:39.816Z",
       "source_file": "tw17248165.json",
       "note": ""
     },
@@ -11006,7 +11006,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:35:30.819Z",
+      "last_scraped_at": "2026-07-27T05:37:48.711Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -11024,7 +11024,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:47:51.322Z",
+      "last_scraped_at": "2026-07-27T04:46:36.285Z",
       "source_file": "tw17748447.json",
       "note": ""
     },
@@ -11411,7 +11411,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:08:50.348Z",
+      "last_scraped_at": "2026-07-27T05:09:11.567Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -11510,7 +11510,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:16:29.722Z",
+      "last_scraped_at": "2026-07-27T05:17:11.975Z",
       "source_file": "tw18584107.json",
       "note": ""
     },
@@ -11537,7 +11537,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:33:09.221Z",
+      "last_scraped_at": "2026-07-27T01:31:26.316Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -11735,7 +11735,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:31:05.947Z",
+      "last_scraped_at": "2026-07-27T02:27:38.111Z",
       "source_file": "tw18906406.json",
       "note": ""
     },
@@ -11978,7 +11978,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:58:49.360Z",
+      "last_scraped_at": "2026-07-27T06:02:26.703Z",
       "source_file": "tw19291467.json",
       "note": ""
     },
@@ -12122,7 +12122,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:56:59.487Z",
+      "last_scraped_at": "2026-07-27T02:52:32.933Z",
       "source_file": "tw19522331.json",
       "note": ""
     },
@@ -12356,7 +12356,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:42:14.125Z",
+      "last_scraped_at": "2026-07-27T01:40:08.635Z",
       "source_file": "tw20116252.json",
       "note": ""
     },
@@ -12473,7 +12473,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:03:35.623Z",
+      "last_scraped_at": "2026-07-27T02:00:19.194Z",
       "source_file": "tw20198051.json",
       "note": ""
     },
@@ -12527,7 +12527,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:34:37.116Z",
+      "last_scraped_at": "2026-07-27T04:32:56.977Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -12536,7 +12536,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:55:58.155Z",
+      "last_scraped_at": "2026-07-27T04:55:38.781Z",
       "source_file": "tw20368538.json",
       "note": ""
     },
@@ -13031,7 +13031,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:47:31.813Z",
+      "last_scraped_at": "2026-07-27T02:44:07.430Z",
       "source_file": "tw21351845.json",
       "note": ""
     },
@@ -13220,7 +13220,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:12:33.205Z",
+      "last_scraped_at": "2026-07-27T03:07:45.136Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -13299,11 +13299,11 @@
     {
       "ptcg_id": "tw21820105",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T01:08:02.041Z",
-      "source_file": "tw21820105.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T01:11:23.698Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw21821046",
@@ -13382,7 +13382,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:20:43.088Z",
+      "last_scraped_at": "2026-07-27T05:21:41.280Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -13400,7 +13400,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:38:44.091Z",
+      "last_scraped_at": "2026-07-27T05:41:10.381Z",
       "source_file": "tw21954605.json",
       "note": ""
     },
@@ -13517,7 +13517,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:55:31.263Z",
+      "last_scraped_at": "2026-07-27T03:52:29.403Z",
       "source_file": "tw22171154.json",
       "note": ""
     },
@@ -13526,7 +13526,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:08:25.257Z",
+      "last_scraped_at": "2026-07-27T06:12:48.402Z",
       "source_file": "tw22214011.json",
       "note": ""
     },
@@ -13742,7 +13742,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:59:20.058Z",
+      "last_scraped_at": "2026-07-27T01:02:00.616Z",
       "source_file": "tw22529091.json",
       "note": ""
     },
@@ -13787,7 +13787,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:36:46.826Z",
+      "last_scraped_at": "2026-07-27T05:39:06.903Z",
       "source_file": "tw22611326.json",
       "note": ""
     },
@@ -14102,25 +14102,25 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:51:11.449Z",
+      "last_scraped_at": "2026-07-27T01:48:14.523Z",
       "source_file": "tw23205294.json",
       "note": ""
     },
     {
       "ptcg_id": "tw23209128",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:49:13.951Z",
-      "source_file": "tw23209128.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:51:26.987Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw23226571",
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:17:49.126Z",
+      "last_scraped_at": "2026-07-27T01:18:53.637Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14138,7 +14138,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:42:14.413Z",
+      "last_scraped_at": "2026-07-27T04:40:48.673Z",
       "source_file": "tw23249034.json",
       "note": ""
     },
@@ -14201,7 +14201,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:12:58.797Z",
+      "last_scraped_at": "2026-07-27T03:08:11.794Z",
       "source_file": "tw23412539.json",
       "note": ""
     },
@@ -14264,7 +14264,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:21:18.375Z",
+      "last_scraped_at": "2026-07-27T05:22:20.899Z",
       "source_file": "tw23540064.json",
       "note": ""
     },
@@ -14372,7 +14372,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:11:01.609Z",
+      "last_scraped_at": "2026-07-27T04:08:25.652Z",
       "source_file": "tw23712439.json",
       "note": ""
     },
@@ -14390,7 +14390,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:01:04.339Z",
+      "last_scraped_at": "2026-07-27T01:03:47.938Z",
       "source_file": "tw23764220.json",
       "note": ""
     },
@@ -14462,7 +14462,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:10:40.326Z",
+      "last_scraped_at": "2026-07-27T05:11:03.803Z",
       "source_file": "tw23930741.json",
       "note": ""
     },
@@ -14480,7 +14480,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:29:29.810Z",
+      "last_scraped_at": "2026-07-27T05:31:34.817Z",
       "source_file": "tw24111275.json",
       "note": ""
     },
@@ -14525,7 +14525,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:50:14.015Z",
+      "last_scraped_at": "2026-07-27T05:53:07.270Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -14561,7 +14561,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:38:27.408Z",
+      "last_scraped_at": "2026-07-27T01:36:26.226Z",
       "source_file": "tw24203947.json",
       "note": ""
     },
@@ -14633,7 +14633,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:43:06.596Z",
+      "last_scraped_at": "2026-07-27T03:39:17.930Z",
       "source_file": "tw24266071.json",
       "note": ""
     },
@@ -14651,7 +14651,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:31:29.647Z",
+      "last_scraped_at": "2026-07-27T04:29:41.597Z",
       "source_file": "tw24311735.json",
       "note": ""
     },
@@ -14759,7 +14759,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:59:11.976Z",
+      "last_scraped_at": "2026-07-27T06:02:51.027Z",
       "source_file": "tw24479626.json",
       "note": ""
     },
@@ -14804,7 +14804,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:48:22.290Z",
+      "last_scraped_at": "2026-07-27T04:47:08.913Z",
       "source_file": "tw24570904.json",
       "note": ""
     },
@@ -14903,7 +14903,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:24:37.742Z",
+      "last_scraped_at": "2026-07-27T03:20:21.574Z",
       "source_file": "tw24742864.json",
       "note": ""
     },
@@ -14939,7 +14939,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:56:09.765Z",
+      "last_scraped_at": "2026-07-27T00:58:47.676Z",
       "source_file": "tw24854365.json",
       "note": ""
     },
@@ -14975,7 +14975,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:38:20.121Z",
+      "last_scraped_at": "2026-07-27T02:35:02.472Z",
       "source_file": "tw24889276.json",
       "note": ""
     },
@@ -14993,7 +14993,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:08:51.527Z",
+      "last_scraped_at": "2026-07-27T05:09:12.785Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -15173,7 +15173,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:10:22.585Z",
+      "last_scraped_at": "2026-07-27T05:10:46.323Z",
       "source_file": "tw25275319.json",
       "note": ""
     },
@@ -15362,7 +15362,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:41:18.114Z",
+      "last_scraped_at": "2026-07-27T03:37:23.121Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -15524,7 +15524,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:49:19.372Z",
+      "last_scraped_at": "2026-07-27T03:46:01.888Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -15677,7 +15677,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:23:37.173Z",
+      "last_scraped_at": "2026-07-27T05:24:50.716Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -15686,7 +15686,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:04:22.893Z",
+      "last_scraped_at": "2026-07-27T02:59:12.410Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -15740,7 +15740,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:35:40.936Z",
+      "last_scraped_at": "2026-07-27T04:34:00.714Z",
       "source_file": "tw26080590.json",
       "note": ""
     },
@@ -15785,7 +15785,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:16:14.224Z",
+      "last_scraped_at": "2026-07-27T05:16:54.539Z",
       "source_file": "tw26157252.json",
       "note": ""
     },
@@ -15794,7 +15794,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:17:47.585Z",
+      "last_scraped_at": "2026-07-27T01:18:52.278Z",
       "source_file": "tw26175828.json",
       "note": ""
     },
@@ -16001,7 +16001,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:43:08.086Z",
+      "last_scraped_at": "2026-07-27T03:39:19.748Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -16091,7 +16091,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:24:50.842Z",
+      "last_scraped_at": "2026-07-27T04:22:46.900Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -16235,7 +16235,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:00:40.999Z",
+      "last_scraped_at": "2026-07-27T05:00:33.881Z",
       "source_file": "tw26870425.json",
       "note": ""
     },
@@ -16289,7 +16289,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:56:23.204Z",
+      "last_scraped_at": "2026-07-27T04:56:03.746Z",
       "source_file": "tw26953449.json",
       "note": ""
     },
@@ -16325,7 +16325,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:06:03.335Z",
+      "last_scraped_at": "2026-07-27T05:06:15.368Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -16514,7 +16514,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:29:40.675Z",
+      "last_scraped_at": "2026-07-27T04:27:50.058Z",
       "source_file": "tw27308734.json",
       "note": ""
     },
@@ -16550,7 +16550,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:31:14.088Z",
+      "last_scraped_at": "2026-07-27T04:29:23.975Z",
       "source_file": "tw27395288.json",
       "note": ""
     },
@@ -16577,7 +16577,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:34:36.835Z",
+      "last_scraped_at": "2026-07-27T03:30:29.498Z",
       "source_file": "tw27419844.json",
       "note": ""
     },
@@ -16595,7 +16595,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:52:18.909Z",
+      "last_scraped_at": "2026-07-27T04:51:13.719Z",
       "source_file": "tw27453523.json",
       "note": ""
     },
@@ -16640,7 +16640,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:25:07.235Z",
+      "last_scraped_at": "2026-07-27T04:23:03.018Z",
       "source_file": "tw27556466.json",
       "note": ""
     },
@@ -16667,7 +16667,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:43:20.884Z",
+      "last_scraped_at": "2026-07-27T00:46:04.643Z",
       "source_file": "tw27568465.json",
       "note": ""
     },
@@ -16721,7 +16721,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:17:15.861Z",
+      "last_scraped_at": "2026-07-27T05:18:00.894Z",
       "source_file": "tw27673402.json",
       "note": ""
     },
@@ -16755,11 +16755,11 @@
     {
       "ptcg_id": "tw27714746",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:45:38.475Z",
-      "source_file": "tw27714746.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:48:59.257Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw27715406",
@@ -16802,7 +16802,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:41:53.987Z",
+      "last_scraped_at": "2026-07-27T03:38:00.982Z",
       "source_file": "tw27758570.json",
       "note": ""
     },
@@ -16865,7 +16865,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:54:27.393Z",
+      "last_scraped_at": "2026-07-27T04:54:05.120Z",
       "source_file": "tw27821583.json",
       "note": ""
     },
@@ -17045,7 +17045,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:12:34.382Z",
+      "last_scraped_at": "2026-07-27T03:07:46.384Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17126,7 +17126,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:01:10.679Z",
+      "last_scraped_at": "2026-07-27T06:04:54.262Z",
       "source_file": "tw28285341.json",
       "note": ""
     },
@@ -17252,7 +17252,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:43:04.451Z",
+      "last_scraped_at": "2026-07-27T04:41:39.178Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17405,7 +17405,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:29:06.348Z",
+      "last_scraped_at": "2026-07-27T01:27:59.582Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17432,7 +17432,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:33:31.070Z",
+      "last_scraped_at": "2026-07-27T05:35:46.389Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17558,7 +17558,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:21:30.496Z",
+      "last_scraped_at": "2026-07-27T04:19:18.101Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17585,7 +17585,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:11:43.982Z",
+      "last_scraped_at": "2026-07-27T02:08:23.659Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17720,7 +17720,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:24:26.572Z",
+      "last_scraped_at": "2026-07-27T04:22:22.491Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -17738,7 +17738,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:00:04.917Z",
+      "last_scraped_at": "2026-07-27T01:02:47.001Z",
       "source_file": "tw29404493.json",
       "note": ""
     },
@@ -17756,7 +17756,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:02:23.677Z",
+      "last_scraped_at": "2026-07-27T05:02:22.571Z",
       "source_file": "tw29437004.json",
       "note": ""
     },
@@ -17792,7 +17792,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:46:24.523Z",
+      "last_scraped_at": "2026-07-27T01:44:05.761Z",
       "source_file": "tw29536370.json",
       "note": ""
     },
@@ -17891,7 +17891,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:08:56.004Z",
+      "last_scraped_at": "2026-07-27T03:03:47.704Z",
       "source_file": "tw29731640.json",
       "note": ""
     },
@@ -18035,7 +18035,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:00:24.983Z",
+      "last_scraped_at": "2026-07-27T05:00:14.210Z",
       "source_file": "tw30001370.json",
       "note": ""
     },
@@ -18044,7 +18044,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:15:56.036Z",
+      "last_scraped_at": "2026-07-27T04:13:29.683Z",
       "source_file": "tw30011078.json",
       "note": ""
     },
@@ -18089,7 +18089,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:07:44.920Z",
+      "last_scraped_at": "2026-07-27T06:12:07.141Z",
       "source_file": "tw30129413.json",
       "note": ""
     },
@@ -18305,7 +18305,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:58:20.246Z",
+      "last_scraped_at": "2026-07-27T03:55:28.457Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -18332,7 +18332,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:55:17.134Z",
+      "last_scraped_at": "2026-07-27T01:52:06.076Z",
       "source_file": "tw30477292.json",
       "note": ""
     },
@@ -18485,7 +18485,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:29:26.702Z",
+      "last_scraped_at": "2026-07-27T03:25:08.455Z",
       "source_file": "tw30898169.json",
       "note": ""
     },
@@ -18771,11 +18771,11 @@
     {
       "ptcg_id": "tw31401549",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:48:15.073Z",
-      "source_file": "tw31401549.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:50:56.134Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw31407319",
@@ -19133,7 +19133,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:45:01.942Z",
+      "last_scraped_at": "2026-07-27T04:43:40.463Z",
       "source_file": "tw32020032.json",
       "note": ""
     },
@@ -19268,7 +19268,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:39:28.978Z",
+      "last_scraped_at": "2026-07-27T01:37:25.793Z",
       "source_file": "tw32214798.json",
       "note": ""
     },
@@ -19340,7 +19340,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:50:17.600Z",
+      "last_scraped_at": "2026-07-27T04:49:09.330Z",
       "source_file": "tw32364107.json",
       "note": ""
     },
@@ -19565,7 +19565,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:48:38.264Z",
+      "last_scraped_at": "2026-07-27T03:45:17.591Z",
       "source_file": "tw32717439.json",
       "note": ""
     },
@@ -19574,7 +19574,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:14:28.145Z",
+      "last_scraped_at": "2026-07-27T05:15:01.100Z",
       "source_file": "tw32722359.json",
       "note": ""
     },
@@ -19619,7 +19619,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:30:34.798Z",
+      "last_scraped_at": "2026-07-27T05:32:42.833Z",
       "source_file": "tw32830944.json",
       "note": ""
     },
@@ -19628,7 +19628,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:11:47.763Z",
+      "last_scraped_at": "2026-07-27T02:08:28.110Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -19646,7 +19646,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:06:36.446Z",
+      "last_scraped_at": "2026-07-27T05:06:49.620Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -19736,7 +19736,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:01:56.584Z",
+      "last_scraped_at": "2026-07-27T06:05:41.746Z",
       "source_file": "tw32921509.json",
       "note": ""
     },
@@ -19763,7 +19763,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:54:30.517Z",
+      "last_scraped_at": "2026-07-27T02:50:32.946Z",
       "source_file": "tw32950344.json",
       "note": ""
     },
@@ -19844,7 +19844,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:47:10.512Z",
+      "last_scraped_at": "2026-07-27T05:50:25.282Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -19853,7 +19853,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:59:51.093Z",
+      "last_scraped_at": "2026-07-27T06:03:32.090Z",
       "source_file": "tw33097520.json",
       "note": ""
     },
@@ -19916,7 +19916,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:27:39.340Z",
+      "last_scraped_at": "2026-07-27T03:23:12.232Z",
       "source_file": "tw33171149.json",
       "note": ""
     },
@@ -19952,7 +19952,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:14:40.285Z",
+      "last_scraped_at": "2026-07-27T02:11:22.164Z",
       "source_file": "tw33274690.json",
       "note": ""
     },
@@ -20006,7 +20006,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:11:41.440Z",
+      "last_scraped_at": "2026-07-27T02:08:21.014Z",
       "source_file": "tw33425386.json",
       "note": ""
     },
@@ -20024,7 +20024,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:10:08.126Z",
+      "last_scraped_at": "2026-07-27T03:05:09.702Z",
       "source_file": "tw33433069.json",
       "note": ""
     },
@@ -20051,7 +20051,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:39:23.056Z",
+      "last_scraped_at": "2026-07-27T02:36:04.237Z",
       "source_file": "tw33446875.json",
       "note": ""
     },
@@ -20105,7 +20105,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:04:28.251Z",
+      "last_scraped_at": "2026-07-27T01:07:23.248Z",
       "source_file": "tw33544977.json",
       "note": ""
     },
@@ -20195,7 +20195,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:51:15.117Z",
+      "last_scraped_at": "2026-07-27T04:50:08.706Z",
       "source_file": "tw33742727.json",
       "note": ""
     },
@@ -20213,7 +20213,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:32:14.572Z",
+      "last_scraped_at": "2026-07-27T05:34:28.177Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -20231,7 +20231,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:16:13.214Z",
+      "last_scraped_at": "2026-07-27T04:13:48.007Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -20375,7 +20375,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:34:12.683Z",
+      "last_scraped_at": "2026-07-27T05:36:29.290Z",
       "source_file": "tw34101256.json",
       "note": ""
     },
@@ -20591,7 +20591,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:14:17.043Z",
+      "last_scraped_at": "2026-07-27T04:11:43.308Z",
       "source_file": "tw34536798.json",
       "note": ""
     },
@@ -20996,7 +20996,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:32:15.773Z",
+      "last_scraped_at": "2026-07-27T05:34:29.467Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21104,7 +21104,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:16:59.646Z",
+      "last_scraped_at": "2026-07-27T02:13:43.973Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21230,7 +21230,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:14:40.531Z",
+      "last_scraped_at": "2026-07-27T04:12:09.104Z",
       "source_file": "tw35606425.json",
       "note": ""
     },
@@ -21275,7 +21275,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:43:43.892Z",
+      "last_scraped_at": "2026-07-27T05:46:38.703Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21329,7 +21329,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:11:25.599Z",
+      "last_scraped_at": "2026-07-27T02:08:04.778Z",
       "source_file": "tw35707148.json",
       "note": ""
     },
@@ -21347,7 +21347,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:39:04.218Z",
+      "last_scraped_at": "2026-07-27T02:35:47.836Z",
       "source_file": "tw35717087.json",
       "note": ""
     },
@@ -21374,7 +21374,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:18:45.759Z",
+      "last_scraped_at": "2026-07-27T02:15:31.628Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21473,7 +21473,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:53:41.876Z",
+      "last_scraped_at": "2026-07-27T01:50:33.085Z",
       "source_file": "tw35839691.json",
       "note": ""
     },
@@ -21572,7 +21572,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:55:18.276Z",
+      "last_scraped_at": "2026-07-27T01:52:07.760Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -21608,7 +21608,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:13:54.497Z",
+      "last_scraped_at": "2026-07-27T03:09:08.832Z",
       "source_file": "tw36138720.json",
       "note": ""
     },
@@ -21626,7 +21626,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:52:07.218Z",
+      "last_scraped_at": "2026-07-27T05:55:20.448Z",
       "source_file": "tw36173804.json",
       "note": ""
     },
@@ -21671,7 +21671,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:14:45.392Z",
+      "last_scraped_at": "2026-07-27T05:15:19.694Z",
       "source_file": "tw36240497.json",
       "note": ""
     },
@@ -21959,7 +21959,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:22:19.303Z",
+      "last_scraped_at": "2026-07-27T04:20:07.613Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -22031,7 +22031,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:25:33.052Z",
+      "last_scraped_at": "2026-07-27T02:22:30.190Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -22049,7 +22049,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:54:48.484Z",
+      "last_scraped_at": "2026-07-27T00:57:28.421Z",
       "source_file": "tw36759052.json",
       "note": ""
     },
@@ -22130,7 +22130,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:36:48.258Z",
+      "last_scraped_at": "2026-07-27T05:39:08.075Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -22202,7 +22202,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:42:17.659Z",
+      "last_scraped_at": "2026-07-27T03:38:26.438Z",
       "source_file": "tw36942940.json",
       "note": ""
     },
@@ -22337,7 +22337,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:27:21.210Z",
+      "last_scraped_at": "2026-07-27T02:24:16.267Z",
       "source_file": "tw37173355.json",
       "note": ""
     },
@@ -22400,7 +22400,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:26:28.529Z",
+      "last_scraped_at": "2026-07-27T03:21:57.078Z",
       "source_file": "tw37257975.json",
       "note": ""
     },
@@ -22427,7 +22427,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:10:06.686Z",
+      "last_scraped_at": "2026-07-27T05:10:29.146Z",
       "source_file": "tw37274871.json",
       "note": ""
     },
@@ -22461,11 +22461,11 @@
     {
       "ptcg_id": "tw37361150",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:49:54.654Z",
-      "source_file": "tw37361150.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:52:30.336Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw37402193",
@@ -22634,7 +22634,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:40:04.613Z",
+      "last_scraped_at": "2026-07-27T05:42:37.372Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -22670,7 +22670,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:47:28.603Z",
+      "last_scraped_at": "2026-07-27T03:44:03.099Z",
       "source_file": "tw37765295.json",
       "note": ""
     },
@@ -22751,7 +22751,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:28:17.066Z",
+      "last_scraped_at": "2026-07-27T03:23:52.967Z",
       "source_file": "tw37918429.json",
       "note": ""
     },
@@ -22769,7 +22769,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:29:05.657Z",
+      "last_scraped_at": "2026-07-27T05:31:09.878Z",
       "source_file": "tw37950627.json",
       "note": ""
     },
@@ -22832,7 +22832,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:06:09.032Z",
+      "last_scraped_at": "2026-07-27T03:00:55.121Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -22841,7 +22841,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:46:37.325Z",
+      "last_scraped_at": "2026-07-27T02:43:21.224Z",
       "source_file": "tw38086655.json",
       "note": ""
     },
@@ -22868,7 +22868,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:57:31.607Z",
+      "last_scraped_at": "2026-07-27T06:01:03.686Z",
       "source_file": "tw38140274.json",
       "note": ""
     },
@@ -22949,7 +22949,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:22:17.923Z",
+      "last_scraped_at": "2026-07-27T04:20:06.352Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23174,7 +23174,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:06:58.645Z",
+      "last_scraped_at": "2026-07-27T04:04:34.529Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23228,7 +23228,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:10:22.230Z",
+      "last_scraped_at": "2026-07-27T04:07:46.989Z",
       "source_file": "tw38743212.json",
       "note": ""
     },
@@ -23390,7 +23390,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:33:57.255Z",
+      "last_scraped_at": "2026-07-27T05:36:13.757Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23408,7 +23408,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:04:23.179Z",
+      "last_scraped_at": "2026-07-27T06:08:30.074Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23462,7 +23462,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:38:29.058Z",
+      "last_scraped_at": "2026-07-27T01:36:27.994Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23480,7 +23480,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:49:04.559Z",
+      "last_scraped_at": "2026-07-27T01:46:20.043Z",
       "source_file": "tw39185310.json",
       "note": ""
     },
@@ -23588,7 +23588,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:16:49.831Z",
+      "last_scraped_at": "2026-07-27T03:12:09.621Z",
       "source_file": "tw39494537.json",
       "note": ""
     },
@@ -23795,7 +23795,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:05:01.882Z",
+      "last_scraped_at": "2026-07-27T02:01:43.198Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23885,7 +23885,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:23:41.214Z",
+      "last_scraped_at": "2026-07-27T02:20:37.313Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23948,7 +23948,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:58:57.273Z",
+      "last_scraped_at": "2026-07-27T04:58:40.251Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -23957,7 +23957,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:05:47.561Z",
+      "last_scraped_at": "2026-07-27T06:10:05.347Z",
       "source_file": "tw40194303.json",
       "note": ""
     },
@@ -24020,7 +24020,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:30:59.861Z",
+      "last_scraped_at": "2026-07-27T03:26:44.435Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24047,7 +24047,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:02:03.926Z",
+      "last_scraped_at": "2026-07-27T02:57:02.874Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -24308,7 +24308,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:47:44.152Z",
+      "last_scraped_at": "2026-07-27T03:44:20.134Z",
       "source_file": "tw40620066.json",
       "note": ""
     },
@@ -24335,7 +24335,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:54:33.221Z",
+      "last_scraped_at": "2026-07-27T05:57:52.232Z",
       "source_file": "tw40682117.json",
       "note": ""
     },
@@ -24443,7 +24443,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:22:53.101Z",
+      "last_scraped_at": "2026-07-27T02:19:48.262Z",
       "source_file": "tw40852343.json",
       "note": ""
     },
@@ -24461,7 +24461,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:13:39.157Z",
+      "last_scraped_at": "2026-07-27T05:14:07.062Z",
       "source_file": "tw40870196.json",
       "note": ""
     },
@@ -24569,7 +24569,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:59:57.148Z",
+      "last_scraped_at": "2026-07-27T01:56:40.052Z",
       "source_file": "tw41073870.json",
       "note": ""
     },
@@ -24650,7 +24650,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:36:56.782Z",
+      "last_scraped_at": "2026-07-27T05:39:17.133Z",
       "source_file": "tw41160256.json",
       "note": ""
     },
@@ -24731,7 +24731,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:12:31.948Z",
+      "last_scraped_at": "2026-07-27T03:07:43.462Z",
       "source_file": "tw41286139.json",
       "note": ""
     },
@@ -24857,7 +24857,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:34:53.621Z",
+      "last_scraped_at": "2026-07-27T03:30:46.361Z",
       "source_file": "tw41523616.json",
       "note": ""
     },
@@ -24974,7 +24974,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:55:22.471Z",
+      "last_scraped_at": "2026-07-27T05:58:45.506Z",
       "source_file": "tw41643160.json",
       "note": ""
     },
@@ -25010,7 +25010,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:54:10.125Z",
+      "last_scraped_at": "2026-07-27T05:57:27.375Z",
       "source_file": "tw41682200.json",
       "note": ""
     },
@@ -25136,7 +25136,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:35:29.570Z",
+      "last_scraped_at": "2026-07-27T05:37:47.024Z",
       "source_file": "tw41852657.json",
       "note": ""
     },
@@ -25262,7 +25262,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:02:05.488Z",
+      "last_scraped_at": "2026-07-27T06:05:50.958Z",
       "source_file": "tw42052335.json",
       "note": ""
     },
@@ -25379,7 +25379,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:49:59.557Z",
+      "last_scraped_at": "2026-07-27T00:52:58.136Z",
       "source_file": "tw42309306.json",
       "note": ""
     },
@@ -25478,7 +25478,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:21:22.469Z",
+      "last_scraped_at": "2026-07-27T02:18:15.494Z",
       "source_file": "tw42527004.json",
       "note": ""
     },
@@ -25496,7 +25496,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:49:27.364Z",
+      "last_scraped_at": "2026-07-27T04:48:16.703Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25523,7 +25523,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:29:04.901Z",
+      "last_scraped_at": "2026-07-27T01:27:57.854Z",
       "source_file": "tw42619935.json",
       "note": ""
     },
@@ -25595,7 +25595,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:44:16.671Z",
+      "last_scraped_at": "2026-07-27T04:42:53.998Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -25703,7 +25703,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:50:21.073Z",
+      "last_scraped_at": "2026-07-27T01:47:29.995Z",
       "source_file": "tw42912360.json",
       "note": ""
     },
@@ -25766,7 +25766,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:32:39.456Z",
+      "last_scraped_at": "2026-07-27T04:30:55.031Z",
       "source_file": "tw42979297.json",
       "note": ""
     },
@@ -25784,7 +25784,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:49:07.472Z",
+      "last_scraped_at": "2026-07-27T04:47:56.010Z",
       "source_file": "tw43007249.json",
       "note": ""
     },
@@ -25973,7 +25973,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:14:17.459Z",
+      "last_scraped_at": "2026-07-27T03:09:33.595Z",
       "source_file": "tw43380150.json",
       "note": ""
     },
@@ -26243,7 +26243,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:32:13.046Z",
+      "last_scraped_at": "2026-07-27T05:34:26.482Z",
       "source_file": "tw43932173.json",
       "note": ""
     },
@@ -26342,7 +26342,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:44:37.221Z",
+      "last_scraped_at": "2026-07-27T01:42:21.067Z",
       "source_file": "tw44127879.json",
       "note": ""
     },
@@ -26459,7 +26459,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:18:59.856Z",
+      "last_scraped_at": "2026-07-27T01:19:43.374Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -26666,7 +26666,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:21:34.010Z",
+      "last_scraped_at": "2026-07-27T05:22:37.497Z",
       "source_file": "tw44744070.json",
       "note": ""
     },
@@ -26736,11 +26736,11 @@
     {
       "ptcg_id": "tw44821842",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T01:08:38.926Z",
-      "source_file": "tw44821842.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T01:12:03.265Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw44831806",
@@ -26783,7 +26783,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:04:22.452Z",
+      "last_scraped_at": "2026-07-27T05:04:28.204Z",
       "source_file": "tw44874553.json",
       "note": ""
     },
@@ -26918,7 +26918,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:11:27.825Z",
+      "last_scraped_at": "2026-07-27T04:08:52.703Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -26927,7 +26927,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:27:22.977Z",
+      "last_scraped_at": "2026-07-27T03:22:54.160Z",
       "source_file": "tw45233917.json",
       "note": ""
     },
@@ -26981,7 +26981,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:18:46.971Z",
+      "last_scraped_at": "2026-07-27T02:15:32.841Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -27116,7 +27116,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:11:17.321Z",
+      "last_scraped_at": "2026-07-27T01:14:23.937Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -27152,7 +27152,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:14:43.096Z",
+      "last_scraped_at": "2026-07-27T02:11:25.099Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -27260,7 +27260,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:45:39.124Z",
+      "last_scraped_at": "2026-07-27T04:44:18.687Z",
       "source_file": "tw45684530.json",
       "note": ""
     },
@@ -27269,7 +27269,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:11:51.239Z",
+      "last_scraped_at": "2026-07-27T03:06:59.980Z",
       "source_file": "tw45696531.json",
       "note": ""
     },
@@ -27305,7 +27305,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:56:57.020Z",
+      "last_scraped_at": "2026-07-27T01:53:44.939Z",
       "source_file": "tw45806310.json",
       "note": ""
     },
@@ -27431,7 +27431,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:36:09.987Z",
+      "last_scraped_at": "2026-07-27T03:32:04.986Z",
       "source_file": "tw46020620.json",
       "note": ""
     },
@@ -27494,7 +27494,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:30:09.814Z",
+      "last_scraped_at": "2026-07-27T01:28:44.945Z",
       "source_file": "tw46076033.json",
       "note": ""
     },
@@ -27602,7 +27602,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:03:33.101Z",
+      "last_scraped_at": "2026-07-27T06:07:25.814Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -27683,7 +27683,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:44:29.707Z",
+      "last_scraped_at": "2026-07-27T03:40:47.662Z",
       "source_file": "tw46423373.json",
       "note": ""
     },
@@ -27701,7 +27701,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:01:36.448Z",
+      "last_scraped_at": "2026-07-27T03:58:53.184Z",
       "source_file": "tw46437830.json",
       "note": ""
     },
@@ -27719,7 +27719,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:52:35.163Z",
+      "last_scraped_at": "2026-07-27T04:51:29.478Z",
       "source_file": "tw46483831.json",
       "note": ""
     },
@@ -27773,7 +27773,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:32:16.909Z",
+      "last_scraped_at": "2026-07-27T05:34:30.650Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -28016,7 +28016,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:52:47.386Z",
+      "last_scraped_at": "2026-07-27T01:49:41.824Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -28025,7 +28025,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:31:35.345Z",
+      "last_scraped_at": "2026-07-27T01:30:10.680Z",
       "source_file": "tw46798799.json",
       "note": ""
     },
@@ -28592,7 +28592,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:04:40.942Z",
+      "last_scraped_at": "2026-07-27T02:59:29.048Z",
       "source_file": "tw47904340.json",
       "note": ""
     },
@@ -28952,7 +28952,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:06:45.876Z",
+      "last_scraped_at": "2026-07-27T06:11:05.815Z",
       "source_file": "tw48471470.json",
       "note": ""
     },
@@ -29006,7 +29006,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:44:40.751Z",
+      "last_scraped_at": "2026-07-27T02:41:31.045Z",
       "source_file": "tw48512422.json",
       "note": ""
     },
@@ -29015,7 +29015,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:00:26.162Z",
+      "last_scraped_at": "2026-07-27T02:55:47.171Z",
       "source_file": "tw48526697.json",
       "note": ""
     },
@@ -29258,7 +29258,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:47:52.964Z",
+      "last_scraped_at": "2026-07-27T00:50:45.587Z",
       "source_file": "tw48793078.json",
       "note": ""
     },
@@ -29348,7 +29348,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:29:41.962Z",
+      "last_scraped_at": "2026-07-27T04:27:51.475Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -29420,7 +29420,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:10:52.192Z",
+      "last_scraped_at": "2026-07-27T05:11:15.959Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -29474,7 +29474,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:42:37.973Z",
+      "last_scraped_at": "2026-07-27T02:39:21.250Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -29582,7 +29582,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:50:33.556Z",
+      "last_scraped_at": "2026-07-27T02:47:12.006Z",
       "source_file": "tw49340794.json",
       "note": ""
     },
@@ -29762,7 +29762,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:53:29.622Z",
+      "last_scraped_at": "2026-07-27T02:49:33.976Z",
       "source_file": "tw49698910.json",
       "note": ""
     },
@@ -29834,7 +29834,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:28:10.706Z",
+      "last_scraped_at": "2026-07-27T05:30:14.292Z",
       "source_file": "tw49826410.json",
       "note": ""
     },
@@ -29870,7 +29870,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:29:53.706Z",
+      "last_scraped_at": "2026-07-27T05:31:59.348Z",
       "source_file": "tw49868105.json",
       "note": ""
     },
@@ -29879,7 +29879,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:10:29.057Z",
+      "last_scraped_at": "2026-07-27T02:07:07.327Z",
       "source_file": "tw49877892.json",
       "note": ""
     },
@@ -29951,7 +29951,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:42:33.497Z",
+      "last_scraped_at": "2026-07-27T05:45:12.996Z",
       "source_file": "tw49959381.json",
       "note": ""
     },
@@ -30077,7 +30077,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:32:39.663Z",
+      "last_scraped_at": "2026-07-27T05:34:53.432Z",
       "source_file": "tw50202065.json",
       "note": ""
     },
@@ -30113,7 +30113,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:49:15.192Z",
+      "last_scraped_at": "2026-07-27T05:51:28.637Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -30194,7 +30194,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:34:35.601Z",
+      "last_scraped_at": "2026-07-27T04:32:55.664Z",
       "source_file": "tw50453642.json",
       "note": ""
     },
@@ -30248,7 +30248,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:36:08.790Z",
+      "last_scraped_at": "2026-07-27T01:34:14.892Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -30293,7 +30293,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:01:37.946Z",
+      "last_scraped_at": "2026-07-27T03:58:55.222Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -30356,7 +30356,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:17:40.358Z",
+      "last_scraped_at": "2026-07-27T05:18:26.756Z",
       "source_file": "tw50797911.json",
       "note": ""
     },
@@ -30419,7 +30419,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:51:32.150Z",
+      "last_scraped_at": "2026-07-27T02:47:58.049Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -30473,7 +30473,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:05:02.046Z",
+      "last_scraped_at": "2026-07-27T06:09:18.305Z",
       "source_file": "tw50960483.json",
       "note": ""
     },
@@ -30536,7 +30536,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:05:30.666Z",
+      "last_scraped_at": "2026-07-27T05:05:40.124Z",
       "source_file": "tw51046647.json",
       "note": ""
     },
@@ -30554,7 +30554,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:40:08.291Z",
+      "last_scraped_at": "2026-07-27T04:38:38.130Z",
       "source_file": "tw51108451.json",
       "note": ""
     },
@@ -30599,7 +30599,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:52:23.446Z",
+      "last_scraped_at": "2026-07-27T01:49:20.040Z",
       "source_file": "tw51147332.json",
       "note": ""
     },
@@ -30653,7 +30653,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:02:46.457Z",
+      "last_scraped_at": "2026-07-27T05:02:48.116Z",
       "source_file": "tw51251163.json",
       "note": ""
     },
@@ -30689,7 +30689,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:58:55.750Z",
+      "last_scraped_at": "2026-07-27T04:58:38.891Z",
       "source_file": "tw51284044.json",
       "note": ""
     },
@@ -30815,7 +30815,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:43:03.037Z",
+      "last_scraped_at": "2026-07-27T04:41:38.016Z",
       "source_file": "tw51496473.json",
       "note": ""
     },
@@ -30932,7 +30932,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:37:14.734Z",
+      "last_scraped_at": "2026-07-27T05:39:35.738Z",
       "source_file": "tw51710380.json",
       "note": ""
     },
@@ -31166,7 +31166,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:01:38.422Z",
+      "last_scraped_at": "2026-07-27T01:58:18.625Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -31184,7 +31184,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:09:24.488Z",
+      "last_scraped_at": "2026-07-27T04:06:36.644Z",
       "source_file": "tw52162016.json",
       "note": ""
     },
@@ -31193,7 +31193,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:14:44.841Z",
+      "last_scraped_at": "2026-07-27T02:11:27.035Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -31265,7 +31265,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:50:18.810Z",
+      "last_scraped_at": "2026-07-27T04:49:10.566Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -31274,7 +31274,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:51:03.352Z",
+      "last_scraped_at": "2026-07-27T03:47:47.093Z",
       "source_file": "tw52301948.json",
       "note": ""
     },
@@ -31526,7 +31526,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:21:06.020Z",
+      "last_scraped_at": "2026-07-27T04:18:53.869Z",
       "source_file": "tw52663760.json",
       "note": ""
     },
@@ -31598,7 +31598,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:46:01.430Z",
+      "last_scraped_at": "2026-07-27T04:44:41.017Z",
       "source_file": "tw52723058.json",
       "note": ""
     },
@@ -31652,7 +31652,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:37:37.228Z",
+      "last_scraped_at": "2026-07-27T02:34:19.344Z",
       "source_file": "tw52806758.json",
       "note": ""
     },
@@ -31904,7 +31904,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:54:34.376Z",
+      "last_scraped_at": "2026-07-27T05:57:53.397Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32201,7 +32201,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:43:09.490Z",
+      "last_scraped_at": "2026-07-27T01:41:00.965Z",
       "source_file": "tw53723254.json",
       "note": ""
     },
@@ -32435,7 +32435,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:49:25.753Z",
+      "last_scraped_at": "2026-07-27T04:48:15.196Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32615,7 +32615,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:39:52.782Z",
+      "last_scraped_at": "2026-07-27T03:35:52.897Z",
       "source_file": "tw54347311.json",
       "note": ""
     },
@@ -32642,7 +32642,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:17:17.050Z",
+      "last_scraped_at": "2026-07-27T05:18:02.653Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -32678,7 +32678,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:45:26.726Z",
+      "last_scraped_at": "2026-07-27T01:43:09.472Z",
       "source_file": "tw54430001.json",
       "note": ""
     },
@@ -32768,7 +32768,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:18:19.381Z",
+      "last_scraped_at": "2026-07-27T03:13:44.066Z",
       "source_file": "tw54549171.json",
       "note": ""
     },
@@ -32885,7 +32885,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:15:57.701Z",
+      "last_scraped_at": "2026-07-27T05:16:36.969Z",
       "source_file": "tw54739989.json",
       "note": ""
     },
@@ -32894,7 +32894,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:02:17.416Z",
+      "last_scraped_at": "2026-07-27T01:58:58.603Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -33020,7 +33020,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:29:34.388Z",
+      "last_scraped_at": "2026-07-27T02:26:05.563Z",
       "source_file": "tw54988993.json",
       "note": ""
     },
@@ -33029,7 +33029,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:30:56.945Z",
+      "last_scraped_at": "2026-07-27T01:29:32.989Z",
       "source_file": "tw55000893.json",
       "note": ""
     },
@@ -33200,7 +33200,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:00:24.193Z",
+      "last_scraped_at": "2026-07-27T03:57:37.605Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -33209,7 +33209,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:25:31.639Z",
+      "last_scraped_at": "2026-07-27T02:22:28.443Z",
       "source_file": "tw55332465.json",
       "note": ""
     },
@@ -33335,7 +33335,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:40:24.298Z",
+      "last_scraped_at": "2026-07-27T04:38:55.064Z",
       "source_file": "tw55484477.json",
       "note": ""
     },
@@ -33785,7 +33785,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:51:53.842Z",
+      "last_scraped_at": "2026-07-27T04:50:46.980Z",
       "source_file": "tw56240698.json",
       "note": ""
     },
@@ -33821,7 +33821,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:42:22.713Z",
+      "last_scraped_at": "2026-07-27T00:45:06.106Z",
       "source_file": "tw56336073.json",
       "note": ""
     },
@@ -33884,7 +33884,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:17:41.131Z",
+      "last_scraped_at": "2026-07-27T03:13:03.409Z",
       "source_file": "tw56468849.json",
       "note": ""
     },
@@ -33992,7 +33992,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T00:48:54.693Z",
+      "last_scraped_at": "2026-07-27T00:51:49.605Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -34001,7 +34001,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:06:02.071Z",
+      "last_scraped_at": "2026-07-27T05:06:13.593Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -34235,7 +34235,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:51:55.353Z",
+      "last_scraped_at": "2026-07-27T04:50:48.829Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -34289,7 +34289,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:58:47.164Z",
+      "last_scraped_at": "2026-07-27T01:55:32.275Z",
       "source_file": "tw57017359.json",
       "note": ""
     },
@@ -34316,7 +34316,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:04:29.515Z",
+      "last_scraped_at": "2026-07-27T04:01:53.575Z",
       "source_file": "tw57062134.json",
       "note": ""
     },
@@ -34388,7 +34388,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:51:04.808Z",
+      "last_scraped_at": "2026-07-27T03:47:48.703Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -34514,7 +34514,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:23:57.316Z",
+      "last_scraped_at": "2026-07-27T05:25:41.306Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -34649,7 +34649,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:05:50.569Z",
+      "last_scraped_at": "2026-07-27T05:06:01.598Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -34730,7 +34730,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:35:20.739Z",
+      "last_scraped_at": "2026-07-27T05:37:38.510Z",
       "source_file": "tw58028303.json",
       "note": ""
     },
@@ -35018,7 +35018,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:10:32.034Z",
+      "last_scraped_at": "2026-07-27T03:05:36.261Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35045,7 +35045,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:44:07.388Z",
+      "last_scraped_at": "2026-07-27T05:47:02.847Z",
       "source_file": "tw58490962.json",
       "note": ""
     },
@@ -35072,7 +35072,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:12:31.069Z",
+      "last_scraped_at": "2026-07-27T04:09:55.786Z",
       "source_file": "tw58532021.json",
       "note": ""
     },
@@ -35216,7 +35216,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:22:33.353Z",
+      "last_scraped_at": "2026-07-27T05:23:39.540Z",
       "source_file": "tw58776465.json",
       "note": ""
     },
@@ -35225,7 +35225,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:41:07.907Z",
+      "last_scraped_at": "2026-07-27T04:39:40.788Z",
       "source_file": "tw58781969.json",
       "note": ""
     },
@@ -35234,7 +35234,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:14:41.756Z",
+      "last_scraped_at": "2026-07-27T02:11:23.838Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35261,7 +35261,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:56:40.594Z",
+      "last_scraped_at": "2026-07-27T06:00:09.137Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35288,7 +35288,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:54:59.696Z",
+      "last_scraped_at": "2026-07-27T05:58:20.636Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35378,7 +35378,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:19:49.094Z",
+      "last_scraped_at": "2026-07-27T05:20:44.340Z",
       "source_file": "tw59037293.json",
       "note": ""
     },
@@ -35405,7 +35405,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:08:03.236Z",
+      "last_scraped_at": "2026-07-27T01:11:32.421Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35441,7 +35441,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:52:43.222Z",
+      "last_scraped_at": "2026-07-27T01:49:37.734Z",
       "source_file": "tw59096586.json",
       "note": ""
     },
@@ -35459,7 +35459,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:43:18.537Z",
+      "last_scraped_at": "2026-07-27T05:46:06.812Z",
       "source_file": "tw59137487.json",
       "note": ""
     },
@@ -35585,7 +35585,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:08:57.201Z",
+      "last_scraped_at": "2026-07-27T03:03:49.108Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -35612,7 +35612,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:50:20.372Z",
+      "last_scraped_at": "2026-07-27T03:47:02.670Z",
       "source_file": "tw59548820.json",
       "note": ""
     },
@@ -35792,7 +35792,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:03:11.556Z",
+      "last_scraped_at": "2026-07-27T01:06:00.868Z",
       "source_file": "tw59842400.json",
       "note": ""
     },
@@ -35837,7 +35837,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:49:29.690Z",
+      "last_scraped_at": "2026-07-27T02:46:06.087Z",
       "source_file": "tw59882595.json",
       "note": ""
     },
@@ -35972,7 +35972,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:12:09.014Z",
+      "last_scraped_at": "2026-07-27T03:07:18.574Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -36017,7 +36017,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:47:49.332Z",
+      "last_scraped_at": "2026-07-27T01:45:22.353Z",
       "source_file": "tw60273793.json",
       "note": ""
     },
@@ -36152,7 +36152,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:21:29.248Z",
+      "last_scraped_at": "2026-07-27T04:19:16.798Z",
       "source_file": "tw60511158.json",
       "note": ""
     },
@@ -36413,7 +36413,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:38:03.254Z",
+      "last_scraped_at": "2026-07-27T03:33:58.484Z",
       "source_file": "tw60920600.json",
       "note": ""
     },
@@ -36629,7 +36629,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:08:34.056Z",
+      "last_scraped_at": "2026-07-27T02:05:12.028Z",
       "source_file": "tw61279434.json",
       "note": ""
     },
@@ -36773,7 +36773,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:36:51.201Z",
+      "last_scraped_at": "2026-07-27T02:33:31.894Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -36818,7 +36818,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:07:17.107Z",
+      "last_scraped_at": "2026-07-27T03:02:05.223Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -36890,7 +36890,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:19:57.392Z",
+      "last_scraped_at": "2026-07-27T05:20:53.138Z",
       "source_file": "tw61690221.json",
       "note": ""
     },
@@ -36971,7 +36971,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:14:18.282Z",
+      "last_scraped_at": "2026-07-27T04:11:44.891Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -36980,7 +36980,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:45:02.594Z",
+      "last_scraped_at": "2026-07-27T05:48:01.011Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37187,7 +37187,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:02:05.234Z",
+      "last_scraped_at": "2026-07-27T02:57:04.243Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37223,7 +37223,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:41:31.979Z",
+      "last_scraped_at": "2026-07-27T05:44:07.680Z",
       "source_file": "tw62217615.json",
       "note": ""
     },
@@ -37295,7 +37295,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:07:14.157Z",
+      "last_scraped_at": "2026-07-27T03:02:01.934Z",
       "source_file": "tw62315993.json",
       "note": ""
     },
@@ -37430,7 +37430,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:16:14.709Z",
+      "last_scraped_at": "2026-07-27T04:13:49.781Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37547,7 +37547,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:49:24.430Z",
+      "last_scraped_at": "2026-07-27T04:48:13.870Z",
       "source_file": "tw62820523.json",
       "note": ""
     },
@@ -37592,7 +37592,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:11:23.762Z",
+      "last_scraped_at": "2026-07-27T05:11:47.769Z",
       "source_file": "tw62958507.json",
       "note": ""
     },
@@ -37601,7 +37601,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:04:24.702Z",
+      "last_scraped_at": "2026-07-27T06:08:31.472Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37646,7 +37646,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:52:47.876Z",
+      "last_scraped_at": "2026-07-27T05:56:00.872Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37655,7 +37655,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:02:02.337Z",
+      "last_scraped_at": "2026-07-27T02:57:01.584Z",
       "source_file": "tw63016626.json",
       "note": ""
     },
@@ -37691,7 +37691,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:56:49.287Z",
+      "last_scraped_at": "2026-07-27T04:56:29.061Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37790,7 +37790,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:58:05.268Z",
+      "last_scraped_at": "2026-07-27T06:01:39.176Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -37934,7 +37934,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:22:40.435Z",
+      "last_scraped_at": "2026-07-27T03:18:18.062Z",
       "source_file": "tw63343435.json",
       "note": ""
     },
@@ -38015,7 +38015,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:44:04.535Z",
+      "last_scraped_at": "2026-07-27T00:46:49.342Z",
       "source_file": "tw63508480.json",
       "note": ""
     },
@@ -38060,7 +38060,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:55:45.526Z",
+      "last_scraped_at": "2026-07-27T05:59:10.698Z",
       "source_file": "tw63569554.json",
       "note": ""
     },
@@ -38078,7 +38078,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:18:04.032Z",
+      "last_scraped_at": "2026-07-27T05:18:52.234Z",
       "source_file": "tw63573774.json",
       "note": ""
     },
@@ -38474,7 +38474,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:03:59.480Z",
+      "last_scraped_at": "2026-07-27T05:04:05.609Z",
       "source_file": "tw64209062.json",
       "note": ""
     },
@@ -38492,7 +38492,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:09:00.032Z",
+      "last_scraped_at": "2026-07-27T05:09:21.928Z",
       "source_file": "tw64220350.json",
       "note": ""
     },
@@ -38564,7 +38564,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:05:59.686Z",
+      "last_scraped_at": "2026-07-27T05:06:10.597Z",
       "source_file": "tw64436261.json",
       "note": ""
     },
@@ -38582,7 +38582,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:23:45.691Z",
+      "last_scraped_at": "2026-07-27T03:19:26.782Z",
       "source_file": "tw64460639.json",
       "note": ""
     },
@@ -38636,7 +38636,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:38:04.804Z",
+      "last_scraped_at": "2026-07-27T03:34:00.320Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -38672,7 +38672,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:57:47.647Z",
+      "last_scraped_at": "2026-07-27T06:01:20.162Z",
       "source_file": "tw64598660.json",
       "note": ""
     },
@@ -38699,7 +38699,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:47:09.362Z",
+      "last_scraped_at": "2026-07-27T05:50:19.202Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -38717,7 +38717,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:42:17.237Z",
+      "last_scraped_at": "2026-07-27T05:44:56.725Z",
       "source_file": "tw64729411.json",
       "note": ""
     },
@@ -38780,7 +38780,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:35:12.672Z",
+      "last_scraped_at": "2026-07-27T02:31:51.171Z",
       "source_file": "tw64863333.json",
       "note": ""
     },
@@ -38906,7 +38906,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:04:21.872Z",
+      "last_scraped_at": "2026-07-27T06:08:28.363Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -39077,7 +39077,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:18:43.248Z",
+      "last_scraped_at": "2026-07-27T02:15:28.590Z",
       "source_file": "tw65483922.json",
       "note": ""
     },
@@ -39221,7 +39221,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:24:25.371Z",
+      "last_scraped_at": "2026-07-27T04:22:21.185Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -39311,7 +39311,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:22:49.025Z",
+      "last_scraped_at": "2026-07-27T05:24:21.329Z",
       "source_file": "tw65824965.json",
       "note": ""
     },
@@ -39410,7 +39410,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:01:41.020Z",
+      "last_scraped_at": "2026-07-27T02:56:45.439Z",
       "source_file": "tw65936819.json",
       "note": ""
     },
@@ -39446,7 +39446,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:09:23.681Z",
+      "last_scraped_at": "2026-07-27T05:09:46.426Z",
       "source_file": "tw65991509.json",
       "note": ""
     },
@@ -39554,7 +39554,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:20:59.884Z",
+      "last_scraped_at": "2026-07-27T02:17:52.259Z",
       "source_file": "tw66134077.json",
       "note": ""
     },
@@ -39707,7 +39707,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:26:44.352Z",
+      "last_scraped_at": "2026-07-27T04:24:45.048Z",
       "source_file": "tw66459371.json",
       "note": ""
     },
@@ -39752,7 +39752,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:54:57.232Z",
+      "last_scraped_at": "2026-07-27T05:58:17.199Z",
       "source_file": "tw66520026.json",
       "note": ""
     },
@@ -39833,7 +39833,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:52:22.759Z",
+      "last_scraped_at": "2026-07-27T05:55:35.416Z",
       "source_file": "tw66588143.json",
       "note": ""
     },
@@ -39842,7 +39842,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:19:54.228Z",
+      "last_scraped_at": "2026-07-27T03:15:23.287Z",
       "source_file": "tw66591069.json",
       "note": ""
     },
@@ -40040,7 +40040,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:11:29.011Z",
+      "last_scraped_at": "2026-07-27T04:08:53.949Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -40202,7 +40202,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:12:38.569Z",
+      "last_scraped_at": "2026-07-27T02:09:21.527Z",
       "source_file": "tw67199394.json",
       "note": ""
     },
@@ -40283,7 +40283,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:03:34.347Z",
+      "last_scraped_at": "2026-07-27T06:07:27.554Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -40301,7 +40301,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:58:39.160Z",
+      "last_scraped_at": "2026-07-27T04:58:20.449Z",
       "source_file": "tw67348652.json",
       "note": ""
     },
@@ -40355,7 +40355,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:17:22.804Z",
+      "last_scraped_at": "2026-07-27T02:14:07.568Z",
       "source_file": "tw67479231.json",
       "note": ""
     },
@@ -40436,7 +40436,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:05:29.380Z",
+      "last_scraped_at": "2026-07-27T04:02:53.399Z",
       "source_file": "tw67604361.json",
       "note": ""
     },
@@ -40553,7 +40553,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:04:12.260Z",
+      "last_scraped_at": "2026-07-27T02:00:54.093Z",
       "source_file": "tw67759215.json",
       "note": ""
     },
@@ -40778,7 +40778,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:52:46.179Z",
+      "last_scraped_at": "2026-07-27T01:49:40.190Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -40787,7 +40787,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:55:11.924Z",
+      "last_scraped_at": "2026-07-27T04:54:51.558Z",
       "source_file": "tw68090720.json",
       "note": ""
     },
@@ -40823,7 +40823,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:59:47.292Z",
+      "last_scraped_at": "2026-07-27T03:56:58.916Z",
       "source_file": "tw68209178.json",
       "note": ""
     },
@@ -41003,7 +41003,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:33:40.779Z",
+      "last_scraped_at": "2026-07-27T04:32:00.659Z",
       "source_file": "tw68492472.json",
       "note": ""
     },
@@ -41102,7 +41102,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:20:44.219Z",
+      "last_scraped_at": "2026-07-27T03:16:14.592Z",
       "source_file": "tw68763677.json",
       "note": ""
     },
@@ -41147,7 +41147,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:10:50.731Z",
+      "last_scraped_at": "2026-07-27T05:11:14.205Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -41165,7 +41165,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:00:09.080Z",
+      "last_scraped_at": "2026-07-27T04:59:53.043Z",
       "source_file": "tw68856891.json",
       "note": ""
     },
@@ -41273,7 +41273,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:32:30.152Z",
+      "last_scraped_at": "2026-07-27T02:29:03.718Z",
       "source_file": "tw69069593.json",
       "note": ""
     },
@@ -41354,7 +41354,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:30:27.296Z",
+      "last_scraped_at": "2026-07-27T04:28:36.533Z",
       "source_file": "tw69221566.json",
       "note": ""
     },
@@ -41426,7 +41426,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:27:32.427Z",
+      "last_scraped_at": "2026-07-27T05:29:35.225Z",
       "source_file": "tw69346217.json",
       "note": ""
     },
@@ -41453,7 +41453,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:10:30.551Z",
+      "last_scraped_at": "2026-07-27T03:05:34.515Z",
       "source_file": "tw69372013.json",
       "note": ""
     },
@@ -41516,7 +41516,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:28:26.561Z",
+      "last_scraped_at": "2026-07-27T04:26:31.896Z",
       "source_file": "tw69425578.json",
       "note": ""
     },
@@ -41552,7 +41552,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:54:58.527Z",
+      "last_scraped_at": "2026-07-27T05:58:18.874Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -41597,7 +41597,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:41:16.368Z",
+      "last_scraped_at": "2026-07-27T04:39:49.661Z",
       "source_file": "tw69576075.json",
       "note": ""
     },
@@ -41750,7 +41750,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:04:20.303Z",
+      "last_scraped_at": "2026-07-27T06:08:26.499Z",
       "source_file": "tw69804633.json",
       "note": ""
     },
@@ -41804,7 +41804,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:02:28.202Z",
+      "last_scraped_at": "2026-07-27T01:05:15.210Z",
       "source_file": "tw69848864.json",
       "note": ""
     },
@@ -42029,7 +42029,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:49:16.972Z",
+      "last_scraped_at": "2026-07-27T03:45:58.992Z",
       "source_file": "tw70273656.json",
       "note": ""
     },
@@ -42056,7 +42056,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:08:04.345Z",
+      "last_scraped_at": "2026-07-27T05:08:22.958Z",
       "source_file": "tw70378594.json",
       "note": ""
     },
@@ -42110,7 +42110,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:33:29.807Z",
+      "last_scraped_at": "2026-07-27T05:35:45.125Z",
       "source_file": "tw70529064.json",
       "note": ""
     },
@@ -42200,7 +42200,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:18:26.960Z",
+      "last_scraped_at": "2026-07-27T05:19:15.948Z",
       "source_file": "tw70654328.json",
       "note": ""
     },
@@ -42362,7 +42362,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:28:03.702Z",
+      "last_scraped_at": "2026-07-27T04:26:08.972Z",
       "source_file": "tw70942920.json",
       "note": ""
     },
@@ -42425,7 +42425,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:48:19.507Z",
+      "last_scraped_at": "2026-07-27T02:44:54.758Z",
       "source_file": "tw71029745.json",
       "note": ""
     },
@@ -42632,7 +42632,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:50:37.334Z",
+      "last_scraped_at": "2026-07-27T04:49:30.600Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -42704,7 +42704,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:31:46.243Z",
+      "last_scraped_at": "2026-07-27T04:29:58.617Z",
       "source_file": "tw71550438.json",
       "note": ""
     },
@@ -42767,7 +42767,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:18:40.350Z",
+      "last_scraped_at": "2026-07-27T04:16:20.354Z",
       "source_file": "tw71730704.json",
       "note": ""
     },
@@ -43019,7 +43019,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:44:52.774Z",
+      "last_scraped_at": "2026-07-27T03:41:13.730Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -43055,7 +43055,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:12:10.831Z",
+      "last_scraped_at": "2026-07-27T05:12:35.732Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -43118,7 +43118,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:18:44.579Z",
+      "last_scraped_at": "2026-07-27T02:15:30.387Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -43262,7 +43262,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:59:13.270Z",
+      "last_scraped_at": "2026-07-27T02:54:38.382Z",
       "source_file": "tw72630270.json",
       "note": ""
     },
@@ -43514,7 +43514,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:35:31.042Z",
+      "last_scraped_at": "2026-07-27T03:31:24.035Z",
       "source_file": "tw72966382.json",
       "note": ""
     },
@@ -43541,7 +43541,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:50:44.631Z",
+      "last_scraped_at": "2026-07-27T00:53:45.272Z",
       "source_file": "tw73048413.json",
       "note": ""
     },
@@ -43568,7 +43568,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:46:42.084Z",
+      "last_scraped_at": "2026-07-27T00:49:31.267Z",
       "source_file": "tw73106123.json",
       "note": ""
     },
@@ -43586,7 +43586,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:36:33.421Z",
+      "last_scraped_at": "2026-07-27T03:32:28.414Z",
       "source_file": "tw73187416.json",
       "note": ""
     },
@@ -43631,7 +43631,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:26:59.801Z",
+      "last_scraped_at": "2026-07-27T05:29:02.387Z",
       "source_file": "tw73237577.json",
       "note": ""
     },
@@ -43865,7 +43865,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:53:12.454Z",
+      "last_scraped_at": "2026-07-27T05:56:25.125Z",
       "source_file": "tw73762496.json",
       "note": ""
     },
@@ -43928,7 +43928,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:36:49.633Z",
+      "last_scraped_at": "2026-07-27T02:33:30.106Z",
       "source_file": "tw73911906.json",
       "note": ""
     },
@@ -43937,7 +43937,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:40:50.248Z",
+      "last_scraped_at": "2026-07-27T02:37:32.088Z",
       "source_file": "tw73917548.json",
       "note": ""
     },
@@ -43964,7 +43964,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:14:41.134Z",
+      "last_scraped_at": "2026-07-27T03:09:57.777Z",
       "source_file": "tw73975912.json",
       "note": ""
     },
@@ -44180,7 +44180,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:07:56.519Z",
+      "last_scraped_at": "2026-07-27T03:02:45.901Z",
       "source_file": "tw74371443.json",
       "note": ""
     },
@@ -44351,7 +44351,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:06:35.216Z",
+      "last_scraped_at": "2026-07-27T05:06:47.880Z",
       "source_file": "tw74676901.json",
       "note": ""
     },
@@ -44549,7 +44549,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:32:56.391Z",
+      "last_scraped_at": "2026-07-27T04:31:13.564Z",
       "source_file": "tw74963860.json",
       "note": ""
     },
@@ -44702,7 +44702,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:07:02.578Z",
+      "last_scraped_at": "2026-07-27T06:11:22.734Z",
       "source_file": "tw75139643.json",
       "note": ""
     },
@@ -44738,7 +44738,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:07:35.893Z",
+      "last_scraped_at": "2026-07-27T02:04:14.209Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44792,7 +44792,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:06:57.495Z",
+      "last_scraped_at": "2026-07-27T04:04:32.869Z",
       "source_file": "tw75352342.json",
       "note": ""
     },
@@ -44801,7 +44801,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:17:00.840Z",
+      "last_scraped_at": "2026-07-27T04:14:36.058Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -44873,7 +44873,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:24:27.842Z",
+      "last_scraped_at": "2026-07-27T01:23:58.747Z",
       "source_file": "tw75551324.json",
       "note": ""
     },
@@ -45008,7 +45008,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:11:42.794Z",
+      "last_scraped_at": "2026-07-27T02:08:22.363Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -45062,7 +45062,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:32:40.581Z",
+      "last_scraped_at": "2026-07-27T04:30:56.664Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -45098,7 +45098,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:08:47.637Z",
+      "last_scraped_at": "2026-07-27T05:09:08.566Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -45134,7 +45134,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:05:48.728Z",
+      "last_scraped_at": "2026-07-27T06:10:07.047Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -45206,7 +45206,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:08:35.627Z",
+      "last_scraped_at": "2026-07-27T02:05:13.390Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -45224,7 +45224,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:11:16.089Z",
+      "last_scraped_at": "2026-07-27T01:14:22.589Z",
       "source_file": "tw76086171.json",
       "note": ""
     },
@@ -45359,7 +45359,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:11:45.184Z",
+      "last_scraped_at": "2026-07-27T02:08:24.883Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -45404,7 +45404,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:15:01.586Z",
+      "last_scraped_at": "2026-07-27T05:15:37.659Z",
       "source_file": "tw76312809.json",
       "note": ""
     },
@@ -45449,7 +45449,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:12:07.503Z",
+      "last_scraped_at": "2026-07-27T03:07:16.788Z",
       "source_file": "tw76369505.json",
       "note": ""
     },
@@ -45467,7 +45467,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:16:59.275Z",
+      "last_scraped_at": "2026-07-27T04:14:34.778Z",
       "source_file": "tw76371566.json",
       "note": ""
     },
@@ -45530,7 +45530,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:17:23.221Z",
+      "last_scraped_at": "2026-07-27T01:18:34.226Z",
       "source_file": "tw76470686.json",
       "note": ""
     },
@@ -45584,7 +45584,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:48:29.889Z",
+      "last_scraped_at": "2026-07-27T03:45:08.962Z",
       "source_file": "tw76568846.json",
       "note": ""
     },
@@ -45782,7 +45782,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:38:11.021Z",
+      "last_scraped_at": "2026-07-27T04:36:41.752Z",
       "source_file": "tw76994845.json",
       "note": ""
     },
@@ -45989,7 +45989,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:48:39.720Z",
+      "last_scraped_at": "2026-07-27T03:45:19.236Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46079,7 +46079,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:42:15.690Z",
+      "last_scraped_at": "2026-07-27T04:40:50.468Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46205,7 +46205,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:58:18.717Z",
+      "last_scraped_at": "2026-07-27T03:55:27.081Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46331,7 +46331,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:53:43.470Z",
+      "last_scraped_at": "2026-07-27T00:56:41.096Z",
       "source_file": "tw77877383.json",
       "note": ""
     },
@@ -46466,7 +46466,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:26:25.919Z",
+      "last_scraped_at": "2026-07-27T04:24:25.071Z",
       "source_file": "tw78144908.json",
       "note": ""
     },
@@ -46592,7 +46592,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:48:53.474Z",
+      "last_scraped_at": "2026-07-27T00:51:48.220Z",
       "source_file": "tw78403870.json",
       "note": ""
     },
@@ -46718,7 +46718,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T00:56:50.655Z",
+      "last_scraped_at": "2026-07-27T00:59:28.241Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46853,7 +46853,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:23:59.269Z",
+      "last_scraped_at": "2026-07-27T04:21:54.853Z",
       "source_file": "tw78866457.json",
       "note": ""
     },
@@ -46943,7 +46943,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:06:46.989Z",
+      "last_scraped_at": "2026-07-27T06:11:06.979Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -46997,7 +46997,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:31:51.398Z",
+      "last_scraped_at": "2026-07-27T05:34:03.586Z",
       "source_file": "tw79100139.json",
       "note": ""
     },
@@ -47015,25 +47015,25 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:50:20.334Z",
+      "last_scraped_at": "2026-07-27T04:49:12.355Z",
       "source_file": "",
       "note": "404 not found"
     },
     {
       "ptcg_id": "tw79180495",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:24:49.308Z",
-      "source_file": "tw79180495.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:26:12.154Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw79188375",
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:16:08.659Z",
+      "last_scraped_at": "2026-07-27T01:17:41.175Z",
       "source_file": "tw79188375.json",
       "note": ""
     },
@@ -47069,7 +47069,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:07:40.713Z",
+      "last_scraped_at": "2026-07-27T03:02:29.304Z",
       "source_file": "tw79270381.json",
       "note": ""
     },
@@ -47078,7 +47078,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:45:47.116Z",
+      "last_scraped_at": "2026-07-27T00:48:35.535Z",
       "source_file": "tw79280986.json",
       "note": ""
     },
@@ -47168,7 +47168,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:56:20.805Z",
+      "last_scraped_at": "2026-07-27T03:53:23.637Z",
       "source_file": "tw79411276.json",
       "note": ""
     },
@@ -47195,7 +47195,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:28:36.043Z",
+      "last_scraped_at": "2026-07-27T04:26:42.352Z",
       "source_file": "tw79434198.json",
       "note": ""
     },
@@ -47211,11 +47211,11 @@
     {
       "ptcg_id": "tw79476009",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:46:43.983Z",
-      "source_file": "tw79476009.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:49:30.106Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw79477719",
@@ -47285,7 +47285,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:07:36.321Z",
+      "last_scraped_at": "2026-07-27T06:11:58.624Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -47384,7 +47384,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:48:13.843Z",
+      "last_scraped_at": "2026-07-27T04:46:59.842Z",
       "source_file": "tw79723871.json",
       "note": ""
     },
@@ -47420,7 +47420,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:33:20.326Z",
+      "last_scraped_at": "2026-07-27T02:29:55.426Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -47447,7 +47447,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:55:30.652Z",
+      "last_scraped_at": "2026-07-27T02:51:23.659Z",
       "source_file": "tw79834153.json",
       "note": ""
     },
@@ -47474,7 +47474,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:00:50.799Z",
+      "last_scraped_at": "2026-07-27T01:57:32.113Z",
       "source_file": "tw79878183.json",
       "note": ""
     },
@@ -47492,7 +47492,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:12:33.902Z",
+      "last_scraped_at": "2026-07-27T05:13:00.288Z",
       "source_file": "tw79925801.json",
       "note": ""
     },
@@ -47645,7 +47645,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:02:48.070Z",
+      "last_scraped_at": "2026-07-27T06:06:36.509Z",
       "source_file": "tw80138989.json",
       "note": ""
     },
@@ -47798,7 +47798,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:00:49.399Z",
+      "last_scraped_at": "2026-07-27T03:58:04.785Z",
       "source_file": "tw80527710.json",
       "note": ""
     },
@@ -48095,7 +48095,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:56:01.988Z",
+      "last_scraped_at": "2026-07-27T05:59:28.064Z",
       "source_file": "tw81021249.json",
       "note": ""
     },
@@ -48140,7 +48140,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:33:56.052Z",
+      "last_scraped_at": "2026-07-27T05:36:12.050Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48185,7 +48185,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:56:08.053Z",
+      "last_scraped_at": "2026-07-27T01:52:56.208Z",
       "source_file": "tw81121676.json",
       "note": ""
     },
@@ -48239,7 +48239,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:23:35.352Z",
+      "last_scraped_at": "2026-07-27T05:24:40.046Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -48653,7 +48653,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:05:00.332Z",
+      "last_scraped_at": "2026-07-27T02:01:41.438Z",
       "source_file": "tw81886933.json",
       "note": ""
     },
@@ -48707,7 +48707,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:03:31.604Z",
+      "last_scraped_at": "2026-07-27T06:07:24.545Z",
       "source_file": "tw82001299.json",
       "note": ""
     },
@@ -48788,7 +48788,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:24:26.518Z",
+      "last_scraped_at": "2026-07-27T02:21:22.669Z",
       "source_file": "tw82119121.json",
       "note": ""
     },
@@ -48914,7 +48914,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:33:54.591Z",
+      "last_scraped_at": "2026-07-27T05:36:10.807Z",
       "source_file": "tw82289672.json",
       "note": ""
     },
@@ -49085,7 +49085,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:59:13.243Z",
+      "last_scraped_at": "2026-07-27T04:58:56.583Z",
       "source_file": "tw82566333.json",
       "note": ""
     },
@@ -49292,7 +49292,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:04:39.922Z",
+      "last_scraped_at": "2026-07-27T06:08:54.397Z",
       "source_file": "tw82878504.json",
       "note": ""
     },
@@ -49328,7 +49328,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:01:37.112Z",
+      "last_scraped_at": "2026-07-27T01:58:17.327Z",
       "source_file": "tw82981600.json",
       "note": ""
     },
@@ -49598,7 +49598,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:48:40.905Z",
+      "last_scraped_at": "2026-07-27T03:45:20.503Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -49643,7 +49643,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:55:31.858Z",
+      "last_scraped_at": "2026-07-27T02:51:25.392Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -49688,7 +49688,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:06:18.822Z",
+      "last_scraped_at": "2026-07-27T05:06:31.050Z",
       "source_file": "tw83905127.json",
       "note": ""
     },
@@ -49940,7 +49940,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:07:18.106Z",
+      "last_scraped_at": "2026-07-27T06:11:39.456Z",
       "source_file": "tw84382822.json",
       "note": ""
     },
@@ -49967,7 +49967,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:38:06.007Z",
+      "last_scraped_at": "2026-07-27T03:34:02.010Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -50048,7 +50048,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:42:39.506Z",
+      "last_scraped_at": "2026-07-27T02:39:23.082Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -50129,7 +50129,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:23:55.999Z",
+      "last_scraped_at": "2026-07-27T05:25:36.189Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -50138,7 +50138,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:40:03.513Z",
+      "last_scraped_at": "2026-07-27T05:42:36.191Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -50237,7 +50237,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:24:49.660Z",
+      "last_scraped_at": "2026-07-27T04:22:45.515Z",
       "source_file": "tw84991038.json",
       "note": ""
     },
@@ -50255,7 +50255,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:08:48.464Z",
+      "last_scraped_at": "2026-07-27T06:13:12.124Z",
       "source_file": "tw85026999.json",
       "note": ""
     },
@@ -50354,7 +50354,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:14:21.544Z",
+      "last_scraped_at": "2026-07-27T01:16:40.886Z",
       "source_file": "tw85147749.json",
       "note": ""
     },
@@ -50597,7 +50597,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:57:05.965Z",
+      "last_scraped_at": "2026-07-27T03:54:10.365Z",
       "source_file": "tw85568194.json",
       "note": ""
     },
@@ -50741,7 +50741,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:52:46.381Z",
+      "last_scraped_at": "2026-07-27T05:55:59.508Z",
       "source_file": "tw85823053.json",
       "note": ""
     },
@@ -50894,7 +50894,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:50:36.128Z",
+      "last_scraped_at": "2026-07-27T04:49:28.906Z",
       "source_file": "tw86152305.json",
       "note": ""
     },
@@ -50912,7 +50912,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:13:01.811Z",
+      "last_scraped_at": "2026-07-27T02:09:43.709Z",
       "source_file": "tw86177796.json",
       "note": ""
     },
@@ -50939,7 +50939,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:52:49.398Z",
+      "last_scraped_at": "2026-07-27T05:56:02.123Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -50991,11 +50991,11 @@
     {
       "ptcg_id": "tw86324740",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:23:54.594Z",
-      "source_file": "tw86324740.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:25:29.835Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw86325245",
@@ -51011,7 +51011,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:58:40.394Z",
+      "last_scraped_at": "2026-07-27T04:58:21.885Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -51065,7 +51065,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:33:52.904Z",
+      "last_scraped_at": "2026-07-27T03:29:43.672Z",
       "source_file": "tw86437657.json",
       "note": ""
     },
@@ -51461,7 +51461,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:06:42.874Z",
+      "last_scraped_at": "2026-07-27T02:03:22.522Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -51668,7 +51668,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:19:46.758Z",
+      "last_scraped_at": "2026-07-27T04:17:29.952Z",
       "source_file": "tw87500073.json",
       "note": ""
     },
@@ -51686,7 +51686,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:43:25.628Z",
+      "last_scraped_at": "2026-07-27T02:40:13.255Z",
       "source_file": "tw87510571.json",
       "note": ""
     },
@@ -51794,7 +51794,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:31:12.264Z",
+      "last_scraped_at": "2026-07-27T05:33:22.931Z",
       "source_file": "tw87621292.json",
       "note": ""
     },
@@ -51839,7 +51839,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:16:32.345Z",
+      "last_scraped_at": "2026-07-27T05:17:15.390Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -51999,11 +51999,11 @@
     {
       "ptcg_id": "tw87970697",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:47:07.100Z",
-      "source_file": "tw87970697.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:50:00.963Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw87979157",
@@ -52091,7 +52091,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:50:38.506Z",
+      "last_scraped_at": "2026-07-27T04:49:32.293Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52199,7 +52199,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:41:16.677Z",
+      "last_scraped_at": "2026-07-27T05:43:52.134Z",
       "source_file": "tw88288372.json",
       "note": ""
     },
@@ -52370,7 +52370,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:00:26.878Z",
+      "last_scraped_at": "2026-07-27T03:57:41.127Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52415,7 +52415,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:23:40.022Z",
+      "last_scraped_at": "2026-07-27T02:20:35.592Z",
       "source_file": "tw88559975.json",
       "note": ""
     },
@@ -52523,7 +52523,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:52:44.628Z",
+      "last_scraped_at": "2026-07-27T01:49:38.978Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52532,7 +52532,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:26:34.804Z",
+      "last_scraped_at": "2026-07-27T02:23:30.505Z",
       "source_file": "tw88792767.json",
       "note": ""
     },
@@ -52559,7 +52559,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:08:36.078Z",
+      "last_scraped_at": "2026-07-27T04:06:06.499Z",
       "source_file": "tw88843922.json",
       "note": ""
     },
@@ -52586,7 +52586,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:21:32.233Z",
+      "last_scraped_at": "2026-07-27T03:17:06.520Z",
       "source_file": "tw88860465.json",
       "note": ""
     },
@@ -52820,7 +52820,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:35:47.360Z",
+      "last_scraped_at": "2026-07-27T03:31:40.799Z",
       "source_file": "tw89297350.json",
       "note": ""
     },
@@ -52865,7 +52865,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:26:49.199Z",
+      "last_scraped_at": "2026-07-27T01:25:51.948Z",
       "source_file": "tw89343025.json",
       "note": ""
     },
@@ -52910,7 +52910,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:47:07.573Z",
+      "last_scraped_at": "2026-07-27T04:45:50.282Z",
       "source_file": "tw89407764.json",
       "note": ""
     },
@@ -52955,7 +52955,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:13:55.892Z",
+      "last_scraped_at": "2026-07-27T03:09:10.485Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -52973,7 +52973,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:35:00.651Z",
+      "last_scraped_at": "2026-07-27T04:33:20.622Z",
       "source_file": "tw89548879.json",
       "note": ""
     },
@@ -53000,7 +53000,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:12:55.567Z",
+      "last_scraped_at": "2026-07-27T05:13:22.789Z",
       "source_file": "tw89606971.json",
       "note": ""
     },
@@ -53009,7 +53009,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:13:56.138Z",
+      "last_scraped_at": "2026-07-27T02:10:37.580Z",
       "source_file": "tw89609352.json",
       "note": ""
     },
@@ -53054,7 +53054,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:16:58.128Z",
+      "last_scraped_at": "2026-07-27T02:13:42.624Z",
       "source_file": "tw89644458.json",
       "note": ""
     },
@@ -53189,7 +53189,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:08:01.495Z",
+      "last_scraped_at": "2026-07-27T06:12:23.989Z",
       "source_file": "tw89902913.json",
       "note": ""
     },
@@ -53313,11 +53313,11 @@
     {
       "ptcg_id": "tw90147793",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:25:42.963Z",
-      "source_file": "tw90147793.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:27:13.833Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw90173825",
@@ -53414,7 +53414,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:17:42.304Z",
+      "last_scraped_at": "2026-07-27T03:13:05.169Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -53612,7 +53612,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:36:33.271Z",
+      "last_scraped_at": "2026-07-27T04:34:57.760Z",
       "source_file": "tw90564971.json",
       "note": ""
     },
@@ -53675,7 +53675,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:55:09.413Z",
+      "last_scraped_at": "2026-07-27T03:52:05.546Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -53747,7 +53747,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:24:22.772Z",
+      "last_scraped_at": "2026-07-27T04:22:18.274Z",
       "source_file": "tw90806836.json",
       "note": ""
     },
@@ -53855,7 +53855,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T06:07:35.131Z",
+      "last_scraped_at": "2026-07-27T06:11:56.900Z",
       "source_file": "tw90897983.json",
       "note": ""
     },
@@ -53900,7 +53900,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:06:10.262Z",
+      "last_scraped_at": "2026-07-27T03:00:56.833Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -53936,7 +53936,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:40:04.949Z",
+      "last_scraped_at": "2026-07-27T02:36:45.853Z",
       "source_file": "tw91072286.json",
       "note": ""
     },
@@ -53981,7 +53981,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:08:46.159Z",
+      "last_scraped_at": "2026-07-27T05:09:07.291Z",
       "source_file": "tw91106608.json",
       "note": ""
     },
@@ -54269,7 +54269,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:14:55.482Z",
+      "last_scraped_at": "2026-07-27T04:12:25.285Z",
       "source_file": "tw91547922.json",
       "note": ""
     },
@@ -54395,7 +54395,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:18:41.563Z",
+      "last_scraped_at": "2026-07-27T04:16:22.219Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -54449,7 +54449,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:25:58.385Z",
+      "last_scraped_at": "2026-07-27T05:27:48.668Z",
       "source_file": "tw91797530.json",
       "note": ""
     },
@@ -54476,7 +54476,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:33:19.102Z",
+      "last_scraped_at": "2026-07-27T02:29:54.215Z",
       "source_file": "tw91826663.json",
       "note": ""
     },
@@ -54755,7 +54755,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:40:02.303Z",
+      "last_scraped_at": "2026-07-27T05:42:34.409Z",
       "source_file": "tw92224806.json",
       "note": ""
     },
@@ -54764,7 +54764,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:27:21.453Z",
+      "last_scraped_at": "2026-07-27T04:25:25.561Z",
       "source_file": "tw92250919.json",
       "note": ""
     },
@@ -54881,7 +54881,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:24:24.277Z",
+      "last_scraped_at": "2026-07-27T04:22:19.979Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -54926,7 +54926,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:30:18.601Z",
+      "last_scraped_at": "2026-07-27T02:26:50.598Z",
       "source_file": "tw92544749.json",
       "note": ""
     },
@@ -55043,7 +55043,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:10:23.829Z",
+      "last_scraped_at": "2026-07-27T05:10:47.659Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -55115,7 +55115,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:13:54.602Z",
+      "last_scraped_at": "2026-07-27T04:11:20.312Z",
       "source_file": "tw93020902.json",
       "note": ""
     },
@@ -55196,7 +55196,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:47:21.750Z",
+      "last_scraped_at": "2026-07-27T01:44:58.277Z",
       "source_file": "tw93076075.json",
       "note": ""
     },
@@ -55223,7 +55223,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:14:56.902Z",
+      "last_scraped_at": "2026-07-27T04:12:27.051Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -55367,7 +55367,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:06:07.783Z",
+      "last_scraped_at": "2026-07-27T03:00:53.716Z",
       "source_file": "tw93405316.json",
       "note": ""
     },
@@ -55412,7 +55412,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T00:58:21.259Z",
+      "last_scraped_at": "2026-07-27T01:00:59.402Z",
       "source_file": "tw93433450.json",
       "note": ""
     },
@@ -55565,7 +55565,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:12:09.639Z",
+      "last_scraped_at": "2026-07-27T05:12:34.002Z",
       "source_file": "tw93660736.json",
       "note": ""
     },
@@ -55592,7 +55592,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:34:36.557Z",
+      "last_scraped_at": "2026-07-27T05:36:53.185Z",
       "source_file": "tw93739401.json",
       "note": ""
     },
@@ -55619,7 +55619,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:05:47.822Z",
+      "last_scraped_at": "2026-07-27T05:05:58.477Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -55664,7 +55664,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:22:16.718Z",
+      "last_scraped_at": "2026-07-27T04:20:05.001Z",
       "source_file": "tw93786012.json",
       "note": ""
     },
@@ -55709,7 +55709,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:26:29.746Z",
+      "last_scraped_at": "2026-07-27T03:21:58.302Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -55736,7 +55736,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:07:34.681Z",
+      "last_scraped_at": "2026-07-27T02:04:12.953Z",
       "source_file": "tw93858918.json",
       "note": ""
     },
@@ -55754,7 +55754,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:51:30.724Z",
+      "last_scraped_at": "2026-07-27T02:47:56.398Z",
       "source_file": "tw93947447.json",
       "note": ""
     },
@@ -55763,7 +55763,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:18:57.181Z",
+      "last_scraped_at": "2026-07-27T01:19:39.932Z",
       "source_file": "tw93955100.json",
       "note": ""
     },
@@ -55970,7 +55970,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:38:45.355Z",
+      "last_scraped_at": "2026-07-27T05:41:12.100Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -55997,7 +55997,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:42:35.354Z",
+      "last_scraped_at": "2026-07-27T02:39:17.814Z",
       "source_file": "tw94173678.json",
       "note": ""
     },
@@ -56168,7 +56168,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:51:47.922Z",
+      "last_scraped_at": "2026-07-27T03:48:33.849Z",
       "source_file": "tw94518932.json",
       "note": ""
     },
@@ -56231,7 +56231,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:39:21.232Z",
+      "last_scraped_at": "2026-07-27T04:37:52.505Z",
       "source_file": "tw94687968.json",
       "note": ""
     },
@@ -56384,7 +56384,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:05:54.537Z",
+      "last_scraped_at": "2026-07-27T01:08:56.301Z",
       "source_file": "tw94971550.json",
       "note": ""
     },
@@ -56429,7 +56429,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:16:03.817Z",
+      "last_scraped_at": "2026-07-27T03:11:22.473Z",
       "source_file": "tw95045687.json",
       "note": ""
     },
@@ -56465,7 +56465,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T04:28:27.661Z",
+      "last_scraped_at": "2026-07-27T04:26:33.171Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -56501,7 +56501,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:58:14.483Z",
+      "last_scraped_at": "2026-07-27T02:53:42.649Z",
       "source_file": "tw95198982.json",
       "note": ""
     },
@@ -56636,7 +56636,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:12:14.478Z",
+      "last_scraped_at": "2026-07-27T04:09:39.163Z",
       "source_file": "tw95345106.json",
       "note": ""
     },
@@ -56789,7 +56789,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:45:01.266Z",
+      "last_scraped_at": "2026-07-27T05:47:59.755Z",
       "source_file": "tw95547681.json",
       "note": ""
     },
@@ -56816,7 +56816,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:07:19.812Z",
+      "last_scraped_at": "2026-07-27T05:07:35.463Z",
       "source_file": "tw95566595.json",
       "note": ""
     },
@@ -56888,7 +56888,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T03:30:14.144Z",
+      "last_scraped_at": "2026-07-27T03:25:57.126Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -56906,7 +56906,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:57:26.940Z",
+      "last_scraped_at": "2026-07-27T04:57:06.589Z",
       "source_file": "tw95674193.json",
       "note": ""
     },
@@ -57059,7 +57059,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T01:17:50.862Z",
+      "last_scraped_at": "2026-07-27T01:18:55.538Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -57122,7 +57122,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:05:49.348Z",
+      "last_scraped_at": "2026-07-27T05:06:00.190Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -57131,7 +57131,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T06:07:19.371Z",
+      "last_scraped_at": "2026-07-27T06:11:40.670Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -57149,7 +57149,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:07:37.105Z",
+      "last_scraped_at": "2026-07-27T02:04:15.959Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -57257,7 +57257,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:19:38.945Z",
+      "last_scraped_at": "2026-07-27T02:16:29.956Z",
       "source_file": "tw96387195.json",
       "note": ""
     },
@@ -57473,7 +57473,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:35:24.159Z",
+      "last_scraped_at": "2026-07-27T04:33:43.889Z",
       "source_file": "tw96801156.json",
       "note": ""
     },
@@ -57536,7 +57536,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T02:02:16.097Z",
+      "last_scraped_at": "2026-07-27T01:58:57.202Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -57554,7 +57554,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:57:25.010Z",
+      "last_scraped_at": "2026-07-27T02:52:58.309Z",
       "source_file": "tw96922965.json",
       "note": ""
     },
@@ -57662,7 +57662,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:43:42.251Z",
+      "last_scraped_at": "2026-07-27T05:46:36.955Z",
       "source_file": "tw97046858.json",
       "note": ""
     },
@@ -57707,7 +57707,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:02:14.704Z",
+      "last_scraped_at": "2026-07-27T01:58:55.628Z",
       "source_file": "tw97135682.json",
       "note": ""
     },
@@ -57716,7 +57716,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:59:33.326Z",
+      "last_scraped_at": "2026-07-27T01:56:17.339Z",
       "source_file": "tw97138451.json",
       "note": ""
     },
@@ -57806,7 +57806,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:44:23.342Z",
+      "last_scraped_at": "2026-07-27T05:47:19.543Z",
       "source_file": "tw97275186.json",
       "note": ""
     },
@@ -57887,7 +57887,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:51:50.078Z",
+      "last_scraped_at": "2026-07-27T05:55:04.123Z",
       "source_file": "tw97370246.json",
       "note": ""
     },
@@ -57941,7 +57941,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:11:08.378Z",
+      "last_scraped_at": "2026-07-27T05:11:32.378Z",
       "source_file": "tw97442996.json",
       "note": ""
     },
@@ -58067,7 +58067,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:25:23.984Z",
+      "last_scraped_at": "2026-07-27T03:21:09.359Z",
       "source_file": "tw97666473.json",
       "note": ""
     },
@@ -58175,7 +58175,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:39:44.475Z",
+      "last_scraped_at": "2026-07-27T04:38:15.545Z",
       "source_file": "tw97857197.json",
       "note": ""
     },
@@ -58202,7 +58202,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T01:33:07.790Z",
+      "last_scraped_at": "2026-07-27T01:31:25.021Z",
       "source_file": "tw97885633.json",
       "note": ""
     },
@@ -58220,7 +58220,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T00:59:21.535Z",
+      "last_scraped_at": "2026-07-27T01:02:01.909Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -58319,7 +58319,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:10:49.238Z",
+      "last_scraped_at": "2026-07-27T05:11:12.545Z",
       "source_file": "tw98129328.json",
       "note": ""
     },
@@ -58668,11 +58668,11 @@
     {
       "ptcg_id": "tw98649601",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:25:34.631Z",
-      "source_file": "tw98649601.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:26:42.986Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw98650752",
@@ -58697,7 +58697,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T04:15:11.813Z",
+      "last_scraped_at": "2026-07-27T04:12:43.693Z",
       "source_file": "tw98688020.json",
       "note": ""
     },
@@ -58767,11 +58767,11 @@
     {
       "ptcg_id": "tw98858591",
       "level": "master",
-      "status": "ok",
-      "has_history": true,
-      "last_scraped_at": "2026-07-20T05:49:38.627Z",
-      "source_file": "tw98858591.json",
-      "note": ""
+      "status": "failed",
+      "has_history": false,
+      "last_scraped_at": "2026-07-27T05:51:59.485Z",
+      "source_file": "",
+      "note": "exit code 1"
     },
     {
       "ptcg_id": "tw98870668",
@@ -58994,7 +58994,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:32:20.513Z",
+      "last_scraped_at": "2026-07-27T03:28:05.974Z",
       "source_file": "tw99213849.json",
       "note": ""
     },
@@ -59003,7 +59003,7 @@
       "level": "master",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-07-20T05:36:58.004Z",
+      "last_scraped_at": "2026-07-27T05:39:18.413Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -59300,7 +59300,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T03:44:51.642Z",
+      "last_scraped_at": "2026-07-27T03:41:12.138Z",
       "source_file": "tw99738792.json",
       "note": ""
     },
@@ -59363,7 +59363,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T05:40:45.970Z",
+      "last_scraped_at": "2026-07-27T05:43:19.209Z",
       "source_file": "tw99801052.json",
       "note": ""
     },
@@ -59471,7 +59471,7 @@
       "level": "master",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-07-20T02:34:16.264Z",
+      "last_scraped_at": "2026-07-27T02:30:53.355Z",
       "source_file": "tw99926791.json",
       "note": ""
     },
