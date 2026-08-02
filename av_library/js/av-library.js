@@ -1444,6 +1444,7 @@
                 brokenCoverCache.delete(exists.id);
             }
             setDb(db);
+            markDirty();
             return {
                 saved: false,
                 message: wasDeleted
