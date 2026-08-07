@@ -35,6 +35,14 @@ const PTCG = (() => {
         'MASTERBALL': { cls: 'badge-masterball', label: '大師球' },
     };
 
+    // 台灣縣市清單（與 scraper/venue_utils.js 的 TAIWAN_REGIONS 一致），用於賽事地區篩選。
+    const TAIWAN_REGIONS = [
+        '臺北市', '新北市', '桃園市', '臺中市', '臺南市', '高雄市',
+        '基隆市', '新竹市', '新竹縣', '苗栗縣', '彰化縣', '南投縣',
+        '雲林縣', '嘉義市', '嘉義縣', '屏東縣', '宜蘭縣', '花蓮縣',
+        '臺東縣', '澎湖縣', '金門縣', '連江縣',
+    ];
+
     const PLAYER_LEVELS = ['master', 'senior', 'junior'];
     const PLAYER_LEVEL_LABELS = {
         master: '大師組',
@@ -927,6 +935,7 @@ const PTCG = (() => {
     let _allTournaments = [];
     let _tournamentPage = 1;
     const _PAGE_SIZE = 30;
+    let _selectedRegions = new Set(); // 空集合＝全國（不篩選地區）
 
     async function loadTournamentsPage() {
         try {
@@ -946,7 +955,64 @@ const PTCG = (() => {
         }
     }
 
+    function _bindRegionFilterDropdown() {
+        const menu = document.getElementById('region-filter-menu');
+        const allCheckbox = document.getElementById('region-opt-all');
+        const label = document.getElementById('region-filter-label');
+        if (!menu || !allCheckbox || !label) return;
+
+        TAIWAN_REGIONS.forEach((region) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="form-check">
+                    <input class="form-check-input region-opt" type="checkbox" id="region-opt-${escapeHtml(region)}" value="${escapeHtml(region)}">
+                    <label class="form-check-label" for="region-opt-${escapeHtml(region)}">${escapeHtml(region)}</label>
+                </div>`;
+            menu.appendChild(li);
+        });
+
+        const regionCheckboxes = Array.from(menu.querySelectorAll('.region-opt'));
+
+        function updateLabel() {
+            if (_selectedRegions.size === 0) {
+                label.textContent = '全國';
+            } else if (_selectedRegions.size <= 2) {
+                label.textContent = Array.from(_selectedRegions).join('、');
+            } else {
+                label.textContent = `已選 ${_selectedRegions.size} 個地區`;
+            }
+        }
+
+        function applyChange() {
+            updateLabel();
+            _tournamentPage = 1;
+            _renderTournamentsList();
+            _trackFeatureUsage('tournament_filter_region_change', {
+                filter_region: _selectedRegions.size ? Array.from(_selectedRegions).join(',') : 'all',
+                result_count: _getFilteredTournaments().length,
+            });
+        }
+
+        allCheckbox.addEventListener('change', () => {
+            if (allCheckbox.checked) {
+                _selectedRegions.clear();
+                regionCheckboxes.forEach((cb) => { cb.checked = false; });
+            }
+            applyChange();
+        });
+
+        regionCheckboxes.forEach((cb) => {
+            cb.addEventListener('change', () => {
+                if (cb.checked) _selectedRegions.add(cb.value);
+                else _selectedRegions.delete(cb.value);
+                allCheckbox.checked = _selectedRegions.size === 0;
+                applyChange();
+            });
+        });
+    }
+
     function _bindTournamentFilters() {
+        _bindRegionFilterDropdown();
         document.getElementById('type-filter')?.addEventListener('change', () => {
             _tournamentPage = 1;
             _renderTournamentsList();
@@ -1009,6 +1075,7 @@ const PTCG = (() => {
             if (season && t.season !== season)      return false;
             if (search && !t.name.toLowerCase().includes(search) && !(t.location || '').toLowerCase().includes(search)) return false;
             if (!showUpcoming && getTournamentDateState(t.date) === 'upcoming') return false;
+            if (_selectedRegions.size > 0 && !_selectedRegions.has(t.city)) return false;
             return true;
         });
     }
