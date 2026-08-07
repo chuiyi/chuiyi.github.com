@@ -380,7 +380,7 @@ const PTCG = (() => {
         const venue = String(item?.venue || '').trim();
         const address = String(item?.address || '').trim();
         const city = String(item?.city || '').trim();
-        const location = venue || address || organizer || (series ? `系列 ${series}` : '--');
+        const location = organizer || venue || address || (series ? `系列 ${series}` : '--');
         const sourceUrl = String(item?.url || '').trim();
         const hasSfcTid = /[?&]tid=\d+/i.test(sourceUrl);
         const showPairing = item?.showPairing !== false;
