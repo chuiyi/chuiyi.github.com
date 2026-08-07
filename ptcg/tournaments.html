@@ -98,6 +98,22 @@
                     </select>
                 </div>
                 <div class="col-auto">
+                    <div class="dropdown" id="region-filter">
+                        <button class="btn btn-outline-ptcg btn-sm dropdown-toggle" type="button" id="region-filter-btn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                            <i class="bi bi-geo-alt me-1"></i><span id="region-filter-label">全國</span>
+                        </button>
+                        <ul class="dropdown-menu p-2" id="region-filter-menu" style="max-height: 320px; overflow-y: auto; min-width: 200px;" aria-labelledby="region-filter-btn">
+                            <li>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="region-opt-all" checked>
+                                    <label class="form-check-label" for="region-opt-all">全國</label>
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-auto">
                     <div class="form-check form-switch mb-0 d-flex align-items-center gap-2">
                         <input class="form-check-input" type="checkbox" role="switch" id="show-upcoming" style="cursor:pointer;" checked>
                         <label class="form-check-label filter-label mb-0" for="show-upcoming" style="cursor:pointer;">顯示未來賽事</label>

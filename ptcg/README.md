@@ -225,6 +225,7 @@ localStorage.setItem('ptcg_ga_measurement_id', 'G-XXXXXXXXXX');
 - `footer_main_link_click`
 - `tournament_filter_type_change`
 - `tournament_filter_season_change`
+- `tournament_filter_region_change`
 - `tournament_search`
 - `tournament_pagination_click`
 - `player_level_change`
