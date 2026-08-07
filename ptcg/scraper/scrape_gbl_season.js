@@ -22,6 +22,7 @@ const path = require('path');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { resolveSeasonDefaults } = require('./season_config');
+const { extractVenueAndAddress, deriveCityFromAddress } = require('./venue_utils');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const TOURNAMENTS_DIR = path.join(DATA_DIR, 'tournaments');
@@ -134,6 +135,9 @@ function writeCsvRows(filePath, rows) {
     'organizer',
     'capacity',
     'official_date',
+    'venue',
+    'address',
+    'city',
     'top128_file',
     'top128_count',
   ]);
@@ -149,6 +153,9 @@ function writeCsvRows(filePath, rows) {
       row.organizer || '',
       row.capacity || '',
       row.official_date || '',
+      row.venue || '',
+      row.address || '',
+      row.city || '',
       row.top128_file || '',
       row.top128_count == null ? '' : row.top128_count,
     ]));
@@ -324,6 +331,9 @@ function upsertGblTournament(payload) {
       officialDate: payload.officialDate || '',
       organizer: payload.organizer || '',
       capacity: payload.capacity || '',
+      venue: payload.venue || '',
+      address: payload.address || '',
+      city: payload.city || '',
       history: [
         {
           crawledAt: now,
@@ -361,6 +371,9 @@ function upsertGblTournament(payload) {
     officialDate: payload.officialDate || prev.officialDate || '',
     organizer: payload.organizer || prev.organizer || '',
     capacity: payload.capacity || prev.capacity || '',
+    venue: payload.venue || prev.venue || '',
+    address: payload.address || prev.address || '',
+    city: payload.city || prev.city || '',
     history,
   };
 
@@ -398,6 +411,9 @@ async function buildGblUrlCsv(args) {
       organizer: '',
       capacity: '',
       official_date: '',
+      venue: '',
+      address: '',
+      city: '',
       top128_file: '',
       top128_count: '',
     }));
@@ -441,6 +457,8 @@ async function enrichGblDetails(args) {
       const organizer = parseOrganizerFromBodyText(bodyText);
       const capacity = parseCapacityFromBodyText(bodyText);
       const officialDate = parseDateFromBodyText(bodyText);
+      const { venue, address } = extractVenueAndAddress($);
+      const city = deriveCityFromAddress(address || venue);
 
       const top128Rows = scrapeTop128FromHtml(html);
       const top128File = `top128_gbl_${officialId}.csv`;
@@ -457,6 +475,9 @@ async function enrichGblDetails(args) {
         organizer,
         capacity,
         official_date: officialDate,
+        venue,
+        address,
+        city,
         top128_file: top128Rows.length > 0 ? top128File : '',
         top128_count: top128Rows.length,
       });
@@ -470,6 +491,9 @@ async function enrichGblDetails(args) {
         officialDate,
         organizer,
         capacity,
+        venue,
+        address,
+        city,
         top128File: top128Rows.length > 0 ? top128File : '',
         top128Count: top128Rows.length,
       });
@@ -489,6 +513,9 @@ async function enrichGblDetails(args) {
         organizer: row.organizer || '',
         capacity: row.capacity || '',
         official_date: row.official_date || '',
+        venue: row.venue || '',
+        address: row.address || '',
+        city: row.city || '',
         top128_file: row.top128_file || '',
         top128_count: row.top128_count || '',
       });
@@ -510,6 +537,9 @@ async function enrichGblDetails(args) {
         organizer: row.organizer || '',
         capacity: row.capacity || '',
         official_date: row.official_date || '',
+        venue: row.venue || '',
+        address: row.address || '',
+        city: row.city || '',
         top128_file: row.top128_file || '',
         top128_count: row.top128_count || '',
       });
@@ -526,6 +556,9 @@ async function enrichGblDetails(args) {
     organizer: row.organizer || '',
     capacity: row.capacity || '',
     official_date: row.official_date || '',
+    venue: row.venue || '',
+    address: row.address || '',
+    city: row.city || '',
     top128_file: row.top128_file || '',
     top128_count: row.top128_count || '',
   }));

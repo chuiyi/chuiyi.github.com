@@ -532,6 +532,7 @@ main .btn-outline-ptcg:hover {
 .badge-superball  { background: rgba(37,99,235,0.18); color: #1d4ed8; border: 1px solid rgba(37,99,235,0.45); }
 .badge-premiere   { background: #ffffff; color: #b91c1c; border: 1px solid rgba(185,28,28,0.55); }
 .badge-masterball { background: rgba(124,58,237,0.16); color: #6d28d9; border: 1px solid rgba(124,58,237,0.45); }
+.badge-city       { background: rgba(100,116,139,0.14); color: #475569; border: 1px solid rgba(100,116,139,0.35); }
 
 /* 組別 badge */
 .badge-level-master { background: rgba(124,58,237,0.12); color: #7c3aed; border: 1px solid rgba(124,58,237,0.25); }

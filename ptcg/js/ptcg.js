@@ -379,6 +379,7 @@ const PTCG = (() => {
         const organizer = String(item?.organizer || '').trim();
         const venue = String(item?.venue || '').trim();
         const address = String(item?.address || '').trim();
+        const city = String(item?.city || '').trim();
         const location = venue || address || organizer || (series ? `系列 ${series}` : '--');
         const sourceUrl = String(item?.url || '').trim();
         const hasSfcTid = /[?&]tid=\d+/i.test(sourceUrl);
@@ -394,6 +395,9 @@ const PTCG = (() => {
             season,
             date,
             location,
+            venue,
+            address,
+            city,
             participants,
             finalRankCount: Number.isFinite(item?.finalRankCount) ? item.finalRankCount : null,
             round1Max,
@@ -1063,6 +1067,7 @@ const PTCG = (() => {
                             <i class="bi bi-trophy-fill"></i> ${escapeHtml(typeInfo.label)}
                         </span>
                         ${levelLabel ? `<span class="tournament-type-badge badge-level-${escapeHtml(t.level)}">${escapeHtml(levelLabel)}</span>` : ''}
+                        ${t.city ? `<span class="tournament-type-badge badge-city"><i class="bi bi-geo-alt-fill"></i> ${escapeHtml(t.city)}</span>` : ''}
                     </div>
                     ${t.season ? `<span class="tournament-meta">${escapeHtml(t.season)}</span>` : ''}
                 </div>
