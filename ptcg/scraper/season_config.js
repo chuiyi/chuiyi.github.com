@@ -8,6 +8,10 @@ const SEASON_CONFIG = {
     startDate: '09-01-2025',
     seasonText: '2025-26',
   },
+  '2026-27': {
+    startDate: '09-01-2026',
+    seasonText: '2026-27',
+  },
 };
 
 function normalizeSeasonLabel(label) {
