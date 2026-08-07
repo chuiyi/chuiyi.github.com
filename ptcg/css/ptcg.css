@@ -1264,6 +1264,19 @@ main .btn-outline-ptcg:hover {
     font-size: 0.85rem;
 }
 
+/* 與 form-select-sm 同高：只借用 Bootstrap .btn-sm 原生的 padding/字級，不像 .btn-outline-ptcg 額外放大 */
+.btn-region-filter {
+    border-color: var(--ptcg-border);
+    background: var(--ptcg-surface);
+    color: var(--ptcg-text);
+}
+
+.btn-region-filter:hover,
+.btn-region-filter:focus {
+    border-color: var(--ptcg-primary);
+    color: var(--ptcg-primary);
+}
+
 .form-select:focus, .form-control:focus {
     border-color: var(--ptcg-primary);
     box-shadow: 0 0 0 3px rgba(29,78,216,0.12);
