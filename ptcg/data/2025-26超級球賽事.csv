@@ -13,6 +13,7 @@ season,type,level,url_official,title,organizer,capacity,official_date,top128_fil
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/43699/,2025-26 Taiwan Great Ball League Season 1,小蝦米玩具,68 人,2025-09-13,top128_gbl_43699.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/43700/,2025-26 Taiwan Great Ball League Season 1,磚櫃玩具店(台北店),66 人,2025-09-13,top128_gbl_43700.csv,31
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/43701/,2025-26 Taiwan Great Ball League Season 1,松鼠窩桌遊館,70 人,2025-09-13,top128_gbl_43701.csv,32
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/43702/,2025-26 Taiwan Great Ball League Season 1,B ONE桌遊,70 人,2025-09-14,top128_gbl_43702.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/43703/,2025-26 Taiwan Great Ball League Season 1,諾亞方舟益智遊戲,90 人,2025-09-14,top128_gbl_43703.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/43705/,2025-26 Taiwan Great Ball League Season 1,Magic Star卡牌店,66 人,2025-09-13,top128_gbl_43705.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/43706/,2025-26 Taiwan Great Ball League Season 1,ALG-Academy Legacy Games,80 人,2025-09-14,top128_gbl_43706.csv,32
@@ -79,7 +80,6 @@ season,type,level,url_official,title,organizer,capacity,official_date,top128_fil
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/46031/,2025-26 Taiwan Great Ball League Season 1,貓腳印-彰化店,64 人,2025-10-19,top128_gbl_46031.csv,16
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/46033/,2025-26 Taiwan Great Ball League Season 1,貓腳印松江店,96 人,2025-10-19,top128_gbl_46033.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/46034/,2025-26 Taiwan Great Ball League Season 1,桌覓桌遊,66 人,2025-11-02,top128_gbl_46034.csv,16
-1,gbl,all,https://asia.pokemon-card.com/tw/event-search/46097/,2025-26 Taiwan Great Ball League Season 1,嗷嗚桌遊百貨,70 人,2025-11-09,top128_gbl_46097.csv,16
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/46107/,2025-26 Taiwan Great Ball League Season 1,玩坊 桌遊店,70 人,2025-11-02,top128_gbl_46107.csv,16
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/46118/,2025-26 Taiwan Great Ball League Season 1,鬥樂一中店,120 人,2025-10-18,top128_gbl_46118.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/46119/,2025-26 Taiwan Great Ball League Season 1,卡多卡牌遊戲店,32 人,2025-11-01,top128_gbl_46119.csv,16
@@ -308,3 +308,32 @@ season,type,level,url_official,title,organizer,capacity,official_date,top128_fil
 3,gbl,all,https://asia.pokemon-card.com/tw/event-search/57646/,2025-26 Taiwan Great Ball League Season 3,新世紀遊戲館,256 人,2026-05-02,top128_gbl_57646.csv,64
 3,gbl,all,https://asia.pokemon-card.com/tw/event-search/57647/,2025-26 Taiwan Great Ball League Season 3,紙牌屋,256 人,2026-05-23,top128_gbl_57647.csv,64
 3,gbl,all,https://asia.pokemon-card.com/tw/event-search/57648/,2025-26 Taiwan Great Ball League Season 3,鬥樂一中店,256 人,2026-05-16,top128_gbl_57648.csv,64
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66338/,2026-27 Taiwan Great Ball League Season 1,諾亞方舟益智遊戲,90 人,2026-09-05,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66339/,2026-27 Taiwan Great Ball League Season 1,ALG-Academy Legacy Games,80 人,2026-09-05,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66340/,2026-27 Taiwan Great Ball League Season 1,卡多卡牌遊戲店,44 人,2026-09-05,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66341/,2026-27 Taiwan Great Ball League Season 1,漢謚玩具社,128 人,2026-09-05,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66342/,2026-27 Taiwan Great Ball League Season 1,鬥陣,64 人,2026-09-05,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66343/,2026-27 Taiwan Great Ball League Season 1,Ririco - 集換式卡牌專賣,70 人,2026-09-06,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66344/,2026-27 Taiwan Great Ball League Season 1,貓腳印松江店,96 人,2026-09-06,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66345/,2026-27 Taiwan Great Ball League Season 1,貓腳印-苗栗店,66 人,2026-09-06,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66346/,2026-27 Taiwan Great Ball League Season 1,嗷嗚桌遊百貨,128 人,2026-09-06,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66347/,2026-27 Taiwan Great Ball League Season 1,元氣滿屋,32 人,2026-09-06,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66348/,2026-27 Taiwan Great Ball League Season 1,貓腳印淡水店,68 人,2026-09-06,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66349/,2026-27 Taiwan Great Ball League Season 1,玩坊 桌遊店,64 人,2026-09-06,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66350/,2026-27 Taiwan Great Ball League Season 1,躲貓貓桌遊店,40 人,2026-09-13,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66351/,2026-27 Taiwan Great Ball League Season 1,拉比卡牌,64 人,2026-09-13,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66352/,2026-27 Taiwan Great Ball League Season 1,Play Lab Game 休閒館 高雄,52 人,2026-09-13,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66353/,2026-27 Taiwan Great Ball League Season 1,藍色的貓,36 人,2026-09-13,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66354/,2026-27 Taiwan Great Ball League Season 1,B ONE桌遊,70 人,2026-09-13,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66355/,2026-27 Taiwan Great Ball League Season 1,諾亞方舟 - 彰化魔豆店,68 人,2026-09-13,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66356/,2026-27 Taiwan Great Ball League Season 1,鬥樂一中店,120 人,2026-09-19,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66357/,2026-27 Taiwan Great Ball League Season 1,貓腳印士林店,96 人,2026-09-19,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66358/,2026-27 Taiwan Great Ball League Season 1,Card Master,128 人,2026-09-19,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66359/,2026-27 Taiwan Great Ball League Season 1,卡卡邦尼樂遊館,32 人,2026-09-19,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66360/,2026-27 Taiwan Great Ball League Season 1,一新書局,64 人,2026-09-19,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66361/,2026-27 Taiwan Great Ball League Season 1,磚櫃玩具店(台北店),66 人,2026-09-20,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66362/,2026-27 Taiwan Great Ball League Season 1,怪獸造咔,32 人,2026-09-20,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66363/,2026-27 Taiwan Great Ball League Season 1,Magic Star卡牌店,66 人,2026-09-20,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66364/,2026-27 Taiwan Great Ball League Season 1,Play Lab Game 休閒館 台南,52 人,2026-09-20,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66365/,2026-27 Taiwan Great Ball League Season 1,Bruce桌遊空間-美術館店,64 人,2026-09-20,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/66366/,2026-27 Taiwan Great Ball League Season 1,踢桌子,84 人,2026-09-20,,0
