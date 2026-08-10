@@ -2025,6 +2025,44 @@ main .btn-outline-ptcg:hover {
 .empty-state p { font-size: 0.9rem; }
 
 /* ============================================================
+   賽事地圖（縣市區塊圖）
+   ============================================================ */
+.taiwan-map-card {
+    background: var(--ptcg-surface);
+    border: 1px solid var(--ptcg-border);
+    border-radius: var(--ptcg-radius);
+    padding: 1rem 1.25rem;
+}
+
+.taiwan-map-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.taiwan-county {
+    stroke: #ffffff;
+    stroke-width: 1px;
+    cursor: pointer;
+    transition: opacity 0.15s ease, stroke 0.15s ease, stroke-width 0.15s ease;
+}
+
+.taiwan-county:hover {
+    opacity: 0.8;
+    stroke: var(--ptcg-primary);
+}
+
+.taiwan-county.is-selected {
+    stroke: var(--ptcg-primary);
+    stroke-width: 2.5px;
+}
+
+.map-region-cards-grid > .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 @media (max-width: 768px) {
