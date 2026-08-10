@@ -199,6 +199,10 @@ name,name_en,score,tournaments,division,region,top_decks
 - `teams[].members[].level`: 可選欄位，`master|senior|junior`，用於精準對應該組別積分
 - `teams[].members[].social[]`: 個人社群連結陣列（可放 `instagram`、`threads` 等平台）
 
+### `data/taiwan_counties.json`（賽事地圖用縣市邊界）
+
+賽事資訊頁「地圖」檢視用的台灣 22 縣市 TopoJSON，vendor 自 [`taiwan-atlas`](https://github.com/dkaoster/taiwan-atlas)（`counties-10t.json`，MIT license，資料來源為內政部）。純靜態參考資料，縣市邊界不會變動，不會被爬蟲覆寫；`COUNTYNAME` 用「台」字（如「台北市」），前端讀取時會正規化成站上統一用的「臺」字（如「臺北市」）再對應賽事的 `city` 欄位。
+
 ## 注意事項
 
 ## Google Analytics（GA4）
@@ -226,6 +230,8 @@ localStorage.setItem('ptcg_ga_measurement_id', 'G-XXXXXXXXXX');
 - `tournament_filter_type_change`
 - `tournament_filter_season_change`
 - `tournament_filter_region_change`
+- `tournament_view_mode_change`
+- `tournament_map_region_click`
 - `tournament_search`
 - `tournament_pagination_click`
 - `player_level_change`

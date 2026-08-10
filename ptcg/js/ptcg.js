@@ -936,6 +936,8 @@ const PTCG = (() => {
     let _tournamentPage = 1;
     const _PAGE_SIZE = 30;
     let _selectedRegions = new Set(); // 空集合＝全國（不篩選地區）
+    let _tournamentViewMode = 'list'; // 'list' | 'map'
+    let _taiwanCountiesGeo = null; // 縣市 TopoJSON 轉換後的 GeoJSON（載入一次快取起來）
 
     async function loadTournamentsPage() {
         try {
@@ -955,11 +957,40 @@ const PTCG = (() => {
         }
     }
 
-    function _bindRegionFilterDropdown() {
+    function _syncRegionFilterUI() {
         const menu = document.getElementById('region-filter-menu');
         const allCheckbox = document.getElementById('region-opt-all');
         const label = document.getElementById('region-filter-label');
         if (!menu || !allCheckbox || !label) return;
+
+        menu.querySelectorAll('.region-opt').forEach((cb) => {
+            cb.checked = _selectedRegions.has(cb.value);
+        });
+        allCheckbox.checked = _selectedRegions.size === 0;
+
+        if (_selectedRegions.size === 0) {
+            label.textContent = '全國';
+        } else if (_selectedRegions.size <= 2) {
+            label.textContent = Array.from(_selectedRegions).join('、');
+        } else {
+            label.textContent = `已選 ${_selectedRegions.size} 個地區`;
+        }
+    }
+
+    function _onRegionFilterChange(eventName) {
+        _syncRegionFilterUI();
+        _tournamentPage = 1;
+        _renderTournamentsView();
+        _trackFeatureUsage(eventName || 'tournament_filter_region_change', {
+            filter_region: _selectedRegions.size ? Array.from(_selectedRegions).join(',') : 'all',
+            result_count: _getFilteredTournaments().length,
+        });
+    }
+
+    function _bindRegionFilterDropdown() {
+        const menu = document.getElementById('region-filter-menu');
+        const allCheckbox = document.getElementById('region-opt-all');
+        if (!menu || !allCheckbox) return;
 
         TAIWAN_REGIONS.forEach((region) => {
             const li = document.createElement('li');
@@ -971,51 +1002,59 @@ const PTCG = (() => {
             menu.appendChild(li);
         });
 
-        const regionCheckboxes = Array.from(menu.querySelectorAll('.region-opt'));
-
-        function updateLabel() {
-            if (_selectedRegions.size === 0) {
-                label.textContent = '全國';
-            } else if (_selectedRegions.size <= 2) {
-                label.textContent = Array.from(_selectedRegions).join('、');
-            } else {
-                label.textContent = `已選 ${_selectedRegions.size} 個地區`;
-            }
-        }
-
-        function applyChange() {
-            updateLabel();
-            _tournamentPage = 1;
-            _renderTournamentsList();
-            _trackFeatureUsage('tournament_filter_region_change', {
-                filter_region: _selectedRegions.size ? Array.from(_selectedRegions).join(',') : 'all',
-                result_count: _getFilteredTournaments().length,
-            });
-        }
-
         allCheckbox.addEventListener('change', () => {
-            if (allCheckbox.checked) {
-                _selectedRegions.clear();
-                regionCheckboxes.forEach((cb) => { cb.checked = false; });
-            }
-            applyChange();
+            if (allCheckbox.checked) _selectedRegions.clear();
+            _onRegionFilterChange();
         });
 
-        regionCheckboxes.forEach((cb) => {
+        menu.querySelectorAll('.region-opt').forEach((cb) => {
             cb.addEventListener('change', () => {
                 if (cb.checked) _selectedRegions.add(cb.value);
                 else _selectedRegions.delete(cb.value);
-                allCheckbox.checked = _selectedRegions.size === 0;
-                applyChange();
+                _onRegionFilterChange();
             });
         });
     }
 
+    function _onMapCountyClick(regionName) {
+        const isSoleSelected = _selectedRegions.size === 1 && _selectedRegions.has(regionName);
+        _selectedRegions.clear();
+        if (!isSoleSelected) _selectedRegions.add(regionName);
+        _onRegionFilterChange('tournament_map_region_click');
+    }
+
+    function _renderTournamentsView() {
+        if (_tournamentViewMode === 'map') {
+            _renderMapCardsPanel();
+            _renderTaiwanMap();
+        } else {
+            _renderTournamentsList();
+        }
+    }
+
+    function _bindViewModeToggle() {
+        document.getElementById('view-mode-filter')?.addEventListener('change', () => {
+            const mode = document.querySelector('input[name="viewMode"]:checked')?.value || 'list';
+            _tournamentViewMode = mode;
+            const listView = document.getElementById('tournaments-list-view');
+            const mapView = document.getElementById('tournaments-map-view');
+            if (listView) listView.style.display = mode === 'list' ? '' : 'none';
+            if (mapView) mapView.style.display = mode === 'map' ? '' : 'none';
+            _renderTournamentsView();
+            _trackFeatureUsage('tournament_view_mode_change', { view_mode: mode });
+        });
+
+        window.addEventListener('resize', _debounce(() => {
+            if (_tournamentViewMode === 'map') _renderTaiwanMap();
+        }, 300));
+    }
+
     function _bindTournamentFilters() {
         _bindRegionFilterDropdown();
+        _bindViewModeToggle();
         document.getElementById('type-filter')?.addEventListener('change', () => {
             _tournamentPage = 1;
-            _renderTournamentsList();
+            _renderTournamentsView();
             const selectedType = document.querySelector('input[name="type"]:checked')?.value || 'SUPERBALL';
             _trackFeatureUsage('tournament_filter_type_change', {
                 filter_type: selectedType,
@@ -1024,7 +1063,7 @@ const PTCG = (() => {
         });
         document.getElementById('season-select')?.addEventListener('change', () => {
             _tournamentPage = 1;
-            _renderTournamentsList();
+            _renderTournamentsView();
             const season = document.getElementById('season-select')?.value || 'all';
             _trackFeatureUsage('tournament_filter_season_change', {
                 filter_season: season,
@@ -1033,7 +1072,7 @@ const PTCG = (() => {
         });
         document.getElementById('tournament-search')?.addEventListener('input', _debounce(() => {
             _tournamentPage = 1;
-            _renderTournamentsList();
+            _renderTournamentsView();
             const keyword = (document.getElementById('tournament-search')?.value || '').trim();
             _trackFeatureUsage('tournament_search', {
                 query_length: keyword.length,
@@ -1043,27 +1082,122 @@ const PTCG = (() => {
         }, 250));
         document.getElementById('show-upcoming')?.addEventListener('change', () => {
             _tournamentPage = 1;
-            _renderTournamentsList();
+            _renderTournamentsView();
         });
-        document.getElementById('tournaments-container')?.addEventListener('click', async (event) => {
-            const btn = event.target.closest('.btn-view-tournament-detail');
-            if (btn && !btn.disabled) {
-                const tid = btn.dataset.tid;
-                const tournament = _allTournaments.find(t => String(t.id) === String(tid));
-                if (tournament) await _openTournamentDetailModal(tournament);
-                return;
-            }
-
-            const btn128 = event.target.closest('.btn-view-top128');
-            if (btn128 && !btn128.disabled) {
-                const tid = btn128.dataset.tid;
-                const tournament = _allTournaments.find(t => String(t.id) === String(tid));
-                if (tournament) await _openTop128Modal(tournament);
-            }
-        });
+        document.getElementById('tournaments-container')?.addEventListener('click', _handleTournamentCardClick);
+        document.getElementById('map-region-cards-container')?.addEventListener('click', _handleTournamentCardClick);
     }
 
-    function _getFilteredTournaments() {
+    async function _handleTournamentCardClick(event) {
+        const btn = event.target.closest('.btn-view-tournament-detail');
+        if (btn && !btn.disabled) {
+            const tid = btn.dataset.tid;
+            const tournament = _allTournaments.find(t => String(t.id) === String(tid));
+            if (tournament) await _openTournamentDetailModal(tournament);
+            return;
+        }
+
+        const btn128 = event.target.closest('.btn-view-top128');
+        if (btn128 && !btn128.disabled) {
+            const tid = btn128.dataset.tid;
+            const tournament = _allTournaments.find(t => String(t.id) === String(tid));
+            if (tournament) await _openTop128Modal(tournament);
+        }
+    }
+
+    // ─── 賽事地圖（縣市區塊圖） ─────────────────────────────
+
+    async function _loadTaiwanCountiesGeo() {
+        if (_taiwanCountiesGeo) return _taiwanCountiesGeo;
+        const topology = await fetchJSON('taiwan_counties.json');
+        const geojson = topojson.feature(topology, topology.objects.counties);
+        geojson.features.forEach((feature) => {
+            // 資料來源縣市名稱用「台」，站上資料統一用「臺」，比照 city 欄位正規化。
+            feature.properties.regionName = String(feature.properties.COUNTYNAME || '').replace(/台/g, '臺');
+        });
+        _taiwanCountiesGeo = geojson;
+        return geojson;
+    }
+
+    function _getRegionTournamentCounts() {
+        const counts = new Map();
+        _getFilteredTournaments({ ignoreRegion: true }).forEach((t) => {
+            if (!t.city) return;
+            counts.set(t.city, (counts.get(t.city) || 0) + 1);
+        });
+        return counts;
+    }
+
+    async function _renderTaiwanMap() {
+        const container = document.getElementById('taiwan-map-svg-container');
+        if (!container) return;
+
+        let geo;
+        try {
+            geo = await _loadTaiwanCountiesGeo();
+        } catch (err) {
+            container.innerHTML = `<div class="empty-state"><div class="empty-state-icon"><i class="bi bi-exclamation-triangle"></i></div><p>地圖資料載入失敗：${escapeHtml(err.message)}</p></div>`;
+            return;
+        }
+
+        const counts = _getRegionTournamentCounts();
+        const maxCount = Math.max(1, ...Array.from(counts.values()));
+        const colorScale = d3.scaleSequential(d3.interpolateBlues).domain([0, maxCount]);
+
+        const width = container.clientWidth || 480;
+        const height = Math.round(width * 1.05);
+        const projection = d3.geoMercator().fitSize([width, height], geo);
+        const path = d3.geoPath(projection);
+
+        container.innerHTML = '';
+        const svg = d3.select(container).append('svg')
+            .attr('viewBox', `0 0 ${width} ${height}`)
+            .attr('class', 'taiwan-map-svg');
+
+        const counties = svg.selectAll('path')
+            .data(geo.features)
+            .join('path')
+            .attr('d', path)
+            .attr('class', d => 'taiwan-county' + (_selectedRegions.has(d.properties.regionName) ? ' is-selected' : ''))
+            .attr('fill', (d) => {
+                const c = counts.get(d.properties.regionName) || 0;
+                return c > 0 ? colorScale(c) : '#e9edf3';
+            })
+            .on('click', (event, d) => _onMapCountyClick(d.properties.regionName));
+
+        counties.append('title')
+            .text(d => `${d.properties.regionName}：${counts.get(d.properties.regionName) || 0} 場`);
+    }
+
+    function _renderMapCardsPanel() {
+        const container = document.getElementById('map-region-cards-container');
+        if (!container) return;
+
+        if (_selectedRegions.size === 0) {
+            container.innerHTML = `<div class="empty-state"><div class="empty-state-icon"><i class="bi bi-geo-alt"></i></div><p>請點選左側地圖上的縣市</p></div>`;
+            return;
+        }
+
+        const list = _getFilteredTournaments();
+        const regionLabel = Array.from(_selectedRegions).join('、');
+
+        if (!list.length) {
+            container.innerHTML = `<div class="empty-state"><div class="empty-state-icon"><i class="bi bi-trophy"></i></div><p>${escapeHtml(regionLabel)}無符合條件的賽事</p></div>`;
+            return;
+        }
+
+        container.innerHTML = `
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0"><i class="bi bi-geo-alt-fill me-1"></i>${escapeHtml(regionLabel)}</h5>
+                <span class="text-muted small">共 ${list.length} 場</span>
+            </div>
+            <div class="row g-3">
+                ${list.map(t => _buildTournamentCard(t)).join('')}
+            </div>`;
+    }
+
+    function _getFilteredTournaments(opts) {
+        const ignoreRegion = opts?.ignoreRegion === true;
         const typeEl   = document.querySelector('input[name="type"]:checked');
         const type     = typeEl?.value || 'SUPERBALL';
         const season   = document.getElementById('season-select')?.value || '';
@@ -1075,7 +1209,7 @@ const PTCG = (() => {
             if (season && t.season !== season)      return false;
             if (search && !t.name.toLowerCase().includes(search) && !(t.location || '').toLowerCase().includes(search)) return false;
             if (!showUpcoming && getTournamentDateState(t.date) === 'upcoming') return false;
-            if (_selectedRegions.size > 0 && !_selectedRegions.has(t.city)) return false;
+            if (!ignoreRegion && _selectedRegions.size > 0 && !_selectedRegions.has(t.city)) return false;
             return true;
         });
     }
