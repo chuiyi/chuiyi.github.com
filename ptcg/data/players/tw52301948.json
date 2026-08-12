@@ -1,9 +1,42 @@
 {
   "id": "tw52301948",
   "url": "https://asia.pokemon-card.com/tw/users/tw52301948/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-04T03:46:02.745Z",
-  "totalEvents": 118,
+  "fetchedAt": "2026-08-12T03:36:34.015Z",
+  "totalEvents": 121,
   "participatedTournaments": [
+    {
+      "pageNo": 6,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-06-2026 14:00",
+      "eventDateTime": "2026-09-06 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 6,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-06-2026 11:00",
+      "eventDateTime": "2026-09-06 11:00",
+      "location": "元氣滿屋",
+      "address": "新北市板橋區漢生西路145號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 6,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-05-2026 13:00",
+      "eventDateTime": "2026-09-05 13:00",
+      "location": "ALG-Academy Legacy Games",
+      "address": "台北市中山區長春路368號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 6,
       "rowIndex": 14,
@@ -16,8 +49,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 6,
-      "rowIndex": 18,
+      "pageNo": 7,
+      "rowIndex": 1,
       "activityName": "Waiting List Entry : 2025-26 Taiwan Master Ball League TCG Division Masters Category",
       "eventTime": "06-13-2026 08:00",
       "eventDateTime": "2026-06-13 08:00",

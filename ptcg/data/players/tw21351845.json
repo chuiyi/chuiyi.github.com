@@ -1,9 +1,42 @@
 {
   "id": "tw21351845",
   "url": "https://asia.pokemon-card.com/tw/users/tw21351845/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-04T02:41:51.444Z",
-  "totalEvents": 104,
+  "fetchedAt": "2026-08-12T02:31:27.344Z",
+  "totalEvents": 107,
   "participatedTournaments": [
+    {
+      "pageNo": 6,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 6,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-20-2026 13:00",
+      "eventDateTime": "2026-09-20 13:00",
+      "location": "Bruce桌遊空間-美術館店",
+      "address": "高雄市鼓山區華榮路405號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 6,
+      "rowIndex": 6,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 11:00",
+      "eventDateTime": "2026-09-19 11:00",
+      "location": "一新書局",
+      "address": "高雄市苓雅區廣州一街143-6號",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 6,
       "rowIndex": 2,
@@ -473,7 +506,7 @@
       "eventTime": "12-07-2025 10:00",
       "eventDateTime": "2025-12-07 10:00",
       "location": "躲貓貓桌遊店",
-      "address": "台中市后里區甲后路一段439號",
+      "address": "台中市后里區三豐路四段17號",
       "rank": "-",
       "lp": "-"
     },
@@ -560,8 +593,8 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "11-09-2025 14:00",
       "eventDateTime": "2025-11-09 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "6",
       "lp": "8"
     },
@@ -759,7 +792,7 @@
       "eventTime": "09-28-2025 15:00",
       "eventDateTime": "2025-09-28 15:00",
       "location": "躲貓貓桌遊店",
-      "address": "台中市后里區甲后路一段439號",
+      "address": "台中市后里區三豐路四段17號",
       "rank": "6",
       "lp": "8"
     },
@@ -769,8 +802,8 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-21-2025 14:00",
       "eventDateTime": "2025-09-21 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -1000,8 +1033,8 @@
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "02-16-2025 14:00",
       "eventDateTime": "2025-02-16 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "29",
       "lp": "6"
     },
@@ -1033,8 +1066,8 @@
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "01-19-2025 15:00",
       "eventDateTime": "2025-01-19 15:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "16",
       "lp": "8"
     },

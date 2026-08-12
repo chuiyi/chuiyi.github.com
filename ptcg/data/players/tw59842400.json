@@ -1,9 +1,20 @@
 {
   "id": "tw59842400",
   "url": "https://asia.pokemon-card.com/tw/users/tw59842400/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-04T01:02:52.689Z",
-  "totalEvents": 102,
+  "fetchedAt": "2026-08-12T00:49:48.932Z",
+  "totalEvents": 103,
   "participatedTournaments": [
+    {
+      "pageNo": 6,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 6,
       "rowIndex": 2,
@@ -615,8 +626,8 @@
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "01-19-2025 15:00",
       "eventDateTime": "2025-01-19 15:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "-",
       "lp": "-"
     },
