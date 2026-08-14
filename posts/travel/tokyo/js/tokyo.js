@@ -2,7 +2,18 @@ const DATA_FILE = "trip-data.json";
 const CHECKLIST_STORAGE_KEY = "tokyo-trip-checklist-v2";
 const CARD_COMPLETION_KEY = "tokyo-cards-completion-v1";
 const MAP_GEOCODE_CACHE_KEY = "tokyo-area-map-geocode-cache-v1";
+const MANUAL_ARRANGE_KEY = "tokyo-trip-manual-schedule-v1";
 const GOOGLE_MAPS_API_KEY = "AIzaSyAK0en_h_LMU53zCJ27q25zymAnzJ4RT6A";
+
+// 手動編排時可挑選的行程卡片分類設定
+const MANUAL_CARD_CATEGORIES = [
+    { key: "transport", label: "交通", icon: "bi-bus-front-fill", dataKey: "transports", idField: "id", titleField: "title", subtitleField: "route", locationField: "route", idsField: "transportIds", timelineCategory: "transport" },
+    { key: "dining", label: "餐飲", icon: "bi-cup-hot-fill", dataKey: "dining", idField: "name", titleField: "name", subtitleField: "area", locationField: "area", idsField: "diningIds", timelineCategory: "dining" },
+    { key: "sightseeing", label: "景點", icon: "bi-camera-fill", dataKey: "sightseeing", idField: "name", titleField: "name", subtitleField: "area", locationField: "area", idsField: "sightseeingIds", timelineCategory: "sightseeing" },
+    { key: "souvenir", label: "伴手禮", icon: "bi-bag-fill", dataKey: "souvenirs", idField: "name", titleField: "name", subtitleField: "area", locationField: "area", idsField: "souvenirIds", timelineCategory: "shopping" },
+    { key: "manhole", label: "人孔蓋卡", icon: "bi-record-circle", dataKey: "manholeCards", idField: "name", titleField: "name", subtitleField: "area", locationField: "area", idsField: "manholeCardIds", timelineCategory: "manhole" },
+    { key: "otherInfo", label: "其他資訊", icon: "bi-info-circle-fill", dataKey: "otherInfo", idField: "id", titleField: "title", subtitleField: "subtitle", locationField: "location", idsField: "otherInfoIds", timelineCategory: "otherInfo" }
+];
 
 // ===== 測試用時間覆蓋變數 =====
 // 設為 null 表示使用真實系統時間
@@ -61,6 +72,11 @@ const state = {
     expandedTimelineId: null,
     checklistState: {},
     cardCompletionState: {},
+    originalTimelineDays: null,
+    dayDateMap: {},
+    manualArrangeEnabled: false,
+    manualScheduleDays: null,
+    manualAddDraft: null,
     mapPoints: [],
     mapAreaFilter: "all",
     mapSelectionId: null,
@@ -106,6 +122,19 @@ async function getMarkdownContent(filePath) {
 }
 
 function initializeState() {
+    state.originalTimelineDays = cloneTimelineDays(state.tripData.timelineDays);
+    state.dayDateMap = computeDayDateMap(state.originalTimelineDays);
+
+    const manualArrangeState = loadManualArrangeState();
+    state.manualArrangeEnabled = manualArrangeState.enabled;
+    state.manualScheduleDays = manualArrangeState.days;
+    if (state.manualArrangeEnabled) {
+        if (!state.manualScheduleDays) {
+            state.manualScheduleDays = cloneTimelineDays(state.originalTimelineDays);
+        }
+        state.tripData.timelineDays = state.manualScheduleDays;
+    }
+
     state.timelineDayId = state.tripData.timelineDays[0]?.id || null;
     state.selectedTimelineId = getRecommendedTimelineItem()?.id || null;
     state.checklistState = loadChecklistState();
@@ -198,6 +227,49 @@ function handleDocumentClick(event) {
     }
 
     // transport-day-btn 已移除，不再需要篩選處理
+
+    const manualAddOpenButton = event.target.closest("[data-manual-add-open]");
+    if (manualAddOpenButton) {
+        openManualAddModal();
+        return;
+    }
+
+    const manualResetButton = event.target.closest("[data-manual-reset]");
+    if (manualResetButton) {
+        resetManualArrangeSchedule();
+        return;
+    }
+
+    const manualRemoveButton = event.target.closest("[data-manual-remove-item]");
+    if (manualRemoveButton) {
+        removeManualTimelineItem(manualRemoveButton.dataset.manualRemoveDay, manualRemoveButton.dataset.manualRemoveItem);
+        return;
+    }
+
+    const manualCategoryButton = event.target.closest("[data-manual-category]");
+    if (manualCategoryButton) {
+        if (state.manualAddDraft) {
+            state.manualAddDraft.category = manualCategoryButton.dataset.manualCategory;
+            state.manualAddDraft.itemKey = null;
+            renderManualAddModal();
+        }
+        return;
+    }
+
+    const manualItemOption = event.target.closest("[data-manual-item-key]");
+    if (manualItemOption) {
+        if (state.manualAddDraft) {
+            state.manualAddDraft.itemKey = decodeURIComponent(manualItemOption.dataset.manualItemKey);
+            renderManualAddModal();
+        }
+        return;
+    }
+
+    const manualAddConfirmButton = event.target.closest("[data-manual-add-confirm]");
+    if (manualAddConfirmButton) {
+        confirmManualAdd();
+        return;
+    }
 
     const timelineItem = event.target.closest(".timeline-item");
     if (timelineItem) {
@@ -303,6 +375,11 @@ function handleDocumentClick(event) {
 }
 
 function handleDocumentChange(event) {
+    if (event.target.matches("#manual-arrange-toggle")) {
+        setManualArrangeEnabled(event.target.checked);
+        return;
+    }
+
     if (event.target.matches(".checklist-parent-input")) {
         toggleChecklistBranch(event.target.dataset.branchId, event.target.checked);
         renderChecklistPanel();
@@ -514,16 +591,34 @@ function renderTimelinePanel() {
         </button>
     `).join("");
 
+    const toggleInput = document.getElementById("manual-arrange-toggle");
+    if (toggleInput) {
+        toggleInput.checked = state.manualArrangeEnabled;
+    }
+    const actionsTarget = document.getElementById("manual-arrange-actions");
+    if (actionsTarget) {
+        actionsTarget.hidden = !state.manualArrangeEnabled;
+    }
+    const hintTarget = document.getElementById("manual-arrange-hint");
+    if (hintTarget) {
+        hintTarget.hidden = !state.manualArrangeEnabled;
+    }
+
     const timelineState = getTimelineState();
     const selectedDay = days.find((day) => day.id === state.timelineDayId) || days[0];
     const listTarget = document.getElementById("timeline-list");
-    listTarget.innerHTML = selectedDay.items.map((item) => renderTimelineItem(item, selectedDay.id, timelineState)).join("");
+    listTarget.innerHTML = selectedDay.items.length > 0
+        ? selectedDay.items.map((item) => renderTimelineItem(item, selectedDay.id, timelineState)).join("")
+        : `<p class="manual-add-empty">這天目前沒有行程項目${state.manualArrangeEnabled ? "，可透過「新增行程卡片」加入" : ""}。</p>`;
 }
 
 function renderTimelineItem(item, dayId, timelineState) {
     const classes = ["timeline-item"];
     const isExpanded = state.expandedTimelineId === item.id;
 
+    if (state.manualArrangeEnabled) {
+        classes.push("has-manual-remove");
+    }
     if (state.selectedTimelineId === item.id) {
         classes.push("is-selected");
     }
@@ -547,19 +642,26 @@ function renderTimelineItem(item, dayId, timelineState) {
         "sightseeing": "bi-camera-fill",
         "accommodation": "bi-house-door-fill",
         "activity": "bi-calendar-event-fill",
-        "checkin": "bi-key-fill"
+        "checkin": "bi-key-fill",
+        "manhole": "bi-record-circle",
+        "otherInfo": "bi-info-circle-fill"
     };
-    
+
     const iconClass = item.category ? categoryIcons[item.category] || "bi-circle-fill" : "";
     const iconHtml = iconClass ? `<i class="${iconClass} me-2"></i>` : "";
-    
+
     const hasRelatedInfo = (item.transportIds || []).length > 0 || (item.diningIds || []).length > 0 || (item.souvenirIds || []).length > 0 || (item.sightseeingIds || []).length > 0 || (item.otherInfoIds || []).length > 0 || (item.manholeCardIds || []).length > 0;
-    
+
     // 渲染相關資訊區塊（僅在展開時）
     const relatedInfoHtml = isExpanded ? renderCompactRelatedInfo(item) : '';
 
+    const manualRemoveBtnHtml = state.manualArrangeEnabled
+        ? `<button type="button" class="timeline-item-remove-btn" data-manual-remove-day="${dayId}" data-manual-remove-item="${item.id}" title="移除此行程項目"><i class="bi bi-trash3"></i></button>`
+        : "";
+
     return `
         <article class="${classes.join(" ")}" data-item-id="${item.id}" data-has-related="${hasRelatedInfo}">
+            ${manualRemoveBtnHtml}
             <div class="timeline-item-main">
                 <div class="timeline-time">${item.timeLabel}</div>
                 <h3 class="timeline-item-title">${iconHtml}${item.title}</h3>
@@ -2322,6 +2424,235 @@ async function copyTextareaValue(textareaId) {
     } catch (error) {
         console.error("複製失敗", error);
     }
+}
+
+/**
+ * 深拷貝一份時程天數資料，避免手動編排改到原始資料
+ */
+function cloneTimelineDays(days) {
+    return JSON.parse(JSON.stringify(days || []));
+}
+
+/**
+ * 依原始行程算出每天對應的日期（取當天第一筆行程的日期），供手動新增卡片時組出完整時間
+ */
+function computeDayDateMap(days) {
+    const map = {};
+    (days || []).forEach((day) => {
+        const firstItem = (day.items || [])[0];
+        if (firstItem && typeof firstItem.start === "string") {
+            map[day.id] = firstItem.start.slice(0, 10);
+        }
+    });
+    return map;
+}
+
+function loadManualArrangeState() {
+    try {
+        const raw = localStorage.getItem(MANUAL_ARRANGE_KEY);
+        if (!raw) return { enabled: false, days: null };
+        const parsed = JSON.parse(raw);
+        return {
+            enabled: !!parsed.enabled,
+            days: Array.isArray(parsed.days) ? parsed.days : null
+        };
+    } catch (error) {
+        console.error("讀取手動編排行程失敗", error);
+        return { enabled: false, days: null };
+    }
+}
+
+function saveManualArrangeState() {
+    localStorage.setItem(MANUAL_ARRANGE_KEY, JSON.stringify({
+        enabled: state.manualArrangeEnabled,
+        days: state.manualScheduleDays
+    }));
+}
+
+/**
+ * 開啟／關閉手動編排模式。開啟時會把目前行程複製一份存進 localStorage 當作編輯用副本，
+ * 關閉時畫面切回預設行程，但編輯過的副本仍保留，重新開啟可以接續編輯。
+ */
+function setManualArrangeEnabled(enabled) {
+    state.manualArrangeEnabled = enabled;
+
+    if (enabled) {
+        if (!state.manualScheduleDays) {
+            state.manualScheduleDays = cloneTimelineDays(state.originalTimelineDays);
+        }
+        state.tripData.timelineDays = state.manualScheduleDays;
+    } else {
+        state.tripData.timelineDays = cloneTimelineDays(state.originalTimelineDays);
+    }
+
+    if (!state.tripData.timelineDays.some((day) => day.id === state.timelineDayId)) {
+        state.timelineDayId = state.tripData.timelineDays[0]?.id || null;
+    }
+
+    saveManualArrangeState();
+    renderPage();
+}
+
+/**
+ * 把手動編排的行程重設回預設行程（清除本機的自訂內容）
+ */
+function resetManualArrangeSchedule() {
+    state.manualScheduleDays = cloneTimelineDays(state.originalTimelineDays);
+    state.tripData.timelineDays = state.manualScheduleDays;
+    saveManualArrangeState();
+    renderPage();
+}
+
+function sortDayItemsByStartTime(day) {
+    day.items.sort((left, right) => new Date(left.start) - new Date(right.start));
+}
+
+function removeManualTimelineItem(dayId, itemId) {
+    const day = state.manualScheduleDays?.find((item) => item.id === dayId);
+    if (!day) return;
+    day.items = day.items.filter((item) => item.id !== itemId);
+    saveManualArrangeState();
+    renderPage();
+}
+
+/**
+ * 開啟「新增行程卡片」彈窗，預設加入目前選取中的那一天
+ */
+function openManualAddModal() {
+    state.manualAddDraft = {
+        dayId: state.timelineDayId,
+        category: MANUAL_CARD_CATEGORIES[0].key,
+        itemKey: null,
+        start: "",
+        end: ""
+    };
+    renderManualAddModal();
+    const modalElement = document.getElementById("manualAddCardModal");
+    bootstrap.Modal.getOrCreateInstance(modalElement).show();
+}
+
+function renderManualAddModal() {
+    const draft = state.manualAddDraft;
+    if (!draft) return;
+
+    const day = state.tripData.timelineDays.find((item) => item.id === draft.dayId);
+    const dayTargetEl = document.getElementById("manual-add-target-day");
+    if (dayTargetEl) {
+        dayTargetEl.textContent = day ? `加入至 ${day.label} ${day.dateLabel}` : "";
+    }
+
+    const tabsTarget = document.getElementById("manual-add-category-tabs");
+    if (tabsTarget) {
+        tabsTarget.innerHTML = MANUAL_CARD_CATEGORIES.map((cfg) => `
+            <button type="button" class="manual-add-category-btn ${draft.category === cfg.key ? "active" : ""}" data-manual-category="${cfg.key}">
+                <i class="bi ${cfg.icon} me-1"></i>${cfg.label}
+            </button>
+        `).join("");
+    }
+
+    const cfg = MANUAL_CARD_CATEGORIES.find((item) => item.key === draft.category);
+    const pool = cfg ? (state.tripData[cfg.dataKey] || []) : [];
+    const listTarget = document.getElementById("manual-add-item-list");
+    if (listTarget) {
+        listTarget.innerHTML = pool.length > 0
+            ? pool.map((card) => {
+                const keyValue = String(card[cfg.idField] || "");
+                const isSelected = draft.itemKey === keyValue;
+                const title = cfg.titleField ? card[cfg.titleField] : keyValue;
+                const subtitle = cfg.subtitleField ? card[cfg.subtitleField] : "";
+                return `
+                    <button type="button" class="manual-add-item-option ${isSelected ? "active" : ""}" data-manual-item-key="${encodeEntityKey(keyValue)}">
+                        <span class="manual-add-item-title">${title}</span>
+                        ${subtitle ? `<span class="manual-add-item-subtitle">${subtitle}</span>` : ""}
+                    </button>
+                `;
+            }).join("")
+            : `<p class="manual-add-empty">此分類目前沒有資料可以選擇。</p>`;
+    }
+
+    const startInput = document.getElementById("manual-add-start-time");
+    const endInput = document.getElementById("manual-add-end-time");
+    if (startInput) startInput.value = draft.start || "";
+    if (endInput) endInput.value = draft.end || "";
+
+    const errorTarget = document.getElementById("manual-add-error");
+    if (errorTarget) {
+        errorTarget.hidden = true;
+        errorTarget.textContent = "";
+    }
+}
+
+/**
+ * 確認新增：驗證選取的卡片與時間後，組成一筆新的時程項目插入對應天數並依時間重新排序
+ */
+function confirmManualAdd() {
+    const draft = state.manualAddDraft;
+    if (!draft) return;
+
+    const errorTarget = document.getElementById("manual-add-error");
+    const showError = (message) => {
+        if (errorTarget) {
+            errorTarget.textContent = message;
+            errorTarget.hidden = false;
+        }
+    };
+
+    const cfg = MANUAL_CARD_CATEGORIES.find((item) => item.key === draft.category);
+    const pool = cfg ? (state.tripData[cfg.dataKey] || []) : [];
+    const card = pool.find((item) => String(item[cfg.idField] || "") === draft.itemKey);
+    if (!cfg || !card) {
+        showError("請先選擇一張行程卡片。");
+        return;
+    }
+
+    const startInput = document.getElementById("manual-add-start-time");
+    const endInput = document.getElementById("manual-add-end-time");
+    const startTime = startInput ? startInput.value : "";
+    const endTime = endInput ? endInput.value : "";
+
+    if (!startTime || !endTime) {
+        showError("請輸入開始與結束時間。");
+        return;
+    }
+    if (startTime >= endTime) {
+        showError("結束時間必須晚於開始時間。");
+        return;
+    }
+
+    const day = state.manualScheduleDays?.find((item) => item.id === draft.dayId);
+    if (!day) {
+        showError("找不到目標天數，請重新開啟手動編排模式。");
+        return;
+    }
+
+    const dateISO = state.dayDateMap[draft.dayId];
+    if (!dateISO) {
+        showError("無法判斷這天的日期，請重新整理頁面後再試一次。");
+        return;
+    }
+
+    const newItem = {
+        id: `manual-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`,
+        start: `${dateISO}T${startTime}:00+09:00`,
+        end: `${dateISO}T${endTime}:00+09:00`,
+        timeLabel: `${startTime} - ${endTime}`,
+        title: cfg.titleField ? card[cfg.titleField] : draft.itemKey,
+        category: cfg.timelineCategory,
+        description: card.note || "",
+        location: cfg.locationField ? (card[cfg.locationField] || "") : "",
+        [cfg.idsField]: [card[cfg.idField]]
+    };
+
+    day.items.push(newItem);
+    sortDayItemsByStartTime(day);
+    saveManualArrangeState();
+
+    state.timelineDayId = draft.dayId;
+    state.manualAddDraft = null;
+    renderPage();
+
+    const modalElement = document.getElementById("manualAddCardModal");
+    bootstrap.Modal.getInstance(modalElement)?.hide();
 }
 
 function loadChecklistState() {

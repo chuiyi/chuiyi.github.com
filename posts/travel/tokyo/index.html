@@ -197,6 +197,18 @@
                                 <h2 class="panel-title">時程表</h2>
                                 <p class="panel-subtitle">依日期與時間呈現行程，並自動高亮目前或下一個節點。</p>
                             </div>
+                            <div class="manual-arrange-bar">
+                                <label class="manual-arrange-switch">
+                                    <input type="checkbox" id="manual-arrange-toggle">
+                                    <span class="manual-arrange-switch-track"><span class="manual-arrange-switch-thumb"></span></span>
+                                    <span class="manual-arrange-switch-label">手動編排模式</span>
+                                </label>
+                                <div class="manual-arrange-actions" id="manual-arrange-actions" hidden>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-manual-add-open="true"><i class="bi bi-plus-lg me-1"></i>新增行程卡片</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-manual-reset="true"><i class="bi bi-arrow-counterclockwise me-1"></i>重設為預設行程</button>
+                                </div>
+                            </div>
+                            <p class="manual-arrange-hint" id="manual-arrange-hint" hidden>手動編排模式已開啟，行程會另外存一份在這台裝置的瀏覽器中；可以新增卡片、移除項目，隨時能重設回預設行程。</p>
                             <div class="timeline-day-tabs" id="timeline-day-tabs"></div>
                             <div class="timeline-list" id="timeline-list"></div>
                         </section>
@@ -341,6 +353,39 @@
                 </div>
                 <div class="modal-body" id="completed-list-content">
                     <!-- 內容將由 JS 動態生成 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="manualAddCardModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title mb-1">新增行程卡片</h5>
+                        <p class="modal-subtitle mb-0" id="manual-add-target-day"></p>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="manual-add-category-tabs" id="manual-add-category-tabs"></div>
+                    <div class="manual-add-item-list" id="manual-add-item-list"></div>
+                    <div class="manual-add-time-row">
+                        <label class="manual-add-time-field">
+                            <span>開始時間</span>
+                            <input type="time" id="manual-add-start-time" class="form-control">
+                        </label>
+                        <label class="manual-add-time-field">
+                            <span>結束時間</span>
+                            <input type="time" id="manual-add-end-time" class="form-control">
+                        </label>
+                    </div>
+                    <div class="manual-add-error" id="manual-add-error" hidden></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn-literary" data-manual-add-confirm="true">加入行程</button>
                 </div>
             </div>
         </div>
