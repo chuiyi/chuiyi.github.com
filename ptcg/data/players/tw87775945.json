@@ -1,9 +1,20 @@
 {
   "id": "tw87775945",
   "url": "https://asia.pokemon-card.com/tw/users/tw87775945/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-07T01:57:40.973Z",
-  "totalEvents": 52,
+  "fetchedAt": "2026-08-15T01:10:08.757Z",
+  "totalEvents": 53,
   "participatedTournaments": [
+    {
+      "pageNo": 3,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Senior Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 3,
       "rowIndex": 11,
@@ -43,8 +54,8 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-15-2026 14:00",
       "eventDateTime": "2026-02-15 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "22",
       "lp": "4"
     },
@@ -87,8 +98,8 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 2",
       "eventTime": "12-21-2025 14:00",
       "eventDateTime": "2025-12-21 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -340,8 +351,8 @@
       "activityName": "Great Ball League 2024-25 Season 3 Taiwan",
       "eventTime": "04-13-2025 14:00",
       "eventDateTime": "2025-04-13 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "17",
       "lp": "6"
     },
@@ -406,8 +417,8 @@
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "02-16-2025 14:00",
       "eventDateTime": "2025-02-16 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -494,8 +505,8 @@
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-03-2024 15:00",
       "eventDateTime": "2024-11-03 15:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "-",
       "lp": "-"
     },

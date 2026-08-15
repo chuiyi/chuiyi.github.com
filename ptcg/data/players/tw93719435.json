@@ -1,9 +1,20 @@
 {
   "id": "tw93719435",
   "url": "https://asia.pokemon-card.com/tw/users/tw93719435/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-07T01:54:58.998Z",
-  "totalEvents": 13,
+  "fetchedAt": "2026-08-15T01:06:38.845Z",
+  "totalEvents": 14,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Senior Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 12,
@@ -43,8 +54,8 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "02-15-2026 14:00",
       "eventDateTime": "2026-02-15 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "42",
       "lp": "-"
     },
@@ -76,8 +87,8 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "11-09-2025 14:00",
       "eventDateTime": "2025-11-09 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "46",
       "lp": "-"
     },
@@ -120,8 +131,8 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-21-2025 14:00",
       "eventDateTime": "2025-09-21 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "7",
       "lp": "8"
     },
