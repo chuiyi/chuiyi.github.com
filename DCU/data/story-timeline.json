@@ -1,18 +1,5 @@
 [
   {
-    "id": "superman-metahumans-arrive",
-    "era": "上古",
-    "marker": "約 1725 年",
-    "fact": "首批超人類（諸神與怪物）降臨地球",
-    "evidenceHtml": "《Superman》片頭以連續字卡標示相對時間，第一張卡即為「300 YEARS AGO」。",
-    "workId": "superman-2025",
-    "workLabel": "Superman ⁄ 超人",
-    "confidence": "high",
-    "sourceName": "TV Tropes",
-    "sourceUrl": "https://tvtropes.org/pmwiki/pmwiki.php/Quotes/Superman2025",
-    "characters": []
-  },
-  {
     "id": "creature-commandos-the-bride-created",
     "era": "1831",
     "marker": "1831 年",
@@ -446,32 +433,16 @@
     ]
   },
   {
-    "id": "superman-hammer-of-boravia-attack",
+    "id": "superman-ultraman-ambush",
     "era": "2025",
     "marker": "2025 年",
-    "fact": "偽裝成「波拉維亞之錘」的 Ultraman 於大都會突襲超人",
-    "evidenceHtml": "片頭字卡「3 HOURS AGO」；此為 Ultraman 首次現身，尚未被揭露真實身份。",
+    "fact": "Ultraman 偽裝成「波拉維亞之錘」突襲超人，超人生涯首次落敗、肩膀脫臼",
+    "evidenceHtml": "片頭字卡「3 HOURS AGO」「3 MINUTES AGO」顯示 Ultraman 首次現身突襲，超人隨即落敗，直接銜接電影開場的墜落畫面；此時真實身份尚未被揭露。",
     "workId": "superman-2025",
     "workLabel": "Superman ⁄ 超人",
     "confidence": "high",
     "sourceName": "IMDb",
     "sourceUrl": "https://www.imdb.com/title/tt5950044/plotsummary/",
-    "characters": [
-      "clark-kent-superman",
-      "ultraman"
-    ]
-  },
-  {
-    "id": "superman-first-loss",
-    "era": "2025",
-    "marker": "2025 年",
-    "fact": "超人生涯首次落敗，肩膀遭 Ultraman 扭傷脫臼",
-    "evidenceHtml": "片頭字卡最後一張「3 MINUTES AGO」，直接銜接電影開場的墜落畫面。",
-    "workId": "superman-2025",
-    "workLabel": "Superman ⁄ 超人",
-    "confidence": "high",
-    "sourceName": "ReviewGeek",
-    "sourceUrl": "https://www.thereviewgeek.com/superman2025-endingexplained/",
     "characters": [
       "clark-kent-superman",
       "ultraman"
@@ -491,23 +462,6 @@
     "characters": [
       "lex-luthor",
       "clark-kent-superman"
-    ]
-  },
-  {
-    "id": "superman-justice-gang-jarhanpur",
-    "era": "2025",
-    "marker": "2025 年",
-    "fact": "正義幫（綠燈俠／終極先生／鷹女）馳援賈漢普爾",
-    "evidenceHtml": "與超人被囚同時發生的支線行動。",
-    "workId": "superman-2025",
-    "workLabel": "Superman ⁄ 超人",
-    "confidence": "medium",
-    "sourceName": "ReviewGeek",
-    "sourceUrl": "https://www.thereviewgeek.com/superman2025-endingexplained/",
-    "characters": [
-      "guy-gardner-green-lantern",
-      "michael-holt-mister-terrific",
-      "kendra-saunders-hawkgirl"
     ]
   },
   {
