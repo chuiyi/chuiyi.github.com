@@ -549,12 +549,13 @@ body {
 
 .story-era-year {
     display: block;
-    font-family: 'Bangers', cursive;
-    font-size: 1.6rem;
-    line-height: 1.1;
+    font-family: 'Bebas Neue', 'Noto Sans TC', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.2;
     letter-spacing: 1px;
     color: var(--dc-gold);
-    -webkit-text-stroke: 1px var(--ink);
+    text-shadow: 2px 2px 0 var(--ink);
 }
 
 .story-era-events {
