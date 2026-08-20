@@ -1,12 +1,45 @@
 {
   "id": "tw79723871",
   "url": "https://asia.pokemon-card.com/tw/users/tw79723871/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-12T04:36:54.038Z",
-  "totalEvents": 59,
+  "fetchedAt": "2026-08-20T04:38:07.636Z",
+  "totalEvents": 62,
   "participatedTournaments": [
+    {
+      "pageNo": 4,
+      "rowIndex": 2,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-20-2026 09:00",
+      "eventDateTime": "2026-09-20 09:00",
+      "location": "踢桌子",
+      "address": "新竹縣竹北市博愛街358號2F",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 3,
       "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-06-2026 13:00",
+      "eventDateTime": "2026-09-06 13:00",
+      "location": "貓腳印-苗栗店",
+      "address": "苗栗縣苗栗市建功里府前路92號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 1,
       "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Masters Category",
       "eventTime": "06-14-2026 08:00",
       "eventDateTime": "2026-06-14 08:00",

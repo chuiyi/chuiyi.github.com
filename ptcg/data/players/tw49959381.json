@@ -1,12 +1,12 @@
 {
   "id": "tw49959381",
   "url": "https://asia.pokemon-card.com/tw/users/tw49959381/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-12T05:31:41.754Z",
-  "totalEvents": 40,
+  "fetchedAt": "2026-08-20T05:36:33.638Z",
+  "totalEvents": 41,
   "participatedTournaments": [
     {
-      "pageNo": 2,
-      "rowIndex": 16,
+      "pageNo": 3,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
       "eventTime": "11-07-2026 08:00",
       "eventDateTime": "2026-11-07 08:00",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-20-2026 10:30",
       "eventDateTime": "2026-09-20 10:30",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-19-2026 11:00",
       "eventDateTime": "2026-09-19 11:00",
@@ -39,7 +39,18 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 18,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-13-2026 10:00",
+      "eventDateTime": "2026-09-13 10:00",
+      "location": "躲貓貓桌遊店",
+      "address": "台中市后里區三豐路四段17號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 17,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-06-2026 11:00",
       "eventDateTime": "2026-09-06 11:00",
@@ -50,7 +61,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-05-2026 11:00",
       "eventDateTime": "2026-09-05 11:00",

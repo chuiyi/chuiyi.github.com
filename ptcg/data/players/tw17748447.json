@@ -1,8 +1,8 @@
 {
   "id": "tw17748447",
   "url": "https://asia.pokemon-card.com/tw/users/tw17748447/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-12T04:36:30.993Z",
-  "totalEvents": 74,
+  "fetchedAt": "2026-08-20T04:37:19.151Z",
+  "totalEvents": 76,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -12,6 +12,28 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-20-2026 10:30",
+      "eventDateTime": "2026-09-20 10:30",
+      "location": "Magic Star卡牌店",
+      "address": "台北市大安區和平東路二段231號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-06-2026 14:00",
+      "eventDateTime": "2026-09-06 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
       "rank": "-",
       "lp": "-"
     },

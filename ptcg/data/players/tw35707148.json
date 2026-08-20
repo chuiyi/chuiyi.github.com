@@ -1,8 +1,8 @@
 {
   "id": "tw35707148",
   "url": "https://asia.pokemon-card.com/tw/users/tw35707148/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-12T01:54:37.484Z",
-  "totalEvents": 159,
+  "fetchedAt": "2026-08-20T01:46:12.846Z",
+  "totalEvents": 160,
   "participatedTournaments": [
     {
       "pageNo": 8,
@@ -45,6 +45,17 @@
       "eventDateTime": "2026-09-13 11:00",
       "location": "諾亞方舟 - 彰化魔豆店",
       "address": "彰化縣彰化市光復路173號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-13-2026 10:00",
+      "eventDateTime": "2026-09-13 10:00",
+      "location": "躲貓貓桌遊店",
+      "address": "台中市后里區三豐路四段17號",
       "rank": "-",
       "lp": "-"
     },

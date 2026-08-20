@@ -1,8 +1,8 @@
 {
   "id": "tw51147332",
   "url": "https://asia.pokemon-card.com/tw/users/tw51147332/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-12T01:35:50.161Z",
-  "totalEvents": 173,
+  "fetchedAt": "2026-08-20T01:26:21.400Z",
+  "totalEvents": 174,
   "participatedTournaments": [
     {
       "pageNo": 9,
@@ -34,6 +34,17 @@
       "eventDateTime": "2026-09-20 10:30",
       "location": "Magic Star卡牌店",
       "address": "台北市大安區和平東路二段231號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 13:30",
+      "eventDateTime": "2026-09-19 13:30",
+      "location": "卡卡邦尼樂遊館",
+      "address": "新北市板橋區民生路三段32之2號",
       "rank": "-",
       "lp": "-"
     },
