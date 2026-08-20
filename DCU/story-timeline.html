@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script src="js/analytics.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宇宙大事紀 | 蝙蝠洞資料庫</title>
+    <meta name="description" content="DCU 劇情內時間順序整理，依故事發生的先後順序（而非上映順序）排列各作品的關鍵事件">
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="halftone-bg" aria-hidden="true"></div>
+
+    <header class="dcu-header">
+        <div class="dcu-header-inner">
+            <a href="index.html" class="dcu-logo">
+                <span class="dcu-logo-dc">DC</span><span class="dcu-logo-u">UNIVERSE</span>
+            </a>
+            <button class="dcu-nav-toggle" aria-label="開啟選單" aria-expanded="false">☰</button>
+            <nav class="dcu-nav">
+                <a href="characters.html">角色</a>
+                <a href="news.html">新聞</a>
+                <a href="glossary.html">名詞解釋</a>
+                <a href="elseworlds.html">Elseworlds</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="dcu-hero">
+        <div class="burst burst-1" aria-hidden="true">POW!</div>
+        <div class="burst burst-2" aria-hidden="true">ZAP!</div>
+        <h1 class="dcu-hero-title">
+            <span class="line-1">CHRONICLE</span>
+            <span class="line-2">OF THE DCU</span>
+        </h1>
+        <p class="dcu-hero-sub">依「故事內發生順序」而非上映順序整理的宇宙大事紀。標「待證實」的事件僅為創作者訪談推論或單一來源，尚未經片內明講或多方交叉確認。</p>
+    </section>
+
+    <main>
+        <section id="story-timeline" class="dcu-section alt">
+            <h2 class="section-title" data-text="CHRONICLE">宇宙大事紀</h2>
+            <p class="section-lead">點擊事件卡片可查看所屬作品的完整資料。金色圓點代表可信度 100％ 的事件；紅色圓點與虛線邊框則為尚待證實的推論。</p>
+
+            <div class="story-timeline" id="story-timeline-list"></div>
+
+            <p class="tmdb-attribution">本頁僅為劇情內時間推論整理，非官方正史時間軸，內容隨新資訊持續修訂。</p>
+        </section>
+    </main>
+
+    <footer class="dcu-footer">
+        <p>&copy; 2026 Chuiyi's DC Comics 資料庫 · <a href="index.html">回到 DCU 首頁</a> · <a href="../index.html">回到主站</a></p>
+    </footer>
+
+    <div class="work-modal-overlay" id="work-modal-overlay" hidden>
+        <div class="work-modal" role="dialog" aria-modal="true" aria-label="作品詳細資料">
+            <button class="work-modal-close" aria-label="關閉">✕</button>
+            <div id="work-modal-body"></div>
+        </div>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/dcu.js"></script>
+    <script>
+        DCU.renderStoryTimeline('story-timeline-list', 'story-timeline.json', 'timeline.json');
+    </script>
+</body>
+</html>

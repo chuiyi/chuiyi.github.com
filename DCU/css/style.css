@@ -527,6 +527,175 @@ body {
     }
 }
 
+/* Story Timeline (宇宙大事紀 - 劇情內時間順序) */
+.story-timeline {
+    margin: 0 0 40px;
+}
+
+.story-era {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    column-gap: 28px;
+}
+
+.story-era-label {
+    grid-column: 1;
+    position: sticky;
+    top: 90px;
+    align-self: start;
+    text-align: right;
+    padding: 4px 0 0;
+}
+
+.story-era-year {
+    display: block;
+    font-family: 'Bangers', cursive;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    color: var(--dc-gold);
+    -webkit-text-stroke: 1px var(--ink);
+}
+
+.story-era-events {
+    grid-column: 2;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 8px 26px;
+    border-left: 4px dashed var(--dc-gold);
+}
+
+.story-event {
+    position: relative;
+    padding: 0 0 26px;
+}
+
+.story-event:last-child {
+    padding-bottom: 4px;
+}
+
+.story-event::before {
+    content: '';
+    position: absolute;
+    left: -33px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--dc-red);
+    border: 3px solid var(--ink);
+}
+
+.story-event.confidence-high::before {
+    background: var(--dc-gold);
+}
+
+.story-event-card {
+    background: var(--paper);
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 5px 5px 0 var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.story-event-card.clickable {
+    cursor: pointer;
+}
+
+.story-event-card.clickable:hover,
+.story-event-card.clickable:focus-visible {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+    outline: none;
+}
+
+.story-event.confidence-medium .story-event-card,
+.story-event.confidence-low .story-event-card {
+    border-style: dashed;
+}
+
+.story-event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.story-event-marker {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    color: var(--dc-blue);
+    font-size: 0.85rem;
+}
+
+.story-event-work {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: var(--dc-blue);
+    color: var(--paper);
+    padding: 1px 8px;
+    border-radius: 3px;
+}
+
+.story-event-pending {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--dc-red);
+    border: 1px dashed var(--dc-red);
+    padding: 0 6px;
+    border-radius: 3px;
+}
+
+.story-event-fact {
+    margin: 0 0 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.story-event-evidence {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    opacity: 0.85;
+}
+
+.story-event-source {
+    margin: 8px 0 0;
+    font-size: 0.75rem;
+    opacity: 0.65;
+}
+
+.story-event-source a {
+    color: var(--dc-gold);
+}
+
+@media (max-width: 640px) {
+    .story-era {
+        display: block;
+    }
+    .story-era-label {
+        position: static;
+        text-align: left;
+        margin: 28px 0 10px;
+        padding: 4px 10px;
+        background: var(--ink);
+        border-radius: 6px;
+        display: inline-block;
+    }
+    .story-era-events {
+        padding-left: 20px;
+    }
+    .story-event::before {
+        left: -27px;
+    }
+}
+
 .comic-card {
     position: relative;
     background: var(--paper);
