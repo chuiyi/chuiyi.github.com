@@ -467,7 +467,7 @@ const DCU = (() => {
             const charMap = new Map(characters.map(c => [c.id, c]));
 
             const eras = [];
-            events.forEach(ev => {
+            events.filter(ev => !ev.excluded).forEach(ev => {
                 if (!eras.length || eras[eras.length - 1].era !== ev.era) {
                     eras.push({ era: ev.era, items: [] });
                 }

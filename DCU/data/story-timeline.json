@@ -372,7 +372,9 @@
     "sourceUrl": "https://collider.com/blue-beetle-ending-explained/",
     "characters": [
       "jaime-reyes-blue-beetle"
-    ]
+    ],
+    "excluded": true,
+    "excludedReason": "導演公開表示劇情刻意設計成可放在時間軸任何位置，無法給出合理的排序位置，暫從大事紀頁面下架，保留資料供日後有更明確線索時放回"
   },
   {
     "id": "blue-beetle-omac-conflict",
@@ -389,7 +391,9 @@
       "victoria-kord",
       "carapax",
       "jaime-reyes-blue-beetle"
-    ]
+    ],
+    "excluded": true,
+    "excludedReason": "導演公開表示劇情刻意設計成可放在時間軸任何位置，無法給出合理的排序位置，暫從大事紀頁面下架，保留資料供日後有更明確線索時放回"
   },
   {
     "id": "blue-beetle-victoria-kord-death",
@@ -405,7 +409,9 @@
     "characters": [
       "carapax",
       "victoria-kord"
-    ]
+    ],
+    "excluded": true,
+    "excludedReason": "導演公開表示劇情刻意設計成可放在時間軸任何位置，無法給出合理的排序位置，暫從大事紀頁面下架，保留資料供日後有更明確線索時放回"
   },
   {
     "id": "blue-beetle-ted-kord-alive",
@@ -420,7 +426,9 @@
     "sourceUrl": "https://screenrant.com/blue-beetle-movie-post-credits-scenes/",
     "characters": [
       "ted-kord"
-    ]
+    ],
+    "excluded": true,
+    "excludedReason": "導演公開表示劇情刻意設計成可放在時間軸任何位置，無法給出合理的排序位置，暫從大事紀頁面下架，保留資料供日後有更明確線索時放回"
   },
   {
     "id": "superman-boravia-jarhanpur",
