@@ -189,11 +189,12 @@
     "id": "lobo",
     "name": "Lobo",
     "nameZh": "暴狼",
-    "pending": true,
     "actorName": "Jason Momoa",
     "actorNameZh": "傑森・摩莫亞",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Supergirl》（2026），來自匝尼亞星（Czarnia）的星際傭兵與賞金獵人"
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026），來自匝尼亞星（Czarnia）的星際傭兵與賞金獵人",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/3troAR6QbSb6nUFMDu61YCCWLKa.jpg",
+    "avatarAlt": "Jason Momoa"
   },
   {
     "id": "christopher-smith-peacemaker",
