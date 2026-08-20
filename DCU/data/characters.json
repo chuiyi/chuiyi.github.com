@@ -90,21 +90,23 @@
     "id": "rex-mason-metamorpho",
     "name": "Rex Mason / Metamorpho",
     "nameZh": "雷克斯・梅森 / 元素人",
-    "pending": true,
     "actorName": "Anthony Carrigan",
     "actorNameZh": "安東尼・卡里根",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Superman》（2025），被雷克斯・路瑟脅迫製造氪石的元素人"
+    "firstAppearanceHtml": "首次登場：《Superman》（2025），被雷克斯・路瑟脅迫製造氪石的元素人",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/emyCDFrdEygDB5ySZLwUqk2wkLa.jpg",
+    "avatarAlt": "Anthony Carrigan"
   },
   {
     "id": "angela-spica-the-engineer",
     "name": "Angela Spica / The Engineer",
     "nameZh": "安吉拉・斯芭卡 / 工程師",
-    "pending": true,
     "actorName": "María Gabriela de Faría",
     "actorNameZh": "瑪麗亞・加布里埃拉・法里亞",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Superman》（2025），雷克斯・路瑟麾下的奈米科技反派"
+    "firstAppearanceHtml": "首次登場：《Superman》（2025），雷克斯・路瑟麾下的奈米科技反派",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/coZ5Y5STiSvAx0aewVxFVTTtWtA.jpg",
+    "avatarAlt": "María Gabriela de Faría"
   },
   {
     "id": "michael-holt-mister-terrific",
@@ -208,161 +210,177 @@
     "id": "rick-flag-jr",
     "name": "Rick Flag Jr.",
     "nameZh": "小瑞克・佛萊格",
-    "pending": true,
     "actorName": "Joel Kinnaman",
     "actorNameZh": "喬爾・金納曼",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《自殺突擊隊：集結》（2021），Task Force X 現場指揮官，老瑞克・佛萊格之子"
+    "firstAppearanceHtml": "首次登場：《自殺突擊隊：集結》（2021），Task Force X 現場指揮官，老瑞克・佛萊格之子",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/cVfYzTyQdJ4xtxKPZe7IcW3BJN4.jpg",
+    "avatarAlt": "Joel Kinnaman"
   },
   {
     "id": "ratcatcher-2",
     "name": "Ratcatcher 2",
     "nameZh": "捕鼠人二代",
-    "pending": true,
     "actorName": "Daniela Melchior",
     "actorNameZh": "丹妮拉・梅爾基奧",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《自殺突擊隊：集結》（2021），本名 Cleo Cazo，能號令老鼠大軍的隊員"
+    "firstAppearanceHtml": "首次登場：《自殺突擊隊：集結》（2021），本名 Cleo Cazo，能號令老鼠大軍的隊員",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/tjAEB90Sa7DJtyTlDAkzVhPLQin.jpg",
+    "avatarAlt": "Daniela Melchior"
   },
   {
     "id": "gi-robot",
     "name": "G.I. Robot",
     "nameZh": "機器人大兵",
-    "pending": true,
     "actorName": "Sean Gunn",
     "actorNameZh": "西恩・岡恩（配音）",
     "role": "配音演出",
-    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），二戰時期隨 Sgt. Rock／Easy Company 作戰的滅納粹機器人"
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），二戰時期隨 Sgt. Rock／Easy Company 作戰的滅納粹機器人",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/tiolBlPytndQVGHO9vLnBKWWenq.jpg",
+    "avatarAlt": "Sean Gunn"
   },
   {
     "id": "the-bride",
     "name": "The Bride",
     "nameZh": "科學怪人新娘",
-    "pending": true,
     "actorName": "Indira Varma",
     "actorNameZh": "英迪拉・瓦爾瑪（配音）",
     "role": "配音演出",
-    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），本名 Elizabeth「Betty」Ballantine，1831 年由維克多・法蘭肯斯坦所創造"
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），本名 Elizabeth「Betty」Ballantine，1831 年由維克多・法蘭肯斯坦所創造",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/yaFCI907dcK2XkzO0HQgtK25kp2.jpg",
+    "avatarAlt": "Indira Varma"
   },
   {
     "id": "doctor-phosphorus",
     "name": "Doctor Phosphorus",
     "nameZh": "磷博士",
-    "pending": true,
     "actorName": "Alan Tudyk",
     "actorNameZh": "亞倫・圖迪克（配音）",
     "role": "配音演出",
-    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），本名 Alex Sartorius，遭核反應爐輻射異變的放射性怪物"
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），本名 Alex Sartorius，遭核反應爐輻射異變的放射性怪物",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/jUuUbPuMGonFT5E2pcs4alfqaCN.jpg",
+    "avatarAlt": "Alan Tudyk"
   },
   {
     "id": "nina-mazursky",
     "name": "Nina Mazursky",
     "nameZh": "妮娜・馬祖爾斯基",
-    "pending": true,
     "actorName": "Zoe Chao",
     "actorNameZh": "柔伊・趙（配音）",
     "role": "配音演出",
-    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），因父親實驗與水生生物 DNA 融合的特遣隊成員"
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），因父親實驗與水生生物 DNA 融合的特遣隊成員",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/lHz6ST2vJZcMy3fPlcnl8EqAjO6.jpg",
+    "avatarAlt": "Zoe Chao"
   },
   {
     "id": "circe",
     "name": "Circe",
     "nameZh": "瑟西",
-    "pending": true,
     "actorName": "Anya Chalotra",
     "actorNameZh": "安雅・卡洛塔（配音）",
     "role": "配音演出",
-    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），入侵波克利斯坦的女巫，忒修拉學者"
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），入侵波克利斯坦的女巫，忒修拉學者",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/c3QiX7znSjTR7u2xj29KH6DAnMs.jpg",
+    "avatarAlt": "Anya Chalotra"
   },
   {
     "id": "matt-hagen-clayface",
     "name": "Matt Hagen / Clayface",
     "nameZh": "麥特・海根 / 泥面人",
-    "pending": true,
     "actorName": "Tom Rhys Harries",
     "actorNameZh": "湯姆・里斯・哈里斯",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫，客串）；真人主演見《Clayface》（2026），過氣演員遭黑幫毀容後異變為黏土怪物"
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫，客串）；真人主演見《Clayface》（2026），過氣演員遭黑幫毀容後異變為黏土怪物",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/elxvpHPqOxGcKe6U2hcArIcpyWo.jpg",
+    "avatarAlt": "Tom Rhys Harries"
   },
   {
     "id": "caitlin-bates",
     "name": "Dr. Caitlin Bates",
     "nameZh": "凱特琳・貝茲醫生",
-    "pending": true,
     "actorName": "Naomi Ackie",
     "actorNameZh": "娜歐蜜・艾姬",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Clayface》（2026），為 Matt Hagen 進行實驗性黏土療程的邊緣科學家"
+    "firstAppearanceHtml": "首次登場：《Clayface》（2026），為 Matt Hagen 進行實驗性黏土療程的邊緣科學家",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/dijwuTAEZUzQtoJfK49S4X80fQw.jpg",
+    "avatarAlt": "Naomi Ackie"
   },
   {
     "id": "auggie-smith-white-dragon",
     "name": "Auggie Smith / White Dragon",
     "nameZh": "奧吉・史密斯 / 白龍",
-    "pending": true,
     "actorName": "Robert Patrick",
     "actorNameZh": "勞勃・派屈克",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022），和平使者的父親，種族仇恨組織武裝反派"
+    "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022），和平使者的父親，種族仇恨組織武裝反派",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/qRv2Es9rZoloullTbzss3I5j1Mp.jpg",
+    "avatarAlt": "Robert Patrick"
   },
   {
     "id": "john-stewart-green-lantern",
     "name": "John Stewart / Green Lantern",
     "nameZh": "約翰・史都華 / 綠燈俠",
-    "pending": true,
     "actorName": "Aaron Pierre",
     "actorNameZh": "亞倫・皮耶",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），菜鳥綠燈俠，與哈爾・喬丹搭檔調查命案"
+    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），菜鳥綠燈俠，與哈爾・喬丹搭檔調查命案",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/z2cMMZyWzv5ztT6pFdAAjB3u7CQ.jpg",
+    "avatarAlt": "Aaron Pierre"
   },
   {
     "id": "hal-jordan-green-lantern",
     "name": "Hal Jordan / Green Lantern",
     "nameZh": "哈爾・喬丹 / 綠燈俠",
-    "pending": true,
     "actorName": "Kyle Chandler",
     "actorNameZh": "凱爾・錢德勒",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），資深綠燈俠，帶領約翰・史都華調查一樁跨越十年的懸案"
+    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），資深綠燈俠，帶領約翰・史都華調查一樁跨越十年的懸案",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/66n7XNj1dyYkzCBWR3Lq8Vz4PJ1.jpg",
+    "avatarAlt": "Kyle Chandler"
   },
   {
     "id": "sinestro",
     "name": "Sinestro",
     "nameZh": "沙誠",
-    "pending": true,
     "actorName": "Ulrich Thomsen",
     "actorNameZh": "烏爾里希・湯姆森",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），早已被囚於 Oa 的墮落綠燈軍團創始成員，劇中擔任線人角色"
+    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），早已被囚於 Oa 的墮落綠燈軍團創始成員，劇中擔任線人角色",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/qjXAPbuO8CicunlQs07c1fbFG67.jpg",
+    "avatarAlt": "Ulrich Thomsen"
   },
   {
     "id": "jaime-reyes-blue-beetle",
     "name": "Jaime Reyes / Blue Beetle",
     "nameZh": "海米・雷耶斯 / 藍甲蟲",
-    "pending": true,
     "actorName": "Xolo Maridueña",
     "actorNameZh": "索羅・馬里杜埃尼亞",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023）；2026 年 7 月確認回歸並延續至《Man of Tomorrow》（2027），正式併入新 DCU 正史"
+    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023）；2026 年 7 月確認回歸並延續至《Man of Tomorrow》（2027），正式併入新 DCU 正史",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/tJMI7BpjlhHSMpzSz9e1XxygnKd.jpg",
+    "avatarAlt": "Xolo Maridueña"
   },
   {
     "id": "victoria-kord",
     "name": "Victoria Kord",
     "nameZh": "維多利亞・科德",
-    "pending": true,
     "actorName": "Susan Sarandon",
     "actorNameZh": "蘇珊・莎蘭登",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023），Kord Industries 執行長，本片主要反派"
+    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023），Kord Industries 執行長，本片主要反派",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/jR6l2EfvvGA8qCzZ7MB5FT9ZLkq.jpg",
+    "avatarAlt": "Susan Sarandon"
   },
   {
     "id": "carapax",
     "name": "Carapax",
     "nameZh": "卡拉帕克斯",
-    "pending": true,
     "actorName": "Raoul Max Trujillo",
     "actorNameZh": "勞爾・麥克斯・特魯希略",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023），本名 Conrad Carapax，遭 Victoria Kord 改造的 OMAC 強化戰士"
+    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023），本名 Conrad Carapax，遭 Victoria Kord 改造的 OMAC 強化戰士",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/dIfHIt1pgnYW9oCksc0DdoY5Mt5.jpg",
+    "avatarAlt": "Raoul Max Trujillo"
   },
   {
     "id": "ted-kord",
@@ -376,40 +394,44 @@
     "id": "zor-el",
     "name": "Zor-El",
     "nameZh": "佐艾爾",
-    "pending": true,
     "actorName": "David Krumholtz",
     "actorNameZh": "大衛・克倫霍茲",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Supergirl》（2026，閃回），卡拉・佐艾爾之父，氪星毀滅時啟動阿爾格城力場分離"
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026，閃回），卡拉・佐艾爾之父，氪星毀滅時啟動阿爾格城力場分離",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/2vaimzfyPQVxZGHbQS5M3z3tZw0.jpg",
+    "avatarAlt": "David Krumholtz"
   },
   {
     "id": "alura",
     "name": "Alura",
     "nameZh": "阿爾拉",
-    "pending": true,
     "actorName": "Emily Beecham",
     "actorNameZh": "艾蜜莉・比查姆",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Supergirl》（2026，閃回），卡拉・佐艾爾之母，因氪石輻射身亡"
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026，閃回），卡拉・佐艾爾之母，因氪石輻射身亡",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/cwBsTcY0FLnVYvRUY6cTutZsfPs.jpg",
+    "avatarAlt": "Emily Beecham"
   },
   {
     "id": "krem-of-the-yellow-hills",
     "name": "Krem of the Yellow Hills",
-    "nameZh": "黃丘的克雷姆",
-    "pending": true,
+    "nameZh": "黃山克雷姆",
     "actorName": "Matthias Schoenaerts",
     "actorNameZh": "馬提亞斯・修奈爾茲",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Supergirl》（2026），本片主要反派，率眾下毒氪普托並引發卡拉的復仇之旅"
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026），本片主要反派，率眾下毒氪普托並引發卡拉的復仇之旅",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/9mRssCj4si6f6IF3nJ2RB5w0J7g.jpg",
+    "avatarAlt": "Matthias Schoenaerts"
   },
   {
     "id": "ruthye-marye-knoll",
     "name": "Ruthye Marye Knoll",
     "nameZh": "露絲葉・瑪莉・諾爾",
-    "pending": true,
     "actorName": "Eve Ridley",
     "actorNameZh": "伊芙・雷德利",
     "role": "真人演出",
-    "firstAppearanceHtml": "首次登場：《Supergirl》（2026），家人遭 Krem 殺害的倖存者，陪同卡拉展開跨銀河復仇之旅"
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026），家人遭 Krem 殺害的倖存者，陪同卡拉展開跨銀河復仇之旅",
+    "avatar": "https://media.themoviedb.org/t/p/w600_and_h900_face/vmEfK4PO6rUvTJnN8bbUZrSDgII.jpg",
+    "avatarAlt": "Eve Ridley"
   }
 ]
