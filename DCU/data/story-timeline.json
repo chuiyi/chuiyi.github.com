@@ -9,7 +9,23 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "high",
     "sourceName": "TV Tropes",
-    "sourceUrl": "https://tvtropes.org/pmwiki/pmwiki.php/Quotes/Superman2025"
+    "sourceUrl": "https://tvtropes.org/pmwiki/pmwiki.php/Quotes/Superman2025",
+    "characters": []
+  },
+  {
+    "id": "creature-commandos-the-bride-created",
+    "era": "1831",
+    "marker": "1831 年",
+    "fact": "維克多・法蘭肯斯坦於自宅莊園創造新娘，作為兒子 Eric 的伴侶",
+    "evidenceHtml": "《Creature Commandos》第 2 集「The Tourmaline Necklace」閃回劇情揭露新娘（本名 Elizabeth「Betty」Ballantine）的誕生與其後的悲劇婚姻關係。",
+    "workId": "creature-commandos-2024",
+    "workLabel": "Creature Commandos ⁄ 生物突擊隊",
+    "confidence": "high",
+    "sourceName": "ComicBook.com",
+    "sourceUrl": "https://comicbook.com/dc/news/creature-commandos-episode-2-bride-origin-watch-poor-things-movie-emma-stone/",
+    "characters": [
+      "the-bride"
+    ]
   },
   {
     "id": "creature-commandos-gi-robot-wwii",
@@ -21,7 +37,10 @@
     "workLabel": "Creature Commandos ⁄ 生物突擊隊",
     "confidence": "medium",
     "sourceName": "CBR",
-    "sourceUrl": "https://www.cbr.com/creature-commandos-gi-robot-origin-explained/"
+    "sourceUrl": "https://www.cbr.com/creature-commandos-gi-robot-origin-explained/",
+    "characters": [
+      "gi-robot"
+    ]
   },
   {
     "id": "superman-kents-find-kal-el",
@@ -33,7 +52,10 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "high",
     "sourceName": "NamuWiki",
-    "sourceUrl": "https://en.namu.wiki/w/%EC%8A%88%ED%8D%BC%EB%A7%A8(2025)/%EC%A4%84%EA%B1%B0%EB%A6%AC"
+    "sourceUrl": "https://en.namu.wiki/w/%EC%8A%88%ED%8D%BC%EB%A7%A8(2025)/%EC%A4%84%EA%B1%B0%EB%A6%AC",
+    "characters": [
+      "clark-kent-superman"
+    ]
   },
   {
     "id": "lanterns-young-john-1996",
@@ -45,7 +67,11 @@
     "workLabel": "Lanterns ⁄ 綠燈軍團",
     "confidence": "high",
     "sourceName": "Collider",
-    "sourceUrl": "https://collider.com/lanterns-premiere-episode-1-review/"
+    "sourceUrl": "https://collider.com/lanterns-premiere-episode-1-review/",
+    "characters": [
+      "john-stewart-green-lantern",
+      "hal-jordan-green-lantern"
+    ]
   },
   {
     "id": "lanterns-sinestro-imprisoned",
@@ -57,7 +83,10 @@
     "workLabel": "Lanterns ⁄ 綠燈軍團",
     "confidence": "low",
     "sourceName": "Den of Geek",
-    "sourceUrl": "https://www.denofgeek.com/tv/lanterns-trailer-breakdown-sinestro-manhunters-the-origin-of-evil-in-the-dcu/"
+    "sourceUrl": "https://www.denofgeek.com/tv/lanterns-trailer-breakdown-sinestro-manhunters-the-origin-of-evil-in-the-dcu/",
+    "characters": [
+      "sinestro"
+    ]
   },
   {
     "id": "lanterns-2016-nebraska-murder",
@@ -69,7 +98,11 @@
     "workLabel": "Lanterns ⁄ 綠燈軍團",
     "confidence": "high",
     "sourceName": "ComicBook.com",
-    "sourceUrl": "https://comicbook.com/tv-shows/news/where-2026s-lanterns-show-fits-in-the-dcu-timeline-officially-confirmed-how-many-years-it-spans/"
+    "sourceUrl": "https://comicbook.com/tv-shows/news/where-2026s-lanterns-show-fits-in-the-dcu-timeline-officially-confirmed-how-many-years-it-spans/",
+    "characters": [
+      "hal-jordan-green-lantern",
+      "john-stewart-green-lantern"
+    ]
   },
   {
     "id": "lanterns-2016-bomb-plot",
@@ -81,7 +114,10 @@
     "workLabel": "Lanterns ⁄ 綠燈軍團",
     "confidence": "medium",
     "sourceName": "Forbes",
-    "sourceUrl": "https://www.forbes.com/sites/erikkain/2026/08/16/lanterns-season-1-premiere-recap-review-hbo-max/"
+    "sourceUrl": "https://www.forbes.com/sites/erikkain/2026/08/16/lanterns-season-1-premiere-recap-review-hbo-max/",
+    "characters": [
+      "hal-jordan-green-lantern"
+    ]
   },
   {
     "id": "clayface-hagen-disfigured",
@@ -93,7 +129,10 @@
     "workLabel": "Clayface ⁄ 泥面人",
     "confidence": "medium",
     "sourceName": "SlashFilm",
-    "sourceUrl": "https://www.slashfilm.com/2155708/james-gunn-explains-clayface-dcu-timeline/"
+    "sourceUrl": "https://www.slashfilm.com/2155708/james-gunn-explains-clayface-dcu-timeline/",
+    "characters": [
+      "matt-hagen-clayface"
+    ]
   },
   {
     "id": "clayface-bates-treatment",
@@ -105,7 +144,11 @@
     "workLabel": "Clayface ⁄ 泥面人",
     "confidence": "medium",
     "sourceName": "Cosmic Book News",
-    "sourceUrl": "https://cosmicbook.news/clayface-synopsis-matt-hagen-now-a-victim-not-a-monster"
+    "sourceUrl": "https://cosmicbook.news/clayface-synopsis-matt-hagen-now-a-victim-not-a-monster",
+    "characters": [
+      "matt-hagen-clayface",
+      "caitlin-bates"
+    ]
   },
   {
     "id": "clayface-loses-control",
@@ -117,7 +160,10 @@
     "workLabel": "Clayface ⁄ 泥面人",
     "confidence": "medium",
     "sourceName": "GeekTyrant",
-    "sourceUrl": "https://geektyrant.com/news/clayface-director-promises-a-lot-of-gore-as-jim-lee-reveals-monstrous-final-form-artwork-at-sdcc"
+    "sourceUrl": "https://geektyrant.com/news/clayface-director-promises-a-lot-of-gore-as-jim-lee-reveals-monstrous-final-form-artwork-at-sdcc",
+    "characters": [
+      "matt-hagen-clayface"
+    ]
   },
   {
     "id": "suicide-squad-task-force-x-launch",
@@ -129,7 +175,10 @@
     "workLabel": "The Suicide Squad ⁄ 自殺突擊隊：集結",
     "confidence": "high",
     "sourceName": "dmtalkies",
-    "sourceUrl": "https://dmtalkies.com/the-suicide-squad-ending-project-starfish-starro-origin-explained-2021-dc-film-james-gunn/"
+    "sourceUrl": "https://dmtalkies.com/the-suicide-squad-ending-project-starfish-starro-origin-explained-2021-dc-film-james-gunn/",
+    "characters": [
+      "amanda-waller"
+    ]
   },
   {
     "id": "suicide-squad-starro-revealed",
@@ -141,7 +190,11 @@
     "workLabel": "The Suicide Squad ⁄ 自殺突擊隊：集結",
     "confidence": "high",
     "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/suicide-squad-2021-ending-twists-future-setup-explained/"
+    "sourceUrl": "https://screenrant.com/suicide-squad-2021-ending-twists-future-setup-explained/",
+    "characters": [
+      "rick-flag-jr",
+      "ratcatcher-2"
+    ]
   },
   {
     "id": "suicide-squad-rick-flag-jr-death",
@@ -153,7 +206,12 @@
     "workLabel": "The Suicide Squad ⁄ 自殺突擊隊：集結",
     "confidence": "high",
     "sourceName": "站內既有資料",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "characters": [
+      "rick-flag-jr",
+      "christopher-smith-peacemaker",
+      "amanda-waller"
+    ]
   },
   {
     "id": "suicide-squad-starro-destroyed",
@@ -165,7 +223,11 @@
     "workLabel": "The Suicide Squad ⁄ 自殺突擊隊：集結",
     "confidence": "high",
     "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/suicide-squad-2021-weasel-alive-how/"
+    "sourceUrl": "https://screenrant.com/suicide-squad-2021-weasel-alive-how/",
+    "characters": [
+      "ratcatcher-2",
+      "weasel"
+    ]
   },
   {
     "id": "peacemaker-s1-recruited",
@@ -177,7 +239,11 @@
     "workLabel": "Peacemaker 第一季 ⁄ 和平使者",
     "confidence": "low",
     "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/peacemaker-dceu-timeline-suicide-squad/"
+    "sourceUrl": "https://screenrant.com/peacemaker-dceu-timeline-suicide-squad/",
+    "characters": [
+      "christopher-smith-peacemaker",
+      "amanda-waller"
+    ]
   },
   {
     "id": "peacemaker-s1-auggie-arrested",
@@ -189,7 +255,11 @@
     "workLabel": "Peacemaker 第一季 ⁄ 和平使者",
     "confidence": "low",
     "sourceName": "Soap Central",
-    "sourceUrl": "https://www.soapcentral.com/shows/what-happens-white-dragon-peacemaker-season-1-character-explored-details"
+    "sourceUrl": "https://www.soapcentral.com/shows/what-happens-white-dragon-peacemaker-season-1-character-explored-details",
+    "characters": [
+      "auggie-smith-white-dragon",
+      "john-economos"
+    ]
   },
   {
     "id": "peacemaker-s1-butterfly-conspiracy",
@@ -201,7 +271,10 @@
     "workLabel": "Peacemaker 第一季 ⁄ 和平使者",
     "confidence": "low",
     "sourceName": "Techwiser",
-    "sourceUrl": "https://techwiser.com/peacemaker-season-1-recap/"
+    "sourceUrl": "https://techwiser.com/peacemaker-season-1-recap/",
+    "characters": [
+      "christopher-smith-peacemaker"
+    ]
   },
   {
     "id": "peacemaker-s1-auggie-death",
@@ -213,7 +286,11 @@
     "workLabel": "Peacemaker 第一季 ⁄ 和平使者",
     "confidence": "low",
     "sourceName": "Soap Central",
-    "sourceUrl": "https://www.soapcentral.com/shows/what-happens-white-dragon-peacemaker-season-1-character-explored-details"
+    "sourceUrl": "https://www.soapcentral.com/shows/what-happens-white-dragon-peacemaker-season-1-character-explored-details",
+    "characters": [
+      "christopher-smith-peacemaker",
+      "auggie-smith-white-dragon"
+    ]
   },
   {
     "id": "superman-public-debut",
@@ -225,7 +302,10 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "high",
     "sourceName": "站內既有資料",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "characters": [
+      "clark-kent-superman"
+    ]
   },
   {
     "id": "creature-commandos-task-force-m-formed",
@@ -237,7 +317,14 @@
     "workLabel": "Creature Commandos ⁄ 生物突擊隊",
     "confidence": "medium",
     "sourceName": "SuperHeroHype",
-    "sourceUrl": "https://www.superherohype.com/guides/588907-creature-commandos-when-take-place-dcu-timeline-suicide-squad-canon"
+    "sourceUrl": "https://www.superherohype.com/guides/588907-creature-commandos-when-take-place-dcu-timeline-suicide-squad-canon",
+    "characters": [
+      "amanda-waller",
+      "rick-flag-sr",
+      "circe",
+      "the-bride",
+      "doctor-phosphorus"
+    ]
   },
   {
     "id": "creature-commandos-clayface-deception",
@@ -249,7 +336,11 @@
     "workLabel": "Creature Commandos ⁄ 生物突擊隊",
     "confidence": "medium",
     "sourceName": "DC Universe Wiki",
-    "sourceUrl": "https://dcuniverse.fandom.com/wiki/Creature_Commandos_(TV_series)/Season_One"
+    "sourceUrl": "https://dcuniverse.fandom.com/wiki/Creature_Commandos_(TV_series)/Season_One",
+    "characters": [
+      "rick-flag-sr",
+      "matt-hagen-clayface"
+    ]
   },
   {
     "id": "creature-commandos-s1-finale",
@@ -261,7 +352,12 @@
     "workLabel": "Creature Commandos ⁄ 生物突擊隊",
     "confidence": "medium",
     "sourceName": "Popverse",
-    "sourceUrl": "https://www.thepopverse.com/tv-creature-commandos-season-2-1-finale-nina-mazursky-rick-flagg-sr-amanda-waller-the-bride-james-gunn-dcu"
+    "sourceUrl": "https://www.thepopverse.com/tv-creature-commandos-season-2-1-finale-nina-mazursky-rick-flagg-sr-amanda-waller-the-bride-james-gunn-dcu",
+    "characters": [
+      "nina-mazursky",
+      "the-bride",
+      "rick-flag-sr"
+    ]
   },
   {
     "id": "blue-beetle-scarab-bond",
@@ -273,7 +369,10 @@
     "workLabel": "Blue Beetle ⁄ 藍甲蟲",
     "confidence": "low",
     "sourceName": "Collider",
-    "sourceUrl": "https://collider.com/blue-beetle-ending-explained/"
+    "sourceUrl": "https://collider.com/blue-beetle-ending-explained/",
+    "characters": [
+      "jaime-reyes-blue-beetle"
+    ]
   },
   {
     "id": "blue-beetle-omac-conflict",
@@ -285,7 +384,12 @@
     "workLabel": "Blue Beetle ⁄ 藍甲蟲",
     "confidence": "low",
     "sourceName": "Dualshockers",
-    "sourceUrl": "https://www.dualshockers.com/blue-beetle-ending-explained-conrad-carapax-victoria-kord/"
+    "sourceUrl": "https://www.dualshockers.com/blue-beetle-ending-explained-conrad-carapax-victoria-kord/",
+    "characters": [
+      "victoria-kord",
+      "carapax",
+      "jaime-reyes-blue-beetle"
+    ]
   },
   {
     "id": "blue-beetle-victoria-kord-death",
@@ -297,7 +401,11 @@
     "workLabel": "Blue Beetle ⁄ 藍甲蟲",
     "confidence": "low",
     "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/blue-beetle-characters-who-dies/"
+    "sourceUrl": "https://screenrant.com/blue-beetle-characters-who-dies/",
+    "characters": [
+      "carapax",
+      "victoria-kord"
+    ]
   },
   {
     "id": "blue-beetle-ted-kord-alive",
@@ -309,7 +417,10 @@
     "workLabel": "Blue Beetle ⁄ 藍甲蟲",
     "confidence": "low",
     "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/blue-beetle-movie-post-credits-scenes/"
+    "sourceUrl": "https://screenrant.com/blue-beetle-movie-post-credits-scenes/",
+    "characters": [
+      "ted-kord"
+    ]
   },
   {
     "id": "superman-boravia-jarhanpur",
@@ -321,7 +432,10 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "high",
     "sourceName": "WhatsAfterTheMovie",
-    "sourceUrl": "https://www.whatsafterthemovie.com/summary/superman-2025"
+    "sourceUrl": "https://www.whatsafterthemovie.com/summary/superman-2025",
+    "characters": [
+      "clark-kent-superman"
+    ]
   },
   {
     "id": "superman-hammer-of-boravia-attack",
@@ -333,7 +447,11 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "high",
     "sourceName": "IMDb",
-    "sourceUrl": "https://www.imdb.com/title/tt5950044/plotsummary/"
+    "sourceUrl": "https://www.imdb.com/title/tt5950044/plotsummary/",
+    "characters": [
+      "clark-kent-superman",
+      "ultraman"
+    ]
   },
   {
     "id": "superman-first-loss",
@@ -345,7 +463,11 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "high",
     "sourceName": "ReviewGeek",
-    "sourceUrl": "https://www.thereviewgeek.com/superman2025-endingexplained/"
+    "sourceUrl": "https://www.thereviewgeek.com/superman2025-endingexplained/",
+    "characters": [
+      "clark-kent-superman",
+      "ultraman"
+    ]
   },
   {
     "id": "superman-genocide-message-imprisoned",
@@ -357,7 +479,11 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "medium",
     "sourceName": "ReviewGeek",
-    "sourceUrl": "https://www.thereviewgeek.com/superman2025-endingexplained/"
+    "sourceUrl": "https://www.thereviewgeek.com/superman2025-endingexplained/",
+    "characters": [
+      "lex-luthor",
+      "clark-kent-superman"
+    ]
   },
   {
     "id": "superman-justice-gang-jarhanpur",
@@ -369,7 +495,12 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "medium",
     "sourceName": "ReviewGeek",
-    "sourceUrl": "https://www.thereviewgeek.com/superman2025-endingexplained/"
+    "sourceUrl": "https://www.thereviewgeek.com/superman2025-endingexplained/",
+    "characters": [
+      "guy-gardner-green-lantern",
+      "michael-holt-mister-terrific",
+      "kendra-saunders-hawkgirl"
+    ]
   },
   {
     "id": "superman-ultraman-first-battle",
@@ -381,7 +512,12 @@
     "workLabel": "Superman ⁄ 超人",
     "confidence": "high",
     "sourceName": "站內既有資料",
-    "sourceUrl": ""
+    "sourceUrl": "",
+    "characters": [
+      "clark-kent-superman",
+      "ultraman",
+      "lex-luthor"
+    ]
   },
   {
     "id": "peacemaker-s2-quantum-device",
@@ -393,7 +529,10 @@
     "workLabel": "Peacemaker 第二季 ⁄ 和平使者",
     "confidence": "high",
     "sourceName": "SuperHeroHype",
-    "sourceUrl": "https://www.superherohype.com/news/615596-peacemaker-season-2-timeline-how-long-after-superman"
+    "sourceUrl": "https://www.superherohype.com/news/615596-peacemaker-season-2-timeline-how-long-after-superman",
+    "characters": [
+      "christopher-smith-peacemaker"
+    ]
   },
   {
     "id": "peacemaker-s2-flag-sr-argus",
@@ -405,7 +544,10 @@
     "workLabel": "Peacemaker 第二季 ⁄ 和平使者",
     "confidence": "medium",
     "sourceName": "Medium 劇評",
-    "sourceUrl": "https://medium.com/@beyondmebtw/peacemaker-season-2-review-7bae39ad1492"
+    "sourceUrl": "https://medium.com/@beyondmebtw/peacemaker-season-2-review-7bae39ad1492",
+    "characters": [
+      "rick-flag-sr"
+    ]
   },
   {
     "id": "peacemaker-s2-flag-sr-beatdown",
@@ -417,7 +559,11 @@
     "workLabel": "Peacemaker 第二季 ⁄ 和平使者",
     "confidence": "medium",
     "sourceName": "Collider",
-    "sourceUrl": "https://collider.com/peacemaker-season-2-episode-5-ending-chris-rick-flag/"
+    "sourceUrl": "https://collider.com/peacemaker-season-2-episode-5-ending-chris-rick-flag/",
+    "characters": [
+      "rick-flag-sr",
+      "christopher-smith-peacemaker"
+    ]
   },
   {
     "id": "peacemaker-s2-salvation-finale",
@@ -429,7 +575,11 @@
     "workLabel": "Peacemaker 第二季 ⁄ 和平使者",
     "confidence": "medium",
     "sourceName": "Collider",
-    "sourceUrl": "https://collider.com/peacemaker-season-2-finale-recap/"
+    "sourceUrl": "https://collider.com/peacemaker-season-2-finale-recap/",
+    "characters": [
+      "rick-flag-sr",
+      "christopher-smith-peacemaker"
+    ]
   },
   {
     "id": "supergirl-krypton-destroyed",
@@ -441,7 +591,11 @@
     "workLabel": "Supergirl ⁄ 超少女",
     "confidence": "medium",
     "sourceName": "TheDirect",
-    "sourceUrl": "https://thedirect.com/article/krypton-argo-city-supergirl-escapes"
+    "sourceUrl": "https://thedirect.com/article/krypton-argo-city-supergirl-escapes",
+    "characters": [
+      "zor-el",
+      "alura"
+    ]
   },
   {
     "id": "supergirl-kara-born",
@@ -453,7 +607,10 @@
     "workLabel": "Supergirl ⁄ 超少女",
     "confidence": "medium",
     "sourceName": "TheDirect",
-    "sourceUrl": "https://thedirect.com/article/krypton-argo-city-supergirl-escapes"
+    "sourceUrl": "https://thedirect.com/article/krypton-argo-city-supergirl-escapes",
+    "characters": [
+      "kara-zor-el-supergirl"
+    ]
   },
   {
     "id": "supergirl-alura-death-sent-to-earth",
@@ -465,7 +622,13 @@
     "workLabel": "Supergirl ⁄ 超少女",
     "confidence": "low",
     "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/supergirl-movie-spoilers-deaths-reveals-dc-universe/"
+    "sourceUrl": "https://screenrant.com/supergirl-movie-spoilers-deaths-reveals-dc-universe/",
+    "characters": [
+      "alura",
+      "kara-zor-el-supergirl",
+      "krypto",
+      "clark-kent-superman"
+    ]
   },
   {
     "id": "supergirl-krypto-poisoned",
@@ -477,7 +640,13 @@
     "workLabel": "Supergirl ⁄ 超少女",
     "confidence": "high",
     "sourceName": "Parade",
-    "sourceUrl": "https://parade.com/movies/supergirl-movie-2026"
+    "sourceUrl": "https://parade.com/movies/supergirl-movie-2026",
+    "characters": [
+      "krypto",
+      "krem-of-the-yellow-hills",
+      "kara-zor-el-supergirl",
+      "ruthye-marye-knoll"
+    ]
   },
   {
     "id": "supergirl-climax-krem-ship",
@@ -489,7 +658,11 @@
     "workLabel": "Supergirl ⁄ 超少女",
     "confidence": "medium",
     "sourceName": "Collider",
-    "sourceUrl": "https://collider.com/supergirl-ending-explained-krypto-post-credits-scene-krem-death/"
+    "sourceUrl": "https://collider.com/supergirl-ending-explained-krypto-post-credits-scene-krem-death/",
+    "characters": [
+      "kara-zor-el-supergirl",
+      "krem-of-the-yellow-hills"
+    ]
   },
   {
     "id": "supergirl-stays-on-earth",
@@ -501,7 +674,10 @@
     "workLabel": "Supergirl ⁄ 超少女",
     "confidence": "low",
     "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/supergirl-movie-spoilers-deaths-reveals-dc-universe/"
+    "sourceUrl": "https://screenrant.com/supergirl-movie-spoilers-deaths-reveals-dc-universe/",
+    "characters": [
+      "kara-zor-el-supergirl"
+    ]
   },
   {
     "id": "lanterns-hal-jordan-found-dead",
@@ -513,42 +689,10 @@
     "workLabel": "Lanterns ⁄ 綠燈軍團",
     "confidence": "high",
     "sourceName": "TVLine",
-    "sourceUrl": "https://www.tvline.com/2237785/lanterns-premiere-recap-season-1-episode-1-hbo/"
-  },
-  {
-    "id": "man-of-tomorrow-brainiac-alliance",
-    "era": "約 2027",
-    "marker": "超人後兩年",
-    "fact": "布萊尼亞克威脅大都會，逼超人與路瑟聯手",
-    "evidenceHtml": "官方唯一正式證實的劇情點，出自官方簡介。",
-    "workId": "man-of-tomorrow-2027",
-    "workLabel": "Man of Tomorrow",
-    "confidence": "medium",
-    "sourceName": "Nerdist",
-    "sourceUrl": "https://nerdist.com/article/man-of-tomorrow-superman-james-gunn-everything-we-know/"
-  },
-  {
-    "id": "man-of-tomorrow-brainiac-ultimatum",
-    "era": "約 2027",
-    "marker": "同上區間",
-    "fact": "布萊尼亞克向路瑟下最後通牒（片場外流）",
-    "evidenceHtml": "片場外流音訊／畫面，未經官方證實。",
-    "workId": "man-of-tomorrow-2027",
-    "workLabel": "Man of Tomorrow",
-    "confidence": "low",
-    "sourceName": "GeekTyrant",
-    "sourceUrl": "https://geektyrant.com/news/brainiac-wants-lex-luthor-in-man-of-tomorrow-and-hes-threatening-to-destroy-metropolis-to-get-him"
-  },
-  {
-    "id": "man-of-tomorrow-superman-luthor-clash",
-    "era": "約 2027",
-    "marker": "同上區間",
-    "fact": "超人與路瑟正面衝突，路瑟疑似動用核氪石射線槍（片場外流）",
-    "evidenceHtml": "片場外流畫面，先後順序與情境皆未經官方證實。",
-    "workId": "man-of-tomorrow-2027",
-    "workLabel": "Man of Tomorrow",
-    "confidence": "low",
-    "sourceName": "Newsweek",
-    "sourceUrl": "https://www.newsweek.com/entertainment/movies/superman-man-of-tomorrow-set-leaks-reveal-intense-lex-luthor-battle-12042652"
+    "sourceUrl": "https://www.tvline.com/2237785/lanterns-premiere-recap-season-1-episode-1-hbo/",
+    "characters": [
+      "john-stewart-green-lantern",
+      "hal-jordan-green-lantern"
+    ]
   }
 ]

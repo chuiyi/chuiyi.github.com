@@ -666,6 +666,31 @@ body {
     opacity: 0.85;
 }
 
+.story-event-characters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.story-event-char {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--dc-gold);
+    padding: 1px 9px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.story-event-char:hover,
+.story-event-char:focus-visible {
+    transform: translateY(-1px);
+    outline: none;
+}
+
 .story-event-source {
     margin: 8px 0 0;
     font-size: 0.75rem;
