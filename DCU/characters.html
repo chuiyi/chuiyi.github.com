@@ -4,13 +4,13 @@
     <script src="js/analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>角色首次登場 | 蝙蝠洞資料庫</title>
+    <title>角色介紹 | 蝙蝠洞資料庫</title>
     <meta name="description" content="DCU 角色跨足動畫與真人兩種形式的首次登場紀錄，點擊角色卡查看詳細資料">
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20260820">
 </head>
 <body>
     <div class="halftone-bg" aria-hidden="true"></div>
@@ -42,7 +42,7 @@
 
     <main>
         <section id="characters" class="dcu-section">
-            <h2 class="section-title" data-text="CHARACTERS">角色首次登場</h2>
+            <h2 class="section-title" data-text="CHARACTERS">角色介紹</h2>
             <p class="section-lead">部分角色跨足動畫與真人兩種形式，頭像右下角徽章會標示該角色的配音 / 真人演員；點擊卡片可查看詳細資料。</p>
 
             <div class="char-grid" id="char-grid"></div>
@@ -68,8 +68,8 @@
         </div>
     </div>
 
-    <script src="js/nav.js"></script>
-    <script src="js/dcu.js"></script>
+    <script src="js/nav.js?v=20260820"></script>
+    <script src="js/dcu.js?v=20260820"></script>
     <script>
         DCU.renderCharacters('char-grid', 'characters.json');
     </script>
