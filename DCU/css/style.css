@@ -194,7 +194,8 @@ body {
     position: absolute;
     right: 14px;
     bottom: 14px;
-    font-family: 'Bangers', cursive;
+    font-family: 'Bebas Neue', 'Noto Sans TC', sans-serif;
+    font-weight: 700;
     font-size: 0.85rem;
     letter-spacing: 1px;
     color: var(--paper);
@@ -214,7 +215,8 @@ body {
 
 .comic-btn {
     display: inline-block;
-    font-family: 'Bangers', cursive;
+    font-family: 'Bebas Neue', 'Noto Sans TC', sans-serif;
+    font-weight: 700;
     font-size: 1.4rem;
     letter-spacing: 1px;
     color: var(--ink);
@@ -276,7 +278,8 @@ body {
 }
 
 .section-title {
-    font-family: 'Bangers', cursive;
+    font-family: 'Bebas Neue', 'Noto Sans TC', sans-serif;
+    font-weight: 700;
     font-size: clamp(2.2rem, 5vw, 3.2rem);
     letter-spacing: 2px;
     color: var(--paper);
@@ -1197,7 +1200,8 @@ body.modal-open {
     position: absolute;
     top: 8px;
     left: 8px;
-    font-family: 'Bangers', cursive;
+    font-family: 'Bebas Neue', 'Noto Sans TC', sans-serif;
+    font-weight: 700;
     font-size: 0.85rem;
     letter-spacing: 1px;
     color: var(--paper);
@@ -1391,7 +1395,8 @@ img.char-modal-actor-photo {
 
 .glossary-tag {
     display: inline-block;
-    font-family: 'Bangers', cursive;
+    font-family: 'Bebas Neue', 'Noto Sans TC', sans-serif;
+    font-weight: 700;
     font-size: 0.8rem;
     letter-spacing: 1px;
     background: var(--dc-blue);
