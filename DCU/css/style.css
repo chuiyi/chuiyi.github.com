@@ -327,7 +327,7 @@ body {
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -12px;
+    left: -11px;
     top: 4px;
     width: 18px;
     height: 18px;
@@ -581,7 +581,7 @@ body {
 .story-event::before {
     content: '';
     position: absolute;
-    left: -33px;
+    left: -36px;
     top: 6px;
     width: 16px;
     height: 16px;
@@ -721,7 +721,7 @@ body {
         padding-left: 20px;
     }
     .story-event::before {
-        left: -27px;
+        left: -30px;
     }
 }
 
