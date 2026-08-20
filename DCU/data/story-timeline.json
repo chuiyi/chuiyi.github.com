@@ -2,7 +2,7 @@
   {
     "id": "superman-metahumans-arrive",
     "era": "上古",
-    "marker": "約 300 年前",
+    "marker": "約 1725 年",
     "fact": "首批超人類（諸神與怪物）降臨地球",
     "evidenceHtml": "《Superman》片頭以連續字卡標示相對時間，第一張卡即為「300 YEARS AGO」。",
     "workId": "superman-2025",
@@ -45,7 +45,7 @@
   {
     "id": "superman-kents-find-kal-el",
     "era": "約 1995 年",
-    "marker": "約 30 年前",
+    "marker": "約 1995 年",
     "fact": "肯特夫婦於堪薩斯發現嬰兒卡艾爾的太空船，收養為子",
     "evidenceHtml": "同一組片頭字卡的第二張，標示「30 YEARS AGO」。",
     "workId": "superman-2025",
@@ -137,7 +137,7 @@
   {
     "id": "clayface-bates-treatment",
     "era": "不明（早於超人公開身份）",
-    "marker": "同上區間",
+    "marker": "確切年份未知",
     "fact": "向科學家 Dr. Caitlin Bates 求助，接受實驗療程",
     "evidenceHtml": "選角新聞確認角色姓名。",
     "workId": "clayface-2026",
@@ -153,7 +153,7 @@
   {
     "id": "clayface-loses-control",
     "era": "不明（早於超人公開身份）",
-    "marker": "同上區間",
+    "marker": "確切年份未知",
     "fact": "療程初期成功，逐漸失控化為黏土怪物",
     "evidenceHtml": "SDCC 導演訪談描述劇情走向。",
     "workId": "clayface-2026",
@@ -248,7 +248,7 @@
   {
     "id": "peacemaker-s1-auggie-arrested",
     "era": "約 2022",
-    "marker": "同上區間",
+    "marker": "約 2022 初～中",
     "fact": "父親 Auggie（白龍）因種族仇恨組織身份被捕入獄",
     "evidenceHtml": "Economos 冒名頂替換掉警方資料庫紀錄。",
     "workId": "peacemaker-s1-2022",
@@ -264,7 +264,7 @@
   {
     "id": "peacemaker-s1-butterfly-conspiracy",
     "era": "約 2022",
-    "marker": "同上區間",
+    "marker": "約 2022 初～中",
     "fact": "蝴蝶外星生物長期滲透人類高層的殖民陰謀曝光",
     "evidenceHtml": "整季逐步揭露的主線調查結果。",
     "workId": "peacemaker-s1-2022",
@@ -279,7 +279,7 @@
   {
     "id": "peacemaker-s1-auggie-death",
     "era": "約 2022",
-    "marker": "同上區間",
+    "marker": "約 2022 初～中",
     "fact": "和平使者被迫親手射殺父親 Auggie",
     "evidenceHtml": "最終對決中 Auggie 穿上白龍裝甲追殺兒子未果。",
     "workId": "peacemaker-s1-2022",
@@ -295,7 +295,7 @@
   {
     "id": "superman-public-debut",
     "era": "約 2022",
-    "marker": "3 年前（相對 2025）",
+    "marker": "約 2022 年",
     "fact": "克拉克正式向世人公開超人身份",
     "evidenceHtml": "《Superman》片頭字卡「3 YEARS AGO」，對應 2025 年片內現在時空往前推 3 年。",
     "workId": "superman-2025",
@@ -329,7 +329,7 @@
   {
     "id": "creature-commandos-clayface-deception",
     "era": "約 2023",
-    "marker": "同上區間",
+    "marker": "約 2023 年底",
     "fact": "Flag Sr. 短暫甦醒示警，發現 Aisla MacPherson 已被 Clayface 頂替",
     "evidenceHtml": "劇情中段轉折，牽出黏土人滲透計畫。",
     "workId": "creature-commandos-2024",
@@ -345,7 +345,7 @@
   {
     "id": "creature-commandos-s1-finale",
     "era": "約 2023",
-    "marker": "同上區間",
+    "marker": "約 2023 年底",
     "fact": "季終：Nina 遇害，新娘為復仇射殺公主 Ilana；Flag Sr. 重傷昏迷",
     "evidenceHtml": "結局章節，確立第二季前 Task Force M 的人員與領導狀態。",
     "workId": "creature-commandos-2024",
@@ -433,7 +433,7 @@
   {
     "id": "superman-boravia-jarhanpur",
     "era": "2025",
-    "marker": "3 週前",
+    "marker": "2025 年",
     "fact": "超人單方面阻止波拉維亞入侵賈漢普爾，引爆國際輿論爭議",
     "evidenceHtml": "片頭字卡「3 WEEKS AGO」；路瑟隨後將此事件作為輿論操作的起點。",
     "workId": "superman-2025",
@@ -448,7 +448,7 @@
   {
     "id": "superman-hammer-of-boravia-attack",
     "era": "2025",
-    "marker": "3 小時前",
+    "marker": "2025 年",
     "fact": "偽裝成「波拉維亞之錘」的 Ultraman 於大都會突襲超人",
     "evidenceHtml": "片頭字卡「3 HOURS AGO」；此為 Ultraman 首次現身，尚未被揭露真實身份。",
     "workId": "superman-2025",
@@ -464,7 +464,7 @@
   {
     "id": "superman-first-loss",
     "era": "2025",
-    "marker": "3 分鐘前",
+    "marker": "2025 年",
     "fact": "超人生涯首次落敗，肩膀遭 Ultraman 扭傷脫臼",
     "evidenceHtml": "片頭字卡最後一張「3 MINUTES AGO」，直接銜接電影開場的墜落畫面。",
     "workId": "superman-2025",
@@ -480,7 +480,7 @@
   {
     "id": "superman-genocide-message-imprisoned",
     "era": "2025",
-    "marker": "同日，無更細字卡",
+    "marker": "2025 年",
     "fact": "路瑟公開「克利普頓滅絕訊息」，超人遭囚於口袋維度",
     "evidenceHtml": "路瑟重新詮釋喬艾爾夫婦的訊息，塑造超人為侵略者形象。",
     "workId": "superman-2025",
@@ -496,7 +496,7 @@
   {
     "id": "superman-justice-gang-jarhanpur",
     "era": "2025",
-    "marker": "同日",
+    "marker": "2025 年",
     "fact": "正義幫（綠燈俠／終極先生／鷹女）馳援賈漢普爾",
     "evidenceHtml": "與超人被囚同時發生的支線行動。",
     "workId": "superman-2025",
@@ -513,7 +513,7 @@
   {
     "id": "superman-ultraman-first-battle",
     "era": "2025",
-    "marker": "同日",
+    "marker": "2025 年",
     "fact": "超人逃脫囚禁，與 Ultraman 正式對戰，黑洞高潮後路瑟遭捕送往 Belle Reve",
     "evidenceHtml": "路瑟解釋 Ultraman 是取自超人 DNA 培育的複製人；超人最終將其甩入路瑟撕裂出的黑洞。",
     "workId": "superman-2025",
@@ -530,7 +530,7 @@
   {
     "id": "peacemaker-s2-quantum-device",
     "era": "2025",
-    "marker": "超人事件後約 1 個月",
+    "marker": "約 2025 年",
     "fact": "和平使者發現亡父遺留的量子裝置，意外通往鏡像宇宙",
     "evidenceHtml": "岡恩於 SDCC 2025 親口證實第二季與《Superman》的確切間隔為「約一個月」。",
     "workId": "peacemaker-s2-2025",
@@ -545,7 +545,7 @@
   {
     "id": "peacemaker-s2-flag-sr-argus",
     "era": "2025",
-    "marker": "同上區間",
+    "marker": "約 2025 年",
     "fact": "Rick Flag Sr. 接任 ARGUS 局長，查出兒子死因真相",
     "evidenceHtml": "Waller 垮台後職權交接，Flag Sr. 藉此追查真相。",
     "workId": "peacemaker-s2-2025",
@@ -560,7 +560,7 @@
   {
     "id": "peacemaker-s2-flag-sr-beatdown",
     "era": "2025",
-    "marker": "同上區間",
+    "marker": "約 2025 年",
     "fact": "第 5 集：Flag Sr. 單方面痛毆和平使者洩憤",
     "evidenceHtml": "審訊場景，Flag Sr. 情緒失控爆發。",
     "workId": "peacemaker-s2-2025",
@@ -576,7 +576,7 @@
   {
     "id": "peacemaker-s2-salvation-finale",
     "era": "2025",
-    "marker": "同上區間",
+    "marker": "約 2025 年",
     "fact": "季終：發現平行世界「Salvation」，擄走和平使者作首名囚犯",
     "evidenceHtml": "Flag Sr. 意圖將此異空間打造為超人類監獄。",
     "workId": "peacemaker-s2-2025",
@@ -592,7 +592,7 @@
   {
     "id": "supergirl-krypton-destroyed",
     "era": "約 2026",
-    "marker": "無確切年份（古代背景閃回）",
+    "marker": "",
     "fact": "氪星毀滅，Zor-El／Alura 逃至阿爾格城並啟動力場分離",
     "evidenceHtml": "古代背景閃回，力場分離同時意外釋出氪石輻射。",
     "workId": "supergirl-2026",
@@ -608,7 +608,7 @@
   {
     "id": "supergirl-kara-born",
     "era": "約 2026",
-    "marker": "力場分離「8 年後」",
+    "marker": "",
     "fact": "Kara 出生",
     "evidenceHtml": "片中提及的相對時間點。",
     "workId": "supergirl-2026",
@@ -623,7 +623,7 @@
   {
     "id": "supergirl-alura-death-sent-to-earth",
     "era": "約 2026",
-    "marker": "不明",
+    "marker": "",
     "fact": "Alura 因氪石輻射身亡，Kara 與氪普托被送往地球投靠卡爾艾爾",
     "evidenceHtml": "閃回劇情交代身世來由。",
     "workId": "supergirl-2026",
@@ -659,7 +659,7 @@
   {
     "id": "supergirl-climax-krem-ship",
     "era": "約 2026",
-    "marker": "同上區間",
+    "marker": "23 歲生日當天",
     "fact": "擊墜 Krem 飛船，救出被擄「新娘」，取得氪普托解藥",
     "evidenceHtml": "高潮戰鬥，紅日削弱能力後、黃日重新升起恢復力量。",
     "workId": "supergirl-2026",
@@ -675,7 +675,7 @@
   {
     "id": "supergirl-stays-on-earth",
     "era": "約 2026",
-    "marker": "同上區間，片內未明講相隔年數",
+    "marker": "23 歲生日當天",
     "fact": "結尾：Kara 決定暫留地球（銜接 Man of Tomorrow）",
     "evidenceHtml": "「超人之後、Man of Tomorrow 之前」僅為岡恩戲外聲明，非片內明講。",
     "workId": "supergirl-2026",
@@ -690,7 +690,7 @@
   {
     "id": "lanterns-hal-jordan-found-dead",
     "era": "約 2026",
-    "marker": "超人／和平使者 S2 後約 1 年",
+    "marker": "約 2026 年",
     "fact": "John Stewart 獨自趕赴同一片球場，發現 Hal Jordan 陳屍、額頭中彈",
     "evidenceHtml": "showrunner 證實現在線約在超人與《Peacemaker》S2 一年後，此為首集結尾懸念，呼應 2016 年懸案。",
     "workId": "lanterns-2026",
