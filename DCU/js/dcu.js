@@ -417,6 +417,76 @@ const DCU = (() => {
         }
     }
 
+    function renderStoryEvent(ev, work) {
+        const pendingHtml = ev.confidence === 'high' ? '' : `<span class="story-event-pending">待證實</span>`;
+        const sourceHtml = ev.sourceName
+            ? `<p class="story-event-source">來源：${ev.sourceUrl ? `<a href="${ev.sourceUrl}" target="_blank" rel="noopener">${ev.sourceName}</a>` : ev.sourceName}</p>`
+            : '';
+        return `
+            <li class="story-event confidence-${ev.confidence}" data-work-id="${ev.workId || ''}">
+                <div class="story-event-card${work ? ' clickable' : ''}"${work ? ' role="button" tabindex="0"' : ''}>
+                    <div class="story-event-meta">
+                        <span class="story-event-marker">${ev.marker}</span>
+                        <span class="story-event-work">${ev.workLabel}</span>
+                        ${pendingHtml}
+                    </div>
+                    <p class="story-event-fact">${ev.fact}</p>
+                    <p class="story-event-evidence">${ev.evidenceHtml}</p>
+                    ${sourceHtml}
+                </div>
+            </li>`;
+    }
+
+    function renderStoryEra(era, events, workMap) {
+        const eventsHtml = events.map(ev => renderStoryEvent(ev, workMap.get(ev.workId))).join('');
+        return `
+            <div class="story-era">
+                <div class="story-era-label"><span class="story-era-year">${era}</span></div>
+                <ul class="story-era-events">${eventsHtml}</ul>
+            </div>`;
+    }
+
+    async function renderStoryTimeline(containerId, file, worksFile) {
+        const el = document.getElementById(containerId);
+        if (!el) return;
+        try {
+            const [events, works] = await Promise.all([
+                fetchJSON(file),
+                worksFile ? fetchJSON(worksFile) : Promise.resolve([])
+            ]);
+            const workMap = new Map(works.map(w => [w.id, w]));
+
+            const eras = [];
+            events.forEach(ev => {
+                if (!eras.length || eras[eras.length - 1].era !== ev.era) {
+                    eras.push({ era: ev.era, items: [] });
+                }
+                eras[eras.length - 1].items.push(ev);
+            });
+
+            el.innerHTML = eras.map(group => renderStoryEra(group.era, group.items, workMap)).join('');
+
+            el.addEventListener('click', (e) => {
+                const card = e.target.closest('.story-event-card.clickable');
+                if (!card) return;
+                const li = card.closest('.story-event');
+                const work = workMap.get(li.dataset.workId);
+                if (work) openWorkModal(work);
+            });
+            el.addEventListener('keydown', (e) => {
+                if (e.key !== 'Enter' && e.key !== ' ') return;
+                const card = e.target.closest('.story-event-card.clickable');
+                if (!card) return;
+                e.preventDefault();
+                const li = card.closest('.story-event');
+                const work = workMap.get(li.dataset.workId);
+                if (work) openWorkModal(work);
+            });
+        } catch (err) {
+            console.error('[DCU] 大事紀時間軸載入失敗', err);
+        }
+    }
+
     async function renderElseworlds(file) {
         try {
             const data = await fetchJSON(file);
@@ -441,5 +511,5 @@ const DCU = (() => {
         }
     }
 
-    return { renderCharacters, renderTimeline, renderDevList, renderGlossary, renderNews, renderElseworlds, renderBreakingNews };
+    return { renderCharacters, renderTimeline, renderDevList, renderGlossary, renderNews, renderElseworlds, renderBreakingNews, renderStoryTimeline };
 })();
