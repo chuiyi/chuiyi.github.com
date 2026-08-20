@@ -203,5 +203,213 @@
     "actorNameZh": "約翰・希南",
     "role": "真人演出",
     "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022）；第二季（2025）正式併入 DCU 正史"
+  },
+  {
+    "id": "rick-flag-jr",
+    "name": "Rick Flag Jr.",
+    "nameZh": "小瑞克・佛萊格",
+    "pending": true,
+    "actorName": "Joel Kinnaman",
+    "actorNameZh": "喬爾・金納曼",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《自殺突擊隊：集結》（2021），Task Force X 現場指揮官，老瑞克・佛萊格之子"
+  },
+  {
+    "id": "ratcatcher-2",
+    "name": "Ratcatcher 2",
+    "nameZh": "捕鼠人二代",
+    "pending": true,
+    "actorName": "Daniela Melchior",
+    "actorNameZh": "丹妮拉・梅爾基奧",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《自殺突擊隊：集結》（2021），本名 Cleo Cazo，能號令老鼠大軍的隊員"
+  },
+  {
+    "id": "gi-robot",
+    "name": "G.I. Robot",
+    "nameZh": "機器人大兵",
+    "pending": true,
+    "actorName": "Sean Gunn",
+    "actorNameZh": "西恩・岡恩（配音）",
+    "role": "配音演出",
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），二戰時期隨 Sgt. Rock／Easy Company 作戰的滅納粹機器人"
+  },
+  {
+    "id": "the-bride",
+    "name": "The Bride",
+    "nameZh": "科學怪人新娘",
+    "pending": true,
+    "actorName": "Indira Varma",
+    "actorNameZh": "英迪拉・瓦爾瑪（配音）",
+    "role": "配音演出",
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），本名 Elizabeth「Betty」Ballantine，1831 年由維克多・法蘭肯斯坦所創造"
+  },
+  {
+    "id": "doctor-phosphorus",
+    "name": "Doctor Phosphorus",
+    "nameZh": "磷博士",
+    "pending": true,
+    "actorName": "Alan Tudyk",
+    "actorNameZh": "亞倫・圖迪克（配音）",
+    "role": "配音演出",
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），本名 Alex Sartorius，遭核反應爐輻射異變的放射性怪物"
+  },
+  {
+    "id": "nina-mazursky",
+    "name": "Nina Mazursky",
+    "nameZh": "妮娜・馬祖爾斯基",
+    "pending": true,
+    "actorName": "Zoe Chao",
+    "actorNameZh": "柔伊・趙（配音）",
+    "role": "配音演出",
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），因父親實驗與水生生物 DNA 融合的特遣隊成員"
+  },
+  {
+    "id": "circe",
+    "name": "Circe",
+    "nameZh": "瑟西",
+    "pending": true,
+    "actorName": "Anya Chalotra",
+    "actorNameZh": "安雅・卡洛塔（配音）",
+    "role": "配音演出",
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫），入侵波克利斯坦的女巫，忒修拉學者"
+  },
+  {
+    "id": "matt-hagen-clayface",
+    "name": "Matt Hagen / Clayface",
+    "nameZh": "麥特・海根 / 泥面人",
+    "pending": true,
+    "actorName": "Tom Rhys Harries",
+    "actorNameZh": "湯姆・里斯・哈里斯",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Creature Commandos》第一季（2024，動畫，客串）；真人主演見《Clayface》（2026），過氣演員遭黑幫毀容後異變為黏土怪物"
+  },
+  {
+    "id": "caitlin-bates",
+    "name": "Dr. Caitlin Bates",
+    "nameZh": "凱特琳・貝茲醫生",
+    "pending": true,
+    "actorName": "Naomi Ackie",
+    "actorNameZh": "娜歐蜜・艾姬",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Clayface》（2026），為 Matt Hagen 進行實驗性黏土療程的邊緣科學家"
+  },
+  {
+    "id": "auggie-smith-white-dragon",
+    "name": "Auggie Smith / White Dragon",
+    "nameZh": "奧吉・史密斯 / 白龍",
+    "pending": true,
+    "actorName": "Robert Patrick",
+    "actorNameZh": "勞勃・派屈克",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《和平使者》第一季（2022），和平使者的父親，種族仇恨組織武裝反派"
+  },
+  {
+    "id": "john-stewart-green-lantern",
+    "name": "John Stewart / Green Lantern",
+    "nameZh": "約翰・史都華 / 綠燈俠",
+    "pending": true,
+    "actorName": "Aaron Pierre",
+    "actorNameZh": "亞倫・皮耶",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），菜鳥綠燈俠，與哈爾・喬丹搭檔調查命案"
+  },
+  {
+    "id": "hal-jordan-green-lantern",
+    "name": "Hal Jordan / Green Lantern",
+    "nameZh": "哈爾・喬丹 / 綠燈俠",
+    "pending": true,
+    "actorName": "Kyle Chandler",
+    "actorNameZh": "凱爾・錢德勒",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），資深綠燈俠，帶領約翰・史都華調查一樁跨越十年的懸案"
+  },
+  {
+    "id": "sinestro",
+    "name": "Sinestro",
+    "nameZh": "沙誠",
+    "pending": true,
+    "actorName": "Ulrich Thomsen",
+    "actorNameZh": "烏爾里希・湯姆森",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Lanterns》（2026），早已被囚於 Oa 的墮落綠燈軍團創始成員，劇中擔任線人角色"
+  },
+  {
+    "id": "jaime-reyes-blue-beetle",
+    "name": "Jaime Reyes / Blue Beetle",
+    "nameZh": "海米・雷耶斯 / 藍甲蟲",
+    "pending": true,
+    "actorName": "Xolo Maridueña",
+    "actorNameZh": "索羅・馬里杜埃尼亞",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023）；2026 年 7 月確認回歸並延續至《Man of Tomorrow》（2027），正式併入新 DCU 正史"
+  },
+  {
+    "id": "victoria-kord",
+    "name": "Victoria Kord",
+    "nameZh": "維多利亞・科德",
+    "pending": true,
+    "actorName": "Susan Sarandon",
+    "actorNameZh": "蘇珊・莎蘭登",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023），Kord Industries 執行長，本片主要反派"
+  },
+  {
+    "id": "carapax",
+    "name": "Carapax",
+    "nameZh": "卡拉帕克斯",
+    "pending": true,
+    "actorName": "Raoul Max Trujillo",
+    "actorNameZh": "勞爾・麥克斯・特魯希略",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023），本名 Conrad Carapax，遭 Victoria Kord 改造的 OMAC 強化戰士"
+  },
+  {
+    "id": "ted-kord",
+    "name": "Ted Kord",
+    "nameZh": "泰德・科德",
+    "pending": true,
+    "role": "真人演出（片尾彩蛋，未露臉）",
+    "firstAppearanceHtml": "首次登場：《Blue Beetle》（2023）片尾彩蛋，藍甲蟲的前一任持有者，證實生還；演出者未公開露臉，暫無法確認飾演演員"
+  },
+  {
+    "id": "zor-el",
+    "name": "Zor-El",
+    "nameZh": "佐艾爾",
+    "pending": true,
+    "actorName": "David Krumholtz",
+    "actorNameZh": "大衛・克倫霍茲",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026，閃回），卡拉・佐艾爾之父，氪星毀滅時啟動阿爾格城力場分離"
+  },
+  {
+    "id": "alura",
+    "name": "Alura",
+    "nameZh": "阿爾拉",
+    "pending": true,
+    "actorName": "Emily Beecham",
+    "actorNameZh": "艾蜜莉・比查姆",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026，閃回），卡拉・佐艾爾之母，因氪石輻射身亡"
+  },
+  {
+    "id": "krem-of-the-yellow-hills",
+    "name": "Krem of the Yellow Hills",
+    "nameZh": "黃丘的克雷姆",
+    "pending": true,
+    "actorName": "Matthias Schoenaerts",
+    "actorNameZh": "馬提亞斯・修奈爾茲",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026），本片主要反派，率眾下毒氪普托並引發卡拉的復仇之旅"
+  },
+  {
+    "id": "ruthye-marye-knoll",
+    "name": "Ruthye Marye Knoll",
+    "nameZh": "露絲葉・瑪莉・諾爾",
+    "pending": true,
+    "actorName": "Eve Ridley",
+    "actorNameZh": "伊芙・雷德利",
+    "role": "真人演出",
+    "firstAppearanceHtml": "首次登場：《Supergirl》（2026），家人遭 Krem 殺害的倖存者，陪同卡拉展開跨銀河復仇之旅"
   }
 ]

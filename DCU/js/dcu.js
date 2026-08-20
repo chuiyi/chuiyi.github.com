@@ -417,10 +417,17 @@ const DCU = (() => {
         }
     }
 
-    function renderStoryEvent(ev, work) {
+    function renderStoryEvent(ev, work, charMap) {
         const pendingHtml = ev.confidence === 'high' ? '' : `<span class="story-event-pending">待證實</span>`;
         const sourceHtml = ev.sourceName
             ? `<p class="story-event-source">來源：${ev.sourceUrl ? `<a href="${ev.sourceUrl}" target="_blank" rel="noopener">${ev.sourceName}</a>` : ev.sourceName}</p>`
+            : '';
+        const charsHtml = (ev.characters && ev.characters.length)
+            ? `<div class="story-event-characters">${ev.characters.map(id => {
+                const c = charMap.get(id);
+                const label = c ? c.name : id;
+                return `<span class="story-event-char" data-char-id="${id}">${label}</span>`;
+            }).join('')}</div>`
             : '';
         return `
             <li class="story-event confidence-${ev.confidence}" data-work-id="${ev.workId || ''}">
@@ -432,13 +439,14 @@ const DCU = (() => {
                     </div>
                     <p class="story-event-fact">${ev.fact}</p>
                     <p class="story-event-evidence">${ev.evidenceHtml}</p>
+                    ${charsHtml}
                     ${sourceHtml}
                 </div>
             </li>`;
     }
 
-    function renderStoryEra(era, events, workMap) {
-        const eventsHtml = events.map(ev => renderStoryEvent(ev, workMap.get(ev.workId))).join('');
+    function renderStoryEra(era, events, workMap, charMap) {
+        const eventsHtml = events.map(ev => renderStoryEvent(ev, workMap.get(ev.workId), charMap)).join('');
         return `
             <div class="story-era">
                 <div class="story-era-label"><span class="story-era-year">${era}</span></div>
@@ -446,15 +454,17 @@ const DCU = (() => {
             </div>`;
     }
 
-    async function renderStoryTimeline(containerId, file, worksFile) {
+    async function renderStoryTimeline(containerId, file, worksFile, charactersFile) {
         const el = document.getElementById(containerId);
         if (!el) return;
         try {
-            const [events, works] = await Promise.all([
+            const [events, works, characters] = await Promise.all([
                 fetchJSON(file),
-                worksFile ? fetchJSON(worksFile) : Promise.resolve([])
+                worksFile ? fetchJSON(worksFile) : Promise.resolve([]),
+                charactersFile ? fetchJSON(charactersFile) : Promise.resolve([])
             ]);
             const workMap = new Map(works.map(w => [w.id, w]));
+            const charMap = new Map(characters.map(c => [c.id, c]));
 
             const eras = [];
             events.forEach(ev => {
@@ -464,9 +474,18 @@ const DCU = (() => {
                 eras[eras.length - 1].items.push(ev);
             });
 
-            el.innerHTML = eras.map(group => renderStoryEra(group.era, group.items, workMap)).join('');
+            el.innerHTML = eras.map(group => renderStoryEra(group.era, group.items, workMap, charMap)).join('');
 
             el.addEventListener('click', (e) => {
+                const charTag = e.target.closest('.story-event-char');
+                if (charTag) {
+                    const character = charMap.get(charTag.dataset.charId);
+                    if (character) {
+                        e.stopPropagation();
+                        openCharacterModal(character);
+                    }
+                    return;
+                }
                 const card = e.target.closest('.story-event-card.clickable');
                 if (!card) return;
                 const li = card.closest('.story-event');
