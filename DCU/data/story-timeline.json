@@ -1,86 +1,10 @@
 [
   {
-    "id": "creature-commandos-the-bride-created",
-    "era": "1831",
-    "marker": "1831 年",
-    "fact": "維克多・法蘭肯斯坦於自宅莊園創造新娘，作為兒子 Eric 的伴侶",
-    "evidenceHtml": "《Creature Commandos》第 2 集「The Tourmaline Necklace」閃回劇情揭露新娘（本名 Elizabeth「Betty」Ballantine）的誕生與其後的悲劇婚姻關係。",
-    "workId": "creature-commandos-2024",
-    "workLabel": "Creature Commandos ⁄ 生物突擊隊",
-    "confidence": "high",
-    "sourceName": "ComicBook.com",
-    "sourceUrl": "https://comicbook.com/dc/news/creature-commandos-episode-2-bride-origin-watch-poor-things-movie-emma-stone/",
-    "characters": [
-      "the-bride"
-    ]
-  },
-  {
-    "id": "creature-commandos-gi-robot-wwii",
-    "era": "二戰時期",
-    "marker": "確切年份未知",
-    "fact": "G.I. Robot 隨 Sgt. Rock／Easy Company 對抗納粹",
-    "evidenceHtml": "《Creature Commandos》第 3 集閃回劇情揭露其原始身份，是二戰時期滅納粹機器人。",
-    "workId": "creature-commandos-2024",
-    "workLabel": "Creature Commandos ⁄ 生物突擊隊",
-    "confidence": "medium",
-    "sourceName": "CBR",
-    "sourceUrl": "https://www.cbr.com/creature-commandos-gi-robot-origin-explained/",
-    "characters": [
-      "gi-robot"
-    ]
-  },
-  {
-    "id": "superman-kents-find-kal-el",
-    "era": "約 1995 年",
-    "marker": "約 1995 年",
-    "fact": "肯特夫婦於堪薩斯發現嬰兒卡艾爾的太空船，收養為子",
-    "evidenceHtml": "同一組片頭字卡的第二張，標示「30 YEARS AGO」。",
-    "workId": "superman-2025",
-    "workLabel": "Superman ⁄ 超人",
-    "confidence": "high",
-    "sourceName": "NamuWiki",
-    "sourceUrl": "https://en.namu.wiki/w/%EC%8A%88%ED%8D%BC%EB%A7%A8(2025)/%EC%A4%84%EA%B1%B0%EB%A6%AC",
-    "characters": [
-      "clark-kent-superman"
-    ]
-  },
-  {
-    "id": "lanterns-young-john-1996",
-    "era": "1996",
-    "marker": "1996 年",
-    "fact": "童年 John Stewart 從電視新聞認識 Hal Jordan，種下日後成為綠燈俠的契機",
-    "evidenceHtml": "《Lanterns》首集台詞明確標出「30 年前」，對應劇集現在線約 2026 年。",
-    "workId": "lanterns-2026",
-    "workLabel": "Lanterns ⁄ 綠燈軍團",
-    "confidence": "high",
-    "sourceName": "Collider",
-    "sourceUrl": "https://collider.com/lanterns-premiere-episode-1-review/",
-    "characters": [
-      "john-stewart-green-lantern",
-      "hal-jordan-green-lantern"
-    ]
-  },
-  {
-    "id": "lanterns-sinestro-imprisoned",
-    "era": "2016",
-    "marker": "2016 年前（推論）",
-    "fact": "Sinestro 早已被囚於 Oa，墮落經過尚未於劇中揭露",
-    "evidenceHtml": "2016 年線開始時 Sinestro 已是囚犯身份，於劇中擔任線人角色。",
-    "workId": "lanterns-2026",
-    "workLabel": "Lanterns ⁄ 綠燈軍團",
-    "confidence": "low",
-    "sourceName": "Den of Geek",
-    "sourceUrl": "https://www.denofgeek.com/tv/lanterns-trailer-breakdown-sinestro-manhunters-the-origin-of-evil-in-the-dcu/",
-    "characters": [
-      "sinestro"
-    ]
-  },
-  {
-    "id": "lanterns-2016-nebraska-murder",
+    "id": "lanterns-2016-investigation",
     "era": "2016",
     "marker": "2016 年",
-    "fact": "Hal Jordan 帶菜鳥 John Stewart 前往內布拉斯加州 Rushville 調查一起命案",
-    "evidenceHtml": "劇組（showrunner Chris Mundy）公開確認此線為劇集明講的 2016 年時間軸，非推論。",
+    "fact": "Hal Jordan 帶菜鳥 John Stewart 前往內布拉斯加州 Rushville 調查一起命案，並故意被捕接觸涉嫌引爆炸彈的外星囚犯",
+    "evidenceHtml": "劇組（showrunner Chris Mundy）公開確認此線為劇集明講的 2016 年時間軸，非推論；該外星囚犯的復仇動機尚未於劇中完整解釋。",
     "workId": "lanterns-2026",
     "workLabel": "Lanterns ⁄ 綠燈軍團",
     "confidence": "high",
@@ -92,95 +16,19 @@
     ]
   },
   {
-    "id": "lanterns-2016-bomb-plot",
-    "era": "2016",
-    "marker": "2016 年",
-    "fact": "Hal 故意被捕接觸外星囚犯，對方企圖引爆炸彈復仇",
-    "evidenceHtml": "首集情節，動機尚未於劇中完整解釋。",
-    "workId": "lanterns-2026",
-    "workLabel": "Lanterns ⁄ 綠燈軍團",
-    "confidence": "medium",
-    "sourceName": "Forbes",
-    "sourceUrl": "https://www.forbes.com/sites/erikkain/2026/08/16/lanterns-season-1-premiere-recap-review-hbo-max/",
-    "characters": [
-      "hal-jordan-green-lantern"
-    ]
-  },
-  {
-    "id": "clayface-hagen-disfigured",
+    "id": "clayface-origin-arc",
     "era": "不明（早於超人公開身份）",
     "marker": "確切年份未知",
-    "fact": "Matt Hagen 演藝生涯正盛時遭黑幫毀容",
-    "evidenceHtml": "岡恩 Threads 問答親口證實：「在超人之前，是 DCU 第一部非按時序上映的作品」。",
+    "fact": "Matt Hagen 遭黑幫毀容後向科學家 Dr. Caitlin Bates 求助，接受實驗性黏土療程，卻逐漸失控化為怪物",
+    "evidenceHtml": "岡恩 Threads 問答親口證實本片設定早於超人公開身份；SDCC 導演訪談描述 Hagen 演藝生涯正盛時遭毀容、接受治療後逐漸失控的完整劇情走向。",
     "workId": "clayface-2026",
     "workLabel": "Clayface ⁄ 泥面人",
     "confidence": "medium",
     "sourceName": "SlashFilm",
     "sourceUrl": "https://www.slashfilm.com/2155708/james-gunn-explains-clayface-dcu-timeline/",
     "characters": [
-      "matt-hagen-clayface"
-    ]
-  },
-  {
-    "id": "clayface-bates-treatment",
-    "era": "不明（早於超人公開身份）",
-    "marker": "確切年份未知",
-    "fact": "向科學家 Dr. Caitlin Bates 求助，接受實驗療程",
-    "evidenceHtml": "選角新聞確認角色姓名。",
-    "workId": "clayface-2026",
-    "workLabel": "Clayface ⁄ 泥面人",
-    "confidence": "medium",
-    "sourceName": "Cosmic Book News",
-    "sourceUrl": "https://cosmicbook.news/clayface-synopsis-matt-hagen-now-a-victim-not-a-monster",
-    "characters": [
       "matt-hagen-clayface",
       "caitlin-bates"
-    ]
-  },
-  {
-    "id": "clayface-loses-control",
-    "era": "不明（早於超人公開身份）",
-    "marker": "確切年份未知",
-    "fact": "療程初期成功，逐漸失控化為黏土怪物",
-    "evidenceHtml": "SDCC 導演訪談描述劇情走向。",
-    "workId": "clayface-2026",
-    "workLabel": "Clayface ⁄ 泥面人",
-    "confidence": "medium",
-    "sourceName": "GeekTyrant",
-    "sourceUrl": "https://geektyrant.com/news/clayface-director-promises-a-lot-of-gore-as-jim-lee-reveals-monstrous-final-form-artwork-at-sdcc",
-    "characters": [
-      "matt-hagen-clayface"
-    ]
-  },
-  {
-    "id": "suicide-squad-task-force-x-launch",
-    "era": "2021",
-    "marker": "2021.08.17",
-    "fact": "Waller 同時派出誘餌隊與真正任務隊，潛入科多共和國",
-    "evidenceHtml": "《The Suicide Squad》全片事件集中於單日；日期由《Creature Commandos》中 Rick Flag Sr. 台詞「兒子兩年前過世」回推確立。",
-    "workId": "suicide-squad-2021",
-    "workLabel": "The Suicide Squad ⁄ 自殺突擊隊：集結",
-    "confidence": "high",
-    "sourceName": "dmtalkies",
-    "sourceUrl": "https://dmtalkies.com/the-suicide-squad-ending-project-starfish-starro-origin-explained-2021-dc-film-james-gunn/",
-    "characters": [
-      "amanda-waller"
-    ]
-  },
-  {
-    "id": "suicide-squad-starro-revealed",
-    "era": "2021",
-    "marker": "2021.08.17（同日）",
-    "fact": "發現「Project Starfish」真相＝政府秘密培養的外星巨獸 Starro",
-    "evidenceHtml": "Flag、Ratcatcher 2 潛入 Jotunheim 設施後直接目擊真相；Starro 隨即逃脫並開始操控島上居民。",
-    "workId": "suicide-squad-2021",
-    "workLabel": "The Suicide Squad ⁄ 自殺突擊隊：集結",
-    "confidence": "high",
-    "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/suicide-squad-2021-ending-twists-future-setup-explained/",
-    "characters": [
-      "rick-flag-jr",
-      "ratcatcher-2"
     ]
   },
   {
@@ -205,7 +53,7 @@
     "era": "2021",
     "marker": "2021.08.17",
     "fact": "Ratcatcher 2 召喚鼠群殲滅 Starro；片尾彩蛋揭露 Weasel 生還",
-    "evidenceHtml": "最終戰鬥當日即分出勝負；Weasel 獲 Savant 救起，逃入叢林，為《Peacemaker》登場鋪路。",
+    "evidenceHtml": "Waller 稍早派出誘餌隊與真正任務隊潛入科多共和國，發現政府秘密培養的外星巨獸 Starro 真相；最終戰鬥當日即分出勝負，Weasel 獲 Savant 救起，逃入叢林，為《Peacemaker》登場鋪路。",
     "workId": "suicide-squad-2021",
     "workLabel": "The Suicide Squad ⁄ 自殺突擊隊：集結",
     "confidence": "high",
@@ -217,58 +65,11 @@
     ]
   },
   {
-    "id": "peacemaker-s1-recruited",
-    "era": "約 2022",
-    "marker": "約 2022 初～中",
-    "fact": "和平使者從醫院被 Waller 招募進「蝴蝶計畫」特遣隊",
-    "evidenceHtml": "片內無日期字卡，依角色對白提及住院／復原時長回推。",
-    "workId": "peacemaker-s1-2022",
-    "workLabel": "Peacemaker 第一季 ⁄ 和平使者",
-    "confidence": "low",
-    "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/peacemaker-dceu-timeline-suicide-squad/",
-    "characters": [
-      "christopher-smith-peacemaker",
-      "amanda-waller"
-    ]
-  },
-  {
-    "id": "peacemaker-s1-auggie-arrested",
-    "era": "約 2022",
-    "marker": "約 2022 初～中",
-    "fact": "父親 Auggie（白龍）因種族仇恨組織身份被捕入獄",
-    "evidenceHtml": "Economos 冒名頂替換掉警方資料庫紀錄。",
-    "workId": "peacemaker-s1-2022",
-    "workLabel": "Peacemaker 第一季 ⁄ 和平使者",
-    "confidence": "low",
-    "sourceName": "Soap Central",
-    "sourceUrl": "https://www.soapcentral.com/shows/what-happens-white-dragon-peacemaker-season-1-character-explored-details",
-    "characters": [
-      "auggie-smith-white-dragon",
-      "john-economos"
-    ]
-  },
-  {
-    "id": "peacemaker-s1-butterfly-conspiracy",
-    "era": "約 2022",
-    "marker": "約 2022 初～中",
-    "fact": "蝴蝶外星生物長期滲透人類高層的殖民陰謀曝光",
-    "evidenceHtml": "整季逐步揭露的主線調查結果。",
-    "workId": "peacemaker-s1-2022",
-    "workLabel": "Peacemaker 第一季 ⁄ 和平使者",
-    "confidence": "low",
-    "sourceName": "Techwiser",
-    "sourceUrl": "https://techwiser.com/peacemaker-season-1-recap/",
-    "characters": [
-      "christopher-smith-peacemaker"
-    ]
-  },
-  {
     "id": "peacemaker-s1-auggie-death",
     "era": "約 2022",
     "marker": "約 2022 初～中",
     "fact": "和平使者被迫親手射殺父親 Auggie",
-    "evidenceHtml": "最終對決中 Auggie 穿上白龍裝甲追殺兒子未果。",
+    "evidenceHtml": "和平使者從醫院被 Waller 招募進「蝴蝶計畫」特遣隊，捲入外星生物滲透人類高層的殖民陰謀；最終對決中，因種族仇恨組織身份入獄的父親 Auggie 穿上白龍裝甲追殺兒子未果，和平使者被迫開槍。",
     "workId": "peacemaker-s1-2022",
     "workLabel": "Peacemaker 第一季 ⁄ 和平使者",
     "confidence": "low",
@@ -277,56 +78,6 @@
     "characters": [
       "christopher-smith-peacemaker",
       "auggie-smith-white-dragon"
-    ]
-  },
-  {
-    "id": "superman-public-debut",
-    "era": "約 2022",
-    "marker": "約 2022 年",
-    "fact": "克拉克正式向世人公開超人身份",
-    "evidenceHtml": "《Superman》片頭字卡「3 YEARS AGO」，對應 2025 年片內現在時空往前推 3 年。",
-    "workId": "superman-2025",
-    "workLabel": "Superman ⁄ 超人",
-    "confidence": "high",
-    "sourceName": "站內既有資料",
-    "sourceUrl": "",
-    "characters": [
-      "clark-kent-superman"
-    ]
-  },
-  {
-    "id": "creature-commandos-task-force-m-formed",
-    "era": "約 2023",
-    "marker": "約 2023 年底",
-    "fact": "Waller／Flag Sr. 得知瑟西入侵波克利斯坦，組建 M 特遣隊",
-    "evidenceHtml": "Belle Reve 內部簡報揭露威脅，隨即招募新娘、磷博士等成員。",
-    "workId": "creature-commandos-2024",
-    "workLabel": "Creature Commandos ⁄ 生物突擊隊",
-    "confidence": "medium",
-    "sourceName": "SuperHeroHype",
-    "sourceUrl": "https://www.superherohype.com/guides/588907-creature-commandos-when-take-place-dcu-timeline-suicide-squad-canon",
-    "characters": [
-      "amanda-waller",
-      "rick-flag-sr",
-      "circe",
-      "the-bride",
-      "doctor-phosphorus"
-    ]
-  },
-  {
-    "id": "creature-commandos-clayface-deception",
-    "era": "約 2023",
-    "marker": "約 2023 年底",
-    "fact": "Flag Sr. 短暫甦醒示警，發現 Aisla MacPherson 已被 Clayface 頂替",
-    "evidenceHtml": "劇情中段轉折，牽出黏土人滲透計畫。",
-    "workId": "creature-commandos-2024",
-    "workLabel": "Creature Commandos ⁄ 生物突擊隊",
-    "confidence": "medium",
-    "sourceName": "DC Universe Wiki",
-    "sourceUrl": "https://dcuniverse.fandom.com/wiki/Creature_Commandos_(TV_series)/Season_One",
-    "characters": [
-      "rick-flag-sr",
-      "matt-hagen-clayface"
     ]
   },
   {
@@ -482,57 +233,11 @@
     ]
   },
   {
-    "id": "peacemaker-s2-quantum-device",
-    "era": "2025",
-    "marker": "約 2025 年",
-    "fact": "和平使者發現亡父遺留的量子裝置，意外通往鏡像宇宙",
-    "evidenceHtml": "岡恩於 SDCC 2025 親口證實第二季與《Superman》的確切間隔為「約一個月」。",
-    "workId": "peacemaker-s2-2025",
-    "workLabel": "Peacemaker 第二季 ⁄ 和平使者",
-    "confidence": "high",
-    "sourceName": "SuperHeroHype",
-    "sourceUrl": "https://www.superherohype.com/news/615596-peacemaker-season-2-timeline-how-long-after-superman",
-    "characters": [
-      "christopher-smith-peacemaker"
-    ]
-  },
-  {
-    "id": "peacemaker-s2-flag-sr-argus",
-    "era": "2025",
-    "marker": "約 2025 年",
-    "fact": "Rick Flag Sr. 接任 ARGUS 局長，查出兒子死因真相",
-    "evidenceHtml": "Waller 垮台後職權交接，Flag Sr. 藉此追查真相。",
-    "workId": "peacemaker-s2-2025",
-    "workLabel": "Peacemaker 第二季 ⁄ 和平使者",
-    "confidence": "medium",
-    "sourceName": "Medium 劇評",
-    "sourceUrl": "https://medium.com/@beyondmebtw/peacemaker-season-2-review-7bae39ad1492",
-    "characters": [
-      "rick-flag-sr"
-    ]
-  },
-  {
-    "id": "peacemaker-s2-flag-sr-beatdown",
-    "era": "2025",
-    "marker": "約 2025 年",
-    "fact": "第 5 集：Flag Sr. 單方面痛毆和平使者洩憤",
-    "evidenceHtml": "審訊場景，Flag Sr. 情緒失控爆發。",
-    "workId": "peacemaker-s2-2025",
-    "workLabel": "Peacemaker 第二季 ⁄ 和平使者",
-    "confidence": "medium",
-    "sourceName": "Collider",
-    "sourceUrl": "https://collider.com/peacemaker-season-2-episode-5-ending-chris-rick-flag/",
-    "characters": [
-      "rick-flag-sr",
-      "christopher-smith-peacemaker"
-    ]
-  },
-  {
     "id": "peacemaker-s2-salvation-finale",
     "era": "2025",
     "marker": "約 2025 年",
     "fact": "季終：發現平行世界「Salvation」，擄走和平使者作首名囚犯",
-    "evidenceHtml": "Flag Sr. 意圖將此異空間打造為超人類監獄。",
+    "evidenceHtml": "和平使者意外啟動亡父遺留的量子裝置通往鏡像宇宙後，遭已查明真相的 ARGUS 新局長 Rick Flag Sr. 單方面痛毆洩憤；Flag Sr. 隨後發現平行世界「Salvation」，意圖將此異空間打造為超人類監獄，擄走和平使者作為首名囚犯。",
     "workId": "peacemaker-s2-2025",
     "workLabel": "Peacemaker 第二季 ⁄ 和平使者",
     "confidence": "medium",
@@ -544,11 +249,11 @@
     ]
   },
   {
-    "id": "supergirl-krypton-destroyed",
+    "id": "supergirl-krypton-backstory",
     "era": "約 2026",
     "marker": "",
-    "fact": "氪星毀滅，Zor-El／Alura 逃至阿爾格城並啟動力場分離",
-    "evidenceHtml": "古代背景閃回，力場分離同時意外釋出氪石輻射。",
+    "fact": "氪星毀滅，Zor-El／Alura 逃至阿爾格城；Alura 其後因氪石輻射身亡，Kara 與氪普托被送往地球投靠卡爾艾爾",
+    "evidenceHtml": "古代背景閃回，力場分離同時意外釋出氪石輻射，長期輻射最終奪走 Alura 性命，促成 Kara 被送往地球投靠表哥的身世由來。",
     "workId": "supergirl-2026",
     "workLabel": "Supergirl ⁄ 超少女",
     "confidence": "medium",
@@ -556,36 +261,6 @@
     "sourceUrl": "https://thedirect.com/article/krypton-argo-city-supergirl-escapes",
     "characters": [
       "zor-el",
-      "alura"
-    ]
-  },
-  {
-    "id": "supergirl-kara-born",
-    "era": "約 2026",
-    "marker": "",
-    "fact": "Kara 出生",
-    "evidenceHtml": "片中提及的相對時間點。",
-    "workId": "supergirl-2026",
-    "workLabel": "Supergirl ⁄ 超少女",
-    "confidence": "medium",
-    "sourceName": "TheDirect",
-    "sourceUrl": "https://thedirect.com/article/krypton-argo-city-supergirl-escapes",
-    "characters": [
-      "kara-zor-el-supergirl"
-    ]
-  },
-  {
-    "id": "supergirl-alura-death-sent-to-earth",
-    "era": "約 2026",
-    "marker": "",
-    "fact": "Alura 因氪石輻射身亡，Kara 與氪普托被送往地球投靠卡爾艾爾",
-    "evidenceHtml": "閃回劇情交代身世來由。",
-    "workId": "supergirl-2026",
-    "workLabel": "Supergirl ⁄ 超少女",
-    "confidence": "low",
-    "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/supergirl-movie-spoilers-deaths-reveals-dc-universe/",
-    "characters": [
       "alura",
       "kara-zor-el-supergirl",
       "krypto",
@@ -593,11 +268,11 @@
     ]
   },
   {
-    "id": "supergirl-krypto-poisoned",
+    "id": "supergirl-revenge-quest",
     "era": "約 2026",
     "marker": "23 歲生日當天",
-    "fact": "氪普托遭 Krem 下毒，Kara 與 Ruthye 展開跨銀河復仇之旅",
-    "evidenceHtml": "Parade、TV Tropes、ScreenRant 等多篇獨立報導一致確認為 Kara 的「23 歲生日」當天。",
+    "fact": "氪普托遭 Krem 下毒，Kara 與 Ruthye 展開跨銀河復仇之旅，最終擊墜飛船、救出人質並取得解藥",
+    "evidenceHtml": "多篇獨立報導一致確認事發於 Kara 的 23 歲生日當天；高潮戰鬥中紅日削弱能力後、黃日重新升起恢復力量，Kara 順利擊敗 Krem。",
     "workId": "supergirl-2026",
     "workLabel": "Supergirl ⁄ 超少女",
     "confidence": "high",
@@ -608,37 +283,6 @@
       "krem-of-the-yellow-hills",
       "kara-zor-el-supergirl",
       "ruthye-marye-knoll"
-    ]
-  },
-  {
-    "id": "supergirl-climax-krem-ship",
-    "era": "約 2026",
-    "marker": "23 歲生日當天",
-    "fact": "擊墜 Krem 飛船，救出被擄「新娘」，取得氪普托解藥",
-    "evidenceHtml": "高潮戰鬥，紅日削弱能力後、黃日重新升起恢復力量。",
-    "workId": "supergirl-2026",
-    "workLabel": "Supergirl ⁄ 超少女",
-    "confidence": "medium",
-    "sourceName": "Collider",
-    "sourceUrl": "https://collider.com/supergirl-ending-explained-krypto-post-credits-scene-krem-death/",
-    "characters": [
-      "kara-zor-el-supergirl",
-      "krem-of-the-yellow-hills"
-    ]
-  },
-  {
-    "id": "supergirl-stays-on-earth",
-    "era": "約 2026",
-    "marker": "23 歲生日當天",
-    "fact": "結尾：Kara 決定暫留地球（銜接 Man of Tomorrow）",
-    "evidenceHtml": "「超人之後、Man of Tomorrow 之前」僅為岡恩戲外聲明，非片內明講。",
-    "workId": "supergirl-2026",
-    "workLabel": "Supergirl ⁄ 超少女",
-    "confidence": "low",
-    "sourceName": "ScreenRant",
-    "sourceUrl": "https://screenrant.com/supergirl-movie-spoilers-deaths-reveals-dc-universe/",
-    "characters": [
-      "kara-zor-el-supergirl"
     ]
   },
   {
