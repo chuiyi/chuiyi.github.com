@@ -1,8 +1,8 @@
 {
   "id": "tw75951147",
   "url": "https://asia.pokemon-card.com/tw/users/tw75951147/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-13T00:56:31.955Z",
-  "totalEvents": 32,
+  "fetchedAt": "2026-08-21T01:03:05.200Z",
+  "totalEvents": 34,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -16,8 +16,19 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-20-2026 14:00",
+      "eventDateTime": "2026-09-20 14:00",
+      "location": "磚櫃玩具店(台北店)",
+      "address": "新北市中和區宜安路18巷2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 14,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-20-2026 14:00",
       "eventDateTime": "2026-09-20 14:00",
@@ -30,10 +41,21 @@
       "pageNo": 2,
       "rowIndex": 12,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "09-20-2026 14:00",
-      "eventDateTime": "2026-09-20 14:00",
-      "location": "磚櫃玩具店(台北店)",
-      "address": "新北市中和區宜安路18巷2號",
+      "eventTime": "09-20-2026 10:30",
+      "eventDateTime": "2026-09-20 10:30",
+      "location": "Magic Star卡牌店",
+      "address": "台北市大安區和平東路二段231號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-20-2026 10:00",
+      "eventDateTime": "2026-09-20 10:00",
+      "location": "踢桌子",
+      "address": "新竹縣竹北市博愛街358號2F",
       "rank": "-",
       "lp": "-"
     },
@@ -41,10 +63,10 @@
       "pageNo": 1,
       "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "09-20-2026 10:30",
-      "eventDateTime": "2026-09-20 10:30",
-      "location": "Magic Star卡牌店",
-      "address": "台北市大安區和平東路二段231號2樓",
+      "eventTime": "09-20-2026 09:00",
+      "eventDateTime": "2026-09-20 09:00",
+      "location": "踢桌子",
+      "address": "新竹縣竹北市博愛街358號2F",
       "rank": "-",
       "lp": "-"
     },
