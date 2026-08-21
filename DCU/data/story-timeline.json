@@ -29,7 +29,9 @@
     "characters": [
       "matt-hagen-clayface",
       "caitlin-bates"
-    ]
+    ],
+    "excluded": true,
+    "excludedReason": "電影尚未上映（2026年10月上映），暫不列入大事紀，待上映後視實際劇情內容與更多官方資訊再行評估"
   },
   {
     "id": "suicide-squad-rick-flag-jr-death",
@@ -265,7 +267,9 @@
       "kara-zor-el-supergirl",
       "krypto",
       "clark-kent-superman"
-    ]
+    ],
+    "excluded": true,
+    "excludedReason": "缺乏確切時間點（僅知為古代閃回背景，無對應絕對年份），暫不列入"
   },
   {
     "id": "supergirl-revenge-quest",
@@ -283,7 +287,9 @@
       "krem-of-the-yellow-hills",
       "kara-zor-el-supergirl",
       "ruthye-marye-knoll"
-    ]
+    ],
+    "excluded": true,
+    "excludedReason": "雖知為 Kara 23 歲生日當天，但缺乏對應的絕對曆法年份，暫不列入"
   },
   {
     "id": "lanterns-hal-jordan-found-dead",
