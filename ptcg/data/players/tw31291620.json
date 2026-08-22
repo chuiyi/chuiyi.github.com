@@ -1,8 +1,8 @@
 {
   "id": "tw31291620",
   "url": "https://asia.pokemon-card.com/tw/users/tw31291620/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-14T02:08:56.095Z",
-  "totalEvents": 14,
+  "fetchedAt": "2026-08-22T02:28:56.902Z",
+  "totalEvents": 15,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -12,6 +12,17 @@
       "eventDateTime": "2026-09-20 10:30",
       "location": "怪獸造咔",
       "address": "台中市南區光輝街113號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 11:00",
+      "eventDateTime": "2026-09-19 11:00",
+      "location": "鬥樂一中店",
+      "address": "台中市北區尊賢街9號4樓",
       "rank": "-",
       "lp": "-"
     },
