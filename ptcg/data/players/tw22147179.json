@@ -1,12 +1,23 @@
 {
   "id": "tw22147179",
   "url": "https://asia.pokemon-card.com/tw/users/tw22147179/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-15T00:22:53.612Z",
-  "totalEvents": 121,
+  "fetchedAt": "2026-08-23T01:20:11.606Z",
+  "totalEvents": 122,
   "participatedTournaments": [
     {
+      "pageNo": 6,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-20-2026 10:00",
+      "eventDateTime": "2026-09-20 10:00",
+      "location": "踢桌子",
+      "address": "新竹縣竹北市博愛街358號2F",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
       "pageNo": 7,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Senior Category",
       "eventTime": "06-14-2026 09:30",
       "eventDateTime": "2026-06-14 09:30",
@@ -17,7 +28,7 @@
     },
     {
       "pageNo": 6,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2025-26 Taiwan Master Ball League TCG Division Senior Category",
       "eventTime": "06-13-2026 11:00",
       "eventDateTime": "2026-06-13 11:00",
@@ -38,8 +49,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 6,
-      "rowIndex": 19,
+      "pageNo": 7,
+      "rowIndex": 1,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "05-02-2026 11:00",
       "eventDateTime": "2026-05-02 11:00",

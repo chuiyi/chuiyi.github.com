@@ -1,9 +1,31 @@
 {
   "id": "tw16992270",
   "url": "https://asia.pokemon-card.com/tw/users/tw16992270/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-07T03:00:08.983Z",
-  "totalEvents": 32,
+  "fetchedAt": "2026-08-23T03:21:57.195Z",
+  "totalEvents": 34,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-06-2026 14:00",
+      "eventDateTime": "2026-09-06 14:00",
+      "location": "玩坊 桌遊店",
+      "address": "嘉義市西區博愛路一段365號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 12,
@@ -54,8 +76,8 @@
       "activityName": "2025-26 Taiwan Great Ball League Season 1",
       "eventTime": "09-21-2025 14:00",
       "eventDateTime": "2025-09-21 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -164,8 +186,8 @@
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "02-16-2025 14:00",
       "eventDateTime": "2025-02-16 14:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -219,8 +241,8 @@
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "01-19-2025 15:00",
       "eventDateTime": "2025-01-19 15:00",
-      "location": "嗷嗚桌遊百貨",
-      "address": "高雄市苓雅區中山二路461號10樓之15",
+      "location": "嗷嗚玩具社",
+      "address": "高雄市苓雅區新光路72號3樓",
       "rank": "-",
       "lp": "-"
     },

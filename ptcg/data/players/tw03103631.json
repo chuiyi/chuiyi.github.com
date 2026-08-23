@@ -1,12 +1,56 @@
 {
   "id": "tw03103631",
   "url": "https://asia.pokemon-card.com/tw/users/tw03103631/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-14T05:46:41.267Z",
-  "totalEvents": 260,
+  "fetchedAt": "2026-08-23T01:00:02.453Z",
+  "totalEvents": 264,
   "participatedTournaments": [
+    {
+      "pageNo": 14,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Senior Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 13,
       "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 14:00",
+      "eventDateTime": "2026-09-19 14:00",
+      "location": "貓腳印士林店",
+      "address": "台北市士林區大西路66號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 13,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-06-2026 14:00",
+      "eventDateTime": "2026-09-06 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 14,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-05-2026 13:00",
+      "eventDateTime": "2026-09-05 13:00",
+      "location": "ALG-Academy Legacy Games",
+      "address": "台北市中山區長春路368號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 14,
+      "rowIndex": 2,
       "activityName": "Day2 Deck Registration: 2025-26 Taiwan Master Ball League TCG Division Senior Category",
       "eventTime": "06-14-2026 09:30",
       "eventDateTime": "2026-06-14 09:30",
@@ -49,8 +93,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 13,
-      "rowIndex": 19,
+      "pageNo": 14,
+      "rowIndex": 1,
       "activityName": "2025-26 Taiwan Great Ball League Season 3",
       "eventTime": "04-25-2026 09:00",
       "eventDateTime": "2026-04-25 09:00",
