@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T05:46:45.845Z",
+  "generated_at": "2026-08-24T00:16:30.008Z",
   "generated_by": "scrape_players.js",
   "total_players": 6612,
   "players": [
@@ -4004,7 +4004,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-08-15T04:37:16.189Z",
+      "last_scraped_at": "2026-08-24T00:16:18.771Z",
       "source_file": "tw06518979.json",
       "note": ""
     },
@@ -4272,10 +4272,10 @@
     {
       "ptcg_id": "tw06934755",
       "level": "master",
-      "status": "failed",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-08-23T00:37:19.018Z",
-      "source_file": "",
+      "source_file": "tw06934755.json",
       "note": "exit code 1"
     },
     {
@@ -7505,7 +7505,7 @@
       "level": "junior",
       "status": "not_found",
       "has_history": false,
-      "last_scraped_at": "2026-08-15T04:37:17.458Z",
+      "last_scraped_at": "2026-08-24T00:16:20.018Z",
       "source_file": "",
       "note": "404 not found"
     },
@@ -15261,10 +15261,10 @@
     {
       "ptcg_id": "tw25412093",
       "level": "master",
-      "status": "failed",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-08-23T00:28:32.658Z",
-      "source_file": "",
+      "source_file": "tw25412093.json",
       "note": "exit code 1"
     },
     {
@@ -28005,10 +28005,10 @@
     {
       "ptcg_id": "tw46778389",
       "level": "junior",
-      "status": "failed",
-      "has_history": false,
+      "status": "ok",
+      "has_history": true,
       "last_scraped_at": "2026-08-23T04:43:46.003Z",
-      "source_file": "",
+      "source_file": "tw46778389.json",
       "note": "exit code 1"
     },
     {
@@ -28079,7 +28079,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-08-15T04:37:26.166Z",
+      "last_scraped_at": "2026-08-24T00:16:29.708Z",
       "source_file": "tw46863073.json",
       "note": ""
     },
@@ -58607,7 +58607,7 @@
       "level": "junior",
       "status": "ok",
       "has_history": true,
-      "last_scraped_at": "2026-08-15T04:37:07.451Z",
+      "last_scraped_at": "2026-08-24T00:16:08.860Z",
       "source_file": "tw98539979.json",
       "note": ""
     },
