@@ -1,9 +1,20 @@
 {
   "id": "tw38153478",
   "url": "https://asia.pokemon-card.com/tw/users/tw38153478/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-21T04:14:26.322Z",
-  "totalEvents": 39,
+  "fetchedAt": "2026-08-28T06:18:15.006Z",
+  "totalEvents": 40,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 20,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-1 (大師組)",
+      "eventTime": "09-12-2026 08:30",
+      "eventDateTime": "2026-09-12 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 16,
@@ -203,8 +214,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 18,
+      "pageNo": 2,
+      "rowIndex": 2,
       "activityName": "Great Ball League 2024-25 Season 3 Taiwan",
       "eventTime": "03-30-2025 14:00",
       "eventDateTime": "2025-03-30 14:00",
@@ -215,7 +226,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 18,
       "activityName": "Great Ball League 2024-25 Season 3 Taiwan",
       "eventTime": "03-30-2025 13:00",
       "eventDateTime": "2025-03-30 13:00",
@@ -236,8 +247,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 16,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "Great Ball League 2024-25 Season 3 Taiwan",
       "eventTime": "03-29-2025 12:00",
       "eventDateTime": "2025-03-29 12:00",
@@ -248,7 +259,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 14,
+      "rowIndex": 16,
       "activityName": "Great Ball League 2024-25 Season 3 Taiwan",
       "eventTime": "03-23-2025 13:00",
       "eventDateTime": "2025-03-23 13:00",
@@ -259,7 +270,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 13,
+      "rowIndex": 15,
       "activityName": "",
       "eventTime": "03-16-2025 08:30",
       "eventDateTime": "2025-03-16 08:30",
@@ -270,7 +281,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 15,
+      "rowIndex": 17,
       "activityName": "Great Ball League 2024-25 Season 3 Taiwan",
       "eventTime": "03-15-2025 12:00",
       "eventDateTime": "2025-03-15 12:00",
@@ -281,7 +292,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 11,
+      "rowIndex": 13,
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "02-16-2025 14:00",
       "eventDateTime": "2025-02-16 14:00",
@@ -291,19 +302,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
-      "activityName": "",
-      "eventTime": "02-15-2025 08:30",
-      "eventDateTime": "2025-02-15 08:30",
-      "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
-      "rowIndex": 2,
+      "pageNo": 1,
+      "rowIndex": 11,
       "activityName": "",
       "eventTime": "02-15-2025 08:30",
       "eventDateTime": "2025-02-15 08:30",
@@ -315,6 +315,17 @@
     {
       "pageNo": 1,
       "rowIndex": 12,
+      "activityName": "",
+      "eventTime": "02-15-2025 08:30",
+      "eventDateTime": "2025-02-15 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 14,
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "02-01-2025 09:00",
       "eventDateTime": "2025-02-01 09:00",

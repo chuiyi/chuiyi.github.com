@@ -1,8 +1,8 @@
 {
   "id": "tw26567324",
   "url": "https://asia.pokemon-card.com/tw/users/tw26567324/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-21T04:39:33.879Z",
-  "totalEvents": 32,
+  "fetchedAt": "2026-08-28T06:41:51.184Z",
+  "totalEvents": 34,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -12,6 +12,28 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 13,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (大師組)",
+      "eventTime": "10-03-2026 08:30",
+      "eventDateTime": "2026-10-03 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 14,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-1 (大師組)",
+      "eventTime": "09-12-2026 08:30",
+      "eventDateTime": "2026-09-12 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
       "rank": "-",
       "lp": "-"
     },
@@ -126,8 +148,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 20,
       "activityName": "Master Ball League 2024-25 Taiwan TCG Division Masters Category",
       "eventTime": "06-07-2025 08:00",
       "eventDateTime": "2025-06-07 08:00",
@@ -137,8 +159,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "",
       "eventTime": "05-25-2025 08:30",
       "eventDateTime": "2025-05-25 08:30",
