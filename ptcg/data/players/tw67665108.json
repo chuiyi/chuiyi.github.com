@@ -1,8 +1,8 @@
 {
   "id": "tw67665108",
   "url": "https://asia.pokemon-card.com/tw/users/tw67665108/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-22T02:32:22.715Z",
-  "totalEvents": 34,
+  "fetchedAt": "2026-08-30T02:01:17.807Z",
+  "totalEvents": 37,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -12,6 +12,39 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 17,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-3 (大師組)",
+      "eventTime": "10-17-2026 08:30",
+      "eventDateTime": "2026-10-17 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 16,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (大師組)",
+      "eventTime": "10-03-2026 08:30",
+      "eventDateTime": "2026-10-03 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 15,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-1 (大師組)",
+      "eventTime": "09-12-2026 08:30",
+      "eventDateTime": "2026-09-12 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
       "rank": "-",
       "lp": "-"
     },
@@ -126,8 +159,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 18,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "01-18-2025 13:00",
       "eventDateTime": "2025-01-18 13:00",
@@ -137,8 +170,8 @@
       "lp": "8"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 19,
+      "pageNo": 2,
+      "rowIndex": 2,
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "01-18-2025 12:00",
       "eventDateTime": "2025-01-18 12:00",
@@ -148,8 +181,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 3,
       "activityName": "Great Ball League 2024-25 Season 2 Taiwan",
       "eventTime": "01-04-2025 09:00",
       "eventDateTime": "2025-01-04 09:00",
@@ -171,7 +204,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 15,
+      "rowIndex": 18,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-17-2024 14:00",
       "eventDateTime": "2024-11-17 14:00",
@@ -182,7 +215,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 16,
+      "rowIndex": 19,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-17-2024 14:00",
       "eventDateTime": "2024-11-17 14:00",
@@ -192,8 +225,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 3,
+      "pageNo": 1,
+      "rowIndex": 17,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-17-2024 10:00",
       "eventDateTime": "2024-11-17 10:00",
@@ -204,7 +237,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 14,
+      "rowIndex": 16,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-16-2024 14:30",
       "eventDateTime": "2024-11-16 14:30",
@@ -215,7 +248,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 20,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-16-2024 14:30",
       "eventDateTime": "2024-11-16 14:30",
@@ -226,7 +259,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 13,
+      "rowIndex": 15,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-16-2024 14:00",
       "eventDateTime": "2024-11-16 14:00",
@@ -236,8 +269,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 2,
+      "pageNo": 1,
+      "rowIndex": 14,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-16-2024 12:00",
       "eventDateTime": "2024-11-16 12:00",
@@ -247,8 +280,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 2,
-      "rowIndex": 1,
+      "pageNo": 1,
+      "rowIndex": 13,
       "activityName": "Great Ball League 2024-25 Season 1 Taiwan",
       "eventTime": "11-10-2024 15:00",
       "eventDateTime": "2024-11-10 15:00",
