@@ -1,9 +1,20 @@
 {
   "id": "tw58274186",
   "url": "https://asia.pokemon-card.com/tw/users/tw58274186/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-28T05:35:47.159Z",
-  "totalEvents": 5,
+  "fetchedAt": "2026-09-04T05:53:34.780Z",
+  "totalEvents": 6,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 6,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 4,

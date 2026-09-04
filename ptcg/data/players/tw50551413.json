@@ -1,17 +1,61 @@
 {
   "id": "tw50551413",
   "url": "https://asia.pokemon-card.com/tw/users/tw50551413/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-28T07:10:36.483Z",
-  "totalEvents": 19,
+  "fetchedAt": "2026-09-04T07:27:22.910Z",
+  "totalEvents": 23,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 2,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (大師組)",
+      "eventTime": "11-21-2026 08:30",
+      "eventDateTime": "2026-11-21 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 19,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "09-20-2026 13:00",
-      "eventDateTime": "2026-09-20 13:00",
-      "location": "Bruce桌遊空間-美術館店",
-      "address": "高雄市鼓山區華榮路405號",
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 3,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-3 (大師組)",
+      "eventTime": "10-17-2026 08:30",
+      "eventDateTime": "2026-10-17 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 1,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (大師組)",
+      "eventTime": "10-03-2026 08:30",
+      "eventDateTime": "2026-10-03 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-1 (大師組)",
+      "eventTime": "09-12-2026 08:30",
+      "eventDateTime": "2026-09-12 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區林森北路372號6樓之一",
       "rank": "-",
       "lp": "-"
     },
