@@ -1,12 +1,12 @@
 {
   "id": "tw60634955",
   "url": "https://asia.pokemon-card.com/tw/users/tw60634955/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-08-31T03:03:16.465Z",
-  "totalEvents": 102,
+  "fetchedAt": "2026-09-06T05:45:38.591Z",
+  "totalEvents": 101,
   "participatedTournaments": [
     {
-      "pageNo": 6,
-      "rowIndex": 2,
+      "pageNo": 5,
+      "rowIndex": 17,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (孩童組)",
       "eventTime": "11-21-2026 08:30",
       "eventDateTime": "2026-11-21 08:30",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Junior Division",
       "eventTime": "11-07-2026 08:00",
       "eventDateTime": "2026-11-07 08:00",
@@ -144,17 +144,6 @@
       "eventDateTime": "2026-09-06 13:00",
       "location": "嗷嗚玩具社",
       "address": "高雄市苓雅區新光路72號3樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 5,
-      "rowIndex": 16,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "09-05-2026 13:00",
-      "eventDateTime": "2026-09-05 13:00",
-      "location": "漢謚玩具社",
-      "address": "高雄市苓雅區中華四路244號2樓",
       "rank": "-",
       "lp": "-"
     },
