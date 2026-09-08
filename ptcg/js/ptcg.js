@@ -3551,7 +3551,7 @@ const PTCG = (() => {
         }
 
         tbody.innerHTML = pageList.map((p, i) => `
-            <tr class="${_currentWorldPlayers > 0 && (p.rank || pageStart + i + 1) <= _currentWorldPlayers ? 'player-qualified-row' : ''}">
+            <tr class="${_currentWorldPlayers > 0 && parseInt(p.score, 10) > 0 && (p.rank || pageStart + i + 1) <= _currentWorldPlayers ? 'player-qualified-row' : ''}">
                 <td>${getRankBadge(p.rank || pageStart + i + 1)}</td>
                 <td class="player-name-cell">
                     ${escapeHtml(p.name)}
