@@ -535,6 +535,18 @@ const PTCG = (() => {
         return PLAYER_LEVELS.filter(level => manifest?.latest?.[level]?.file);
     }
 
+    // 依賽季代碼（如 "2025-26"）取出該賽季自己的 latest / season_start_from /
+    // season_end，找不到就退回目前（最新）賽季的資料，維持既有行為不受影響。
+    function _getSeasonManifest(manifest, seasonKey) {
+        const season = manifest?.seasons?.[seasonKey];
+        if (!season?.latest) return manifest;
+        return {
+            ...manifest,
+            ...season,
+            latest: season.latest,
+        };
+    }
+
     async function loadPlayersManifest() {
         const manifest = await fetchJSON('ranking.json');
         if (!manifest || typeof manifest !== 'object' || !manifest.latest) {
@@ -3307,6 +3319,7 @@ const PTCG = (() => {
     let _playersManifest = null;
     let _playersHistoryIndex = { players: [] };
     let _currentPlayerLevel = 'master';
+    let _currentPlayerSeason = '';
     let _currentWorldPlayers = 0;
     let _playerPageSize = 200;
     let _currentPlayerPage = 1;
@@ -3377,6 +3390,9 @@ const PTCG = (() => {
         try {
             _bindGlobalAnalyticsInteractions();
             _playersManifest = await loadPlayersManifest();
+            const seasonSelect = document.getElementById('player-season-select');
+            _currentPlayerSeason = _playersManifest.current_season || seasonSelect?.value || '';
+            if (seasonSelect && _currentPlayerSeason) seasonSelect.value = _currentPlayerSeason;
             const historyIndex = await loadPlayerHistoryIndex();
             _playersHistoryIndex = historyIndex;
             _setPlayerHistoryIndex(historyIndex);
@@ -3406,6 +3422,18 @@ const PTCG = (() => {
                     player_level: _currentPlayerLevel,
                     result_count: _getFilteredPlayers().length,
                 });
+            });
+        });
+        document.getElementById('player-season-select')?.addEventListener('change', async (e) => {
+            const season = e.target.value;
+            if (!season || season === _currentPlayerSeason) return;
+            _currentPlayerSeason = season;
+            _currentPlayerPage = 1;
+            await _loadPlayersForLevel(_currentPlayerLevel);
+            _renderPlayersTable();
+            _trackFeatureUsage('player_season_change', {
+                player_season: _currentPlayerSeason,
+                result_count: _getFilteredPlayers().length,
             });
         });
         document.getElementById('player-search')?.addEventListener('input', _debounce(() => {
@@ -3516,10 +3544,11 @@ const PTCG = (() => {
     }
 
     async function _loadPlayersForLevel(level) {
-        const result = await loadPlayersFromManifest(_playersManifest, level);
-        const updateBreakdown = getPlayersPageUpdateBreakdown(_playersManifest, _playersHistoryIndex, level);
+        const seasonManifest = _getSeasonManifest(_playersManifest, _currentPlayerSeason);
+        const result = await loadPlayersFromManifest(seasonManifest, level);
+        const updateBreakdown = getPlayersPageUpdateBreakdown(seasonManifest, _playersHistoryIndex, level);
         _allPlayers = result.players;
-        _currentWorldPlayers = parseInt(_playersManifest?.latest?.[level]?.world_players, 10) || 0;
+        _currentWorldPlayers = parseInt(seasonManifest?.latest?.[level]?.world_players, 10) || 0;
 
         _setText('pstat-tracked', _allPlayers.length);
         const topScore = _allPlayers.reduce((max, player) => Math.max(max, player.scoreValue || 0), 0);
@@ -3618,23 +3647,32 @@ const PTCG = (() => {
         let top8SummaryHtml = '';
         let historyEventsHtml = '';
         let fetchedAtHtml = '';
+        // 詳情跟著目前選取的賽季走：歷史賽季有 season_end 上限，目前賽季沒有上限（持續進行中）。
+        const seasonManifest = _getSeasonManifest(_playersManifest, _currentPlayerSeason);
+        const seasonRangeLabel = seasonManifest?.season_end
+            ? `${seasonManifest.season_start_from} ~ ${seasonManifest.season_end}`
+            : `${seasonManifest?.season_start_from || ''} 之後`;
         // 嘗試加載玩家歷史數據
-        if (player.ptcg_id && _playersManifest?.season_start_from) {
+        if (player.ptcg_id && seasonManifest?.season_start_from) {
             try {
                 const playerHistory = await _loadPlayerHistory(player.ptcg_id);
                 if (playerHistory) {
-                    const seasonStart = parseDateTimeValue(_playersManifest.season_start_from);
+                    const seasonStart = parseDateTimeValue(seasonManifest.season_start_from);
+                    const seasonEnd = seasonManifest.season_end
+                        ? parseDateTimeValue(`${seasonManifest.season_end} 23:59:59`)
+                        : null;
                     if (playerHistory.fetchedAt && fetchedAtEl) {
                         fetchedAtEl.textContent = `最後更新：${formatUpdatedAt(playerHistory.fetchedAt)}`;
                     }
                     fetchedAtHtml = '';
                     
-                    // 過濾出大於 season_start_from 且 lp > 0 的賽事
+                    // 過濾出落在目前選取賽季區間內、且 lp > 0 的賽事
                     const filteredEvents = (playerHistory.participatedTournaments || [])
                         .filter(event => {
                             const eventDate = parseDateTimeValue(event.eventDateTime);
                             const lpValue = parseInt(event.lp, 10);
                             if (!eventDate || !seasonStart) return false;
+                            if (seasonEnd && eventDate > seasonEnd) return false;
                             return eventDate > seasonStart && lpValue > 0;
                         });
 
@@ -3697,7 +3735,7 @@ const PTCG = (() => {
                             </div>
                         `;
                     } else {
-                        historyEventsHtml = `<p class="text-muted mb-3">此玩家在 ${escapeHtml(_playersManifest.season_start_from)} 之後，沒有符合條件的積分賽事。</p>`;
+                        historyEventsHtml = `<p class="text-muted mb-3">此玩家在 ${escapeHtml(seasonRangeLabel)}，沒有符合條件的積分賽事。</p>`;
                     }
                 }
             } catch (err) {
@@ -3734,7 +3772,7 @@ const PTCG = (() => {
             </div>
             ${top8SummaryHtml}
             ${historyEventsHtml}
-            <p class="text-muted mb-0" style="font-size:0.9rem">玩家歷史檔案存在時，顯示自 ${_playersManifest?.season_start_from || '本季'} 起的所有有效賽事紀錄。</p>`;
+            <p class="text-muted mb-0" style="font-size:0.9rem">玩家歷史檔案存在時，顯示 ${escapeHtml(seasonRangeLabel)}的所有有效賽事紀錄。</p>`;
 
         document.getElementById('playerModalBody').innerHTML = body;
         showModal(document.getElementById('playerModal'));

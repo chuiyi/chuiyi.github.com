@@ -124,6 +124,8 @@ name,name_en,score,tournaments,division,region,top_decks
 
 ```json
 {
+  "season_start_from": "2026-09-01",
+  "current_season": "2026-27",
   "latest": {
     "master": {
       "date": "20260323",
@@ -131,9 +133,28 @@ name,name_en,score,tournaments,division,region,top_decks
       "total_players": 4518,
       "world_players": 32
     }
+  },
+  "seasons": {
+    "2025-26": {
+      "label": "2025-26 賽季",
+      "season_start_from": "2025-09-01",
+      "season_end": "2026-08-31",
+      "latest": { "master": { "...": "同 latest 的結構，file 指向 ranking_old/ 裡的封存榜單" } }
+    },
+    "2026-27": {
+      "label": "2026-27 賽季",
+      "season_start_from": "2026-09-01",
+      "latest": { "master": "...與頂層 latest 相同" }
+    }
   }
 }
 ```
+
+`latest`永遠指向「目前賽季」的榜單，跟舊版行為一致；`seasons` 是賽季結算時（見
+`ptcg/scraper/finalize_season_ranking.js` 的 `--season-label`/`--new-season-label`）
+才會補上的欄位，讓玩家排行頁能切換檢視歷史賽季，`current_season` 標示目前賽季
+對應的 key。歷史賽季有 `season_end`（含），代表已結算封存；目前賽季沒有
+`season_end`，代表仍在累積中。
 
 ### `data/ranking_trends.json`
 
@@ -235,6 +256,7 @@ localStorage.setItem('ptcg_ga_measurement_id', 'G-XXXXXXXXXX');
 - `tournament_search`
 - `tournament_pagination_click`
 - `player_level_change`
+- `player_season_change`
 - `player_search`
 - `player_only_detail_toggle`
 - `player_page_size_change`

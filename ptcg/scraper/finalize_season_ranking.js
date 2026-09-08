@@ -17,7 +17,13 @@
  *    存成 --reset-date 的新榜單，取代 ranking.json 的 latest，並把
  *    season_start_from 更新為 --new-season-start。
  *
- * 3) 重新產生 ranking_trends.json（沿用 build_ranking_trends.js）。
+ * 3) 若有提供 --season-label / --new-season-label，同時把這兩個賽季的
+ *    latest 榜單各自存進 ranking.json 的 manifest.seasons[label]，並把
+ *    manifest.current_season 設成新賽季——這是玩家排行頁「賽季」下拉選單
+ *    的資料來源，讓使用者可以切換回上一賽季（2026/08/31 結算版）或目前
+ *    賽季（歸零版）的榜單。
+ *
+ * 4) 重新產生 ranking_trends.json（沿用 build_ranking_trends.js）。
  *
  * 只更新「已經在榜單上」的玩家分數，不會新增或移除任何玩家列。
  *
@@ -26,7 +32,9 @@
  *     --season-end 2026-08-31 \
  *     --snapshot-date 20260831 \
  *     --reset-date 20260908 \
- *     --new-season-start 2026-09-01
+ *     --new-season-start 2026-09-01 \
+ *     --season-label 2025-26 \
+ *     --new-season-label 2026-27
  *
  *   加 --dry-run 只印出重算結果，不寫檔。
  */
@@ -54,6 +62,8 @@ function parseArgs(argv) {
     snapshotDate: '',
     resetDate: '',
     newSeasonStart: '',
+    seasonLabel: '',
+    newSeasonLabel: '',
     dryRun: false,
   };
 
@@ -64,6 +74,8 @@ function parseArgs(argv) {
     if (token === '--snapshot-date' && argv[i + 1]) { args.snapshotDate = argv[++i]; continue; }
     if (token === '--reset-date' && argv[i + 1]) { args.resetDate = argv[++i]; continue; }
     if (token === '--new-season-start' && argv[i + 1]) { args.newSeasonStart = argv[++i]; continue; }
+    if (token === '--season-label' && argv[i + 1]) { args.seasonLabel = argv[++i]; continue; }
+    if (token === '--new-season-label' && argv[i + 1]) { args.newSeasonLabel = argv[++i]; continue; }
     if (token === '--dry-run') { args.dryRun = true; continue; }
   }
 
@@ -338,19 +350,37 @@ function main() {
     ``,
   ];
 
+  const archiveManifestLatest = {};
+  const resetManifestLatest = {};
+
   for (const result of results) {
     const snapshotFile = `ranking_${args.snapshotDate}_${result.level}_result.csv`;
     const resetFile = `ranking_${args.resetDate}_${result.level}_result.csv`;
+    const worldPlayers = manifest.latest[result.level]?.world_players;
 
     writeRankingCsv(path.join(RANKING_OLD_DIR, snapshotFile), result.snapshotRows);
     writeRankingCsv(path.join(DATA_DIR, resetFile), result.resetSnapshotRows);
 
-    manifest.latest[result.level] = {
-      ...manifest.latest[result.level],
+    const resetEntry = {
+      level: result.level,
+      label: LEVEL_LABELS[result.level],
       date: args.resetDate,
       updated_at: new Date().toISOString(),
       file: resetFile,
       total_players: result.totalPlayers,
+      ...(worldPlayers ? { world_players: worldPlayers } : {}),
+    };
+    manifest.latest[result.level] = resetEntry;
+    resetManifestLatest[result.level] = resetEntry;
+
+    archiveManifestLatest[result.level] = {
+      level: result.level,
+      label: LEVEL_LABELS[result.level],
+      date: args.snapshotDate,
+      updated_at: resetEntry.updated_at,
+      file: `ranking_old/${snapshotFile}`,
+      total_players: result.totalPlayers,
+      ...(worldPlayers ? { world_players: worldPlayers } : {}),
     };
 
     reportLines.push(`## ${LEVEL_LABELS[result.level]}`);
@@ -375,6 +405,25 @@ function main() {
 
   manifest.season_start_from = args.newSeasonStart;
   manifest.updated_at = new Date().toISOString();
+
+  if (args.seasonLabel && args.newSeasonLabel) {
+    manifest.current_season = args.newSeasonLabel;
+    manifest.seasons = manifest.seasons || {};
+    manifest.seasons[args.seasonLabel] = {
+      label: `${args.seasonLabel} 賽季`,
+      season_start_from: args.seasonStart,
+      season_end: args.seasonEnd,
+      latest: archiveManifestLatest,
+    };
+    manifest.seasons[args.newSeasonLabel] = {
+      label: `${args.newSeasonLabel} 賽季`,
+      season_start_from: args.newSeasonStart,
+      latest: resetManifestLatest,
+    };
+  } else {
+    console.log('[finalize] 未提供 --season-label / --new-season-label，略過寫入 manifest.seasons（前端賽季切換選單需要這個欄位）');
+  }
+
   writeJson(MANIFEST_PATH, manifest);
 
   fs.mkdirSync(REPORTS_DIR, { recursive: true });
