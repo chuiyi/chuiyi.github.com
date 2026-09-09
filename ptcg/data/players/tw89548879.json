@@ -1,28 +1,94 @@
 {
   "id": "tw89548879",
   "url": "https://asia.pokemon-card.com/tw/users/tw89548879/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-03T07:08:47.489Z",
-  "totalEvents": 51,
+  "fetchedAt": "2026-09-09T07:33:54.434Z",
+  "totalEvents": 59,
   "participatedTournaments": [
     {
       "pageNo": 3,
-      "rowIndex": 11,
+      "rowIndex": 10,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (大師組)",
       "eventTime": "11-21-2026 08:30",
       "eventDateTime": "2026-11-21 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
     {
       "pageNo": 3,
-      "rowIndex": 10,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-18-2026 09:00",
+      "eventDateTime": "2026-10-18 09:00",
+      "location": "嶺東玩咖",
+      "address": "台中市南屯區保安五街98號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 9,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-3 (大師組)",
       "eventTime": "10-17-2026 08:30",
       "eventDateTime": "2026-10-17 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-11-2026 13:00",
+      "eventDateTime": "2026-10-11 13:00",
+      "location": "5樓-豐原店",
+      "address": "臺中市豐原區三民路65號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-11-2026 11:00",
+      "eventDateTime": "2026-10-11 11:00",
+      "location": "諾亞方舟 - 彰化魔豆店",
+      "address": "彰化縣彰化市光復路173號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-10-2026 11:00",
+      "eventDateTime": "2026-10-10 11:00",
+      "location": "諾亞方舟益智遊戲",
+      "address": "台中市西屯區台灣大道二段910號5樓之1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-10-2026 11:00",
+      "eventDateTime": "2026-10-10 11:00",
+      "location": "Ririco - 集換式卡牌專賣",
+      "address": "406台中市北屯區北屯路288號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-04-2026 14:30",
+      "eventDateTime": "2026-10-04 14:30",
+      "location": "玩坊 桌遊店",
+      "address": "嘉義市西區博愛路一段365號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -33,7 +99,40 @@
       "eventTime": "10-03-2026 08:30",
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-27-2026 11:00",
+      "eventDateTime": "2026-09-27 11:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-26-2026 14:00",
+      "eventDateTime": "2026-09-26 14:00",
+      "location": "鬥陣",
+      "address": "彰化縣彰化市永樂街12號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-25-2026 14:00",
+      "eventDateTime": "2026-09-25 14:00",
+      "location": "卡舖啦啦",
+      "address": "台中市南區復興路二段30-26號2樓",
       "rank": "-",
       "lp": "-"
     },
@@ -72,24 +171,13 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 9,
-      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-1 (大師組)",
-      "eventTime": "09-12-2026 08:30",
-      "eventDateTime": "2026-09-12 08:30",
-      "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 3,
       "rowIndex": 7,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-06-2026 14:00",
       "eventDateTime": "2026-09-06 14:00",
       "location": "玩坊 桌遊店",
       "address": "嘉義市西區博愛路一段365號1樓",
-      "rank": "-",
+      "rank": "45",
       "lp": "-"
     },
     {
@@ -100,7 +188,7 @@
       "eventDateTime": "2026-09-05 13:00",
       "location": "卡多卡牌遊戲店",
       "address": "南投縣草屯鎮芬草路一段229-3",
-      "rank": "-",
+      "rank": "15",
       "lp": "-"
     },
     {
@@ -132,7 +220,7 @@
       "eventTime": "02-27-2026 08:30",
       "eventDateTime": "2026-02-27 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -187,7 +275,7 @@
       "eventTime": "12-27-2025 08:30",
       "eventDateTime": "2025-12-27 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -198,7 +286,7 @@
       "eventTime": "11-15-2025 08:30",
       "eventDateTime": "2025-11-15 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -209,7 +297,7 @@
       "eventTime": "11-15-2025 08:30",
       "eventDateTime": "2025-11-15 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "150",
       "lp": "6"
     },
@@ -396,7 +484,7 @@
       "eventTime": "05-25-2025 08:30",
       "eventDateTime": "2025-05-25 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -451,7 +539,7 @@
       "eventTime": "04-06-2025 08:30",
       "eventDateTime": "2025-04-06 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -473,7 +561,7 @@
       "eventTime": "03-16-2025 08:30",
       "eventDateTime": "2025-03-16 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -517,7 +605,7 @@
       "eventTime": "12-29-2024 08:30",
       "eventDateTime": "2024-12-29 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -550,7 +638,7 @@
       "eventTime": "03-18-2023 08:00",
       "eventDateTime": "2023-03-18 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "453",
       "lp": "-"
     },
@@ -561,7 +649,7 @@
       "eventTime": "02-25-2023 08:00",
       "eventDateTime": "2023-02-25 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "26",
       "lp": "75"
     }
