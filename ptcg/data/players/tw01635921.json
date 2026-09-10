@@ -1,9 +1,20 @@
 {
   "id": "tw01635921",
   "url": "https://asia.pokemon-card.com/tw/users/tw01635921/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-04T06:22:29.155Z",
-  "totalEvents": 18,
+  "fetchedAt": "2026-09-10T06:55:10.859Z",
+  "totalEvents": 19,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 18,
@@ -143,7 +154,7 @@
       "eventTime": "02-18-2024 08:00",
       "eventDateTime": "2024-02-18 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "200",
       "lp": "-"
     },
@@ -165,7 +176,7 @@
       "eventTime": "11-19-2023 08:00",
       "eventDateTime": "2023-11-19 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "223",
       "lp": "-"
     },
@@ -176,7 +187,7 @@
       "eventTime": "11-11-2023 08:00",
       "eventDateTime": "2023-11-11 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "175",
       "lp": "-"
     },
@@ -198,7 +209,7 @@
       "eventTime": "09-30-2023 08:00",
       "eventDateTime": "2023-09-30 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "130",
       "lp": "-"
     }
