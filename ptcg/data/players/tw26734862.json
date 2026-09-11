@@ -1,8 +1,8 @@
 {
   "id": "tw26734862",
   "url": "https://asia.pokemon-card.com/tw/users/tw26734862/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-05T05:55:18.198Z",
-  "totalEvents": 6,
+  "fetchedAt": "2026-09-11T06:26:30.243Z",
+  "totalEvents": 9,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -12,6 +12,39 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-09-2026 10:30",
+      "eventDateTime": "2026-10-09 10:30",
+      "location": "森桌遊",
+      "address": "新北市蘆洲區中山一路120巷3號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 8,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-27-2026 14:00",
+      "eventDateTime": "2026-09-27 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-26-2026 10:30",
+      "eventDateTime": "2026-09-26 10:30",
+      "location": "松鼠窩桌遊館",
+      "address": "新北市三重區重新路一段78號2樓",
       "rank": "-",
       "lp": "-"
     },
@@ -33,7 +66,7 @@
       "eventTime": "12-27-2025 08:30",
       "eventDateTime": "2025-12-27 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },

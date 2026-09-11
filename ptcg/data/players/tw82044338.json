@@ -1,9 +1,20 @@
 {
   "id": "tw82044338",
   "url": "https://asia.pokemon-card.com/tw/users/tw82044338/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-05T05:32:28.412Z",
-  "totalEvents": 19,
+  "fetchedAt": "2026-09-11T06:02:37.770Z",
+  "totalEvents": 20,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 19,
@@ -33,7 +44,7 @@
       "eventTime": "04-19-2025 08:30",
       "eventDateTime": "2025-04-19 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -44,7 +55,7 @@
       "eventTime": "12-07-2024 08:30",
       "eventDateTime": "2024-12-07 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -88,7 +99,7 @@
       "eventTime": "03-03-2024 08:00",
       "eventDateTime": "2024-03-03 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "225",
       "lp": "-"
     },
@@ -110,7 +121,7 @@
       "eventTime": "11-11-2023 08:00",
       "eventDateTime": "2023-11-11 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "144",
       "lp": "-"
     },
@@ -132,7 +143,7 @@
       "eventTime": "10-08-2023 08:00",
       "eventDateTime": "2023-10-08 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "353",
       "lp": "-"
     },
@@ -143,7 +154,7 @@
       "eventTime": "10-07-2023 08:00",
       "eventDateTime": "2023-10-07 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "353",
       "lp": "-"
     },
@@ -154,7 +165,7 @@
       "eventTime": "09-24-2023 08:00",
       "eventDateTime": "2023-09-24 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "204",
       "lp": "-"
     },
@@ -165,7 +176,7 @@
       "eventTime": "05-27-2023 08:00",
       "eventDateTime": "2023-05-27 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "272",
       "lp": "50"
     },
@@ -176,7 +187,7 @@
       "eventTime": "03-18-2023 08:00",
       "eventDateTime": "2023-03-18 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "172",
       "lp": "50"
     },
@@ -187,7 +198,7 @@
       "eventTime": "12-10-2022 00:00",
       "eventDateTime": "2022-12-10 00:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "471",
       "lp": "-"
     },
@@ -198,7 +209,7 @@
       "eventTime": "10-01-2022 00:00",
       "eventDateTime": "2022-10-01 00:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -209,7 +220,7 @@
       "eventTime": "06-11-2022 00:00",
       "eventDateTime": "2022-06-11 00:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "384",
       "lp": "-"
     }

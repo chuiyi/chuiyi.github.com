@@ -1,8 +1,8 @@
 {
   "id": "tw52517280",
   "url": "https://asia.pokemon-card.com/tw/users/tw52517280/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-05T06:06:22.922Z",
-  "totalEvents": 18,
+  "fetchedAt": "2026-09-11T06:38:23.008Z",
+  "totalEvents": 19,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -13,6 +13,17 @@
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-06-2026 11:00",
+      "eventDateTime": "2026-09-06 11:00",
+      "location": "Ririco - 集換式卡牌專賣",
+      "address": "406台中市北屯區北屯路288號B1",
+      "rank": "32",
       "lp": "-"
     },
     {
@@ -99,7 +110,7 @@
       "eventTime": "10-09-2023 08:00",
       "eventDateTime": "2023-10-09 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "241",
       "lp": "-"
     },
@@ -110,7 +121,7 @@
       "eventTime": "09-30-2023 08:00",
       "eventDateTime": "2023-09-30 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "226",
       "lp": "-"
     },
@@ -121,7 +132,7 @@
       "eventTime": "09-24-2023 08:00",
       "eventDateTime": "2023-09-24 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "83",
       "lp": "-"
     },
@@ -132,7 +143,7 @@
       "eventTime": "05-27-2023 08:00",
       "eventDateTime": "2023-05-27 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "200",
       "lp": "100"
     },
@@ -143,7 +154,7 @@
       "eventTime": "03-18-2023 08:00",
       "eventDateTime": "2023-03-18 08:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "270",
       "lp": "-"
     },
@@ -154,7 +165,7 @@
       "eventTime": "12-10-2022 00:00",
       "eventDateTime": "2022-12-10 00:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "136",
       "lp": "50"
     },
@@ -165,7 +176,7 @@
       "eventTime": "10-01-2022 00:00",
       "eventDateTime": "2022-10-01 00:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -176,7 +187,7 @@
       "eventTime": "09-03-2022 00:00",
       "eventDateTime": "2022-09-03 00:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "57",
       "lp": "50"
     },
@@ -187,7 +198,7 @@
       "eventTime": "01-08-2022 00:00",
       "eventDateTime": "2022-01-08 00:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "18",
       "lp": "150"
     },
@@ -198,7 +209,7 @@
       "eventTime": "10-23-2021 00:00",
       "eventDateTime": "2021-10-23 00:00",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "1",
       "lp": "250"
     }

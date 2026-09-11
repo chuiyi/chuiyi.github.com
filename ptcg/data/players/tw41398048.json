@@ -1,8 +1,8 @@
 {
   "id": "tw41398048",
   "url": "https://asia.pokemon-card.com/tw/users/tw41398048/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-05T07:18:50.820Z",
-  "totalEvents": 6,
+  "fetchedAt": "2026-09-11T07:54:17.591Z",
+  "totalEvents": 7,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -17,12 +17,23 @@
     },
     {
       "pageNo": 1,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-10-2026 11:00",
+      "eventDateTime": "2026-10-10 11:00",
+      "location": "Ririco - 集換式卡牌專賣",
+      "address": "406台中市北屯區北屯路288號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
       "rowIndex": 5,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (大師組)",
       "eventTime": "10-03-2026 08:30",
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
@@ -44,7 +55,7 @@
       "eventTime": "09-12-2026 08:30",
       "eventDateTime": "2026-09-12 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
