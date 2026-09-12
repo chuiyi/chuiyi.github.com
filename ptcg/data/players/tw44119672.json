@@ -1,8 +1,8 @@
 {
   "id": "tw44119672",
   "url": "https://asia.pokemon-card.com/tw/users/tw44119672/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-06T03:57:08.194Z",
-  "totalEvents": 13,
+  "fetchedAt": "2026-09-12T04:42:01.668Z",
+  "totalEvents": 14,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -12,6 +12,17 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-04-2026 13:00",
+      "eventDateTime": "2026-10-04 13:00",
+      "location": "貓腳印淡水店",
+      "address": "新北市淡水區學府路28號5f",
       "rank": "-",
       "lp": "-"
     },
@@ -33,7 +44,7 @@
       "eventTime": "05-09-2026 08:30",
       "eventDateTime": "2026-05-09 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "35",
       "lp": "-"
     },
@@ -44,7 +55,7 @@
       "eventTime": "04-11-2026 08:30",
       "eventDateTime": "2026-04-11 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "40",
       "lp": "-"
     },
@@ -55,7 +66,7 @@
       "eventTime": "02-27-2026 08:30",
       "eventDateTime": "2026-02-27 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "49",
       "lp": "10"
     },
@@ -132,7 +143,7 @@
       "eventTime": "12-07-2024 08:30",
       "eventDateTime": "2024-12-07 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區林森北路372號6樓之一",
+      "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
     },
