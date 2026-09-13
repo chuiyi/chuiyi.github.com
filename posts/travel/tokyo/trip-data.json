@@ -6,7 +6,7 @@
     "dateRangeLabel": "2026/09/17 - 2026/09/22",
     "timezone": "亞洲/東京時間",
     "countdownTarget": "2026-09-17T06:45:00+08:00",
-    "lastUpdated": "2026-07-07"
+    "lastUpdated": "2026-09-13"
   },
   "overview": {
     "travelName": "日本東京",
@@ -80,7 +80,7 @@
       "id": "day1",
       "label": "D1",
       "dateLabel": "09/17 四",
-      "summary": "抵達日本 → 龜有雙卡大滿貫 → 新宿購物拿卡",
+      "summary": "抵達日本 → 東京車站掃貨 → 合羽橋道具街拿卡 → 淺草地下街晚餐",
       "items": [
         {
           "id": "d1-flight-outbound",
@@ -91,41 +91,77 @@
           "category": "flight",
           "description": "酷航 Scoot 經濟艙，航程約3小時30分。",
           "location": "TPE → NRT",
-          "transportIds": ["tr866-outbound"]
+          "transportIds": [
+            "tr866-outbound"
+          ]
         },
         {
           "id": "d1-arrival",
-          "start": "2026-09-17T12:00:00+09:00",
-          "end": "2026-09-17T13:30:00+09:00",
-          "timeLabel": "12:00 - 13:30",
-          "title": "入境後前往上野雷索爾酒店",
+          "start": "2026-09-17T11:30:00+09:00",
+          "end": "2026-09-17T13:00:00+09:00",
+          "timeLabel": "11:30 - 13:00",
+          "title": "入境後前往上野雷索爾酒店放行李",
           "category": "transport",
-          "description": "落地後入境、領行李，搭 Skyliner 前往上野雷索爾酒店（Hotel Resol Ueno）辦理入住／寄放行李。",
+          "description": "落地後入境、領行李，搭 Skyliner 前往上野雷索爾酒店（Hotel Resol Ueno）寄放行李（尚未到入住時間）。",
           "location": "成田機場 → 上野",
-          "otherInfoIds": ["stay-resol-ueno"]
+          "otherInfoIds": [
+            "stay-resol-ueno"
+          ]
         },
         {
-          "id": "d1-kameari-cards",
-          "start": "2026-09-17T14:00:00+09:00",
-          "end": "2026-09-17T15:30:00+09:00",
-          "timeLabel": "14:00 - 15:30",
-          "title": "龜有雙卡大滿貫",
-          "category": "activity",
-          "description": "搭常磐線衝龜有，一次拿齊龜有觀光案內所與ハンドメイドファクトリー マカロン兩張人孔蓋卡（烏龍派出所主題）。",
-          "location": "龜有",
-          "manholeCardIds": ["龜有観光案内所（ゆうろーどサービスカウンター）", "ハンドメイドファクトリー マカロン"]
-        },
-        {
-          "id": "d1-shinjuku",
-          "start": "2026-09-17T16:00:00+09:00",
-          "end": "2026-09-17T18:00:00+09:00",
-          "timeLabel": "16:00 - 18:00",
-          "title": "新宿購物兼拿卡",
+          "id": "d1-tokyo-station",
+          "start": "2026-09-17T13:30:00+09:00",
+          "end": "2026-09-17T15:00:00+09:00",
+          "timeLabel": "13:30 - 15:00",
+          "title": "東京車站掃貨：Traveler's Factory + 寶可夢中心",
           "category": "shopping",
-          "description": "前往 Lumine Est B2F 的 Canal Jean 幫老婆買包包，買完在車站東南口順路拿新宿觀光案內所的人孔蓋卡。",
-          "location": "新宿",
-          "souvenirIds": ["Canal Jean（Lumine Est新宿店）"],
-          "manholeCardIds": ["新宿観光案内所"]
+          "description": "先逛東京車站Gransta丸之內內的 TRAVELER'S FACTORY STATION，再步行到八重洲口附近的日本橋高島屋逛 Pokémon Center TOKYO DX。",
+          "location": "東京車站 → 日本橋",
+          "souvenirIds": [
+            "TRAVELER'S FACTORY STATION（東京駅）"
+          ],
+          "sightseeingIds": [
+            "Pokémon Center TOKYO DX（日本橋高島屋）"
+          ]
+        },
+        {
+          "id": "d1-kappabashi",
+          "start": "2026-09-17T15:30:00+09:00",
+          "end": "2026-09-17T17:00:00+09:00",
+          "timeLabel": "15:30 - 17:00",
+          "title": "合羽橋道具街尋寶",
+          "category": "sightseeing",
+          "description": "逛合羽橋道具街找抹茶碗、刷子等廚房道具與雜貨。",
+          "location": "淺草・藏前",
+          "sightseeingIds": [
+            "合羽橋道具街"
+          ]
+        },
+        {
+          "id": "d1-manhole-sarazanmai",
+          "start": "2026-09-17T17:00:00+09:00",
+          "end": "2026-09-17T17:30:00+09:00",
+          "timeLabel": "17:00 - 17:30",
+          "title": "拿人孔蓋卡：皿三昧",
+          "category": "activity",
+          "description": "合羽橋逛完順路到台東区生涯学習センター拿《皿三昧》人孔蓋卡（09:00～20:00開放）。",
+          "location": "淺草",
+          "manholeCardIds": [
+            "台東区生涯学習センター"
+          ]
+        },
+        {
+          "id": "d1-asakusa-underground",
+          "start": "2026-09-17T18:00:00+09:00",
+          "end": "2026-09-17T19:30:00+09:00",
+          "timeLabel": "18:00 - 19:30",
+          "title": "淺草地下商店街晚餐（福ちゃん）",
+          "category": "dining",
+          "description": "電影《我的完美日常》主角平山常去光顧的居酒屋，就在淺草地下商店街，招牌是炒麵。",
+          "location": "淺草",
+          "diningIds": [
+            "福ちゃん（淺草地下商店街）"
+          ]
         }
       ]
     },
@@ -133,44 +169,72 @@
       "id": "day2",
       "label": "D2",
       "dateLabel": "09/18 五",
-      "summary": "上野看展 → 藏前・合羽橋 → 千代田延長夜展",
+      "summary": "三軒茶屋拿卡 → 豪德寺 → 下北澤逛街 → BEYBLADE酒吧 → 夜間藝術節",
       "items": [
         {
-          "id": "d2-ueno-exhibit",
-          "start": "2026-09-18T09:30:00+09:00",
-          "end": "2026-09-18T11:30:00+09:00",
-          "timeLabel": "09:30 - 11:30",
-          "title": "東京都美術館「百花繚乱」看展 + 拿卡",
-          "category": "sightseeing",
-          "description": "看展前後順路拿東京觀光情報中心（京成上野）的人孔蓋卡。",
-          "location": "上野",
-          "sightseeingIds": ["東京都美術館－百花繚乱～海を越えた江戸絵画"],
-          "manholeCardIds": ["東京観光情報センター 京成上野"]
+          "id": "d2-sangenjaya-card",
+          "start": "2026-09-18T10:00:00+09:00",
+          "end": "2026-09-18T11:00:00+09:00",
+          "timeLabel": "10:00 - 11:00",
+          "title": "三軒茶屋拿人孔蓋卡：超人力霸王",
+          "category": "activity",
+          "description": "東急世田谷線三軒茶屋駅改札前的 SANCHA3（サンチャキューブ）觀光案內所拿卡（10:00～18:00開放）。",
+          "location": "三軒茶屋",
+          "manholeCardIds": [
+            "三軒茶屋観光案内所（SANCHA3「サンチャキューブ」）"
+          ]
         },
         {
-          "id": "d2-kuramae",
-          "start": "2026-09-18T12:00:00+09:00",
-          "end": "2026-09-18T15:30:00+09:00",
-          "timeLabel": "12:00 - 15:30",
-          "title": "藏前散策 → 合羽橋道具街",
+          "id": "d2-gotokuji",
+          "start": "2026-09-18T11:15:00+09:00",
+          "end": "2026-09-18T12:15:00+09:00",
+          "timeLabel": "11:15 - 12:15",
+          "title": "豪德寺參拜（招き猫發祥）",
           "category": "sightseeing",
-          "description": "逛藏前文青店與合羽橋道具街找抹茶碗、刷子，順路拿台東区生涯学習センター的人孔蓋卡。",
-          "location": "藏前 → 淺草合羽橋",
-          "sightseeingIds": ["合羽橋道具街"],
-          "diningIds": ["BARK BAKE & ROAST（藏前）", "FUTO（藏前）", "chigaya kuramae（藏前）", "McLEAN（藏前）", "KURAMAE CANNELE（藏前）"],
-          "manholeCardIds": ["台東区生涯学習センター"]
+          "description": "從三軒茶屋順路過去，滿滿的招財貓奉納壇是知名拍照點，免費參拜。",
+          "location": "世田谷・豪德寺",
+          "sightseeingIds": [
+            "豪德寺（招き猫發祥寺院）"
+          ]
         },
         {
-          "id": "d2-chiyoda-exhibit",
-          "start": "2026-09-18T16:30:00+09:00",
-          "end": "2026-09-18T19:30:00+09:00",
-          "timeLabel": "16:30 - 19:30",
-          "title": "千代田 杉本博司「消亡的攝影」延長夜展",
+          "id": "d2-shimokitazawa-day",
+          "start": "2026-09-18T13:00:00+09:00",
+          "end": "2026-09-18T17:30:00+09:00",
+          "timeLabel": "13:00 - 17:30",
+          "title": "下北澤古著・唱片行悠逛＋午餐",
+          "category": "shopping",
+          "description": "下北澤是古著店、唱片行與小劇場聚集地，適合慢慢逛街吃午餐，直接銜接晚上的行程。",
+          "location": "下北澤",
+          "sightseeingIds": [
+            "下北澤散策"
+          ]
+        },
+        {
+          "id": "d2-beyblade-bar",
+          "start": "2026-09-18T18:15:00+09:00",
+          "end": "2026-09-18T20:00:00+09:00",
+          "timeLabel": "18:15 - 20:00",
+          "title": "BEYBLADE陀螺酒吧 Beyblade Bar Tokyo",
+          "category": "dining",
+          "description": "戰鬥陀螺主題酒吧，需先預約！",
+          "location": "下北澤",
+          "sightseeingIds": [
+            "戰鬥陀螺酒吧（下北澤）"
+          ]
+        },
+        {
+          "id": "d2-shimokitazawa-night",
+          "start": "2026-09-18T20:15:00+09:00",
+          "end": "2026-09-18T22:00:00+09:00",
+          "timeLabel": "20:15 - 22:00",
+          "title": "下北澤「月」夜間藝術節 Moon Art Night 2026",
           "category": "sightseeing",
-          "description": "東京國立近代美術館，週五延長開放至20:00。若時間充裕可繞去千代田區觀光案內所拿卡（位置較偏，可拿可不拿）。",
-          "location": "千代田",
-          "sightseeingIds": ["東京國立近代美術館－杉本博司「消亡的攝影」"],
-          "manholeCardIds": ["千代田区観光案内所"]
+          "description": "剛好是開展第一天！以「月」為主題的下北澤代表藝術祭，下北線路街空地有巨大月亮裝置「Museum of the Moon」。",
+          "location": "下北澤",
+          "sightseeingIds": [
+            "下北澤 ムーンアートナイト2026（夜間藝術節）"
+          ]
         }
       ]
     },
@@ -178,51 +242,86 @@
       "id": "day3",
       "label": "D3",
       "dateLabel": "09/19 六",
-      "summary": "岡本太郎紀念館 → 澀谷JOJO → 港區拿卡 → 東京鐵塔",
+      "summary": "龜有こち亀記念館 → 新小岩・魔奇奇公園 → 東京鐵塔 → 六本木森美術館夜展",
       "items": [
         {
-          "id": "d3-okamoto-taro",
-          "start": "2026-09-19T10:00:00+09:00",
-          "end": "2026-09-19T11:30:00+09:00",
-          "timeLabel": "10:00 - 11:30",
-          "title": "岡本太郎紀念館",
-          "category": "sightseeing",
-          "description": "10:00開館，最終入館17:30。",
-          "location": "表參道",
-          "sightseeingIds": ["岡本太郎紀念館"]
-        },
-        {
-          "id": "d3-jojo-world",
-          "start": "2026-09-19T12:30:00+09:00",
-          "end": "2026-09-19T14:30:00+09:00",
-          "timeLabel": "12:30 - 14:30",
-          "title": "THE★JOJO WORLD",
-          "category": "sightseeing",
-          "description": "《JoJo的奇妙冒險》首家常態店。",
-          "location": "澀谷",
-          "sightseeingIds": ["THE★JOJO WORLD"]
-        },
-        {
-          "id": "d3-minato-card",
-          "start": "2026-09-19T15:30:00+09:00",
-          "end": "2026-09-19T17:00:00+09:00",
-          "timeLabel": "15:30 - 17:00",
-          "title": "港區拿美少女戰士卡",
+          "id": "d3-kameari",
+          "start": "2026-09-19T09:45:00+09:00",
+          "end": "2026-09-19T11:15:00+09:00",
+          "timeLabel": "09:45 - 11:15",
+          "title": "龜有站拿人孔蓋卡＋こち亀記念館",
           "category": "activity",
-          "description": "搭車至田町/三田站，前往札の辻スクエア拿港區觀光資訊中心的人孔蓋卡。",
-          "location": "港區",
-          "manholeCardIds": ["港区観光インフォメーションセンター（札の辻スクエア）"]
+          "description": "先在龜有観光案內所（ゆうろーどサービスカウンター）拿《烏龍派出所》兩津勘吉人孔蓋卡，再去2025年新開幕的こち亀記念館朝聖。",
+          "location": "龜有",
+          "manholeCardIds": [
+            "龜有観光案内所（ゆうろーどサービスカウンター）",
+            "ハンドメイドファクトリー マカロン"
+          ],
+          "sightseeingIds": [
+            "こち亀記念館"
+          ]
+        },
+        {
+          "id": "d3-shinkoiwa-card",
+          "start": "2026-09-19T11:45:00+09:00",
+          "end": "2026-09-19T12:30:00+09:00",
+          "timeLabel": "11:45 - 12:30",
+          "title": "新小岩拿人孔蓋卡：魔奇奇",
+          "category": "activity",
+          "description": "搭車前往新小岩站，在第一書林（新小岩北口店）書店櫃檯結帳後跟店員說要拿人孔蓋卡即可。",
+          "location": "新小岩",
+          "manholeCardIds": [
+            "第一書林（新小岩北口店）"
+          ]
+        },
+        {
+          "id": "d3-monchhichi-park",
+          "start": "2026-09-19T12:45:00+09:00",
+          "end": "2026-09-19T13:45:00+09:00",
+          "timeLabel": "12:45 - 13:45",
+          "title": "魔奇奇公園（西新小岩五丁目公園）",
+          "category": "sightseeing",
+          "description": "搭公車新小52（新小岩站東北廣場 → 上平井町 → 步行至西新小岩五丁目公園），拍滿滿的Monchhichi遊具。",
+          "location": "新小岩 → 西新小岩",
+          "sightseeingIds": [
+            "魔奇奇公園（西新小岩五丁目公園）"
+          ]
         },
         {
           "id": "d3-tokyo-tower",
-          "start": "2026-09-19T18:00:00+09:00",
-          "end": "2026-09-19T20:00:00+09:00",
-          "timeLabel": "18:00 - 20:00",
+          "start": "2026-09-19T15:00:00+09:00",
+          "end": "2026-09-19T16:30:00+09:00",
+          "timeLabel": "15:00 - 16:30",
           "title": "東京鐵塔",
           "category": "sightseeing",
-          "description": "週六日開放徒步爬600階，可買鐵塔神射御守，象徵步步高升。",
+          "description": "週六日開放徒步爬600階，需在16:00前抵達才能爬階，可買鐵塔神射御守，象徵步步高升。",
           "location": "東京鐵塔",
-          "sightseeingIds": ["東京鐵塔"]
+          "sightseeingIds": [
+            "東京鐵塔"
+          ]
+        },
+        {
+          "id": "d3-roppongi-dinner",
+          "start": "2026-09-19T17:00:00+09:00",
+          "end": "2026-09-19T18:15:00+09:00",
+          "timeLabel": "17:00 - 18:15",
+          "title": "六本木晚餐暖身",
+          "category": "dining",
+          "description": "從東京鐵塔步行或搭車到六本木新城周邊覓食，為晚上的骷顱展做準備。",
+          "location": "六本木"
+        },
+        {
+          "id": "d3-mori-museum",
+          "start": "2026-09-19T18:30:00+09:00",
+          "end": "2026-09-19T22:00:00+09:00",
+          "timeLabel": "18:30 - 22:00",
+          "title": "六本木森美術館 Ron Mueck 100顆骷顱展",
+          "category": "sightseeing",
+          "description": "強烈回歸！週六夜間開放至22:00，從容享受頂級視覺震撼與六本木夜景。",
+          "location": "六本木",
+          "sightseeingIds": [
+            "森美術館－Ron Mueck 100顆骷顱展"
+          ]
         }
       ]
     },
@@ -230,53 +329,75 @@
       "id": "day4",
       "label": "D4",
       "dateLabel": "09/20 日",
-      "summary": "三軒茶屋拿卡 → 中目黑手帳收集 → 六本木骷顱夜展 → 中野JOJO酒吧",
+      "summary": "上野公園三館巡禮 → 秋葉原海洋堂・原子小金剛卡 → 中目黑晚間散策",
       "items": [
         {
-          "id": "d4-sangenjaya",
-          "start": "2026-09-20T10:00:00+09:00",
+          "id": "d4-ueno-museums",
+          "start": "2026-09-20T09:30:00+09:00",
           "end": "2026-09-20T12:30:00+09:00",
-          "timeLabel": "10:00 - 12:30",
-          "title": "三軒茶屋拿卡 + 散步午餐",
+          "timeLabel": "09:30 - 12:30",
+          "title": "上野公園三館巡禮：東京都美術館商店＋上野東照宮＋東京國立博物館",
+          "category": "sightseeing",
+          "description": "東京都美術館這次只逛商店和外觀，接著參拜上野東照宮，最後進東京國立博物館看總合文化展（常設展）。門票：東京國立博物館成人1,000日圓、大學生500日圓；上野東照宮參拜700日圓。",
+          "location": "上野",
+          "sightseeingIds": [
+            "東京都美術館（只逛美術館商店）",
+            "上野東照宮",
+            "東京国立博物館（総合文化展）"
+          ]
+        },
+        {
+          "id": "d4-ueno-card",
+          "start": "2026-09-20T13:00:00+09:00",
+          "end": "2026-09-20T13:30:00+09:00",
+          "timeLabel": "13:00 - 13:30",
+          "title": "上野拿人孔蓋卡：普卡（23區共通款）",
           "category": "activity",
-          "description": "東急世田谷線三軒茶屋駅改札前的觀光案內所，拿完卡可順道散步、吃午餐，剛好順路豪德寺。",
-          "location": "三軒茶屋",
-          "sightseeingIds": ["三軒茶屋・豪德寺散策"],
-          "manholeCardIds": ["三軒茶屋観光案内所（SANCHA3「サンチャキューブ」）"]
+          "description": "順路到京成上野駅改札口前的東京観光情報センター 京成上野拿卡。",
+          "location": "上野",
+          "manholeCardIds": [
+            "東京観光情報センター 京成上野"
+          ]
+        },
+        {
+          "id": "d4-akihabara-kaiyodo",
+          "start": "2026-09-20T14:15:00+09:00",
+          "end": "2026-09-20T15:45:00+09:00",
+          "timeLabel": "14:15 - 15:45",
+          "title": "秋葉原 海洋堂ホビーロビー東京",
+          "category": "shopping",
+          "description": "海洋堂直營旗艦店，位於秋葉原電氣街Radio會館5樓，滿滿精緻食玩與模型。",
+          "location": "秋葉原",
+          "sightseeingIds": [
+            "海洋堂ホビーロビー東京"
+          ]
+        },
+        {
+          "id": "d4-akiba-card",
+          "start": "2026-09-20T16:00:00+09:00",
+          "end": "2026-09-20T16:30:00+09:00",
+          "timeLabel": "16:00 - 16:30",
+          "title": "秋葉原拿人孔蓋卡：原子小金剛",
+          "category": "activity",
+          "description": "AKIBA_INFO.（秋葉原UDX2階）拿《原子小金剛》人孔蓋卡（11:00～17:30開放）。",
+          "location": "秋葉原",
+          "manholeCardIds": [
+            "アキバインフォ（秋葉原UDX2階）"
+          ]
         },
         {
           "id": "d4-nakameguro",
-          "start": "2026-09-20T13:30:00+09:00",
-          "end": "2026-09-20T16:00:00+09:00",
-          "timeLabel": "13:30 - 16:00",
-          "title": "中目黑 Traveler's Factory + 星巴克",
-          "category": "shopping",
-          "description": "逛文具旗艦店 Traveler's Factory，再到星巴克喝咖啡、看特色人孔蓋。",
-          "location": "中目黑",
-          "souvenirIds": ["Traveler's Factory（中目黑）"],
-          "diningIds": ["中目黑星巴克"]
-        },
-        {
-          "id": "d4-roppongi-mueck",
-          "start": "2026-09-20T17:00:00+09:00",
+          "start": "2026-09-20T17:30:00+09:00",
           "end": "2026-09-20T20:00:00+09:00",
-          "timeLabel": "17:00 - 20:00",
-          "title": "六本木森美術館 Ron Mueck 100顆骷顱展",
-          "category": "sightseeing",
-          "description": "強烈回歸！週日夜間開放至22:00，從容享受頂級視覺震撼與六本木夜景。",
-          "location": "六本木",
-          "sightseeingIds": ["森美術館－Ron Mueck 100顆骷顱展"]
-        },
-        {
-          "id": "d4-nakano-jojo-bar",
-          "start": "2026-09-20T20:30:00+09:00",
-          "end": "2026-09-20T22:30:00+09:00",
-          "timeLabel": "20:30 - 22:30",
-          "title": "中野 JOJO 酒吧",
+          "timeLabel": "17:30 - 20:00",
+          "title": "中目黑晚間散策＋咖啡",
           "category": "dining",
-          "description": "看完六本木夜展後前往中野，JOJO主題酒吧暢飲。",
-          "location": "中野",
-          "sightseeingIds": ["JOJO酒吧（中野）"]
+          "description": "沿目黑川悠閒散步，晚餐或咖啡可從中目黑星巴克、豆虎咖啡（Mametora）二選一。",
+          "location": "中目黑",
+          "diningIds": [
+            "中目黑星巴克",
+            "豆虎咖啡（Mametora）"
+          ]
         }
       ]
     },
@@ -284,7 +405,7 @@
       "id": "day5",
       "label": "D5",
       "dateLabel": "09/21 一",
-      "summary": "東京電玩展（核心行程）→ 下北澤戰鬥陀螺酒吧",
+      "summary": "東京電玩展（核心行程）→ 澀谷 JOJO WORLD ＋ LOFT",
       "items": [
         {
           "id": "d5-makuhari-card",
@@ -295,7 +416,9 @@
           "category": "activity",
           "description": "出站第一件事先在車站構內拿千葉市幕張觀光情報中心的人孔蓋卡，再進展場。",
           "location": "海濱幕張",
-          "manholeCardIds": ["千葉市幕張観光情報センター"]
+          "manholeCardIds": [
+            "千葉市幕張観光情報センター"
+          ]
         },
         {
           "id": "d5-tgs",
@@ -306,18 +429,23 @@
           "category": "sightseeing",
           "description": "本次行程的核心行程。",
           "location": "幕張展覽館",
-          "sightseeingIds": ["東京電玩展"]
+          "sightseeingIds": [
+            "東京電玩展"
+          ]
         },
         {
-          "id": "d5-shimokitazawa",
-          "start": "2026-09-21T19:30:00+09:00",
-          "end": "2026-09-21T22:00:00+09:00",
-          "timeLabel": "19:30 - 22:00",
-          "title": "下北澤戰鬥陀螺酒吧",
-          "category": "dining",
-          "description": "電玩展結束返回市區後前往，需先預約！",
-          "location": "下北澤",
-          "sightseeingIds": ["戰鬥陀螺酒吧（下北澤）"]
+          "id": "d5-shibuya-jojo-loft",
+          "start": "2026-09-21T18:30:00+09:00",
+          "end": "2026-09-21T21:00:00+09:00",
+          "timeLabel": "18:30 - 21:00",
+          "title": "澀谷 THE★JOJO WORLD ＋ LOFT",
+          "category": "shopping",
+          "description": "電玩展結束後返回市區，逛澀谷PARCO 6樓的THE★JOJO WORLD，同棟順路逛LOFT。",
+          "location": "澀谷",
+          "sightseeingIds": [
+            "THE★JOJO WORLD",
+            "LOFT（澀谷店）"
+          ]
         }
       ]
     },
@@ -325,7 +453,7 @@
       "id": "day6",
       "label": "D6",
       "dateLabel": "09/22 二",
-      "summary": "神樂坂散策 → 新小岩拿卡 → 上野最後補貨 → 回程",
+      "summary": "新宿逛街拿卡 → 吉祥寺（彈性）→ 回程",
       "items": [
         {
           "id": "d6-checkout",
@@ -334,53 +462,63 @@
           "timeLabel": "09:00 - 09:30",
           "title": "退房寄放行李",
           "category": "transport",
-          "description": "最後一天上午退房，行李寄放飯店櫃檯。",
+          "description": "最後一天上午退房，行李寄放飯店櫃檯，晚點回來領取再出發機場。",
           "location": "上野",
-          "otherInfoIds": ["stay-resol-ueno"]
+          "otherInfoIds": [
+            "stay-resol-ueno"
+          ]
         },
         {
-          "id": "d6-kagurazaka",
-          "start": "2026-09-22T09:30:00+09:00",
-          "end": "2026-09-22T11:30:00+09:00",
-          "timeLabel": "09:30 - 11:30",
-          "title": "神樂坂悠閒散策 + 早午餐",
-          "category": "sightseeing",
-          "description": "退房後前往神樂坂，悠閒散步、吃早午餐，感受老東京巷弄風情。",
-          "location": "神樂坂",
-          "sightseeingIds": ["神樂坂散策"]
-        },
-        {
-          "id": "d6-shinkoiwa-card",
-          "start": "2026-09-22T12:30:00+09:00",
-          "end": "2026-09-22T14:00:00+09:00",
-          "timeLabel": "12:30 - 14:00",
-          "title": "新小岩拿人孔蓋卡",
-          "category": "activity",
-          "description": "搭車前往新小岩站，在第一書林（新小岩北口店）書店櫃檯排隊索取人孔蓋卡。",
-          "location": "新小岩",
-          "manholeCardIds": ["第一書林（新小岩北口店）"]
-        },
-        {
-          "id": "d6-ueno-toys",
-          "start": "2026-09-22T15:00:00+09:00",
-          "end": "2026-09-22T16:30:00+09:00",
-          "timeLabel": "15:00 - 16:30",
-          "title": "上野 Yamashiro 百年玩具店補貨",
+          "id": "d6-shinjuku",
+          "start": "2026-09-22T10:00:00+09:00",
+          "end": "2026-09-22T12:00:00+09:00",
+          "timeLabel": "10:00 - 12:00",
+          "title": "新宿逛街",
           "category": "shopping",
-          "description": "回到上野站旁的百年玩具店進行最後免稅補貨。",
-          "location": "上野",
-          "sightseeingIds": ["Yamashiro 百年玩具店"]
+          "description": "前往 Lumine Est B2F 的 Canal Jean 幫老婆買包包，順便逛新宿。",
+          "location": "新宿",
+          "souvenirIds": [
+            "Canal Jean（Lumine Est新宿店）"
+          ]
+        },
+        {
+          "id": "d6-shinjuku-card",
+          "start": "2026-09-22T12:00:00+09:00",
+          "end": "2026-09-22T12:30:00+09:00",
+          "timeLabel": "12:00 - 12:30",
+          "title": "新宿拿人孔蓋卡：哥吉拉",
+          "category": "activity",
+          "description": "新宿観光案內所拿新宿限定「シン・ゴジラ」人孔蓋卡。",
+          "location": "新宿",
+          "manholeCardIds": [
+            "新宿観光案内所"
+          ]
+        },
+        {
+          "id": "d6-kichijoji",
+          "start": "2026-09-22T13:00:00+09:00",
+          "end": "2026-09-22T15:00:00+09:00",
+          "timeLabel": "13:00 - 15:00",
+          "title": "吉祥寺散策（時間彈性）",
+          "category": "sightseeing",
+          "description": "井之頭公園、Sun Road商店街走走，時間抓鬆一點，不夠的話現場調整或跳過都沒關係。",
+          "location": "吉祥寺",
+          "sightseeingIds": [
+            "吉祥寺散策（井之頭公園・百貨）"
+          ]
         },
         {
           "id": "d6-to-narita",
-          "start": "2026-09-22T17:00:00+09:00",
-          "end": "2026-09-22T19:30:00+09:00",
-          "timeLabel": "17:00 - 19:30",
-          "title": "回飯店拉行李，搭 Skyliner 前往成田機場",
+          "start": "2026-09-22T15:30:00+09:00",
+          "end": "2026-09-22T18:30:00+09:00",
+          "timeLabel": "15:30 - 18:30",
+          "title": "回上野拿行李，搭Skyliner前往成田機場",
           "category": "transport",
-          "description": "回飯店取行李後直接搭 Skyliner 前往成田機場。",
+          "description": "回飯店取行李後直接搭 Skyliner 前往成田機場，抓18:30抵達機場。",
           "location": "上野 → 成田機場",
-          "otherInfoIds": ["stay-resol-ueno"]
+          "otherInfoIds": [
+            "stay-resol-ueno"
+          ]
         },
         {
           "id": "d6-flight-return",
@@ -391,7 +529,9 @@
           "category": "flight",
           "description": "酷航 ScootPlus 艙等，航程約3小時40分。",
           "location": "NRT → TPE",
-          "transportIds": ["tr875-return"]
+          "transportIds": [
+            "tr875-return"
+          ]
         }
       ]
     }
@@ -422,18 +562,11 @@
   ],
   "dining": [
     {
-      "name": "MI CAFETO",
-      "category": "咖啡",
-      "area": "待確認",
+      "name": "福ちゃん（淺草地下商店街）",
+      "category": "居酒屋・炒麵",
+      "area": "淺草",
       "reservationStatus": "無需預約",
-      "note": "日本知名精品咖啡品牌，以獨特香檳瓶保存咖啡豆，木村拓哉是忠實顧客並曾在店內專屬咖啡窖存放自己的專屬豆。"
-    },
-    {
-      "name": "Nexpect Coffee（万文堂）",
-      "category": "咖啡",
-      "area": "神田",
-      "reservationStatus": "無需預約",
-      "note": "極簡風格文青咖啡店，木村拓哉曾在個人頻道介紹，手沖與拿鐵皆十分受歡迎。"
+      "note": "電影《我的完美日常（PERFECT DAYS）》主角平山常去光顧的居酒屋，招牌牛筋炒麵。地址：東京都台東区浅草1-1-12，銀座線淺草站6號出口出站即達。營業時間：週二至週五11:30-21:00、週日11:00-20:00，週一・週六公休（Day1造訪為週四，正常營業）。"
     },
     {
       "name": "豆虎咖啡（Mametora）",
@@ -443,77 +576,14 @@
       "note": "街邊咖啡店，因木村拓哉的推薦與造訪成為粉絲朝聖熱門打卡點。"
     },
     {
-      "name": "TRUFFLE Bakery",
-      "category": "麵包",
-      "area": "待確認",
-      "reservationStatus": "無需預約",
-      "note": "木村拓哉推薦必吃白松露鹽可頌。"
-    },
-    {
-      "name": "BARK BAKE & ROAST（藏前）",
-      "category": "咖啡",
-      "area": "藏前",
-      "reservationStatus": "無需預約",
-      "note": "對面景色佳，大片落地窗，咖啡師Malu推薦，堅持自家烘焙甜點與咖啡豆，毛孩友善。"
-    },
-    {
-      "name": "FUTO（藏前）",
-      "category": "咖啡",
-      "area": "藏前",
-      "reservationStatus": "無需預約",
-      "note": "可以寫信給未來的自己，寫完蓋火漆章。"
-    },
-    {
-      "name": "chigaya kuramae（藏前）",
-      "category": "咖啡/甜點",
-      "area": "藏前",
-      "reservationStatus": "無需預約",
-      "note": "蝴蝶結甜甜圈與咖啡。"
-    },
-    {
-      "name": "McLEAN（藏前）",
-      "category": "漢堡",
-      "area": "藏前",
-      "reservationStatus": "無需預約",
-      "note": "復古文青漢堡店，咖啡師Malu推薦，很多復古角落好拍。"
-    },
-    {
-      "name": "KURAMAE CANNELE（藏前）",
-      "category": "甜點",
-      "area": "藏前",
-      "reservationStatus": "無需預約",
-      "note": "最強可麗露，很適合當精緻伴手禮。"
-    },
-    {
       "name": "中目黑星巴克",
       "category": "咖啡",
       "area": "中目黑",
       "reservationStatus": "無需預約",
-      "note": "逛完 Traveler's Factory 後可順路喝咖啡、看特色人孔蓋。"
+      "note": "沿目黑川散步途中的星巴克，可順路喝咖啡、看特色人孔蓋。"
     }
   ],
   "souvenirs": [
-    {
-      "name": "一保堂茶舖（丸之內店）",
-      "category": "抹茶粉",
-      "area": "丸之內",
-      "buyPlan": "待買",
-      "note": "300年歷史京都老茶舖，抹茶粉分級清楚（如「嘉辰之昔」、「青雲」），也能買到茶筅與茶碗配件。"
-    },
-    {
-      "name": "中村藤吉本店（銀座GINZA SIX店）",
-      "category": "抹茶粉",
-      "area": "銀座",
-      "buyPlan": "待買",
-      "note": "知名宇治抹茶品牌，伴手禮區販售高品質罐裝抹茶粉、即溶抹茶及相關茶具。"
-    },
-    {
-      "name": "AKOMEYA TOKYO／茅乃舍",
-      "category": "抹茶組",
-      "area": "銀座・新宿等",
-      "buyPlan": "待買",
-      "note": "質感選物店，常推出「野點抹茶組」（小茶碗、茶筅、抹茶粉組合包），適合新手整套購入。"
-    },
     {
       "name": "Canal Jean（Lumine Est新宿店）",
       "category": "服飾/包包",
@@ -522,84 +592,126 @@
       "note": "地址：東京都新宿區新宿3-38-1 Lumine Est B2F。Ken老婆Ivy推薦的包包。"
     },
     {
-      "name": "Traveler's Factory（中目黑）",
+      "name": "TRAVELER'S FACTORY STATION（東京駅）",
       "category": "文具",
-      "area": "中目黑",
+      "area": "東京車站",
       "buyPlan": "待買",
-      "note": "人氣手帳品牌旗艦店。"
+      "note": "人氣手帳品牌東京車站店，位於東京駅丸之內北口的Gransta丸之內內，營業時間10:00-21:00，電話03-6256-0486。"
     }
   ],
   "sightseeing": [
     {
-      "name": "東京國立近代美術館－杉本博司「消亡的攝影」",
-      "category": "展覽",
-      "area": "千代田",
+      "name": "Pokémon Center TOKYO DX（日本橋高島屋）",
+      "category": "主題店",
+      "area": "日本橋",
+      "visitPlan": "已排入 Day1",
+      "openingHours": "10:30-21:00（同棟 Pokémon Cafe 營業至22:00）",
+      "note": "從東京車站八重洲口步行約10分鐘可達，與 Pokémon Cafe 同棟。地址：東京都中央区日本橋2-11-2 日本橋高島屋S.C.東館5F。"
+    },
+    {
+      "name": "合羽橋道具街",
+      "category": "商店街",
+      "area": "淺草/藏前",
+      "visitPlan": "已排入 Day1",
+      "note": "想找抹茶碗跟刷子。附近有淺草アトム堂本舗 TEZUKA OSAMU SHOP & CAFE（地址：東京都台東区浅草2丁目7-13 淺草西參道商店街）。"
+    },
+    {
+      "name": "豪德寺（招き猫發祥寺院）",
+      "category": "寺院",
+      "area": "世田谷",
       "visitPlan": "已排入 Day2",
-      "openingHours": "10:00-17:00（週五、週六延長至20:00，週一休館）",
-      "note": "地址：東京都千代田區北之丸公園3-1。週五週六可看到20:00。",
-      "websiteUrl": "https://www.momat.go.jp/exhibitions/569"
+      "openingHours": "開門6:00-17:00（寺務所受付8:00-15:00）",
+      "admission": "免費參拜",
+      "note": "招き猫（招財貓）發祥地之一，滿滿的招財貓奉納壇是知名拍照點。地址：東京都世田谷区豪徳寺2-24-7。"
     },
     {
-      "name": "東京都美術館－百花繚乱～海を越えた江戸絵画",
-      "category": "展覽",
-      "area": "上野",
+      "name": "下北澤散策",
+      "category": "散策",
+      "area": "下北澤",
       "visitPlan": "已排入 Day2",
-      "openingHours": "週五 9:30-20:00（其他日開放時間待確認）",
-      "admission": "一般2,300日圓（2,100日圓）／大學生·專門學校生1,300日圓（1,100日圓）",
-      "note": "地址：東京都台東區上野公園8-36。東京都美術館開館100周年紀念展。",
-      "websiteUrl": "https://www.tobikan.jp/tw/exhibition/2026_britishmuseum.html"
+      "note": "古著店、唱片行、小劇場聚集地，適合悠閒逛街、吃午餐。"
     },
     {
-      "name": "森美術館－Ron Mueck 100顆骷顱展",
-      "category": "展覽",
-      "area": "六本木",
-      "visitPlan": "已排入 Day4",
-      "openingHours": "除週二外開到22:00，週日夜間開放至22:00",
-      "note": "地址：東京都港區六本木6-10-1 六本木新城森大廈53F。強烈回歸行程，安排在Day4傍晚，從容享受夜間展覽與六本木夜景。",
-      "websiteUrl": "https://art-view.roppongihills.com/tw/"
+      "name": "下北澤 ムーンアートナイト2026（夜間藝術節）",
+      "category": "藝術祭",
+      "area": "下北澤",
+      "visitPlan": "已排入 Day2",
+      "openingHours": "15:00-21:00（下北線路街空地展示至21:30），展期2026/9/18-10/4",
+      "note": "以「月」為主題的下北澤代表藝術祭，下北線路街空地有直徑7公尺的巨大月亮裝置「Museum of the Moon」，地域店舖也會推出聯名活動。Day2剛好是開展第一天。",
+      "websiteUrl": "https://senrogai.com/event/moonartnightshimokitazawa_2026/"
     },
     {
-      "name": "岡本太郎紀念館",
+      "name": "戰鬥陀螺酒吧（下北澤）",
+      "category": "主題酒吧",
+      "area": "下北澤",
+      "visitPlan": "已排入 Day2",
+      "note": "Beyblade Bar Tokyo，戰鬥陀螺主題酒吧，需先預約！"
+    },
+    {
+      "name": "こち亀記念館",
       "category": "紀念館",
-      "area": "表參道",
+      "area": "龜有",
       "visitPlan": "已排入 Day3",
-      "openingHours": "10:00-18:00（最終入館17:30），週二休（國定假日照常營業），另休正月12/28-1/4及檢查日",
-      "admission": "一般900日圓、大學生·高中生700日圓、中學生以下免費",
-      "note": "地址：東京都港區南青山6-1-19。"
+      "openingHours": "10:00-18:00（最終入館17:00），每月第3個週二休（遇假日順延翌平日）",
+      "admission": "大人（高中生以上）一般700日圓／葛飾區民500日圓；小中學生一般300日圓／葛飾區民100日圓；學齡前免費",
+      "note": "2025年3月22日開幕，5層樓完整重現《烏龍派出所》兩津勘吉的世界觀。地址：東京都葛飾区亀有3-32-17，JR常磐線龜有站南口徒步約3分鐘。"
+    },
+    {
+      "name": "魔奇奇公園（西新小岩五丁目公園）",
+      "category": "主題公園",
+      "area": "新小岩",
+      "visitPlan": "已排入 Day3",
+      "note": "Monchhichi誕生地葛飾區打造的健康遊具主題公園，滿滿Monchhichi造型遊具。地址：東京都葛飾区西新小岩5-2-4、5-7-7。可搭公車新小52（新小岩站東北廣場 → 上平井町 → 步行前往）。"
     },
     {
       "name": "東京鐵塔",
       "category": "景點",
       "area": "東京鐵塔周邊",
       "visitPlan": "已排入 Day3",
-      "note": "週六日開放徒步爬600階，可買鐵塔神射御守，象徵步步高升。"
+      "note": "週六日開放徒步爬600階（需16:00前抵達），可買鐵塔神射御守，象徵步步高升。"
     },
     {
-      "name": "THE★JOJO WORLD",
-      "category": "主題店",
-      "area": "澀谷",
+      "name": "森美術館－Ron Mueck 100顆骷顱展",
+      "category": "展覽",
+      "area": "六本木",
       "visitPlan": "已排入 Day3",
-      "note": "《JoJo的奇妙冒險》首家常態店。"
+      "openingHours": "除週二外開到22:00",
+      "note": "地址：東京都港區六本木6-10-1 六本木新城森大廈53F。強烈回歸行程，安排在Day3傍晚，從容享受夜間展覽與六本木夜景。",
+      "websiteUrl": "https://art-view.roppongihills.com/tw/"
     },
     {
-      "name": "JOJO酒吧（中野）",
-      "category": "主題酒吧",
-      "area": "中野",
-      "visitPlan": "已排入 Day4"
+      "name": "東京都美術館（只逛美術館商店）",
+      "category": "美術館商店",
+      "area": "上野",
+      "visitPlan": "已排入 Day4",
+      "note": "這次只逛美術館商店與建築外觀，不進特展區。地址：東京都台東區上野公園8-36。"
     },
     {
-      "name": "秋葉原神社",
+      "name": "上野東照宮",
       "category": "神社",
-      "area": "秋葉原",
-      "visitPlan": "未排入行程，可視情況安排",
-      "note": "可求電子御守。"
+      "area": "上野",
+      "visitPlan": "已排入 Day4",
+      "openingHours": "社殿參拜9:30-17:00（10-2月至16:00），開門9:00-17:30（10-2月至16:30）",
+      "admission": "大人700日圓／小學生300日圓／學齡前免費（20人以上團體600日圓）",
+      "note": "供奉德川家康的強運能量景點，金色社殿相當知名。地址：東京都台東区上野公園9-88。"
     },
     {
-      "name": "合羽橋道具街",
-      "category": "商店街",
-      "area": "淺草/藏前",
-      "visitPlan": "已排入 Day2",
-      "note": "想找抹茶碗跟刷子。附近有淺草アトム堂本舗 TEZUKA OSAMU SHOP & CAFE（7/5開幕，無店休日，地址：東京都台東区浅草2丁目7-13 淺草西參道商店街）。"
+      "name": "東京国立博物館（総合文化展）",
+      "category": "博物館",
+      "area": "上野",
+      "visitPlan": "已排入 Day4",
+      "openingHours": "9:30-17:00（週五、週六延長至20:00），週一休館",
+      "admission": "一般1,000日圓／大學生500日圓／高中生以下及70歲以上免費",
+      "note": "常設展「總合文化展」，不含特展。地址：東京都台東区上野公園13-9。",
+      "websiteUrl": "https://www.tnm.jp/"
+    },
+    {
+      "name": "海洋堂ホビーロビー東京",
+      "category": "模型店",
+      "area": "秋葉原",
+      "visitPlan": "已排入 Day4",
+      "openingHours": "平日12:00-20:00／週六日、假日11:00-19:00",
+      "note": "海洋堂直營旗艦店，位於秋葉原電氣街Radio會館5F，JR秋葉原駅徒步約30秒。地址：東京都千代田区外神田1-15-16 ラジオ会館5F。"
     },
     {
       "name": "東京電玩展",
@@ -609,45 +721,63 @@
       "note": "本次行程的核心行程。"
     },
     {
-      "name": "戰鬥陀螺酒吧（下北澤）",
-      "category": "主題酒吧",
-      "area": "下北澤",
+      "name": "THE★JOJO WORLD",
+      "category": "主題店",
+      "area": "澀谷",
       "visitPlan": "已排入 Day5",
-      "note": "需先預約！"
+      "openingHours": "10:00-21:00",
+      "note": "《JoJo的奇妙冒險》首家體驗型常態店，地址：東京都渋谷区宇田川町15-1 澀谷PARCO 6樓。入場免費，體驗項目與小遊戲需額外付費。"
     },
     {
-      "name": "三軒茶屋・豪德寺散策",
+      "name": "LOFT（澀谷店）",
+      "category": "生活雜貨",
+      "area": "澀谷",
+      "visitPlan": "已排入 Day5",
+      "note": "生活雜貨旗艦店，跟THE★JOJO WORLD同區域，逛完可以順路過去。地址：東京都渋谷区宇田川町21-1。"
+    },
+    {
+      "name": "吉祥寺散策（井之頭公園・百貨）",
       "category": "散策",
-      "area": "三軒茶屋",
-      "visitPlan": "已排入 Day4",
-      "note": "三軒茶屋和豪德寺路線剛好順路。"
-    },
-    {
-      "name": "神樂坂散策",
-      "category": "散策",
-      "area": "神樂坂",
+      "area": "吉祥寺",
       "visitPlan": "已排入 Day6",
-      "note": "退房後最後一天上午行程，悠閒散步、吃早午餐，感受老東京巷弄與石板小徑風情。"
-    },
-    {
-      "name": "Yamashiro 百年玩具店",
-      "category": "景點/購物",
-      "area": "上野",
-      "visitPlan": "已排入 Day6",
-      "note": "可退稅。",
-      "mapsUrl": "https://maps.app.goo.gl/SmLEBn4bQaYJ8Cy1A?g_st=ac"
+      "note": "時間彈性抓鬆一點，井之頭公園、Sun Road商店街、各式選物店，時間不夠可以現場調整或跳過。"
     }
   ],
   "manholeCards": [
     {
+      "name": "台東区生涯学習センター",
+      "category": "常設限定（特別版已配布終了）",
+      "area": "淺草",
+      "collectStatus": "待收集（卡片1）",
+      "distributionPlace": "東京都台東区西浅草3-25-16",
+      "distributionHours": "09:00～20:00（每月第1、3、5週一休，遇假日順延；年末年始12/29～1/3休）",
+      "manholeLocation": "《皿三昧》設計（東京23區 Q001）",
+      "note": "Day1傍晚逛完合羽橋道具街後順路拿；特別版（金色）已配布終了，僅剩一般版（藍色）。",
+      "image": "images/manhole-cards/sarazanmai.jpg",
+      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
+    },
+    {
+      "name": "三軒茶屋観光案内所（SANCHA3「サンチャキューブ」）",
+      "category": "常設限定",
+      "area": "三軒茶屋",
+      "collectStatus": "待收集（卡片2）",
+      "distributionPlace": "東京都世田谷区太子堂4-1-1（東急世田谷線三軒茶屋駅改札前）",
+      "distributionHours": "10:00～18:00（年末年始12/29～1/3休）",
+      "manholeLocation": "超人力霸王（Ultraman）剪影設計（東京23區 G001）",
+      "note": "Day2上午拿，拿完順路去豪德寺、下北澤。",
+      "websiteUrl": "https://www.kanko-setagaya.jp/?p=we-page-entry&spot=265539&nav=none",
+      "image": "images/manhole-cards/ultraman.jpg",
+      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
+    },
+    {
       "name": "龜有観光案内所（ゆうろーどサービスカウンター）",
       "category": "常設限定",
       "area": "龜有",
-      "collectStatus": "待收集（卡片1）",
+      "collectStatus": "待收集（卡片3）",
       "distributionPlace": "東京都葛飾区亀有3-21-6",
-      "distributionHours": "11:00～19:00（每月第3個週二休，遇假日順延翌平日）",
+      "distributionHours": "09:45～17:45（每月第3個週二休，遇假日順延翌平日）",
       "manholeLocation": "《烏龍派出所》兩津勘吉設計（東京23區 X001）",
-      "note": "Day1下午前往，與隔壁マカロン店為同一張卡的兩個發放點，可視為備援不是兩種設計。",
+      "note": "Day3上午前往，主要發放點；每月第3個週二公休日改由隔壁ハンドメイドファクトリー マカロン發放（同一張卡設計）。",
       "websiteUrl": "http://www.youroad.com/index.html",
       "image": "images/manhole-cards/kochikame.jpg",
       "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
@@ -656,124 +786,73 @@
       "name": "ハンドメイドファクトリー マカロン",
       "category": "常設限定",
       "area": "龜有",
-      "collectStatus": "待收集（卡片2）",
+      "collectStatus": "待收集（卡片3備援）",
       "distributionPlace": "東京都葛飾区亀有3-35-3",
-      "distributionHours": "9:45～17:45（每月第3個週二休；週日不開）",
+      "distributionHours": "11:00～18:00（僅在龜有観光案内所公休日代為發放，同一張卡）",
       "manholeLocation": "《烏龍派出所》兩津勘吉設計（東京23區 X001，與龜有觀光案內所同款）",
-      "note": "查證後這裡發的其實是跟龜有觀光案內所「同一張卡」，週日不開，去之前請再次確認是否還有配發。",
+      "note": "查證後這裡是龜有観光案内所公休日（每月第3個週二）的代替發放點，正常日期還是以觀光案內所為主，去之前建議再次確認。",
       "image": "images/manhole-cards/kochikame.jpg",
-      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
-    },
-    {
-      "name": "新宿観光案内所",
-      "category": "常設限定",
-      "area": "新宿",
-      "collectStatus": "待收集（卡片3）",
-      "distributionPlace": "東京都新宿区新宿3-37-2",
-      "distributionHours": "10:00～19:00",
-      "manholeLocation": "新宿限定「シン・ゴジラ」設計（東京23區 O001）",
-      "note": "Day1傍晚買完 Canal Jean 包包後順路拿。",
-      "websiteUrl": "https://www.kanko-shinjuku.jp/office/-/index.html",
-      "image": "images/manhole-cards/shin-godzilla.jpg",
-      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
-    },
-    {
-      "name": "東京観光情報センター 京成上野",
-      "category": "常設限定",
-      "area": "上野",
-      "collectStatus": "待收集（卡片4）",
-      "distributionPlace": "東京都台東区上野公園1-60（京成上野駅改札口前）",
-      "distributionHours": "9:30～18:30",
-      "manholeLocation": "「東京23區」共通紀念設計（C001，非台東區單一設計）",
-      "note": "Day2上午看展前後順路拿；這張是23區共通款，不是台東區的《さらざんまい》款（那張在卡片5）。",
-      "image": "images/manhole-cards/tokyo23.jpg",
-      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
-    },
-    {
-      "name": "台東区生涯学習センター",
-      "category": "常設限定（特別版已配布終了）",
-      "area": "淺草",
-      "collectStatus": "待收集（卡片5）",
-      "distributionPlace": "東京都台東区西浅草3-25-16",
-      "distributionHours": "9:00～20:00（每月第1、3、5週一休，遇假日順延；年末年始12/29～1/3休）",
-      "manholeLocation": "《皿三昧》設計（東京23區 Q001）",
-      "note": "就在合羽橋道具街附近；特別版（金色）已配布終了，僅剩一般版（藍色）。",
-      "image": "images/manhole-cards/sarazanmai.jpg",
-      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
-    },
-    {
-      "name": "千代田区観光案内所",
-      "category": "常設限定",
-      "area": "千代田",
-      "collectStatus": "待收集（卡片6）",
-      "distributionPlace": "東京都千代田区九段南1-6-17 千代田会館1階",
-      "distributionHours": "10:00～18:00（第4個週日、年末年始休）",
-      "manholeLocation": "「リラックマ」拉拉熊設計（東京23區 O101，第28彈，2026/4/24開始配布）",
-      "note": "查證更正：這裡目前配發的其實是2026/4/24才上市的拉拉熊卡（O101），不是原本以為的原子小金剛（那張其實是卡片アキバインフォ在發，見備選清單）。位置較偏且關得早，看杉本博司展前若時間充裕再繞去拿。",
-      "websiteUrl": "https://visit-chiyoda.tokyo/",
-      "image": "images/manhole-cards/rilakkuma.jpg",
-      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
-    },
-    {
-      "name": "港区観光インフォメーションセンター（札の辻スクエア）",
-      "category": "常設限定",
-      "area": "港區",
-      "collectStatus": "待收集（卡片7，建議現場確認庫存）",
-      "distributionPlace": "東京都港区芝五丁目36番4号 札の辻スクエア1階",
-      "distributionHours": "9:00～17:00",
-      "manholeLocation": "《美少女戰士》& 燕尾服蒙面俠設計（東京23區 G101，第22彈，日本全國首發美少女戰士主題人孔蓋）",
-      "note": "查證發現這張卡2024年上市後曾一度配布數量用罄，是否已補貨、行程當下庫存都建議先電話或官網確認。",
-      "websiteUrl": "https://visit-minato-city.tokyo/ja-jp/places/2774",
-      "image": "images/manhole-cards/sailormoon.jpg",
-      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
-    },
-    {
-      "name": "三軒茶屋観光案内所（SANCHA3「サンチャキューブ」）",
-      "category": "常設限定",
-      "area": "三軒茶屋",
-      "collectStatus": "待收集（卡片8）",
-      "distributionPlace": "東京都世田谷区太子堂4-1-1（東急世田谷線三軒茶屋駅改札前）",
-      "distributionHours": "10:00～18:00（年末年始12/29～1/3休）",
-      "manholeLocation": "超人力霸王（Ultraman）剪影設計（東京23區 G001）",
-      "note": "Day4上午拿，拿完可在三軒茶屋悠閒散步午餐。",
-      "websiteUrl": "https://www.kanko-setagaya.jp/?p=we-page-entry&spot=265539&nav=none",
-      "image": "images/manhole-cards/ultraman.jpg",
-      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
-    },
-    {
-      "name": "千葉市幕張観光情報センター",
-      "category": "常設限定",
-      "area": "幕張",
-      "collectStatus": "待收集（卡片9）",
-      "distributionPlace": "千葉市美浜区ひび野2-1（JR海浜幕張駅構内）",
-      "distributionHours": "平日10:00～18:00／假日10:00～17:00（年末年始12/28～1/3休）",
-      "manholeLocation": "初音未來（初音ミク）× 千葉市100周年紀念設計（千葉市 B001）",
-      "note": "Day5東京電玩展當天，出站第一件事先拿卡再進展場。",
-      "image": "images/manhole-cards/hatsune-miku.jpg",
       "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
     },
     {
       "name": "第一書林（新小岩北口店）",
       "category": "常設限定",
       "area": "新小岩",
-      "collectStatus": "待收集（卡片10）",
+      "collectStatus": "待收集（卡片4）",
       "distributionPlace": "東京都葛飾区西新小岩1-2-11 喜久屋ビル1F",
-      "distributionHours": "平日・週六10:00～21:00／週日・假日10:00～20:00",
+      "distributionHours": "10:00～21:00（週六）／平日10:00～21:00／週日・假日10:00～20:00",
       "manholeLocation": "Monchhichi 設計（東京23區 D001，2026/4/1才從柴又観光案内所改到這裡發放）",
-      "note": "Day6下午前往，需在書店購物結帳後於收銀台領取，跟排隊的店員說要拿人孔蓋卡即可。",
+      "note": "Day3中午前往，需在書店購物結帳後於收銀台領取，跟店員說要拿人孔蓋卡即可。拿完卡順路搭公車去魔奇奇公園。",
       "image": "images/manhole-cards/monchhichi.jpg",
+      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
+    },
+    {
+      "name": "東京観光情報センター 京成上野",
+      "category": "常設限定",
+      "area": "上野",
+      "collectStatus": "待收集（卡片5）",
+      "distributionPlace": "東京都台東区上野公園1-60（京成上野駅改札口前）",
+      "distributionHours": "09:30～18:30",
+      "manholeLocation": "「東京23區」共通紀念設計（C001，以東京都花・都木・都鳥的粉彩配色呈現，非台東區單一設計）",
+      "note": "Day4上野公園逛完三館後順路拿，是23區共通款，不是台東區的《さらざんまい》款（那張已在Day1拿過）。",
+      "image": "images/manhole-cards/tokyo23.jpg",
       "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
     },
     {
       "name": "アキバインフォ（秋葉原UDX2階）",
       "category": "常設限定",
       "area": "秋葉原",
-      "collectStatus": "備選（未排入行程）",
+      "collectStatus": "待收集（卡片6）",
       "distributionPlace": "東京都千代田区外神田4-14-1",
       "distributionHours": "11:00～17:30（每週一休，遇假日順延翌平日）",
       "manholeLocation": "《原子小金剛》設計（東京23區 F001，第12彈，2020/03/09～）",
-      "note": "查證更正：這張才是真正的原子小金剛卡，跟千代田區觀光案內所（現在發拉拉熊）是不同兩張卡。目前6天行程未安排時間去拿，可視情況彈性加入。",
+      "note": "Day4逛完海洋堂ホビーロビー東京後順路拿。",
       "image": "images/manhole-cards/astroboy.jpg",
+      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
+    },
+    {
+      "name": "千葉市幕張観光情報センター",
+      "category": "常設限定",
+      "area": "幕張",
+      "collectStatus": "待收集（卡片7）",
+      "distributionPlace": "千葉市美浜区ひび野2-1（JR海浜幕張駅構内）",
+      "distributionHours": "10:00～18:00（平日10:00～18:00／假日10:00～17:00，年末年始12/28～1/3休）",
+      "manholeLocation": "初音未來（初音ミク）× 千葉市100周年紀念設計（千葉市 B001）",
+      "note": "Day5東京電玩展當天，出站第一件事先拿卡再進展場。",
+      "image": "images/manhole-cards/hatsune-miku.jpg",
+      "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
+    },
+    {
+      "name": "新宿観光案内所",
+      "category": "常設限定",
+      "area": "新宿",
+      "collectStatus": "待收集（卡片8）",
+      "distributionPlace": "東京都新宿区新宿3-37-2",
+      "distributionHours": "10:00～19:00",
+      "manholeLocation": "新宿限定「シン・ゴジラ」設計（東京23區 O001）",
+      "note": "Day6上午逛新宿、買完 Canal Jean 包包後順路拿，是這趟旅程最後一張人孔蓋卡。",
+      "websiteUrl": "https://www.kanko-shinjuku.jp/office/-/index.html",
+      "image": "images/manhole-cards/shin-godzilla.jpg",
       "imageCaption": "官方卡面（來源：下水道広報プラットホーム gk-p.jp）"
     }
   ],
@@ -795,7 +874,14 @@
       "isVjwContact": true,
       "websiteUrl": "https://en.www.resol-hotel.jp/ueno/",
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel+Resol+Ueno+Tokyo",
-      "relatedDays": ["day1", "day2", "day3", "day4", "day5", "day6"]
+      "relatedDays": [
+        "day1",
+        "day2",
+        "day3",
+        "day4",
+        "day5",
+        "day6"
+      ]
     }
   ],
   "areaMapPoints": [
@@ -806,6 +892,76 @@
       "category": "住宿",
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hotel+Resol+Ueno%2C+7-2-9+Ueno%2C+Taito-ku%2C+Tokyo",
       "note": "全程6天5夜住宿地點"
+    },
+    {
+      "id": "map-travelers-factory-station",
+      "name": "TRAVELER'S FACTORY STATION（東京駅）",
+      "area": "千代田区丸の内1-9-1 グランスタ丸の内",
+      "category": "購物",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=TRAVELER%27S+FACTORY+STATION%2C+%E3%82%B0%E3%83%A9%E3%83%B3%E3%82%B9%E3%82%BF%E4%B8%B8%E3%81%AE%E5%86%85%2C+%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E4%B8%B8%E3%81%AE%E5%86%851-9-1"
+    },
+    {
+      "id": "map-pokemon-center-tokyo-dx",
+      "name": "Pokémon Center TOKYO DX（日本橋高島屋）",
+      "area": "中央区日本橋2-11-2",
+      "category": "景點",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A6%E3%82%AD%E3%83%A7%E3%83%BCDX%2C+%E6%97%A5%E6%9C%AC%E6%A9%8B2-11-2%2C+%E4%B8%AD%E5%A4%AE%E5%8C%BA"
+    },
+    {
+      "id": "map-kappabashi",
+      "name": "合羽橋道具街",
+      "area": "台東区西浅草",
+      "category": "景點",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%90%88%E7%BE%BD%E6%A9%8B%E9%81%93%E5%85%B7%E8%A1%97%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
+    },
+    {
+      "id": "map-mh-taito-center",
+      "name": "台東区生涯学習センター",
+      "area": "台東区西浅草3-25-16",
+      "category": "人孔蓋卡",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8F%B0%E6%9D%B1%E5%8C%BA%E7%94%9F%E6%B6%AF%E5%AD%A6%E7%BF%92%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%2C+%E8%A5%BF%E6%B5%85%E8%8D%893-25-16%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
+    },
+    {
+      "id": "map-fukuchan-asakusa",
+      "name": "福ちゃん（淺草地下商店街）",
+      "area": "台東区浅草1-1-12",
+      "category": "餐飲",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A6%8F%E3%81%A1%E3%82%83%E3%82%93%2C+%E6%B5%85%E8%8D%891-1-12%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
+    },
+    {
+      "id": "map-mh-sangenjaya-info",
+      "name": "三軒茶屋観光案内所（SANCHA3「サンチャキューブ」）",
+      "area": "世田谷区太子堂4-1-1",
+      "category": "人孔蓋卡",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SANCHA3+%E3%82%B5%E3%83%B3%E3%83%81%E3%83%A3%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%96%2C+%E5%A4%AA%E5%AD%90%E5%A0%824-1-1%2C+%E4%B8%96%E7%94%B0%E8%B0%B7%E5%8C%BA"
+    },
+    {
+      "id": "map-gotokuji",
+      "name": "豪德寺",
+      "area": "世田谷区豪徳寺2-24-7",
+      "category": "景點",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E8%B1%AA%E5%BE%B3%E5%AF%BA%2C+%E8%B1%AA%E5%BE%B3%E5%AF%BA2-24-7%2C+%E4%B8%96%E7%94%B0%E8%B0%B7%E5%8C%BA"
+    },
+    {
+      "id": "map-shimokitazawa",
+      "name": "下北澤散策 / ムーンアートナイト2026",
+      "area": "世田谷区北沢",
+      "category": "景點",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%8B%E5%8C%97%E7%B7%9A%E8%B7%AF%E8%A1%97%2C+%E5%8C%97%E6%B2%A2%2C+%E4%B8%96%E7%94%B0%E8%B0%B7%E5%8C%BA"
+    },
+    {
+      "id": "map-beyblade-bar",
+      "name": "戰鬥陀螺酒吧（下北澤）",
+      "area": "下北澤",
+      "category": "景點",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%88%B0%E9%AC%A5%E9%99%80%E8%9E%BA%E9%85%92%E5%90%A7%2C+%E4%B8%8B%E5%8C%97%E6%BE%A4"
+    },
+    {
+      "id": "map-kameari-kochikame-museum",
+      "name": "こち亀記念館",
+      "area": "葛飾区亀有3-32-17",
+      "category": "景點",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%81%93%E3%81%A1%E4%BA%80%E8%A8%98%E5%BF%B5%E9%A4%A8%2C+%E4%BA%80%E6%9C%893-32-17%2C+%E8%91%9B%E9%A3%BE%E5%8C%BA"
     },
     {
       "id": "map-mh-kameari-info",
@@ -822,55 +978,6 @@
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A1%E3%82%A4%E3%83%89%E3%83%95%E3%82%A1%E3%82%AF%E3%83%88%E3%83%AA%E3%83%BC%E3%83%9E%E3%82%AB%E3%83%AD%E3%83%B3%2C+%E4%BA%80%E6%9C%893-35-3%2C+%E8%91%9B%E9%A3%BE%E5%8C%BA"
     },
     {
-      "id": "map-mh-shinjuku-info",
-      "name": "新宿観光案内所",
-      "area": "新宿区新宿3-37-2",
-      "category": "人孔蓋卡",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%AE%BF%E8%A6%B3%E5%85%89%E6%A1%88%E5%86%85%E6%89%80%2C+%E6%96%B0%E5%AE%BF3-37-2%2C+%E6%96%B0%E5%AE%BF%E5%8C%BA"
-    },
-    {
-      "id": "map-mh-ueno-keisei",
-      "name": "東京観光情報センター 京成上野",
-      "area": "台東区上野公園1-60",
-      "category": "人孔蓋卡",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E8%A6%B3%E5%85%89%E6%83%85%E5%A0%B1%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC+%E4%BA%AC%E6%88%90%E4%B8%8A%E9%87%8E%2C+%E4%B8%8A%E9%87%8E%E5%85%AC%E5%9C%921-60%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
-    },
-    {
-      "id": "map-mh-taito-center",
-      "name": "台東区生涯学習センター",
-      "area": "台東区西浅草3-25-16",
-      "category": "人孔蓋卡",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8F%B0%E6%9D%B1%E5%8C%BA%E7%94%9F%E6%B6%AF%E5%AD%A6%E7%BF%92%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%2C+%E8%A5%BF%E6%B5%85%E8%8D%893-25-16%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
-    },
-    {
-      "id": "map-mh-chiyoda-info",
-      "name": "千代田区観光案内所",
-      "area": "千代田区九段南1-6-17",
-      "category": "人孔蓋卡",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E8%A6%B3%E5%85%89%E6%A1%88%E5%86%85%E6%89%80%2C+%E4%B9%9D%E6%AE%B5%E5%8D%971-6-17%2C+%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA"
-    },
-    {
-      "id": "map-mh-minato-info",
-      "name": "港区観光インフォメーションセンター（札の辻スクエア）",
-      "area": "港区芝五丁目36番4号",
-      "category": "人孔蓋卡",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9C%AD%E3%81%AE%E8%BE%BB%E3%82%B9%E3%82%AF%E3%82%A8%E3%82%A2%2C+%E8%8A%9D5%E4%B8%81%E7%9B%AE36%E7%95%AA4%E5%8F%B7%2C+%E6%B8%AF%E5%8C%BA"
-    },
-    {
-      "id": "map-mh-sangenjaya-info",
-      "name": "三軒茶屋観光案内所（SANCHA3「サンチャキューブ」）",
-      "area": "世田谷区太子堂4-1-1",
-      "category": "人孔蓋卡",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=SANCHA3+%E3%82%B5%E3%83%B3%E3%83%81%E3%83%A3%E3%82%AD%E3%83%A5%E3%83%BC%E3%83%96%2C+%E5%A4%AA%E5%AD%90%E5%A0%824-1-1%2C+%E4%B8%96%E7%94%B0%E8%B0%B7%E5%8C%BA"
-    },
-    {
-      "id": "map-mh-makuhari-info",
-      "name": "千葉市幕張観光情報センター",
-      "area": "千葉市美浜区ひび野2-1",
-      "category": "人孔蓋卡",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8D%83%E8%91%89%E5%B8%82%E5%B9%95%E5%BC%B5%E8%A6%B3%E5%85%89%E6%83%85%E5%A0%B1%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%2C+%E3%81%B2%E3%81%B3%E9%87%8E2-1%2C+%E7%BE%8E%E6%B5%9C%E5%8C%BA%2C+Chiba"
-    },
-    {
       "id": "map-mh-shinkoiwa-daiichishorin",
       "name": "第一書林（新小岩北口店）",
       "area": "葛飾区西新小岩1-2-11",
@@ -878,39 +985,11 @@
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%AC%AC%E4%B8%80%E6%9B%B8%E6%9E%97+%E6%96%B0%E5%B0%8F%E5%B2%A9%E5%8C%97%E5%8F%A3%E5%BA%97%2C+%E8%A5%BF%E6%96%B0%E5%B0%8F%E5%B2%A91-2-11%2C+%E8%91%9B%E9%A3%BE%E5%8C%BA"
     },
     {
-      "id": "map-mh-akiba-info",
-      "name": "アキバインフォ（秋葉原UDX2階）",
-      "area": "千代田区外神田4-14-1",
-      "category": "人孔蓋卡",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A7%8B%E8%91%89%E5%8E%9FUDX%2C+%E5%A4%96%E7%A5%9E%E7%94%B04-14-1%2C+%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA"
-    },
-    {
-      "id": "map-momat",
-      "name": "東京國立近代美術館－杉本博司「消亡的攝影」",
-      "area": "千代田区北の丸公園3-1",
+      "id": "map-monchhichi-park",
+      "name": "魔奇奇公園（西新小岩五丁目公園）",
+      "area": "葛飾区西新小岩5-2-4",
       "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E5%9B%BD%E7%AB%8B%E8%BF%91%E4%BB%A3%E7%BE%8E%E8%A1%93%E9%A4%A8%2C+%E5%8C%97%E3%81%AE%E4%B8%B8%E5%85%AC%E5%9C%923-1%2C+%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA"
-    },
-    {
-      "id": "map-tobikan",
-      "name": "東京都美術館－百花繚乱～海を越えた江戸絵画",
-      "area": "台東区上野公園8-36",
-      "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%BE%8E%E8%A1%93%E9%A4%A8%2C+%E4%B8%8A%E9%87%8E%E5%85%AC%E5%9C%928-36%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
-    },
-    {
-      "id": "map-mori-museum",
-      "name": "森美術館－Ron Mueck 100顆骷顱展",
-      "area": "港区六本木6-10-1",
-      "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E7%BE%8E%E8%A1%93%E9%A4%A8%2C+%E5%85%AD%E6%9C%AC%E6%9C%A86-10-1%2C+%E6%B8%AF%E5%8C%BA"
-    },
-    {
-      "id": "map-okamoto-taro",
-      "name": "岡本太郎紀念館",
-      "area": "港区南青山6-1-19",
-      "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%B2%A1%E6%9C%AC%E5%A4%AA%E9%83%8E%E8%A8%98%E5%BF%B5%E9%A4%A8%2C+%E5%8D%97%E9%9D%92%E5%B1%B16-1-19%2C+%E6%B8%AF%E5%8C%BA"
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%96%B0%E5%B0%8F%E5%B2%A9%E4%BA%94%E4%B8%81%E7%9B%AE%E5%85%AC%E5%9C%92+%E3%83%A2%E3%83%B3%E3%83%81%E3%83%83%E3%83%81%E5%85%AC%E5%9C%92%2C+%E8%A5%BF%E6%96%B0%E5%B0%8F%E5%B2%A95-2-4%2C+%E8%91%9B%E9%A3%BE%E5%8C%BA"
     },
     {
       "id": "map-tokyo-tower",
@@ -920,25 +999,60 @@
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E3%82%BF%E3%83%AF%E3%83%BC%2C+%E8%8A%9D%E5%85%AC%E5%9C%924-2-8%2C+%E6%B8%AF%E5%8C%BA"
     },
     {
-      "id": "map-jojo-world",
-      "name": "THE★JOJO WORLD",
-      "area": "澀谷",
+      "id": "map-mori-museum",
+      "name": "森美術館－Ron Mueck 100顆骷顱展",
+      "area": "港区六本木6-10-1",
       "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=THE%E2%98%85JOJO+WORLD%2C+%E6%B8%8B%E8%B0%B7"
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%A3%AE%E7%BE%8E%E8%A1%93%E9%A4%A8%2C+%E5%85%AD%E6%9C%AC%E6%9C%A86-10-1%2C+%E6%B8%AF%E5%8C%BA"
     },
     {
-      "id": "map-jojo-bar-nakano",
-      "name": "JOJO酒吧（中野）",
-      "area": "中野",
+      "id": "map-tobikan",
+      "name": "東京都美術館",
+      "area": "台東区上野公園8-36",
       "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=JOJO+BAR%2C+%E4%B8%AD%E9%87%8E"
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%BE%8E%E8%A1%93%E9%A4%A8%2C+%E4%B8%8A%E9%87%8E%E5%85%AC%E5%9C%928-36%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
     },
     {
-      "id": "map-kappabashi",
-      "name": "合羽橋道具街",
-      "area": "台東区西浅草",
+      "id": "map-ueno-toshogu",
+      "name": "上野東照宮",
+      "area": "台東区上野公園9-88",
       "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%90%88%E7%BE%BD%E6%A9%8B%E9%81%93%E5%85%B7%E8%A1%97%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%8A%E9%87%8E%E6%9D%B1%E7%85%A7%E5%AE%AE%2C+%E4%B8%8A%E9%87%8E%E5%85%AC%E5%9C%929-88%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
+    },
+    {
+      "id": "map-tnm",
+      "name": "東京国立博物館",
+      "area": "台東区上野公園13-9",
+      "category": "景點",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E5%9B%BD%E7%AB%8B%E5%8D%9A%E7%89%A9%E9%A4%A8%2C+%E4%B8%8A%E9%87%8E%E5%85%AC%E5%9C%9213-9%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
+    },
+    {
+      "id": "map-mh-ueno-keisei",
+      "name": "東京観光情報センター 京成上野",
+      "area": "台東区上野公園1-60",
+      "category": "人孔蓋卡",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E8%A6%B3%E5%85%89%E6%83%85%E5%A0%B1%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC+%E4%BA%AC%E6%88%90%E4%B8%8A%E9%87%8E%2C+%E4%B8%8A%E9%87%8E%E5%85%AC%E5%9C%921-60%2C+%E5%8F%B0%E6%9D%B1%E5%8C%BA"
+    },
+    {
+      "id": "map-kaiyodo-hobby-lobby",
+      "name": "海洋堂ホビーロビー東京",
+      "area": "千代田区外神田1-15-16",
+      "category": "購物",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E6%B4%8B%E5%A0%82%E3%83%9B%E3%83%93%E3%83%BC%E3%83%AD%E3%83%93%E3%83%BC%E6%9D%B1%E4%BA%AC%2C+%E5%A4%96%E7%A5%9E%E7%94%B01-15-16%2C+%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA"
+    },
+    {
+      "id": "map-mh-akiba-info",
+      "name": "アキバインフォ（秋葉原UDX2階）",
+      "area": "千代田区外神田4-14-1",
+      "category": "人孔蓋卡",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A7%8B%E8%91%89%E5%8E%9FUDX%2C+%E5%A4%96%E7%A5%9E%E7%94%B04-14-1%2C+%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA"
+    },
+    {
+      "id": "map-nakameguro",
+      "name": "中目黑（目黑川散策）",
+      "area": "目黒区中目黒",
+      "category": "景點",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E7%9B%AE%E9%BB%92%2C+%E7%9B%AE%E9%BB%92%E5%8C%BA"
     },
     {
       "id": "map-tgs",
@@ -948,39 +1062,39 @@
       "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%B9%95%E5%BC%B5%E3%83%A1%E3%83%83%E3%82%BB%2C+%E4%B8%AD%E7%80%AC2-1%2C+%E7%BE%8E%E6%B5%9C%E5%8C%BA%2C+Chiba"
     },
     {
-      "id": "map-beyblade-bar",
-      "name": "戰鬥陀螺酒吧（下北澤）",
-      "area": "下北澤",
-      "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%88%A6%E9%97%98%E9%99%80%E8%9E%BA%E9%85%92%E5%90%A7%2C+%E4%B8%8B%E5%8C%97%E6%BE%A4"
+      "id": "map-mh-makuhari-info",
+      "name": "千葉市幕張観光情報センター",
+      "area": "千葉市美浜区ひび野2-1",
+      "category": "人孔蓋卡",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E5%8D%83%E8%91%89%E5%B8%82%E5%B9%95%E5%BC%B5%E8%A6%B3%E5%85%89%E6%83%85%E5%A0%B1%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%2C+%E3%81%B2%E3%81%B3%E9%87%8E2-1%2C+%E7%BE%8E%E6%B5%9C%E5%8C%BA%2C+Chiba"
     },
     {
-      "id": "map-sangenjaya-gotokuji",
-      "name": "三軒茶屋・豪德寺散策",
-      "area": "世田谷区三軒茶屋",
+      "id": "map-jojo-world-shibuya",
+      "name": "THE★JOJO WORLD",
+      "area": "渋谷区宇田川町15-1 渋谷PARCO 6F",
       "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E8%B1%AA%E5%BE%B7%E5%AF%BA%2C+%E4%B8%96%E7%94%B0%E8%B0%B7%E5%8C%BA"
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%B8%8B%E8%B0%B7PARCO%2C+%E5%AE%87%E7%94%B0%E5%B7%9D%E7%94%BA15-1%2C+%E6%B8%8B%E8%B0%B7%E5%8C%BA"
     },
     {
-      "id": "map-yamashiro-toys",
-      "name": "Yamashiro 百年玩具店",
-      "area": "台東区上野",
+      "id": "map-loft-shibuya",
+      "name": "LOFT（澀谷店）",
+      "area": "渋谷区宇田川町21-1",
       "category": "購物",
-      "mapsUrl": "https://maps.app.goo.gl/SmLEBn4bQaYJ8Cy1A?g_st=ac"
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%B8%8B%E8%B0%B7%E3%83%AD%E3%83%95%E3%83%88%2C+%E5%AE%87%E7%94%B0%E5%B7%9D%E7%94%BA21-1%2C+%E6%B8%8B%E8%B0%B7%E5%8C%BA"
     },
     {
-      "id": "map-kagurazaka",
-      "name": "神樂坂散策",
-      "area": "新宿区神楽坂",
-      "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%A5%BD%E5%9D%82%2C+%E6%96%B0%E5%AE%BF%E5%8C%BA"
+      "id": "map-mh-shinjuku-info",
+      "name": "新宿観光案内所",
+      "area": "新宿区新宿3-37-2",
+      "category": "人孔蓋卡",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%AE%BF%E8%A6%B3%E5%85%89%E6%A1%88%E5%86%85%E6%89%80%2C+%E6%96%B0%E5%AE%BF3-37-2%2C+%E6%96%B0%E5%AE%BF%E5%8C%BA"
     },
     {
-      "id": "map-akiba-shrine",
-      "name": "秋葉原神社",
-      "area": "千代田区外神田",
+      "id": "map-kichijoji",
+      "name": "吉祥寺（井之頭公園）",
+      "area": "武蔵野市御殿山",
       "category": "景點",
-      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E7%A7%8B%E8%91%89%E5%8E%9F%E7%A5%9E%E7%A4%BE%2C+%E5%A4%96%E7%A5%9E%E7%94%B0%2C+%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA"
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=%E4%BA%95%E3%81%AE%E9%A0%AD%E6%81%A9%E8%B3%9C%E5%85%AC%E5%9C%92%2C+%E5%90%89%E7%A5%A5%E5%AF%BA%2C+%E6%AD%A6%E8%94%B5%E9%87%8E%E5%B8%82"
     }
   ],
   "checklist": [
