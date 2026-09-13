@@ -1081,6 +1081,10 @@
                 {
                   "id": "camera-memory-card",
                   "title": "相機記憶卡"
+                },
+                {
+                  "id": "memory-card-check",
+                  "title": "確認記憶卡容量跟清空"
                 }
               ]
             }
@@ -1123,6 +1127,18 @@
               "title": "寶可夢卡牌一副"
             },
             {
+              "id": "beyblade-set",
+              "title": "帶3顆戰鬥陀螺+發射器去玩"
+            },
+            {
+              "id": "poster-folder",
+              "title": "海報夾"
+            },
+            {
+              "id": "massage-gun",
+              "title": "筋膜槍"
+            },
+            {
               "id": "hygiene-medicine",
               "title": "個人衛生用品與藥品",
               "children": [
@@ -1157,8 +1173,16 @@
                       "title": "對應天數的衣物（5套短袖+薄外套+5內褲+5襪子）"
                     },
                     {
+                      "id": "compression-socks",
+                      "title": "包覆襪"
+                    },
+                    {
                       "id": "sleepwear",
                       "title": "睡衣睡褲"
+                    },
+                    {
+                      "id": "compression-bag",
+                      "title": "壓縮袋"
                     },
                     {
                       "id": "laundry-bag",
