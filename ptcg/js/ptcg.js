@@ -1284,7 +1284,10 @@ const PTCG = (() => {
                     </div>
                     ${t.season ? `<span class="tournament-meta">${escapeHtml(t.season)}</span>` : ''}
                 </div>
-                <div class="tournament-name">${escapeHtml(t.name)}</div>
+                <div class="tournament-name">
+                    ${escapeHtml(t.name)}
+                    ${t.officialUrl ? `<a href="${escapeHtml(t.officialUrl)}" target="_blank" rel="noopener" class="tournament-official-link" title="官方賽事頁面"><i class="bi bi-box-arrow-up-right"></i></a>` : ''}
+                </div>
                 ${metaParts.length ? `<div class="tournament-meta mb-3">${metaParts.join('')}</div>` : ''}
                 ${top8Html
                     ? `<div class="mt-auto">
