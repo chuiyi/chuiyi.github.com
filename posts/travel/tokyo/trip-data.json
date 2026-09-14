@@ -1182,19 +1182,27 @@
                 },
                 {
                   "id": "go-3s",
-                  "title": "運動相機（Go 3S）"
+                  "title": "運動相機（Go Ultra／Go 3S，擇一）"
                 },
                 {
-                  "id": "camera",
-                  "title": "相機（A7C2/GR3x/GR4等等）"
+                  "id": "camera-body-a7c2",
+                  "title": "相機本體：A7C2"
+                },
+                {
+                  "id": "lens-2070g",
+                  "title": "鏡頭：20-70G"
+                },
+                {
+                  "id": "lens-50gm",
+                  "title": "鏡頭：50GM"
+                },
+                {
+                  "id": "camera-compact-griv",
+                  "title": "小相機：GR IV"
                 },
                 {
                   "id": "camera-battery",
                   "title": "相機對應電池"
-                },
-                {
-                  "id": "drone-battery",
-                  "title": "空拍機電池"
                 },
                 {
                   "id": "camera-memory-card",
@@ -1235,18 +1243,10 @@
                   "title": "相機電池充電器"
                 },
                 {
-                  "id": "drone",
-                  "title": "空拍機"
-                },
-                {
                   "id": "camera-inner-bag",
                   "title": "相機內袋"
                 }
               ]
-            },
-            {
-              "id": "pokemon-card",
-              "title": "寶可夢卡牌一副"
             },
             {
               "id": "beyblade-set",
