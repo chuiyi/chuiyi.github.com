@@ -1177,6 +1177,10 @@
                   "title": "隨身錄影機（DJI pocket 3）"
                 },
                 {
+                  "id": "pocket3-card-export-clear",
+                  "title": "Pocket 3 記憶卡匯出清空"
+                },
+                {
                   "id": "go-3s",
                   "title": "運動相機（Go 3S）"
                 },
@@ -1233,6 +1237,10 @@
                 {
                   "id": "drone",
                   "title": "空拍機"
+                },
+                {
+                  "id": "camera-inner-bag",
+                  "title": "相機內袋"
                 }
               ]
             },
@@ -1269,6 +1277,14 @@
                       "title": "提神藥品（萬金油/綠油精/白花油）"
                     },
                     {
+                      "id": "foot-medicine",
+                      "title": "腳的藥"
+                    },
+                    {
+                      "id": "gout-medicine",
+                      "title": "痛風藥"
+                    },
+                    {
                       "id": "tissue",
                       "title": "面紙"
                     },
@@ -1301,6 +1317,14 @@
                     {
                       "id": "laundry-bag",
                       "title": "可摺疊衣物袋（髒衣服）"
+                    },
+                    {
+                      "id": "laundry-sorting-bag",
+                      "title": "洗衣袋／衣物分類袋"
+                    },
+                    {
+                      "id": "hat",
+                      "title": "帽子"
                     },
                     {
                       "id": "toiletries-simple",
