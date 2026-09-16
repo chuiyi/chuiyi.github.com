@@ -1,8 +1,8 @@
 {
   "id": "tw99926791",
   "url": "https://asia.pokemon-card.com/tw/users/tw99926791/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-09T05:22:28.006Z",
-  "totalEvents": 153,
+  "fetchedAt": "2026-09-16T05:36:57.162Z",
+  "totalEvents": 157,
   "participatedTournaments": [
     {
       "pageNo": 8,
@@ -39,12 +39,56 @@
     },
     {
       "pageNo": 8,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-04-2026 14:30",
+      "eventDateTime": "2026-10-04 14:30",
+      "location": "玩坊 桌遊店",
+      "address": "嘉義市西區博愛路一段365號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
       "rowIndex": 11,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (大師組)",
       "eventTime": "10-03-2026 08:30",
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-27-2026 11:00",
+      "eventDateTime": "2026-09-27 11:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-26-2026 14:00",
+      "eventDateTime": "2026-09-26 14:00",
+      "location": "鬥陣",
+      "address": "彰化縣彰化市永樂街12號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-25-2026 14:00",
+      "eventDateTime": "2026-09-25 14:00",
+      "location": "卡舖啦啦",
+      "address": "台中市南區復興路二段30-26號2樓",
       "rank": "-",
       "lp": "-"
     },
@@ -89,7 +133,7 @@
       "eventDateTime": "2026-09-05 11:00",
       "location": "諾亞方舟益智遊戲",
       "address": "台中市西屯區台灣大道二段910號5樓之1",
-      "rank": "-",
+      "rank": "27",
       "lp": "-"
     },
     {

@@ -1,7 +1,7 @@
 {
   "id": "tw64863333",
   "url": "https://asia.pokemon-card.com/tw/users/tw64863333/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-09T05:23:31.118Z",
+  "fetchedAt": "2026-09-16T05:38:00.080Z",
   "totalEvents": 164,
   "participatedTournaments": [
     {
@@ -19,6 +19,17 @@
       "pageNo": 9,
       "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-04-2026 14:30",
+      "eventDateTime": "2026-10-04 14:30",
+      "location": "南瓜鎮",
+      "address": "新北市三峽區國光街91號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-20-2026 14:00",
       "eventDateTime": "2026-09-20 14:00",
       "location": "磚櫃玩具店(台北店)",
@@ -28,23 +39,12 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 3,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-20-2026 10:30",
       "eventDateTime": "2026-09-20 10:30",
       "location": "Magic Star卡牌店",
       "address": "台北市大安區和平東路二段231號2樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 9,
-      "rowIndex": 2,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "09-19-2026 10:00",
-      "eventDateTime": "2026-09-19 10:00",
-      "location": "Card Master",
-      "address": "100台北市中正區南昌路二段47號1樓",
       "rank": "-",
       "lp": "-"
     },

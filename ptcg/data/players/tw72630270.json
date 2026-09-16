@@ -1,8 +1,8 @@
 {
   "id": "tw72630270",
   "url": "https://asia.pokemon-card.com/tw/users/tw72630270/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-09T05:46:15.976Z",
-  "totalEvents": 162,
+  "fetchedAt": "2026-09-16T06:00:50.108Z",
+  "totalEvents": 164,
   "participatedTournaments": [
     {
       "pageNo": 8,
@@ -27,8 +27,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 8,
-      "rowIndex": 20,
+      "pageNo": 9,
+      "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 14:00",
       "eventDateTime": "2026-10-18 14:00",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 8,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 10:00",
       "eventDateTime": "2026-10-18 10:00",
@@ -61,7 +61,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 2,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
       "eventDateTime": "2026-10-10 14:00",
@@ -71,13 +71,24 @@
       "lp": "-"
     },
     {
-      "pageNo": 8,
-      "rowIndex": 18,
+      "pageNo": 9,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-09-2026 13:00",
       "eventDateTime": "2026-10-09 13:00",
       "location": "ALG-Academy Legacy Games",
       "address": "台北市中山區長春路368號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-09-2026 10:30",
+      "eventDateTime": "2026-10-09 10:30",
+      "location": "森桌遊",
+      "address": "新北市蘆洲區中山一路120巷3號",
       "rank": "-",
       "lp": "-"
     },
@@ -89,6 +100,17 @@
       "eventDateTime": "2026-10-04 14:30",
       "location": "南瓜鎮",
       "address": "新北市三峽區國光街91號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-04-2026 13:00",
+      "eventDateTime": "2026-10-04 13:00",
+      "location": "貓腳印淡水店",
+      "address": "新北市淡水區學府路28號5f",
       "rank": "-",
       "lp": "-"
     },
