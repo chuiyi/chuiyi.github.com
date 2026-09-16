@@ -1177,20 +1177,32 @@
                   "title": "隨身錄影機（DJI pocket 3）"
                 },
                 {
-                  "id": "go-3s",
-                  "title": "運動相機（Go 3S）"
+                  "id": "pocket3-card-export-clear",
+                  "title": "Pocket 3 記憶卡匯出清空"
                 },
                 {
-                  "id": "camera",
-                  "title": "相機（A7C2/GR3x/GR4等等）"
+                  "id": "go-3s",
+                  "title": "運動相機（Go Ultra／Go 3S，擇一）"
+                },
+                {
+                  "id": "camera-body-a7c2",
+                  "title": "相機本體：A7C2"
+                },
+                {
+                  "id": "lens-2070g",
+                  "title": "鏡頭：20-70G"
+                },
+                {
+                  "id": "lens-50gm",
+                  "title": "鏡頭：50GM"
+                },
+                {
+                  "id": "camera-compact-griv",
+                  "title": "小相機：GR IV"
                 },
                 {
                   "id": "camera-battery",
                   "title": "相機對應電池"
-                },
-                {
-                  "id": "drone-battery",
-                  "title": "空拍機電池"
                 },
                 {
                   "id": "camera-memory-card",
@@ -1231,14 +1243,10 @@
                   "title": "相機電池充電器"
                 },
                 {
-                  "id": "drone",
-                  "title": "空拍機"
+                  "id": "camera-inner-bag",
+                  "title": "相機內袋"
                 }
               ]
-            },
-            {
-              "id": "pokemon-card",
-              "title": "寶可夢卡牌一副"
             },
             {
               "id": "beyblade-set",
@@ -1267,6 +1275,14 @@
                     {
                       "id": "medicine-refresh",
                       "title": "提神藥品（萬金油/綠油精/白花油）"
+                    },
+                    {
+                      "id": "foot-medicine",
+                      "title": "腳的藥"
+                    },
+                    {
+                      "id": "gout-medicine",
+                      "title": "痛風藥"
                     },
                     {
                       "id": "tissue",
@@ -1301,6 +1317,14 @@
                     {
                       "id": "laundry-bag",
                       "title": "可摺疊衣物袋（髒衣服）"
+                    },
+                    {
+                      "id": "laundry-sorting-bag",
+                      "title": "洗衣袋／衣物分類袋"
+                    },
+                    {
+                      "id": "hat",
+                      "title": "帽子"
                     },
                     {
                       "id": "toiletries-simple",
