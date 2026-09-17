@@ -1,9 +1,20 @@
 {
   "id": "tw69672623",
   "url": "https://asia.pokemon-card.com/tw/users/tw69672623/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-10T07:19:36.582Z",
-  "totalEvents": 30,
+  "fetchedAt": "2026-09-17T07:38:00.837Z",
+  "totalEvents": 31,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-26-2026 13:00",
+      "eventDateTime": "2026-09-26 13:00",
+      "location": "Bruce桌遊空間-嫩江店",
+      "address": "高雄市三民區嫩江街74號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 10,
@@ -12,7 +23,7 @@
       "eventDateTime": "2026-09-13 13:00",
       "location": "B ONE桌遊",
       "address": "高雄市鳳山區北明街117號",
-      "rank": "-",
+      "rank": "9",
       "lp": "-"
     },
     {

@@ -1,8 +1,8 @@
 {
   "id": "tw22214011",
   "url": "https://asia.pokemon-card.com/tw/users/tw22214011/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-10T03:42:41.638Z",
-  "totalEvents": 58,
+  "fetchedAt": "2026-09-17T04:01:26.113Z",
+  "totalEvents": 59,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -56,6 +56,17 @@
       "eventDateTime": "2026-09-26 14:00",
       "location": "周周GO玩具 森林1店",
       "address": "台北市士林區士東路292號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-26-2026 10:30",
+      "eventDateTime": "2026-09-26 10:30",
+      "location": "松鼠窩桌遊館",
+      "address": "新北市三重區重新路一段78號2樓",
       "rank": "-",
       "lp": "-"
     },
