@@ -1,8 +1,8 @@
 {
   "id": "tw73501644",
   "url": "https://asia.pokemon-card.com/tw/users/tw73501644/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-11T03:39:08.881Z",
-  "totalEvents": 26,
+  "fetchedAt": "2026-09-18T03:49:26.839Z",
+  "totalEvents": 27,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -24,6 +24,17 @@
       "location": "幽靈屋",
       "address": "台北市南港區忠孝東路七段625巷33號",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-13-2026 14:00",
+      "eventDateTime": "2026-09-13 14:00",
+      "location": "拉比卡牌",
+      "address": "台北市內湖區五分街89號2樓",
+      "rank": "17",
       "lp": "-"
     },
     {

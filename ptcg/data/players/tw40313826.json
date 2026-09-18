@@ -1,8 +1,8 @@
 {
   "id": "tw40313826",
   "url": "https://asia.pokemon-card.com/tw/users/tw40313826/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-11T04:05:38.027Z",
-  "totalEvents": 61,
+  "fetchedAt": "2026-09-18T04:14:35.273Z",
+  "totalEvents": 62,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-11-2026 13:00",
       "eventDateTime": "2026-10-11 13:00",
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 18,
+      "rowIndex": 17,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-11-2026 08:30",
       "eventDateTime": "2026-10-11 08:30",
@@ -61,7 +61,18 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 17,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-09-2026 11:00",
+      "eventDateTime": "2026-10-09 11:00",
+      "location": "米朧家",
+      "address": "高雄市仁武區八德西路1421號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 14:00",
       "eventDateTime": "2026-10-04 14:00",
@@ -72,7 +83,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2026 11:00",
       "eventDateTime": "2026-09-28 11:00",
@@ -83,7 +94,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-26-2026 13:00",
       "eventDateTime": "2026-09-26 13:00",
@@ -144,7 +155,7 @@
       "eventDateTime": "2026-09-13 13:00",
       "location": "B ONE桌遊",
       "address": "高雄市鳳山區北明街117號",
-      "rank": "-",
+      "rank": "68",
       "lp": "-"
     },
     {

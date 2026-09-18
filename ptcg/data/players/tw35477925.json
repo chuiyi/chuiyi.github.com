@@ -1,8 +1,8 @@
 {
   "id": "tw35477925",
   "url": "https://asia.pokemon-card.com/tw/users/tw35477925/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-11T08:46:20.925Z",
-  "totalEvents": 90,
+  "fetchedAt": "2026-09-18T08:40:48.836Z",
+  "totalEvents": 91,
   "participatedTournaments": [
     {
       "pageNo": 5,
@@ -45,6 +45,17 @@
       "eventDateTime": "2026-09-27 14:00",
       "location": "PLAY ONE 壹樂研究所",
       "address": "桃園市中壢區廣安街44號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-25-2026 13:00",
+      "eventDateTime": "2026-09-25 13:00",
+      "location": "KYD遊樂園",
+      "address": "桃園市中壢區中央東路13號6樓",
       "rank": "-",
       "lp": "-"
     },

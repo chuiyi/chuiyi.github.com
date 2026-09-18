@@ -1,8 +1,8 @@
 {
   "id": "tw43700622",
   "url": "https://asia.pokemon-card.com/tw/users/tw43700622/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-11T05:28:37.068Z",
-  "totalEvents": 9,
+  "fetchedAt": "2026-09-18T05:33:04.250Z",
+  "totalEvents": 10,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -23,6 +23,17 @@
       "eventDateTime": "2026-10-10 14:00",
       "location": "貓腳印士林店",
       "address": "台北市士林區大西路66號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-09-2026 13:00",
+      "eventDateTime": "2026-10-09 13:00",
+      "location": "ALG-Academy Legacy Games",
+      "address": "台北市中山區長春路368號5樓",
       "rank": "-",
       "lp": "-"
     },
