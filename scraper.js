@@ -30,6 +30,9 @@ const CONFIG = {
   // ── MasterBall 大師球 ──
   scrapeMasterballFull: true,       // m. MasterBall 完整排程（清單 + 標題回填 + Top128）
   scrapeMasterballUrlsOnly: false,   // n. MasterBall 只更新賽事清單（URL + 標題）
+
+  // ── 賽事 Pairing（對戰表） ──
+  scrapeTournamentPairingsAuto: true, // p. 自動抓取 UBL/PREMIERE/MASTERBALL 清單中所有賽事的 pairing
 };
 
 // =====================================================================
@@ -57,7 +60,9 @@ const TASKS_MAPPING = [
   { key: 'scrapeUblUrlsOnly', label: 'UBL 只更新賽事清單', args: ['./scrape_ubl_urls.js', '--step', 'urls'] },
 
   { key: 'scrapeMasterballFull', label: 'MasterBall 完整排程', args: ['./scrape_masterball_urls.js', '--step', 'all'] },
-  { key: 'scrapeMasterballUrlsOnly', label: 'MasterBall 只更新賽事清單', args: ['./scrape_masterball_urls.js', '--step', 'urls'] }
+  { key: 'scrapeMasterballUrlsOnly', label: 'MasterBall 只更新賽事清單', args: ['./scrape_masterball_urls.js', '--step', 'urls'] },
+
+  { key: 'scrapeTournamentPairingsAuto', label: '自動抓取賽事 Pairing（依 JSON 清單）', args: ['./scrape_tournament_pairings.js', '--auto'] },
 ];
 
 // 用包裝好的 Promise 依序執行 child_process

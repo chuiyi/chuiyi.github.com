@@ -29,7 +29,7 @@ npm run scrape:ptcg:ubl            # UBL (高級球) tournament list + details +
 npm run scrape:ptcg:masterball     # MasterBall (大師球) tournament list + details + Top128
 npm run scrape:ptcg:players        # player profile JSON (flags: --all / --only-missing / --level <master|senior|junior>)
 npm run scrape:ptcg:top128         # official Top 128 results
-npm run scrape:ptcg:pairings       # tournament pairings
+npm run scrape:ptcg:pairings       # tournament pairings (flags: --tid <id>[,<id2>] / --auto to discover tids from tournaments_{ubl,premiere,masterball}.json)
 npm run check:ptcg:stage-change    # diff current tournament stage info vs ptcg/data/tournament_stage_snapshot.json
 ```
 
