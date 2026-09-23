@@ -10,6 +10,12 @@
  *   node scrape_tournament_pairings.js --tid 6682363 --tid 6617577 --tid 7361615
  *   node scrape_tournament_pairings.js --tid 6682363,6617577,7361615
  *   node scrape_tournament_pairings.js --dry-run
+ *
+ *   node scrape_tournament_pairings.js --auto
+ *     自動模式：掃描 tournaments_ubl.json / tournaments_premiere.json /
+ *     tournaments_masterball.json，找出所有 url 帶 tcg.sfc-jpn.jp tid、且
+ *     沒被標記 showPairing:false 的賽事，逐一抓取。可搭配 --tid 一起指定
+ *     額外的 tid。單一賽事失敗不會中斷其他賽事，最後印出成功/失敗筆數。
  */
 
 'use strict';
@@ -41,6 +47,7 @@ function parseArgs(argv) {
     delayMs: 120,
     dryRun: false,
     force: false,
+    auto: false,
   };
 
   for (let i = 2; i < argv.length; i += 1) {
@@ -65,10 +72,42 @@ function parseArgs(argv) {
       args.force = true;
       continue;
     }
+    if (token === '--auto') {
+      args.auto = true;
+      continue;
+    }
   }
 
   args.tids = Array.from(new Set(args.tids.filter((tid) => /^\d+$/.test(String(tid)))));
   return args;
+}
+
+// 從 UBL/PREMIERE/MASTERBALL 的 JSON 清單裡，找出所有帶 tcg.sfc-jpn.jp tid、
+// 且沒被標記 showPairing:false 的賽事，回傳去重後的 tid 陣列（供 --auto 用）。
+function discoverTidsFromJson() {
+  const tids = new Set();
+
+  for (const target of TOURNAMENT_JSON_TARGETS) {
+    if (!fs.existsSync(target.file)) continue;
+
+    let data;
+    try {
+      data = JSON.parse(fs.readFileSync(target.file, 'utf8'));
+    } catch {
+      continue;
+    }
+
+    const records = data?.[target.key];
+    if (!Array.isArray(records)) continue;
+
+    for (const record of records) {
+      if (record?.showPairing === false) continue;
+      const match = String(record?.url || '').match(/[?&]tid=(\d+)/);
+      if (match) tids.add(match[1]);
+    }
+  }
+
+  return Array.from(tids);
 }
 
 function sleep(ms) {
@@ -731,17 +770,37 @@ async function scrapeSingleTid(tid, args) {
 
 async function main() {
   const args = parseArgs(process.argv);
+
+  if (args.auto) {
+    const discovered = discoverTidsFromJson();
+    console.log(`[pairing] --auto：從 UBL/PREMIERE/MASTERBALL JSON 找到 ${discovered.length} 個 tid`);
+    args.tids = Array.from(new Set([...args.tids, ...discovered]));
+  }
+
   if (!args.tids.length) {
     console.error('用法: node scrape_tournament_pairings.js --tid <id>[,<id2>] [--tid <id3>] [--dry-run]');
+    console.error('   或: node scrape_tournament_pairings.js --auto  (自動抓取 JSON 清單中所有賽事)');
     process.exitCode = 1;
     return;
   }
 
+  let successCount = 0;
+  let failCount = 0;
+
   for (const tid of args.tids) {
-    await scrapeSingleTid(tid, args);
+    try {
+      await scrapeSingleTid(tid, args);
+      successCount += 1;
+    } catch (err) {
+      failCount += 1;
+      console.error(`[fail] tid=${tid}：${err.message}`);
+    }
+    if (args.delayMs > 0) await sleep(args.delayMs);
   }
 
-  console.log('\n[pairing] 全部完成');
+  // 單一賽事失敗（例如賽事還沒開打、頁面尚未公開）不會讓整個腳本以非 0 結束，
+  // 避免 --auto 掃到一堆賽事時，其中一場有問題就讓整個排程步驟被標記失敗。
+  console.log(`\n[pairing] 全部完成：成功 ${successCount}，失敗 ${failCount}`);
 }
 
 main().catch((err) => {
