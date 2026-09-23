@@ -5,7 +5,7 @@
       "id": "8225008",
       "title": "2025-26 Taiwan Ultra Ball League Season 1-1 Masters Category",
       "createdAt": "2026-03-23T08:59:32.822Z",
-      "lastCrawledAt": "2026-03-30T07:35:14.376Z",
+      "lastCrawledAt": "2026-09-23T08:49:44.134Z",
       "round1Max": 217,
       "finalRankCount": 312,
       "csvFile": "8225008.csv",
@@ -33,6 +33,17 @@
           "roundCount": 9,
           "csvFile": "8225008.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:49:44.134Z",
+          "level": "master",
+          "series": "1-1",
+          "round1Max": 217,
+          "finalRankCount": 312,
+          "roundCount": 9,
+          "csvFile": "8225008.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "type": "ubl",
@@ -46,14 +57,15 @@
       "officialDate": "2025-09-20",
       "capacity": "480 人",
       "venue": "台南市歸仁區歸仁十二路 3 號(大臺南會展中心 特展區)",
-      "address": "711 臺南市 台南市歸仁區歸仁十二路 3 號(大臺南會展中心 特展區)"
+      "address": "711 臺南市 台南市歸仁區歸仁十二路 3 號(大臺南會展中心 特展區)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "url": "https://tcg.sfc-jpn.jp/tour.asp?tid=7560542",
       "id": "7560542",
       "title": "2025-26 臺灣高級球聯盟賽 賽季1-2",
       "createdAt": "2026-03-23T09:12:09.745Z",
-      "lastCrawledAt": "2026-03-30T07:42:53.164Z",
+      "lastCrawledAt": "2026-09-23T08:50:22.724Z",
       "round1Max": 345,
       "finalRankCount": 418,
       "csvFile": "7560542.csv",
@@ -81,6 +93,17 @@
           "roundCount": 9,
           "csvFile": "7560542.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:50:22.724Z",
+          "level": "master",
+          "series": "1-2",
+          "round1Max": 345,
+          "finalRankCount": 418,
+          "roundCount": 9,
+          "csvFile": "7560542.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "type": "ubl",
@@ -94,7 +117,8 @@
       "officialDate": "2025-10-05",
       "capacity": "768 人",
       "venue": "台北市信義區松壽路11號 (新光三越 台北信義新天地A11 6F)",
-      "address": "110 臺北市 台北市信義區松壽路11號 (新光三越 台北信義新天地A11 6F)"
+      "address": "110 臺北市 台北市信義區松壽路11號 (新光三越 台北信義新天地A11 6F)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -104,7 +128,7 @@
       "level": "master",
       "series": "1-3",
       "createdAt": "2026-03-23T09:21:28.863Z",
-      "lastCrawledAt": "2026-03-30T07:43:00.787Z",
+      "lastCrawledAt": "2026-09-23T08:50:51.778Z",
       "round1Max": 256,
       "finalRankCount": 323,
       "csvFile": "3189918.csv",
@@ -126,6 +150,17 @@
           "roundCount": 9,
           "csvFile": "3189918.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:50:51.778Z",
+          "level": "master",
+          "series": "1-3",
+          "round1Max": 256,
+          "finalRankCount": 323,
+          "roundCount": 9,
+          "csvFile": "3189918.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -136,7 +171,8 @@
       "officialDate": "2025-10-19",
       "capacity": "768 人",
       "venue": "高雄市左營區高鐵路123號(新光三越 高雄左營店 10F)",
-      "address": "813 高雄市左營區高鐵路123號(新光三越 高雄左營店 10F)"
+      "address": "813 高雄市左營區高鐵路123號(新光三越 高雄左營店 10F)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -146,7 +182,7 @@
       "level": "master",
       "series": "1-4",
       "createdAt": "2026-03-23T09:21:30.181Z",
-      "lastCrawledAt": "2026-03-30T07:43:08.344Z",
+      "lastCrawledAt": "2026-09-23T08:51:20.858Z",
       "round1Max": 247,
       "finalRankCount": 306,
       "csvFile": "9829845.csv",
@@ -168,6 +204,17 @@
           "roundCount": 9,
           "csvFile": "9829845.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:51:20.858Z",
+          "level": "master",
+          "series": "1-4",
+          "round1Max": 247,
+          "finalRankCount": 306,
+          "roundCount": 9,
+          "csvFile": "9829845.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -178,7 +225,8 @@
       "officialDate": "2025-11-15",
       "capacity": "636 人",
       "venue": "台中市西區健行路1049號(台中金典酒店 11F)",
-      "address": "403 臺中市 台中市西區健行路1049號(台中金典酒店 11F)"
+      "address": "403 臺中市 台中市西區健行路1049號(台中金典酒店 11F)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -188,7 +236,7 @@
       "level": "master",
       "series": "2-1",
       "createdAt": "2026-03-23T09:21:31.536Z",
-      "lastCrawledAt": "2026-03-30T07:43:15.864Z",
+      "lastCrawledAt": "2026-09-23T08:51:49.932Z",
       "round1Max": 261,
       "finalRankCount": 326,
       "csvFile": "9905152.csv",
@@ -210,6 +258,17 @@
           "roundCount": 9,
           "csvFile": "9905152.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:51:49.932Z",
+          "level": "master",
+          "series": "2-1",
+          "round1Max": 261,
+          "finalRankCount": 326,
+          "roundCount": 9,
+          "csvFile": "9905152.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -220,7 +279,8 @@
       "officialDate": "2025-11-29",
       "capacity": "636 人",
       "venue": "台中市西區健行路1049號(台中金典酒店 11F)",
-      "address": "403 臺中市 台中市西區健行路1049號(台中金典酒店 11F)"
+      "address": "403 臺中市 台中市西區健行路1049號(台中金典酒店 11F)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -230,8 +290,8 @@
       "level": "master",
       "series": "2-2",
       "createdAt": "2026-03-23T09:21:32.783Z",
-      "lastCrawledAt": "2026-03-30T07:43:22.749Z",
-      "round1Max": 404,
+      "lastCrawledAt": "2026-09-23T08:52:16.118Z",
+      "round1Max": 221,
       "finalRankCount": 299,
       "csvFile": "1434167.csv",
       "history": [
@@ -260,6 +320,17 @@
           "roundCount": 9,
           "csvFile": "1434167.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:52:16.118Z",
+          "level": "master",
+          "series": "2-2",
+          "round1Max": 221,
+          "finalRankCount": 299,
+          "roundCount": 9,
+          "csvFile": "1434167.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -270,7 +341,8 @@
       "officialDate": "2025-12-27",
       "capacity": "662 人",
       "venue": "台南市歸仁區歸仁十二路3號3樓(大臺南會展中心 3F)",
-      "address": "711 臺南市 台南市歸仁區歸仁十二路3號3樓(大臺南會展中心 3F)"
+      "address": "711 臺南市 台南市歸仁區歸仁十二路3號3樓(大臺南會展中心 3F)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -280,7 +352,7 @@
       "level": "master",
       "series": "2-3",
       "createdAt": "2026-03-23T09:21:34.083Z",
-      "lastCrawledAt": "2026-03-30T07:43:29.846Z",
+      "lastCrawledAt": "2026-09-23T08:52:43.255Z",
       "round1Max": 226,
       "finalRankCount": 309,
       "csvFile": "6341822.csv",
@@ -302,6 +374,17 @@
           "roundCount": 9,
           "csvFile": "6341822.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:52:43.255Z",
+          "level": "master",
+          "series": "2-3",
+          "round1Max": 226,
+          "finalRankCount": 309,
+          "roundCount": 9,
+          "csvFile": "6341822.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -312,7 +395,8 @@
       "officialDate": "2026-01-17",
       "capacity": "480 人",
       "venue": "宜蘭縣五結鄉中正路二段6之8號(中興文化創意園區 有料倉庫)",
-      "address": "268 宜蘭縣五結鄉中正路二段6之8號(中興文化創意園區 有料倉庫)"
+      "address": "268 宜蘭縣五結鄉中正路二段6之8號(中興文化創意園區 有料倉庫)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -322,8 +406,8 @@
       "level": "master",
       "series": "2-4",
       "createdAt": "2026-03-23T09:21:35.869Z",
-      "lastCrawledAt": "2026-03-30T07:43:39.963Z",
-      "round1Max": 591,
+      "lastCrawledAt": "2026-09-23T08:53:21.603Z",
+      "round1Max": 325,
       "finalRankCount": 419,
       "csvFile": "3198910.csv",
       "history": [
@@ -352,6 +436,17 @@
           "roundCount": 9,
           "csvFile": "3198910.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:53:21.603Z",
+          "level": "master",
+          "series": "2-4",
+          "round1Max": 325,
+          "finalRankCount": 419,
+          "roundCount": 9,
+          "csvFile": "3198910.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -362,7 +457,8 @@
       "officialDate": "2026-02-27",
       "capacity": "660 人",
       "venue": "桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
-      "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)"
+      "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -372,7 +468,7 @@
       "level": "master",
       "series": "3-1",
       "createdAt": "2026-03-23T09:21:37.090Z",
-      "lastCrawledAt": "2026-03-30T07:43:46.724Z",
+      "lastCrawledAt": "2026-09-23T08:53:47.472Z",
       "round1Max": 226,
       "finalRankCount": 279,
       "csvFile": "8440095.csv",
@@ -394,6 +490,17 @@
           "roundCount": 9,
           "csvFile": "8440095.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:53:47.472Z",
+          "level": "master",
+          "series": "3-1",
+          "round1Max": 226,
+          "finalRankCount": 279,
+          "roundCount": 9,
+          "csvFile": "8440095.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -404,7 +511,8 @@
       "officialDate": "2026-03-14",
       "capacity": "660 人",
       "venue": "高雄市左營區高鐵路123號(新光三越 高雄左營店 10F)",
-      "address": "813 高雄市左營區高鐵路123號(新光三越 高雄左營店 10F)"
+      "address": "813 高雄市左營區高鐵路123號(新光三越 高雄左營店 10F)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -414,7 +522,7 @@
       "level": "junior",
       "series": "1-2",
       "createdAt": "2026-03-23T13:39:53.661Z",
-      "lastCrawledAt": "2026-03-30T07:43:48.047Z",
+      "lastCrawledAt": "2026-09-23T08:53:52.087Z",
       "round1Max": 49,
       "finalRankCount": 93,
       "csvFile": "4496745.csv",
@@ -436,6 +544,17 @@
           "roundCount": 7,
           "csvFile": "4496745.csv",
           "csvVersion": "unified_rounds_v2"
+        },
+        {
+          "crawledAt": "2026-09-23T08:53:52.087Z",
+          "level": "junior",
+          "series": "1-2",
+          "round1Max": 49,
+          "finalRankCount": 93,
+          "roundCount": 7,
+          "csvFile": "4496745.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 7,
@@ -446,7 +565,8 @@
       "officialDate": "2025-10-05",
       "capacity": "128 人",
       "venue": "台北市信義區松壽路11號 (新光三越 台北信義新天地A11 6F)",
-      "address": "110 臺北市 台北市信義區松壽路11號 (新光三越 台北信義新天地A11 6F)"
+      "address": "110 臺北市 台北市信義區松壽路11號 (新光三越 台北信義新天地A11 6F)",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -516,11 +636,22 @@
           "csvFile": "6682363.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-23T08:54:29.412Z",
+          "level": "master",
+          "series": "3-2",
+          "round1Max": 329,
+          "finalRankCount": 402,
+          "roundCount": 9,
+          "csvFile": "6682363.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "venue": "桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
       "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
-      "lastCrawledAt": "2026-04-11T19:19:28.887Z",
+      "lastCrawledAt": "2026-09-23T08:54:29.412Z",
       "round1Max": 329,
       "finalRankCount": 402,
       "roundCount": 9,
@@ -596,12 +727,23 @@
           "csvFile": "6617577.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "End of Round 7 interim result"
+        },
+        {
+          "crawledAt": "2026-09-23T08:54:35.566Z",
+          "level": "senior",
+          "series": "3-2",
+          "round1Max": 51,
+          "finalRankCount": 90,
+          "roundCount": 7,
+          "csvFile": "6617577.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "End of Round 7 interim result"
         }
       ],
       "venue": "桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
       "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
-      "lastCrawledAt": "2026-04-11T19:19:32.101Z",
-      "round1Max": 50,
+      "lastCrawledAt": "2026-09-23T08:54:35.566Z",
+      "round1Max": 51,
       "finalRankCount": 90,
       "roundCount": 7,
       "csvFile": "6617577.csv",
@@ -676,12 +818,23 @@
           "csvFile": "7361615.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-23T08:54:42.661Z",
+          "level": "junior",
+          "series": "3-2",
+          "round1Max": 55,
+          "finalRankCount": 106,
+          "roundCount": 7,
+          "csvFile": "7361615.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "venue": "桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
       "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
-      "lastCrawledAt": "2026-04-11T19:19:35.886Z",
-      "round1Max": 54,
+      "lastCrawledAt": "2026-09-23T08:54:42.661Z",
+      "round1Max": 55,
       "finalRankCount": 106,
       "roundCount": 7,
       "csvFile": "7361615.csv",
@@ -1087,9 +1240,20 @@
           "csvFile": "8084461.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-23T08:55:23.979Z",
+          "level": "master",
+          "series": "3-3",
+          "round1Max": 360,
+          "finalRankCount": 453,
+          "roundCount": 9,
+          "csvFile": "8084461.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-05-11T18:23:06.144Z",
+      "lastCrawledAt": "2026-09-23T08:55:23.979Z",
       "round1Max": 360,
       "finalRankCount": 453,
       "roundCount": 9,
@@ -1145,9 +1309,20 @@
           "csvFile": "2036287.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-23T08:55:29.824Z",
+          "level": "senior",
+          "series": "3-3",
+          "round1Max": 50,
+          "finalRankCount": 97,
+          "roundCount": 7,
+          "csvFile": "2036287.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-05-11T18:23:10.039Z",
+      "lastCrawledAt": "2026-09-23T08:55:29.824Z",
       "round1Max": 50,
       "finalRankCount": 97,
       "roundCount": 7,
@@ -1203,9 +1378,20 @@
           "csvFile": "6539836.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-23T08:55:36.950Z",
+          "level": "junior",
+          "series": "3-3",
+          "round1Max": 63,
+          "finalRankCount": 125,
+          "roundCount": 7,
+          "csvFile": "6539836.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-05-11T18:23:14.468Z",
+      "lastCrawledAt": "2026-09-23T08:55:36.950Z",
       "round1Max": 63,
       "finalRankCount": 125,
       "roundCount": 7,
@@ -1228,7 +1414,26 @@
       "capacity": "1008 人",
       "venue": "臺北市信義區西村里信義路五段5號C2區(台北 世貿一館 C2區)",
       "address": "110 臺北市信義區西村里信義路五段5號C2區(台北 世貿一館 C2區)",
-      "history": []
+      "history": [
+        {
+          "crawledAt": "2026-09-23T08:56:33.309Z",
+          "level": "master",
+          "series": "1-1",
+          "round1Max": 502,
+          "finalRankCount": 634,
+          "roundCount": 9,
+          "csvFile": "1285239.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        }
+      ],
+      "lastCrawledAt": "2026-09-23T08:56:33.309Z",
+      "round1Max": 502,
+      "finalRankCount": 634,
+      "roundCount": 9,
+      "csvFile": "1285239.csv",
+      "csvVersion": "unified_rounds_v2",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -1245,7 +1450,26 @@
       "capacity": "128 人",
       "venue": "臺北市信義區西村里信義路五段5號C2區(台北 世貿一館 C2區)",
       "address": "110 臺北市信義區西村里信義路五段5號C2區(台北 世貿一館 C2區)",
-      "history": []
+      "history": [
+        {
+          "crawledAt": "2026-09-23T08:56:40.411Z",
+          "level": "senior",
+          "series": "1-1",
+          "round1Max": 64,
+          "finalRankCount": 110,
+          "roundCount": 7,
+          "csvFile": "7244543.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        }
+      ],
+      "lastCrawledAt": "2026-09-23T08:56:40.411Z",
+      "round1Max": 64,
+      "finalRankCount": 110,
+      "roundCount": 7,
+      "csvFile": "7244543.csv",
+      "csvVersion": "unified_rounds_v2",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
@@ -1262,7 +1486,26 @@
       "capacity": "128 人",
       "venue": "臺北市信義區西村里信義路五段5號C2區(台北 世貿一館 C2區)",
       "address": "110 臺北市信義區西村里信義路五段5號C2區(台北 世貿一館 C2區)",
-      "history": []
+      "history": [
+        {
+          "crawledAt": "2026-09-23T08:56:47.501Z",
+          "level": "junior",
+          "series": "1-1",
+          "round1Max": 58,
+          "finalRankCount": 108,
+          "roundCount": 7,
+          "csvFile": "3000442.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        }
+      ],
+      "lastCrawledAt": "2026-09-23T08:56:47.501Z",
+      "round1Max": 58,
+      "finalRankCount": 108,
+      "roundCount": 7,
+      "csvFile": "3000442.csv",
+      "csvVersion": "unified_rounds_v2",
+      "finalSourceLabel": "Final rank"
     },
     {
       "type": "ubl",
