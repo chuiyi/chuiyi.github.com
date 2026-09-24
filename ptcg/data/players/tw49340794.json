@@ -1,8 +1,8 @@
 {
   "id": "tw49340794",
   "url": "https://asia.pokemon-card.com/tw/users/tw49340794/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-16T05:52:47.969Z",
-  "totalEvents": 192,
+  "fetchedAt": "2026-09-24T05:37:48.056Z",
+  "totalEvents": 193,
   "participatedTournaments": [
     {
       "pageNo": 10,
@@ -134,6 +134,17 @@
       "location": "茶咖",
       "address": "1F., No. 133, Shezhong St.,",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 14:00",
+      "eventDateTime": "2026-09-19 14:00",
+      "location": "貓腳印士林店",
+      "address": "台北市士林區大西路66號B1",
+      "rank": "9",
       "lp": "-"
     },
     {
