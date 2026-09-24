@@ -325,6 +325,7 @@ function upsertGblTournament(payload) {
       series: payload.season || '',
       season: payload.season || '',
       createdAt: now,
+      lastCrawledAt: now,
       officialUrl: payload.officialUrl || '',
       top128File: payload.top128File || '',
       top128Count: payload.top128Count || 0,
@@ -350,24 +351,42 @@ function upsertGblTournament(payload) {
 
   const prev = data.GBL[idx];
   const history = Array.isArray(prev.history) ? prev.history : [];
-  history.push({
-    crawledAt: now,
-    season: payload.season || prev.season || '',
-    level: payload.level || prev.level || 'all',
-    top128Count: payload.top128Count || prev.top128Count || 0,
-    top128File: payload.top128File || prev.top128File || '',
-  });
+  const nextSeason = payload.season || prev.season || '';
+  const nextLevel = payload.level || prev.level || 'all';
+  const nextTop128Count = payload.top128Count != null ? payload.top128Count : (prev.top128Count || 0);
+  const nextTop128File = payload.top128File || prev.top128File || '';
+
+  // 每天都會重新爬一次所有已知賽事，但多數早已結束的賽事資料不會再變動；
+  // 只有在 season/level/top128Count/top128File 真的變了才新增一筆 history，
+  // 避免同樣的內容每天都多寫一筆，把檔案越滾越大。
+  const lastEntry = history[history.length - 1];
+  const unchanged = lastEntry
+    && lastEntry.season === nextSeason
+    && lastEntry.level === nextLevel
+    && lastEntry.top128Count === nextTop128Count
+    && lastEntry.top128File === nextTop128File;
+
+  if (!unchanged) {
+    history.push({
+      crawledAt: now,
+      season: nextSeason,
+      level: nextLevel,
+      top128Count: nextTop128Count,
+      top128File: nextTop128File,
+    });
+  }
 
   data.GBL[idx] = {
     ...prev,
     type: 'gbl',
     title: payload.title || prev.title || '',
-    level: payload.level || prev.level || 'all',
-    series: payload.season || prev.series || '',
-    season: payload.season || prev.season || '',
+    level: nextLevel,
+    series: nextSeason,
+    season: nextSeason,
+    lastCrawledAt: now,
     officialUrl: payload.officialUrl || prev.officialUrl || '',
-    top128File: payload.top128File || prev.top128File || '',
-    top128Count: payload.top128Count != null ? payload.top128Count : (prev.top128Count || 0),
+    top128File: nextTop128File,
+    top128Count: nextTop128Count,
     officialDate: payload.officialDate || prev.officialDate || '',
     organizer: payload.organizer || prev.organizer || '',
     capacity: payload.capacity || prev.capacity || '',
