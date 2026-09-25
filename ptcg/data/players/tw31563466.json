@@ -1,8 +1,8 @@
 {
   "id": "tw31563466",
   "url": "https://asia.pokemon-card.com/tw/users/tw31563466/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-17T07:31:42.130Z",
-  "totalEvents": 82,
+  "fetchedAt": "2026-09-25T07:24:52.398Z",
+  "totalEvents": 84,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -27,8 +27,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 4,
-      "rowIndex": 20,
+      "pageNo": 5,
+      "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 14:00",
       "eventDateTime": "2026-10-18 14:00",
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 2,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
       "eventDateTime": "2026-10-10 14:00",
@@ -60,8 +60,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 4,
-      "rowIndex": 19,
+      "pageNo": 5,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-09-2026 13:00",
       "eventDateTime": "2026-10-09 13:00",
@@ -167,6 +167,28 @@
       "location": "茶咖",
       "address": "1F., No. 133, Shezhong St.,",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-20-2026 14:00",
+      "eventDateTime": "2026-09-20 14:00",
+      "location": "磚櫃玩具店(台北店)",
+      "address": "新北市中和區宜安路18巷2號",
+      "rank": "37",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 14:00",
+      "eventDateTime": "2026-09-19 14:00",
+      "location": "貓腳印士林店",
+      "address": "台北市士林區大西路66號B1",
+      "rank": "88",
       "lp": "-"
     },
     {

@@ -1,9 +1,20 @@
 {
   "id": "tw95015058",
   "url": "https://asia.pokemon-card.com/tw/users/tw95015058/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-17T09:16:52.008Z",
-  "totalEvents": 51,
+  "fetchedAt": "2026-09-25T09:11:30.408Z",
+  "totalEvents": 54,
   "participatedTournaments": [
+    {
+      "pageNo": 3,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 13:00",
+      "eventDateTime": "2026-11-15 13:00",
+      "location": "貓腳印淡水店",
+      "address": "新北市淡水區學府路28號5f",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 3,
       "rowIndex": 11,
@@ -12,6 +23,28 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 10:00",
+      "eventDateTime": "2026-10-26 10:00",
+      "location": "一刻館卡片遊戲專賣店",
+      "address": "桃園市桃園區中華路43號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-25-2026 13:00",
+      "eventDateTime": "2026-10-25 13:00",
+      "location": "KYD遊樂園",
+      "address": "桃園市中壢區中央東路13號6樓",
       "rank": "-",
       "lp": "-"
     },
