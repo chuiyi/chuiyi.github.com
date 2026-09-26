@@ -5,7 +5,7 @@
       "id": "8225008",
       "title": "2025-26 Taiwan Ultra Ball League Season 1-1 Masters Category",
       "createdAt": "2026-03-23T08:59:32.822Z",
-      "lastCrawledAt": "2026-09-25T04:58:20.465Z",
+      "lastCrawledAt": "2026-09-26T05:01:28.520Z",
       "round1Max": 217,
       "finalRankCount": 312,
       "csvFile": "8225008.csv",
@@ -66,6 +66,17 @@
           "csvFile": "8225008.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:01:28.520Z",
+          "level": "master",
+          "series": "1-1",
+          "round1Max": 217,
+          "finalRankCount": 312,
+          "roundCount": 9,
+          "csvFile": "8225008.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "type": "ubl",
@@ -87,7 +98,7 @@
       "id": "7560542",
       "title": "2025-26 臺灣高級球聯盟賽 賽季1-2",
       "createdAt": "2026-03-23T09:12:09.745Z",
-      "lastCrawledAt": "2026-09-25T04:58:58.577Z",
+      "lastCrawledAt": "2026-09-26T05:02:07.231Z",
       "round1Max": 345,
       "finalRankCount": 418,
       "csvFile": "7560542.csv",
@@ -148,6 +159,17 @@
           "csvFile": "7560542.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:02:07.231Z",
+          "level": "master",
+          "series": "1-2",
+          "round1Max": 345,
+          "finalRankCount": 418,
+          "roundCount": 9,
+          "csvFile": "7560542.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "type": "ubl",
@@ -172,7 +194,7 @@
       "level": "master",
       "series": "1-3",
       "createdAt": "2026-03-23T09:21:28.863Z",
-      "lastCrawledAt": "2026-09-25T04:59:27.214Z",
+      "lastCrawledAt": "2026-09-26T05:02:36.380Z",
       "round1Max": 256,
       "finalRankCount": 323,
       "csvFile": "3189918.csv",
@@ -227,6 +249,17 @@
           "csvFile": "3189918.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:02:36.380Z",
+          "level": "master",
+          "series": "1-3",
+          "round1Max": 256,
+          "finalRankCount": 323,
+          "roundCount": 9,
+          "csvFile": "3189918.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -248,7 +281,7 @@
       "level": "master",
       "series": "1-4",
       "createdAt": "2026-03-23T09:21:30.181Z",
-      "lastCrawledAt": "2026-09-25T04:59:55.813Z",
+      "lastCrawledAt": "2026-09-26T05:03:05.511Z",
       "round1Max": 247,
       "finalRankCount": 306,
       "csvFile": "9829845.csv",
@@ -303,6 +336,17 @@
           "csvFile": "9829845.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:03:05.511Z",
+          "level": "master",
+          "series": "1-4",
+          "round1Max": 247,
+          "finalRankCount": 306,
+          "roundCount": 9,
+          "csvFile": "9829845.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -324,7 +368,7 @@
       "level": "master",
       "series": "2-1",
       "createdAt": "2026-03-23T09:21:31.536Z",
-      "lastCrawledAt": "2026-09-25T05:00:24.405Z",
+      "lastCrawledAt": "2026-09-26T05:03:34.636Z",
       "round1Max": 261,
       "finalRankCount": 326,
       "csvFile": "9905152.csv",
@@ -379,6 +423,17 @@
           "csvFile": "9905152.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:03:34.636Z",
+          "level": "master",
+          "series": "2-1",
+          "round1Max": 261,
+          "finalRankCount": 326,
+          "roundCount": 9,
+          "csvFile": "9905152.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -400,7 +455,7 @@
       "level": "master",
       "series": "2-2",
       "createdAt": "2026-03-23T09:21:32.783Z",
-      "lastCrawledAt": "2026-09-25T05:00:50.147Z",
+      "lastCrawledAt": "2026-09-26T05:04:00.895Z",
       "round1Max": 221,
       "finalRankCount": 299,
       "csvFile": "1434167.csv",
@@ -463,6 +518,17 @@
           "csvFile": "1434167.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:04:00.895Z",
+          "level": "master",
+          "series": "2-2",
+          "round1Max": 221,
+          "finalRankCount": 299,
+          "roundCount": 9,
+          "csvFile": "1434167.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -484,7 +550,7 @@
       "level": "master",
       "series": "2-3",
       "createdAt": "2026-03-23T09:21:34.083Z",
-      "lastCrawledAt": "2026-09-25T05:01:16.834Z",
+      "lastCrawledAt": "2026-09-26T05:04:28.107Z",
       "round1Max": 226,
       "finalRankCount": 309,
       "csvFile": "6341822.csv",
@@ -539,6 +605,17 @@
           "csvFile": "6341822.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:04:28.107Z",
+          "level": "master",
+          "series": "2-3",
+          "round1Max": 226,
+          "finalRankCount": 309,
+          "roundCount": 9,
+          "csvFile": "6341822.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -560,7 +637,7 @@
       "level": "master",
       "series": "2-4",
       "createdAt": "2026-03-23T09:21:35.869Z",
-      "lastCrawledAt": "2026-09-25T05:01:54.621Z",
+      "lastCrawledAt": "2026-09-26T05:05:06.558Z",
       "round1Max": 325,
       "finalRankCount": 419,
       "csvFile": "3198910.csv",
@@ -623,6 +700,17 @@
           "csvFile": "3198910.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:05:06.558Z",
+          "level": "master",
+          "series": "2-4",
+          "round1Max": 325,
+          "finalRankCount": 419,
+          "roundCount": 9,
+          "csvFile": "3198910.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -644,7 +732,7 @@
       "level": "master",
       "series": "3-1",
       "createdAt": "2026-03-23T09:21:37.090Z",
-      "lastCrawledAt": "2026-09-25T05:02:20.039Z",
+      "lastCrawledAt": "2026-09-26T05:05:32.486Z",
       "round1Max": 226,
       "finalRankCount": 279,
       "csvFile": "8440095.csv",
@@ -699,6 +787,17 @@
           "csvFile": "8440095.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:05:32.486Z",
+          "level": "master",
+          "series": "3-1",
+          "round1Max": 226,
+          "finalRankCount": 279,
+          "roundCount": 9,
+          "csvFile": "8440095.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "roundCount": 9,
@@ -720,7 +819,7 @@
       "level": "junior",
       "series": "1-2",
       "createdAt": "2026-03-23T13:39:53.661Z",
-      "lastCrawledAt": "2026-09-25T05:02:24.531Z",
+      "lastCrawledAt": "2026-09-26T05:05:37.115Z",
       "round1Max": 49,
       "finalRankCount": 93,
       "csvFile": "4496745.csv",
@@ -767,6 +866,17 @@
         },
         {
           "crawledAt": "2026-09-25T05:02:24.531Z",
+          "level": "junior",
+          "series": "1-2",
+          "round1Max": 49,
+          "finalRankCount": 93,
+          "roundCount": 7,
+          "csvFile": "4496745.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:05:37.115Z",
           "level": "junior",
           "series": "1-2",
           "round1Max": 49,
@@ -889,11 +999,22 @@
           "csvFile": "6682363.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:06:14.537Z",
+          "level": "master",
+          "series": "3-2",
+          "round1Max": 329,
+          "finalRankCount": 402,
+          "roundCount": 9,
+          "csvFile": "6682363.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "venue": "桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
       "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
-      "lastCrawledAt": "2026-09-25T05:03:01.247Z",
+      "lastCrawledAt": "2026-09-26T05:06:14.537Z",
       "round1Max": 329,
       "finalRankCount": 402,
       "roundCount": 9,
@@ -1002,11 +1123,22 @@
           "csvFile": "6617577.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "End of Round 7 interim result"
+        },
+        {
+          "crawledAt": "2026-09-26T05:06:20.708Z",
+          "level": "senior",
+          "series": "3-2",
+          "round1Max": 51,
+          "finalRankCount": 90,
+          "roundCount": 7,
+          "csvFile": "6617577.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "End of Round 7 interim result"
         }
       ],
       "venue": "桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
       "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
-      "lastCrawledAt": "2026-09-25T05:03:07.270Z",
+      "lastCrawledAt": "2026-09-26T05:06:20.708Z",
       "round1Max": 51,
       "finalRankCount": 90,
       "roundCount": 7,
@@ -1115,11 +1247,22 @@
           "csvFile": "7361615.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:06:27.815Z",
+          "level": "junior",
+          "series": "3-2",
+          "round1Max": 55,
+          "finalRankCount": 106,
+          "roundCount": 7,
+          "csvFile": "7361615.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
       "venue": "桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
       "address": "320 桃園市中壢區領航北路一段99號(桃園會展中心 7F)",
-      "lastCrawledAt": "2026-09-25T05:03:14.179Z",
+      "lastCrawledAt": "2026-09-26T05:06:27.815Z",
       "round1Max": 55,
       "finalRankCount": 106,
       "roundCount": 7,
@@ -1559,9 +1702,20 @@
           "csvFile": "8084461.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:07:09.196Z",
+          "level": "master",
+          "series": "3-3",
+          "round1Max": 360,
+          "finalRankCount": 453,
+          "roundCount": 9,
+          "csvFile": "8084461.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-09-25T05:03:54.825Z",
+      "lastCrawledAt": "2026-09-26T05:07:09.196Z",
       "round1Max": 360,
       "finalRankCount": 453,
       "roundCount": 9,
@@ -1650,9 +1804,20 @@
           "csvFile": "2036287.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:07:15.061Z",
+          "level": "senior",
+          "series": "3-3",
+          "round1Max": 50,
+          "finalRankCount": 97,
+          "roundCount": 7,
+          "csvFile": "2036287.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-09-25T05:04:00.535Z",
+      "lastCrawledAt": "2026-09-26T05:07:15.061Z",
       "round1Max": 50,
       "finalRankCount": 97,
       "roundCount": 7,
@@ -1741,9 +1906,20 @@
           "csvFile": "6539836.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:07:22.198Z",
+          "level": "junior",
+          "series": "3-3",
+          "round1Max": 63,
+          "finalRankCount": 125,
+          "roundCount": 7,
+          "csvFile": "6539836.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-09-25T05:04:07.495Z",
+      "lastCrawledAt": "2026-09-26T05:07:22.198Z",
       "round1Max": 63,
       "finalRankCount": 125,
       "roundCount": 7,
@@ -1799,9 +1975,20 @@
           "csvFile": "1285239.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:08:18.884Z",
+          "level": "master",
+          "series": "1-1",
+          "round1Max": 502,
+          "finalRankCount": 634,
+          "roundCount": 9,
+          "csvFile": "1285239.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-09-25T05:05:03.362Z",
+      "lastCrawledAt": "2026-09-26T05:08:18.884Z",
       "round1Max": 502,
       "finalRankCount": 634,
       "roundCount": 9,
@@ -1857,9 +2044,20 @@
           "csvFile": "7244543.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:08:26.009Z",
+          "level": "senior",
+          "series": "1-1",
+          "round1Max": 64,
+          "finalRankCount": 110,
+          "roundCount": 7,
+          "csvFile": "7244543.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-09-25T05:05:10.320Z",
+      "lastCrawledAt": "2026-09-26T05:08:26.009Z",
       "round1Max": 64,
       "finalRankCount": 110,
       "roundCount": 7,
@@ -1915,9 +2113,20 @@
           "csvFile": "3000442.csv",
           "csvVersion": "unified_rounds_v2",
           "finalSourceLabel": "Final rank"
+        },
+        {
+          "crawledAt": "2026-09-26T05:08:33.124Z",
+          "level": "junior",
+          "series": "1-1",
+          "round1Max": 58,
+          "finalRankCount": 108,
+          "roundCount": 7,
+          "csvFile": "3000442.csv",
+          "csvVersion": "unified_rounds_v2",
+          "finalSourceLabel": "Final rank"
         }
       ],
-      "lastCrawledAt": "2026-09-25T05:05:17.259Z",
+      "lastCrawledAt": "2026-09-26T05:08:33.124Z",
       "round1Max": 58,
       "finalRankCount": 108,
       "roundCount": 7,
