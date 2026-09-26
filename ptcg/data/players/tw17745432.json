@@ -1,8 +1,8 @@
 {
   "id": "tw17745432",
   "url": "https://asia.pokemon-card.com/tw/users/tw17745432/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-18T04:28:03.262Z",
-  "totalEvents": 124,
+  "fetchedAt": "2026-09-26T04:46:02.669Z",
+  "totalEvents": 122,
   "participatedTournaments": [
     {
       "pageNo": 6,
@@ -16,8 +16,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 7,
-      "rowIndex": 4,
+      "pageNo": 6,
+      "rowIndex": 20,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 14:00",
       "eventDateTime": "2026-10-18 14:00",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 7,
-      "rowIndex": 3,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 14:30",
       "eventDateTime": "2026-10-04 14:30",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 6,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 13:00",
       "eventDateTime": "2026-10-04 13:00",
@@ -49,19 +49,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 6,
-      "rowIndex": 19,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "09-28-2026 14:00",
-      "eventDateTime": "2026-09-28 14:00",
-      "location": "磚櫃玩具店(台北店)",
-      "address": "新北市中和區宜安路18巷2號",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
       "pageNo": 7,
-      "rowIndex": 2,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2026 13:00",
       "eventDateTime": "2026-09-28 13:00",
@@ -78,17 +67,6 @@
       "eventDateTime": "2026-09-26 14:00",
       "location": "周周GO玩具 森林1店",
       "address": "台北市士林區士東路292號1樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 7,
-      "rowIndex": 1,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "09-26-2026 10:30",
-      "eventDateTime": "2026-09-26 10:30",
-      "location": "松鼠窩桌遊館",
-      "address": "新北市三重區重新路一段78號2樓",
       "rank": "-",
       "lp": "-"
     },
