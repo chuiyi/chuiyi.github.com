@@ -1,8 +1,8 @@
 {
   "id": "tw54587316",
   "url": "https://asia.pokemon-card.com/tw/users/tw54587316/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-18T08:54:30.318Z",
-  "totalEvents": 220,
+  "fetchedAt": "2026-09-27T04:06:07.017Z",
+  "totalEvents": 221,
   "participatedTournaments": [
     {
       "pageNo": 11,
@@ -38,8 +38,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 11,
-      "rowIndex": 20,
+      "pageNo": 12,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
       "eventDateTime": "2026-10-10 14:00",
@@ -133,7 +133,7 @@
       "eventDateTime": "2026-09-26 10:30",
       "location": "松鼠窩桌遊館",
       "address": "新北市三重區重新路一段78號2樓",
-      "rank": "-",
+      "rank": "70",
       "lp": "-"
     },
     {
@@ -146,6 +146,17 @@
       "address": "1F., No. 133, Shezhong St.,",
       "rank": "-",
       "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 14:00",
+      "eventDateTime": "2026-09-19 14:00",
+      "location": "貓腳印士林店",
+      "address": "台北市士林區大西路66號B1",
+      "rank": "30",
+      "lp": "4"
     },
     {
       "pageNo": 11,
