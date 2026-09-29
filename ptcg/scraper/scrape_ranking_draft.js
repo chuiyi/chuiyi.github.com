@@ -213,7 +213,7 @@ function updateManifestForLevel(manifest, level, date, outputFileName, totalPlay
   const worldPlayers = current.world_players ?? WORLD_PLAYER_LIMITS[level];
   const updatedAt = new Date().toISOString();
 
-  manifest.latest[level] = {
+  const entry = {
     level,
     label: LEVEL_LABELS[level],
     date,
@@ -222,7 +222,17 @@ function updateManifestForLevel(manifest, level, date, outputFileName, totalPlay
     total_players: totalPlayers,
     ...(worldPlayers ? { world_players: worldPlayers } : {}),
   };
+
+  manifest.latest[level] = entry;
   manifest.updated_at = updatedAt;
+
+  // ranking.json 除了頂層 latest，還有 seasons[目前賽季].latest 這份給玩家排行頁
+  // 「賽季」下拉選單用的複本（見 finalize_season_ranking.js）。兩邊要保持同步，
+  // 否則像這樣的例行更新只會反映在頂層，賽季選單那邊會一直停在舊資料。
+  const currentSeason = manifest.current_season;
+  if (currentSeason && manifest.seasons?.[currentSeason]?.latest) {
+    manifest.seasons[currentSeason].latest[level] = { ...entry };
+  }
 }
 
 function listDraftFilesInDir(dirPath) {
