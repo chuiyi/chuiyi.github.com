@@ -1,8 +1,8 @@
 {
   "id": "tw19377792",
   "url": "https://asia.pokemon-card.com/tw/users/tw19377792/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-25T04:42:30.820Z",
-  "totalEvents": 51,
+  "fetchedAt": "2026-09-29T09:36:40.240Z",
+  "totalEvents": 54,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -38,6 +38,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 3,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 10:30",
+      "eventDateTime": "2026-11-14 10:30",
+      "location": "松鼠窩桌遊館",
+      "address": "新北市三重區重新路一段78號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
       "pageNo": 2,
       "rowIndex": 6,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
@@ -56,6 +67,17 @@
       "eventDateTime": "2026-11-01 14:00",
       "location": "瘋桌遊益智遊戲專賣店 大安店",
       "address": "台北市大安區通化街28巷2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "元氣滿屋",
+      "address": "新北市板橋區漢生西路145號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -111,6 +133,17 @@
       "eventDateTime": "2026-10-24 13:30",
       "location": "幽靈屋",
       "address": "台北市南港區忠孝東路七段625巷33號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 11:00",
+      "eventDateTime": "2026-10-24 11:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -298,7 +331,7 @@
       "eventDateTime": "2026-09-13 09:00",
       "location": "Card Master",
       "address": "100台北市中正區南昌路二段47號1樓",
-      "rank": "-",
+      "rank": "166",
       "lp": "-"
     },
     {

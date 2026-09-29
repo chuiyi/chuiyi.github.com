@@ -1,8 +1,8 @@
 {
   "id": "tw63508480",
   "url": "https://asia.pokemon-card.com/tw/users/tw63508480/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T03:34:09.462Z",
-  "totalEvents": 120,
+  "fetchedAt": "2026-09-29T04:57:42.073Z",
+  "totalEvents": 122,
   "participatedTournaments": [
     {
       "pageNo": 6,
@@ -24,6 +24,28 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 7,
+      "rowIndex": 2,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-26-2026 14:00",
+      "eventDateTime": "2026-09-26 14:00",
+      "location": "鬥陣",
+      "address": "彰化縣彰化市永樂街12號",
+      "rank": "27",
+      "lp": "-"
+    },
+    {
+      "pageNo": 7,
+      "rowIndex": 1,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-25-2026 13:30",
+      "eventDateTime": "2026-09-25 13:30",
+      "location": "松梅桌遊",
+      "address": "高雄市前鎮區瑞興街11號",
+      "rank": "48",
       "lp": "-"
     },
     {
@@ -57,7 +79,7 @@
       "location": "B ONE桌遊",
       "address": "高雄市鳳山區北明街117號",
       "rank": "21",
-      "lp": "-"
+      "lp": "4"
     },
     {
       "pageNo": 6,
@@ -79,7 +101,7 @@
       "location": "嗷嗚玩具社",
       "address": "高雄市苓雅區新光路72號3樓",
       "rank": "18",
-      "lp": "-"
+      "lp": "4"
     },
     {
       "pageNo": 6,
@@ -90,7 +112,7 @@
       "location": "漢謚玩具社",
       "address": "高雄市苓雅區中華四路244號2樓",
       "rank": "5",
-      "lp": "-"
+      "lp": "8"
     },
     {
       "pageNo": 6,

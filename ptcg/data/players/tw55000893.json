@@ -1,8 +1,8 @@
 {
   "id": "tw55000893",
   "url": "https://asia.pokemon-card.com/tw/users/tw55000893/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T04:16:42.133Z",
-  "totalEvents": 90,
+  "fetchedAt": "2026-09-29T05:10:38.834Z",
+  "totalEvents": 92,
   "participatedTournaments": [
     {
       "pageNo": 5,
@@ -105,13 +105,35 @@
     },
     {
       "pageNo": 5,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-27-2026 11:00",
+      "eventDateTime": "2026-09-27 11:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
+      "rank": "42",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-26-2026 14:00",
+      "eventDateTime": "2026-09-26 14:00",
+      "location": "鬥陣",
+      "address": "彰化縣彰化市永樂街12號",
+      "rank": "3",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
       "rowIndex": 6,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-25-2026 14:00",
       "eventDateTime": "2026-09-25 14:00",
       "location": "卡舖啦啦",
       "address": "台中市南區復興路二段30-26號2樓",
-      "rank": "-",
+      "rank": "7",
       "lp": "-"
     },
     {
@@ -134,7 +156,7 @@
       "location": "鬥樂一中店",
       "address": "台中市北區尊賢街9號4樓",
       "rank": "10",
-      "lp": "-"
+      "lp": "6"
     },
     {
       "pageNo": 4,
@@ -189,7 +211,7 @@
       "location": "Ririco - 集換式卡牌專賣",
       "address": "406台中市北屯區北屯路288號B1",
       "rank": "11",
-      "lp": "-"
+      "lp": "6"
     },
     {
       "pageNo": 4,

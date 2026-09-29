@@ -1,8 +1,8 @@
 {
   "id": "tw58490962",
   "url": "https://asia.pokemon-card.com/tw/users/tw58490962/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T08:39:15.182Z",
-  "totalEvents": 57,
+  "fetchedAt": "2026-09-29T08:26:21.292Z",
+  "totalEvents": 58,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -101,6 +101,17 @@
       "location": "一新書局",
       "address": "高雄市苓雅區廣州一街143-6號",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-25-2026 13:30",
+      "eventDateTime": "2026-09-25 13:30",
+      "location": "松梅桌遊",
+      "address": "高雄市前鎮區瑞興街11號",
+      "rank": "89",
       "lp": "-"
     },
     {

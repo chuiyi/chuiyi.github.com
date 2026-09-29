@@ -1,8 +1,8 @@
 {
   "id": "tw98688020",
   "url": "https://asia.pokemon-card.com/tw/users/tw98688020/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T07:05:19.497Z",
-  "totalEvents": 40,
+  "fetchedAt": "2026-09-29T06:12:22.234Z",
+  "totalEvents": 41,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -27,6 +27,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 3,
+      "rowIndex": 1,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-26-2026 14:00",
+      "eventDateTime": "2026-09-26 14:00",
+      "location": "鬥陣",
+      "address": "彰化縣彰化市永樂街12號",
+      "rank": "50",
+      "lp": "-"
+    },
+    {
       "pageNo": 2,
       "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
@@ -46,7 +57,7 @@
       "location": "鬥樂一中店",
       "address": "台中市北區尊賢街9號4樓",
       "rank": "23",
-      "lp": "-"
+      "lp": "4"
     },
     {
       "pageNo": 2,

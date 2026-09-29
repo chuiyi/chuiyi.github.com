@@ -1,8 +1,8 @@
 {
   "id": "tw09472918",
   "url": "https://asia.pokemon-card.com/tw/users/tw09472918/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-26T08:31:16.965Z",
-  "totalEvents": 12,
+  "fetchedAt": "2026-09-29T06:09:41.414Z",
+  "totalEvents": 13,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -23,6 +23,17 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 08:30",
+      "eventDateTime": "2026-11-01 08:30",
+      "location": "桌覓桌遊休閒空間",
+      "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
       "rank": "-",
       "lp": "-"
     },
