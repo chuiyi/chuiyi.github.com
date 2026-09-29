@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T01:22:23.775Z",
+  "generated_at": "2026-09-29T06:42:18.998Z",
   "source": {
     "data_dir": ".",
     "ranking_old_dir": "ranking_old",
@@ -5716,137 +5716,6 @@
           ]
         },
         {
-          "ptcg_id": "tw66134077",
-          "name": "ChenChuXiang",
-          "area": "嘉義縣",
-          "appearances": 1,
-          "latest_rank": 38,
-          "latest_points": 12,
-          "latest_points_text": "12pt",
-          "series": [
-            {
-              "date": "20260323",
-              "label": "2026/03/23",
-              "rank": 114,
-              "points": 77,
-              "points_text": "77pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260401",
-              "label": "2026/04/01",
-              "rank": 120,
-              "points": 77,
-              "points_text": "77pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260410",
-              "label": "2026/04/10",
-              "rank": 120,
-              "points": 77,
-              "points_text": "77pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260417",
-              "label": "2026/04/17",
-              "rank": 115,
-              "points": 79,
-              "points_text": "79pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260421",
-              "label": "2026/04/21",
-              "rank": 126,
-              "points": 79,
-              "points_text": "79pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260422",
-              "label": "2026/04/22",
-              "rank": 127,
-              "points": 79,
-              "points_text": "79pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260427",
-              "label": "2026/04/27",
-              "rank": 129,
-              "points": 79,
-              "points_text": "79pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260511",
-              "label": "2026/05/11",
-              "rank": 131,
-              "points": 79,
-              "points_text": "79pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260604",
-              "label": "2026/06/04",
-              "rank": 131,
-              "points": 81,
-              "points_text": "81pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260831",
-              "label": "2026/08/31",
-              "rank": 140,
-              "points": 81,
-              "points_text": "81pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260908",
-              "label": "2026/09/08",
-              "rank": 131,
-              "points": 0,
-              "points_text": "0pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": false
-            },
-            {
-              "date": "20260929",
-              "label": "2026/09/29",
-              "rank": 38,
-              "points": 12,
-              "points_text": "12pt",
-              "area": "嘉義縣",
-              "username": "ChenChuXiang",
-              "in_cutoff": true
-            }
-          ]
-        },
-        {
           "ptcg_id": "tw69538820",
           "name": "ChenLi_Kibana",
           "area": "高雄市",
@@ -7004,6 +6873,137 @@
               "points_text": "12pt",
               "area": "臺中市",
               "username": "Will",
+              "in_cutoff": true
+            }
+          ]
+        },
+        {
+          "ptcg_id": "tw66134077",
+          "name": "XJH_KC",
+          "area": "嘉義縣",
+          "appearances": 1,
+          "latest_rank": 38,
+          "latest_points": 12,
+          "latest_points_text": "12pt",
+          "series": [
+            {
+              "date": "20260323",
+              "label": "2026/03/23",
+              "rank": 114,
+              "points": 77,
+              "points_text": "77pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260401",
+              "label": "2026/04/01",
+              "rank": 120,
+              "points": 77,
+              "points_text": "77pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260410",
+              "label": "2026/04/10",
+              "rank": 120,
+              "points": 77,
+              "points_text": "77pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260417",
+              "label": "2026/04/17",
+              "rank": 115,
+              "points": 79,
+              "points_text": "79pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260421",
+              "label": "2026/04/21",
+              "rank": 126,
+              "points": 79,
+              "points_text": "79pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260422",
+              "label": "2026/04/22",
+              "rank": 127,
+              "points": 79,
+              "points_text": "79pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260427",
+              "label": "2026/04/27",
+              "rank": 129,
+              "points": 79,
+              "points_text": "79pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260511",
+              "label": "2026/05/11",
+              "rank": 131,
+              "points": 79,
+              "points_text": "79pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260604",
+              "label": "2026/06/04",
+              "rank": 131,
+              "points": 81,
+              "points_text": "81pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260831",
+              "label": "2026/08/31",
+              "rank": 140,
+              "points": 81,
+              "points_text": "81pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260908",
+              "label": "2026/09/08",
+              "rank": 131,
+              "points": 0,
+              "points_text": "0pt",
+              "area": "嘉義縣",
+              "username": "ChenChuXiang",
+              "in_cutoff": false
+            },
+            {
+              "date": "20260929",
+              "label": "2026/09/29",
+              "rank": 38,
+              "points": 12,
+              "points_text": "12pt",
+              "area": "嘉義縣",
+              "username": "XJH_KC",
               "in_cutoff": true
             }
           ]
