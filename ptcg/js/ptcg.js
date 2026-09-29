@@ -2524,6 +2524,7 @@ const PTCG = (() => {
     let _rankingTrends = null;
     let _trendChart = null;
     let _currentTrendLevel = 'master';
+    let _currentTrendSeason = '';
     let _currentTrendFocusId = '';
     let _trendSortKey = 'rank';
     let _trendSortOrder = 'asc';
@@ -2534,6 +2535,74 @@ const PTCG = (() => {
 
     function _getTrendLevelData(level) {
         return _rankingTrends?.levels?.[level] || null;
+    }
+
+    // 快照日期格式為 YYYYMMDD，賽季邊界（ranking.json 的 season_start_from /
+    // season_end）為 YYYY-MM-DD，統一去掉 "-" 後可直接用字串比較（皆為零補齊的
+    // 年月日順序）。
+    function _compactDate(dateStr) {
+        return String(dateStr || '').replace(/-/g, '');
+    }
+
+    function _getTrendSeasonBounds(seasonKey) {
+        const season = _playersManifest?.seasons?.[seasonKey];
+        if (!season?.season_start_from) return null;
+        return {
+            start: _compactDate(season.season_start_from),
+            end: season.season_end ? _compactDate(season.season_end) : null,
+        };
+    }
+
+    function _isCurrentTrendSeasonSelected() {
+        return !_currentTrendSeason || _currentTrendSeason === _playersManifest?.current_season;
+    }
+
+    // 依所選賽季篩選某組別的趨勢資料：只保留落在賽季區間內的快照與每位玩家的
+    // 對應積分序列，並依篩選後的最新一筆快照重新計算排名/入榜次數等欄位。
+    // 找不到賽季邊界（例如 ranking.json 載入失敗）時，直接回傳原始資料，行為不受影響。
+    function _filterTrendLevelDataBySeason(levelData, seasonKey) {
+        if (!levelData) return levelData;
+
+        const bounds = _getTrendSeasonBounds(seasonKey);
+        if (!bounds) return levelData;
+
+        const inRange = (date) => {
+            if (!date) return false;
+            if (date < bounds.start) return false;
+            if (bounds.end && date > bounds.end) return false;
+            return true;
+        };
+
+        const snapshots = (levelData.snapshots || []).filter(snapshot => inRange(snapshot.date));
+
+        const players = (levelData.players || [])
+            .map(player => {
+                const series = (player.series || []).filter(entry => inRange(entry.date));
+                if (!series.length) return null;
+                const last = series[series.length - 1];
+                return {
+                    ...player,
+                    appearances: series.length,
+                    latest_rank: last.rank,
+                    latest_points: last.points,
+                    latest_points_text: last.points_text,
+                    series,
+                };
+            })
+            .filter(Boolean)
+            .sort((a, b) => {
+                if (b.latest_points !== a.latest_points) return b.latest_points - a.latest_points;
+                if (a.latest_rank !== b.latest_rank) return a.latest_rank - b.latest_rank;
+                return String(a.name || '').localeCompare(String(b.name || ''), 'zh-Hant');
+            });
+
+        return {
+            ...levelData,
+            snapshots,
+            players,
+            latest_date: snapshots.length ? snapshots[snapshots.length - 1].date : '',
+            latest_date_label: snapshots.length ? snapshots[snapshots.length - 1].label : '',
+        };
     }
 
     function _initTrendDivisionSwitch(trendData) {
@@ -2563,6 +2632,13 @@ const PTCG = (() => {
         });
     }
 
+    function _initTrendSeasonSwitch(manifest) {
+        const select = document.getElementById('trend-season-select');
+        if (!select) return;
+        _currentTrendSeason = manifest?.current_season || select.value || '';
+        if (_currentTrendSeason) select.value = _currentTrendSeason;
+    }
+
     function _getTrendSearchKeyword() {
         return String(document.getElementById('trend-player-search')?.value || '').trim().toLowerCase();
     }
@@ -2578,7 +2654,7 @@ const PTCG = (() => {
             const matched = idKey ? levelLookup.get(idKey) : null;
             return {
                 ...player,
-                current_rank: Number.isFinite(matched?.rank) ? matched.rank : null,
+                current_rank: Number.isFinite(matched?.rank) ? matched.rank : (player.latest_rank || null),
                 current_score_text: matched?.score || null,
                 current_score_value: Number.isFinite(matched?.scoreValue)
                     ? matched.scoreValue
@@ -3142,9 +3218,11 @@ const PTCG = (() => {
             _playersManifest = await loadPlayersManifest().catch(() => null);
         }
 
-        const levelData = _getTrendLevelData(_currentTrendLevel);
+        const levelData = _filterTrendLevelDataBySeason(_getTrendLevelData(_currentTrendLevel), _currentTrendSeason);
         const trendPlayer = levelData?.players?.find((item) => String(item?.ptcg_id || '').trim().toLowerCase() === normalizedId) || null;
-        const levelLookup = await loadRankingLookupByPtcgId(_currentTrendLevel).catch(() => new Map());
+        const levelLookup = _isCurrentTrendSeasonSelected()
+            ? await loadRankingLookupByPtcgId(_currentTrendLevel).catch(() => new Map())
+            : new Map();
         const matched = levelLookup.get(normalizedId) || null;
 
         const detailPlayer = {
@@ -3164,8 +3242,8 @@ const PTCG = (() => {
     }
 
     async function _renderTrendLevel(level) {
-        const levelData = _getTrendLevelData(level);
-        if (!levelData) {
+        const rawLevelData = _getTrendLevelData(level);
+        if (!rawLevelData) {
             const tbody = document.getElementById('trend-players-body');
             if (tbody) {
                 tbody.innerHTML = '<tr><td colspan="6" class="text-center py-4 text-muted">目前組別沒有可用的趨勢資料</td></tr>';
@@ -3173,20 +3251,27 @@ const PTCG = (() => {
             return;
         }
 
+        const levelData = _filterTrendLevelDataBySeason(rawLevelData, _currentTrendSeason);
+        const seasonLabel = _playersManifest?.seasons?.[_currentTrendSeason]?.label || '';
+
         _setText('trend-stat-snapshots', levelData.snapshots.length);
         _setText('trend-stat-players', levelData.players.length);
         _setText('trend-stat-cutoff', `Top ${levelData.top_limit}`);
         _setText('trend-stat-latest', levelData.latest_date_label || '--');
         _setText('trend-update-time', levelData.latest_date_label
-            ? `${levelData.label}資料截至 ${levelData.latest_date_label}`
-            : `${levelData.label}尚無資料`);
+            ? `${seasonLabel ? seasonLabel + '・' : ''}${levelData.label}資料截至 ${levelData.latest_date_label}`
+            : `${seasonLabel ? seasonLabel + '・' : ''}${levelData.label}尚無資料`);
         _setText('trend-generated-time', formatUpdateSourceLine('JSON 生成時間', _rankingTrends?.generated_at || ''));
         _setText('trend-ranking-time', levelData.latest_date_label
             ? `排行快照：${levelData.latest_date_label}`
             : '排行快照：尚無資料');
         _updateTrendSortIndicators();
 
-        const levelLookup = await loadRankingLookupByPtcgId(level).catch(() => new Map());
+        // 過去賽季的「目前積分/排名」不應套用今天的即時排行，只有目前賽季才查即時排行，
+        // 其餘情況以賽季篩選後序列裡的最後一筆快照為準。
+        const levelLookup = _isCurrentTrendSeasonSelected()
+            ? await loadRankingLookupByPtcgId(level).catch(() => new Map())
+            : new Map();
 
         _renderTrendSnapshots(levelData);
         _renderTrendChart(levelData, levelLookup);
@@ -3206,6 +3291,18 @@ const PTCG = (() => {
                 _trackFeatureUsage('trend_level_change', {
                     trend_level: level,
                 });
+            });
+        });
+
+        document.getElementById('trend-season-select')?.addEventListener('change', (e) => {
+            const season = String(e.target.value || '').trim();
+            if (!season || season === _currentTrendSeason) return;
+            _currentTrendSeason = season;
+            _currentTrendFocusId = '';
+            _renderTrendLevel(_currentTrendLevel);
+            _trackFeatureUsage('trend_season_change', {
+                trend_level: _currentTrendLevel,
+                trend_season: season,
             });
         });
 
@@ -3304,6 +3401,7 @@ const PTCG = (() => {
             }
 
             _initTrendDivisionSwitch(_rankingTrends);
+            _initTrendSeasonSwitch(_playersManifest);
             _bindTrendFilters();
             _renderTrendLevel(_currentTrendLevel);
         } catch (err) {
