@@ -1,8 +1,8 @@
 {
   "id": "tw03094722",
   "url": "https://asia.pokemon-card.com/tw/users/tw03094722/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-25T07:44:54.368Z",
-  "totalEvents": 22,
+  "fetchedAt": "2026-09-30T05:22:38.031Z",
+  "totalEvents": 23,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -78,7 +78,7 @@
       "eventDateTime": "2026-09-19 10:00",
       "location": "Card Master",
       "address": "100台北市中正區南昌路二段47號1樓",
-      "rank": "-",
+      "rank": "110",
       "lp": "-"
     },
     {
@@ -90,6 +90,17 @@
       "location": "拉比卡牌",
       "address": "台北市內湖區五分街89號2樓",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-13-2026 09:00",
+      "eventDateTime": "2026-09-13 09:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
+      "rank": "191",
       "lp": "-"
     },
     {

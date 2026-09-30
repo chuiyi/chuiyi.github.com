@@ -1,8 +1,8 @@
 {
   "id": "tw44472901",
   "url": "https://asia.pokemon-card.com/tw/users/tw44472901/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-27T07:00:30.124Z",
-  "totalEvents": 56,
+  "fetchedAt": "2026-09-30T07:35:40.615Z",
+  "totalEvents": 65,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -12,6 +12,17 @@
       "eventDateTime": "2026-11-21 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 13:00",
+      "eventDateTime": "2026-11-15 13:00",
+      "location": "5樓-豐原店",
+      "address": "臺中市豐原區三民路65號5樓",
       "rank": "-",
       "lp": "-"
     },
@@ -27,13 +38,101 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 15,
+      "pageNo": 4,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "10-18-2026 10:00",
-      "eventDateTime": "2026-10-18 10:00",
-      "location": "漢謚玩具社",
-      "address": "高雄市苓雅區中華四路244號2樓",
+      "eventTime": "11-01-2026 14:00",
+      "eventDateTime": "2026-11-01 14:00",
+      "location": "Play Lab Game 休閒館 台南",
+      "address": "台南市中西區民族路二段62號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 13:00",
+      "eventDateTime": "2026-11-01 13:00",
+      "location": "Bruce桌遊空間-三多店",
+      "address": "高雄市前鎮區三多三路213號8樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 08:30",
+      "eventDateTime": "2026-11-01 08:30",
+      "location": "桌覓桌遊休閒空間",
+      "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-31-2026 09:30",
+      "eventDateTime": "2026-10-31 09:30",
+      "location": "桌遊帝國咖啡廳",
+      "address": "高雄市三民區建昌路35號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 14:00",
+      "eventDateTime": "2026-10-26 14:00",
+      "location": "卡舖啦啦",
+      "address": "台中市南區復興路二段30-26號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 2,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-25-2026 14:30",
+      "eventDateTime": "2026-10-25 14:30",
+      "location": "卡市牌場",
+      "address": "臺中市北屯區北屯路312號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-25-2026 10:00",
+      "eventDateTime": "2026-10-25 10:00",
+      "location": "躲貓貓桌遊店",
+      "address": "台中市后里區三豐路四段17號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 13:00",
+      "eventDateTime": "2026-10-24 13:00",
+      "location": "卡多卡牌遊戲店",
+      "address": "南投縣草屯鎮芬草路一段229-3",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 1,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 11:00",
+      "eventDateTime": "2026-10-24 11:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -61,7 +160,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 16,
+      "rowIndex": 15,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-26-2026 14:00",
       "eventDateTime": "2026-09-26 14:00",

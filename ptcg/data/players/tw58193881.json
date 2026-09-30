@@ -1,9 +1,20 @@
 {
   "id": "tw58193881",
   "url": "https://asia.pokemon-card.com/tw/users/tw58193881/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-27T08:07:21.825Z",
-  "totalEvents": 3,
+  "fetchedAt": "2026-09-30T07:03:23.386Z",
+  "totalEvents": 7,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 10:30",
+      "eventDateTime": "2026-11-15 10:30",
+      "location": "Magic Star卡牌店",
+      "address": "台北市大安區和平東路二段231號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 2,
@@ -12,6 +23,39 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "元氣滿屋",
+      "address": "新北市板橋區漢生西路145號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 6,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-31-2026 14:00",
+      "eventDateTime": "2026-10-31 14:00",
+      "location": "磚櫃玩具店(台北店)",
+      "address": "新北市中和區宜安路18巷2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-28-2026 14:00",
+      "eventDateTime": "2026-09-28 14:00",
+      "location": "磚櫃玩具店(台北店)",
+      "address": "新北市中和區宜安路18巷2號",
       "rank": "-",
       "lp": "-"
     },

@@ -1,8 +1,8 @@
 {
   "id": "tw97165922",
   "url": "https://asia.pokemon-card.com/tw/users/tw97165922/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-27T04:21:10.427Z",
-  "totalEvents": 36,
+  "fetchedAt": "2026-09-30T04:42:02.264Z",
+  "totalEvents": 37,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -68,7 +68,7 @@
       "location": "宜蘭模羊玩具",
       "address": "宜蘭市 民族路159號",
       "rank": "6",
-      "lp": "-"
+      "lp": "8"
     },
     {
       "pageNo": 2,
@@ -145,6 +145,17 @@
       "location": "鬥樂一中店",
       "address": "台中市北區尊賢街9號4樓",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 10:00",
+      "eventDateTime": "2026-09-19 10:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
+      "rank": "12",
       "lp": "-"
     },
     {

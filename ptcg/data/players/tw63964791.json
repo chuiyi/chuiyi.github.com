@@ -1,8 +1,8 @@
 {
   "id": "tw63964791",
   "url": "https://asia.pokemon-card.com/tw/users/tw63964791/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-27T08:04:58.536Z",
-  "totalEvents": 18,
+  "fetchedAt": "2026-09-30T07:43:20.101Z",
+  "totalEvents": 26,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -12,6 +12,28 @@
       "eventDateTime": "2026-11-21 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 13:00",
+      "eventDateTime": "2026-11-15 13:00",
+      "location": "5樓-豐原店",
+      "address": "臺中市豐原區三民路65號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 11:00",
+      "eventDateTime": "2026-11-14 11:00",
+      "location": "諾亞方舟益智遊戲",
+      "address": "台中市西屯區台灣大道二段910號5樓之1",
       "rank": "-",
       "lp": "-"
     },
@@ -28,7 +50,73 @@
     },
     {
       "pageNo": 1,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
       "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-31-2026 11:00",
+      "eventDateTime": "2026-10-31 11:00",
+      "location": "鬥樂一中店",
+      "address": "台中市北區尊賢街9號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 14:00",
+      "eventDateTime": "2026-10-26 14:00",
+      "location": "卡舖啦啦",
+      "address": "台中市南區復興路二段30-26號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-25-2026 14:30",
+      "eventDateTime": "2026-10-25 14:30",
+      "location": "卡市牌場",
+      "address": "臺中市北屯區北屯路312號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-25-2026 10:00",
+      "eventDateTime": "2026-10-25 10:00",
+      "location": "躲貓貓桌遊店",
+      "address": "台中市后里區三豐路四段17號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 6,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 11:00",
+      "eventDateTime": "2026-10-24 11:00",
+      "location": "Ririco - 集換式卡牌專賣",
+      "address": "406台中市北屯區北屯路288號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 09:00",
       "eventDateTime": "2026-10-18 09:00",
@@ -50,7 +138,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 15,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-11-2026 13:00",
       "eventDateTime": "2026-10-11 13:00",
@@ -60,8 +148,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 16,
+      "pageNo": 2,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 11:00",
       "eventDateTime": "2026-10-10 11:00",
@@ -93,8 +181,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 15,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-25-2026 14:00",
       "eventDateTime": "2026-09-25 14:00",

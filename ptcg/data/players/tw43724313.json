@@ -1,9 +1,20 @@
 {
   "id": "tw43724313",
   "url": "https://asia.pokemon-card.com/tw/users/tw43724313/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-27T07:45:51.841Z",
-  "totalEvents": 36,
+  "fetchedAt": "2026-09-30T07:36:11.704Z",
+  "totalEvents": 39,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 13:30",
+      "eventDateTime": "2026-11-15 13:30",
+      "location": "玖零玩具",
+      "address": "台南市中西區民權路一段1號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 16,
@@ -50,12 +61,34 @@
     },
     {
       "pageNo": 2,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 13:30",
+      "eventDateTime": "2026-10-26 13:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
       "rowIndex": 13,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-26-2026 13:00",
       "eventDateTime": "2026-10-26 13:00",
       "location": "Bruce桌遊空間 福華飯店",
       "address": "高雄市新興區七賢一路311號B1（福華飯店B1）",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 13:30",
+      "eventDateTime": "2026-10-24 13:30",
+      "location": "松梅桌遊",
+      "address": "高雄市前鎮區瑞興街11號",
       "rank": "-",
       "lp": "-"
     },
@@ -166,7 +199,7 @@
       "eventDateTime": "2026-09-28 11:00",
       "location": "一新書局",
       "address": "高雄市苓雅區廣州一街143-6號",
-      "rank": "-",
+      "rank": "45",
       "lp": "-"
     },
     {
@@ -199,7 +232,7 @@
       "eventDateTime": "2026-09-20 14:00",
       "location": "Play Lab Game 休閒館 台南",
       "address": "台南市中西區民族路二段62號2樓",
-      "rank": "-",
+      "rank": "17",
       "lp": "-"
     },
     {

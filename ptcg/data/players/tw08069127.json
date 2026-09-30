@@ -1,8 +1,8 @@
 {
   "id": "tw08069127",
   "url": "https://asia.pokemon-card.com/tw/users/tw08069127/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-26T09:18:19.641Z",
-  "totalEvents": 355,
+  "fetchedAt": "2026-09-30T06:08:49.731Z",
+  "totalEvents": 359,
   "participatedTournaments": [
     {
       "pageNo": 17,
@@ -60,6 +60,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 18,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 10:30",
+      "eventDateTime": "2026-11-14 10:30",
+      "location": "松鼠窩桌遊館",
+      "address": "新北市三重區重新路一段78號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
       "pageNo": 16,
       "rowIndex": 19,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Senior Division",
@@ -78,6 +89,28 @@
       "eventDateTime": "2026-11-01 14:00",
       "location": "瘋桌遊益智遊戲專賣店 大安店",
       "address": "台北市大安區通化街28巷2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 18,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 14:00",
+      "eventDateTime": "2026-11-01 14:00",
+      "location": "PLAY ONE 壹樂研究所",
+      "address": "桃園市中壢區廣安街44號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 18,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "元氣滿屋",
+      "address": "新北市板橋區漢生西路145號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -177,6 +210,17 @@
       "eventDateTime": "2026-10-24 13:30",
       "location": "幽靈屋",
       "address": "台北市南港區忠孝東路七段625巷33號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 18,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 11:00",
+      "eventDateTime": "2026-10-24 11:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -331,8 +375,8 @@
       "eventDateTime": "2026-09-27 13:30",
       "location": "幽靈屋",
       "address": "台北市南港區忠孝東路七段625巷33號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "2",
+      "lp": "12"
     },
     {
       "pageNo": 17,
@@ -342,7 +386,7 @@
       "eventDateTime": "2026-09-26 14:00",
       "location": "周周GO玩具 森林1店",
       "address": "台北市士林區士東路292號1樓",
-      "rank": "-",
+      "rank": "21",
       "lp": "-"
     },
     {
@@ -364,7 +408,7 @@
       "eventDateTime": "2026-09-25 13:00",
       "location": "KYD遊樂園",
       "address": "桃園市中壢區中央東路13號6樓",
-      "rank": "-",
+      "rank": "16",
       "lp": "-"
     },
     {
@@ -441,7 +485,7 @@
       "eventDateTime": "2026-09-19 10:00",
       "location": "Card Master",
       "address": "100台北市中正區南昌路二段47號1樓",
-      "rank": "-",
+      "rank": "109",
       "lp": "-"
     },
     {
@@ -463,7 +507,7 @@
       "eventDateTime": "2026-09-13 09:00",
       "location": "Card Master",
       "address": "100台北市中正區南昌路二段47號1樓",
-      "rank": "-",
+      "rank": "43",
       "lp": "-"
     },
     {

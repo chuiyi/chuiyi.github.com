@@ -1,9 +1,31 @@
 {
   "id": "tw22807189",
   "url": "https://asia.pokemon-card.com/tw/users/tw22807189/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-25T05:28:17.690Z",
-  "totalEvents": 66,
+  "fetchedAt": "2026-09-30T05:23:54.618Z",
+  "totalEvents": 72,
   "participatedTournaments": [
+    {
+      "pageNo": 4,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 14:00",
+      "eventDateTime": "2026-11-14 14:00",
+      "location": "貓腳印士林店",
+      "address": "台北市士林區大西路66號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 10:30",
+      "eventDateTime": "2026-11-14 10:30",
+      "location": "松鼠窩桌遊館",
+      "address": "新北市三重區重新路一段78號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 3,
       "rowIndex": 14,
@@ -12,6 +34,50 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 14:00",
+      "eventDateTime": "2026-11-01 14:00",
+      "location": "瘋桌遊益智遊戲專賣店 大安店",
+      "address": "台北市大安區通化街28巷2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-31-2026 10:00",
+      "eventDateTime": "2026-10-31 10:00",
+      "location": "茶咖",
+      "address": "1F., No. 133, Shezhong St.,",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 8,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 14:00",
+      "eventDateTime": "2026-10-26 14:00",
+      "location": "拉比卡牌",
+      "address": "台北市內湖區五分街89號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-25-2026 14:00",
+      "eventDateTime": "2026-10-25 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
       "rank": "-",
       "lp": "-"
     },
