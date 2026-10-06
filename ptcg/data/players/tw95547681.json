@@ -1,8 +1,8 @@
 {
   "id": "tw95547681",
   "url": "https://asia.pokemon-card.com/tw/users/tw95547681/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-29T09:01:58.216Z",
-  "totalEvents": 164,
+  "fetchedAt": "2026-10-06T09:48:24.446Z",
+  "totalEvents": 165,
   "participatedTournaments": [
     {
       "pageNo": 6,
@@ -71,8 +71,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 8,
-      "rowIndex": 20,
+      "pageNo": 9,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:30",
       "eventDateTime": "2026-11-14 14:30",
@@ -452,6 +452,17 @@
       "eventDateTime": "2026-10-04 14:30",
       "location": "南瓜鎮",
       "address": "新北市三峽區國光街91號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 8,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-04-2026 14:00",
+      "eventDateTime": "2026-10-04 14:00",
+      "location": "Play Lab Game 休閒館 高雄",
+      "address": "高雄市三民區建國二路166號",
       "rank": "-",
       "lp": "-"
     },

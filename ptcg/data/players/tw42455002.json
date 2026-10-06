@@ -1,8 +1,8 @@
 {
   "id": "tw42455002",
   "url": "https://asia.pokemon-card.com/tw/users/tw42455002/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-29T09:41:31.577Z",
-  "totalEvents": 37,
+  "fetchedAt": "2026-10-06T10:31:11.062Z",
+  "totalEvents": 36,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -50,18 +50,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 17,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "10-11-2026 13:00",
-      "eventDateTime": "2026-10-11 13:00",
-      "location": "5樓-豐原店",
-      "address": "臺中市豐原區三民路65號5樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
-      "rowIndex": 15,
+      "rowIndex": 14,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
       "eventDateTime": "2026-10-10 14:00",
@@ -72,7 +61,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 16,
+      "rowIndex": 15,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
       "eventDateTime": "2026-10-10 14:00",
@@ -83,7 +72,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 14,
+      "rowIndex": 13,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 13:30",
       "eventDateTime": "2026-10-10 13:30",
@@ -95,17 +84,6 @@
     {
       "pageNo": 2,
       "rowIndex": 12,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "10-10-2026 11:00",
-      "eventDateTime": "2026-10-10 11:00",
-      "location": "諾亞方舟益智遊戲",
-      "address": "台中市西屯區台灣大道二段910號5樓之1",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
-      "rowIndex": 13,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 11:00",
       "eventDateTime": "2026-10-10 11:00",
@@ -199,7 +177,7 @@
       "eventDateTime": "2026-09-27 14:00",
       "location": "貓腳印松江店",
       "address": "台北市中山區南京東路二段95號B1",
-      "rank": "-",
+      "rank": "4",
       "lp": "-"
     },
     {
@@ -211,6 +189,17 @@
       "location": "PLAY ONE 壹樂研究所",
       "address": "桃園市中壢區廣安街44號",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-27-2026 14:00",
+      "eventDateTime": "2026-09-27 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "4",
       "lp": "-"
     },
     {

@@ -1,12 +1,12 @@
 {
   "id": "tw76039193",
   "url": "https://asia.pokemon-card.com/tw/users/tw76039193/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-29T06:08:27.249Z",
-  "totalEvents": 24,
+  "fetchedAt": "2026-10-06T06:48:07.254Z",
+  "totalEvents": 25,
   "participatedTournaments": [
     {
       "pageNo": 1,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 13:00",
       "eventDateTime": "2026-11-15 13:00",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 10:30",
       "eventDateTime": "2026-11-15 10:30",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 4,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:30",
       "eventDateTime": "2026-11-14 14:30",
@@ -38,8 +38,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 18,
+      "pageNo": 2,
+      "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:00",
       "eventDateTime": "2026-11-14 14:00",
@@ -255,6 +255,17 @@
       "location": "茶咖",
       "address": "1F., No. 133, Shezhong St.,",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-19-2026 10:00",
+      "eventDateTime": "2026-09-19 10:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
+      "rank": "74",
       "lp": "-"
     },
     {

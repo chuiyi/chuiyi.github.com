@@ -1,20 +1,9 @@
 {
   "id": "tw89297350",
   "url": "https://asia.pokemon-card.com/tw/users/tw89297350/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-29T05:11:15.736Z",
+  "fetchedAt": "2026-10-06T05:47:36.820Z",
   "totalEvents": 38,
   "participatedTournaments": [
-    {
-      "pageNo": 2,
-      "rowIndex": 18,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "11-15-2026 14:30",
-      "eventDateTime": "2026-11-15 14:30",
-      "location": "貓腳印-苗栗店",
-      "address": "苗栗縣苗栗市建功里府前路92號4樓",
-      "rank": "-",
-      "lp": "-"
-    },
     {
       "pageNo": 2,
       "rowIndex": 10,
@@ -23,6 +12,28 @@
       "eventDateTime": "2026-11-07 08:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 14:00",
+      "eventDateTime": "2026-11-01 14:00",
+      "location": "瘋桌遊益智遊戲專賣店 大安店",
+      "address": "台北市大安區通化街28巷2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
       "rank": "-",
       "lp": "-"
     },
@@ -39,23 +50,12 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 14:30",
       "eventDateTime": "2026-10-04 14:30",
       "location": "南瓜鎮",
       "address": "新北市三峽區國光街91號",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
-      "rowIndex": 16,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "10-04-2026 09:00",
-      "eventDateTime": "2026-10-04 09:00",
-      "location": "諾亞方舟益智遊戲",
-      "address": "台中市西屯區台灣大道二段910號5樓之1",
       "rank": "-",
       "lp": "-"
     },

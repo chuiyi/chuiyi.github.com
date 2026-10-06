@@ -1,8 +1,8 @@
 {
   "id": "tw30267620",
   "url": "https://asia.pokemon-card.com/tw/users/tw30267620/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-29T05:22:46.089Z",
-  "totalEvents": 89,
+  "fetchedAt": "2026-10-06T06:01:31.053Z",
+  "totalEvents": 90,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -61,6 +61,17 @@
     },
     {
       "pageNo": 5,
+      "rowIndex": 10,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (大師組)",
+      "eventTime": "10-03-2026 08:30",
+      "eventDateTime": "2026-10-03 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
       "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-27-2026 11:00",
@@ -68,7 +79,7 @@
       "location": "貓腳印-彰化店",
       "address": "彰化縣員林市莒光路398號2樓",
       "rank": "2",
-      "lp": "-"
+      "lp": "12"
     },
     {
       "pageNo": 5,

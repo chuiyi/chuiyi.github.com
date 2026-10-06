@@ -1,7 +1,7 @@
 {
   "id": "tw40870196",
   "url": "https://asia.pokemon-card.com/tw/users/tw40870196/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-29T05:26:52.834Z",
+  "fetchedAt": "2026-10-06T06:05:36.341Z",
   "totalEvents": 93,
   "participatedTournaments": [
     {
@@ -12,6 +12,17 @@
       "eventDateTime": "2026-11-15 13:00",
       "location": "5樓-豐原店",
       "address": "臺中市豐原區三民路65號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 08:00",
+      "eventDateTime": "2026-11-07 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
     },
@@ -140,17 +151,6 @@
       "pageNo": 5,
       "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "10-04-2026 09:00",
-      "eventDateTime": "2026-10-04 09:00",
-      "location": "諾亞方舟益智遊戲",
-      "address": "台中市西屯區台灣大道二段910號5樓之1",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 4,
-      "rowIndex": 18,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-20-2026 10:30",
       "eventDateTime": "2026-09-20 10:30",
       "location": "怪獸造咔",
@@ -160,7 +160,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-13-2026 11:00",
       "eventDateTime": "2026-09-13 11:00",
@@ -171,7 +171,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-13-2026 10:00",
       "eventDateTime": "2026-09-13 10:00",

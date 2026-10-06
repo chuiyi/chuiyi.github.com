@@ -1,8 +1,8 @@
 {
   "id": "tw45609612",
   "url": "https://asia.pokemon-card.com/tw/users/tw45609612/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-29T05:31:01.496Z",
-  "totalEvents": 64,
+  "fetchedAt": "2026-10-06T06:09:35.798Z",
+  "totalEvents": 65,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -12,6 +12,17 @@
       "eventDateTime": "2026-11-15 13:00",
       "location": "Bruce桌遊空間-美術館店",
       "address": "高雄市鼓山區華榮路405號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 13:30",
+      "eventDateTime": "2026-11-14 13:30",
+      "location": "漢謚玩具社",
+      "address": "高雄市苓雅區中華四路244號2樓",
       "rank": "-",
       "lp": "-"
     },
