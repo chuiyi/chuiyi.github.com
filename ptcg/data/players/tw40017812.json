@@ -1,12 +1,12 @@
 {
   "id": "tw40017812",
   "url": "https://asia.pokemon-card.com/tw/users/tw40017812/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-30T06:49:17.642Z",
-  "totalEvents": 92,
+  "fetchedAt": "2026-10-07T07:12:40.281Z",
+  "totalEvents": 95,
   "participatedTournaments": [
     {
       "pageNo": 4,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 13:00",
       "eventDateTime": "2026-11-15 13:00",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 10:30",
       "eventDateTime": "2026-11-15 10:30",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 12,
+      "rowIndex": 13,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:30",
       "eventDateTime": "2026-11-14 14:30",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 11,
+      "rowIndex": 12,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:00",
       "eventDateTime": "2026-11-14 14:00",
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 18,
+      "rowIndex": 17,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 10:30",
       "eventDateTime": "2026-11-14 10:30",
@@ -72,6 +72,17 @@
     },
     {
       "pageNo": 5,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 14:00",
+      "eventDateTime": "2026-11-01 14:00",
+      "location": "PLAY ONE 壹樂研究所",
+      "address": "桃園市中壢區廣安街44號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
       "rowIndex": 8,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 11:00",
@@ -83,7 +94,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-31-2026 14:00",
       "eventDateTime": "2026-10-31 14:00",
@@ -138,6 +149,17 @@
     },
     {
       "pageNo": 4,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 10:00",
+      "eventDateTime": "2026-10-26 10:00",
+      "location": "一刻館卡片遊戲專賣店",
+      "address": "桃園市桃園區中華路43號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
       "rowIndex": 15,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-25-2026 14:00",
@@ -148,8 +170,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 4,
-      "rowIndex": 16,
+      "pageNo": 5,
+      "rowIndex": 10,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-24-2026 13:30",
       "eventDateTime": "2026-10-24 13:30",
@@ -160,7 +182,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 10,
+      "rowIndex": 11,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-24-2026 11:00",
       "eventDateTime": "2026-10-24 11:00",
@@ -265,7 +287,7 @@
       "eventDateTime": "2026-09-28 14:00",
       "location": "磚櫃玩具店(台北店)",
       "address": "新北市中和區宜安路18巷2號",
-      "rank": "-",
+      "rank": "6",
       "lp": "-"
     },
     {
@@ -298,7 +320,7 @@
       "eventDateTime": "2026-09-27 14:00",
       "location": "貓腳印松江店",
       "address": "台北市中山區南京東路二段95號B1",
-      "rank": "-",
+      "rank": "10",
       "lp": "-"
     },
     {
@@ -310,6 +332,17 @@
       "location": "PLAY ONE 壹樂研究所",
       "address": "桃園市中壢區廣安街44號",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-27-2026 14:00",
+      "eventDateTime": "2026-09-27 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "10",
       "lp": "-"
     },
     {

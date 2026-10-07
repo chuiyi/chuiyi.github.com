@@ -1,8 +1,8 @@
 {
   "id": "tw18059812",
   "url": "https://asia.pokemon-card.com/tw/users/tw18059812/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-30T06:44:38.090Z",
-  "totalEvents": 56,
+  "fetchedAt": "2026-10-07T07:08:30.876Z",
+  "totalEvents": 57,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -331,7 +331,7 @@
       "eventDateTime": "2026-09-28 14:00",
       "location": "磚櫃玩具店(台北店)",
       "address": "新北市中和區宜安路18巷2號",
-      "rank": "-",
+      "rank": "27",
       "lp": "-"
     },
     {
@@ -364,7 +364,7 @@
       "eventDateTime": "2026-09-27 14:00",
       "location": "貓腳印松江店",
       "address": "台北市中山區南京東路二段95號B1",
-      "rank": "-",
+      "rank": "11",
       "lp": "-"
     },
     {
@@ -376,6 +376,17 @@
       "location": "PLAY ONE 壹樂研究所",
       "address": "桃園市中壢區廣安街44號",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-27-2026 14:00",
+      "eventDateTime": "2026-09-27 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "11",
       "lp": "-"
     },
     {

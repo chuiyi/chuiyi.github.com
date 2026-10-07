@@ -1,8 +1,8 @@
 {
   "id": "tw68763677",
   "url": "https://asia.pokemon-card.com/tw/users/tw68763677/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-30T05:27:28.649Z",
-  "totalEvents": 170,
+  "fetchedAt": "2026-10-07T05:58:07.667Z",
+  "totalEvents": 171,
   "participatedTournaments": [
     {
       "pageNo": 8,
@@ -309,7 +309,18 @@
       "eventDateTime": "2026-09-27 14:00",
       "location": "貓腳印松江店",
       "address": "台北市中山區南京東路二段95號B1",
-      "rank": "-",
+      "rank": "27",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-27-2026 14:00",
+      "eventDateTime": "2026-09-27 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "27",
       "lp": "-"
     },
     {
