@@ -1,12 +1,12 @@
 {
   "id": "tw30898169",
   "url": "https://asia.pokemon-card.com/tw/users/tw30898169/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-06T09:59:49.676Z",
-  "totalEvents": 222,
+  "fetchedAt": "2026-10-13T10:31:11.508Z",
+  "totalEvents": 223,
   "participatedTournaments": [
     {
-      "pageNo": 10,
-      "rowIndex": 20,
+      "pageNo": 11,
+      "rowIndex": 1,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (大師組)",
       "eventTime": "11-21-2026 08:30",
       "eventDateTime": "2026-11-21 08:30",
@@ -16,8 +16,19 @@
       "lp": "-"
     },
     {
+      "pageNo": 10,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
       "pageNo": 11,
-      "rowIndex": 3,
+      "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 14:00",
       "eventDateTime": "2026-10-18 14:00",
@@ -28,7 +39,7 @@
     },
     {
       "pageNo": 11,
-      "rowIndex": 4,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 13:30",
       "eventDateTime": "2026-10-18 13:30",
@@ -39,7 +50,7 @@
     },
     {
       "pageNo": 11,
-      "rowIndex": 5,
+      "rowIndex": 6,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 10:00",
       "eventDateTime": "2026-10-18 10:00",
@@ -71,8 +82,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 11,
-      "rowIndex": 6,
+      "pageNo": 12,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
       "eventDateTime": "2026-10-10 14:00",
@@ -100,7 +111,7 @@
       "eventDateTime": "2026-10-09 13:00",
       "location": "ALG-Academy Legacy Games",
       "address": "台北市中山區長春路368號5樓",
-      "rank": "-",
+      "rank": "13",
       "lp": "-"
     },
     {
@@ -116,7 +127,7 @@
     },
     {
       "pageNo": 12,
-      "rowIndex": 2,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 14:30",
       "eventDateTime": "2026-10-04 14:30",
@@ -248,7 +259,7 @@
     },
     {
       "pageNo": 11,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-25-2026 13:00",
       "eventDateTime": "2026-09-25 13:00",
@@ -259,7 +270,7 @@
     },
     {
       "pageNo": 11,
-      "rowIndex": 2,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-25-2026 10:00",
       "eventDateTime": "2026-09-25 10:00",
@@ -320,7 +331,7 @@
       "eventDateTime": "2026-09-19 10:00",
       "location": "Card Master",
       "address": "100台北市中正區南昌路二段47號1樓",
-      "rank": "112",
+      "rank": "-",
       "lp": "-"
     },
     {
