@@ -1,8 +1,8 @@
 {
   "id": "tw38784734",
   "url": "https://asia.pokemon-card.com/tw/users/tw38784734/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-07T05:22:52.967Z",
-  "totalEvents": 15,
+  "fetchedAt": "2026-10-14T04:30:39.695Z",
+  "totalEvents": 16,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -41,8 +41,8 @@
       "pageNo": 1,
       "rowIndex": 1,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
@@ -127,6 +127,17 @@
     },
     {
       "pageNo": 1,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-11-2026 08:30",
+      "eventDateTime": "2026-10-11 08:30",
+      "location": "桌覓桌遊休閒空間",
+      "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
+      "rank": "22",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
       "rowIndex": 3,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (大師組)",
       "eventTime": "10-03-2026 08:30",
@@ -155,7 +166,7 @@
       "eventDateTime": "2026-09-13 14:00",
       "location": "Play Lab Game 休閒館 高雄",
       "address": "高雄市三民區建國二路166號",
-      "rank": "29",
+      "rank": "-",
       "lp": "-"
     },
     {
