@@ -1,8 +1,8 @@
 {
   "id": "tw06441088",
   "url": "https://asia.pokemon-card.com/tw/users/tw06441088/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-13T08:04:05.442Z",
-  "totalEvents": 182,
+  "fetchedAt": "2026-10-21T05:53:33.631Z",
+  "totalEvents": 183,
   "participatedTournaments": [
     {
       "pageNo": 9,
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 13:30",
       "eventDateTime": "2026-11-15 13:30",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 2,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 13:00",
       "eventDateTime": "2026-11-15 13:00",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 13:30",
       "eventDateTime": "2026-11-14 13:30",
@@ -61,7 +61,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 18,
+      "rowIndex": 17,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 14:00",
       "eventDateTime": "2026-11-01 14:00",
@@ -72,7 +72,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 13:00",
       "eventDateTime": "2026-11-01 13:00",
@@ -83,7 +83,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 16,
+      "rowIndex": 15,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 08:30",
       "eventDateTime": "2026-11-01 08:30",
@@ -94,7 +94,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-31-2026 09:30",
       "eventDateTime": "2026-10-31 09:30",
@@ -105,7 +105,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 15,
+      "rowIndex": 14,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-26-2026 13:00",
       "eventDateTime": "2026-10-26 13:00",
@@ -116,7 +116,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 14,
+      "rowIndex": 13,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-24-2026 13:30",
       "eventDateTime": "2026-10-24 13:30",
@@ -124,6 +124,17 @@
       "address": "高雄市前鎮區瑞興街11號",
       "rank": "-",
       "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-18-2026 10:00",
+      "eventDateTime": "2026-10-18 10:00",
+      "location": "漢謚玩具社",
+      "address": "高雄市苓雅區中華四路244號2樓",
+      "rank": "18",
+      "lp": "4"
     },
     {
       "pageNo": 9,
@@ -137,8 +148,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 9,
-      "rowIndex": 13,
+      "pageNo": 10,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-11-2026 13:00",
       "eventDateTime": "2026-10-11 13:00",
@@ -156,7 +167,7 @@
       "location": "桌覓桌遊休閒空間",
       "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
       "rank": "4",
-      "lp": "-"
+      "lp": "10"
     },
     {
       "pageNo": 9,
@@ -188,7 +199,7 @@
       "eventDateTime": "2026-10-04 14:00",
       "location": "Play Lab Game 休閒館 高雄",
       "address": "高雄市三民區建國二路166號",
-      "rank": "-",
+      "rank": "27",
       "lp": "-"
     },
     {
@@ -210,7 +221,7 @@
       "eventDateTime": "2026-09-26 13:00",
       "location": "Bruce桌遊空間-嫩江店",
       "address": "高雄市三民區嫩江街74號2樓",
-      "rank": "16",
+      "rank": "-",
       "lp": "-"
     },
     {
@@ -287,7 +298,7 @@
       "eventDateTime": "2026-09-12 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "476",
       "lp": "-"
     },
     {

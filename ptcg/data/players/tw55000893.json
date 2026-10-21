@@ -1,8 +1,8 @@
 {
   "id": "tw55000893",
   "url": "https://asia.pokemon-card.com/tw/users/tw55000893/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-13T06:20:31.026Z",
-  "totalEvents": 92,
+  "fetchedAt": "2026-10-21T04:09:00.439Z",
+  "totalEvents": 93,
   "participatedTournaments": [
     {
       "pageNo": 5,
@@ -23,6 +23,17 @@
       "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 14:00",
+      "eventDateTime": "2026-10-26 14:00",
+      "location": "卡舖啦啦",
+      "address": "台中市南區復興路二段30-26號2樓",
       "rank": "-",
       "lp": "-"
     },
@@ -68,7 +79,7 @@
       "location": "Ririco - 集換式卡牌專賣",
       "address": "406台中市北屯區北屯路288號B1",
       "rank": "6",
-      "lp": "-"
+      "lp": "8"
     },
     {
       "pageNo": 5,
@@ -100,7 +111,7 @@
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "1",
       "lp": "-"
     },
     {
@@ -145,7 +156,7 @@
       "location": "怪獸造咔",
       "address": "台中市南區光輝街113號",
       "rank": "4",
-      "lp": "-"
+      "lp": "10"
     },
     {
       "pageNo": 4,
@@ -188,7 +199,7 @@
       "eventDateTime": "2026-09-12 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "128",
       "lp": "-"
     },
     {

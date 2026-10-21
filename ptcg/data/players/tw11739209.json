@@ -1,8 +1,8 @@
 {
   "id": "tw11739209",
   "url": "https://asia.pokemon-card.com/tw/users/tw11739209/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-13T06:18:38.528Z",
-  "totalEvents": 37,
+  "fetchedAt": "2026-10-21T04:07:07.313Z",
+  "totalEvents": 38,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -193,6 +193,17 @@
     },
     {
       "pageNo": 2,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-18-2026 14:00",
+      "eventDateTime": "2026-10-18 14:00",
+      "location": "瘋桌遊益智遊戲專賣店 大安店",
+      "address": "台北市大安區通化街28巷2號",
+      "rank": "10",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
       "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
@@ -211,7 +222,7 @@
       "location": "Ririco - 集換式卡牌專賣",
       "address": "406台中市北屯區北屯路288號B1",
       "rank": "8",
-      "lp": "-"
+      "lp": "8"
     },
     {
       "pageNo": 2,
@@ -222,7 +233,7 @@
       "location": "ALG-Academy Legacy Games",
       "address": "台北市中山區長春路368號5樓",
       "rank": "25",
-      "lp": "-"
+      "lp": "4"
     },
     {
       "pageNo": 1,
@@ -232,7 +243,7 @@
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "368",
       "lp": "-"
     },
     {
@@ -353,7 +364,7 @@
       "eventDateTime": "2026-09-12 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "184",
       "lp": "-"
     },
     {
