@@ -1,9 +1,53 @@
 {
   "id": "tw42309306",
   "url": "https://asia.pokemon-card.com/tw/users/tw42309306/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-21T03:50:52.458Z",
-  "totalEvents": 198,
+  "fetchedAt": "2026-10-28T04:40:01.160Z",
+  "totalEvents": 202,
   "participatedTournaments": [
+    {
+      "pageNo": 11,
+      "rowIndex": 2,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 1,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 20,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
+      "eventTime": "01-09-2027 08:30",
+      "eventDateTime": "2027-01-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 19,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (大師組)",
+      "eventTime": "12-19-2026 08:30",
+      "eventDateTime": "2026-12-19 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 9,
       "rowIndex": 15,
@@ -100,8 +144,8 @@
       "eventDateTime": "2026-10-26 14:00",
       "location": "卡舖啦啦",
       "address": "台中市南區復興路二段30-26號2樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "3",
+      "lp": "10"
     },
     {
       "pageNo": 10,
@@ -144,8 +188,8 @@
       "eventDateTime": "2026-10-25 10:00",
       "location": "躲貓貓桌遊店",
       "address": "台中市后里區三豐路四段17號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "1",
+      "lp": "20"
     },
     {
       "pageNo": 9,
@@ -166,8 +210,8 @@
       "eventDateTime": "2026-10-24 11:00",
       "location": "Ririco - 集換式卡牌專賣",
       "address": "406台中市北屯區北屯路288號B1",
-      "rank": "-",
-      "lp": "-"
+      "rank": "12",
+      "lp": "6"
     },
     {
       "pageNo": 10,
@@ -255,7 +299,7 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
       "rank": "182",
-      "lp": "-"
+      "lp": "6"
     },
     {
       "pageNo": 10,
@@ -288,7 +332,7 @@
       "location": "卡舖啦啦",
       "address": "台中市南區復興路二段30-26號2樓",
       "rank": "23",
-      "lp": "-"
+      "lp": "4"
     },
     {
       "pageNo": 9,

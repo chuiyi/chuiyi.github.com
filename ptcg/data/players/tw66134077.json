@@ -1,8 +1,8 @@
 {
   "id": "tw66134077",
   "url": "https://asia.pokemon-card.com/tw/users/tw66134077/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-21T04:11:11.972Z",
-  "totalEvents": 240,
+  "fetchedAt": "2026-10-28T05:02:57.991Z",
+  "totalEvents": 241,
   "participatedTournaments": [
     {
       "pageNo": 11,
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 12,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 13:00",
       "eventDateTime": "2026-11-15 13:00",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 12,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 10:30",
       "eventDateTime": "2026-11-15 10:30",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 12,
-      "rowIndex": 18,
+      "rowIndex": 17,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:30",
       "eventDateTime": "2026-11-14 14:30",
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 12,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:00",
       "eventDateTime": "2026-11-14 14:00",
@@ -61,7 +61,7 @@
     },
     {
       "pageNo": 12,
-      "rowIndex": 16,
+      "rowIndex": 15,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 10:30",
       "eventDateTime": "2026-11-14 10:30",
@@ -82,8 +82,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 12,
-      "rowIndex": 15,
+      "pageNo": 13,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 11:00",
       "eventDateTime": "2026-11-01 11:00",
@@ -144,6 +144,17 @@
       "eventDateTime": "2026-10-26 10:00",
       "location": "一刻館卡片遊戲專賣店",
       "address": "桃園市桃園區中華路43號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 13:30",
+      "eventDateTime": "2026-10-24 13:30",
+      "location": "幽靈屋",
+      "address": "台北市南港區忠孝東路七段625巷33號",
       "rank": "-",
       "lp": "-"
     },
@@ -211,7 +222,7 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
       "rank": "137",
-      "lp": "-"
+      "lp": "6"
     },
     {
       "pageNo": 12,

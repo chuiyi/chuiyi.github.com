@@ -1,8 +1,8 @@
 {
   "id": "tw76371566",
   "url": "https://asia.pokemon-card.com/tw/users/tw76371566/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-21T05:37:09.112Z",
-  "totalEvents": 72,
+  "fetchedAt": "2026-10-28T06:34:37.759Z",
+  "totalEvents": 73,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -24,6 +24,17 @@
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 11:00",
+      "eventDateTime": "2026-10-24 11:00",
+      "location": "Ririco - 集換式卡牌專賣",
+      "address": "406台中市北屯區北屯路288號B1",
+      "rank": "63",
       "lp": "-"
     },
     {

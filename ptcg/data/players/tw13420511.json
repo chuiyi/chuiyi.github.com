@@ -1,9 +1,31 @@
 {
   "id": "tw13420511",
   "url": "https://asia.pokemon-card.com/tw/users/tw13420511/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-21T05:01:13.009Z",
-  "totalEvents": 12,
+  "fetchedAt": "2026-10-28T05:57:09.368Z",
+  "totalEvents": 13,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 13,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 12,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (大師組)",
+      "eventTime": "12-19-2026 08:30",
+      "eventDateTime": "2026-12-19 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 10,
@@ -45,17 +67,6 @@
       "eventDateTime": "2026-10-26 13:00",
       "location": "Bruce桌遊空間 福華飯店",
       "address": "高雄市新興區七賢一路311號B1（福華飯店B1）",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 1,
-      "rowIndex": 12,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "10-24-2026 13:30",
-      "eventDateTime": "2026-10-24 13:30",
-      "location": "松梅桌遊",
-      "address": "高雄市前鎮區瑞興街11號",
       "rank": "-",
       "lp": "-"
     },

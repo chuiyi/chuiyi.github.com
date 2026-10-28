@@ -1,9 +1,31 @@
 {
   "id": "tw78866457",
   "url": "https://asia.pokemon-card.com/tw/users/tw78866457/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-21T06:47:37.866Z",
-  "totalEvents": 366,
+  "fetchedAt": "2026-10-28T07:48:25.909Z",
+  "totalEvents": 368,
   "participatedTournaments": [
+    {
+      "pageNo": 19,
+      "rowIndex": 8,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
+      "eventTime": "01-09-2027 08:30",
+      "eventDateTime": "2027-01-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 19,
+      "rowIndex": 7,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (大師組)",
+      "eventTime": "12-19-2026 08:30",
+      "eventDateTime": "2026-12-19 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 15,
       "rowIndex": 19,
@@ -298,7 +320,7 @@
       "eventDateTime": "2026-10-26 13:00",
       "location": "Bruce桌遊空間 福華飯店",
       "address": "高雄市新興區七賢一路311號B1（福華飯店B1）",
-      "rank": "-",
+      "rank": "13",
       "lp": "-"
     },
     {
@@ -408,7 +430,7 @@
       "eventDateTime": "2026-10-24 11:00",
       "location": "Ririco - 集換式卡牌專賣",
       "address": "406台中市北屯區北屯路288號B1",
-      "rank": "-",
+      "rank": "57",
       "lp": "-"
     },
     {
@@ -629,7 +651,7 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
       "rank": "156",
-      "lp": "-"
+      "lp": "6"
     },
     {
       "pageNo": 16,
