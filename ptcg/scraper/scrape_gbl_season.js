@@ -13,6 +13,7 @@
  *   node schedule_scrape_gbl_season.js --step details   # 只做步驟 2
  *   node schedule_scrape_gbl_season.js --delay-ms 500
  *   node schedule_scrape_gbl_season.js --limit 20       # 只處理前 20 場（測試用）
+ *   node schedule_scrape_gbl_season.js --force          # 已有 Top128 結果的賽事也強制重抓
  */
 
 'use strict';
@@ -34,6 +35,7 @@ const DEFAULTS = {
   step: 'all',
   delayMs: 500,
   limit: 0,
+  force: false,
 };
 
 function parseArgs(argv) {
@@ -80,6 +82,11 @@ function parseArgs(argv) {
       i += 1;
       continue;
     }
+
+    if (token === '--force') {
+      args.force = true;
+      continue;
+    }
   }
 
   const seasonDefaults = resolveSeasonDefaults(args.seasonLabel);
@@ -106,17 +113,62 @@ function buildCsvLine(fields) {
   return fields.map(csvEscape).join(',');
 }
 
+// \u9010\u5B57\u5143\u89E3\u6790\uFF0C\u6B63\u78BA\u8655\u7406\u6B04\u4F4D\u5167\u542B\u9017\u865F\u7684\u96D9\u5F15\u865F\u5305\u8986\u5167\u5BB9\uFF08\u4F8B\u5982\u5730\u5740\u6B04\u4F4D\u5E38\u898B\u7684
+// "1F., No. 133, ..."\uFF09\uFF1Bnaive \u7684 line.split(',') \u6703\u628A\u9019\u7A2E\u6B04\u4F4D\u5207\u6563\uFF0C
+// \u5BEB\u56DE\u6642\u53C8\u88AB csvEscape \u91CD\u65B0\u52A0\u4E0A\u5F15\u865F\uFF0C\u6574\u5217\u8CC7\u6599\u8D8A\u6EFE\u8D8A\u4E82\u3002
+function parseCsvRows(text) {
+  const rows = [];
+  let row = [];
+  let cell = '';
+  let inQuotes = false;
+  const input = String(text || '').replace(/^\uFEFF/, '');
+
+  for (let i = 0; i < input.length; i += 1) {
+    const ch = input[i];
+    const next = input[i + 1];
+
+    if (ch === '"') {
+      if (inQuotes && next === '"') {
+        cell += '"';
+        i += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (ch === ',' && !inQuotes) {
+      row.push(cell);
+      cell = '';
+      continue;
+    }
+
+    if ((ch === '\n' || ch === '\r') && !inQuotes) {
+      if (ch === '\r' && next === '\n') i += 1;
+      row.push(cell);
+      if (row.some((value) => value.trim().length > 0)) rows.push(row);
+      row = [];
+      cell = '';
+      continue;
+    }
+
+    cell += ch;
+  }
+
+  if (cell.length > 0 || row.length > 0) {
+    row.push(cell);
+    if (row.some((value) => value.trim().length > 0)) rows.push(row);
+  }
+
+  return rows;
+}
+
 function parseSimpleCsv(text) {
-  const lines = String(text || '')
-    .replace(/^\uFEFF/, '')
-    .split(/\r?\n/)
-    .filter((line) => line.trim().length > 0);
+  const rows = parseCsvRows(text);
+  if (rows.length < 2) return [];
 
-  if (lines.length < 2) return [];
-
-  const header = lines[0].split(',').map((x) => x.trim());
-  return lines.slice(1).map((line) => {
-    const cols = line.split(',');
+  const header = rows[0].map((x) => x.trim());
+  return rows.slice(1).map((cols) => {
     const obj = {};
     header.forEach((key, index) => {
       obj[key] = (cols[index] || '').trim();
@@ -443,6 +495,25 @@ async function buildGblUrlCsv(args) {
   return rows;
 }
 
+// CSV 欄位原樣保留（略過重抓、或 --limit 尾段未處理時使用）。
+function keepRowUnchanged(row) {
+  return {
+    season: row.season || '',
+    type: row.type || 'gbl',
+    level: row.level || '',
+    url_official: row.url_official || '',
+    title: row.title || '',
+    organizer: row.organizer || '',
+    capacity: row.capacity || '',
+    official_date: row.official_date || '',
+    venue: row.venue || '',
+    address: row.address || '',
+    city: row.city || '',
+    top128_file: row.top128_file || '',
+    top128_count: row.top128_count || '',
+  };
+}
+
 async function enrichGblDetails(args) {
   if (!fs.existsSync(args.csvPath)) {
     throw new Error(`找不到 CSV：${args.csvPath}`);
@@ -456,12 +527,22 @@ async function enrichGblDetails(args) {
 
   let success = 0;
   let fail = 0;
+  let skip = 0;
   const updatedRows = [];
 
   for (let i = 0; i < total; i += 1) {
     const row = tasks[i];
     const officialUrl = row.url_official;
     const officialId = extractOfficialId(officialUrl);
+
+    // 已經抓到確定的 Top128 結果，結果不會再變動，略過重抓以節省時間
+    // （--force 可強制重抓所有賽事，例如懷疑官方事後更正結果）。
+    const existingTop128Count = parseInt(row.top128_count, 10) || 0;
+    if (!args.force && existingTop128Count > 0) {
+      updatedRows.push(keepRowUnchanged(row));
+      skip += 1;
+      continue;
+    }
 
     process.stdout.write(`[gbl] (${i + 1}/${total}) ${officialId} ... `);
 
@@ -523,21 +604,7 @@ async function enrichGblDetails(args) {
       fail += 1;
       console.log(`FAIL: ${error.message}`);
 
-      updatedRows.push({
-        season: row.season || '',
-        type: row.type || 'gbl',
-        level: row.level || '',
-        url_official: officialUrl,
-        title: row.title || '',
-        organizer: row.organizer || '',
-        capacity: row.capacity || '',
-        official_date: row.official_date || '',
-        venue: row.venue || '',
-        address: row.address || '',
-        city: row.city || '',
-        top128_file: row.top128_file || '',
-        top128_count: row.top128_count || '',
-      });
+      updatedRows.push(keepRowUnchanged(row));
     }
 
     if (args.delayMs > 0) await sleep(args.delayMs);
@@ -546,41 +613,14 @@ async function enrichGblDetails(args) {
   // 保留未處理尾段資料（例如 --limit）
   if (total < tasks.length) {
     for (let i = total; i < tasks.length; i += 1) {
-      const row = tasks[i];
-      updatedRows.push({
-        season: row.season || '',
-        type: row.type || 'gbl',
-        level: row.level || '',
-        url_official: row.url_official,
-        title: row.title || '',
-        organizer: row.organizer || '',
-        capacity: row.capacity || '',
-        official_date: row.official_date || '',
-        venue: row.venue || '',
-        address: row.address || '',
-        city: row.city || '',
-        top128_file: row.top128_file || '',
-        top128_count: row.top128_count || '',
-      });
+      updatedRows.push(keepRowUnchanged(tasks[i]));
     }
   }
 
   // 若 CSV 原本存在不完整 URL 的資料，也原樣補回
-  const invalidRows = csvRows.filter((row) => !(row.url_official && extractOfficialId(row.url_official))).map((row) => ({
-    season: row.season || '',
-    type: row.type || 'gbl',
-    level: row.level || '',
-    url_official: row.url_official || '',
-    title: row.title || '',
-    organizer: row.organizer || '',
-    capacity: row.capacity || '',
-    official_date: row.official_date || '',
-    venue: row.venue || '',
-    address: row.address || '',
-    city: row.city || '',
-    top128_file: row.top128_file || '',
-    top128_count: row.top128_count || '',
-  }));
+  const invalidRows = csvRows
+    .filter((row) => !(row.url_official && extractOfficialId(row.url_official)))
+    .map(keepRowUnchanged);
 
   const merged = updatedRows.concat(invalidRows).sort((a, b) => {
     const aid = Number(extractOfficialId(a.url_official));
@@ -591,7 +631,7 @@ async function enrichGblDetails(args) {
   writeCsvRows(args.csvPath, merged);
 
   console.log(`[gbl] 已更新 CSV：${args.csvPath}`);
-  console.log(`[gbl] 完成：成功 ${success}，失敗 ${fail}，總處理 ${total}`);
+  console.log(`[gbl] 完成：成功 ${success}，略過（已有確定結果）${skip}，失敗 ${fail}，總處理 ${total}`);
 }
 
 async function main() {
