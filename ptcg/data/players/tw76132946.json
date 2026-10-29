@@ -1,9 +1,53 @@
 {
   "id": "tw76132946",
   "url": "https://asia.pokemon-card.com/tw/users/tw76132946/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-21T08:54:27.656Z",
-  "totalEvents": 60,
+  "fetchedAt": "2026-10-29T04:50:22.177Z",
+  "totalEvents": 64,
   "participatedTournaments": [
+    {
+      "pageNo": 4,
+      "rowIndex": 4,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 3,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 2,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
+      "eventTime": "01-09-2027 08:30",
+      "eventDateTime": "2027-01-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 1,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (大師組)",
+      "eventTime": "12-19-2026 08:30",
+      "eventDateTime": "2026-12-19 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 2,
@@ -199,7 +243,7 @@
       "eventDateTime": "2026-10-25 13:00",
       "location": "KYD遊樂園",
       "address": "桃園市中壢區中央東路13號6樓",
-      "rank": "-",
+      "rank": "47",
       "lp": "-"
     },
     {

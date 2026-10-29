@@ -1,7 +1,63 @@
 {
   "id": "tw72889797",
   "url": "https://asia.pokemon-card.com/tw/users/tw72889797/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-22T03:36:34.049Z",
-  "totalEvents": 0,
-  "participatedTournaments": []
+  "fetchedAt": "2026-10-29T05:05:34.324Z",
+  "totalEvents": 5,
+  "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-28-2026 13:00",
+      "eventDateTime": "2026-09-28 13:00",
+      "location": "The ONE集換式卡牌會所",
+      "address": "臺北市大安區復興南路一段103號9樓之2",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "09-05-2026 13:00",
+      "eventDateTime": "2026-09-05 13:00",
+      "location": "ALG-Academy Legacy Games",
+      "address": "台北市中山區長春路368號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 2,
+      "activityName": "2025-26 Taiwan Master Ball League TCG Division Masters Category",
+      "eventTime": "06-13-2026 08:00",
+      "eventDateTime": "2026-06-13 08:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "1783",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 1,
+      "activityName": "2025-26 Taiwan Great Ball League Season 3",
+      "eventTime": "03-29-2026 10:30",
+      "eventDateTime": "2026-03-29 10:30",
+      "location": "Card-Ple卡片人",
+      "address": "新北市新莊區民安西路120號2樓",
+      "rank": "28",
+      "lp": "-"
+    }
+  ]
 }
