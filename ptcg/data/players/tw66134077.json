@@ -1,9 +1,31 @@
 {
   "id": "tw66134077",
   "url": "https://asia.pokemon-card.com/tw/users/tw66134077/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-28T05:02:57.991Z",
-  "totalEvents": 241,
+  "fetchedAt": "2026-11-04T05:45:59.712Z",
+  "totalEvents": 243,
   "participatedTournaments": [
+    {
+      "pageNo": 13,
+      "rowIndex": 3,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 13,
+      "rowIndex": 2,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 11,
       "rowIndex": 15,
@@ -781,7 +803,7 @@
       "eventTime": "02-08-2026 12:30",
       "eventDateTime": "2026-02-08 12:30",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -1056,7 +1078,7 @@
       "eventTime": "01-04-2026 12:00",
       "eventDateTime": "2026-01-04 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "47",
       "lp": "-"
     },

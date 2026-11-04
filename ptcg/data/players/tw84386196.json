@@ -1,8 +1,8 @@
 {
   "id": "tw84386196",
   "url": "https://asia.pokemon-card.com/tw/users/tw84386196/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-28T07:04:12.957Z",
-  "totalEvents": 85,
+  "fetchedAt": "2026-11-04T08:05:50.451Z",
+  "totalEvents": 86,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -13,6 +13,17 @@
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-31-2026 10:00",
+      "eventDateTime": "2026-10-31 10:00",
+      "location": "茶咖",
+      "address": "1F., No. 133, Shezhong St.,",
+      "rank": "40",
       "lp": "-"
     },
     {
@@ -50,7 +61,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 18,
+      "rowIndex": 17,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-09-2026 10:30",
       "eventDateTime": "2026-10-09 10:30",
@@ -60,8 +71,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 4,
-      "rowIndex": 17,
+      "pageNo": 5,
+      "rowIndex": 6,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 13:00",
       "eventDateTime": "2026-10-04 13:00",
@@ -204,7 +215,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-13-2026 09:00",
       "eventDateTime": "2026-09-13 09:00",
@@ -215,7 +226,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-1 (大師組)",
       "eventTime": "09-12-2026 08:30",
       "eventDateTime": "2026-09-12 08:30",

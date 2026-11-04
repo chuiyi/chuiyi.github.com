@@ -1,8 +1,8 @@
 {
   "id": "tw43380150",
   "url": "https://asia.pokemon-card.com/tw/users/tw43380150/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-28T04:56:52.736Z",
-  "totalEvents": 79,
+  "fetchedAt": "2026-11-04T05:40:06.896Z",
+  "totalEvents": 80,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -83,14 +83,25 @@
     },
     {
       "pageNo": 4,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
+      "rank": "11",
+      "lp": "6"
+    },
+    {
+      "pageNo": 4,
       "rowIndex": 12,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-31-2026 11:00",
       "eventDateTime": "2026-10-31 11:00",
       "location": "鬥樂一中店",
       "address": "台中市北區尊賢街9號4樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "5",
+      "lp": "8"
     },
     {
       "pageNo": 4,

@@ -1,9 +1,31 @@
 {
   "id": "tw28672728",
   "url": "https://asia.pokemon-card.com/tw/users/tw28672728/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-28T09:06:34.581Z",
-  "totalEvents": 53,
+  "fetchedAt": "2026-11-04T10:08:55.986Z",
+  "totalEvents": 55,
   "participatedTournaments": [
+    {
+      "pageNo": 3,
+      "rowIndex": 15,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 14,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 3,
       "rowIndex": 13,
@@ -45,7 +67,7 @@
       "eventDateTime": "2026-10-31 13:30",
       "location": "卡卡邦尼樂遊館",
       "address": "新北市板橋區民生路三段32之2號",
-      "rank": "-",
+      "rank": "24",
       "lp": "-"
     },
     {

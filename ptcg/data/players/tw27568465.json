@@ -1,8 +1,8 @@
 {
   "id": "tw27568465",
   "url": "https://asia.pokemon-card.com/tw/users/tw27568465/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-28T08:12:28.510Z",
-  "totalEvents": 178,
+  "fetchedAt": "2026-11-04T09:15:39.411Z",
+  "totalEvents": 180,
   "participatedTournaments": [
     {
       "pageNo": 9,
@@ -69,6 +69,28 @@
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
+      "rank": "35",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-31-2026 11:00",
+      "eventDateTime": "2026-10-31 11:00",
+      "location": "鬥樂一中店",
+      "address": "台中市北區尊賢街9號4樓",
+      "rank": "8",
+      "lp": "8"
     },
     {
       "pageNo": 9,
@@ -759,7 +781,7 @@
       "eventTime": "10-26-2025 12:00",
       "eventDateTime": "2025-10-26 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },

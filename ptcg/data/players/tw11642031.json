@@ -1,12 +1,12 @@
 {
   "id": "tw11642031",
   "url": "https://asia.pokemon-card.com/tw/users/tw11642031/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-28T05:42:57.755Z",
-  "totalEvents": 527,
+  "fetchedAt": "2026-11-04T06:29:30.304Z",
+  "totalEvents": 525,
   "participatedTournaments": [
     {
       "pageNo": 27,
-      "rowIndex": 7,
+      "rowIndex": 5,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
       "eventTime": "03-13-2027 08:30",
       "eventDateTime": "2027-03-13 08:30",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 27,
-      "rowIndex": 6,
+      "rowIndex": 4,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
       "eventTime": "02-20-2027 08:30",
       "eventDateTime": "2027-02-20 08:30",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 27,
-      "rowIndex": 5,
+      "rowIndex": 3,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
       "eventTime": "01-09-2027 08:30",
       "eventDateTime": "2027-01-09 08:30",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 27,
-      "rowIndex": 4,
+      "rowIndex": 2,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (大師組)",
       "eventTime": "12-19-2026 08:30",
       "eventDateTime": "2026-12-19 08:30",
@@ -221,23 +221,12 @@
       "eventDateTime": "2026-11-01 14:00",
       "location": "瘋桌遊益智遊戲專賣店 大安店",
       "address": "台北市大安區通化街28巷2號",
-      "rank": "-",
+      "rank": "41",
       "lp": "-"
     },
     {
       "pageNo": 26,
       "rowIndex": 13,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "11-01-2026 14:00",
-      "eventDateTime": "2026-11-01 14:00",
-      "location": "Play Lab Game 休閒館 台南",
-      "address": "台南市中西區民族路二段62號2樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 27,
-      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 14:00",
       "eventDateTime": "2026-11-01 14:00",
@@ -270,23 +259,12 @@
     },
     {
       "pageNo": 27,
-      "rowIndex": 2,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 11:00",
       "eventDateTime": "2026-11-01 11:00",
       "location": "元氣滿屋",
       "address": "新北市板橋區漢生西路145號1樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 26,
-      "rowIndex": 12,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "11-01-2026 08:30",
-      "eventDateTime": "2026-11-01 08:30",
-      "location": "桌覓桌遊休閒空間",
-      "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
       "rank": "-",
       "lp": "-"
     },
@@ -324,8 +302,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 27,
-      "rowIndex": 1,
+      "pageNo": 26,
+      "rowIndex": 12,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-31-2026 09:30",
       "eventDateTime": "2026-10-31 09:30",
@@ -364,8 +342,8 @@
       "eventDateTime": "2026-10-26 13:00",
       "location": "Bruce桌遊空間 福華飯店",
       "address": "高雄市新興區七賢一路311號B1（福華飯店B1）",
-      "rank": "-",
-      "lp": "-"
+      "rank": "9",
+      "lp": "6"
     },
     {
       "pageNo": 26,
@@ -2332,7 +2310,7 @@
       "eventTime": "01-04-2026 12:00",
       "eventDateTime": "2026-01-04 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -3201,7 +3179,7 @@
       "eventTime": "10-26-2025 12:00",
       "eventDateTime": "2025-10-26 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -4356,7 +4334,7 @@
       "eventTime": "03-15-2025 12:00",
       "eventDateTime": "2025-03-15 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
