@@ -1,9 +1,31 @@
 {
   "id": "tw08028986",
   "url": "https://asia.pokemon-card.com/tw/users/tw08028986/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-29T06:29:59.966Z",
-  "totalEvents": 114,
+  "fetchedAt": "2026-11-05T07:54:18.208Z",
+  "totalEvents": 116,
   "participatedTournaments": [
+    {
+      "pageNo": 6,
+      "rowIndex": 16,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 6,
+      "rowIndex": 15,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
+      "eventTime": "01-09-2027 08:30",
+      "eventDateTime": "2027-01-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 5,
       "rowIndex": 18,
@@ -418,7 +440,7 @@
       "eventTime": "02-08-2026 12:30",
       "eventDateTime": "2026-02-08 12:30",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -605,7 +627,7 @@
       "eventTime": "01-04-2026 12:00",
       "eventDateTime": "2026-01-04 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -737,7 +759,7 @@
       "eventTime": "10-26-2025 12:00",
       "eventDateTime": "2025-10-26 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "8",
       "lp": "8"
     },
@@ -957,7 +979,7 @@
       "eventTime": "04-13-2025 12:00",
       "eventDateTime": "2025-04-13 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -1023,7 +1045,7 @@
       "eventTime": "03-15-2025 12:00",
       "eventDateTime": "2025-03-15 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "18",
       "lp": "-"
     },

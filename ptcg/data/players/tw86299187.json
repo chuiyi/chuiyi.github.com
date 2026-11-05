@@ -1,12 +1,34 @@
 {
   "id": "tw86299187",
   "url": "https://asia.pokemon-card.com/tw/users/tw86299187/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-29T06:25:32.269Z",
-  "totalEvents": 88,
+  "fetchedAt": "2026-11-05T07:49:46.299Z",
+  "totalEvents": 89,
   "participatedTournaments": [
     {
       "pageNo": 5,
+      "rowIndex": 9,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
       "rowIndex": 8,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "卡卡邦尼樂遊館",
+      "address": "新北市板橋區民生路三段32之2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 7,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:30",
       "eventDateTime": "2026-11-14 14:30",
@@ -16,19 +38,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 4,
-      "rowIndex": 19,
-      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 09:00",
-      "eventDateTime": "2026-11-07 09:00",
-      "location": "The Pokémon Company",
-      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
       "pageNo": 5,
-      "rowIndex": 7,
+      "rowIndex": 6,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 11:00",
       "eventDateTime": "2026-11-01 11:00",
@@ -39,7 +50,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 6,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-31-2026 13:30",
       "eventDateTime": "2026-10-31 13:30",
@@ -50,7 +61,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 5,
+      "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-24-2026 11:00",
       "eventDateTime": "2026-10-24 11:00",
@@ -61,7 +72,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 4,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 14:30",
       "eventDateTime": "2026-10-04 14:30",
@@ -72,7 +83,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 2,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-20-2026 14:00",
       "eventDateTime": "2026-09-20 14:00",
@@ -82,8 +93,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 5,
-      "rowIndex": 1,
+      "pageNo": 4,
+      "rowIndex": 20,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-19-2026 13:30",
       "eventDateTime": "2026-09-19 13:30",
@@ -94,7 +105,7 @@
     },
     {
       "pageNo": 5,
-      "rowIndex": 3,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-13-2026 09:00",
       "eventDateTime": "2026-09-13 09:00",
@@ -105,7 +116,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-06-2026 11:00",
       "eventDateTime": "2026-09-06 11:00",

@@ -1,12 +1,12 @@
 {
   "id": "tw09139790",
   "url": "https://asia.pokemon-card.com/tw/users/tw09139790/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-29T04:59:14.006Z",
-  "totalEvents": 21,
+  "fetchedAt": "2026-11-05T06:04:43.063Z",
+  "totalEvents": 22,
   "participatedTournaments": [
     {
       "pageNo": 2,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
       "eventTime": "03-13-2027 08:30",
       "eventDateTime": "2027-03-13 08:30",
@@ -16,8 +16,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
       "eventTime": "02-20-2027 08:30",
       "eventDateTime": "2027-02-20 08:30",
@@ -56,6 +56,17 @@
       "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 13:00",
+      "eventDateTime": "2026-11-01 13:00",
+      "location": "Bruce桌遊空間-三多店",
+      "address": "高雄市前鎮區三多三路213號8樓",
       "rank": "-",
       "lp": "-"
     },

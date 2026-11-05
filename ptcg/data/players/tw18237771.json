@@ -1,8 +1,8 @@
 {
   "id": "tw18237771",
   "url": "https://asia.pokemon-card.com/tw/users/tw18237771/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-29T04:58:09.630Z",
-  "totalEvents": 168,
+  "fetchedAt": "2026-11-05T06:03:35.128Z",
+  "totalEvents": 169,
   "participatedTournaments": [
     {
       "pageNo": 9,
@@ -34,6 +34,17 @@
       "eventDateTime": "2027-01-09 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-20-2026 11:00",
+      "eventDateTime": "2026-12-20 11:00",
+      "location": "ALG-Academy Legacy Games",
+      "address": "台北市中山區長春路368號5樓",
       "rank": "-",
       "lp": "-"
     },

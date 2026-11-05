@@ -1,9 +1,20 @@
 {
   "id": "tw24617527",
   "url": "https://asia.pokemon-card.com/tw/users/tw24617527/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-29T08:00:27.013Z",
-  "totalEvents": 131,
+  "fetchedAt": "2026-11-05T09:26:03.380Z",
+  "totalEvents": 132,
   "participatedTournaments": [
+    {
+      "pageNo": 7,
+      "rowIndex": 12,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (少年組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 5,
       "rowIndex": 20,
@@ -704,7 +715,7 @@
       "eventTime": "01-04-2026 12:00",
       "eventDateTime": "2026-01-04 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -913,7 +924,7 @@
       "eventTime": "10-26-2025 12:00",
       "eventDateTime": "2025-10-26 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
