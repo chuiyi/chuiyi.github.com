@@ -7,10 +7,13 @@
  * 儲存至 ptcg/data/tournaments/top128_{type}_{officialId}.csv，
  * 並更新對應的 tournaments_ubl.json / tournaments_premiere.json。
  *
+ * 已有 top128 CSV 代表該賽事結果已確定、不會再變，預設會直接略過（連官方頁都
+ * 不會再抓），只對新賽事或還沒出結果的賽事發 request。
+ *
  * 用法:
  *   node scrape_official_top128.js
  *   node scrape_official_top128.js --csv "path/to/events.csv"      # 可重複指定多次
- *   node scrape_official_top128.js --force          # 重新抓取已有的檔案
+ *   node scrape_official_top128.js --force          # 已確定結果的賽事也強制重抓
  *   node scrape_official_top128.js --dry-run        # 只顯示要抓取的 URL，不實際抓取
  */
 
@@ -361,6 +364,22 @@ function countRowsFromTop128Csv(filePath) {
   return lines.length > 1 ? (lines.length - 1) : 0;
 }
 
+// top128 CSV \u53EA\u6709\u5728\u771F\u7684\u6293\u5230\u6392\u540D\u8CC7\u6599\uFF08rows.length > 0\uFF09\u6642\u624D\u6703\u88AB\u5BEB\u5165\uFF0C\u6240\u4EE5\u53EA\u8981
+// \u6A94\u6848\u5B58\u5728\uFF0C\u5C31\u4EE3\u8868\u9019\u5834\u8CFD\u4E8B\u7684\u7D50\u679C\u5DF2\u7D93\u78BA\u5B9A\u3001\u4E0D\u6703\u518D\u8B8A\u52D5\u3002\u7565\u904E\u91CD\u6293\u6642\u76F4\u63A5\u5F9E\u65E2\u6709
+// JSON \u7D00\u9304\u8B80\u56DE metadata\uFF0C\u4E0D\u5FC5\u518D\u6253\u4E00\u6B21\u5B98\u65B9\u9801\u3002
+function findExistingRecord(type, tid, officialUrl) {
+  const jsonFile = type === 'premiere' ? PREMIERE_JSON : (type === 'masterball' ? MASTERBALL_JSON : UBL_JSON);
+  const rootKey = type === 'premiere' ? 'PREMIERE' : (type === 'masterball' ? 'MASTERBALL' : 'UBL');
+  const data = readJson(jsonFile);
+  const records = Array.isArray(data?.[rootKey]) ? data[rootKey] : [];
+
+  if (tid) {
+    const byTid = records.find(r => String(r.id) === String(tid));
+    if (byTid) return byTid;
+  }
+  return records.find(r => String(r.officialUrl || '') === String(officialUrl || '')) || null;
+}
+
 // ─── 主流程 ──────────────────────────────────────────────────
 
 async function main() {
@@ -407,26 +426,17 @@ async function main() {
     console.log(`[task] ${task.series || '?'} ${task.level} | 官方ID: ${officialId} | SFC TID: ${tid || 'N/A'}`);
     console.log(`       官方頁: ${task.url_official}`);
 
-    // 若已有檔案且非強制重新抓取，仍預抓官方日期並補齊 JSON 欄位
+    // 已有檔案代表這場賽事的 Top128 結果早就確定、不會再變，直接沿用既有
+    // JSON 紀錄的 metadata，不再重抓官方頁（使用 --force 可強制重抓）。
     if (!args.force && fs.existsSync(csvFilePath)) {
-      let officialDate = '';
-      let title = String(task.title || '').trim();
-      let capacity = '';
-      let venue = '';
-      let address = '';
-      try {
-        const html = await fetchHtml(task.url_official);
-        officialDate = extractOfficialDateFromHtml(html);
-        title = title || extractTitleFromHtml(html);
-        capacity = extractCapacityFromHtml(html);
-        const locationInfo = extractVenueAndAddressFromHtml(html);
-        venue = locationInfo.venue;
-        address = locationInfo.address;
-      } catch {
-        officialDate = '';
-      }
+      const existing = findExistingRecord(type, tid, task.url_official);
+      const officialDate = existing?.officialDate || '';
+      const title = String(task.title || '').trim() || existing?.title || '';
+      const capacity = existing?.capacity || '';
+      const venue = existing?.venue || '';
+      const address = existing?.address || '';
 
-      console.log(`       ⏭  已有 ${csvFileName}，略過 (使用 --force 強制重抓)\n`);
+      console.log(`       ⏭  已有 ${csvFileName}（結果已確定），略過重抓 (使用 --force 強制重抓)\n`);
       skipCount += 1;
       const top128Count = countRowsFromTop128Csv(csvFilePath);
       manifestEntries.push({

@@ -16,6 +16,8 @@
  *     tournaments_masterball.json，找出所有 url 帶 tcg.sfc-jpn.jp tid、且
  *     沒被標記 showPairing:false 的賽事，逐一抓取。可搭配 --tid 一起指定
  *     額外的 tid。單一賽事失敗不會中斷其他賽事，最後印出成功/失敗筆數。
+ *     最終排名已確定（finalRankCount > 0）的賽事不會再變，預設會略過重抓；
+ *     加上 --force 可強制全部重抓。
  */
 
 'use strict';
@@ -108,6 +110,34 @@ function discoverTidsFromJson() {
   }
 
   return Array.from(tids);
+}
+
+// 掃描同一批 JSON，找出「最終排名已確定」(finalRankCount > 0) 的 tid 集合，
+// 供 --auto 略過重抓用：對戰表/最終排名一旦定案就不會再變。
+function getFinalizedTidsFromJson() {
+  const finalized = new Set();
+
+  for (const target of TOURNAMENT_JSON_TARGETS) {
+    if (!fs.existsSync(target.file)) continue;
+
+    let data;
+    try {
+      data = JSON.parse(fs.readFileSync(target.file, 'utf8'));
+    } catch {
+      continue;
+    }
+
+    const records = data?.[target.key];
+    if (!Array.isArray(records)) continue;
+
+    for (const record of records) {
+      if ((record?.finalRankCount || 0) > 0) {
+        finalized.add(String(record.id));
+      }
+    }
+  }
+
+  return finalized;
 }
 
 function sleep(ms) {
@@ -771,16 +801,28 @@ async function scrapeSingleTid(tid, args) {
 async function main() {
   const args = parseArgs(process.argv);
 
+  let autoSkipCount = 0;
   if (args.auto) {
     const discovered = discoverTidsFromJson();
     console.log(`[pairing] --auto：從 UBL/PREMIERE/MASTERBALL JSON 找到 ${discovered.length} 個 tid`);
     args.tids = Array.from(new Set([...args.tids, ...discovered]));
+
+    // 最終排名已確定的賽事不會再變，略過重抓（--force 可強制重抓所有賽事）。
+    if (!args.force) {
+      const finalized = getFinalizedTidsFromJson();
+      const beforeCount = args.tids.length;
+      args.tids = args.tids.filter((tid) => !finalized.has(String(tid)));
+      autoSkipCount = beforeCount - args.tids.length;
+      if (autoSkipCount > 0) {
+        console.log(`[pairing] 略過 ${autoSkipCount} 個最終排名已確定的賽事（使用 --force 可強制重抓）`);
+      }
+    }
   }
 
   if (!args.tids.length) {
     console.error('用法: node scrape_tournament_pairings.js --tid <id>[,<id2>] [--tid <id3>] [--dry-run]');
     console.error('   或: node scrape_tournament_pairings.js --auto  (自動抓取 JSON 清單中所有賽事)');
-    process.exitCode = 1;
+    process.exitCode = autoSkipCount > 0 ? 0 : 1;
     return;
   }
 
@@ -800,7 +842,7 @@ async function main() {
 
   // 單一賽事失敗（例如賽事還沒開打、頁面尚未公開）不會讓整個腳本以非 0 結束，
   // 避免 --auto 掃到一堆賽事時，其中一場有問題就讓整個排程步驟被標記失敗。
-  console.log(`\n[pairing] 全部完成：成功 ${successCount}，失敗 ${failCount}`);
+  console.log(`\n[pairing] 全部完成：成功 ${successCount}，略過（已定案）${autoSkipCount}，失敗 ${failCount}`);
 }
 
 main().catch((err) => {
