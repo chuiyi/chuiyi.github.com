@@ -1,8 +1,8 @@
 {
   "id": "tw76371566",
   "url": "https://asia.pokemon-card.com/tw/users/tw76371566/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-04T07:35:30.941Z",
-  "totalEvents": 76,
+  "fetchedAt": "2026-11-12T08:13:45.510Z",
+  "totalEvents": 81,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -23,6 +23,61 @@
       "eventDateTime": "2027-02-20 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-12-2026 11:00",
+      "eventDateTime": "2026-12-12 11:00",
+      "location": "米朧家",
+      "address": "高雄市仁武區八德西路1421號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 11:00",
+      "eventDateTime": "2026-12-06 11:00",
+      "location": "Ririco - 集換式卡牌專賣",
+      "address": "406台中市北屯區北屯路288號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 1,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 11:00",
+      "eventDateTime": "2026-12-05 11:00",
+      "location": "兩個世界TwoWorld桌遊館",
+      "address": "台中市沙鹿區晉文路39巷36號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-29-2026 13:30",
+      "eventDateTime": "2026-11-29 13:30",
+      "location": "雙子-高雄鹽埕店",
+      "address": "高雄市鹽埕區田單街17號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 09:30",
+      "eventDateTime": "2026-11-22 09:30",
+      "location": "喬桌遊林森店",
+      "address": "高雄市新興區林森一路178號2樓",
       "rank": "-",
       "lp": "-"
     },

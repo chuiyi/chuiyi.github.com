@@ -1,8 +1,8 @@
 {
   "id": "tw89643656",
   "url": "https://asia.pokemon-card.com/tw/users/tw89643656/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-04T05:52:09.264Z",
-  "totalEvents": 28,
+  "fetchedAt": "2026-11-12T06:46:33.008Z",
+  "totalEvents": 29,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -67,6 +67,17 @@
       "eventDateTime": "2026-11-15 10:30",
       "location": "Magic Star卡牌店",
       "address": "台北市大安區和平東路二段231號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 9,
+      "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-08-2026 09:00",
+      "eventDateTime": "2026-11-08 09:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
     },

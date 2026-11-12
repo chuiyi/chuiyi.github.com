@@ -1,9 +1,20 @@
 {
   "id": "tw22214011",
   "url": "https://asia.pokemon-card.com/tw/users/tw22214011/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-04T07:37:28.003Z",
-  "totalEvents": 71,
+  "fetchedAt": "2026-11-12T08:15:50.522Z",
+  "totalEvents": 75,
   "participatedTournaments": [
+    {
+      "pageNo": 4,
+      "rowIndex": 15,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 4,
       "rowIndex": 11,
@@ -38,6 +49,28 @@
       "lp": "-"
     },
     {
+      "pageNo": 4,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 14:00",
+      "eventDateTime": "2026-12-05 14:00",
+      "location": "貓腳印士林店",
+      "address": "台北市士林區大西路66號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
       "pageNo": 3,
       "rowIndex": 20,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
@@ -56,6 +89,17 @@
       "eventDateTime": "2026-11-14 14:00",
       "location": "貓腳印士林店",
       "address": "台北市士林區大西路66號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 12,
+      "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-08-2026 09:00",
+      "eventDateTime": "2026-11-08 09:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
     },

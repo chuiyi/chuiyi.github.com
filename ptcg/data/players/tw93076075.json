@@ -1,8 +1,8 @@
 {
   "id": "tw93076075",
   "url": "https://asia.pokemon-card.com/tw/users/tw93076075/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-04T07:46:56.443Z",
-  "totalEvents": 167,
+  "fetchedAt": "2026-11-12T08:25:34.145Z",
+  "totalEvents": 168,
   "participatedTournaments": [
     {
       "pageNo": 9,
@@ -78,6 +78,17 @@
       "eventDateTime": "2026-11-14 11:00",
       "location": "諾亞方舟益智遊戲",
       "address": "台中市西屯區台灣大道二段910號5樓之1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 8,
+      "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-08-2026 09:00",
+      "eventDateTime": "2026-11-08 09:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
     },

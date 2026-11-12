@@ -1,8 +1,8 @@
 {
   "id": "tw80536677",
   "url": "https://asia.pokemon-card.com/tw/users/tw80536677/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-04T08:12:09.269Z",
-  "totalEvents": 6,
+  "fetchedAt": "2026-11-12T08:50:32.958Z",
+  "totalEvents": 12,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -17,13 +17,79 @@
     },
     {
       "pageNo": 1,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-13-2026 08:30",
+      "eventDateTime": "2026-12-13 08:30",
+      "location": "桌覓桌遊休閒空間",
+      "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-12-2026 11:00",
+      "eventDateTime": "2026-12-12 11:00",
+      "location": "米朧家",
+      "address": "高雄市仁武區八德西路1421號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 13:30",
+      "eventDateTime": "2026-12-06 13:30",
+      "location": "藍色的貓",
+      "address": "高雄市岡山區大義二路20號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "漢謚玩具社",
+      "address": "高雄市苓雅區中華四路244號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 8,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-29-2026 13:30",
+      "eventDateTime": "2026-11-29 13:30",
+      "location": "雙子-高雄鹽埕店",
+      "address": "高雄市鹽埕區田單街17號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 09:30",
+      "eventDateTime": "2026-11-22 09:30",
+      "location": "喬桌遊林森店",
+      "address": "高雄市新興區林森一路178號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
       "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-31-2026 09:30",
       "eventDateTime": "2026-10-31 09:30",
       "location": "桌遊帝國咖啡廳",
       "address": "高雄市三民區建昌路35號",
-      "rank": "-",
+      "rank": "33",
       "lp": "-"
     },
     {

@@ -1,15 +1,59 @@
 {
   "id": "tw40870196",
   "url": "https://asia.pokemon-card.com/tw/users/tw40870196/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-04T06:03:33.365Z",
-  "totalEvents": 92,
+  "fetchedAt": "2026-11-12T06:57:52.765Z",
+  "totalEvents": 97,
   "participatedTournaments": [
     {
       "pageNo": 5,
-      "rowIndex": 11,
-      "activityName": "2026-27 Taiwan Great Ball League Season 1",
-      "eventTime": "11-15-2026 13:00",
-      "eventDateTime": "2026-11-15 13:00",
+      "rowIndex": 17,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-13-2026 14:30",
+      "eventDateTime": "2026-12-13 14:30",
+      "location": "卡市牌場",
+      "address": "臺中市北屯區北屯路312號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 11:00",
+      "eventDateTime": "2026-12-06 11:00",
+      "location": "Ririco - 集換式卡牌專賣",
+      "address": "406台中市北屯區北屯路288號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 11:00",
+      "eventDateTime": "2026-12-06 11:00",
+      "location": "諾亞方舟 - 彰化魔豆店",
+      "address": "彰化縣彰化市光復路173號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 13:00",
+      "eventDateTime": "2026-11-22 13:00",
       "location": "5樓-豐原店",
       "address": "臺中市豐原區三民路65號5樓",
       "rank": "-",
@@ -18,6 +62,17 @@
     {
       "pageNo": 5,
       "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 10:00",
+      "eventDateTime": "2026-11-22 10:00",
+      "location": "躲貓貓桌遊店",
+      "address": "台中市后里區三豐路四段17號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 11,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 11:00",
       "eventDateTime": "2026-11-01 11:00",
@@ -45,7 +100,7 @@
       "eventDateTime": "2026-10-25 14:30",
       "location": "卡市牌場",
       "address": "臺中市北屯區北屯路312號",
-      "rank": "12",
+      "rank": "-",
       "lp": "-"
     },
     {

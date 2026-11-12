@@ -1,8 +1,8 @@
 {
   "id": "tw08027701",
   "url": "https://asia.pokemon-card.com/tw/users/tw08027701/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-04T07:31:08.528Z",
-  "totalEvents": 28,
+  "fetchedAt": "2026-11-12T08:09:59.750Z",
+  "totalEvents": 29,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -23,6 +23,17 @@
       "eventDateTime": "2027-02-20 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "卡卡邦尼樂遊館",
+      "address": "新北市板橋區民生路三段32之2號",
       "rank": "-",
       "lp": "-"
     },
@@ -144,7 +155,7 @@
       "eventDateTime": "2026-10-26 10:00",
       "location": "一刻館卡片遊戲專賣店",
       "address": "桃園市桃園區中華路43號2樓",
-      "rank": "-",
+      "rank": "55",
       "lp": "-"
     },
     {
@@ -188,7 +199,7 @@
       "eventDateTime": "2026-10-24 11:00",
       "location": "Card Master",
       "address": "100台北市中正區南昌路二段47號1樓",
-      "rank": "-",
+      "rank": "53",
       "lp": "-"
     },
     {

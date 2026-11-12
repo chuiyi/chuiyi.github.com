@@ -1,12 +1,12 @@
 {
   "id": "tw67984683",
   "url": "https://asia.pokemon-card.com/tw/users/tw67984683/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-10-28T05:46:13.336Z",
-  "totalEvents": 22,
+  "fetchedAt": "2026-11-12T07:23:46.414Z",
+  "totalEvents": 25,
   "participatedTournaments": [
     {
       "pageNo": 2,
-      "rowIndex": 2,
+      "rowIndex": 3,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
       "eventTime": "03-13-2027 08:30",
       "eventDateTime": "2027-03-13 08:30",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 1,
+      "rowIndex": 2,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
       "eventTime": "01-09-2027 08:30",
       "eventDateTime": "2027-01-09 08:30",
@@ -27,13 +27,35 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 20,
+      "pageNo": 2,
+      "rowIndex": 1,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (大師組)",
       "eventTime": "12-19-2026 08:30",
       "eventDateTime": "2026-12-19 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "Play Lab Game 休閒館 高雄",
+      "address": "高雄市三民區建國二路166號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 13:30",
+      "eventDateTime": "2026-11-22 13:30",
+      "location": "一起玩玩具屋",
+      "address": "台南市東區裕文路39號",
       "rank": "-",
       "lp": "-"
     },
@@ -46,6 +68,17 @@
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 13:30",
+      "eventDateTime": "2026-10-26 13:30",
+      "location": "紙牌屋",
+      "address": "台南市東區東門路一段354號10樓",
+      "rank": "44",
       "lp": "-"
     },
     {
