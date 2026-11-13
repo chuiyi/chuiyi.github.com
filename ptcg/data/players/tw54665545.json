@@ -1,8 +1,8 @@
 {
   "id": "tw54665545",
   "url": "https://asia.pokemon-card.com/tw/users/tw54665545/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T09:15:25.726Z",
-  "totalEvents": 81,
+  "fetchedAt": "2026-11-13T08:47:22.464Z",
+  "totalEvents": 82,
   "participatedTournaments": [
     {
       "pageNo": 5,
@@ -34,6 +34,17 @@
       "eventDateTime": "2026-11-21 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 2,
+      "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Senior Division",
+      "eventTime": "11-08-2026 10:30",
+      "eventDateTime": "2026-11-08 10:30",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
     },

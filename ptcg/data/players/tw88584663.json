@@ -1,8 +1,8 @@
 {
   "id": "tw88584663",
   "url": "https://asia.pokemon-card.com/tw/users/tw88584663/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T09:47:33.216Z",
-  "totalEvents": 23,
+  "fetchedAt": "2026-11-13T09:18:48.342Z",
+  "totalEvents": 24,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -45,6 +45,17 @@
       "eventDateTime": "2026-11-15 14:30",
       "location": "貓腳印-苗栗店",
       "address": "苗栗縣苗栗市建功里府前路92號4樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 4,
+      "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Junior Division",
+      "eventTime": "11-08-2026 10:30",
+      "eventDateTime": "2026-11-08 10:30",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
     },

@@ -1,8 +1,8 @@
 {
   "id": "tw24864402",
   "url": "https://asia.pokemon-card.com/tw/users/tw24864402/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T09:48:02.337Z",
-  "totalEvents": 20,
+  "fetchedAt": "2026-11-13T09:19:24.574Z",
+  "totalEvents": 23,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -12,6 +12,39 @@
       "eventDateTime": "2027-02-20 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 2,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "貓腳印 桃園店",
+      "address": "桃園市桃園區中華路1號11樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 1,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 13:30",
+      "eventDateTime": "2026-11-22 13:30",
+      "location": "KYD遊樂園",
+      "address": "桃園市中壢區中央東路13號6樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 3,
+      "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Junior Division",
+      "eventTime": "11-08-2026 10:30",
+      "eventDateTime": "2026-11-08 10:30",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
     },

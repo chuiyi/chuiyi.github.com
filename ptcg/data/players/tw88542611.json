@@ -1,8 +1,8 @@
 {
   "id": "tw88542611",
   "url": "https://asia.pokemon-card.com/tw/users/tw88542611/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T08:36:42.511Z",
-  "totalEvents": 64,
+  "fetchedAt": "2026-11-13T08:09:34.377Z",
+  "totalEvents": 65,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-13-2026 14:30",
       "eventDateTime": "2026-12-13 14:30",
@@ -61,12 +61,12 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 19,
+      "rowIndex": 20,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
-      "eventTime": "12-12-2026 14:00",
-      "eventDateTime": "2026-12-12 14:00",
-      "location": "鬥陣",
-      "address": "彰化縣彰化市永樂街12號",
+      "eventTime": "12-13-2026 14:30",
+      "eventDateTime": "2026-12-13 14:30",
+      "location": "卡市牌場",
+      "address": "臺中市北屯區北屯路312號",
       "rank": "-",
       "lp": "-"
     },
@@ -74,10 +74,10 @@
       "pageNo": 3,
       "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
-      "eventTime": "12-06-2026 11:00",
-      "eventDateTime": "2026-12-06 11:00",
-      "location": "諾亞方舟 - 彰化魔豆店",
-      "address": "彰化縣彰化市光復路173號4樓",
+      "eventTime": "12-12-2026 14:00",
+      "eventDateTime": "2026-12-12 14:00",
+      "location": "鬥陣",
+      "address": "彰化縣彰化市永樂街12號",
       "rank": "-",
       "lp": "-"
     },
@@ -89,6 +89,17 @@
       "eventDateTime": "2026-12-06 11:00",
       "location": "Ririco - 集換式卡牌專賣",
       "address": "406台中市北屯區北屯路288號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 11:00",
+      "eventDateTime": "2026-12-06 11:00",
+      "location": "諾亞方舟 - 彰化魔豆店",
+      "address": "彰化縣彰化市光復路173號4樓",
       "rank": "-",
       "lp": "-"
     },

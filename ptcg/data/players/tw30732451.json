@@ -1,8 +1,8 @@
 {
   "id": "tw30732451",
   "url": "https://asia.pokemon-card.com/tw/users/tw30732451/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T09:28:24.442Z",
-  "totalEvents": 32,
+  "fetchedAt": "2026-11-13T09:00:07.584Z",
+  "totalEvents": 33,
   "participatedTournaments": [
     {
       "pageNo": 2,
@@ -56,6 +56,17 @@
       "eventDateTime": "2026-11-22 13:00",
       "location": "孩子玩伴-關埔店",
       "address": "新竹市東區關新路85號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 13,
+      "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Senior Division",
+      "eventTime": "11-08-2026 10:30",
+      "eventDateTime": "2026-11-08 10:30",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
       "lp": "-"
     },

@@ -1,8 +1,8 @@
 {
   "id": "tw62455737",
   "url": "https://asia.pokemon-card.com/tw/users/tw62455737/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T09:56:06.721Z",
-  "totalEvents": 9,
+  "fetchedAt": "2026-11-13T09:26:58.610Z",
+  "totalEvents": 13,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -28,12 +28,56 @@
     },
     {
       "pageNo": 1,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-20-2026 11:00",
+      "eventDateTime": "2026-12-20 11:00",
+      "location": "ALG-Academy Legacy Games",
+      "address": "台北市中山區長春路368號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
       "rowIndex": 7,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (孩童組)",
       "eventTime": "12-19-2026 08:30",
       "eventDateTime": "2026-12-19 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-13-2026 09:00",
+      "eventDateTime": "2026-12-13 09:00",
+      "location": "踢桌子",
+      "address": "新竹縣竹北市博愛街358號2F",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "塔普卡桌遊卡牌",
+      "address": "新竹縣竹北市仁義路182號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-29-2026 12:00",
+      "eventDateTime": "2026-11-29 12:00",
+      "location": "新世紀遊戲館",
+      "address": "新竹市北區平和街7號2樓",
       "rank": "-",
       "lp": "-"
     },

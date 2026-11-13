@@ -1,9 +1,64 @@
 {
   "id": "tw92252047",
   "url": "https://asia.pokemon-card.com/tw/users/tw92252047/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T06:27:44.302Z",
-  "totalEvents": 18,
+  "fetchedAt": "2026-11-13T06:05:54.099Z",
+  "totalEvents": 23,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-13-2026 08:30",
+      "eventDateTime": "2026-12-13 08:30",
+      "location": "桌覓桌遊休閒空間",
+      "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-12-2026 13:00",
+      "eventDateTime": "2026-12-12 13:00",
+      "location": "Bruce桌遊空間-三多店",
+      "address": "高雄市前鎮區三多三路213號8樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 1,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "Play Lab Game 休閒館 高雄",
+      "address": "高雄市三民區建國二路166號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 2,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "Play Lab Game 休閒館 台南",
+      "address": "台南市中西區民族路二段62號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "漢謚玩具社",
+      "address": "高雄市苓雅區中華四路244號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 13,
@@ -34,7 +89,7 @@
       "eventDateTime": "2026-10-31 09:30",
       "location": "桌遊帝國咖啡廳",
       "address": "高雄市三民區建昌路35號",
-      "rank": "-",
+      "rank": "14",
       "lp": "-"
     },
     {

@@ -1,8 +1,8 @@
 {
   "id": "tw19089077",
   "url": "https://asia.pokemon-card.com/tw/users/tw19089077/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T08:50:37.356Z",
-  "totalEvents": 49,
+  "fetchedAt": "2026-11-13T08:23:08.835Z",
+  "totalEvents": 50,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -71,6 +71,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 3,
+      "rowIndex": 10,
+      "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Senior Division",
+      "eventTime": "11-08-2026 10:30",
+      "eventDateTime": "2026-11-08 10:30",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
       "pageNo": 2,
       "rowIndex": 11,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Senior Division",
@@ -89,7 +100,7 @@
       "eventDateTime": "2026-10-25 14:30",
       "location": "卡市牌場",
       "address": "臺中市北屯區北屯路312號",
-      "rank": "14",
+      "rank": "-",
       "lp": "-"
     },
     {

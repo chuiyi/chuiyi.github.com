@@ -1,8 +1,8 @@
 {
   "id": "tw09772052",
   "url": "https://asia.pokemon-card.com/tw/users/tw09772052/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-05T06:30:20.835Z",
-  "totalEvents": 65,
+  "fetchedAt": "2026-11-13T06:08:20.316Z",
+  "totalEvents": 66,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -56,6 +56,17 @@
       "eventDateTime": "2026-12-05 13:30",
       "location": "卡卡邦尼樂遊館",
       "address": "新北市板橋區民生路三段32之2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 4,
+      "rowIndex": 6,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 14:00",
+      "eventDateTime": "2026-11-22 14:00",
+      "location": "周周GO玩具 森林1店",
+      "address": "台北市士林區士東路292號1樓",
       "rank": "-",
       "lp": "-"
     },
