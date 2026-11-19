@@ -1,9 +1,20 @@
 {
   "id": "tw77436563",
   "url": "https://asia.pokemon-card.com/tw/users/tw77436563/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-25T07:31:33.666Z",
-  "totalEvents": 27,
+  "fetchedAt": "2026-11-19T11:11:50.441Z",
+  "totalEvents": 28,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 8,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-12-2026 11:00",
+      "eventDateTime": "2026-12-12 11:00",
+      "location": "米朧家",
+      "address": "高雄市仁武區八德西路1421號",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 6,
@@ -12,8 +23,8 @@
       "eventDateTime": "2026-10-11 08:30",
       "location": "桌覓桌遊休閒空間",
       "address": "高雄市苓雅區林泉街38巷9弄7號1樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "3",
+      "lp": "10"
     },
     {
       "pageNo": 2,

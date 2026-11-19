@@ -1,19 +1,41 @@
 {
   "id": "tw23930741",
   "url": "https://asia.pokemon-card.com/tw/users/tw23930741/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T08:05:21.623Z",
-  "totalEvents": 36,
+  "fetchedAt": "2026-11-19T09:02:19.496Z",
+  "totalEvents": 38,
   "participatedTournaments": [
     {
       "pageNo": 2,
       "rowIndex": 15,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "2081",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 10:00",
+      "eventDateTime": "2026-10-24 10:00",
+      "location": "宜蘭模羊玩具",
+      "address": "宜蘭市 民族路159號",
       "rank": "-",
       "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-10-2026 14:00",
+      "eventDateTime": "2026-10-10 14:00",
+      "location": "SAGA TCG店",
+      "address": "宜蘭縣宜蘭市復興路一段8號1樓",
+      "rank": "2",
+      "lp": "12"
     },
     {
       "pageNo": 2,
@@ -23,8 +45,8 @@
       "eventDateTime": "2026-09-26 10:00",
       "location": "宜蘭模羊玩具",
       "address": "宜蘭市 民族路159號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "7",
+      "lp": "8"
     },
     {
       "pageNo": 2,

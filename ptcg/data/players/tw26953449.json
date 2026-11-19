@@ -1,18 +1,51 @@
 {
   "id": "tw26953449",
   "url": "https://asia.pokemon-card.com/tw/users/tw26953449/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T07:50:42.030Z",
-  "totalEvents": 32,
+  "fetchedAt": "2026-11-19T11:43:44.994Z",
+  "totalEvents": 35,
   "participatedTournaments": [
+    {
+      "pageNo": 2,
+      "rowIndex": 14,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 13,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
+      "eventTime": "01-09-2027 08:30",
+      "eventDateTime": "2027-01-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "卡卡邦尼樂遊館",
+      "address": "新北市板橋區民生路三段32之2號",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 12,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
+      "rank": "1266",
       "lp": "-"
     },
     {
@@ -100,8 +133,8 @@
       "eventDateTime": "2026-09-12 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "106",
+      "lp": "8"
     },
     {
       "pageNo": 1,

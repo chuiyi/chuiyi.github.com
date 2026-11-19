@@ -1,12 +1,232 @@
 {
   "id": "tw79476009",
   "url": "https://asia.pokemon-card.com/tw/users/tw79476009/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T08:42:04.191Z",
-  "totalEvents": 199,
+  "fetchedAt": "2026-11-19T08:48:34.780Z",
+  "totalEvents": 237,
   "participatedTournaments": [
     {
-      "pageNo": 9,
+      "pageNo": 12,
+      "rowIndex": 1,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 20,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
       "rowIndex": 19,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
+      "eventTime": "01-09-2027 08:30",
+      "eventDateTime": "2027-01-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-20-2026 11:00",
+      "eventDateTime": "2026-12-20 11:00",
+      "location": "ALG-Academy Legacy Games",
+      "address": "台北市中山區長春路368號5樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 18,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (大師組)",
+      "eventTime": "12-19-2026 08:30",
+      "eventDateTime": "2026-12-19 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-13-2026 14:00",
+      "eventDateTime": "2026-12-13 14:00",
+      "location": "PLAY ONE 壹樂研究所",
+      "address": "桃園市中壢區廣安街44號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-13-2026 10:00",
+      "eventDateTime": "2026-12-13 10:00",
+      "location": "楊梅-說書人桌遊舖",
+      "address": "桃園市楊梅區校前路343號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-12-2026 13:00",
+      "eventDateTime": "2026-12-12 13:00",
+      "location": "PANZO玩具店",
+      "address": "台北市士林區德行東路261號一樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-12-2026 13:00",
+      "eventDateTime": "2026-12-12 13:00",
+      "location": "The ONE集換式卡牌會所",
+      "address": "臺北市大安區復興南路一段103號9樓之2",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-12-2026 10:30",
+      "eventDateTime": "2026-12-12 10:30",
+      "location": "松鼠窩桌遊館",
+      "address": "新北市三重區重新路一段78號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-12-2026 10:00",
+      "eventDateTime": "2026-12-12 10:00",
+      "location": "貓腳印-宜蘭店",
+      "address": "宜蘭市新民路125之一號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "貓腳印 桃園店",
+      "address": "桃園市桃園區中華路1號11樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 8,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 14:00",
+      "eventDateTime": "2026-12-05 14:00",
+      "location": "SAGA TCG店",
+      "address": "宜蘭縣宜蘭市復興路一段8號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 6,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "尋夢桌遊",
+      "address": "桃園市中壢區長樂街84巷18號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "卡卡邦尼樂遊館",
+      "address": "新北市板橋區民生路三段32之2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-29-2026 12:00",
+      "eventDateTime": "2026-11-29 12:00",
+      "location": "新世紀遊戲館",
+      "address": "新竹市北區平和街7號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 3,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 14:00",
+      "eventDateTime": "2026-11-22 14:00",
+      "location": "拉比卡牌",
+      "address": "台北市內湖區五分街89號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 14:00",
+      "eventDateTime": "2026-11-22 14:00",
+      "location": "周周GO玩具 森林1店",
+      "address": "台北市士林區士東路292號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 12,
+      "rowIndex": 2,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 13:30",
+      "eventDateTime": "2026-11-22 13:30",
+      "location": "KYD遊樂園",
+      "address": "桃園市中壢區中央東路13號6樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 18,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (大師組)",
       "eventTime": "11-21-2026 08:30",
       "eventDateTime": "2026-11-21 08:30",
@@ -16,19 +236,228 @@
       "lp": "-"
     },
     {
-      "pageNo": 9,
-      "rowIndex": 16,
-      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
-      "location": "The Pokémon Company",
-      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "pageNo": 10,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 14:30",
+      "eventDateTime": "2026-11-15 14:30",
+      "location": "貓腳印-苗栗店",
+      "address": "苗栗縣苗栗市建功里府前路92號4樓",
       "rank": "-",
       "lp": "-"
     },
     {
       "pageNo": 10,
       "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 13:00",
+      "eventDateTime": "2026-11-15 13:00",
+      "location": "貓腳印淡水店",
+      "address": "新北市淡水區學府路28號5f",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 10:30",
+      "eventDateTime": "2026-11-15 10:30",
+      "location": "Magic Star卡牌店",
+      "address": "台北市大安區和平東路二段231號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 09:00",
+      "eventDateTime": "2026-11-15 09:00",
+      "location": "踢桌子",
+      "address": "新竹縣竹北市博愛街358號2F",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 14:00",
+      "eventDateTime": "2026-11-14 14:00",
+      "location": "貓腳印士林店",
+      "address": "台北市士林區大西路66號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 17,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 13:30",
+      "eventDateTime": "2026-11-14 13:30",
+      "location": "塔普卡桌遊卡牌",
+      "address": "新竹縣竹北市仁義路182號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 16,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 10:30",
+      "eventDateTime": "2026-11-14 10:30",
+      "location": "松鼠窩桌遊館",
+      "address": "新北市三重區重新路一段78號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 14:00",
+      "eventDateTime": "2026-11-01 14:00",
+      "location": "瘋桌遊益智遊戲專賣店 大安店",
+      "address": "台北市大安區通化街28巷2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 14:00",
+      "eventDateTime": "2026-11-01 14:00",
+      "location": "PLAY ONE 壹樂研究所",
+      "address": "桃園市中壢區廣安街44號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "元氣滿屋",
+      "address": "新北市板橋區漢生西路145號1樓",
+      "rank": "14",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-31-2026 14:00",
+      "eventDateTime": "2026-10-31 14:00",
+      "location": "磚櫃玩具店(台北店)",
+      "address": "新北市中和區宜安路18巷2號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-31-2026 10:00",
+      "eventDateTime": "2026-10-31 10:00",
+      "location": "茶咖",
+      "address": "1F., No. 133, Shezhong St.,",
+      "rank": "30",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 14:00",
+      "eventDateTime": "2026-10-26 14:00",
+      "location": "拉比卡牌",
+      "address": "台北市內湖區五分街89號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 13:00",
+      "eventDateTime": "2026-10-26 13:00",
+      "location": "The ONE集換式卡牌會所",
+      "address": "臺北市大安區復興南路一段103號9樓之2",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-26-2026 10:00",
+      "eventDateTime": "2026-10-26 10:00",
+      "location": "一刻館卡片遊戲專賣店",
+      "address": "桃園市桃園區中華路43號2樓",
+      "rank": "15",
+      "lp": "6"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-25-2026 14:00",
+      "eventDateTime": "2026-10-25 14:00",
+      "location": "貓腳印松江店",
+      "address": "台北市中山區南京東路二段95號B1",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-25-2026 13:00",
+      "eventDateTime": "2026-10-25 13:00",
+      "location": "KYD遊樂園",
+      "address": "桃園市中壢區中央東路13號6樓",
+      "rank": "14",
+      "lp": "6"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 13:30",
+      "eventDateTime": "2026-10-24 13:30",
+      "location": "幽靈屋",
+      "address": "台北市南港區忠孝東路七段625巷33號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 11:00",
+      "eventDateTime": "2026-10-24 11:00",
+      "location": "Card Master",
+      "address": "100台北市中正區南昌路二段47號1樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 10,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 10:00",
+      "eventDateTime": "2026-10-24 10:00",
+      "location": "宜蘭模羊玩具",
+      "address": "宜蘭市 民族路159號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 8,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 14:00",
       "eventDateTime": "2026-10-18 14:00",
@@ -39,7 +468,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 18,
+      "rowIndex": 9,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-18-2026 10:00",
       "eventDateTime": "2026-10-18 10:00",
@@ -49,19 +478,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 9,
-      "rowIndex": 20,
-      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-3 (大師組)",
-      "eventTime": "10-17-2026 08:30",
-      "eventDateTime": "2026-10-17 08:30",
-      "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 10,
-      "rowIndex": 16,
+      "pageNo": 11,
+      "rowIndex": 6,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
       "eventDateTime": "2026-10-10 14:00",
@@ -71,8 +489,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 10,
-      "rowIndex": 17,
+      "pageNo": 11,
+      "rowIndex": 7,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-10-2026 14:00",
       "eventDateTime": "2026-10-10 14:00",
@@ -82,8 +500,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 10,
-      "rowIndex": 15,
+      "pageNo": 11,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-09-2026 13:00",
       "eventDateTime": "2026-10-09 13:00",
@@ -94,7 +512,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 14,
+      "rowIndex": 8,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-09-2026 10:30",
       "eventDateTime": "2026-10-09 10:30",
@@ -104,8 +522,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 10,
-      "rowIndex": 13,
+      "pageNo": 11,
+      "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 14:30",
       "eventDateTime": "2026-10-04 14:30",
@@ -116,7 +534,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 12,
+      "rowIndex": 7,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 13:00",
       "eventDateTime": "2026-10-04 13:00",
@@ -126,8 +544,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 10,
-      "rowIndex": 1,
+      "pageNo": 9,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-04-2026 09:00",
       "eventDateTime": "2026-10-04 09:00",
@@ -138,18 +556,18 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 18,
+      "rowIndex": 17,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (大師組)",
       "eventTime": "10-03-2026 08:30",
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "252",
+      "lp": "6"
     },
     {
       "pageNo": 10,
-      "rowIndex": 11,
+      "rowIndex": 6,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2026 14:00",
       "eventDateTime": "2026-09-28 14:00",
@@ -159,8 +577,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 10,
-      "rowIndex": 10,
+      "pageNo": 11,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2026 13:00",
       "eventDateTime": "2026-09-28 13:00",
@@ -171,18 +589,18 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 9,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-28-2026 10:00",
       "eventDateTime": "2026-09-28 10:00",
       "location": "一刻館卡片遊戲專賣店",
       "address": "桃園市桃園區中華路43號2樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "23",
+      "lp": "4"
     },
     {
-      "pageNo": 10,
-      "rowIndex": 7,
+      "pageNo": 9,
+      "rowIndex": 20,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-27-2026 14:00",
       "eventDateTime": "2026-09-27 14:00",
@@ -192,19 +610,19 @@
       "lp": "-"
     },
     {
-      "pageNo": 10,
-      "rowIndex": 8,
+      "pageNo": 11,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-27-2026 14:00",
       "eventDateTime": "2026-09-27 14:00",
       "location": "PLAY ONE 壹樂研究所",
       "address": "桃園市中壢區廣安街44號",
-      "rank": "-",
+      "rank": "26",
       "lp": "-"
     },
     {
-      "pageNo": 10,
-      "rowIndex": 6,
+      "pageNo": 11,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-27-2026 13:30",
       "eventDateTime": "2026-09-27 13:30",
@@ -215,7 +633,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 5,
+      "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-26-2026 14:00",
       "eventDateTime": "2026-09-26 14:00",
@@ -226,18 +644,18 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 4,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-26-2026 10:30",
       "eventDateTime": "2026-09-26 10:30",
       "location": "松鼠窩桌遊館",
       "address": "新北市三重區重新路一段78號2樓",
-      "rank": "-",
+      "rank": "38",
       "lp": "-"
     },
     {
       "pageNo": 10,
-      "rowIndex": 3,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-25-2026 13:00",
       "eventDateTime": "2026-09-25 13:00",
@@ -248,7 +666,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 2,
+      "rowIndex": 1,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "09-25-2026 10:00",
       "eventDateTime": "2026-09-25 10:00",
@@ -259,13 +677,13 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-1 (大師組)",
       "eventTime": "09-12-2026 08:30",
       "eventDateTime": "2026-09-12 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "872",
       "lp": "-"
     },
     {
@@ -495,7 +913,7 @@
       "eventTime": "02-08-2026 12:30",
       "eventDateTime": "2026-02-08 12:30",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -1551,7 +1969,7 @@
       "eventTime": "04-13-2025 12:00",
       "eventDateTime": "2025-04-13 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },

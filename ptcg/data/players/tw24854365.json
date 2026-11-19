@@ -1,19 +1,107 @@
 {
   "id": "tw24854365",
   "url": "https://asia.pokemon-card.com/tw/users/tw24854365/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T03:45:27.489Z",
-  "totalEvents": 207,
+  "fetchedAt": "2026-11-19T08:24:57.451Z",
+  "totalEvents": 215,
   "participatedTournaments": [
+    {
+      "pageNo": 11,
+      "rowIndex": 12,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 11,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 10,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (大師組)",
+      "eventTime": "01-09-2027 08:30",
+      "eventDateTime": "2027-01-09 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 9,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (大師組)",
+      "eventTime": "12-19-2026 08:30",
+      "eventDateTime": "2026-12-19 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 13,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (大師組)",
+      "eventTime": "11-21-2026 08:30",
+      "eventDateTime": "2026-11-21 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 15,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-15-2026 09:00",
+      "eventDateTime": "2026-11-15 09:00",
+      "location": "踢桌子",
+      "address": "新竹縣竹北市博愛街358號2F",
+      "rank": "47",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-14-2026 13:30",
+      "eventDateTime": "2026-11-14 13:30",
+      "location": "塔普卡桌遊卡牌",
+      "address": "新竹縣竹北市仁義路182號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 11,
       "rowIndex": 5,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
+      "rank": "1329",
       "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 8,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-10-2026 13:30",
+      "eventDateTime": "2026-10-10 13:30",
+      "location": "塔普卡桌遊卡牌",
+      "address": "新竹縣竹北市仁義路182號2樓",
+      "rank": "3",
+      "lp": "10"
     },
     {
       "pageNo": 11,
@@ -23,8 +111,8 @@
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "30",
+      "lp": "15"
     },
     {
       "pageNo": 11,
@@ -34,7 +122,7 @@
       "eventDateTime": "2026-09-12 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "717",
       "lp": "-"
     },
     {
@@ -1364,7 +1452,7 @@
       "eventTime": "03-15-2025 12:00",
       "eventDateTime": "2025-03-15 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
