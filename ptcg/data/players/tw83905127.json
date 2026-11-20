@@ -1,17 +1,28 @@
 {
   "id": "tw83905127",
   "url": "https://asia.pokemon-card.com/tw/users/tw83905127/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-24T08:01:12.701Z",
-  "totalEvents": 43,
+  "fetchedAt": "2026-11-20T10:44:56.100Z",
+  "totalEvents": 44,
   "participatedTournaments": [
     {
       "pageNo": 3,
       "rowIndex": 3,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "1757",
+      "lp": "-"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 10:00",
+      "eventDateTime": "2026-10-24 10:00",
+      "location": "宜蘭模羊玩具",
+      "address": "宜蘭市 民族路159號",
       "rank": "-",
       "lp": "-"
     },
@@ -34,7 +45,7 @@
       "eventDateTime": "2026-09-12 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "321",
       "lp": "-"
     },
     {

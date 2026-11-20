@@ -1,9 +1,20 @@
 {
   "id": "tw99072428",
   "url": "https://asia.pokemon-card.com/tw/users/tw99072428/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-25T08:04:46.340Z",
-  "totalEvents": 17,
+  "fetchedAt": "2026-11-20T09:06:37.787Z",
+  "totalEvents": 19,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 19,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (大師組)",
+      "eventTime": "03-13-2027 08:30",
+      "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 17,
@@ -19,11 +30,22 @@
       "pageNo": 1,
       "rowIndex": 14,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
+      "rank": "2804",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 18,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-18-2026 10:00",
+      "eventDateTime": "2026-10-18 10:00",
+      "location": "漢謚玩具社",
+      "address": "高雄市苓雅區中華四路244號2樓",
+      "rank": "136",
       "lp": "-"
     },
     {
@@ -45,7 +67,7 @@
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "523",
       "lp": "-"
     },
     {

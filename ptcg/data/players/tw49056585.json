@@ -1,18 +1,40 @@
 {
   "id": "tw49056585",
   "url": "https://asia.pokemon-card.com/tw/users/tw49056585/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-26T06:38:26.957Z",
-  "totalEvents": 12,
+  "fetchedAt": "2026-11-20T10:24:58.448Z",
+  "totalEvents": 14,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 14,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:00",
+      "eventDateTime": "2026-12-05 13:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 12,
       "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 13,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "11-01-2026 11:00",
+      "eventDateTime": "2026-11-01 11:00",
+      "location": "貓腳印-彰化店",
+      "address": "彰化縣員林市莒光路398號2樓",
+      "rank": "24",
       "lp": "-"
     },
     {

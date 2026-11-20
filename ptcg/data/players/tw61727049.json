@@ -1,12 +1,12 @@
 {
   "id": "tw61727049",
   "url": "https://asia.pokemon-card.com/tw/users/tw61727049/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-12T08:57:04.893Z",
-  "totalEvents": 28,
+  "fetchedAt": "2026-11-20T07:40:04.853Z",
+  "totalEvents": 29,
   "participatedTournaments": [
     {
       "pageNo": 2,
-      "rowIndex": 8,
+      "rowIndex": 9,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (大師組)",
       "eventTime": "02-20-2027 08:30",
       "eventDateTime": "2027-02-20 08:30",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 13:00",
       "eventDateTime": "2026-11-15 13:00",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-15-2026 10:30",
       "eventDateTime": "2026-11-15 10:30",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 6,
+      "rowIndex": 7,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 14:00",
       "eventDateTime": "2026-11-14 14:00",
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 18,
+      "rowIndex": 17,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-14-2026 10:30",
       "eventDateTime": "2026-11-14 10:30",
@@ -60,8 +60,19 @@
       "lp": "-"
     },
     {
+      "pageNo": 1,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Masters Division",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "1207",
+      "lp": "-"
+    },
+    {
       "pageNo": 2,
-      "rowIndex": 7,
+      "rowIndex": 8,
       "activityName": "Waiting List Entry：2026-27 Taiwan Premier Ball League TCG Category Masters Division",
       "eventTime": "11-07-2026 08:00",
       "eventDateTime": "2026-11-07 08:00",
@@ -72,7 +83,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 14:00",
       "eventDateTime": "2026-11-01 14:00",
@@ -83,7 +94,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 5,
+      "rowIndex": 6,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "11-01-2026 11:00",
       "eventDateTime": "2026-11-01 11:00",
@@ -94,7 +105,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 16,
+      "rowIndex": 15,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-31-2026 14:00",
       "eventDateTime": "2026-10-31 14:00",
@@ -105,7 +116,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 15,
+      "rowIndex": 14,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-31-2026 13:30",
       "eventDateTime": "2026-10-31 13:30",
@@ -115,8 +126,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 1,
-      "rowIndex": 14,
+      "pageNo": 2,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
       "eventTime": "10-26-2026 13:00",
       "eventDateTime": "2026-10-26 13:00",

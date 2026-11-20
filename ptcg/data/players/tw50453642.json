@@ -1,8 +1,8 @@
 {
   "id": "tw50453642",
   "url": "https://asia.pokemon-card.com/tw/users/tw50453642/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-12T08:23:55.185Z",
-  "totalEvents": 200,
+  "fetchedAt": "2026-11-20T07:30:16.983Z",
+  "totalEvents": 199,
   "participatedTournaments": [
     {
       "pageNo": 9,
@@ -50,7 +50,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 19,
+      "rowIndex": 18,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-20-2026 10:00",
       "eventDateTime": "2026-12-20 10:00",
@@ -116,7 +116,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 18,
+      "rowIndex": 17,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-12-2026 14:00",
       "eventDateTime": "2026-12-12 14:00",
@@ -138,7 +138,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 16,
+      "rowIndex": 15,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-12-2026 13:00",
       "eventDateTime": "2026-12-12 13:00",
@@ -149,7 +149,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 17,
+      "rowIndex": 16,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-12-2026 13:00",
       "eventDateTime": "2026-12-12 13:00",
@@ -171,7 +171,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 15,
+      "rowIndex": 14,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-12-2026 10:30",
       "eventDateTime": "2026-12-12 10:30",
@@ -182,12 +182,23 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 14,
+      "rowIndex": 13,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-12-2026 10:00",
       "eventDateTime": "2026-12-12 10:00",
       "location": "貓腳印-宜蘭店",
       "address": "宜蘭市新民路125之一號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 9,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "貓腳印 桃園店",
+      "address": "桃園市桃園區中華路1號11樓",
       "rank": "-",
       "lp": "-"
     },
@@ -226,17 +237,6 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 13,
-      "activityName": "2026-27 Taiwan Great Ball League Season 2",
-      "eventTime": "12-06-2026 14:00",
-      "eventDateTime": "2026-12-06 14:00",
-      "location": "貓腳印 桃園店",
-      "address": "桃園市桃園區中華路1號11樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 10,
       "rowIndex": 12,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-06-2026 13:30",
@@ -248,7 +248,7 @@
     },
     {
       "pageNo": 9,
-      "rowIndex": 10,
+      "rowIndex": 9,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-06-2026 13:00",
       "eventDateTime": "2026-12-06 13:00",
@@ -282,17 +282,6 @@
     {
       "pageNo": 9,
       "rowIndex": 8,
-      "activityName": "2026-27 Taiwan Great Ball League Season 2",
-      "eventTime": "12-05-2026 14:00",
-      "eventDateTime": "2026-12-05 14:00",
-      "location": "SAGA TCG店",
-      "address": "宜蘭縣宜蘭市復興路一段8號1樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 9,
-      "rowIndex": 9,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-05-2026 14:00",
       "eventDateTime": "2026-12-05 14:00",
@@ -534,7 +523,7 @@
     },
     {
       "pageNo": 10,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Masters Division",
       "eventTime": "11-08-2026 09:00",
       "eventDateTime": "2026-11-08 09:00",
@@ -551,7 +540,7 @@
       "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
+      "rank": "513",
       "lp": "-"
     },
     {
@@ -672,7 +661,7 @@
       "eventDateTime": "2026-10-31 09:30",
       "location": "桌遊帝國咖啡廳",
       "address": "高雄市三民區建昌路35號",
-      "rank": "28",
+      "rank": "-",
       "lp": "-"
     },
     {
