@@ -1,8 +1,8 @@
 {
   "id": "tw39542305",
   "url": "https://asia.pokemon-card.com/tw/users/tw39542305/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-13T08:31:51.747Z",
-  "totalEvents": 9,
+  "fetchedAt": "2026-11-21T07:43:05.461Z",
+  "totalEvents": 10,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -57,6 +57,17 @@
       "location": "貓腳印士林店",
       "address": "台北市士林區大西路66號B1",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Senior Division",
+      "eventTime": "11-07-2026 09:00",
+      "eventDateTime": "2026-11-07 09:00",
+      "location": "The Pokémon Company",
+      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
+      "rank": "316",
       "lp": "-"
     },
     {

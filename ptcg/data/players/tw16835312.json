@@ -1,9 +1,20 @@
 {
   "id": "tw16835312",
   "url": "https://asia.pokemon-card.com/tw/users/tw16835312/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-27T06:07:03.791Z",
-  "totalEvents": 3,
+  "fetchedAt": "2026-11-21T08:25:29.035Z",
+  "totalEvents": 4,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 4,
+      "activityName": "2026-27 Taiwan Great Ball League Season 1",
+      "eventTime": "10-24-2026 11:00",
+      "eventDateTime": "2026-10-24 11:00",
+      "location": "Ririco - 集換式卡牌專賣",
+      "address": "406台中市北屯區北屯路288號B1",
+      "rank": "52",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 3,
@@ -12,7 +23,7 @@
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "105",
       "lp": "-"
     },
     {

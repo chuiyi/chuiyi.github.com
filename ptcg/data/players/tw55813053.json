@@ -1,29 +1,18 @@
 {
   "id": "tw55813053",
   "url": "https://asia.pokemon-card.com/tw/users/tw55813053/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-27T07:22:05.007Z",
-  "totalEvents": 26,
+  "fetchedAt": "2026-11-21T09:23:39.609Z",
+  "totalEvents": 25,
   "participatedTournaments": [
     {
       "pageNo": 2,
       "rowIndex": 5,
-      "activityName": "2026-27 Taiwan Premier Ball League TCG Category Junior Division",
-      "eventTime": "11-07-2026 08:00",
-      "eventDateTime": "2026-11-07 08:00",
-      "location": "The Pokémon Company",
-      "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
-      "rowIndex": 6,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-2 (孩童組)",
       "eventTime": "10-03-2026 08:30",
       "eventDateTime": "2026-10-03 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "94",
       "lp": "-"
     },
     {
@@ -66,7 +55,7 @@
       "eventTime": "02-08-2026 12:30",
       "eventDateTime": "2026-02-08 12:30",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "54",
       "lp": "-"
     },
@@ -88,7 +77,7 @@
       "eventTime": "01-04-2026 12:00",
       "eventDateTime": "2026-01-04 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "-",
       "lp": "-"
     },
@@ -154,7 +143,7 @@
       "eventTime": "10-26-2025 12:00",
       "eventDateTime": "2025-10-26 12:00",
       "location": "兔妞桌遊",
-      "address": "桃園市蘆竹區忠孝西路180號2樓",
+      "address": "桃園市蘆竹區光明路一段60巷22號3樓",
       "rank": "11",
       "lp": "6"
     },

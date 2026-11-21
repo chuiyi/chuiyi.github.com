@@ -1,8 +1,8 @@
 {
   "id": "tw79588303",
   "url": "https://asia.pokemon-card.com/tw/users/tw79588303/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-13T08:35:05.731Z",
-  "totalEvents": 9,
+  "fetchedAt": "2026-11-21T08:21:43.786Z",
+  "totalEvents": 10,
   "participatedTournaments": [
     {
       "pageNo": 1,
@@ -10,6 +10,17 @@
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (少年組)",
       "eventTime": "03-13-2027 08:30",
       "eventDateTime": "2027-03-13 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 10,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (少年組)",
+      "eventTime": "02-20-2027 08:30",
+      "eventDateTime": "2027-02-20 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
       "rank": "-",
@@ -56,7 +67,7 @@
       "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
+      "rank": "129",
       "lp": "-"
     },
     {

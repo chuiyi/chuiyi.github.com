@@ -1,12 +1,12 @@
 {
   "id": "tw98510615",
   "url": "https://asia.pokemon-card.com/tw/users/tw98510615/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-13T09:03:22.220Z",
-  "totalEvents": 14,
+  "fetchedAt": "2026-11-21T08:46:55.842Z",
+  "totalEvents": 13,
   "participatedTournaments": [
     {
       "pageNo": 1,
-      "rowIndex": 13,
+      "rowIndex": 12,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-4 (少年組)",
       "eventTime": "03-13-2027 08:30",
       "eventDateTime": "2027-03-13 08:30",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 12,
+      "rowIndex": 11,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-3 (少年組)",
       "eventTime": "02-20-2027 08:30",
       "eventDateTime": "2027-02-20 08:30",
@@ -28,7 +28,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 11,
+      "rowIndex": 10,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-2 (少年組)",
       "eventTime": "01-09-2027 08:30",
       "eventDateTime": "2027-01-09 08:30",
@@ -39,7 +39,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 10,
+      "rowIndex": 9,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 2-1 (少年組)",
       "eventTime": "12-19-2026 08:30",
       "eventDateTime": "2026-12-19 08:30",
@@ -50,18 +50,7 @@
     },
     {
       "pageNo": 1,
-      "rowIndex": 9,
-      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (少年組)",
-      "eventTime": "11-21-2026 08:30",
-      "eventDateTime": "2026-11-21 08:30",
-      "location": "Saka Saka Limited Taiwan Branch",
-      "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 1,
-      "rowIndex": 14,
+      "rowIndex": 13,
       "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Senior Division",
       "eventTime": "11-08-2026 10:30",
       "eventDateTime": "2026-11-08 10:30",
@@ -78,8 +67,8 @@
       "eventDateTime": "2026-11-07 09:00",
       "location": "The Pokémon Company",
       "address": "Roppongi Hills Mori Tower 8F, 6-10-1 Roppongi, Minato-ku, Tokyo, Japan",
-      "rank": "-",
-      "lp": "-"
+      "rank": "33",
+      "lp": "10"
     },
     {
       "pageNo": 1,

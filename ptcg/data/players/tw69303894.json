@@ -1,9 +1,53 @@
 {
   "id": "tw69303894",
   "url": "https://asia.pokemon-card.com/tw/users/tw69303894/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-09-27T07:51:42.614Z",
-  "totalEvents": 8,
+  "fetchedAt": "2026-11-21T08:19:52.673Z",
+  "totalEvents": 12,
   "participatedTournaments": [
+    {
+      "pageNo": 1,
+      "rowIndex": 11,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-20-2026 10:00",
+      "eventDateTime": "2026-12-20 10:00",
+      "location": "桌遊帝國咖啡廳",
+      "address": "高雄市三民區建昌路35號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 10,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-06-2026 14:00",
+      "eventDateTime": "2026-12-06 14:00",
+      "location": "Play Lab Game 休閒館 高雄",
+      "address": "高雄市三民區建國二路166號",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "12-05-2026 13:30",
+      "eventDateTime": "2026-12-05 13:30",
+      "location": "漢謚玩具社",
+      "address": "高雄市苓雅區中華四路244號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 1,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-29-2026 13:30",
+      "eventDateTime": "2026-11-29 13:30",
+      "location": "雙子-高雄鹽埕店",
+      "address": "高雄市鹽埕區田單街17號",
+      "rank": "-",
+      "lp": "-"
+    },
     {
       "pageNo": 1,
       "rowIndex": 8,
@@ -12,7 +56,7 @@
       "eventDateTime": "2026-10-18 10:00",
       "location": "漢謚玩具社",
       "address": "高雄市苓雅區中華四路244號2樓",
-      "rank": "-",
+      "rank": "147",
       "lp": "-"
     },
     {
