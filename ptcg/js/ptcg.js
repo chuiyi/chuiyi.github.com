@@ -3736,6 +3736,105 @@ const PTCG = (() => {
         `;
     }
 
+    // 組出「前 8 場高積分賽事」與「所有賽事紀錄」兩個區塊的 HTML。
+    // showAllEvents = false：賽事紀錄只列出 lp > 0（有計入積分）的場次（原本行為）；
+    // showAllEvents = true：同一賽季區間內，連 lp 為 "-"（未計分/0分）的場次也一併列出。
+    // 前 8 場高積分賽事的計算不受這個開關影響，一律只看有計分的場次。
+    function _buildPlayerHistorySections(playerHistory, seasonManifest, seasonRangeLabel, showAllEvents) {
+        const seasonStart = parseDateTimeValue(seasonManifest.season_start_from);
+        const seasonEnd = seasonManifest.season_end
+            ? parseDateTimeValue(`${seasonManifest.season_end} 23:59:59`)
+            : null;
+
+        // 落在目前選取賽季區間內的賽事（不論是否有計分）
+        const inSeasonEvents = (playerHistory.participatedTournaments || [])
+            .filter(event => {
+                const eventDate = parseDateTimeValue(event.eventDateTime);
+                if (!eventDate || !seasonStart) return false;
+                if (seasonEnd && eventDate > seasonEnd) return false;
+                return eventDate > seasonStart;
+            });
+
+        const scoringEvents = inSeasonEvents.filter(event => parseInt(event.lp, 10) > 0);
+
+        // 按 LP 降序排列，取前 8 個用於統計
+        const top8Events = scoringEvents
+            .sort((a, b) => parseInt(b.lp, 10) - parseInt(a.lp, 10))
+            .slice(0, 8);
+
+        let top8SummaryHtml = '';
+        if (top8Events.length > 0) {
+            const topLpValues = top8Events.map(e => parseInt(e.lp, 10));
+            const totalLp = topLpValues.reduce((sum, val) => sum + val, 0);
+            const lpCalculation = topLpValues.join('+');
+
+            top8SummaryHtml = `
+                <div style="background: linear-gradient(135deg, #14532d 0%, #0f766e 100%); border-radius: 12px; padding: 16px 18px; color: white; margin-bottom: 20px; box-shadow: 0 10px 24px rgba(15, 118, 110, 0.22);">
+                    <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                        <div class="fw-semibold" style="font-size: 0.95rem;"><i class="bi bi-lightning-charge-fill me-2"></i>前 8 場高積分賽事</div>
+                        <span class="badge" style="background: rgba(255,255,255,0.18); color: white; border: 1px solid rgba(255,255,255,0.28);">TOP 8</span>
+                    </div>
+                    <div style="margin-top: 10px; padding: 10px 12px; border-radius: 9px; background: rgba(255,255,255,0.12); font-size: 0.95rem; line-height: 1.5; white-space: nowrap; overflow-x: auto;">
+                        <span style="opacity: 0.82; margin-right: 8px;">${top8Events.length} 場合計</span>${escapeHtml(lpCalculation)} = <strong style="color: #fde68a;">${totalLp}分</strong>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 按日期降序排列（最新的先）
+        const eventsForTable = showAllEvents ? inSeasonEvents : scoringEvents;
+        const sortedEvents = [...eventsForTable].sort((a, b) => {
+            const dateA = parseDateTimeValue(a.eventDateTime);
+            const dateB = parseDateTimeValue(b.eventDateTime);
+            return (dateB?.getTime() || 0) - (dateA?.getTime() || 0);
+        });
+
+        const toggleHtml = inSeasonEvents.length > 0 ? `
+            <div class="form-check form-check-inline mb-0">
+                <input class="form-check-input" type="checkbox" id="playerModalShowAllEvents" ${showAllEvents ? 'checked' : ''}>
+                <label class="form-check-label small" for="playerModalShowAllEvents">顯示所有賽事（含0分）</label>
+            </div>
+        ` : '';
+
+        let historyEventsHtml;
+        if (inSeasonEvents.length === 0) {
+            historyEventsHtml = `<p class="text-muted mb-3">此玩家在 ${escapeHtml(seasonRangeLabel)}，沒有賽事紀錄。</p>`;
+        } else {
+            historyEventsHtml = `
+                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+                    <h6 class="mb-0"><i class="bi bi-calendar-event me-2"></i>所有賽事紀錄 <small class="text-muted">(${sortedEvents.length} 場賽事)</small></h6>
+                    ${toggleHtml}
+                </div>
+                ${sortedEvents.length > 0 ? `
+                    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                        <table class="table table-sm table-hover mb-0">
+                            <thead class="table-light sticky-top">
+                                <tr>
+                                    <th>賽事</th>
+                                    <th>日期</th>
+                                    <th>地點</th>
+                                    <th>積分</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${sortedEvents.map((evt) => `
+                                    <tr>
+                                        <td>${escapeHtml(evt.activityName || '--')}</td>
+                                        <td>${escapeHtml(evt.eventDateTime?.split(' ')[0] || '--')}</td>
+                                        <td>${escapeHtml(evt.location || evt.address || '--')}</td>
+                                        <td><strong>${escapeHtml(evt.lp)}</strong></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                ` : `<p class="text-muted mb-0">沒有符合條件的積分賽事，可勾選「顯示所有賽事」查看完整紀錄。</p>`}
+            `;
+        }
+
+        return { top8SummaryHtml, historyEventsHtml };
+    }
+
     async function _openPlayerModal(player) {
         _trackAnalyticsEvent('view_player_detail', {
             player_id: String(player.ptcg_id || ''),
@@ -3747,7 +3846,8 @@ const PTCG = (() => {
 
         let top8SummaryHtml = '';
         let historyEventsHtml = '';
-        let fetchedAtHtml = '';
+        let playerHistory = null;
+        let showAllEvents = false;
         // 詳情跟著目前選取的賽季走：歷史賽季有 season_end 上限，目前賽季沒有上限（持續進行中）。
         const seasonManifest = _getSeasonManifest(_playersManifest, _currentPlayerSeason);
         const seasonRangeLabel = seasonManifest?.season_end
@@ -3756,88 +3856,14 @@ const PTCG = (() => {
         // 嘗試加載玩家歷史數據
         if (player.ptcg_id && seasonManifest?.season_start_from) {
             try {
-                const playerHistory = await _loadPlayerHistory(player.ptcg_id);
+                playerHistory = await _loadPlayerHistory(player.ptcg_id);
                 if (playerHistory) {
-                    const seasonStart = parseDateTimeValue(seasonManifest.season_start_from);
-                    const seasonEnd = seasonManifest.season_end
-                        ? parseDateTimeValue(`${seasonManifest.season_end} 23:59:59`)
-                        : null;
                     if (playerHistory.fetchedAt && fetchedAtEl) {
                         fetchedAtEl.textContent = `最後更新：${formatUpdatedAt(playerHistory.fetchedAt)}`;
                     }
-                    fetchedAtHtml = '';
-                    
-                    // 過濾出落在目前選取賽季區間內、且 lp > 0 的賽事
-                    const filteredEvents = (playerHistory.participatedTournaments || [])
-                        .filter(event => {
-                            const eventDate = parseDateTimeValue(event.eventDateTime);
-                            const lpValue = parseInt(event.lp, 10);
-                            if (!eventDate || !seasonStart) return false;
-                            if (seasonEnd && eventDate > seasonEnd) return false;
-                            return eventDate > seasonStart && lpValue > 0;
-                        });
-
-                    // 按 LP 降序排列，取前 8 個用於統計
-                    const top8Events = filteredEvents
-                        .sort((a, b) => parseInt(b.lp, 10) - parseInt(a.lp, 10))
-                        .slice(0, 8);
-
-                    // 計算前 8 場的總積分
-                    if (top8Events.length > 0) {
-                        const topLpValues = top8Events.map(e => parseInt(e.lp, 10));
-                        const totalLp = topLpValues.reduce((sum, val) => sum + val, 0);
-                        const lpCalculation = topLpValues.join('+');
-
-                        top8SummaryHtml = `
-                            <div style="background: linear-gradient(135deg, #14532d 0%, #0f766e 100%); border-radius: 12px; padding: 16px 18px; color: white; margin-bottom: 20px; box-shadow: 0 10px 24px rgba(15, 118, 110, 0.22);">
-                                <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                                    <div class="fw-semibold" style="font-size: 0.95rem;"><i class="bi bi-lightning-charge-fill me-2"></i>前 8 場高積分賽事</div>
-                                    <span class="badge" style="background: rgba(255,255,255,0.18); color: white; border: 1px solid rgba(255,255,255,0.28);">TOP 8</span>
-                                </div>
-                                <div style="margin-top: 10px; padding: 10px 12px; border-radius: 9px; background: rgba(255,255,255,0.12); font-size: 0.95rem; line-height: 1.5; white-space: nowrap; overflow-x: auto;">
-                                    <span style="opacity: 0.82; margin-right: 8px;">${top8Events.length} 場合計</span>${escapeHtml(lpCalculation)} = <strong style="color: #fde68a;">${totalLp}分</strong>
-                                </div>
-                            </div>
-                        `;
-                    }
-
-                    // 按日期降序排列（最新的先）
-                    const sortedEvents = filteredEvents
-                        .sort((a, b) => {
-                            const dateA = parseDateTimeValue(a.eventDateTime);
-                            const dateB = parseDateTimeValue(b.eventDateTime);
-                            return (dateB?.getTime() || 0) - (dateA?.getTime() || 0);
-                        });
-
-                    if (sortedEvents.length > 0) {
-                        historyEventsHtml = `
-                            <h6 class="mb-3"><i class="bi bi-calendar-event me-2"></i>所有賽事紀錄 <small class="text-muted">(${sortedEvents.length} 場賽事)</small></h6>
-                            <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                                <table class="table table-sm table-hover mb-0">
-                                    <thead class="table-light sticky-top">
-                                        <tr>
-                                            <th>賽事</th>
-                                            <th>日期</th>
-                                            <th>地點</th>
-                                            <th>積分</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        ${sortedEvents.map((evt) => `
-                                            <tr>
-                                                <td>${escapeHtml(evt.activityName || '--')}</td>
-                                                <td>${escapeHtml(evt.eventDateTime?.split(' ')[0] || '--')}</td>
-                                                <td>${escapeHtml(evt.location || evt.address || '--')}</td>
-                                                <td><strong>${escapeHtml(evt.lp)}</strong></td>
-                                            </tr>
-                                        `).join('')}
-                                    </tbody>
-                                </table>
-                            </div>
-                        `;
-                    } else {
-                        historyEventsHtml = `<p class="text-muted mb-3">此玩家在 ${escapeHtml(seasonRangeLabel)}，沒有符合條件的積分賽事。</p>`;
-                    }
+                    const sections = _buildPlayerHistorySections(playerHistory, seasonManifest, seasonRangeLabel, showAllEvents);
+                    top8SummaryHtml = sections.top8SummaryHtml;
+                    historyEventsHtml = sections.historyEventsHtml;
                 }
             } catch (err) {
                 // 靜默失敗，玩家歷史檔案可能不存在
@@ -3872,11 +3898,29 @@ const PTCG = (() => {
                 </div>
             </div>
             ${top8SummaryHtml}
-            ${historyEventsHtml}
+            <div id="playerModalHistorySection">${historyEventsHtml}</div>
             <p class="text-muted mb-0" style="font-size:0.9rem">玩家歷史檔案存在時，顯示 ${escapeHtml(seasonRangeLabel)}的所有有效賽事紀錄。</p>`;
 
         document.getElementById('playerModalBody').innerHTML = body;
         showModal(document.getElementById('playerModal'));
+
+        // 每次重繪「所有賽事紀錄」區塊都會連同 checkbox 一起換成新的 DOM 節點
+        // （舊的監聽器隨舊節點一起被丟棄），所以每次都要重新綁一次。
+        function bindShowAllEventsToggle() {
+            document.getElementById('playerModalShowAllEvents')?.addEventListener('change', (e) => {
+                if (!playerHistory) return;
+                showAllEvents = e.target.checked;
+                const sections = _buildPlayerHistorySections(playerHistory, seasonManifest, seasonRangeLabel, showAllEvents);
+                const historyContainer = document.getElementById('playerModalHistorySection');
+                if (historyContainer) historyContainer.innerHTML = sections.historyEventsHtml;
+                _trackFeatureUsage('player_modal_show_all_events', {
+                    player_id: String(player.ptcg_id || ''),
+                    enabled: showAllEvents,
+                });
+                bindShowAllEventsToggle();
+            });
+        }
+        bindShowAllEventsToggle();
     }
 
     // ─── 工具：防抖 ───────────────────────────────────────────
