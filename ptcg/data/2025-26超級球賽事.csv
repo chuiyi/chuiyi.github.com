@@ -352,7 +352,7 @@ season,type,level,url_official,title,organizer,capacity,official_date,venue,addr
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/67540/,2026-27 Taiwan Great Ball League Season 1,KYD遊樂園,80 人,2026-10-25,桃園市中壢區中央東路13號6樓,320 桃園市中壢區中央東路13號6樓,桃園市,top128_gbl_67540.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/67569/,2026-27 Taiwan Great Ball League Season 1,卡多卡牌遊戲店,44 人,2026-10-24,南投縣草屯鎮芬草路一段229-3,542 南投縣草屯鎮芬草路一段229-3,南投縣,,0
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/67606/,2026-27 Taiwan Great Ball League Season 1,5樓-豐原店,64 人,2026-10-11,臺中市豐原區三民路65號5樓,420 臺中市豐原區三民路65號5樓,臺中市,top128_gbl_67606.csv,16
-1,gbl,all,https://asia.pokemon-card.com/tw/event-search/67607/,2026-27 Taiwan Great Ball League Season 1,5樓-豐原店,64 人,2026-11-15,臺中市豐原區三民路65號5樓,420 臺中市豐原區三民路65號5樓,臺中市,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/67607/,2026-27 Taiwan Great Ball League Season 1,5樓-豐原店,64 人,2026-11-15,臺中市豐原區三民路65號5樓,420 臺中市豐原區三民路65號5樓,臺中市,top128_gbl_67607.csv,16
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/67609/,2026-27 Taiwan Great Ball League Season 1,貓腳印松江店,96 人,2026-10-25,台北市中山區南京東路二段95號B1,104 臺北市 台北市中山區南京東路二段95號B1,臺北市,top128_gbl_67609.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/67644/,2026-27 Taiwan Great Ball League Season 1,一新書局,64 人,2026-09-28,高雄市苓雅區廣州一街143-6號,802 高雄市苓雅區廣州一街143-6號,高雄市,top128_gbl_67644.csv,16
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/67654/,2026-27 Taiwan Great Ball League Season 1,松梅桌遊,128 人,2026-09-25,高雄市苓雅區自強三路2號3F(諾貝爾大樓),806 高雄市苓雅區自強三路2號3F(諾貝爾大樓),高雄市,top128_gbl_67654.csv,32
@@ -417,7 +417,7 @@ season,type,level,url_official,title,organizer,capacity,official_date,venue,addr
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/68813/,2026-27 Taiwan Great Ball League Season 1,B ONE桌遊,70 人,2026-10-11,高雄市鳳山區北明街117號,830 高雄市鳳山區北明街117號,高雄市,top128_gbl_68813.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/68937/,2026-27 Taiwan Great Ball League Season 1,卡市牌場,32 人,2026-10-25,臺中市北屯區北屯路312號,406 臺中市北屯區北屯路312號,臺中市,top128_gbl_68937.csv,8
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/69000/,2026-27 Taiwan Great Ball League Season 1,拉比卡牌,64 人,2026-10-26,台北市內湖區五分街89號2樓,114 臺北市 台北市內湖區五分街89號2樓,臺北市,top128_gbl_69000.csv,16
-1,gbl,all,https://asia.pokemon-card.com/tw/event-search/69010/,2026-27 Taiwan Great Ball League Season 1,Bruce桌遊空間-美術館店,64 人,2026-11-15,高雄市鼓山區華榮路405號,高雄市鼓山區華榮路405號,高雄市,,0
+1,gbl,all,https://asia.pokemon-card.com/tw/event-search/69010/,2026-27 Taiwan Great Ball League Season 1,Bruce桌遊空間-美術館店,64 人,2026-11-15,高雄市鼓山區華榮路405號,高雄市鼓山區華榮路405號,高雄市,top128_gbl_69010.csv,16
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/69264/,2026-27 Taiwan Great Ball League Season 1,桌遊帝國咖啡廳,32 人,2026-10-31,高雄市三民區建昌路35號,807 高雄市三民區建昌路35號,高雄市,top128_gbl_69264.csv,8
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/69395/,2026-27 Taiwan Great Ball League Season 1,Card Master,128 人,2026-10-24,100台北市中正區南昌路二段47號1樓,100 臺北市 100台北市中正區南昌路二段47號1樓,臺北市,top128_gbl_69395.csv,32
 1,gbl,all,https://asia.pokemon-card.com/tw/event-search/69396/,2026-27 Taiwan Great Ball League Season 1,PLAY ONE 壹樂研究所,48 人,2026-11-01,桃園市中壢區廣安街44號,桃園市中壢區廣安街44號,桃園市,top128_gbl_69396.csv,16
@@ -453,13 +453,13 @@ season,type,level,url_official,title,organizer,capacity,official_date,venue,addr
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/71989/,2026-27 Taiwan Great Ball League Season 2,雙子-高雄鹽埕店,32 人,2026-11-29,高雄市鹽埕區田單街17號,803 高雄市鹽埕區田單街17號,高雄市,,0
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/71990/,2026-27 Taiwan Great Ball League Season 2,Ririco - 集換式卡牌專賣,68 人,2026-12-06,406台中市北屯區北屯路288號B1,407 臺中市 406台中市北屯區北屯路288號B1,臺中市,,0
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72007/,2026-27 Taiwan Great Ball League Season 2,踢桌子,86 人,2026-12-13,新竹縣竹北市博愛街358號2F,302 新竹縣竹北市博愛街358號2F,新竹縣,,0
-2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72041/,2026-27 Taiwan Great Ball League Season 2,5樓-豐原店,64 人,2026-11-22,臺中市豐原區三民路65號5樓,420 臺中市豐原區三民路65號5樓,臺中市,,0
-2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72042/,2026-27 Taiwan Great Ball League Season 2,躲貓貓桌遊店,40 人,2026-11-22,台中市后里區三豐路四段17號,臺中市 台中市后里區三豐路四段17號,臺中市,,0
+2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72041/,2026-27 Taiwan Great Ball League Season 2,5樓-豐原店,64 人,2026-11-22,臺中市豐原區三民路65號5樓,420 臺中市豐原區三民路65號5樓,臺中市,top128_gbl_72041.csv,8
+2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72042/,2026-27 Taiwan Great Ball League Season 2,躲貓貓桌遊店,40 人,2026-11-22,台中市后里區三豐路四段17號,臺中市 台中市后里區三豐路四段17號,臺中市,top128_gbl_72042.csv,8
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72057/,2026-27 Taiwan Great Ball League Season 2,PANZO玩具店,32 人,2026-12-12,台北市士林區德行東路261號一樓,臺北市 台北市士林區德行東路261號一樓,臺北市,,0
-2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72087/,2026-27 Taiwan Great Ball League Season 2,KYD遊樂園,80 人,2026-11-22,桃園市中壢區中央東路13號6樓,320 桃園市中壢區中央東路13號6樓,桃園市,,0
+2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72087/,2026-27 Taiwan Great Ball League Season 2,KYD遊樂園,80 人,2026-11-22,桃園市中壢區中央東路13號6樓,320 桃園市中壢區中央東路13號6樓,桃園市,top128_gbl_72087.csv,32
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72094/,2026-27 Taiwan Great Ball League Season 2,松鼠窩桌遊館,70 人,2026-12-12,新北市三重區重新路一段78號2樓,241 新北市三重區重新路一段78號2樓,新北市,,0
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72095/,2026-27 Taiwan Great Ball League Season 2,拉比卡牌,52 人,2026-11-22,台北市內湖區五分街89號2樓,114 臺北市 台北市內湖區五分街89號2樓,臺北市,,0
-2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72096/,2026-27 Taiwan Great Ball League Season 2,喬桌遊林森店,64 人,2026-11-22,高雄市新興區林森一路178號2樓,800 高雄市新興區林森一路178號2樓,高雄市,,0
+2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72096/,2026-27 Taiwan Great Ball League Season 2,喬桌遊林森店,64 人,2026-11-22,高雄市新興區林森一路178號2樓,800 高雄市新興區林森一路178號2樓,高雄市,top128_gbl_72096.csv,16
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72097/,2026-27 Taiwan Great Ball League Season 2,孩子玩伴-關埔店,32 人,2026-11-22,新竹市東區關新路85號,300 新竹縣 新竹市東區關新路85號,新竹市,,0
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72098/,2026-27 Taiwan Great Ball League Season 2,兩個世界TwoWorld桌遊館,40 人,2026-12-05,開車：位於夢想街旁的晉文路停車，走過39巷第一個路口右轉走20公尺即抵達。,433 台中市沙鹿區晉文路39巷36號 開車：位於夢想街旁的晉文路停車，走過39巷第一個路口右轉走20公尺即抵達。,臺中市,,0
 2,gbl,all,https://asia.pokemon-card.com/tw/event-search/72099/,2026-27 Taiwan Great Ball League Season 2,貓腳印-宜蘭店,32 人,2026-12-12,宜蘭市新民路125之一號,260 宜蘭縣 宜蘭市新民路125之一號,宜蘭縣,,0
