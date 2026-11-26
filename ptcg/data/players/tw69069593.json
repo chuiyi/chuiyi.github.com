@@ -1,8 +1,8 @@
 {
   "id": "tw69069593",
   "url": "https://asia.pokemon-card.com/tw/users/tw69069593/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-19T09:15:48.218Z",
-  "totalEvents": 264,
+  "fetchedAt": "2026-11-26T10:10:38.441Z",
+  "totalEvents": 265,
   "participatedTournaments": [
     {
       "pageNo": 14,
@@ -49,6 +49,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 14,
+      "rowIndex": 5,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 13:30",
+      "eventDateTime": "2026-11-22 13:30",
+      "location": "KYD遊樂園",
+      "address": "桃園市中壢區中央東路13號6樓",
+      "rank": "40",
+      "lp": "-"
+    },
+    {
       "pageNo": 13,
       "rowIndex": 20,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
@@ -67,8 +78,8 @@
       "eventDateTime": "2026-11-15 13:00",
       "location": "5樓-豐原店",
       "address": "臺中市豐原區三民路65號5樓",
-      "rank": "35",
-      "lp": "3"
+      "rank": "-",
+      "lp": "-"
     },
     {
       "pageNo": 13,

@@ -1,8 +1,8 @@
 {
   "id": "tw41523616",
   "url": "https://asia.pokemon-card.com/tw/users/tw41523616/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-19T07:36:42.008Z",
-  "totalEvents": 64,
+  "fetchedAt": "2026-11-26T08:30:37.565Z",
+  "totalEvents": 65,
   "participatedTournaments": [
     {
       "pageNo": 3,
@@ -72,7 +72,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 3,
+      "rowIndex": 4,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-12-2026 10:30",
       "eventDateTime": "2026-12-12 10:30",
@@ -94,7 +94,7 @@
     },
     {
       "pageNo": 3,
-      "rowIndex": 20,
+      "rowIndex": 19,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-05-2026 13:00",
       "eventDateTime": "2026-12-05 13:00",
@@ -104,8 +104,8 @@
       "lp": "-"
     },
     {
-      "pageNo": 3,
-      "rowIndex": 19,
+      "pageNo": 4,
+      "rowIndex": 2,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "11-22-2026 13:00",
       "eventDateTime": "2026-11-22 13:00",
@@ -116,7 +116,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 2,
+      "rowIndex": 3,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "11-22-2026 13:00",
       "eventDateTime": "2026-11-22 13:00",
@@ -133,7 +133,18 @@
       "eventDateTime": "2026-11-22 10:00",
       "location": "躲貓貓桌遊店",
       "address": "台中市后里區三豐路四段17號",
-      "rank": "-",
+      "rank": "2",
+      "lp": "12"
+    },
+    {
+      "pageNo": 3,
+      "rowIndex": 20,
+      "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (大師組)",
+      "eventTime": "11-21-2026 08:30",
+      "eventDateTime": "2026-11-21 08:30",
+      "location": "Saka Saka Limited Taiwan Branch",
+      "address": "台北市中山區長春路176號10樓",
+      "rank": "497",
       "lp": "-"
     },
     {
@@ -171,7 +182,7 @@
     },
     {
       "pageNo": 4,
-      "rowIndex": 4,
+      "rowIndex": 5,
       "activityName": "Day2 Check-in: 2026-27 Taiwan Premier Ball League TCG Category Masters Division",
       "eventTime": "11-08-2026 09:00",
       "eventDateTime": "2026-11-08 09:00",
@@ -254,7 +265,7 @@
       "eventDateTime": "2026-10-17 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "420",
       "lp": "-"
     },
     {

@@ -1,8 +1,8 @@
 {
   "id": "tw02105248",
   "url": "https://asia.pokemon-card.com/tw/users/tw02105248/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-19T07:22:04.131Z",
-  "totalEvents": 71,
+  "fetchedAt": "2026-11-26T08:15:52.152Z",
+  "totalEvents": 72,
   "participatedTournaments": [
     {
       "pageNo": 4,
@@ -93,6 +93,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 4,
+      "rowIndex": 12,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 14:00",
+      "eventDateTime": "2026-11-22 14:00",
+      "location": "拉比卡牌",
+      "address": "台北市內湖區五分街89號2樓",
+      "rank": "3",
+      "lp": "10"
+    },
+    {
       "pageNo": 3,
       "rowIndex": 5,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (大師組)",
@@ -100,7 +111,7 @@
       "eventDateTime": "2026-11-21 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "86",
       "lp": "-"
     },
     {
@@ -112,7 +123,7 @@
       "location": "Magic Star卡牌店",
       "address": "台北市大安區和平東路二段231號2樓",
       "rank": "2",
-      "lp": "-"
+      "lp": "12"
     },
     {
       "pageNo": 3,
@@ -232,7 +243,7 @@
       "eventDateTime": "2026-10-17 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "44",
       "lp": "-"
     },
     {

@@ -1,8 +1,8 @@
 {
   "id": "tw30267620",
   "url": "https://asia.pokemon-card.com/tw/users/tw30267620/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-19T07:07:52.706Z",
-  "totalEvents": 98,
+  "fetchedAt": "2026-11-26T08:01:24.679Z",
+  "totalEvents": 99,
   "participatedTournaments": [
     {
       "pageNo": 5,
@@ -47,6 +47,17 @@
       "address": "台北市中山區長春路176號10樓",
       "rank": "-",
       "lp": "-"
+    },
+    {
+      "pageNo": 5,
+      "rowIndex": 19,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 10:00",
+      "eventDateTime": "2026-11-22 10:00",
+      "location": "躲貓貓桌遊店",
+      "address": "台中市后里區三豐路四段17號",
+      "rank": "4",
+      "lp": "10"
     },
     {
       "pageNo": 4,
