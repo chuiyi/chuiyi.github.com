@@ -1,8 +1,8 @@
 {
   "id": "tw31401549",
   "url": "https://asia.pokemon-card.com/tw/users/tw31401549/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-20T07:33:27.655Z",
-  "totalEvents": 208,
+  "fetchedAt": "2026-11-27T08:39:28.332Z",
+  "totalEvents": 209,
   "participatedTournaments": [
     {
       "pageNo": 10,
@@ -133,6 +133,17 @@
       "eventDateTime": "2026-11-29 12:00",
       "location": "新世紀遊戲館",
       "address": "新竹市北區平和街7號2樓",
+      "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 11,
+      "rowIndex": 9,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 13:00",
+      "eventDateTime": "2026-11-22 13:00",
+      "location": "孩子玩伴-關埔店",
+      "address": "新竹市東區關新路85號",
       "rank": "-",
       "lp": "-"
     },

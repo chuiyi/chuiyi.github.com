@@ -1,12 +1,12 @@
 {
   "id": "tw63175199",
   "url": "https://asia.pokemon-card.com/tw/users/tw63175199/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-20T07:01:48.900Z",
-  "totalEvents": 28,
+  "fetchedAt": "2026-11-27T08:07:34.761Z",
+  "totalEvents": 27,
   "participatedTournaments": [
     {
       "pageNo": 2,
-      "rowIndex": 8,
+      "rowIndex": 6,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-13-2026 14:30",
       "eventDateTime": "2026-12-13 14:30",
@@ -17,7 +17,7 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 7,
+      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "12-06-2026 14:00",
       "eventDateTime": "2026-12-06 14:00",
@@ -28,35 +28,24 @@
     },
     {
       "pageNo": 2,
-      "rowIndex": 6,
-      "activityName": "2026-27 Taiwan Great Ball League Season 2",
-      "eventTime": "12-05-2026 13:30",
-      "eventDateTime": "2026-12-05 13:30",
-      "location": "尋夢桌遊",
-      "address": "桃園市中壢區長樂街84巷18號",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
       "rowIndex": 4,
-      "activityName": "2026-27 Taiwan Great Ball League Season 2",
-      "eventTime": "11-22-2026 13:00",
-      "eventDateTime": "2026-11-22 13:00",
-      "location": "5樓-豐原店",
-      "address": "臺中市豐原區三民路65號5樓",
-      "rank": "-",
-      "lp": "-"
-    },
-    {
-      "pageNo": 2,
-      "rowIndex": 5,
       "activityName": "2026-27 Taiwan Great Ball League Season 2",
       "eventTime": "11-22-2026 13:00",
       "eventDateTime": "2026-11-22 13:00",
       "location": "孩子玩伴-關埔店",
       "address": "新竹市東區關新路85號",
       "rank": "-",
+      "lp": "-"
+    },
+    {
+      "pageNo": 2,
+      "rowIndex": 7,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 13:00",
+      "eventDateTime": "2026-11-22 13:00",
+      "location": "5樓-豐原店",
+      "address": "臺中市豐原區三民路65號5樓",
+      "rank": "25",
       "lp": "-"
     },
     {

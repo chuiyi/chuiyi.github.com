@@ -1,9 +1,20 @@
 {
   "id": "tw83160193",
   "url": "https://asia.pokemon-card.com/tw/users/tw83160193/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-20T08:59:18.108Z",
-  "totalEvents": 40,
+  "fetchedAt": "2026-11-27T10:06:37.131Z",
+  "totalEvents": 41,
   "participatedTournaments": [
+    {
+      "pageNo": 3,
+      "rowIndex": 1,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 14:00",
+      "eventDateTime": "2026-11-22 14:00",
+      "location": "拉比卡牌",
+      "address": "台北市內湖區五分街89號2樓",
+      "rank": "17",
+      "lp": "-"
+    },
     {
       "pageNo": 2,
       "rowIndex": 20,
