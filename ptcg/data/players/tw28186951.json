@@ -1,8 +1,8 @@
 {
   "id": "tw28186951",
   "url": "https://asia.pokemon-card.com/tw/users/tw28186951/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-21T07:05:14.771Z",
-  "totalEvents": 279,
+  "fetchedAt": "2026-11-28T07:56:06.599Z",
+  "totalEvents": 280,
   "participatedTournaments": [
     {
       "pageNo": 14,
@@ -203,6 +203,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 14,
+      "rowIndex": 20,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 13:30",
+      "eventDateTime": "2026-11-22 13:30",
+      "location": "KYD遊樂園",
+      "address": "桃園市中壢區中央東路13號6樓",
+      "rank": "13",
+      "lp": "6"
+    },
+    {
       "pageNo": 12,
       "rowIndex": 6,
       "activityName": "2026-27 臺灣高級球聯盟賽 賽季 1-4 (少年組)",
@@ -210,7 +221,7 @@
       "eventDateTime": "2026-11-21 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
+      "rank": "60",
       "lp": "-"
     },
     {
@@ -452,8 +463,8 @@
       "eventDateTime": "2026-10-17 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "15",
+      "lp": "20"
     },
     {
       "pageNo": 13,

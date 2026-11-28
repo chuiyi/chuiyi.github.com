@@ -1,8 +1,8 @@
 {
   "id": "tw89973725",
   "url": "https://asia.pokemon-card.com/tw/users/tw89973725/?eventFilter=4&eventGivingCSPPointsFlg=1",
-  "fetchedAt": "2026-11-21T06:59:40.264Z",
-  "totalEvents": 245,
+  "fetchedAt": "2026-11-28T07:50:32.135Z",
+  "totalEvents": 246,
   "participatedTournaments": [
     {
       "pageNo": 12,
@@ -104,6 +104,17 @@
       "lp": "-"
     },
     {
+      "pageNo": 13,
+      "rowIndex": 6,
+      "activityName": "2026-27 Taiwan Great Ball League Season 2",
+      "eventTime": "11-22-2026 09:30",
+      "eventDateTime": "2026-11-22 09:30",
+      "location": "喬桌遊林森店",
+      "address": "高雄市新興區林森一路178號2樓",
+      "rank": "5",
+      "lp": "8"
+    },
+    {
       "pageNo": 12,
       "rowIndex": 12,
       "activityName": "2026-27 Taiwan Great Ball League Season 1",
@@ -122,8 +133,8 @@
       "eventDateTime": "2026-11-15 13:00",
       "location": "Bruce桌遊空間-美術館店",
       "address": "高雄市鼓山區華榮路405號",
-      "rank": "-",
-      "lp": "-"
+      "rank": "4",
+      "lp": "10"
     },
     {
       "pageNo": 13,
@@ -221,8 +232,8 @@
       "eventDateTime": "2026-10-17 08:30",
       "location": "Saka Saka Limited Taiwan Branch",
       "address": "台北市中山區長春路176號10樓",
-      "rank": "-",
-      "lp": "-"
+      "rank": "19",
+      "lp": "15"
     },
     {
       "pageNo": 12,
